@@ -1,0 +1,60 @@
+.aparecer{
+    transition: opacity .7s;
+}
+.desvanecer{
+    opacity:0;
+}
+.toolbar-right,
+.table-toolbar-right {
+ text-align: center !important;
+}
+#alerts-general{
+    margin-bottom: 1rem;
+}
+#demo_chosen_select_chosen{
+    width: 100% !important;
+}
+#group1Form{
+    display: flex;
+}
+#g1item1Form{
+    width: 40%;
+}
+#g1item2Form{
+    width: 60%;
+}
+#group2Form{
+    display: flex;
+}
+#g2item1Form{
+    width: 25%;
+}
+/*
+#g2item2Form{
+    width: 75%;
+}*/
+#group-labor{
+    display: flex;
+}
+.group1RegPerf{
+    display: flex;
+    justify-content: space-between;
+}
+.item1RegPerf{
+    text-align: center;
+    margin: 0.5rem;
+}
+.group2RegPerf{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.item2RegPerf{
+    text-align: center;
+}
+#inserForm{
+    width: 90% !important;
+}
+.chosen-container{
+    width: 100% !important;
+}

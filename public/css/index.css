@@ -1,0 +1,13 @@
+.aparecer{
+    transition: opacity .7s;
+}
+.desvanecer{
+    opacity:0;
+}
+.toolbar-right,
+.table-toolbar-right {
+ text-align: center !important;
+}
+#alerts-general{
+    margin-bottom: 1rem;
+}

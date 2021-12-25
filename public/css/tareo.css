@@ -1,0 +1,34 @@
+.aparecer{
+    transition: opacity .7s;
+}
+.desvanecer{
+    opacity:0;
+}
+.toolbar-right,
+.table-toolbar-right {
+ text-align: center !important;
+}
+#alerts-general{
+    margin-bottom: 1rem;
+}
+#demo_chosen_select_chosen{
+    width: 100% !important;
+}
+#group1Form{
+    display: flex;
+}
+#g1item1Form{
+    width: 35%;
+}
+#g1item2Form{
+    width: 65%;
+}
+#group2Form{
+    display: flex;
+}
+#g2item1Form{
+    width: 50%;
+}
+#g2item2Form{
+    width: 50%;
+}
