@@ -2,13 +2,13 @@
 header('Content-type: application/json; charset=utf-8');
 // Si no se ha enviado nada por el POST y se intenta acceder al archivo se retornará a la página de inicio
 if($_POST){
-    $table = 'labores';
-    $idTable = 'id_labor';
+    $table = 'cargos';
+    $idTable = 'id_cargo';
     $rptSql='';
     $rptController = 'Se recibio datos';
     try {
         require_once '../models/'.$table.'.php';
-        $tableManager = new Labores();
+        $tableManager = new Cargos();
         $arrayForm = json_decode($_POST['data'],true);
         // ACCION
         $accion = $arrayForm['accion'];
@@ -21,7 +21,7 @@ if($_POST){
                 $column = $arrayForm['column'];
                 $parament = $arrayForm['parament'];
                 $columnWhere = $arrayForm['columnWhere'];
-                $rptSql = $tableManager->getSelectWhere($table, $column, $parament, $idTable, $columnWhere);
+                $rptSql = $tableManager->getColumnWhere($table, $column, $parament, $idTable, $columnWhere);
                 break;
             case "getcolumnsWhere":
                 $columns = $arrayForm['columns'];

@@ -9,19 +9,44 @@ class Labores extends Conexion
         parent::__construct();
     }
 
-    // Obtiene Lista especifica
-    public function getSelect(string $column)
+    public function getSizeColumn(string $table)
     {
-        $query = "SELECT lb.id_labor, lb.{$column}, lb.id_labNombre FROM labores AS lb";
+        $query = "SELECT COUNT(*) FROM {$table};";
+        return  intval($this->db->query($query)->fetch(PDO::FETCH_BOTH)[0]);
+    }
+
+    // Obtiene Lista especifica
+    public function getSelect(string $table, string $column, string $idTable)
+    {
+        $sizeRow = $this->getSizeColumn($table);
+        $query = "SELECT {$column} FROM {$table} ORDER BY {$column} ASC ;";
         return $this->ConsultaSimple($query);
     }
+
+    // Obtiene Lista especifica
+    public function getSelectWhere(string $table, string $column, string $parament, string $idTable, string $columnWhere)
+    {
+        $sizeRow = $this->getSizeColumn($table);
+        $where = "WHERE {$columnWhere} = '{$parament}'";
+        $query = "SELECT {$column}, {$idTable} FROM {$table} " .$where; 
+        return $this->ConsultaSimple($query);
+    }
+
+    # EJEMPLO OBTENER UNA LISTA SEGUN SOLICITADO
+    public function getColumnsWhere(string $table, string $parament)
+    {
+        $query = "SELECT lbz.nombre, lbn.labNombre_nombre, lbz.nivel FROM labores AS lb LEFT JOIN lab_zonas AS lbz ON  lb.id_zona = lbz.id_zona LEFT JOIN lab_nombres AS lbn ON lb.id_labNombre = lbn.id_labNombre WHERE lb.id_labor = {$parament};";
+        return $this->ConsultaSimple($query);
+    }
+
     //OBTIENE TODA LA TABLA
     public function getAll(int $empezarDesde, int $filasPage): array
     {
         //$query = "SELECT * FROM tareo LIMIT {$desde},{$filas}";
-        $query = "SELECT * FROM labores LIMIT {$empezarDesde}, {$filasPage}";
+        $query = "SELECT * FROM labores LIMIT {$empezarDesde}, {$filasPage};";
         return $this->ConsultaSimple($query);
     }
+
     public function insert(string $datoZona, string $datoCCosto, int $datoNivel, string $datoLabor)
     {
         try 

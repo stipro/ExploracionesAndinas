@@ -2,7 +2,7 @@
 //declare (strict_types = 1);
 require_once '../db/conexion.php';
 
-class Colaboradores extends Conexion
+class Cargos extends Conexion
 {
     public function __construct()
     {
@@ -10,42 +10,50 @@ class Colaboradores extends Conexion
     }
 
     // Obtiene Lista especifica
-    public function getSelect(string $table, string $column)
+    public function getSelect(string $table, string $column, string $idTable)
     {
-        $query = "SELECT {$column}, col_apePaterno, col_apeMaterno, col_nombres, id_colaborador, id_cargo FROM {$table}";
+        $query = "SELECT {$column}, {$idTable}  FROM {$table}";
         return $this->ConsultaSimple($query);
     }
 
+    // Obtiene Lista especifica
+    public function getSelectWhere(string $column, string $parament)
+    {
+        $where = "WHERE lbN.id_labNombre = '{$parament}'";
+        $query = "SELECT lbN.{$column}, lbN.id_labNombre FROM lab_nombres AS lbN " .$where; 
+        return $this->ConsultaSimple($query);
+    }
+
+    # EJEMPLO OBTENER UNA LISTA SEGUN SOLICITADO
+    public function getColumnWhere(string $table, string $column, string $parament, string $idTable, string $columnWhere)
+    {
+        $query = "SELECT {$idTable}, {$column} FROM {$table} WHERE {$columnWhere} = {$parament};";
+        return $this->ConsultaSimple($query);
+    }
     //OBTIENE TODA LA TABLA
     public function getAll(int $empezarDesde, int $filasPage): array
     {
-        $query = "SELECT * FROM colaboradores LIMIT {$empezarDesde}, {$filasPage}";
+        //$query = "SELECT * FROM tareo LIMIT {$desde},{$filas}";
+        $query = "SELECT * FROM labores LIMIT {$empezarDesde}, {$filasPage}";
         return $this->ConsultaSimple($query);
     }
-    public function insert(string $dato1, int $dato2, string $dato3, string $dato4, string $dato5, string $dato6, string $dato7)
+    public function insert(string $datoZona, string $datoCCosto, int $datoNivel, string $datoLabor)
     {
         try 
         {
-            $query  = "INSERT INTO colaboradores VALUES (null, :dato1, :dato2, :dato3, :dato4, :dato5, :dato6, :dato7);";
+            $query  = "INSERT INTO labores VALUES (null, :lab_ccostos, :lab_labor, :lab_nivel, null, null, :lab_zona);";
             $result = $this->db->prepare($query);
-            $result->execute(array(
-            ':dato1' => $dato1,
-            ':dato2' => $dato2,
-            ':dato3' => $dato3,
-            ':dato4' => $dato4,
-            ':dato5' => $dato5,
-            ':dato6' => $dato6,
-            ':dato7' => $dato7));
+            $result->execute(array(':lab_ccostos' => $datoCCosto,':lab_labor' => $datoLabor, ':lab_nivel'=> $datoNivel, ':lab_zona' => $datoZona));
             return 'Se registro correctamente.';
         } catch (PDOException $e) {
-            return 'Se registro ERROR. Probablemente ingreso en Guardia mas de un texto, solo ingresar 1 Text, dni 8';
+            return 'Se registro ERROR '. $e->getMessage();
         }
     }
     public function delete(int $id)
     {
         //error_reporting(0);
         try {
-            $query  = "DELETE FROM colaboradores WHERE id_colaborador=:id;";
+            $query  = "DELETE FROM labores WHERE id_labor=:id;";
             $result = $this->db->prepare($query);
             $result->execute(array(':id' => $id));
             return 'Se elimino correctamente.';
@@ -53,20 +61,13 @@ class Colaboradores extends Conexion
             return 'Ocurrio un ERROR al eliminar';
         }
     }
-    public function edit(int $datoid, string $dato1, string $dato2, string $dato3, string $dato4, string $dato5, string $dato6, string $dato7)
+    public function edit(int $datoidLabor, string $datoZona, string $datoCCosto, int $datoNivel, string $datoLabor)
     {
         //error_reporting(0);
         try {
-            $query  = "UPDATE colaboradores SET col_ccostos=:dato1, col_dni=:dato2, col_nombre=:dato3, col_cargo_actual=:dato4, col_area=:dato5, col_guardia=:dato6, col_situacion=:dato7 WHERE id_colaborador=:datoid;";
+            $query  = "UPDATE labores SET lab_ccostos=:datoCCosto, lab_labor=:datoLabor, lab_nivel=:datoNivel, lab_zona=:datoZona WHERE id_labor=:datoidLabor;";
             $result = $this->db->prepare($query);
-            $result->execute(array(':datoid' => $datoid,
-                                     ':dato1' => $dato1,
-                                     ':dato2' => $dato2,
-                                     ':dato3' => $dato3,
-                                     ':dato4' => $dato4,
-                                     ':dato5' => $dato5,
-                                     ':dato6' => $dato6,
-                                     ':dato7' => $dato7));
+            $result->execute(array(':datoidLabor' => $datoidLabor, ':datoZona' => $datoZona, ':datoCCosto' => $datoCCosto, ':datoNivel' => $datoNivel, ':datoLabor' => $datoLabor));
             if ($result->rowCount()) {
                 return 'Se edito correctamente.';
             } else {
@@ -81,7 +82,7 @@ class Colaboradores extends Conexion
     public function getSearch(string $table, string $termiCol, string $termino): array
     {
         //$where = "WHERE " . $termiCol . " LIKE :termino ORDER BY ccostos ASC";
-        $where = "WHERE " . $termiCol . " LIKE :termino ORDER BY col_ccostos ASC";
+        $where = "WHERE " . $termiCol . " LIKE :termino ORDER BY lab_ccostos ASC";
         $array = array(':termino' => '%' . $termino . '%');
         //$this->getPagination($where, $array);
         //return $array;
@@ -89,9 +90,28 @@ class Colaboradores extends Conexion
         return $this->ConsultaCompleja($table, $where, $array);
     }
 
+
+    public function getSelectLike(string $letra)
+    {
+        if($letra == 'Z'){
+            $query = "SELECT lab_ccostos FROM labores WHERE lab_ccostos";
+        }
+        else{
+            $query = "SELECT lab_ccostos FROM labores WHERE lab_ccostos LIKE '_{$letra}%'";
+        }
+        
+        return $this->ConsultaSimple($query);
+    }
+
+    public function getSelectNormal(string $letra)
+    {
+        $query = "SELECT id_labor, lab_ccostos, lab_labor, lab_nivel, lab_tipo, lab_zona FROM labores WHERE lab_ccostos = '{$letra}'";
+        return $this->ConsultaSimple($query);
+    }
+
     public function getPaginationSearch(string $where, array $array): array
     {
-        $query = "SELECT COUNT(*) FROM colaboradores {$where}";
+        $query = "SELECT COUNT(*) FROM labores {$where}";
         $result = $this->db->prepare($query);
         $result->execute($array);
         return array(
@@ -102,7 +122,7 @@ class Colaboradores extends Conexion
 
     public function getPaginationAll(): array
     {
-        $query = "SELECT COUNT(*) FROM colaboradores;";
+        $query = "SELECT COUNT(*) FROM labores;";
         return array(
             'filasTotal'  => intval($this->db->query($query)->fetch(PDO::FETCH_BOTH)[0]),
             'filasPagina' => 3,

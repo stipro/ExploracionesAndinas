@@ -2,25 +2,33 @@
 header('Content-type: application/json; charset=utf-8');
 // Si no se ha enviado nada por el POST y se intenta acceder al archivo se retornará a la página de inicio
 if($_POST){
-    $table = 'colaboradores';
+    $table = 'lab_zonas';
+    $idTable = 'id_zona';
     $rptSql='';
     $rptController = 'Se recibio datos';
     try {
         require_once '../models/'.$table.'.php';
-        $tableManager = new Colaboradores();
+        $tableManager = new LaboresName();
         $arrayForm = json_decode($_POST['data'],true);
+        // ACCION
         $accion = $arrayForm['accion'];
         switch ($accion) {
             case "getcolumnAll":
                 $column = $arrayForm['column'];
-                $rptSql = $tableManager->getSelect($table, $column);
+                $rptSql = $tableManager->getSelect($table, $column, $idTable);
                 break;
-            case "search":
-                $term = $accion['term'];
-                $type = $accion['type'];
-                
+            case "getcolumnWhere":
+                $column = $arrayForm['column'];
+                $parament = $arrayForm['parament'];
+                $columnWhere = $arrayForm['columnWhere'];
+                $rptSql = $tableManager->getSelectWhere($table, $column, $parament, $idTable, $columnWhere);
+                break;
+            case "search":                
                 break;
             case "table":
+                break;
+            default:
+                echo "ola";
                 break;
         }
 
@@ -33,6 +41,6 @@ else{
 }
 $rptjsonControlller = array(
     "sql" => $rptSql,
-    "rptController" => $rptController
+    "rptController" => $rptController,
 );
 echo json_encode($rptjsonControlller);

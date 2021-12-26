@@ -117,7 +117,7 @@ session_start();
                 <!--================================-->
                 <div class="navbar-header">
                     <a href="index.html" class="navbar-brand">
-                        <img src="img\logo.png" alt="Nifty Logo" class="brand-icon">
+                        <img src="..\img\logo.png" alt="Nifty Logo" class="brand-icon">
                         <div class="brand-title">
                             <span class="brand-text">Exploraciones Andinas S.A.C.</span>
                         </div>
@@ -250,22 +250,22 @@ session_start();
                                         <p class="dropdown-header"><i class="demo-pli-file-jpg icon-lg icon-fw"></i> Gallery</p>
                                         <div class="row img-gallery">
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-1.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src="..\img\thumbs\img-1.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-3.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src="..\img\thumbs\img-3.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-2.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src="..\img\thumbs\img-2.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-4.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src="..\img\thumbs\img-4.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-6.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src="..\img\thumbs\img-6.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-5.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src="..\img\thumbs\img-5.jpeg" alt="thumbs">
                                             </div>
                                         </div>
                                         <a href="#" class="btn btn-block btn-primary">Browse Gallery</a>
@@ -344,7 +344,7 @@ session_start();
                                             <li>
                                                 <a class="media" href="#">
                                                     <div class="media-left">
-                                                        <img class="img-circle img-sm" alt="Profile Picture" src="img\profile-photos\9.png">
+                                                        <img class="img-circle img-sm" alt="Profile Picture" src="..\img\profile-photos\9.png">
                                                     </div>
                                                     <div class="media-body">
                                                         <p class="mar-no text-nowrap text-main text-semibold">Lucy sent you a message</p>
@@ -355,7 +355,7 @@ session_start();
                                             <li>
                                                 <a class="media" href="#">
                                                     <div class="media-left">
-                                                        <img class="img-circle img-sm" alt="Profile Picture" src="img\profile-photos\3.png">
+                                                        <img class="img-circle img-sm" alt="Profile Picture" src="..\img\profile-photos\3.png">
                                                     </div>
                                                     <div class="media-body">
                                                         <p class="mar-no text-nowrap text-main text-semibold">Jackson sent you a message</p>
@@ -632,7 +632,7 @@ session_start();
                                     <div class="list-group bg-trans">
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="img\profile-photos\2.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src="..\img\profile-photos\2.png" alt="Profile Picture">
 												<i class="badge badge-success badge-stat badge-icon pull-left"></i>
 							                </div>
 							                <div class="media-body">
@@ -642,7 +642,7 @@ session_start();
 							            </a>
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="img\profile-photos\7.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src="..\img\profile-photos\7.png" alt="Profile Picture">
 							                </div>
 							                <div class="media-body">
 							                    <p class="mar-no text-main">Brittany Meyer</p>
@@ -651,7 +651,7 @@ session_start();
 							            </a>
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="img\profile-photos\1.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src="..\img\profile-photos\1.png" alt="Profile Picture">
 												<i class="badge badge-info badge-stat badge-icon pull-left"></i>
 							                </div>
 							                <div class="media-body">
@@ -661,7 +661,7 @@ session_start();
 							            </a>
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="img\profile-photos\4.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src="..\img\profile-photos\4.png" alt="Profile Picture">
 							                </div>
 							                <div class="media-body">
 							                    <p class="mar-no text-main">Donald Brown</p>
@@ -670,7 +670,7 @@ session_start();
 							            </a>
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="img\profile-photos\8.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src="..\img\profile-photos\8.png" alt="Profile Picture">
 												<i class="badge badge-warning badge-stat badge-icon pull-left"></i>
 							                </div>
 							                <div class="media-body">
@@ -680,7 +680,7 @@ session_start();
 							            </a>
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="img\profile-photos\9.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src="..\img\profile-photos\9.png" alt="Profile Picture">
 												<i class="badge badge-danger badge-stat badge-icon pull-left"></i>
 							                </div>
 							                <div class="media-body">
@@ -1154,75 +1154,33 @@ session_start();
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="insert-operacionMina-cod_zona" class="col-md-4 control-label">cod. Zona</label>
+                                        <label for="insert-operacionMina-codzona" class="col-md-4 control-label">cod. Zona</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="insert-options-zona" id="insert-operacionMina-cod_zona" placeholder="seleccióne Zona...">
+                                            <input class="form-control" list="insert-options-codzona" id="insert-operacionMina-codzona" placeholder="seleccióne Zona...">
                                         </div>
-                                        <datalist id="insert-options-zona">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
-                                            <option value="a">
+                                        <datalist id="insert-options-codzona">
+                                            <option value="No se obtuvo Dato">
                                         </datalist>
-                                        <template id="template-opt-zona">
-                                            <option id="optzona" value="">
+                                        <template id="template-opt-cod_zona">
+                                            <option id="opt-codzona" value="">
                                         </template>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="" class="col-md-4 control-label">Labor</label>
+                                        <label for="insert-operacionMina-codLabor" class="col-md-4 control-label">cod. Labor</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="insert-options-labor" id="insert-operacionMina-labor" placeholder="seleccióne Labor...">
+                                            <input class="form-control"  list="insert-options-codLabor" type="text" placeholder="Cod. Labor" id="insert-operacionMina-codLabor">
                                         </div>
-                                        <datalist id="insert-options-labor">
-                                            <option value="">
+                                        <datalist id="insert-options-codLabor">
+                                            <option data-value="42">loco</option>
                                         </datalist>
-                                        <template id="template-opt-labor">
-                                            <option id="optlabor" value="">A</option>
+                                        <input type="hidden" name="answer" id="insert-operacionMina-codLabor-hidden">                                    
+                                        <template id="template-opt-codLabor">
+                                            <option id="opt-codLabor" value="">
                                         </template>
                                     </div>
-                                </div>
+                                </div>                                
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="insert-operacionMina-zona" class="col-md-4 control-label">Zona</label>
@@ -1230,13 +1188,14 @@ session_start();
                                             <input type="text" placeholder="Zona" class="form-control" name="" id="insert-operacionMina-zona" value="" disabled>
                                         </div>
                                     </div>
-                                </div>
+                                </div>                                
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="insert-operacionMina-codLabor" class="col-md-4 control-label">cod. Labor</label>
+                                        <label for="" class="col-md-4 control-label">Labor</label>
                                         <div class="col-md-8">
-                                            <input type="text" placeholder="Cod. Labor" class="form-control" name="" id="insert-operacionMina-codLabor" value="" disabled>
+                                            <input class="form-control" list="insert-options-labor" id="insert-operacionMina-labor" placeholder="seleccióne Labor..." disabled>
                                         </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -1275,125 +1234,112 @@ session_start();
                                     </div>
                                     <div class="row">
                                         <div class="form-group form-tarea">
-                                            <label for="formselectTurno" class="col-md-3 form-tarea control-label">Maestro</label>
+                                            <label for="" class="col-md-3 form-tarea control-label">Maestro</label>
                                             <div class="col-md-2">
-                                                <!-- Default choosen -->
-                                                <!--===================================================-->
-                                                <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
-                                                    <option value=""></option>
-                                                </select>
-                                                <template id="">
-                                                    <option id="" value="">A</option>
+                                                <input class="form-control" list="insert-options-dni-maestro" id="insert-operacionaMina-dni-maestro" placeholder="Ingrese Dni...">
+                                                <datalist id="insert-options-dni-maestro">
+                                                    <option value="No se obtuvo Dato">
+                                                </datalist>
+                                                <template id="template-opt-dni-maestro">
+                                                    <option id="template-opts-dni-maestro" value="">
                                                 </template>
-                                                <!--===================================================-->
                                             </div>
                                             <div class="col-md-4">
-                                                <!-- Default choosen -->
-                                                <!--===================================================-->
-                                                <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
-                                                    <option value=""></option>
-                                                </select>
-                                                <template id="">
-                                                    <option id="" value="">A</option>
+                                                <input class="form-control" list="insert-options-name-maestro" id="insert-operacionaMina-name-maestro" placeholder="Ingrese Nombre...">
+                                                <datalist id="insert-options-name-maestro">
+                                                    <option value="No se obtuvo Dato">
+                                                </datalist>
+                                                <template id="template-opt-name-maestro">
+                                                    <option id="template-opts-name-maestro" value="">
                                                 </template>
-                                                <!--===================================================-->
                                             </div>
                                             <div class="col-md-3">
-                                                <input class="form-control" type="text" name="" id="" value="0" disabled>
+                                                <input class="form-control" type="text" id="insert-operacionaMina-cargo-maestro" value="..." disabled>
                                             </div>                                                            
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group form-tarea">
-                                            <label for="formselectTurno" class="col-md-3 form-tarea control-label">Ayudante</label>
+                                            <label for="" class="col-md-3 form-tarea control-label">Ayudante</label>
                                             <div class="col-md-2">
-                                                <!-- Default choosen -->
-                                                <!--===================================================-->
-                                                <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
-                                                    <option value=""></option>
-                                                </select>
-                                                <template id="">
-                                                    <option id="" value="">A</option>
+                                                <input class="form-control" list="insert-options-dni-ayudante" id="insert-operacionaMina-dni-ayudante" placeholder="Ingrese Dni...">
+                                                <datalist id="insert-options-dni-ayudante">
+                                                    <option value="No se obtuvo Dato">
+                                                </datalist>
+                                                <template id="template-opt-dni-ayudante">
+                                                    <option id="template-opts-dni-ayudante" value="">
                                                 </template>
-                                                <!--===================================================-->
+                                                </template>
                                             </div>
                                             <div class="col-md-4">
-                                                <!-- Default choosen -->
-                                                <!--===================================================-->
-                                                <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
-                                                    <option value=""></option>
-                                                </select>
-                                                <template id="">
-                                                    <option id="" value="">A</option>
+                                                <input class="form-control" list="insert-options-name-ayudante" id="insert-operacionaMina-name-ayudante" placeholder="Ingrese Nombre...">
+                                                <datalist id="insert-options-name-ayudante">
+                                                    <option value="No se obtuvo Dato">
+                                                </datalist>
+                                                <template id="template-opt-name-ayudante">
+                                                    <option id="template-opts-name-ayudante" value="">
                                                 </template>
-                                                <!--===================================================-->
                                             </div>
                                             <div class="col-md-3">
-                                                <input class="form-control" type="text" name="" id="" value="0" disabled>
+                                                <input class="form-control" type="text" name="" id="insert-operacionaMina-cargo-ayudante" value="..." disabled>
                                             </div>                                                            
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group form-tarea">
-                                            <label for="formselectTurno" class="col-md-3 form-tarea control-label">3er Hombre</label>
+                                            <label for="" class="col-md-3 form-tarea control-label">3er Hombre</label>
                                             <div class="col-md-2">
-                                                <!-- Default choosen -->
-                                                <!--===================================================-->
-                                                <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
-                                                    <option value=""></option>
-                                                </select>
-                                                <template id="">
-                                                    <option id="" value="">A</option>
+                                                <input class="form-control" list="insert-options-dni-tercer-hombre" id="insert-operacionaMina-dni-tercer-hombre" placeholder="Ingrese Dni...">
+                                                <datalist id="insert-options-dni-tercer-hombre">
+                                                    <option value="No se obtuvo Dato">
+                                                </datalist>
+                                                <template id="template-opt-dni-tercer-hombre">
+                                                    <option id="template-opts-dni-tercer-hombre" value="">
                                                 </template>
-                                                <!--===================================================-->
+                                                </template>
                                             </div>
                                             <div class="col-md-4">
-                                                <!-- Default choosen -->
-                                                <!--===================================================-->
-                                                <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
-                                                    <option value=""></option>
-                                                </select>
-                                                <template id="">
-                                                    <option id="" value="">A</option>
+                                                <input class="form-control" list="insert-options-name-tercer-hombre" id="insert-operacionaMina-name-tercer-hombre" placeholder="Ingrese Nombre...">
+                                                <datalist id="insert-options-name-tercer-hombre">
+                                                    <option value="No se obtuvo Dato">
+                                                </datalist>
+                                                <template id="template-opt-name-tercer-hombre">
+                                                    <option id="template-opts-name-tercer-hombre" value="">
                                                 </template>
-                                                <!--===================================================-->
                                             </div>
                                             <div class="col-md-3">
-                                                <input class="form-control" type="text" name="" id="" value="0" disabled>
+                                            <input class="form-control" type="text" name="" id="insert-operacionaMina-cargo-tercer-hombre" value="..." disabled>
                                             </div>                                                            
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group form-tarea">
-                                            <label for="formselectTurno" class="col-md-3 form-tarea control-label">4to Hombre</label>
+                                            <label for="" class="col-md-3 form-tarea control-label">4to Hombre</label>
                                             <div class="col-md-2">
-                                                <!-- Default choosen -->
-                                                <!--===================================================-->
-                                                <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
-                                                    <option value=""></option>
-                                                </select>
-                                                <template id="">
-                                                    <option id="" value="">A</option>
+                                                <input class="form-control" list="insert-options-dni-cuarto-hombre" id="insert-operacionaMina-dni-cuarto-hombre" placeholder="Ingrese Dni...">
+                                                <datalist id="insert-options-dni-cuarto-hombre">
+                                                    <option value="No se obtuvo Dato">
+                                                </datalist>
+                                                <template id="template-opt-dni-cuarto-hombre">
+                                                    <option id="template-opts-dni-cuarto-hombre" value="">
                                                 </template>
-                                                <!--===================================================-->
+                                                </template>
                                             </div>
                                             <div class="col-md-4">
-                                                <!-- Default choosen -->
-                                                <!--===================================================-->
-                                                <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
-                                                    <option value=""></option>
-                                                </select>
-                                                <template id="">
-                                                    <option id="" value="">A</option>
+                                                <input class="form-control" list="insert-options-name-cuarto-hombre" id="insert-operacionaMina-name-cuarto-hombre" placeholder="Ingrese Nombre...">
+                                                <datalist id="insert-options-name-cuarto-hombre">
+                                                    <option value="No se obtuvo Dato">
+                                                </datalist>
+                                                <template id="template-opt-name-cuarto-hombre">
+                                                    <option id="template-opts-name-cuarto-hombre" value="">
                                                 </template>
-                                                <!--===================================================-->
                                             </div>
                                             <div class="col-md-3">
-                                                <input class="form-control" type="text" name="" id="" value="0" disabled>
+                                            <input class="form-control" type="text" name="" id="insert-operacionaMina-cargo-cuarto-hombre" value="..." disabled>
                                             </div>                                                            
                                         </div>
                                     </div>
-                                    <template id="template-opt-zona">
+                                    <template id="template-">
                                         <div class="form-group form-tarea">
                                             <label for="" class="col-md-3 form-tarea control-label">x Hombre</label>
                                             <div class="col-md-2">
@@ -1426,7 +1372,8 @@ session_start();
                                     <div class="row">
                                         <div class="form-group form-tarea">
                                             <div class="col-md-3">
-                                                <button class="btn btn-info btn-circle"><i class="ion-plus icon-lg"></i></button>
+                                                <button id="btn-increase" class="btn btn-info btn-circle"><i class="ion-plus icon-lg"></i></button>
+                                                <button id="btn-decline" class="btn btn-danger btn-circle"><i class="ion-minus icon-lg"></i></button>
                                             </div>
                                             <div class="col-md-2">
                                                 
