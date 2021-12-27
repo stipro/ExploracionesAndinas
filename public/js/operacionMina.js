@@ -1,7 +1,7 @@
 var arraySelectColaboradores;
 // Declarando variables
-const btnIncrementar =  document.getElementById("btn-increase");
-const btndisminuir =  document.getElementById("btn-decline");
+const btnIncrementar = document.getElementById("btn-increase");
+const btndisminuir = document.getElementById("btn-decline");
 const btnAgregar = document.getElementById("btn-Agregar");
 const btnInsert = document.getElementById("mbtn-insert");
 const iptinsertRegistro = document.getElementById("insert-operacionMina-registro");
@@ -187,25 +187,24 @@ iptinsertCZona.addEventListener('keyup', function(e) {
 
 // Detectores de cambio de input
 // Codigo Zona
-$("#insert-operacionMina-codzona").on('input', function () {
-    var val=$('#insert-operacionMina-codzona').val();
-    var validcodzona = $('#insert-options-codzona').find('option[value="'+val+'"]').data('id-codzona');
+$("#insert-operacionMina-codzona").on('input', function() {
+    var val = $('#insert-operacionMina-codzona').val();
+    var validcodzona = $('#insert-options-codzona').find('option[value="' + val + '"]').data('id-codzona');
     var selectForm_codLabor = {
         "accion": "getcolumnWhere",
         "column": "lab_ccostos",
         "parament": validcodzona,
         "columnWhere": "id_zona",
     }
-    if(validcodzona)
-    {
+    if (validcodzona) {
         fetchCodlabor(selectForm_codLabor);
     }
- });
+});
 
 // Codigo Labor
- $("#insert-operacionMina-codLabor").on('input', function () {
-    var val=$('#insert-operacionMina-codLabor').val();
-    var validcodlabor = $('#insert-options-codLabor').find('option[value="'+val+'"]').data('id-codlabor');
+$("#insert-operacionMina-codLabor").on('input', function() {
+    var val = $('#insert-operacionMina-codLabor').val();
+    var validcodlabor = $('#insert-options-codLabor').find('option[value="' + val + '"]').data('id-codlabor');
     var selectForm = {
         "accion": "getcolumnsWhere",
         "columns": [
@@ -214,23 +213,21 @@ $("#insert-operacionMina-codzona").on('input', function () {
         "parament": validcodlabor,
         "columnWhere": "id_labor",
     }
-    if(validcodlabor)
-    {
+    if (validcodlabor) {
         fetchzonalabornivel(selectForm)
     }
- });
+});
 
 // Tareas
 // Dni colabores (Maestro)
-$("#insert-operacionaMina-dni-maestro").on('input', function () {
-    var val=$('#insert-operacionaMina-dni-maestro').val();
-    var validColaborador = $('#insert-options-dni-maestro').find('option[value="'+val+'"]').data('id-colaborador');//
-    if(validColaborador)
-    {
-        var rptsearch = arraySelectColaboradores.find( item => item.id_colaborador == validColaborador );
+$("#insert-operacionaMina-dni-maestro").on('input', function() {
+    var val = $('#insert-operacionaMina-dni-maestro').val();
+    var validColaborador = $('#insert-options-dni-maestro').find('option[value="' + val + '"]').data('id-colaborador'); //
+    if (validColaborador) {
+        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
         iptinsert_nameMaestro.value = rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_nombres;
         var idCargo = rptsearch.id_cargo;
-        if(idCargo){
+        if (idCargo) {
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -238,24 +235,22 @@ $("#insert-operacionaMina-dni-maestro").on('input', function () {
                 "columnWhere": "id_cargo",
             }
             fetchCargoMaestro(selectFormCargo);
-        }
-        else{
+        } else {
             ipt_cargoMaestro.value = "no Registra";
         }
     }
- });
+});
 
- // Nonbres colabores (Maestro)
-$("#insert-operacionaMina-name-maestro").on('input', function () {
-    var val=$('#insert-operacionaMina-name-maestro').val();
-    var validColaborador = $('#insert-options-name-maestro').find('option[value="'+val+'"]').data('id-colaborador');//option template
-    if(validColaborador)
-    {
+// Nonbres colabores (Maestro)
+$("#insert-operacionaMina-name-maestro").on('input', function() {
+    var val = $('#insert-operacionaMina-name-maestro').val();
+    var validColaborador = $('#insert-options-name-maestro').find('option[value="' + val + '"]').data('id-colaborador'); //option template
+    if (validColaborador) {
         //var rptsearch = searchColaborador(validColaborador);
-        var rptsearch = arraySelectColaboradores.find( item => item.id_colaborador == validColaborador );
+        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
         iptinsert_dniMaestro.value = rptsearch.col_dni;
         var idCargo = rptsearch.id_cargo;
-        if(idCargo){
+        if (idCargo) {
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -263,14 +258,13 @@ $("#insert-operacionaMina-name-maestro").on('input', function () {
                 "columnWhere": "id_cargo",
             }
             fetchCargoMaestro(selectFormCargo);
-        }
-        else{
+        } else {
             ipt_cargoMaestro.value = "no Registra";
         }
     }
- });
+});
 
- //Traer Cargo Maestros ()
+//Traer Cargo Maestros ()
 const fetchCargoMaestro = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
@@ -292,16 +286,15 @@ const paintCargoMaestro = (data) => {
     ipt_cargoMaestro.value = arraySelect[0].cargo_nombre;
 }
 
- // Dni colabores (Ayudante)
- $("#insert-operacionaMina-dni-ayudante").on('input', function () {
-    var val=$('#insert-operacionaMina-dni-ayudante').val();
-    var validColaborador = $('#insert-options-dni-ayudante').find('option[value="'+val+'"]').data('id-colaborador');//
-    if(validColaborador)
-    {
-        var rptsearch = arraySelectColaboradores.find( item => item.id_colaborador == validColaborador );
+// Dni colabores (Ayudante)
+$("#insert-operacionaMina-dni-ayudante").on('input', function() {
+    var val = $('#insert-operacionaMina-dni-ayudante').val();
+    var validColaborador = $('#insert-options-dni-ayudante').find('option[value="' + val + '"]').data('id-colaborador'); //
+    if (validColaborador) {
+        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
         iptinsert_nameAyudante.value = rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_nombres;
         var idCargo = rptsearch.id_cargo;
-        if(idCargo){
+        if (idCargo) {
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -309,23 +302,21 @@ const paintCargoMaestro = (data) => {
                 "columnWhere": "id_cargo",
             }
             fetchCargoAyudante(selectFormCargo);
-        }
-        else{
+        } else {
             ipt_cargoAyudante.value = "no Registra";
         }
     }
- });
+});
 
- // Nonbres colabores (Ayudante)
-$("#insert-operacionaMina-name-ayudante").on('input', function () {
-    var val=$('#insert-operacionaMina-name-ayudante').val();
-    var validColaborador = $('#insert-options-name-ayudante').find('option[value="'+val+'"]').data('id-colaborador');
-    if(validColaborador)
-    {
-        var rptsearch = arraySelectColaboradores.find( item => item.id_colaborador == validColaborador );
+// Nonbres colabores (Ayudante)
+$("#insert-operacionaMina-name-ayudante").on('input', function() {
+    var val = $('#insert-operacionaMina-name-ayudante').val();
+    var validColaborador = $('#insert-options-name-ayudante').find('option[value="' + val + '"]').data('id-colaborador');
+    if (validColaborador) {
+        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
         iptinsert_dniAyudante.value = rptsearch.col_dni;
         var idCargo = rptsearch.id_cargo;
-        if(idCargo){
+        if (idCargo) {
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -333,12 +324,11 @@ $("#insert-operacionaMina-name-ayudante").on('input', function () {
                 "columnWhere": "id_cargo",
             }
             fetchCargoAyudante(selectFormCargo);
-        }
-        else{
+        } else {
             ipt_cargoAyudante.value = "no Registra";
         }
     }
- });
+});
 
 //Traer Cargo Maestros ()
 const fetchCargoAyudante = async (request) => {
@@ -363,15 +353,14 @@ const paintCargoAyudante = (data) => {
 }
 
 // Dni colabores (Tercer Persona)
-$("#insert-operacionaMina-dni-tercer-hombre").on('input', function () {
-    var val=$('#insert-operacionaMina-dni-tercer-hombre').val();
-    var validColaborador = $('#insert-options-dni-tercer-hombre').find('option[value="'+val+'"]').data('id-colaborador');//
-    if(validColaborador)
-    {
-        var rptsearch = arraySelectColaboradores.find( item => item.id_colaborador == validColaborador );
+$("#insert-operacionaMina-dni-tercer-hombre").on('input', function() {
+    var val = $('#insert-operacionaMina-dni-tercer-hombre').val();
+    var validColaborador = $('#insert-options-dni-tercer-hombre').find('option[value="' + val + '"]').data('id-colaborador'); //
+    if (validColaborador) {
+        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
         iptinsert_nameTercerpersona.value = rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_nombres;
         var idCargo = rptsearch.id_cargo;
-        if(idCargo){
+        if (idCargo) {
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -379,23 +368,21 @@ $("#insert-operacionaMina-dni-tercer-hombre").on('input', function () {
                 "columnWhere": "id_cargo",
             }
             fetchCargoTercerPersona(selectFormCargo);
-        }
-        else{
+        } else {
             ipt_cargoTercerPersona.value = "no Registra";
         }
     }
- });
+});
 
- // Nonbres colabores (Tercer Persona)
-$("#insert-operacionaMina-name-tercer-hombre").on('input', function () {
-    var val=$('#insert-operacionaMina-name-tercer-hombre').val();
-    var validColaborador = $('#insert-options-name-tercer-hombre').find('option[value="'+val+'"]').data('id-colaborador');
-    if(validColaborador)
-    {
-        var rptsearch = arraySelectColaboradores.find( item => item.id_colaborador == validColaborador );
+// Nonbres colabores (Tercer Persona)
+$("#insert-operacionaMina-name-tercer-hombre").on('input', function() {
+    var val = $('#insert-operacionaMina-name-tercer-hombre').val();
+    var validColaborador = $('#insert-options-name-tercer-hombre').find('option[value="' + val + '"]').data('id-colaborador');
+    if (validColaborador) {
+        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
         iptinsert_dniTercerpersona.value = rptsearch.col_dni;
         var idCargo = rptsearch.id_cargo;
-        if(idCargo){
+        if (idCargo) {
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -403,12 +390,11 @@ $("#insert-operacionaMina-name-tercer-hombre").on('input', function () {
                 "columnWhere": "id_cargo",
             }
             fetchCargoTercerPersona(selectFormCargo);
-        }
-        else{
+        } else {
             ipt_cargoTercerPersona.value = "no Registra";
         }
     }
- });
+});
 
 //Traer Cargo Maestros ()
 const fetchCargoTercerPersona = async (request) => {
@@ -434,15 +420,14 @@ const paintCargoTercerPersona = (data) => {
 
 
 // Dni colabores (Cuarto Persona)
-$("#insert-operacionaMina-dni-cuarto-hombre").on('input', function () {
-    var val=$('#insert-operacionaMina-dni-cuarto-hombre').val();
-    var validColaborador = $('#insert-options-dni-cuarto-hombre').find('option[value="'+val+'"]').data('id-colaborador');//
-    if(validColaborador)
-    {
-        var rptsearch = arraySelectColaboradores.find( item => item.id_colaborador == validColaborador );
+$("#insert-operacionaMina-dni-cuarto-hombre").on('input', function() {
+    var val = $('#insert-operacionaMina-dni-cuarto-hombre').val();
+    var validColaborador = $('#insert-options-dni-cuarto-hombre').find('option[value="' + val + '"]').data('id-colaborador'); //
+    if (validColaborador) {
+        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
         iptinsert_nameCuartopersona.value = rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_nombres;
         var idCargo = rptsearch.id_cargo;
-        if(idCargo){
+        if (idCargo) {
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -450,23 +435,21 @@ $("#insert-operacionaMina-dni-cuarto-hombre").on('input', function () {
                 "columnWhere": "id_cargo",
             }
             fetchCargoCuartaPersona(selectFormCargo);
-        }
-        else{
+        } else {
             ipt_cargoCuartaPersona.value = "no Registra";
         }
     }
- });
+});
 
- // Nonbres colabores (Cuarto Persona)
-$("#insert-operacionaMina-name-cuarto-hombre").on('input', function () {
-    var val=$('#insert-operacionaMina-name-cuarto-hombre').val();
-    var validColaborador = $('#insert-options-name-cuarto-hombre').find('option[value="'+val+'"]').data('id-colaborador');
-    if(validColaborador)
-    {
-        var rptsearch = arraySelectColaboradores.find( item => item.id_colaborador == validColaborador );
+// Nonbres colabores (Cuarto Persona)
+$("#insert-operacionaMina-name-cuarto-hombre").on('input', function() {
+    var val = $('#insert-operacionaMina-name-cuarto-hombre').val();
+    var validColaborador = $('#insert-options-name-cuarto-hombre').find('option[value="' + val + '"]').data('id-colaborador');
+    if (validColaborador) {
+        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
         iptinsert_dniCuartopersona.value = rptsearch.col_dni;
         var idCargo = rptsearch.id_cargo;
-        if(idCargo){
+        if (idCargo) {
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -474,12 +457,11 @@ $("#insert-operacionaMina-name-cuarto-hombre").on('input', function () {
                 "columnWhere": "id_cargo",
             }
             fetchCargoCuartaPersona(selectFormCargo);
-        }
-        else{
+        } else {
             ipt_cargoCuartaPersona.value = "no Registra";
         }
     }
- });
+});
 
 //Traer Cargo Maestros ()
 const fetchCargoCuartaPersona = async (request) => {
@@ -537,10 +519,10 @@ const paintZonas = (data) => {
 }
 
 //Traer codigo Labor ()
-const fetchCodlabor = async (request) => {    
+const fetchCodlabor = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
-    const res = await fetch('./../controllers/controllerLaborList.php',{
+    const res = await fetch('./../controllers/controllerLaborList.php', {
         method: "POST",
         body
     });
@@ -591,7 +573,7 @@ const paintCodLabor = (data) => {
     });
     dtlistOptionscodlabor.appendChild(fragment);
 }
-const paintZonaLaborNivel = (data) => {    
+const paintZonaLaborNivel = (data) => {
     arraySelect = data['sql'];
     arraySelect.forEach(item => {
         iptinsertZona.value = item.nombre;
@@ -600,7 +582,7 @@ const paintZonaLaborNivel = (data) => {
     });
 }
 
-const paintDni_Nombres = (data) => {    
+const paintDni_Nombres = (data) => {
     arraySelectColaboradores = data['sql'];
     //iptinsert_dniMaestro
     datalistinsert_optiondniMaestro.innerHTML = '';
@@ -638,7 +620,7 @@ const paintDni_Nombres = (data) => {
         // Maestro
         templateSelectDniMaestro.querySelector('#template-opts-dni-maestro').value = item.col_dni;
         templateSelectDniMaestro.querySelector('#template-opts-dni-maestro').dataset.idColaborador = item.id_colaborador;
-        templateSelectNameMaestro.querySelector('#template-opts-name-maestro').value = item.col_apePaterno +" "+ item.col_apeMaterno +" "+ item.col_nombres;
+        templateSelectNameMaestro.querySelector('#template-opts-name-maestro').value = item.col_apePaterno + " " + item.col_apeMaterno + " " + item.col_nombres;
         templateSelectNameMaestro.querySelector('#template-opts-name-maestro').dataset.idColaborador = item.id_colaborador;
         const cloneDniMaestro = templateSelectDniMaestro.cloneNode(true);
         const cloneNameMaestro = templateSelectNameMaestro.cloneNode(true);
@@ -648,7 +630,7 @@ const paintDni_Nombres = (data) => {
         // Ayudante
         templateSelectDniAyudante.querySelector('#template-opts-dni-ayudante').value = item.col_dni;
         templateSelectDniAyudante.querySelector('#template-opts-dni-ayudante').dataset.idColaborador = item.id_colaborador;
-        templateSelectNameAyudante.querySelector('#template-opts-name-ayudante').value = item.col_apePaterno +" "+ item.col_apeMaterno +" "+ item.col_nombres;
+        templateSelectNameAyudante.querySelector('#template-opts-name-ayudante').value = item.col_apePaterno + " " + item.col_apeMaterno + " " + item.col_nombres;
         templateSelectNameAyudante.querySelector('#template-opts-name-ayudante').dataset.idColaborador = item.id_colaborador;
         const cloneDniAyudante = templateSelectDniAyudante.cloneNode(true);
         const cloneNameAyudante = templateSelectNameAyudante.cloneNode(true);
@@ -658,7 +640,7 @@ const paintDni_Nombres = (data) => {
         // Tercer Persona
         templateSelectDniTercerPersona.querySelector('#template-opts-dni-tercer-hombre').value = item.col_dni;
         templateSelectDniTercerPersona.querySelector('#template-opts-dni-tercer-hombre').dataset.idColaborador = item.id_colaborador;
-        templateSelectNameTercerPersona.querySelector('#template-opts-name-tercer-hombre').value = item.col_apePaterno +" "+ item.col_apeMaterno +" "+ item.col_nombres;
+        templateSelectNameTercerPersona.querySelector('#template-opts-name-tercer-hombre').value = item.col_apePaterno + " " + item.col_apeMaterno + " " + item.col_nombres;
         templateSelectNameTercerPersona.querySelector('#template-opts-name-tercer-hombre').dataset.idColaborador = item.id_colaborador;
         const cloneDniTercerPersona = templateSelectDniTercerPersona.cloneNode(true);
         const cloneNameTercerPersona = templateSelectNameTercerPersona.cloneNode(true);
@@ -668,7 +650,7 @@ const paintDni_Nombres = (data) => {
         // Cuarta Persona
         templateSelectDniCuartaPersona.querySelector('#template-opts-dni-cuarto-hombre').value = item.col_dni;
         templateSelectDniCuartaPersona.querySelector('#template-opts-dni-cuarto-hombre').dataset.idColaborador = item.id_colaborador;
-        templateSelectNameCuartaPersona.querySelector('#template-opts-name-cuarto-hombre').value = item.col_apePaterno +" "+ item.col_apeMaterno +" "+ item.col_nombres;
+        templateSelectNameCuartaPersona.querySelector('#template-opts-name-cuarto-hombre').value = item.col_apePaterno + " " + item.col_apeMaterno + " " + item.col_nombres;
         templateSelectNameCuartaPersona.querySelector('#template-opts-name-cuarto-hombre').dataset.idColaborador = item.id_colaborador;
         const cloneDniCuartaPersona = templateSelectDniCuartaPersona.cloneNode(true);
         const cloneNameCuartaPersona = templateSelectNameCuartaPersona.cloneNode(true);
@@ -701,7 +683,7 @@ btndisminuir.addEventListener('click', () => {
     console.log('Se va disminuir');
 })
 
-$("#texto1").focus(function(){
+$("#texto1").focus(function() {
     $(this).css("background-color", "#FFFFCC");
 });
 
@@ -709,7 +691,7 @@ $("#texto1").focus(function(){
 
 // Obtienes Fila
 $(".use-address").click(function() {
-    var $row = $(this).closest("tr");    // Find the row
+    var $row = $(this).closest("tr"); // Find the row
     var $tds = $row.find("td");
     $.each($tds, function() {
         console.log($(this).text());
@@ -770,14 +752,14 @@ const fetchInstalaciones = async (request) => {
     const template_optsCuadro = document.querySelector("#template-opts-insert-cuadro").content;
     const fragment_optsCuadro = document.createDocumentFragment();
     objectarrayInstalacion.forEach(item => {
-        if(item.instalacionesMIna_nombre.match(/CUADROS.*/)) {
-            console.log(item.instalacionesMIna_nombre);          
+        if (item.instalacionesMIna_nombre.match(/CUADROS.*/)) {
+            console.log(item.instalacionesMIna_nombre);
             template_optsCuadro.querySelector('#template-opt-insert-cuadro').value = item.instalacionesMIna_nombre;
             template_optsCuadro.querySelector('#template-opt-insert-cuadro').dataset.idInstalacionmina = item.id_instalacionMina;
             const clone_optsCuadro = template_optsCuadro.cloneNode(true);
             fragment_optsCuadro.appendChild(clone_optsCuadro);
         }
-        if(item.instalacionesMIna_nombre.match(/PUNTAL.*/)){
+        if (item.instalacionesMIna_nombre.match(/PUNTAL.*/)) {
 
         }
     });
@@ -786,18 +768,17 @@ const fetchInstalaciones = async (request) => {
     //Enviamos a pintar
 }
 
-$("#insert-operacionMina-cuadro").on('input', function () {
-    var val=$('#insert-operacionMina-cuadro').val();
-    var validcodzona = $('#insert-options-cuadro').find('option[value="'+val+'"]').data('id-codzona');
+$("#insert-operacionMina-cuadro").on('input', function() {
+    var val = $('#insert-operacionMina-cuadro').val();
+    var validcodzona = $('#insert-options-cuadro').find('option[value="' + val + '"]').data('id-codzona');
     var selectForm_codLabor = {
         "accion": "getcolumnWhere",
         "column": "lab_ccostos",
         "parament": validcodzona,
         "columnWhere": "id_zona",
     }
-    if(validcodzona)
-    {
+    if (validcodzona) {
         console.log(validcodzona);
         fetchCodlabor(selectForm_codLabor);
     }
- });
+});
