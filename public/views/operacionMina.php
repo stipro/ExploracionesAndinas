@@ -1323,7 +1323,6 @@ session_start();
                                                 <template id="template-opt-dni-cuarto-hombre">
                                                     <option id="template-opts-dni-cuarto-hombre" value="">
                                                 </template>
-                                                </template>
                                             </div>
                                             <div class="col-md-4">
                                                 <input class="form-control" list="insert-options-name-cuarto-hombre" id="insert-operacionaMina-name-cuarto-hombre" placeholder="Ingrese Nombre...">
@@ -1423,23 +1422,22 @@ session_start();
                                     </div>
                                 </div>
                                 <div id="demo-lft-tab-2" class="tab-pane fade">
+                                    <!-- CLasicc -->
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="formselectTurno" class="col-md-4 control-label">Cuadro</label>
+                                            <div class="form-group">                                                
+                                                <label for="insert-operacionMina-cuadro" class="col-md-4 control-label">Cuadro</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
-                                                    <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
-                                                        <option value=""></option>
-                                                    </select>
-                                                    <template id="">
-                                                        <option id="" value="">A</option>
+                                                    <input class="form-control" list="insert-options-cuadro" id="insert-operacionMina-cuadro" placeholder="Eliga opción...">
+                                                    <datalist id="insert-options-cuadro">
+                                                        <option value="No se obtuvo Dato">
+                                                    </datalist>
+                                                    <template id="template-opts-insert-cuadro">
+                                                        <option id="template-opt-insert-cuadro" value="">
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <input class="form-control" type="text" name="" id="" value="0">
+                                                    <input class="form-control" type="text" id="insert-operacionMina-cantidad-cuadro" value="0">
                                                 </div>                                                            
                                             </div>
                                         </div>
@@ -1447,15 +1445,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">Cribing</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1466,15 +1461,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">Durmient</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1487,15 +1479,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">Puntual</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1506,15 +1495,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">G. Cabeza</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1525,15 +1511,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">Embolilla</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1546,15 +1529,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label"></label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1565,15 +1545,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">Enrejado</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1584,15 +1561,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">Barrera</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1605,15 +1579,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">Entablado</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1624,15 +1595,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">Inst. Real</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1643,15 +1611,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">T. Colgant</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1664,15 +1629,13 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">Spilt Set</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
+
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1683,15 +1646,13 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">Escalera</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
+
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1702,15 +1663,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">Poste</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1723,15 +1681,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">C/P & S/P</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1742,15 +1697,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">Descanso</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1761,15 +1713,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">Tirantes</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1782,15 +1731,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">Malla</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1801,15 +1747,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">¿?</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1820,15 +1763,12 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">¿?</label>
                                                 <div class="col-md-6">
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
                                                     <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
                                                         <option value=""></option>
                                                     </select>
                                                     <template id="">
                                                         <option id="" value="">A</option>
                                                     </template>
-                                                    <!--===================================================-->
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input class="form-control" type="text" name="" id="" value="0">
@@ -1836,6 +1776,39 @@ session_start();
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- Table
+                                    <table id="instalaciones-table" class="table ui-widget ui-widget-content table-instalaciones">
+                                    <thead>
+                                        <tr class="ui-widget-header ">
+                                            <th>Name/Nr.</th>
+                                            <th>Street</th>
+                                            <th>Town</th>
+                                            <th>Postcode</th>
+                                            <th>Country</th>
+                                            <th>Options</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>50</td>
+                                            <td>Some Street 1</td>
+                                            <td>Glasgow</td>
+                                            <td>G0 0XX</td>
+                                            <td>United Kingdom</td>
+                                            <td class="fila">Obtener Fila</td>
+                                        </tr>
+                                        <tr>
+                                            <td>49</td>
+                                            <td>Some Street 2</td>
+                                            <td>Glasgow</td>
+                                            <td>G0 0XX</td>
+                                            <td>United Kingdom</td>
+                                            <td>Obtener Fila</td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                    <!-- Fin Table -->
+                                    <button type="button" class="btn btn-primary btn-get-all" />Obtener Todo</button>
                                 </div>
                             </div>
                             </div>

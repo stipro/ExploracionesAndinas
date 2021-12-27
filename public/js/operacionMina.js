@@ -56,6 +56,9 @@ const ipt_cargoCuartaPersona = document.getElementById("insert-operacionaMina-ca
 const iptinsert_nameCuartopersona = document.getElementById("insert-operacionaMina-name-cuarto-hombre");
 const datalistinsert_optionnameCuartaPersona = document.getElementById("insert-options-name-cuarto-hombre");
 
+// Instalaciones
+const datalistinsert_optionsCuadro = document.getElementById("insert-options-cuadro");
+
 
 const iptinsertl = document.getElementById("insert-operacionMina-l");
 const iptinsertlpv = document.getElementById("insert-operacionMina-lpv");
@@ -102,6 +105,11 @@ btnAgregar.addEventListener("click", () => {
         "column": "col_dni"
     }
     fetchColaborador(selectFoorm_colaborador);
+    var selectForm_instalacionMina = {
+        "accion": "getcolumnAll",
+        "column": "instalacionesMIna_nombre"
+    }
+    fetchInstalaciones(selectForm_instalacionMina);
 });
 
 btnInsert.addEventListener("click", () => {
@@ -134,7 +142,6 @@ btnInsert.addEventListener("click", () => {
     valcantidadwinche = iptinsertcantidadWinche.value;
     valdesmont = iptinsertdesmont.value;
 
-    console.log("diste click");
     valInsert = {
         "registro": valRegistro,
         "turno": valTurno,
@@ -191,7 +198,6 @@ $("#insert-operacionMina-codzona").on('input', function () {
     }
     if(validcodzona)
     {
-        console.log(validcodzona);
         fetchCodlabor(selectForm_codLabor);
     }
  });
@@ -208,10 +214,8 @@ $("#insert-operacionMina-codzona").on('input', function () {
         "parament": validcodlabor,
         "columnWhere": "id_labor",
     }
-    console.log(typeof selectForm);
     if(validcodlabor)
     {
-        console.log(selectForm);
         fetchzonalabornivel(selectForm)
     }
  });
@@ -227,7 +231,6 @@ $("#insert-operacionaMina-dni-maestro").on('input', function () {
         iptinsert_nameMaestro.value = rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_nombres;
         var idCargo = rptsearch.id_cargo;
         if(idCargo){
-            console.log("El id es: " + idCargo);
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -253,7 +256,6 @@ $("#insert-operacionaMina-name-maestro").on('input', function () {
         iptinsert_dniMaestro.value = rptsearch.col_dni;
         var idCargo = rptsearch.id_cargo;
         if(idCargo){
-            console.log("El id es: " + idCargo);
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -278,7 +280,6 @@ const fetchCargoMaestro = async (request) => {
         body
     });
     const data = await res.json();
-    console.log(data);
     paintCargoMaestro(data);
     return data;
     //Enviamos a pintar
@@ -288,7 +289,6 @@ const fetchCargoMaestro = async (request) => {
 const paintCargoMaestro = (data) => {
     // Guardamos en variable
     arraySelect = data['sql'];
-    console.log(arraySelect);
     ipt_cargoMaestro.value = arraySelect[0].cargo_nombre;
 }
 
@@ -302,7 +302,6 @@ const paintCargoMaestro = (data) => {
         iptinsert_nameAyudante.value = rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_nombres;
         var idCargo = rptsearch.id_cargo;
         if(idCargo){
-            console.log("El id es: " + idCargo);
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -327,7 +326,6 @@ $("#insert-operacionaMina-name-ayudante").on('input', function () {
         iptinsert_dniAyudante.value = rptsearch.col_dni;
         var idCargo = rptsearch.id_cargo;
         if(idCargo){
-            console.log("El id es: " + idCargo);
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -352,7 +350,6 @@ const fetchCargoAyudante = async (request) => {
         body
     });
     const data = await res.json();
-    console.log(data);
     paintCargoAyudante(data);
     return data;
     //Enviamos a pintar
@@ -362,7 +359,6 @@ const fetchCargoAyudante = async (request) => {
 const paintCargoAyudante = (data) => {
     // Guardamos en variable
     arraySelect = data['sql'];
-    console.log(arraySelect);
     ipt_cargoAyudante.value = arraySelect[0].cargo_nombre;
 }
 
@@ -376,7 +372,6 @@ $("#insert-operacionaMina-dni-tercer-hombre").on('input', function () {
         iptinsert_nameTercerpersona.value = rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_nombres;
         var idCargo = rptsearch.id_cargo;
         if(idCargo){
-            console.log("El id es: " + idCargo);
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -401,7 +396,6 @@ $("#insert-operacionaMina-name-tercer-hombre").on('input', function () {
         iptinsert_dniTercerpersona.value = rptsearch.col_dni;
         var idCargo = rptsearch.id_cargo;
         if(idCargo){
-            console.log("El id es: " + idCargo);
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -426,7 +420,6 @@ const fetchCargoTercerPersona = async (request) => {
         body
     });
     const data = await res.json();
-    console.log(data);
     paintCargoTercerPersona(data);
     return data;
     //Enviamos a pintar
@@ -436,7 +429,6 @@ const fetchCargoTercerPersona = async (request) => {
 const paintCargoTercerPersona = (data) => {
     // Guardamos en variable
     arraySelect = data['sql'];
-    console.log(arraySelect);
     ipt_cargoTercerPersona.value = arraySelect[0].cargo_nombre;
 }
 
@@ -451,7 +443,6 @@ $("#insert-operacionaMina-dni-cuarto-hombre").on('input', function () {
         iptinsert_nameCuartopersona.value = rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_nombres;
         var idCargo = rptsearch.id_cargo;
         if(idCargo){
-            console.log("El id es: " + idCargo);
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -476,7 +467,6 @@ $("#insert-operacionaMina-name-cuarto-hombre").on('input', function () {
         iptinsert_dniCuartopersona.value = rptsearch.col_dni;
         var idCargo = rptsearch.id_cargo;
         if(idCargo){
-            console.log("El id es: " + idCargo);
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
@@ -501,7 +491,6 @@ const fetchCargoCuartaPersona = async (request) => {
         body
     });
     const data = await res.json();
-    console.log(data);
     paintCargoCuartaPersona(data);
     return data;
     //Enviamos a pintar
@@ -511,7 +500,6 @@ const fetchCargoCuartaPersona = async (request) => {
 const paintCargoCuartaPersona = (data) => {
     // Guardamos en variable
     arraySelect = data['sql'];
-    console.log(arraySelect);
     ipt_cargoCuartaPersona.value = arraySelect[0].cargo_nombre;
 }
 
@@ -539,7 +527,6 @@ const paintZonas = (data) => {
     dtlistOptionCodZona.innerHTML = '';
     const templateSelect = document.querySelector("#template-opt-cod_zona").content;
     const fragment = document.createDocumentFragment();
-    console.log(arraySelect);
     arraySelect.forEach(item => {
         templateSelect.querySelector('#opt-codzona').value = item.letra;
         templateSelect.querySelector('#opt-codzona').dataset.idCodzona = item.id_zona;
@@ -558,7 +545,6 @@ const fetchCodlabor = async (request) => {
         body
     });
     const data = await res.json()
-    // console.log(data)
     paintCodLabor(data)
 }
 
@@ -586,7 +572,6 @@ const fetchColaborador = async (request) => {
         body
     });
     const data = await res.json()
-    console.log(data);
     //Enviamos a pintar
     paintDni_Nombres(data)
 }
@@ -608,8 +593,6 @@ const paintCodLabor = (data) => {
 }
 const paintZonaLaborNivel = (data) => {    
     arraySelect = data['sql'];
-    console.log('zona, labor, nivel');
-    console.log(arraySelect);
     arraySelect.forEach(item => {
         iptinsertZona.value = item.nombre;
         iptinsertLabor.value = item.labNombre_nombre;
@@ -619,7 +602,6 @@ const paintZonaLaborNivel = (data) => {
 
 const paintDni_Nombres = (data) => {    
     arraySelectColaboradores = data['sql'];
-    console.log(arraySelectColaboradores);
     //iptinsert_dniMaestro
     datalistinsert_optiondniMaestro.innerHTML = '';
     const templateSelectDniMaestro = document.querySelector("#template-opt-dni-maestro").content;
@@ -722,3 +704,100 @@ btndisminuir.addEventListener('click', () => {
 $("#texto1").focus(function(){
     $(this).css("background-color", "#FFFFCC");
 });
+
+// Instalaciones
+
+// Obtienes Fila
+$(".use-address").click(function() {
+    var $row = $(this).closest("tr");    // Find the row
+    var $tds = $row.find("td");
+    $.each($tds, function() {
+        console.log($(this).text());
+    });
+});
+/*
+// Obtienes Fila
+$(".btn-get-all").click(function() {
+    var dataTable = [];
+    console.log('Se obtendra todo');
+    var $tbody = $(".fila").closest("tbody");// Obtener el primer elemento que coincida con el selector
+    console.log($tbody);
+    var $rows = $tbody.find("tr");// Find the row
+    console.log(typeof $rows);
+    //var $tds = $rows.find("td");// Obtener los descendientes de cada elemento en el conjunto actual de elementos coincidentes
+    $.each($rows, function(i, obj) {
+        //console.log($rows);
+        //$.each($rows, function() {
+            //console.log($(this).text());
+        });
+        var contenidoTable = $(this).text()
+        //var sincomillas = contenidoTable.replace(/['"]+/g, ',')
+        //let arr = contenidoTable.replace('\n', '');
+        limp1 = contenidoTable.replace(/\n|\r/g, '|');
+        //arr1 = contenidoTable.replace(/\t/g, ',');
+        //var sincomillas = contenidoTable.replace(/[^a-zA-Z0-9]/g, '|');
+        //arr2 = arr1.replace(/(\r\n|\n|\r)/g, '|');
+        var diviJson = limp1.split('|');
+        diviJson.forEach(item => {
+            sinvacios = item.trim();
+            if (sinvacios === "") {
+                
+            } else{
+                console.log(sinvacios);
+                dataTable.push(sinvacios);
+            }       
+        });
+        
+    });
+    console.log(dataTable);
+});
+*/
+
+//Traer Instalaciones
+const fetchInstalaciones = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../controllers/controllerInstalacionMinaList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json();
+    console.log(data);
+    objectarrayInstalacion = data['sql']
+    // Cuadro
+    datalistinsert_optionsCuadro.innerHTML = '';
+    const template_optsCuadro = document.querySelector("#template-opts-insert-cuadro").content;
+    const fragment_optsCuadro = document.createDocumentFragment();
+    objectarrayInstalacion.forEach(item => {
+        if(item.instalacionesMIna_nombre.match(/CUADROS.*/)) {
+            console.log(item.instalacionesMIna_nombre);          
+            template_optsCuadro.querySelector('#template-opt-insert-cuadro').value = item.instalacionesMIna_nombre;
+            template_optsCuadro.querySelector('#template-opt-insert-cuadro').dataset.idInstalacionmina = item.id_instalacionMina;
+            const clone_optsCuadro = template_optsCuadro.cloneNode(true);
+            fragment_optsCuadro.appendChild(clone_optsCuadro);
+        }
+        if(item.instalacionesMIna_nombre.match(/PUNTAL.*/)){
+
+        }
+    });
+    datalistinsert_optionsCuadro.appendChild(fragment_optsCuadro);
+    return data;
+    //Enviamos a pintar
+}
+
+$("#insert-operacionMina-cuadro").on('input', function () {
+    var val=$('#insert-operacionMina-cuadro').val();
+    var validcodzona = $('#insert-options-cuadro').find('option[value="'+val+'"]').data('id-codzona');
+    var selectForm_codLabor = {
+        "accion": "getcolumnWhere",
+        "column": "lab_ccostos",
+        "parament": validcodzona,
+        "columnWhere": "id_zona",
+    }
+    if(validcodzona)
+    {
+        console.log(validcodzona);
+        fetchCodlabor(selectForm_codLabor);
+    }
+ });
