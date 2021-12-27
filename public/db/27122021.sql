@@ -12,10 +12,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Volcando estructura de base de datos para explore_andina
-CREATE DATABASE IF NOT EXISTS `explore_andina` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `explore_andina`;
-
 -- Volcando estructura para tabla explore_andina.areas
 CREATE TABLE IF NOT EXISTS `areas` (
   `id_area` int(11) NOT NULL AUTO_INCREMENT,
