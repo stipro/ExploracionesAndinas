@@ -1173,7 +1173,7 @@ session_start();
                                             <input class="form-control"  list="insert-options-codLabor" type="text" placeholder="Cod. Labor" id="insert-operacionMina-codLabor">
                                         </div>
                                         <datalist id="insert-options-codLabor">
-                                            <option data-value="42">loco</option>
+                                            <option data-value="42">Seleccione codigo Zona</option>
                                         </datalist>
                                         <input type="hidden" name="answer" id="insert-operacionMina-codLabor-hidden">                                    
                                         <template id="template-opt-codLabor">
@@ -1445,15 +1445,16 @@ session_start();
                                             <div class="form-group">
                                                 <label for="formselectTurno" class="col-md-4 control-label">Cribing</label>
                                                 <div class="col-md-6">
-                                                    <select class="form-control chosenCodZona" data-placeholder="Elija una opcion" id="" tabindex="2">
-                                                        <option value=""></option>
-                                                    </select>
-                                                    <template id="">
-                                                        <option id="" value="">A</option>
+                                                    <input class="form-control" list="insert-options-cribing" id="insert-operacionMina-cribing" placeholder="Eliga opción...">
+                                                    <datalist id="insert-options-cribing">
+                                                        <option value="No se obtuvo Dato">
+                                                    </datalist>
+                                                    <template id="template-opts-insert-cribing">
+                                                        <option id="template-opt-insert-cribing" value="">
                                                     </template>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <input class="form-control" type="text" name="" id="" value="0">
+                                                <input class="form-control" type="text" id="insert-operacionMina-cantidad-cribing" value="0">
                                                 </div>                                                            
                                             </div>                                                      
                                         </div>
@@ -1806,9 +1807,9 @@ session_start();
                                             <td>Obtener Fila</td>
                                         </tr>
                                     </tbody>
-                                    </table>
+                                    </table>-->
                                     <!-- Fin Table -->
-                                    <button type="button" class="btn btn-primary btn-get-all" />Obtener Todo</button>
+                                    <button type="button" class="btn btn-primary btn-get-all">Obtener Todo</button>
                                 </div>
                             </div>
                             </div>
@@ -1820,15 +1821,21 @@ session_start();
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="insert-operacionMina-tipAvance" class="col-md-4 control-label">Tipo de Avance</label>
+                                        <label for="insert-operacionMina-tipo-avance" class="col-md-4 control-label">Tipo de Avance</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="insert-options-tipAvance" id="insert-operacionMina-tipAvance" placeholder="Ingrese Tipo de avance...">
+                                            <input class="form-control" list="insert-options-tipo-avance" id="insert-operacionMina-tipo-avance" placeholder="Eliga opción...">
+                                            <datalist id="insert-options-tipo-avance">
+                                                <option value="Avance">Avance</option>
+                                                <option value="Realce">Realce</option>
+                                                <option value="Recarga">Recarga</option>
+                                                <option value="Desquinche">Desquinche</option>
+                                                <option value="Breasting">Breasting</option>
+                                                <option value="Relleno">Relleno</option>
+                                            </datalist>
+                                            <template id="template-opts-insert-tipo-avance">
+                                                <option id="template-opt-insert-tipo-avance" value="">
+                                            </template>
                                         </div>
-                                        <datalist id="insert-options-tipAvance">
-                                            <option value="">
-                                            <option value="">
-                                            <option value="">
-                                        </datalist>
                                     </div>
                                 </div>
                             </div>
@@ -1848,15 +1855,17 @@ session_start();
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="insert-operacionMina-intDisparo" class="col-md-4 control-label">Int. Disparo</label>
+                                        <label for="insert-operacionMina-int-disparo" class="col-md-4 control-label">Int. Disparo</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="insert-options-intDisparo" id="insert-operacionMina-intDisparo" placeholder="Ingrese Int. Disparo...">
+                                            <input class="form-control" list="insert-options-int-disparo" id="insert-operacionMina-int-disparo" placeholder="Eliga opción...">
+                                            <datalist id="insert-options-int-disparo">
+                                                <option value="Normal">Normal</option>
+                                                <option value="Plasteo">Plasteo</option>
+                                            </datalist>
+                                            <template id="template-opts-insert-int-disparo">
+                                                <option id="template-opt-insert-int-disparo" value="">
+                                            </template>
                                         </div>
-                                        <datalist id="insert-options-intDisparo">
-                                            <option value="">
-                                            <option value="">
-                                            <option value="">
-                                        </datalist>
                                     </div>
                                 </div>
                             </div>
@@ -1865,13 +1874,17 @@ session_start();
                                     <div class="form-group">
                                         <label for="insert-operacionMina-resuelto" class="col-md-4 control-label">Resuelto</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="insert-options-resuelto" id="insert-operacionMina-resuelto" placeholder="Ingrese Resuelto...">
+                                            <input class="form-control" list="insert-options-resuelto" id="insert-operacionMina-resuelto" placeholder="Eliga opción...">
+                                            <datalist id="insert-options-resuelto">
+                                                <option value="Normal">Normal</option>
+                                                <option value="T. soplado">T. soplado</option>
+                                                <option value="T. cortado">T. cortado</option>
+                                                <option value="Anillado">Anillado</option>
+                                            </datalist>
+                                            <template id="template-opts-insert-resuelto">
+                                                <option id="template-opt-insert-resuelto" value="">
+                                            </template>
                                         </div>
-                                        <datalist id="insert-options-resuelto">
-                                            <option value="">
-                                            <option value="">
-                                            <option value="">
-                                        </datalist>
                                     </div>
                                 </div>
                             </div>
@@ -1896,7 +1909,16 @@ session_start();
                                 <div class="form-group">
                                     <label for="insert-operacionMina-pala" class="col-md-2 control-label">Pala</label>
                                     <div class="col-md-4">
-                                        <input class="form-control" list="insert-options-pala" id="insert-operacionMina-pala" placeholder="Ingrese Pala...">
+                                        <input class="form-control" list="insert-options-pala" id="insert-operacionMina-pala" placeholder="Eliga opción...">
+                                        <datalist id="insert-options-pala">
+                                            <option value="PN_01">PN_01</option>
+                                            <option value="PN_02">PN_02</option>
+                                            <option value="PN_03">PN_03</option>
+                                            <option value="PN_04">PN_04</option>
+                                        </datalist>
+                                        <template id="template-opts-insert-pala">
+                                            <option id="template-opt-insert-pala" value="">
+                                        </template>
                                     </div>
                                     <datalist id="insert-options-pala">
                                         <option value="">
@@ -1916,13 +1938,29 @@ session_start();
                                 <div class="form-group">
                                     <label for="insert-operacionMina-winche" class="col-md-2 control-label">Winche</label>
                                     <div class="col-md-4">
-                                        <input class="form-control" list="insert-options-winche" id="insert-operacionMina-winche" placeholder="Ingrese Winche...">
+                                        <input class="form-control" list="insert-options-winche" id="insert-operacionMina-winche" placeholder="Eliga opción...">
+                                        <datalist id="insert-options-winche">
+                                            <option value="Wch_Izj_02">Wch_Izj_02</option>
+                                            <option value="Wch_Izj_04">Wch_Izj_04</option>
+                                            <option value="Wch_Izj_05">Wch_Izj_05</option>
+                                            <option value="Wch_Izj_06">Wch_Izj_06</option>
+                                            <option value="Wch_Izj_07">Wch_Izj_07</option>
+                                            <option value="Wch_Izj_08">Wch_Izj_08</option>
+                                            <option value="Wch_Izj_09">Wch_Izj_09</option>
+                                            <option value="Wch_Izj_10">Wch_Izj_10</option>
+                                            <option value="Wch_Artr_01">Wch_Artr_01</option>
+                                            <option value="Wch_Artr_02">Wch_Artr_02</option>
+                                            <option value="Wch_Artr_03">Wch_Artr_03</option>
+                                            <option value="Wch_Artr_04">Wch_Artr_04</option>
+                                            <option value="Wch_Artr_05">Wch_Artr_05</option>
+                                            <option value="Wch_Artr_06">Wch_Artr_06</option>
+                                            <option value="Wch_Neu_02">Wch_Neu_02</option>
+                                            <option value="Wch_Neu_03">Wch_Neu_03</option>
+                                        </datalist>
+                                        <template id="template-opts-insert-winche">
+                                            <option id="template-opt-insert-winche" value="">
+                                        </template>
                                     </div>
-                                    <datalist id="insert-options-winche">
-                                        <option value="">
-                                        <option value="">
-                                        <option value="">
-                                    </datalist>  
                                     <div class="col-md-2">
                                         <input type="text" placeholder="cantidad" class="form-control" id="insert-operacionMina-cantidadWinche">
                                     </div>

@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `perfiles` (
 -- Volcando datos para la tabla explore_mine_prueba.perfiles: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `perfiles` DISABLE KEYS */;
 INSERT INTO `perfiles` (`id_perfil`, `codigo_perfil`, `nombre_perfil`, `estado_perfil`, `descripcion_perfil`) VALUES
-	(1, 'ADM001', 'Admin', 1, '\'Usuarios Administradores.');
+	(1, 'ADM001', 'Admin', 1, '\Usuarios Administradores.');
 /*!40000 ALTER TABLE `perfiles` ENABLE KEYS */;
 
 -- Volcando estructura para tabla explore_mine_prueba.roles

@@ -113,7 +113,7 @@ const fetchData = async (json) => {
     });
     const rptJson = await rpt.json(); //await JSON.parse(returned);
     idRegistro = rptJson['sql'][0]['id'];
-    if(idRegistro == null){
+    if (idRegistro == null) {
         idRegistro = 0;
     }
     part_preImpreso = idRegistro;
@@ -382,7 +382,7 @@ function zfill(number, width) {
 
 // Funcion Boton Agregar
 btnAgregar.addEventListener("click", () => {
-    console.log('numero de vale es : '+idRegistro);
+    console.log('numero de vale es : ' + idRegistro);
     // Funcion para enfocar input
     setTimeout(function() {
         // $('#val_explosivo-text-form-n_vale').focus();

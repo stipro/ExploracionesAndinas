@@ -59,6 +59,8 @@ const datalistinsert_optionnameCuartaPersona = document.getElementById("insert-o
 // Instalaciones
 const datalistinsert_optionsCuadro = document.getElementById("insert-options-cuadro");
 
+const datalistinsert_optionsCribing = document.getElementById("insert-options-cribing");
+
 
 const iptinsertl = document.getElementById("insert-operacionMina-l");
 const iptinsertlpv = document.getElementById("insert-operacionMina-lpv");
@@ -66,10 +68,10 @@ const iptinsertstto = document.getElementById("insert-operacionMina-stto");
 const iptinsertserv = document.getElementById("insert-operacionMina-Serv");
 const iptinsertcomentario = document.getElementById("insert-operacionMina-comentario");
 
-const iptinserttipAvance = document.getElementById("insert-operacionMina-tipAvance");
+const iptinserttipAvance = document.getElementById("insert-operacionMina-tipo-avance");
 const iptinsertmt = document.getElementById("insert-operacionMina-mt");
 const iptinsertmt3 = document.getElementById("insert-operacionMina-mt3");
-const iptinsertintDisparo = document.getElementById("insert-operacionMina-intDisparo");
+const iptinsertintDisparo = document.getElementById("insert-operacionMina-int-disparo");
 const iptinsertresuelto = document.getElementById("insert-operacionMina-resuelto");
 
 const iptinsertmanual = document.getElementById("insert-operacionMina-Manual");
@@ -119,8 +121,23 @@ btnInsert.addEventListener("click", () => {
     valNVale = iptinsertNVale.value;
     // Tipo de Disparo
     valradioTipo_dis = document.querySelector('input[name="radio-tipo_disparo"]:checked').value
-    valCodLabor = iptinsertCodLabor.value;
+    var valdatalist = $('#insert-operacionMina-codLabor').val();
+    var valcodLabor = $('#insert-options-codLabor').find('option[value="' + valdatalist + '"]').data('id-codlabor');
+
     valNivel = iptinsertNivel.value;
+
+    // Tareas
+    var datalistMaestro = $('#insert-operacionaMina-dni-maestro').val();
+    var validMaestro = $('#insert-options-dni-maestro').find('option[value="' + datalistMaestro + '"]').data('id-colaborador');
+
+    var datalistAyudante = $('#insert-operacionaMina-dni-ayudante').val();
+    var validAyudante = $('#insert-options-dni-ayudante').find('option[value="' + datalistAyudante + '"]').data('id-colaborador');
+
+    var datalistTercerHombre = $('#insert-operacionaMina-dni-tercer-hombre').val();
+    var validTercerHombre = $('#insert-options-dni-tercer-hombre').find('option[value="' + datalistTercerHombre + '"]').data('id-colaborador');
+
+    var datalistCuartoHombre = $('#insert-operacionaMina-dni-cuarto-hombre').val();
+    var validCuartoHombre = $('#insert-options-dni-cuarto-hombre').find('option[value="' + datalistCuartoHombre + '"]').data('id-colaborador');
 
     vall = iptinsertl.value;
     vallpv = iptinsertlpv.value;
@@ -143,35 +160,68 @@ btnInsert.addEventListener("click", () => {
     valdesmont = iptinsertdesmont.value;
 
     valInsert = {
-        "registro": valRegistro,
-        "turno": valTurno,
-        "guardia": valGuardia,
-        "nvale": valNVale,
-        "tip_ disparo": valradioTipo_dis,
-        "codZona": valCZona,
-        "labor": valLabor,
-        "zona": valZona,
-        "codLabor": valCodLabor,
-        "nivel": valNivel,
-        "l": vall,
-        "lpv": vallpv,
-        "stto": valstto,
-        "serv": valserv,
-        "comentario": valcomentario,
-        "tip_avanace": valtipavance,
-        "mt": valmt,
-        "mt3": valmt3,
-        "int_disparo": valintDisparo,
-        "resuelto": valresuelto,
-        "manual": valmanual,
-        "pala": valpala,
-        "cantidad_pala": valcantidadpala,
-        "mineral": valmineral,
-        "winche": valwinche,
-        "cantidad_winche": valcantidadwinche,
-        "desmont": valdesmont,
+        "datos_registro": valRegistro,
+        "datos_turno": valTurno,
+        "datos_guardia": valGuardia,
+        "datos_nvale": valNVale,
+        "datos_tipDisparo": valradioTipo_dis,
+        "ccostos_codLabor": valcodLabor,
+        "tareas": {
+            1: {
+                "id": validMaestro,
+                "nombre": "Maestro"
+            },
+            2: {
+                "id": validAyudante,
+                "nombre": "Ayudante"
+            },
+            3: {
+                "id": validTercerHombre,
+                "nombre": "TercerHombre"
+            },
+            4: {
+                "id": validCuartoHombre,
+                "nombre": "CuartoHombre"
+            }
+        },
+        "tareas_l": vall,
+        "tareas_lpv": vallpv,
+        "tareas_stto": valstto,
+        "tareas_serv": valserv,
+        "tareas_comentario": valcomentario,
+        "avanActual_tipAvance": valtipavance,
+        "avanActual_mt": valmt,
+        "avanActual_mt3": valmt3,
+        "avanActual_intDisparo": valintDisparo,
+        "avanActual_resuelto": valresuelto,
+        "limpieza_manual": valmanual,
+        "limpieza_pala": valpala,
+        "limpieza_cantidadPala": valcantidadpala,
+        "limpieza_mineral": valmineral,
+        "limpieza_winche": valwinche,
+        "limpieza_cantidadWinche": valcantidadwinche,
+        "limpieza_desmont": valdesmont,
     }
+    console.log(valInsert);
+    var form_insert = {
+        "accion": "insert",
+        "list": valInsert
+    }
+    requestInsert(form_insert);
+
 });
+
+
+// Traer productos
+const requestInsert = async (form) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(form));
+    const returned = await fetch("./../controllers/controllerOperacionMina.php", {
+        method: "POST",
+        body
+    });
+    const result = await returned.json(); //await JSON.parse(returned);
+}
 /*
 iptinsertCZona.addEventListener('keyup', function(e) {
     var costLaborSelect = iptinsertCZona.options[iptinsertCZona.selectedIndex];
@@ -702,37 +752,36 @@ $(".use-address").click(function() {
 $(".btn-get-all").click(function() {
     var dataTable = [];
     console.log('Se obtendra todo');
-    var $tbody = $(".fila").closest("tbody");// Obtener el primer elemento que coincida con el selector
+    var $tbody = $(".fila").closest("tbody"); // Obtener el primer elemento que coincida con el selector
     console.log($tbody);
-    var $rows = $tbody.find("tr");// Find the row
+    var $rows = $tbody.find("tr"); // Find the row
     console.log(typeof $rows);
     //var $tds = $rows.find("td");// Obtener los descendientes de cada elemento en el conjunto actual de elementos coincidentes
     $.each($rows, function(i, obj) {
         //console.log($rows);
         //$.each($rows, function() {
-            //console.log($(this).text());
-        });
-        var contenidoTable = $(this).text()
-        //var sincomillas = contenidoTable.replace(/['"]+/g, ',')
-        //let arr = contenidoTable.replace('\n', '');
-        limp1 = contenidoTable.replace(/\n|\r/g, '|');
-        //arr1 = contenidoTable.replace(/\t/g, ',');
-        //var sincomillas = contenidoTable.replace(/[^a-zA-Z0-9]/g, '|');
-        //arr2 = arr1.replace(/(\r\n|\n|\r)/g, '|');
-        var diviJson = limp1.split('|');
-        diviJson.forEach(item => {
-            sinvacios = item.trim();
-            if (sinvacios === "") {
-                
-            } else{
-                console.log(sinvacios);
-                dataTable.push(sinvacios);
-            }       
-        });
-        
+        //console.log($(this).text());
+    });
+    var contenidoTable = $(this).text()
+    //var sincomillas = contenidoTable.replace(/['"]+/g, ',')
+    //let arr = contenidoTable.replace('\n', '');
+    limp1 = contenidoTable.replace(/\n|\r/g, '|');
+    //arr1 = contenidoTable.replace(/\t/g, ',');
+    //var sincomillas = contenidoTable.replace(/[^a-zA-Z0-9]/g, '|');
+    //arr2 = arr1.replace(/(\r\n|\n|\r)/g, '|');
+    var diviJson = limp1.split('|');
+    diviJson.forEach(item => {
+        sinvacios = item.trim();
+        if (sinvacios === "") {
+
+        } else {
+            console.log(sinvacios);
+            dataTable.push(sinvacios);
+        }
     });
     console.log(dataTable);
 });
+
 */
 
 //Traer Instalaciones
@@ -751,20 +800,29 @@ const fetchInstalaciones = async (request) => {
     datalistinsert_optionsCuadro.innerHTML = '';
     const template_optsCuadro = document.querySelector("#template-opts-insert-cuadro").content;
     const fragment_optsCuadro = document.createDocumentFragment();
+
+    // Cribing
+    datalistinsert_optionsCribing.innerHTML = '';
+    const template_optsCribing = document.querySelector("#template-opts-insert-cribing").content;
+    const fragment_optsCribing = document.createDocumentFragment();
+
     objectarrayInstalacion.forEach(item => {
         if (item.instalacionesMIna_nombre.match(/CUADROS.*/)) {
-            console.log(item.instalacionesMIna_nombre);
             template_optsCuadro.querySelector('#template-opt-insert-cuadro').value = item.instalacionesMIna_nombre;
             template_optsCuadro.querySelector('#template-opt-insert-cuadro').dataset.idInstalacionmina = item.id_instalacionMina;
             const clone_optsCuadro = template_optsCuadro.cloneNode(true);
             fragment_optsCuadro.appendChild(clone_optsCuadro);
         }
         if (item.instalacionesMIna_nombre.match(/PUNTAL.*/)) {
-
+            console.log(item.instalacionesMIna_nombre);
+            template_optsCribing.querySelector('#template-opt-insert-cribing').value = item.instalacionesMIna_nombre;
+            template_optsCribing.querySelector('#template-opt-insert-cribing').dataset.idInstalacionmina = item.id_instalacionMina;
+            const clone_optsCribing = template_optsCribing.cloneNode(true);
+            fragment_optsCribing.appendChild(clone_optsCribing);
         }
     });
     datalistinsert_optionsCuadro.appendChild(fragment_optsCuadro);
-    return data;
+    datalistinsert_optionsCribing.appendChild(fragment_optsCribing);
     //Enviamos a pintar
 }
 
