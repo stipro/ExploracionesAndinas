@@ -543,6 +543,7 @@ const fechLab_nombre = async (json) => {
         body
     });
     const rptJson = await rpt.json(); //await JSON.parse(returned);
+    console.log('Detalle');
     console.log(rptJson);
     paintselectnomLabor(rptJson);
 }

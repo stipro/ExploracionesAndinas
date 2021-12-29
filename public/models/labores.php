@@ -19,7 +19,7 @@ class Labores extends Conexion
     public function getSelect(string $table, string $column, string $idTable)
     {
         $sizeRow = $this->getSizeColumn($table);
-        $query = "SELECT {$column} FROM {$table} ORDER BY {$column} ASC ;";
+        $query = "SELECT {$idTable}, {$column}, id_labNombre FROM {$table} ORDER BY {$column} ASC ;";
         return $this->ConsultaSimple($query);
     }
 

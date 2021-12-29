@@ -1422,7 +1422,7 @@ session_start();
                                     </div>
                                 </div>
                                 <div id="demo-lft-tab-2" class="tab-pane fade">
-                                    <!-- CLasicc -->
+                                    <!-- CLasicc 
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">                                                
@@ -1777,37 +1777,38 @@ session_start();
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Table
+-->
+                                    <!-- Table -->
                                     <table id="instalaciones-table" class="table ui-widget ui-widget-content table-instalaciones">
-                                    <thead>
-                                        <tr class="ui-widget-header ">
-                                            <th>Name/Nr.</th>
-                                            <th>Street</th>
-                                            <th>Town</th>
-                                            <th>Postcode</th>
-                                            <th>Country</th>
-                                            <th>Options</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>50</td>
-                                            <td>Some Street 1</td>
-                                            <td>Glasgow</td>
-                                            <td>G0 0XX</td>
-                                            <td>United Kingdom</td>
-                                            <td class="fila">Obtener Fila</td>
-                                        </tr>
-                                        <tr>
-                                            <td>49</td>
-                                            <td>Some Street 2</td>
-                                            <td>Glasgow</td>
-                                            <td>G0 0XX</td>
-                                            <td>United Kingdom</td>
-                                            <td>Obtener Fila</td>
-                                        </tr>
-                                    </tbody>
-                                    </table>-->
+                                        <thead>
+                                            <tr class="ui-widget-header ">
+                                                <th>Name/Nr.</th>
+                                                <th>Street</th>
+                                                <th>Town</th>
+                                                <th>Postcode</th>
+                                                <th>Country</th>
+                                                <th>Options</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="instalacion-body">
+                                            <tr>
+                                                <td>val 11</td>
+                                                <td>val 12</td>
+                                                <td>val 13</td>
+                                                <td>val 14</td>
+                                                <td>val 15</td>
+                                                <td class="boton">coger valores de la fila</td>
+                                            </tr>
+                                            <tr>
+                                                <td>val 21</td>
+                                                <td>val 22</td>
+                                                <td>val 23</td>
+                                                <td>val 24</td>
+                                                <td>val 25</td>
+                                                <td class="boton">coger valores de la fila</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                     <!-- Fin Table -->
                                     <button type="button" class="btn btn-primary btn-get-all">Obtener Todo</button>
                                 </div>

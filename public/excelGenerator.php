@@ -69,11 +69,11 @@ if($_GET){
     # Crear un "escritor"
     $writer = new Xlsx($archivoExcel);
     # Le pasamos la ruta de guardado
-    $writer->save('./prueba.xlsx');
+    //$writer->save('./prueba.xlsx');
 
-    //header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    //header('Content-Disposition: attachment; filename="'. urlencode($fileName).'"');
-    //$writer->save('php://output');
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment; filename="'. urlencode($fileName).'"');
+    $writer->save('php://output');
 }
 else{
     echo 'No se obtuvo ningun Dato';

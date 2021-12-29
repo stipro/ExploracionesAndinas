@@ -469,7 +469,7 @@ session_start();
 					                    <div class="row">
 					                        <div class="col-sm-6 table-toolbar-left">
 					                            <button id="btn-Agregar" data-target="#stack1" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add icon-fw"></i>Agregar</button>
-					                            <a href="./../excelGenerator.php?table=vw_vales_explosivos" class="btn btn-default" download="" title="Descargar Archivo">
+					                            <a href="./../excelGenerator.php?table=view_vales_explosivo" class="btn btn-default" download="" title="Descargar Archivo">
                                                     <i class="fa fa-file-excel-o icon-lg"></i>
                                                 </a>
 					                            <div class="btn-group">

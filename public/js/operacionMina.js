@@ -111,7 +111,7 @@ btnAgregar.addEventListener("click", () => {
         "accion": "getcolumnAll",
         "column": "instalacionesMIna_nombre"
     }
-    fetchInstalaciones(selectForm_instalacionMina);
+    //fetchInstalaciones(selectForm_instalacionMina);
 });
 
 btnInsert.addEventListener("click", () => {
@@ -747,42 +747,71 @@ $(".use-address").click(function() {
         console.log($(this).text());
     });
 });
-/*
-// Obtienes Fila
-$(".btn-get-all").click(function() {
-    var dataTable = [];
-    console.log('Se obtendra todo');
-    var $tbody = $(".fila").closest("tbody"); // Obtener el primer elemento que coincida con el selector
-    console.log($tbody);
-    var $rows = $tbody.find("tr"); // Find the row
-    console.log(typeof $rows);
-    //var $tds = $rows.find("td");// Obtener los descendientes de cada elemento en el conjunto actual de elementos coincidentes
-    $.each($rows, function(i, obj) {
-        //console.log($rows);
-        //$.each($rows, function() {
-        //console.log($(this).text());
-    });
-    var contenidoTable = $(this).text()
-    //var sincomillas = contenidoTable.replace(/['"]+/g, ',')
-    //let arr = contenidoTable.replace('\n', '');
-    limp1 = contenidoTable.replace(/\n|\r/g, '|');
-    //arr1 = contenidoTable.replace(/\t/g, ',');
-    //var sincomillas = contenidoTable.replace(/[^a-zA-Z0-9]/g, '|');
-    //arr2 = arr1.replace(/(\r\n|\n|\r)/g, '|');
-    var diviJson = limp1.split('|');
-    diviJson.forEach(item => {
-        sinvacios = item.trim();
-        if (sinvacios === "") {
 
-        } else {
-            console.log(sinvacios);
-            dataTable.push(sinvacios);
-        }
+// Obtener por Fila
+$(".boton").click(function() {
+    var valores = "";
+    // Obtenemos todos los valores contenidos en los <td> de la fila
+    // seleccionada
+    $(this).parents("tr").find("td").each(function() {
+        valores += $(this).html() + "\n";
     });
-    console.log(dataTable);
+    alert(valores);
 });
 
-*/
+// Obtienes Fila
+$(".btn-get-all").click(function() {
+    var objArr = [];
+    var t01 = $("#instalacion-body tr").length;
+    //console.log("t01:"+t01);
+    $('#instalacion-body').find('tr').each(function(i) {
+        // Eliminar el encabezado
+        if (i > 0) {
+            var obj = $(this).attr("data");
+            console.log("obj:" + obj);
+            //var obj1 = JSON.parse(obj);
+            //console.log("obj1:"+obj1);
+            //objArr.push(obj1);
+
+        }
+    });
+
+
+    /*
+        var dataTable = [];
+        console.log('Se obtendra todo');
+        var $tbody = $(".fila").closest("tbody"); // Obtener el primer elemento que coincida con el selector
+        console.log($tbody);
+        var $rows = $tbody.find("tr"); // Find the row
+        console.log(typeof $rows);
+        console.log($rows);
+        //var $tds = $rows.find("td");// Obtener los descendientes de cada elemento en el conjunto actual de elementos coincidentes
+        
+        $.each($rows, function(i, obj) {
+            //console.log($rows);
+            //$.each($rows, function() {
+            //console.log($(this).text());
+        });
+        var contenidoTable = $(this).text()
+        //var sincomillas = contenidoTable.replace(/['"]+/g, ',')
+        //let arr = contenidoTable.replace('\n', '');
+        limp1 = contenidoTable.replace(/\n|\r/g, '|');
+        //arr1 = contenidoTable.replace(/\t/g, ',');
+        //var sincomillas = contenidoTable.replace(/[^a-zA-Z0-9]/g, '|');
+        //arr2 = arr1.replace(/(\r\n|\n|\r)/g, '|');
+        var diviJson = limp1.split('|');
+        diviJson.forEach(item => {
+            sinvacios = item.trim();
+            if (sinvacios === "") {
+
+            } else {
+                console.log(sinvacios);
+                dataTable.push(sinvacios);
+            }
+        });*/
+});
+
+
 
 //Traer Instalaciones
 const fetchInstalaciones = async (request) => {
