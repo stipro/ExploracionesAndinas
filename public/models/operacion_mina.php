@@ -41,41 +41,89 @@ class operacionMina extends Conexion
         $query = "SELECT * FROM tvalexplosivos LEFT JOIN colaboradores ON tareos.id_colaborador = colaboradores.id_colaborador LEFT JOIN labores ON tareos.id_labor = labores.id_labor LIMIT {$empezarDesde}, {$filasPage}";
         return $this->ConsultaSimple($query);
     }
-    public function insert($dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7, $dato8, $dato9, $dato10, $dato11)
+    public function insert($dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7, $dato8, $dato9, $dato10, $dato11, $dato12, $dato13, $dato14, $dato15, $dato16, $dato17, $dato18, $dato19, $dato20, $dato21, $dato22, $dato23)
     {
         try 
         {
-            $query = "INSERT INTO operacion_mina (operacionMina_registro, operacionMina_turno, operacionMina_guardia, operacionMina_nVale, operacionMIna_actividad, id_labor, operacionMina_l, operacionMIna_lpv, operacionMina_stto, operacionMina_serv, operacionMina_comentario) VALUES (
-            :operacionMina_registro,
-            :operacionMina_turno,
-            :operacionMina_guardia,
-            :operacionMina_nVale,
-            :operacionMina_actividad,
-            :id_labor,
-            :operacionMina_l,
-            :operacionMina_lpv,
-            :operacionMina_stto,
-            :operacionMina_serv,
-            :operacionMina_comentario);";
+            $query = "INSERT INTO operacion_mina (
+            operacionMina_registro, 
+            operacionMina_turno, 
+            operacionMina_guardia, 
+            operacionMina_nVale, 
+            operacionMina_actividad, 
+            id_labor, 
+            operacionMina_l, 
+            operacionMina_lpv, 
+            operacionMina_stto, 
+            operacionMina_serv, 
+            operacionMina_comentario, 
+            operacionMina_tipAvance, 
+            operacionMina_avanceMt, 
+            operacionMina_avanceMt3, 
+            operacionMina_intDisparo, 
+            operacionMina_Resuelto, 
+            operacionMina_manualCantidad, 
+            operacionMina_palaNombre, 
+            operacionMina_palaCantidad, 
+            operacionMina_wincheNombre, 
+            operacionMina_wincheCantidad, 
+            operacionMina_mineralCantidad, 
+            operacionMina_desmonCantidad) 
+            VALUES (
+            :item1,
+            :item2,
+            :item3,
+            :item4,
+            :item5,
+            :item6,
+            :item7,
+            :item8,
+            :item9,
+            :item10,
+            :item11,
+            :item12,
+            :item13,
+            :item14,
+            :item15,
+            :item16,
+            :item17,
+            :item18,
+            :item19,
+            :item20,
+            :item21,
+            :item22,
+            :item23)";
             $insertValue = $this->db->prepare($query);
-            $insertValue->bindParam(':operacionMina_registro', $dato1, PDO::PARAM_STR);
-            $insertValue->bindParam(':operacionMina_turno', $dato2, PDO::PARAM_STR);
-            $insertValue->bindParam(':operacionMina_guardia', $dato3, PDO::PARAM_STR);
-            $insertValue->bindParam(':operacionMina_nVale', $dato4, PDO::PARAM_STR);
-            $insertValue->bindParam(':operacionMina_actividad', $dato5, PDO::PARAM_STR);
-            $insertValue->bindParam(':id_labor', $dato6, PDO::PARAM_STR);
-            $insertValue->bindParam(':operacionMina_l', $dato7, PDO::PARAM_STR);
-            $insertValue->bindParam(':operacionMina_lpv', $dato8, PDO::PARAM_STR);
-            $insertValue->bindParam(':operacionMina_stto', $dato9, PDO::PARAM_STR);
-            $insertValue->bindParam(':operacionMina_serv', $dato10, PDO::PARAM_STR);
-            $insertValue->bindParam(':operacionMina_comentario', $dato11, PDO::PARAM_STR);
+            $insertValue->bindParam(':item1', $dato1, PDO::PARAM_STR);
+            $insertValue->bindParam(':item2', $dato2, PDO::PARAM_STR);
+            $insertValue->bindParam(':item3', $dato3, PDO::PARAM_STR);
+            $insertValue->bindParam(':item4', $dato4, PDO::PARAM_STR);
+            $insertValue->bindParam(':item5', $dato5, PDO::PARAM_STR);
+            $insertValue->bindParam(':item6', $dato6, PDO::PARAM_STR);
+            $insertValue->bindParam(':item7', $dato7, PDO::PARAM_STR);
+            $insertValue->bindParam(':item8', $dato8, PDO::PARAM_STR);
+            $insertValue->bindParam(':item9', $dato9, PDO::PARAM_STR);
+            $insertValue->bindParam(':item10', $dato10, PDO::PARAM_STR);
+            $insertValue->bindParam(':item11', $dato11, PDO::PARAM_STR);
+            $insertValue->bindParam(':item12', $dato12, PDO::PARAM_STR);
+            $insertValue->bindParam(':item13', $dato13, PDO::PARAM_STR);
+            $insertValue->bindParam(':item14', $dato14, PDO::PARAM_STR);
+            $insertValue->bindParam(':item15', $dato15, PDO::PARAM_STR);
+            $insertValue->bindParam(':item16', $dato16, PDO::PARAM_STR);
+            $insertValue->bindParam(':item17', $dato17, PDO::PARAM_STR);
+            $insertValue->bindParam(':item18', $dato18, PDO::PARAM_STR);
+            $insertValue->bindParam(':item19', $dato19, PDO::PARAM_STR);
+            $insertValue->bindParam(':item20', $dato20, PDO::PARAM_STR);
+            $insertValue->bindParam(':item21', $dato21, PDO::PARAM_STR);
+            $insertValue->bindParam(':item22', $dato22, PDO::PARAM_STR);
+            $insertValue->bindParam(':item23', $dato23, PDO::PARAM_STR);
             $sqlrpt = $insertValue->execute();
             $lastcolIdsql = $this->db->lastInsertId();
             if($sqlrpt){
                 //$this->db->commit();
                 $rptSql = [
                     "estado" => 1,
-                    "mensaje" => "Se registro correctamente",
+                    "mensaje" => "Se registro correctamente Operacion Mina",
                     "id" => $lastcolIdsql
                 ];
             }

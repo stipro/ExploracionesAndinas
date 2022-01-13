@@ -1,86 +1,132 @@
-.modal-body{
+.modal-body {
     padding: 0 1rem 1rem 1rem !important;
 }
-.aparecer{
+
+.aparecer {
     transition: opacity .7s;
 }
-.desvanecer{
-    opacity:0;
+
+.desvanecer {
+    opacity: 0;
 }
+
 .toolbar-right,
 .table-toolbar-right {
- text-align: center !important;
+    text-align: center !important;
 }
-#alerts-general{
+
+#alerts-general {
     margin-bottom: 1rem;
 }
-#demo_chosen_select_chosen{
+
+#demo_chosen_select_chosen {
     width: 100% !important;
 }
-#group1Form{
+
+#group1Form {
     display: flex;
 }
-#g1item1Form{
+
+#g1item1Form {
     width: 50%;
 }
-#g1item2Form{
+
+#g1item2Form {
     width: 50%;
 }
-#group2Form{
+
+#group2Form {
     display: flex;
 }
-#g2item1Form{
+
+#g2item1Form {
     width: 100%;
 }
-#g2item2Form{
+
+#g2item2Form {
     width: 75%;
 }
-#group-labor{
+
+#group-labor {
     display: flex;
 }
-.group1RegPerf{
+
+.group1RegPerf {
     display: flex;
     justify-content: space-between;
 }
-.item1RegPerf{
+
+.item1RegPerf {
     text-align: center;
     margin: 0.5rem;
 }
-.group2RegPerf{
+
+.group2RegPerf {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.item2RegPerf{
+
+.item2RegPerf {
     text-align: center;
 }
-#inserForm{
+
+#inserForm {
     width: 65% !important;
 }
-.bootstrap-select > .dropdown-toggle{
+
+.bootstrap-select>.dropdown-toggle {
     width: 80% !important;
 }
-.form-tarea{
+
+.form-tarea {
     text-align: center;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     margin: 0.25rem 0;
 }
-.form-input{
+
+.form-input {
     margin: 0.25rem 0;
 }
-.form-select-tarea{
+
+.form-select-tarea {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
 }
-.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
     width: 100% !important;
 }
-.bootstrap-select > .dropdown-toggle{
+
+.bootstrap-select>.dropdown-toggle {
     width: 100% !important;
 }
-.chosen-container{
+
+.chosen-container {
     width: 100% !important;
+}
+
+body {
+    --table-width: 100%;
+    /* Or any value, this will change dinamically */
+}
+
+tbody {
+    display: block;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+thead,
+tbody tr {
+    display: table;
+    width: var(--table-width);
+    table-layout: fixed;
+}
+
+.indice {
+    width: 1rem;
 }

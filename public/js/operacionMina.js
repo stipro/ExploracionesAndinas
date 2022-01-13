@@ -1,9 +1,21 @@
 var arraySelectColaboradores;
+var indice;
+
+var objectarrayInstalacion;
 // Declarando variables
 const btnIncrementar = document.getElementById("btn-increase");
 const btndisminuir = document.getElementById("btn-decline");
 const btnAgregar = document.getElementById("btn-Agregar");
 const btnInsert = document.getElementById("mbtn-insert");
+
+const btnInsertTable = document.getElementById("insert-option-table");
+
+
+const iptinsertTable_name = document.getElementById("nombre-instalaciones-table");
+const iptinsertTable_cantidad = document.getElementById("cantidad-instalaciones-table");
+const tbodyInstalaciones = document.getElementById("instalacion-body");
+
+
 const iptinsertRegistro = document.getElementById("insert-operacionMina-registro");
 const iptinsertTurno = document.getElementById("insert-operacionaMina-turno");
 const iptinsertGuardia = document.getElementById("insert-operacionMina-guardia");
@@ -57,6 +69,7 @@ const iptinsert_nameCuartopersona = document.getElementById("insert-operacionaMi
 const datalistinsert_optionnameCuartaPersona = document.getElementById("insert-options-name-cuarto-hombre");
 
 // Instalaciones
+const datalistinsert_optionsInstalaciones = document.getElementById("nombre-instalaciones-options");
 const datalistinsert_optionsCuadro = document.getElementById("insert-options-cuadro");
 
 const datalistinsert_optionsCribing = document.getElementById("insert-options-cribing");
@@ -111,10 +124,14 @@ btnAgregar.addEventListener("click", () => {
         "accion": "getcolumnAll",
         "column": "instalacionesMIna_nombre"
     }
-    //fetchInstalaciones(selectForm_instalacionMina);
+    fetchInstalaciones(selectForm_instalacionMina);
 });
 
 btnInsert.addEventListener("click", () => {
+    valArray_Instalaciones = getValue_Table();
+    console.log('Instalacion');
+    console.log(valArray_Instalaciones);
+    console.log(typeof valArray_Instalaciones);
     valRegistro = iptinsertRegistro.value;
     valTurno = iptinsertTurno.value;
     valGuardia = iptinsertGuardia.value;
@@ -122,7 +139,7 @@ btnInsert.addEventListener("click", () => {
     // Tipo de Disparo
     valradioTipo_dis = document.querySelector('input[name="radio-tipo_disparo"]:checked').value
     var valdatalist = $('#insert-operacionMina-codLabor').val();
-    var valcodLabor = $('#insert-options-codLabor').find('option[value="' + valdatalist + '"]').data('id-codlabor');
+    var validLabor = $('#insert-options-codLabor').find('option[value="' + valdatalist + '"]').data('id-codlabor');
 
     valNivel = iptinsertNivel.value;
 
@@ -164,8 +181,8 @@ btnInsert.addEventListener("click", () => {
         "datos_turno": valTurno,
         "datos_guardia": valGuardia,
         "datos_nvale": valNVale,
-        "datos_tipDisparo": valradioTipo_dis,
-        "ccostos_codLabor": valcodLabor,
+        "datos_actividad": valradioTipo_dis,
+        "id_Labor": validLabor,
         "tareas": {
             1: {
                 "id": validMaestro,
@@ -184,6 +201,7 @@ btnInsert.addEventListener("click", () => {
                 "nombre": "CuartoHombre"
             }
         },
+        "list_instalaciones": valArray_Instalaciones,
         "tareas_l": vall,
         "tareas_lpv": vallpv,
         "tareas_stto": valstto,
@@ -197,11 +215,12 @@ btnInsert.addEventListener("click", () => {
         "limpieza_manual": valmanual,
         "limpieza_pala": valpala,
         "limpieza_cantidadPala": valcantidadpala,
-        "limpieza_mineral": valmineral,
         "limpieza_winche": valwinche,
         "limpieza_cantidadWinche": valcantidadwinche,
-        "limpieza_desmont": valdesmont,
+        "limpieza_mineral": valmineral,
+        "limpieza_desmont": valdesmont
     }
+    console.log('Se esta enviando datos de operacion Mina');
     console.log(valInsert);
     var form_insert = {
         "accion": "insert",
@@ -623,6 +642,7 @@ const paintCodLabor = (data) => {
     });
     dtlistOptionscodlabor.appendChild(fragment);
 }
+
 const paintZonaLaborNivel = (data) => {
     arraySelect = data['sql'];
     arraySelect.forEach(item => {
@@ -761,56 +781,44 @@ $(".boton").click(function() {
 
 // Obtienes Fila
 $(".btn-get-all").click(function() {
-    var objArr = [];
-    var t01 = $("#instalacion-body tr").length;
-    //console.log("t01:"+t01);
-    $('#instalacion-body').find('tr').each(function(i) {
-        // Eliminar el encabezado
-        if (i > 0) {
-            var obj = $(this).attr("data");
-            console.log("obj:" + obj);
-            //var obj1 = JSON.parse(obj);
-            //console.log("obj1:"+obj1);
-            //objArr.push(obj1);
-
-        }
-    });
-
-
-    /*
-        var dataTable = [];
-        console.log('Se obtendra todo');
-        var $tbody = $(".fila").closest("tbody"); // Obtener el primer elemento que coincida con el selector
-        console.log($tbody);
-        var $rows = $tbody.find("tr"); // Find the row
-        console.log(typeof $rows);
-        console.log($rows);
-        //var $tds = $rows.find("td");// Obtener los descendientes de cada elemento en el conjunto actual de elementos coincidentes
-        
-        $.each($rows, function(i, obj) {
-            //console.log($rows);
-            //$.each($rows, function() {
-            //console.log($(this).text());
-        });
-        var contenidoTable = $(this).text()
-        //var sincomillas = contenidoTable.replace(/['"]+/g, ',')
-        //let arr = contenidoTable.replace('\n', '');
-        limp1 = contenidoTable.replace(/\n|\r/g, '|');
-        //arr1 = contenidoTable.replace(/\t/g, ',');
-        //var sincomillas = contenidoTable.replace(/[^a-zA-Z0-9]/g, '|');
-        //arr2 = arr1.replace(/(\r\n|\n|\r)/g, '|');
-        var diviJson = limp1.split('|');
-        diviJson.forEach(item => {
-            sinvacios = item.trim();
-            if (sinvacios === "") {
-
-            } else {
-                console.log(sinvacios);
-                dataTable.push(sinvacios);
-            }
-        });*/
+    getValue_Table();
 });
 
+const getValue_Table = () => {
+    var arrayTable = [],
+        keys = [
+            'item1',
+            'nombre',
+            'cantidad',
+            'medida',
+            'id',
+        ];
+    var t = document.getElementById('instalacion-body');
+    if (t) {
+        Array.from(t.rows).forEach((tr, row_ind) => {
+            var oRow = {};
+            Array.from(tr.cells).forEach((cell, col_ind) => {
+                console.log('Value at row/col [' + row_ind + ',' + col_ind + '] = ' + cell.textContent);
+                console.log(typeof cell.textContent);
+                if (cell.textContent) {
+                    if (cell.dataset.idInstalacionmina) {
+                        //console.log('No esta vacio');
+                        //console.log('Id is : ' + cell.dataset.idInstalacionmina);
+                        id = cell.dataset.idInstalacionmina;
+                    }
+                    oRow[keys[col_ind]] = cell.textContent;
+
+                }
+                if (col_ind == 4) {
+                    oRow[keys[col_ind]] = id;
+                    console.log('Es 4');
+                }
+            });
+            arrayTable.push(oRow);
+        });
+    }
+    return arrayTable;
+}
 
 
 //Traer Instalaciones
@@ -825,34 +833,29 @@ const fetchInstalaciones = async (request) => {
     const data = await res.json();
     console.log(data);
     objectarrayInstalacion = data['sql']
-    // Cuadro
-    datalistinsert_optionsCuadro.innerHTML = '';
-    const template_optsCuadro = document.querySelector("#template-opts-insert-cuadro").content;
-    const fragment_optsCuadro = document.createDocumentFragment();
-
-    // Cribing
-    datalistinsert_optionsCribing.innerHTML = '';
-    const template_optsCribing = document.querySelector("#template-opts-insert-cribing").content;
-    const fragment_optsCribing = document.createDocumentFragment();
+    datalistinsert_optionsInstalaciones.innerHTML = "";
+    const template_optsInstalaciones = document.querySelector("#template-opts-name-instalaciones").content;
+    const fragment_optsInstalaciones = document.createDocumentFragment();
 
     objectarrayInstalacion.forEach(item => {
-        if (item.instalacionesMIna_nombre.match(/CUADROS.*/)) {
-            template_optsCuadro.querySelector('#template-opt-insert-cuadro').value = item.instalacionesMIna_nombre;
-            template_optsCuadro.querySelector('#template-opt-insert-cuadro').dataset.idInstalacionmina = item.id_instalacionMina;
-            const clone_optsCuadro = template_optsCuadro.cloneNode(true);
-            fragment_optsCuadro.appendChild(clone_optsCuadro);
-        }
-        if (item.instalacionesMIna_nombre.match(/PUNTAL.*/)) {
-            console.log(item.instalacionesMIna_nombre);
-            template_optsCribing.querySelector('#template-opt-insert-cribing').value = item.instalacionesMIna_nombre;
-            template_optsCribing.querySelector('#template-opt-insert-cribing').dataset.idInstalacionmina = item.id_instalacionMina;
-            const clone_optsCribing = template_optsCribing.cloneNode(true);
-            fragment_optsCribing.appendChild(clone_optsCribing);
-        }
+        template_optsInstalaciones.querySelector('#template-opt-name-instalaciones').value = item.instalacionesMIna_nombre;
+        template_optsInstalaciones.querySelector('#template-opt-name-instalaciones').dataset.idInstalacionmina = item.id_instalacionMina;
+        const clone_optsInstalaciones = template_optsInstalaciones.cloneNode(true);
+        fragment_optsInstalaciones.appendChild(clone_optsInstalaciones);
     });
-    datalistinsert_optionsCuadro.appendChild(fragment_optsCuadro);
-    datalistinsert_optionsCribing.appendChild(fragment_optsCribing);
-    //Enviamos a pintar
+
+    datalistinsert_optionsInstalaciones.appendChild(fragment_optsInstalaciones);
+}
+
+const enumeracion_Table = () => {
+    var table = document.getElementById('instalacion-body')[0],
+        rows = table.getElementsByTagName('tr'),
+        text = 'textContent' in document ? 'textContent' : 'innerText';
+    console.log(text);
+
+    for (var i = 0, len = rows.length; i < len; i++) {
+        rows[i].children[0][text] = i + ': ' + rows[i].children[0][text];
+    }
 }
 
 $("#insert-operacionMina-cuadro").on('input', function() {
@@ -869,3 +872,70 @@ $("#insert-operacionMina-cuadro").on('input', function() {
         fetchCodlabor(selectForm_codLabor);
     }
 });
+
+
+btnInsertTable.addEventListener("click", () => {
+    valNameInstalacion = iptinsertTable_name.value;
+    console.log(valNameInstalacion);
+    valCantidadInstalacion = iptinsertTable_cantidad.value;
+    console.log(valCantidadInstalacion);
+
+    if (valNameInstalacion && valCantidadInstalacion) {
+        var val = $('#nombre-instalaciones-table').val();
+        var validInstalacion = $('#nombre-instalaciones-options').find('option[value="' + val + '"]').data('id-instalacionmina');
+        console.log(validInstalacion);
+        var rptsearch_Instalacion = objectarrayInstalacion.find(item => item.id_instalacionMina == validInstalacion);
+        if (rptsearch_Instalacion) {
+            console.log(rptsearch_Instalacion);
+            const templatetdInstalacion = document.querySelector("#template-td-instalaciones").content;
+            const fragmentInstalacion = document.createDocumentFragment();
+            indice++;
+            //templatetdInstalacion.querySelector('#indice').textContent = indice;
+            templatetdInstalacion.querySelector('#template-tds-name-instalaciones').textContent = rptsearch_Instalacion.instalacionesMIna_nombre;
+            templatetdInstalacion.querySelector('#template-tds-name-instalaciones').dataset.idInstalacionmina = rptsearch_Instalacion.id_instalacionMina;
+            templatetdInstalacion.querySelector('#template-tds-cantidad-instalaciones').textContent = valCantidadInstalacion;
+            templatetdInstalacion.querySelector('#template-tds-unidad-instalaciones').textContent = rptsearch_Instalacion.instalacionMina_medida;
+
+            const clone_tdInstalaciones = templatetdInstalacion.cloneNode(true);
+            fragmentInstalacion.appendChild(clone_tdInstalaciones);
+
+            tbodyInstalaciones.appendChild(fragmentInstalacion);
+
+
+            $(function() {
+                $(document).on('click', '.borrar', function(event) {
+                    event.preventDefault();
+                    $(this).closest('tr').remove();
+                });
+            });
+            //enumeracion_Table();
+        } else {
+            $.niftyNoty({
+                type: 'warning',
+                container: '#alert-form-insert',
+                html: '<strong>¡Advertencia!</strong> Instalacion no registrada.',
+                focus: false,
+                timer: 2000
+            });
+        }
+    } else {
+        if (!valNameInstalacion) {
+            $.niftyNoty({
+                type: 'warning',
+                container: '#alert-form-insert',
+                html: '<strong>¡Advertencia!</strong> Ingrese Nombre.',
+                focus: false,
+                timer: 2000
+            });
+        }
+        if (!valCantidadInstalacion) {
+            $.niftyNoty({
+                type: 'warning',
+                container: '#alert-form-insert',
+                html: '<strong>¡Advertencia!</strong> Ingrese Cantidad.',
+                focus: false,
+                timer: 2000
+            });
+        }
+    }
+})

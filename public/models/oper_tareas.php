@@ -41,7 +41,7 @@ class operTareas extends Conexion
         $query = "SELECT * FROM tvalexplosivos LEFT JOIN colaboradores ON tareos.id_colaborador = colaboradores.id_colaborador LEFT JOIN labores ON tareos.id_labor = labores.id_labor LIMIT {$empezarDesde}, {$filasPage}";
         return $this->ConsultaSimple($query);
     }
-    public function insert($dato1, $formRequest2)
+    public function insert($idPrincipal, $formRequest2)
     {
         try 
         {
@@ -51,7 +51,7 @@ class operTareas extends Conexion
                 :item3)";
             $insertValue = $this->db->prepare($query);
             foreach ($formRequest2 as $clave) {
-                $insertValue->bindValue(':item1', $dato1, PDO::PARAM_STR);
+                $insertValue->bindValue(':item1', $idPrincipal, PDO::PARAM_STR);
                 $insertValue->bindValue(':item2', $clave['id'], PDO::PARAM_STR);
                 $insertValue->bindValue(':item3', $clave['nombre'], PDO::PARAM_STR);
                 $sqlrpt = $insertValue->execute();
@@ -61,13 +61,14 @@ class operTareas extends Conexion
                 //$this->db->commit();
                 $rptSql = [
                     "estado" => 1,
-                    "mensaje" => "Se registro correctamente",
+                    "mensaje" => "Se registro correctamente operacion Tarea",
                 ];
             }
             else{
                 echo "\nPDO::errorInfo():\n";
                 print_r($insertValue->errorInfo());
-            }         
+            }
+            return $rptSql;
             
         }
         catch (PDOException $e)

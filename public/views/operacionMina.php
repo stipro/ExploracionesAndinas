@@ -467,7 +467,7 @@ session_start();
 					                    <div class="row">
 					                        <div class="col-sm-6 table-toolbar-left">
 					                            <button id="btn-Agregar" data-target="#demo-lg-modal" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add icon-fw"></i>Agregar</button>
-					                            <a href="./../excelGenerator.php?docDescarga='. $value['nombre'].'&extension='. $value['extension'].'&time='.date('h:m:y').'" class="btn btn-default" download="" title="Descargar Archivo">
+					                            <a href="./../excelGenerator.php?table=view_operacion_mina" class="btn btn-default" download="" title="Descargar Archivo">
                                                     <i class="fa fa-file-excel-o icon-lg"></i>
                                                 </a>
 					                            <div class="btn-group">
@@ -1123,7 +1123,7 @@ session_start();
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label">Tipo de Disparo</label>
+                                        <label class="col-md-4 control-label">Actividad</label>
                                         <div class="col-md-8">
                             
                                             <!-- Radio Buttons -->
@@ -1778,39 +1778,59 @@ session_start();
                                         </div>
                                     </div>
 -->
-                                    <!-- Table -->
-                                    <table id="instalaciones-table" class="table ui-widget ui-widget-content table-instalaciones">
-                                        <thead>
-                                            <tr class="ui-widget-header ">
-                                                <th>Name/Nr.</th>
-                                                <th>Street</th>
-                                                <th>Town</th>
-                                                <th>Postcode</th>
-                                                <th>Country</th>
-                                                <th>Options</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="instalacion-body">
-                                            <tr>
-                                                <td>val 11</td>
-                                                <td>val 12</td>
-                                                <td>val 13</td>
-                                                <td>val 14</td>
-                                                <td>val 15</td>
-                                                <td class="boton">coger valores de la fila</td>
-                                            </tr>
-                                            <tr>
-                                                <td>val 21</td>
-                                                <td>val 22</td>
-                                                <td>val 23</td>
-                                                <td>val 24</td>
-                                                <td>val 25</td>
-                                                <td class="boton">coger valores de la fila</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <!-- Fin Table -->
-                                    <button type="button" class="btn btn-primary btn-get-all">Obtener Todo</button>
+                                    <div class="row">
+                                        <div id="myTabDiv" class="table-responsive-lg col-md-6">
+                                            <!-- Table -->
+                                            <table name="mytab" id="mytab1" class="table table-md table-hover table-instalaciones">
+                                                <thead>
+                                                    <tr class="ui-widget-header ">
+                                                        <th class="indice" scope="col">#</th>
+                                                        <th scope="col" data-sort-initial="true" data-toggle="true">Nombre</th>
+                                                        <th scope="col">Cantidad</th>
+                                                        <th scope="col">Medida</th>
+                                                        <th scope="col">Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="instalacion-body">
+                                                </tbody>
+                                            </table>
+                                            <template id="template-td-instalaciones">
+                                                <tr>
+                                                    <th id="indice" class="indice" scope="row"></th>
+                                                    <td id="template-tds-name-instalaciones">val 22</td>
+                                                    <td id="template-tds-cantidad-instalaciones">val 23</td>
+                                                    <td id="template-tds-unidad-instalaciones">val 23</td>
+                                                    <td>
+                                                        <button  class="borrar btn btn-danger btn-xs btn-delete" value="Delete">
+                                                            <i class="demo-pli-cross"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p class="bord-btm pad-ver text-main text-bold">Instalaciónes</p>
+                                            <div class="form-group">
+                                                <label for="nombre-instalaciones-table" class="col-md-2 control-label">Nombre</label>
+                                                <div class="col-md-6">
+                                                    <input class="form-control" list="nombre-instalaciones-options" id="nombre-instalaciones-table" placeholder="Seleccion opcion..">
+                                                </div>
+                                                <datalist id="nombre-instalaciones-options">
+                                                    <option value="Aun no carga">
+                                                </datalist>
+                                                <template id="template-opts-name-instalaciones">
+                                                    <option id="template-opt-name-instalaciones" value="">
+                                                </template>
+                                                <label for="cantidad-instalaciones-table" class="col-md-1 control-label">Cantidad</label>
+                                                <div class="col-md-3">
+                                                    <input class="form-control" id="cantidad-instalaciones-table" placeholder="Ingrese Cantidad...">
+                                                </div>
+                                            </div>
+                                            <button id="insert-option-table" type="button" class="btn btn-primary">Registrar</button>
+                                            <!-- Fin Table -->
+                                            <button type="button" class="btn btn-primary btn-get-all">Obtener Todo</button>
+                                        </div>                                        
+                                    </div>
                                 </div>
                             </div>
                             </div>

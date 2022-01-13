@@ -14,7 +14,7 @@ class InstalacionMina extends Conexion
     // Obtiene Lista especifica
     public function getSelect(string $table, string $column, string $idTable)
     {
-        $query = "SELECT {$idTable}, {$column} FROM {$table} ORDER BY {$column} ASC ;";
+        $query = "SELECT {$idTable}, {$column}, instalacionMina_medida FROM {$table} ORDER BY {$column} ASC ;";
         return $this->ConsultaSimple($query);
     }
 
@@ -43,115 +43,32 @@ class InstalacionMina extends Conexion
         $query = "SELECT * FROM tvalexplosivos LEFT JOIN colaboradores ON tareos.id_colaborador = colaboradores.id_colaborador LEFT JOIN labores ON tareos.id_labor = labores.id_labor LIMIT {$empezarDesde}, {$filasPage}";
         return $this->ConsultaSimple($query);
     }
-    public function insert(
-        $idDigitador,
-        $datoRegistro,
-        $idZona,
-        $datonVale,
-        $datoTurno,
-        $datopreImpreso,
-        $idcCosto,
-        $datoTipDisparo,
-        $idPerforista,
-        $datotipEn,
-        $datoBarra,
-        $datoLgt,
-        $datonTaladro,
-        $datotalVacio,
-        $datopiePerf,
-        $datopieReal,
-        $datonnMaquinas,
-        $datoDinaSemi,
-        $datocalDinaSemi,
-        $datoDinaPulv,
-        $datocalDinaPulv,
-        $datosumSemiPulv,
-        $datoemulMil,
-        $datoemulTresmil,
-        $datomechaRapida,
-        $datoMecha,
-        $datofulmOcho,
-        $datoconecMecha
-        )
+    public function insert($idPrincipal, $formRequest3)
     {
         try 
         {
-            date_default_timezone_set('America/Lima');
-            $converdatoRegistro = date($datoRegistro.' H:i:s');
-            /* Iniciar una transacción, desactivando 'autocommit' */
-            $this->db->beginTransaction();
-
-            $query = "INSERT INTO tvalexplosivos VALUES (null,
-            :ccosto_usuario, 
-            :valexplosivo_fecha, 
-            :id_zona, 
-            :valexplosivo_nvale, 
-            :valexplosivo_turno, 
-            :valexplosivo_preimpresor, 
-            :labExplosivo_ccostos, 
-            :valexplosivo_tipDisparo, 
-            :id_colaborador, 
-            :valexplosivo_tipEn, 
-            :valexplosivo_barra, 
-            :valexplosivo_lgt, 
-            :valexplosivo_numTaladro, 
-            :valexplosivo_talVacio, 
-            :valexplosivo_piePerf, 
-            :valexplosivo_pieReal, 
-            :valexplosivo_numMaquina, 
-            :valexplosivo_dimSemigelatinosa65, 
-            :valexplosivo_dimSemigelatinosa65_Result, 
-            :valexplosivo_dimPulverulenta65_78, 
-            :valexplosivo_dimPulverulenta65_78_Result, 
-            :valexplosivo_sumaSemiPulv,
-            :valexplosivo_emulmil,
-            :valexplosivo_emultresmil,
-            :valexplosivo_mecRapidaZ18, 
-            :valexplosivo_mecha, 
-            :valexplosivo_fullN8, 
-            :valexplosivo_conMecha)";
-            $result = $this->db->prepare($query);
-            $result->execute(array(
-            ':ccosto_usuario' => $idDigitador, 
-            ':valexplosivo_fecha' => $converdatoRegistro,
-            ':id_zona' => $idZona,
-            ':valexplosivo_nvale' => $datonVale,
-            ':valexplosivo_turno' => $datoTurno,
-            ':valexplosivo_preimpresor' => $datopreImpreso,
-            ':labExplosivo_ccostos' => $idcCosto,
-            ':valexplosivo_tipDisparo' => $datoTipDisparo,
-            ':id_colaborador' => $idPerforista,
-            ':valexplosivo_tipEn' => $datotipEn,
-            ':valexplosivo_barra' => $datoBarra,
-            ':valexplosivo_lgt' => $datoLgt,
-            ':valexplosivo_numTaladro' => $datonTaladro,
-            ':valexplosivo_talVacio' => $datotalVacio,
-            ':valexplosivo_piePerf' => $datopiePerf,
-            ':valexplosivo_pieReal' => $datopieReal,
-            ':valexplosivo_numMaquina' => $datonnMaquinas,
-            ':valexplosivo_dimSemigelatinosa65' => $datoDinaSemi,
-            ':valexplosivo_dimSemigelatinosa65_Result' => $datocalDinaSemi,
-            ':valexplosivo_dimPulverulenta65_78' => $datoDinaPulv,
-            ':valexplosivo_dimPulverulenta65_78_Result' => $datocalDinaPulv,
-            ':valexplosivo_sumaSemiPulv' => $datosumSemiPulv,
-            ':valexplosivo_emulmil' => $datoemulMil,
-            ':valexplosivo_emultresmil' => $datoemulTresmil,
-            ':valexplosivo_mecRapidaZ18' => $datomechaRapida,
-            ':valexplosivo_mecha' => $datoMecha,
-            ':valexplosivo_fullN8' => $datofulmOcho,
-            ':valexplosivo_conMecha' => $datoconecMecha));
-
-            /* Consignar los cambios */
-            $this->db->commit();
-
-            // Obtenemos el Id (Aun falta arreglar)
-            //$idResult = $this->db->lastInsertId(); 
-
-            $rptSql = [
-                "estado" => 1,
-                "mensaje" => "Se registro correctamente",
-                "coperacion" => $datopreImpreso,
-            ];
+            $query = "INSERT INTO oper_instalaciones (id_operacionMina, id_instalacionMina, operacionInstalacion_cantidad) VALUES (
+                :item1,
+                :item2,
+                :item3)";
+            $insertValue = $this->db->prepare($query);
+            foreach ($formRequest3 as $clave) {
+                $insertValue->bindValue(':item1', $idPrincipal, PDO::PARAM_STR);
+                $insertValue->bindValue(':item2', $clave['id'], PDO::PARAM_STR);
+                $insertValue->bindValue(':item3', $clave['cantidad'], PDO::PARAM_STR);
+                $sqlrpt = $insertValue->execute();
+            }
+            if($sqlrpt){
+                //$this->db->commit();
+                $rptSql = [
+                    "estado" => 1,
+                    "mensaje" => "Se registro correctamente operacion Instalacion Mina",
+                ];
+            }
+            else{
+                echo "\nPDO::errorInfo():\n";
+                print_r($insertValue->errorInfo());
+            }
             return $rptSql;
 
         } catch (PDOException $e) {
