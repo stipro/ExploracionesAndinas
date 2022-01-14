@@ -7,15 +7,16 @@
         else{
             $url = "http://"; 
         }
-        //return $url . $_SERVER['HTTP_HOST'] .  $_SERVER['REQUEST_URI'];
-        return $_SERVER['REQUEST_URI'];
+        return $url . $_SERVER['HTTP_HOST'] .  $_SERVER['REQUEST_URI'];
+        //return $_SERVER['REQUEST_URI'];
     }
     $url_actual = get_url();
+    var_dump($url_actual);
     $separador = "/"; // Usar una cadena
     $ubicaciones = explode($separador, $url_actual);
-    //print_r($ubicaciones);
+    print_r($ubicaciones);
     //echo $ubicaciones[4];
-session_start();
+    session_start();
     if (!isset($_SESSION["username"])) {
         //echo 'No se inicio session ';
         
@@ -23,6 +24,8 @@ session_start();
     } else {
     }
     $validacionSession =  $_SESSION["name"] ? $_SESSION["name"] : 'No se inicio';
+    $string = file_get_contents("./../data-logo.json");
+    $json_a = json_decode($string, true);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -121,9 +124,9 @@ session_start();
                 <!--================================-->
                 <div class="navbar-header">
                     <a href="index.html" class="navbar-brand">
-                        <img src=".\..\img\logo_letra.png" alt="Nifty Logo" class="brand-icon">
+                        <img src="<?php echo $json_a['Empresa']['url'];?>" alt="Nifty Logo" class="brand-icon">
                         <div class="brand-title">
-                            <span class="brand-text">Exploraciones Andinas S.A.C.</span>
+                            <span class="brand-text"><?php echo $json_a['Empresa']['nombre'];?></span>
                         </div>
                     </a>
                 </div>
