@@ -12,9 +12,9 @@ $json_a = json_decode($string, true);
                     <!--It will only appear on small screen devices.-->
                     <!--================================-->
                     <div class="mainnav-brand">
-                        <a href="index.html" class="brand">
+                        <a href="index.html" class="brand" style="display: flex;">
                             <img src="<?php echo $json_a['Empresa']['url'];?>" alt="Exploraciones Andinas Logo" class="brand-icon">
-                            <span class="brand-text"><?php echo $json_a['Empresa']['nombre'];?></span>
+                            <span class="brand-text" style="text-align: center;"><?php echo $json_a['Empresa']['nombre'];?></span>
                         </a>
                         <a href="#" class="mainnav-toggle"><i class="pci-cross pci-circle icon-lg"></i></a>
                     </div>

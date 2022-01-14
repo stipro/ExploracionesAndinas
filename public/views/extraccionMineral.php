@@ -1112,7 +1112,7 @@ session_start();
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="insert-extrMineral-extractor" class="col-md-4 form-label">Extractor:</label>
+                                    <label for="insert-extrMineral-extractor" class="col-md-4 form-label">Locomotora:</label>
                                     <div class="col-md-8">
                                         <input class="form-control" list="datalistOptions" id="insert-extrMineral-extractor" placeholder="Ingrese Extractor...">
                                     </div>                                        
@@ -1140,11 +1140,11 @@ session_start();
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="insert-extrMineral-contrata" class="col-md-4 form-label">Contrata:</label>
+                                    <label for="insert-extrMineral-contrata" class="col-md-4 form-label">Uni Empresa:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" list="datalistOptions" id="insert-extrMineral-contrata" placeholder="Ingrese Contrata...">
+                                        <input class="form-control" list="datalistOptions-UniEmpresa" id="insert-extrMineral-contrata" placeholder="Ingrese Contrata...">
                                     </div>                                        
-                                    <datalist id="datalistOptions">
+                                    <datalist id="datalistOptions-UniEmpresa">
                                         <option value="San Andres">
                                         <option value="willo">
                                     </datalist>
@@ -1250,9 +1250,9 @@ session_start();
                                     <div class="form-group">
                                         <label for="insert-extrMineral-descripcion" class="col-md-4 form-label">Descripción:</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="options-descripcion" id="insert-extrMineral-descripcion" placeholder="Ingrese Descripción...">
+                                            <input class="form-control" list="options-descripcion-ExtracionMineral" id="insert-extrMineral-descripcion" placeholder="Ingrese Descripción...">
                                         </div>                                        
-                                        <datalist id="options-descripcion">
+                                        <datalist id="options-descripcion-ExtracionMineral">
                                             <option value="Mineral">
                                             <option value="Desmonte">
                                         </datalist>
