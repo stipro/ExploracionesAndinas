@@ -1,4 +1,8 @@
-            <!--MAIN NAVIGATION-->
+<?php
+$string = file_get_contents("./../data-logo.json");
+$json_a = json_decode($string, true);
+?>
+<!--MAIN NAVIGATION-->
             <!--===================================================-->
             <nav id="mainnav-container">
                 <div id="mainnav">
@@ -9,8 +13,8 @@
                     <!--================================-->
                     <div class="mainnav-brand">
                         <a href="index.html" class="brand">
-                            <img src=".\..\img\logo_letra.png" alt="Exploraciones Andinas Logo" class="brand-icon">
-                            <span class="brand-text">Exploraciones Andinas S.A.C.</span>
+                            <img src="<?php echo $json_a['Empresa']['url'];?>" alt="Exploraciones Andinas Logo" class="brand-icon">
+                            <span class="brand-text"><?php echo $json_a['Empresa']['nombre'];?></span>
                         </a>
                         <a href="#" class="mainnav-toggle"><i class="pci-cross pci-circle icon-lg"></i></a>
                     </div>

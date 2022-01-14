@@ -7,6 +7,8 @@ session_start();
     } else {
     }
     $validacionSession =  $_SESSION["name"] ? $_SESSION["name"] : 'No se inicio';
+    $string = file_get_contents("./../data-logo.json");
+    $json_a = json_decode($string, true);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -126,9 +128,9 @@ session_start();
                 <!--================================-->
                 <div class="navbar-header">
                     <a href="index.html" class="navbar-brand">
-                        <img src="img\logo.png" alt="Nifty Logo" class="brand-icon">
+                        <img src="<?php echo $json_a['Empresa']['url'];?>" alt="Nifty Logo" class="brand-icon">
                         <div class="brand-title">
-                            <span class="brand-text">Exploraciones Andinas S.A.C.</span>
+                            <span class="brand-text"><?php echo $json_a['Empresa']['nombre'];?></span>
                         </div>
                     </a>
                 </div>
