@@ -240,7 +240,32 @@ const requestInsert = async (form) => {
         body
     });
     const result = await returned.json(); //await JSON.parse(returned);
+
+    afterRequestInsert(result);
 }
+
+const afterRequestInsert = (data) => {
+    console.log(data);
+
+    sqlRpt = data['sql']
+    if (sqlRpt['estado'] == 1) {
+        $.niftyNoty({
+            type: 'success',
+            container: '#alert-form-insert',
+            html: '<strong>Bien hecho!</strong> ' + sqlRpt['mensaje'],
+            focus: false,
+            timer: 8000
+        });
+    } else {
+        $.niftyNoty({
+            type: 'danger',
+            container: '#alert-form-insert',
+            html: '<strong>Oh cielos!</strong> ' + sqlRpt['messageUser'],
+            focus: false,
+        });
+        console.log('No');
+    }
+};
 /*
 iptinsertCZona.addEventListener('keyup', function(e) {
     var costLaborSelect = iptinsertCZona.options[iptinsertCZona.selectedIndex];
