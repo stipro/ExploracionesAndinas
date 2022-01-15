@@ -120,7 +120,7 @@ $json_a = json_decode($string, true);
 						                </ul>
 						            </li>
 
-                                    <!--Menu list item-->
+                                    <!--Menu list item
 						            <li class="active-sub">
 						                <a href="#">
 						                    <i class="ti-bookmark-alt"></i>
@@ -128,12 +128,12 @@ $json_a = json_decode($string, true);
 											<i class="arrow"></i>
 						                </a>
 						
-                                        <!--Submenu-->
+                                        <!--Submenu-
                                         <ul class="collapse in">
 											<li>
                                                 <a href="#">Vales de explosivos<i class="arrow"></i></a>
 
-                                                <!--Submenu-->
+                                                <!--Submenu
                                                 <ul class="collapse">
                                                     <li><a href="./valeExplosivos.php">Ingreso de Vales de Explosivos</a></li>
                                                     <li><a href="#">Consulta de vales de Explosivos</a></li>
@@ -142,7 +142,7 @@ $json_a = json_decode($string, true);
                                             <li>
                                                 <a href="#">Operación Mina<i class="arrow"></i></a>
 
-                                                <!--Submenu-->
+                                                <!--Submenu-
                                                 <ul class="collapse">
                                                     <li><a href="./operacionMina.php">Registro</a></li>
                                                     <li><a href="#">Consulta</a></li>
@@ -151,7 +151,7 @@ $json_a = json_decode($string, true);
                                             <li>
                                                 <a href="#">Extraccion Mineral<i class="arrow"></i></a>
 
-                                                <!--Submenu-->
+                                                <!--Submenu--
                                                 <ul class="collapse">
                                                     <li><a href="./extraccionMineral.php">Inicio</a></li>
                                                     <li><a href="./extraccionMineral.php">Registro</a></li>
@@ -161,10 +161,98 @@ $json_a = json_decode($string, true);
                                             <li>
                                                 <a href="#">Operacion de Equipos<i class="arrow"></i></a>
 
-                                                <!--Submenu-->
+                                                <!--Submenu--
                                                 <ul class="collapse">
                                                     <li><a href="#">Registro</a></li>
                                                     <li><a href="#">Consulta</a></li>
+                                                </ul>
+                                            </li>
+                                            <!--
+                                            <li><a href="./operacionMina.php">Registro Operación Mina</a></li>
+                                            <li><a href="./extraccionMineral.php">Registro de Extraccion de Mineral</a></li>
+                                            <li><a href="#">Registro de Operación de Equipos</a></li>--
+                                            <li class="list-divider"></li>
+											<li><a href="#">Salir del Sistema</a></li>
+                                        </ul>
+						            </li>-->
+                                    <!--Menu list item-->
+                                    <li>
+                                        <a href="#">
+                                            <img src="./../icons/mina-de-oro.svg" alt="triangle with all three sides equal" height="auto" width="25px" style="padding:0 10px 0 0;"/>
+                                            <!--<i class="demo-pli-tactic"></i>-->
+                                            <span class="menu-title">Mina</span>
+                                            <i class="arrow"></i>
+                                        </a>
+
+                                        <!--Submenu-->
+                                        <ul class="collapse in">
+                                            <li>
+                                                <a href="#" style="padding:8px 20px 8px 45px !important;"><img src="./../icons/registro.svg" alt="triangle with all three sides equal" height="auto" width="30px" style="padding:0 10px 0 0;"/>
+                                                    Registro de Datos<i class="arrow"></i></a>
+
+                                                <!--Submenu-->
+                                                <ul class="collapse in">
+                                                    <li>
+                                                        <a href="./valeExplosivos.php"><img src="./../icons/billete-de-descuento.svg" alt="triangle with all three sides equal" height="auto" width="30px" style="padding:0 10px 0 0;"/>
+                                                            Vales de explosivos</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./operacionMina.php">Operación Mina</i></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./extraccionMineral.php">Extraccion Mineral</i></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Operacion de Equipos</i></a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">Control Operación Minera<i class="arrow"></i></a>
+
+                                                <!--Submenu-->
+                                                <ul class="collapse">
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                    <li class="list-divider"></li>
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">Consultas y Reportes<i class="arrow"></i></a>
+
+                                                <!--Submenu-->
+                                                <ul class="collapse">
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                    <li class="list-divider"></li>
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">Mantenimiento de Tablas<i class="arrow"></i></a>
+
+                                                <!--Submenu-->
+                                                <ul class="collapse">
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                    <li class="list-divider"></li>
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">Miscelaneos<i class="arrow"></i></a>
+
+                                                <!--Submenu-->
+                                                <ul class="collapse">
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                    <li class="list-divider"></li>
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                    <li><a href="#">Third Level Item</a></li>
                                                 </ul>
                                             </li>
                                             <!--
@@ -174,8 +262,7 @@ $json_a = json_decode($string, true);
                                             <li class="list-divider"></li>
 											<li><a href="#">Salir del Sistema</a></li>
                                         </ul>
-						            </li>
-
+                                    </li>
                                     <!--Menu list item-->
 						            <li class="">
 						                <a href="#">
@@ -185,7 +272,7 @@ $json_a = json_decode($string, true);
 						                </a>
 						
                                         <!--Submenu-->
-                                        <ul class="collapse in">
+                                        <ul class="collapse">
 											<li>
                                                 <a href="#"><i class="fa fa-group"></i>Usuarios<i class="arrow"></i></a>
                                                 <!--Submenu-->
@@ -198,7 +285,7 @@ $json_a = json_decode($string, true);
                                             <li>
                                                 <a href="#">Perfil<i class="arrow"></i></a>
                                                 <!--Submenu-->
-                                                <ul class="collapse in">
+                                                <ul class="collapse">
                                                     <li><a href="#">Ingreso Perfil</a></li>
                                                     <li><a href="#">Consulta de Perfil</a></li>
                                                 </ul>
@@ -206,7 +293,7 @@ $json_a = json_decode($string, true);
                                             <li>
                                                 <a href="#">Rol<i class="arrow"></i></a>
                                                 <!--Submenu-->
-                                                <ul class="collapse in">
+                                                <ul class="collapse">
                                                     <li><a href="#">Ingreso Rol</a></li>
                                                     <li><a href="#">Consulta de Rol</a></li>
                                                 </ul>
@@ -214,7 +301,7 @@ $json_a = json_decode($string, true);
                                             <li>
                                                 <a href="#">Modulo<i class="arrow"></i></a>
                                                 <!--Submenu-->
-                                                <ul class="collapse in">
+                                                <ul class="collapse">
                                                     <li><a href="#">Ingreso Modulo</a></li>
                                                     <li><a href="#">Consulta de v</a></li>
                                                 </ul>
@@ -222,7 +309,7 @@ $json_a = json_decode($string, true);
                                             <li>
                                                 <a href="#">Menu<i class="arrow"></i></a>
                                                 <!--Submenu-->
-                                                <ul class="collapse in">
+                                                <ul class="collapse">
                                                     <li><a href="#">Ingreso Menu</a></li>
                                                     <li><a href="#">Consulta de Menu</a></li>
                                                 </ul>
@@ -230,7 +317,7 @@ $json_a = json_decode($string, true);
                                             <li>
                                                 <a href="#">Submenu<i class="arrow"></i></a>
                                                 <!--Submenu-->
-                                                <ul class="collapse in">
+                                                <ul class="collapse">
                                                     <li><a href="#">Ingreso Submenu</a></li>
                                                     <li><a href="#">Consulta de Submenu</a></li>
                                                 </ul>
@@ -238,7 +325,7 @@ $json_a = json_decode($string, true);
                                             <li>
                                                 <a href="#">Asignacion Perfil<i class="arrow"></i></a>
                                                 <!--Submenu-->
-                                                <ul class="collapse in">
+                                                <ul class="collapse">
                                                     <li><a href="#">Ingreso Asignacion Perfil</a></li>
                                                     <li><a href="#">Consulta de Asignacion Perfil</a></li>
                                                 </ul>
