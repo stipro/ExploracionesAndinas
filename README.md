@@ -145,3 +145,7 @@ Note right of John: Bob thinks a long<br/>long time, so long<br/>that the text d
 
 Bob-->Alice: Checking with John...
 Alice->John: Yes... John, how are you?
+
+¿Qué es un .htaccess?
+
+El .htaccess (acceso de hiper-texto) es el nombre por defecto del archivo de configuración de directorios de Apache. Se utiliza para personalizar la configuración de directivas y parámetros definidos en el archivo de configuración principal del alojamiento.
