@@ -9,6 +9,9 @@ var indexTourSelect = 0;
 var endTour = 3;
 // FILAS A VISUALIZAR
 var rowstoDisplay = 5;
+
+const alertInsert = document.getElementById("alert-form-insert");
+
 // Declaramos BOTONES
 const btnAgregar = document.getElementById("btn-Agregar");
 const btnInsertar = document.getElementById("mbtn-insert");
@@ -309,6 +312,7 @@ const requestInsert = async (form) => {
 
 // 
 const afterRequestInsert = (data) => {
+    alertInsert.innerHTML = '';
     sqlRpt = data['sql']
     if (sqlRpt['estado'] == 1) {
         $.niftyNoty({

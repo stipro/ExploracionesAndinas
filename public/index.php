@@ -6,6 +6,7 @@
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
 </head>
 <body>
+    <!--<h3>Página no encontrada</h3>-->
     <?php require_once("./controllers/CtrlMain.php"); ?>
 </body>
 </html>

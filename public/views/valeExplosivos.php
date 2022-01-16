@@ -1412,14 +1412,14 @@ session_start();
                                     </colgroup>
                                     <thead>
                                         <tr>
-                                            <th data-sort-initial="true" data-toggle="true">Código</th>
-                                            <th>Nombre del Material de Explosivo</th>
-                                            <th data-hide="phone, tablet">Unid. Medida</th>
+                                            <th style="width:20%" data-sort-initial="true" data-toggle="true">Código</th>
+                                            <th style="width:30%">Nombre del Material de Explosivo</th>
+                                            <th style="width:20%" data-hide="phone, tablet">Unid. Medida</th>
                                             <th data-hide="phone, tablet">Cantidad</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbody-tareo">
-                                        <tr>
+                                        <tr id="tr-tbody-tareo">
                                             <td>SSO 000631</td>
                                             <td>Emulnor 3000</td>
                                             <td>CAR</td>
@@ -1427,7 +1427,7 @@ session_start();
                                                 <input type="number" class="form-control" value="0" id="val_explosivo-text-form-emulnor_tresmil" name="">
                                             </td>                                                        
                                         </tr>
-                                        <tr>
+                                        <tr id="tr-tbody-tareo">
                                             <td>SSO 000568</td>
                                             <td>Dinamita Pulverulenta 65_7/8</td>
                                             <td>CAR</td>
@@ -1435,7 +1435,7 @@ session_start();
                                                 <input type="number" class="form-control" value="0" id="val_explosivo-text-form-valdin_pulv" name="">
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr id="tr-tbody-tareo">
                                             <td>SSO 000632</td>
                                             <td>Carmex 7</td>
                                             <td>CAR</td>
@@ -1443,7 +1443,7 @@ session_start();
                                                 <input type="number" class="form-control" value="0" id="val_explosivo-text-form-carmexsiete" name="">
                                             </td>                                                        
                                         </tr>
-                                        <tr>
+                                        <tr id="tr-tbody-tareo">
                                             <td>SSO 000633</td>
                                             <td>Carmex 8</td>
                                             <td>CAR</td>
@@ -1451,7 +1451,7 @@ session_start();
                                                 <input type="number" class="form-control" value="0" id="val_explosivo-text-form-carmexocho" name="">
                                             </td>                                                        
                                         </tr>
-                                        <tr>
+                                        <tr id="tr-tbody-tareo">
                                             <td>SSO 000438</td>
                                             <td>Mecha Rapida</td>
                                             <td>MTS</td>
@@ -1459,7 +1459,7 @@ session_start();
                                                 <input type="number" class="form-control" value="0" id="val_explosivo-text-form-mecha_rapida_zdiesocho" name="">
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr id="tr-tbody-tareo">
                                             <td>SSO 000436</td>
                                             <td>Mecha Lenta</td>
                                             <td>MTS</td>
@@ -1467,7 +1467,7 @@ session_start();
                                                 <input type="number" class="form-control" value="0" id="val_explosivo-text-form-mecha_lenta" name="">
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr id="tr-tbody-tareo">
                                             <td>SSO 000454</td>
                                             <td>Fulminantes</td>
                                             <td>UND</td>
@@ -1475,7 +1475,7 @@ session_start();
                                                 <input type="number" class="form-control" value="0" id="val_explosivo-text-form-fuminante_ocho" name="">
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr id="tr-tbody-tareo">
                                             <td>SSO 000514</td>
                                             <td>Conector para Mecha</td>
                                             <td>UND</td>
@@ -1483,7 +1483,7 @@ session_start();
                                                 <input type="number" class="form-control" value="0" id="val_explosivo-text-form-conecto_mecha" name="">
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr id="tr-tbody-tareo">
                                             <td>SSO 000613</td>
                                             <td>Block de Sugeción</td>
                                             <td>UND</td>
@@ -1491,7 +1491,7 @@ session_start();
                                                 <input type="number" class="form-control" value="0" id="val_explosivo-text-form-blSugecion" name="">
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr id="tr-tbody-tareo">
                                             <td>MTC000077</td>
                                             <td>Car. cortado 13 cm</td>
                                             <td>UND</td>
@@ -1499,7 +1499,7 @@ session_start();
                                                 <input type="number" class="form-control" value="0" id="val_explosivo-text-form-carcortado13" name="">
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr id="tr-tbody-tareo">
                                             <td>SSO 000439</td>
                                             <td>Dinamita Semigelatinosa de 65%</td>
                                             <td>CAR</td>

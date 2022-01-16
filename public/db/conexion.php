@@ -11,18 +11,8 @@ class Conexion
     {
         try
         {
-            // Obtenemos URL HTTP
-            function get_url(){
-                if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
-                    $url = "https://"; 
-                }
-                else{
-                    $url = "http://"; 
-                }
-                return $url . $_SERVER['HTTP_HOST'] .  $_SERVER['REQUEST_URI'];
-                //return $_SERVER['REQUEST_URI'];
-            }
-            $url_actual = get_url();
+
+            $url_actual = $this->get_url();
             $separador = "/"; // Usar una cadena
             $ubicaciones = explode($separador, $url_actual);
             if($ubicaciones[2] == 'localhost'){
@@ -53,6 +43,17 @@ class Conexion
             return $con;
         }
     }
+    public function get_url(){
+        if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+            $url = "https://"; 
+        }
+        else{
+            $url = "http://"; 
+        }
+        return $url . $_SERVER['HTTP_HOST'] .  $_SERVER['REQUEST_URI'];
+        //return $_SERVER['REQUEST_URI'];
+    }
+
     protected function ConsultaSimple(string $query): array
     {
         return $this->db->query($query)->fetchAll(PDO::FETCH_ASSOC);

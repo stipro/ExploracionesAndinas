@@ -29,7 +29,10 @@ if($_POST){
                 $datonVale = $formRequest['n_vale'];
                 $datoTurno = $formRequest['turno'];
                 $datopreImpreso = $formRequest['pre_impreso'];
-                $idLabor = $formRequest['id_labor'];
+
+                $idLabor = array_key_exists('id_labor', $formRequest) ? $formRequest['id_labor'] : '';
+
+                //$idLabor = $formRequest['id_labor'];
                 $datoTipDisparo = $formRequest['tip_disparo'];
                 $idPerforista = $formRequest['id_Perforista'];
                 $datotipEn = $formRequest['tip_en'];
@@ -54,39 +57,43 @@ if($_POST){
                 $datoconecMecha = $formRequest['me_conector_mecha'];
                 $datoBlockSegacion = $formRequest['me_BlockSegecion'];
                 $datoCarCortrece = $formRequest['me_Carcortadotrece'];
-                $rptSql = $table->insert(
-                    $idDigitador, 
-                    $datoRegistro,
-                    $idZona,
-                    $datonVale,
-                    $datoTurno,
-                    $datopreImpreso,
-                    $idLabor,
-                    $datoTipDisparo,
-                    $idPerforista,
-                    $datotipEn,
-                    $datoBarra,
-                    $datoLgt,
-                    $datonTaladro,
-                    $datotalVacio,
-                    $datopiePerf,
-                    $datopieReal,
-                    $datonnMaquinas,
-                    $datoemulTresmil,
-                    $datoDinaSemi,
-                    $datocalDinaSemi,
-                    $datoDinaPulv,
-                    $datocalDinaPulv,
-                    $datosumSemiPulv,                    
-                    $datCarmexsiete,
-                    $datCarmexocho,
-                    $datomechaRapida,
-                    $datomechaLenta,
-                    $datofulmOcho,
-                    $datoconecMecha,
-                    $datoBlockSegacion,
-                    $datoCarCortrece);
-                    $rptSql;
+                if (!empty($idDigitador) && !empty($datoRegistro) && !empty($idZona) && !empty($datonVale) && !empty($datoTurno) && !empty($datopreImpreso) && !empty($idLabor)&& !empty($datoTipDisparo) && !empty($idPerforista) && !empty($datotipEn) && !empty($datoBarra) && !empty($datoLgt) && !empty($datonTaladro)&& !empty($datotalVacio) && !empty($datopiePerf) && !empty($datopieReal)&& !empty($datonnMaquinas) && !empty($datoemulTresmil) && !empty($datoDinaSemi) && !empty($datocalDinaSemi) && !empty($datoDinaPulv) && !empty($datocalDinaPulv)&& !empty($datosumSemiPulv)) 
+                    {
+                        $rptSql = $table->insert(
+                            $idDigitador, 
+                            $datoRegistro,
+                            $idZona,
+                            $datonVale,
+                            $datoTurno,
+                            $datopreImpreso,
+                            $idLabor,
+                            $datoTipDisparo,
+                            $idPerforista,
+                            $datotipEn,
+                            $datoBarra,
+                            $datoLgt,
+                            $datonTaladro,
+                            $datotalVacio,
+                            $datopiePerf,
+                            $datopieReal,
+                            $datonnMaquinas,
+                            $datoemulTresmil,
+                            $datoDinaSemi,
+                            $datocalDinaSemi,
+                            $datoDinaPulv,
+                            $datocalDinaPulv,
+                            $datosumSemiPulv,                    
+                            $datCarmexsiete,
+                            $datCarmexocho,
+                            $datomechaRapida,
+                            $datomechaLenta,
+                            $datofulmOcho,
+                            $datoconecMecha,
+                            $datoBlockSegacion,
+                            $datoCarCortrece);
+                            $rptSql;
+                    }
+                
                 break;
             case "editar":
                 $formRequest = $arrayForm['datos'];
@@ -103,6 +110,7 @@ if($_POST){
                 break;
         }
     } catch (Exception $e) {
+        echo "Se encontro un error";
         //throw $th;
     }
 }

@@ -30,7 +30,7 @@ if($_POST){
                 $dato3 = $formRequest['datos_guardia'];
                 $dato4 = $formRequest['datos_nvale'];
                 $dato5 = $formRequest['datos_actividad'];
-                $dato6 = $formRequest['id_Labor'];
+                $dato6 = array_key_exists('id_Labor', $formRequest) ? $formRequest['id_Labor'] : '';
                 $dato7 = $formRequest['tareas_l'];
                 $dato8 = $formRequest['tareas_lpv'];
                 $dato9 = $formRequest['tareas_stto'];
@@ -54,7 +54,7 @@ if($_POST){
                     } 
                 else 
                     {
-                        $rptSql = 'VACIO';
+                        $rptSql = false;
                     }
                 //  Modelo ()
                 require_once '../models/oper_tareas.php';
@@ -62,6 +62,7 @@ if($_POST){
                 $tableManager2 = new operTareas();
                 // Almacena Array en variable
                 $formRequest2 = $formRequest['tareas'];
+                var_dump($rptSql);
                 // Id Operacion Mina
                 $idPrincipal = $rptSql['id'];
                 // Resultado operacion Mina

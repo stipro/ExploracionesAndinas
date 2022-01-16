@@ -198,7 +198,7 @@ class ValeExplosivos extends Conexion
             }
             else{
                 echo "\nPDO::errorInfo():\n";
-                print_r($result->errorInfo());
+                //print_r($result->errorInfo());
             }
             
 
