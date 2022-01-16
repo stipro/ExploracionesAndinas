@@ -3,6 +3,7 @@
 	if(!isset($_SESSION['username']))
 	{
 		//echo 'No se inicio session';
+		//header("location:./index.php");
 	}
 	else{
 		header("location:./views/tareo.php");
