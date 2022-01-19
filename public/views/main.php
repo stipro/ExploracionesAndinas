@@ -1,4 +1,5 @@
 <?php
+    
     // Obtenemos URL HTTP
     function get_url(){
         if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
@@ -26,6 +27,8 @@
     $validacionSession =  $_SESSION["name"] ? $_SESSION["name"] : 'No se inicio';
     $string = file_get_contents("./../data-logo.json");
     $json_a = json_decode($string, true);
+    include_once ("../menu.php");
+    //$valrepet = array_count_values($rptSql[0]);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -470,7 +473,11 @@
                 <!--Page content-->
                 <!--===================================================-->
                 <div id="page-content">
-
+                    <pre>
+                        <?php
+                            var_dump($rptSql);
+                        ?>
+                    </pre>
                 <div class="row">
 					        <div class="col-md-2 col-md-offset-3">
 					            <div class="panel">
@@ -802,7 +809,7 @@
             
             <!--MAIN NAVIGATION-->
             <!--===================================================-->
-            <?php include_once "../menu.php"; ?>
+            <?php echo $templateNav ?>
             <!--===================================================-->
             <!--END MAIN NAVIGATION-->
 

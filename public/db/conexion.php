@@ -59,6 +59,11 @@ class Conexion
         return $this->db->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    protected function ConsultasPesadas(string $query): array
+    {
+        return $this->db->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     protected function ConsultaCompleja(string $table, string $where, array $array): array
     {
         $query  = "SELECT * FROM {$table} {$where}";

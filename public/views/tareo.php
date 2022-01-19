@@ -1,4 +1,5 @@
 <?php
+    
     session_start();
     if (!isset($_SESSION["username"])) {
         //echo 'No se inicio session ';
@@ -9,6 +10,7 @@
     $validacionSession =  $_SESSION["name"] ? $_SESSION["name"] : 'No se inicio';
     $string = file_get_contents("./../data-logo.json");
     $json_a = json_decode($string, true);
+    include_once "../menu.php";
 ?>
 
 <!DOCTYPE html>
@@ -455,7 +457,6 @@
 					            <div class="panel-heading">
 					                <h3 class="panel-title">TAREO</h3>
 					            </div>
-                                <input id="user-logout" type="button" value="Cerra Session">
 					            <!--Data Table-->
 					            <!--===================================================-->
 					            <div class="panel-body">
@@ -864,7 +865,7 @@
             
             <!--MAIN NAVIGATION-->
             <!--===================================================-->
-            <?php include_once "../menu.php"; ?>
+            <?php echo $templateNav ?>
             <!--===================================================-->
             <!--END MAIN NAVIGATION-->
 

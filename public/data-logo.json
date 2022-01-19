@@ -2,5 +2,8 @@
     "Empresa": {
         "url": ".\\..\\img\\logo_letra.png",
         "nombre": "Exploraciones Andinas S.A.C."
+    },
+    "Modulos": {
+        "Nombre": "Tare"
     }
 }

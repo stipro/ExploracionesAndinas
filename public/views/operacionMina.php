@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
     if (!isset($_SESSION["username"])) {
         //echo 'No se inicio session ';
         
@@ -9,6 +9,7 @@ session_start();
     $validacionSession =  $_SESSION["name"] ? $_SESSION["name"] : 'No se inicio';
     $string = file_get_contents("./../data-logo.json");
     $json_a = json_decode($string, true);
+    include_once ("../menu.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -121,7 +122,7 @@ session_start();
                     <a href="index.html" class="navbar-brand">
                         <img src="<?php echo $json_a['Empresa']['url'];?>" alt="Nifty Logo" class="brand-icon">
                         <div class="brand-title">
-                            <span class="brand-text"><?php echo $json_a['Empresa']['nombre'];?></span>
+                            <span class="brand-text"><?php echo $json_a['Empresa']['nombre']?></span>
                         </div>
                     </a>
                 </div>
@@ -870,7 +871,7 @@ session_start();
             
             <!--MAIN NAVIGATION-->
             <!--===================================================-->
-            <?php include_once "../menu.php"; ?>
+            <?php echo $templateNav ?>
             <!--===================================================-->
             <!--END MAIN NAVIGATION-->
 

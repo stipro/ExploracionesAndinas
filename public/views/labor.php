@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    if (!isset($_SESSION["username"])) {
+        //echo 'No se inicio session ';
+        
+        header("location:../index.php");
+    } else {
+    }
+    $validacionSession =  $_SESSION["name"] ? $_SESSION["name"] : 'No se inicio';
+    include_once ("../menu.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -854,7 +865,7 @@
             
             <!--MAIN NAVIGATION-->
             <!--===================================================-->
-            <?php include_once "../menu.php"; ?>
+            <?php echo $templateNav ?>
             <!--===================================================-->
             <!--END MAIN NAVIGATION-->
 

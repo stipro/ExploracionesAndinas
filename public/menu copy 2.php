@@ -4,7 +4,7 @@
     include('./../models/nav.php');
     $tableManager = new Nav();
     $rptSql = $tableManager->getAll();
-    $templateNav = '<!--MAIN NAVIGATION-->
+    $template = '<!--MAIN NAVIGATION-->
     <!--===================================================-->
     <nav id="mainnav-container">
         <div id="mainnav">
@@ -34,7 +34,7 @@
                                     <span class="pull-right dropdown-toggle">
                                         <i class="dropdown-caret"></i>
                                     </span>
-                                    <p class="mnp-name">' . $validacionSession . '</p>
+                                    <p class="mnp-name"><?php echo $validacionSession ?></p>
                                     <!--<span class="mnp-desc">prueba.cha@themeon.net</span>-->
                                 </a>
                             </div>
@@ -94,7 +94,7 @@
                                 <!--Category name-->
                                 <li class="list-header">Modulos</li>
                             
-                                <!--Menu list item--
+                                <!--Menu list item-->
                                 <li class="">
                                     <a href="#">
                                         <i class="ti-bookmark-alt"></i>
@@ -102,109 +102,131 @@
                                         <i class="arrow"></i>
                                     </a>
                             
-                                    <!--Submenu--
+                                    <!--Submenu-->
                                     <ul class="collapse">
                                         <li><a href="tareo.php">Main</a></li>
                                         <li><a href="labor.php">Labor</a></li>
                                         <li><a href="trabajador.php">Trabajador</a></li>
-                                        <!--<li><a href="zona.php">Zona</a></li>
+                                        <!--<li><a href="zona.php">Zona</a></li>-->
                                     </ul>
-                                </li>-->
+                                </li>
                                 <!--Modulo list item-->';
-                                $modulo = 'false';
-                                $menu ='false';
-                                $menu_nivel2 =$rptSql[0]['nombre_menu'];
-                                $submenu = 'false';
-                                $template_Modulo = '';
-                                $template_Menu = '';
-                                $template_subMenu = '';
-                                // Recorrer Modulos
-                                for ($mo=0; $mo < count($rptSql); $mo++) {
-                                    
-                                    // Almaceno modulo en variable
-                                    $nextModulo = $rptSql[$mo]["nombre_modulo"];
-                                    
-                                    // Comparacion
-                                    if($modulo != $nextModulo){
-
-                                        // Recorrer Menu
-                                        for ($me=0; $me < count($rptSql); $me++) {
-
-                                            // Almaceno modulo en variable
-                                            $nextMenu = $rptSql[$me]["nombre_menu"];
-                                            // Comparacion
-                                            if ($rptSql[$mo]["nombre_modulo"] == $rptSql[$me]["nombre_modulo"]) {
-                                                // Comparacion
-                                                if($menu != $nextMenu){
-                                                    // Recorrer subMenu
-                                                    for ($sme=0; $sme < count($rptSql); $sme++) {
-                                                        // Almaceno modulo en variable
-                                                        $nextsubMenu = $rptSql[$me]["nombre_submenu"];
-                                                        if ( $rptSql[$me]["nombre_menu"] == $rptSql[$sme]["nombre_menu"]) {
-                                                            if ($submenu != $nextsubMenu) {
-                                                                $template_subMenu .= '<li>
-                                                                        <a href="';
-                                                                        if ($rptSql[$me]["link_submenu"]) {
-                                                                            $template_subMenu .=$rptSql[$sme]["link_submenu"];
-                                                                        }else{
-                                                                            $template_subMenu .= './';
-                                                                        }
-                                                            $template_subMenu .= '">' . $rptSql[$sme]["nombre_submenu"] . '</a>
-                                                                    </li>';
-                                                                
-                                                            }
-                                                        }
-                                                    }
-                                                    $template_Menu .= ' 
-                                                                        <li>
-                                                                            <a href="';
-                                                                            if ($rptSql[$me]["nombre_menu"]) {
-                                                                                $template_Menu .= $rptSql[$me]["link_menu"];
-                                                                            }else{
-                                                                                $template_Menu .= '#';
-                                                                            }
-                                                            $template_Menu .= '">
-                                                                                ' . $rptSql[$me]["nombre_menu"];
-                                                                                if ($rptSql[$me]["nombre_submenu"]) {
-                                                                                    $template_Menu .= '<i class="arrow"> </i>';
-                                                                                }
-                                                        $template_Menu .= '</a>';
-                                                        if ($rptSql[$me]["nombre_submenu"]) {
-                                                            $template_Menu .= ' <!--Submenu-->
-                                                                            <ul class="collapse">' . $template_subMenu .'</ul>';
-                                                                        
-                                                        }
-                                                        $template_Menu .= '</li>';
-                                                        $template_subMenu = '';
-                                                }
-                                                
-                                            }
-                                            $menu = $nextMenu;
-                                        }
-                                        
-                                        $template_Modulo .= '<!--Menu list item-->
-                                            <li>
-                                                <a href="#">
-                                                    <span class="menu-title">' . $rptSql[$mo]["nombre_modulo"] .'</span>';
-                                                    if ($rptSql[$mo]["nombre_menu"]) {
-                                                        $template_Modulo .= '<i class="arrow">  </i>';
-                                                    }
-                                                    
-                            $template_Modulo .= '</a>';
-                        if ($rptSql[$mo]["nombre_menu"]) {
-                            $template_Modulo .= '<!--Submenu-->
-                                                <ul class="collapse">
-                                                    ' . $template_Menu . '
-                                                </ul>';
-                        }
-                        
-                         $template_Modulo .= '</li>';
-                                        $template_Menu = '';
-                                    }
-                                    $modulo = $nextModulo;
-                                }
-                                $templateNav .= $template_Modulo . '<!--Menu list item-->
-                                        
+                                foreach ($rptSql as $row) {
+                                    $template .= '<li>
+                                                    <a href="#">
+                                                        <!--<i class="demo-pli-tactic"></i>-->
+                                                        <span class="menu-title">' . '-' . '</span>
+                                                        <i class="arrow"></i>
+                                                    </a>
+                                                    <!--Submenu list item-->
+                                                    <ul class="collapse">
+                                                        <li>
+                                                        <a href="#">' . '-' . '
+                                                            <i class="arrow"></i>
+                                                        </a>
+                                            <!--Submenu-->';                                            
+                                            foreach ($rptSql as $row) {
+                                                if($row["nombre_menu"] == 'Registro de datos'){
+                                                    $template .= '
+                                                    <ul class="collapse">
+                                                        <li>
+                                                            <a href="./valeExplosivos.php">' . $row["nombre_submenu"] . '</a>
+                                                        </li>
+                                                    </ul>';
+                                                }                                                
+                                              }
+                                            $template .= '      
+                                        </li>
+                                    </ul>
+                                </li>';
+                                $template .= '<!--Menu list item-->
+                                        <li>
+                                            <a href="#">
+                                                <img src="./../icons/mina-de-oro.svg" alt="triangle with all three sides equal" height="auto" width="25px" style="padding:0 10px 0 0;"/>
+                                                <!--<i class="demo-pli-tactic"></i>-->
+                                                <span class="menu-title">Mina</span>
+                                                <i class="arrow"></i>
+                                            </a>
+    
+                                            <!--Submenu-->
+                                            <ul class="collapse">
+                                                <li>
+                                                    <a href="#" style="padding:8px 20px 8px 45px !important;"><img src="./../icons/registro.svg" alt="triangle with all three sides equal" height="auto" width="30px" style="padding:0 10px 0 0;"/>
+                                                        Registro de Datos<i class="arrow"></i></a>
+    
+                                                    <!--Submenu-->
+                                                    <ul class="collapse">
+                                                        <li>
+                                                            <a href="./valeExplosivos.php"><img src="./../icons/billete-de-descuento.svg" alt="triangle with all three sides equal" height="auto" width="30px" style="padding:0 10px 0 0;"/>
+                                                                Vales de explosivos</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="./operacionMina.php">Operación Mina</i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="./extraccionMineral.php">Extraccion Mineral</i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Operacion de Equipos</i></a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Control Operación Minera<i class="arrow"></i></a>
+    
+                                                    <!--Submenu-->
+                                                    <ul class="collapse">
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                        <li class="list-divider"></li>
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Consultas y Reportes<i class="arrow"></i></a>
+    
+                                                    <!--Submenu-->
+                                                    <ul class="collapse">
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                        <li class="list-divider"></li>
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Mantenimiento de Tablas<i class="arrow"></i></a>
+    
+                                                    <!--Submenu-->
+                                                    <ul class="collapse">
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                        <li class="list-divider"></li>
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Miscelaneos<i class="arrow"></i></a>
+    
+                                                    <!--Submenu-->
+                                                    <ul class="collapse">
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                        <li class="list-divider"></li>
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                        <li><a href="#">Third Level Item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!--
+                                                <li><a href="./operacionMina.php">Registro Operación Mina</a></li>
+                                                <li><a href="./extraccionMineral.php">Registro de Extraccion de Mineral</a></li>
+                                                <li><a href="#">Registro de Operación de Equipos</a></li>-->
+                                                <li class="list-divider"></li>
+                                                <li><a href="#">Salir del Sistema</a></li>
+                                            </ul>
+                                        </li>
                                         <!--Menu list item-->
                                         <li class="">
                                             <a href="#">

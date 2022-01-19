@@ -1,5 +1,6 @@
 <?php
-session_start();
+    
+    session_start();
     if (!isset($_SESSION["username"])) {
         //echo 'No se inicio session ';
         
@@ -7,6 +8,7 @@ session_start();
     } else {
     }
     $validacionSession =  $_SESSION["name"] ? $_SESSION["name"] : 'No se inicio';
+    include_once "../menu.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -869,7 +871,7 @@ session_start();
             
             <!--MAIN NAVIGATION-->
             <!--===================================================-->
-            <?php include_once "../menu.php"; ?>
+            <?php echo $templateNav ?>
             <!--===================================================-->
             <!--END MAIN NAVIGATION-->
 
