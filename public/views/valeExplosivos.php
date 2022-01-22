@@ -1302,108 +1302,9 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="row">
-                        <div class="col-md-12">
-                            <p class="bord-btm pad-ver text-main text-bold">Registro de Perforadoras</p>
-                            <div class="row">
-                                <div class="col-md-2"> 
-
-                                        <!-- FORMULARIO -->
-                                        <div class="">
-                                            <label for="val_explosivo-input-form-barra" class="col-md-3 control-label">Barra</label>
-                                            <div class="col-md-3">
-                                                <!-- Default choosen -->
-                                                <!--===================================================-->
-                                                <select class="form-control" data-placeholder="Barra" id="val_explosivo-input-form-barra" tabindex="2">
-                                                    <option value="" selected></option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="8">8</option>
-                                                </select>
-                                                <!--===================================================-->
-                                            </div>
-                                        </div>
-                                        <!-- FORMULARIO -->
-                                        <div class="">
-                                            <label for="val_explosivo-input-form-lgt_mt" class="col-md-3 control-label">Lgt (mt)</label>
-                                            <div class="col-md-3">
-                                                <input class="form-control" value="0" name="" id="val_explosivo-input-form-lgt_mt">
-                                            </div>
-                                        </div>  
-
-                                </div>
-                                <div class="col-md-2">
-                                    <!-- FORMULARIO -->
-                                    <div class="form-group">
-                                        <label for="val_explosivo-input-form-n_taladro" class="col-md-4 control-label">N° Taladros</label>
-                                        <div class="col-md-8">
-                                            <input class="form-control" value="0" name="" id="val_explosivo-input-form-n_taladro">
-                                        </div>
-                                    </div>    
-                                </div>
-                                <div class="col-md-2">
-                                    <!-- FORMULARIO -->
-                                    <div class="form-group">
-                                        <label for="val_explosivo-input-form-tal_vacio" class="col-md-4 control-label">Tal_Vacio</label>
-                                        <div class="col-md-8">
-                                            <input class="form-control" value="0" name="" id="val_explosivo-input-form-tal_vacio">
-                                        </div>
-                                    </div>    
-                                </div>
-                                <div class="col-md-2">
-                                    <!-- FORMULARIO -->
-                                    <div class="form-group">
-                                        <label for="val_explosivo-input-form-pies_perf" class="col-md-4 control-label">Pies Perf</label>
-                                        <div class="col-md-8">
-                                        <input class="form-control" name="" id="val_explosivo-input-form-pies_perf" disabled>
-                                        </div>
-                                    </div>    
-                                </div>
-                                <div class="col-md-2">
-                                    <!-- FORMULARIO -->
-                                    <div class="form-group">
-                                        <label for="val_explosivo-input-form-pies_real" class="col-md-4 control-label">Pie Real</label>
-                                        <div class="col-md-8">
-                                        <input class="form-control" name="" id="val_explosivo-input-form-pies_real" disabled>
-                                        </div>
-                                    </div>    
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <!-- FORMULARIO -->
-                                        <label for="" class="col-md-3 control-label">N° Maquina</label>
-                                        <div class="col-md-9" id="contenedor-Perforista">
-                                            <select class="form-control chosenNMaquina" data-placeholder="Seleccione N° Maquinas" id="val_explosivo-text-form-nmaquinas" tabindex="2">
-                                                <option value=""></option>
-                                                <option value="">PA_20</option>
-                                                <option value="">PA_30</option>
-                                                <option value="">PA_36</option>
-                                                <option value="">PS_04</option>
-                                                <option value="">PS_05</option>
-                                                <option value="">PS_06</option>
-                                                <option value="">PS_07</option>
-                                                <option value="">PSS_01</option>
-                                                <option value="">PSecan_01</option>
-                                                <option value="">PSecan_02</option>
-                                                <option value="">PSecan_03</option>
-                                                <option value="">RNP_01</option>
-                                                <option value="">RNP_02</option>
-                                                <option value="">RNP_03</option>
-                                                <option value="">RNP_04</option>
-                                                <option value="">RNP_05</option>
-                                                <option value="">RNP_06</option>
-                                                <option value="">PT_03</option>
-                                                <option value="">PT_04</option>
-                                            </select>                                            
-                                        </div>                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <p class="bord-btm pad-ver text-main text-bold">Materiales de Explosivos</p>
                             <div class="row">
                                 <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="5">
@@ -1530,6 +1431,104 @@
                                     -->
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                        <p class="bord-btm pad-ver text-main text-bold">Registro de Perforadoras</p>
+                            <div class="row">
+                                <div class="col-md-4"> 
+
+                                        <!-- FORMULARIO -->
+                                        <div class="">
+                                            <label for="val_explosivo-input-form-barra" class="col-md-3 control-label">Barra</label>
+                                            <div class="col-md-3">
+                                                <!-- Default choosen -->
+                                                <!--===================================================-->
+                                                <select class="form-control" data-placeholder="Barra" id="val_explosivo-input-form-barra" tabindex="2">
+                                                    <option value="" selected></option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="8">8</option>
+                                                </select>
+                                                <!--===================================================-->
+                                            </div>
+                                        </div>
+                                        <!-- FORMULARIO -->
+                                        <div class="">
+                                            <label for="val_explosivo-input-form-lgt_mt" class="col-md-3 control-label">Lgt (mt)</label>
+                                            <div class="col-md-3">
+                                                <input class="form-control" value="0" name="" id="val_explosivo-input-form-lgt_mt">
+                                            </div>
+                                        </div>  
+
+                                </div>
+                                <div class="col-md-3">
+                                    <!-- FORMULARIO -->
+                                    <div class="form-group">
+                                        <label for="val_explosivo-input-form-n_taladro" class="col-md-4 control-label">N° Taladros</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" value="0" name="" id="val_explosivo-input-form-n_taladro">
+                                        </div>
+                                    </div>    
+                                </div>
+                                <div class="col-md-3">
+                                    <!-- FORMULARIO -->
+                                    <div class="form-group">
+                                        <label for="val_explosivo-input-form-tal_vacio" class="col-md-4 control-label">Tal_Vacio</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" value="0" name="" id="val_explosivo-input-form-tal_vacio">
+                                        </div>
+                                    </div>    
+                                </div>
+                                <div class="col-md-2">
+                                    <!-- FORMULARIO -->
+                                    <div class="form-group">
+                                        <label for="val_explosivo-input-form-pies_perf" class="col-md-4 control-label">Pies Perf</label>
+                                        <div class="col-md-8">
+                                        <input class="form-control" name="" id="val_explosivo-input-form-pies_perf" disabled>
+                                        </div>
+                                    </div>    
+                                </div>
+                                <div class="col-md-2">
+                                    <!-- FORMULARIO -->
+                                    <div class="form-group">
+                                        <label for="val_explosivo-input-form-pies_real" class="col-md-4 control-label">Pie Real</label>
+                                        <div class="col-md-8">
+                                        <input class="form-control" name="" id="val_explosivo-input-form-pies_real" disabled>
+                                        </div>
+                                    </div>    
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <!-- FORMULARIO -->
+                                        <label for="" class="col-md-3 control-label">N° Maquina</label>
+                                        <div class="col-md-9" id="contenedor-Perforista">
+                                            <select class="form-control chosenNMaquina" data-placeholder="Seleccione N° Maquinas" id="val_explosivo-text-form-nmaquinas" tabindex="2">
+                                                <option value=""></option>
+                                                <option value="">PA_20</option>
+                                                <option value="">PA_30</option>
+                                                <option value="">PA_36</option>
+                                                <option value="">PS_04</option>
+                                                <option value="">PS_05</option>
+                                                <option value="">PS_06</option>
+                                                <option value="">PS_07</option>
+                                                <option value="">PSS_01</option>
+                                                <option value="">PSecan_01</option>
+                                                <option value="">PSecan_02</option>
+                                                <option value="">PSecan_03</option>
+                                                <option value="">RNP_01</option>
+                                                <option value="">RNP_02</option>
+                                                <option value="">RNP_03</option>
+                                                <option value="">RNP_04</option>
+                                                <option value="">RNP_05</option>
+                                                <option value="">RNP_06</option>
+                                                <option value="">PT_03</option>
+                                                <option value="">PT_04</option>
+                                            </select>                                            
+                                        </div>                                        
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -4,8 +4,7 @@
     include('./../models/nav.php');
     $tableManager = new Nav();
     $rptSql = $tableManager->getAll();
-    $templateNav = '<!--MAIN NAVIGATION-->
-    <!--===================================================-->
+    $templateNav = '
     <nav id="mainnav-container">
         <div id="mainnav">
             <!--OPTIONAL : ADD YOUR LOGO TO THE NAVIGATION-->
@@ -289,7 +288,5 @@
                         <!--End menu-->
     
                     </div>
-                </nav>
-                <!--===================================================-->
-                <!--END MAIN NAVIGATION-->';
+                </nav>';
 ?>

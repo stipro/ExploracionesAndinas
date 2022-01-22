@@ -30,7 +30,13 @@ if($_POST){
                 $datoTurno = $formRequest['turno'];
                 $datopreImpreso = $formRequest['pre_impreso'];
 
-                $idLabor = array_key_exists('id_labor', $formRequest) ? $formRequest['id_labor'] : '';
+                //$idLabor = array_key_exists('id_labor', $formRequest) ? $formRequest['id_labor'] : '';
+                if (array_key_exists('id_labor', $formRequest)) {
+                    $idLabor = $formRequest['id_labor'];
+                }
+                else{
+                    $rptController = 'Falta seleccionar Labor';
+                }
 
                 //$idLabor = $formRequest['id_labor'];
                 $datoTipDisparo = $formRequest['tip_disparo'];
@@ -92,6 +98,17 @@ if($_POST){
                             $datoBlockSegacion,
                             $datoCarCortrece);
                             $rptSql;
+                            $rptController = [
+                                "estado" => 1,
+                                "mensaje" => "No hay variables vacios",
+                            ];
+                    }
+                    else{
+                        $rptController = [
+                            "estado" => 0,
+                            "mensaje" => "Falta varios campos",
+                        ];
+
                     }
                 
                 break;
@@ -110,7 +127,10 @@ if($_POST){
                 break;
         }
     } catch (Exception $e) {
-        echo "Se encontro un error";
+        $rptController = [
+            "estado" => 0,
+            "mensaje" => "Se encontro un error",
+        ];
         //throw $th;
     }
 }

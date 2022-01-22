@@ -1,4 +1,5 @@
 <?php
+    session_start();
     // Obtenemos URL HTTP
     function get_url(){
         if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
@@ -16,7 +17,7 @@
     $ubicaciones = explode($separador, $url_actual);
     print_r($ubicaciones);
     //echo $ubicaciones[4];
-    session_start();
+    
     if (!isset($_SESSION["username"])) {
         //echo 'No se inicio session ';
         
@@ -26,6 +27,7 @@
     $validacionSession =  $_SESSION["name"] ? $_SESSION["name"] : 'No se inicio';
     $string = file_get_contents("./../data-logo.json");
     $json_a = json_decode($string, true);
+    include_once ("../menu.php");   
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -1342,7 +1344,8 @@
             
             <!--MAIN NAVIGATION-->
             <!--===================================================-->
-            <?php include_once "../menu.php"; ?>
+            <?php 
+            echo $templateNav ?>
             <!--===================================================-->
             <!--END MAIN NAVIGATION-->
 

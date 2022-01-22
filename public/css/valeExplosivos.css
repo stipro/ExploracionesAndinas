@@ -78,7 +78,6 @@
 #demo-foo-addrow {
     table-layout: fixed;
     /*width: 250px;*/
-    width: 50% !important;
     margin: 0;
 }
 

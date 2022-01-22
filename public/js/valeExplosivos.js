@@ -313,7 +313,8 @@ const requestInsert = async (form) => {
 // 
 const afterRequestInsert = (data) => {
     alertInsert.innerHTML = '';
-    sqlRpt = data['sql']
+    sqlRpt = data['sql'];
+
     if (sqlRpt['estado'] == 1) {
         $.niftyNoty({
             type: 'success',
@@ -343,12 +344,22 @@ const afterRequestInsert = (data) => {
     inputFormConector_Mecha.value = "0"*/
         console.log('Si');
     } else {
-        $.niftyNoty({
-            type: 'danger',
-            container: '#alert-form-insert',
-            html: '<strong>Oh cielos!</strong> ' + sqlRpt['messageUser'],
-            focus: false,
-        });
+        if (data['rptController']['estado'] == 0) {
+            $.niftyNoty({
+                type: 'danger',
+                container: '#alert-form-insert',
+                html: '<strong>Oh cielos!</strong> ' + data['rptController']['mensaje'],
+                focus: false,
+            });
+        } else {
+            $.niftyNoty({
+                type: 'danger',
+                container: '#alert-form-insert',
+                html: '<strong>Oh cielos!</strong> ' + sqlRpt['messageUser'],
+                focus: false,
+            });
+        }
+
         console.log('No');
     }
     console.log(data);
