@@ -12,10 +12,10 @@
         //return $_SERVER['REQUEST_URI'];
     }
     $url_actual = get_url();
-    var_dump($url_actual);
+    //var_dump($url_actual);
     $separador = "/"; // Usar una cadena
     $ubicaciones = explode($separador, $url_actual);
-    print_r($ubicaciones);
+    //print_r($ubicaciones);
     //echo $ubicaciones[4];
     session_start();
     if (!isset($_SESSION["username"])) {
@@ -51,7 +51,6 @@
 
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
     <link href="..\css\bootstrap.min.css" rel="stylesheet">
-
 
     <!--Nifty Stylesheet [ REQUIRED ]-->
     <link href="..\css\nifty.min.css" rel="stylesheet">

@@ -21,12 +21,12 @@ if($_POST){
                 $column = $arrayForm['column'];
                 $parament = $arrayForm['parament'];
                 $columnWhere = $arrayForm['columnWhere'];
-                $rptSql = $tableManager->getSelectWhere($table, $column, $parament, $idTable, $columnWhere);
+                //$rptSql = $tableManager->getSelectWhere($table, $column, $parament, $idTable, $columnWhere);
                 break;
             case "getcolumnsWhere":
                 $columns = $arrayForm['columns'];
                 $parament = $arrayForm['parament'];
-                $rptSql = $tableManager->getColumnsWhere($table, $parament);
+                //$rptSql = $tableManager->getColumnsWhere($table, $parament);
                 break;
             case "search":                
                 break;

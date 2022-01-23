@@ -26,7 +26,7 @@ if($_POST){
             case "getcolumnsWhere":
                 $columns = $arrayForm['columns'];
                 $parament = $arrayForm['parament'];
-                $rptSql = $tableManager->getColumnsWhere($table, $parament);
+                //$rptSql = $tableManager->getColumnsWhere($table, $parament);
                 break;
             case "search":                
                 break;

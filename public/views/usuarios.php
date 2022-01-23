@@ -12,10 +12,10 @@
         //return $_SERVER['REQUEST_URI'];
     }
     $url_actual = get_url();
-    var_dump($url_actual);
+    //var_dump($url_actual);
     $separador = "/"; // Usar una cadena
     $ubicaciones = explode($separador, $url_actual);
-    print_r($ubicaciones);
+    //print_r($ubicaciones);
     //echo $ubicaciones[4];
     
     if (!isset($_SESSION["username"])) {
@@ -64,25 +64,20 @@
 
     <!--Pace - Page Load Progress Par [OPTIONAL]-->
     <link href="..\plugins\pace\pace.min.css" rel="stylesheet">
-
-
     <script src="..\plugins\pace\pace.min.js"></script>
 
 
     <!--Demo [ DEMONSTRATION ]-->
     <link href="..\css\demo\nifty-demo.min.css" rel="stylesheet">
 
-    <!--Switchery [ OPTIONAL ]-->
-    <link href="..\plugins\switchery\switchery.min.css" rel="stylesheet">
 
-    <!--Themify Icons [ OPTIONAL ]-->
-    <link href="..\plugins\themify-icons\themify-icons.min.css" rel="stylesheet">
+    <!--Bootstrap Validator [ OPTIONAL ]-->
+    <link href="plugins\bootstrap-validator\bootstrapValidator.min.css" rel="stylesheet">
 
-    <!--Ion Icons [ OPTIONAL ]-->
-    <link href="..\plugins\ionicons\css\ionicons.min.css" rel="stylesheet">
 
-    <!--Font Awesome [ OPTIONAL ]-->
-    <link href="..\plugins\font-awesome\css\font-awesome.min.css" rel="stylesheet">
+    <!--Nifty Stylesheet [ REQUIRED ]
+    <link href="..\css\usuario.css" rel="stylesheet">-->
+
             
     <!--=================================================
 
@@ -1413,13 +1408,25 @@
                     <div id="alert-form-insert">
                     </div>
                     <fieldset>
-                        <div class="row form-horizontal">
-                            <div class="row">
+                        <div class="row">
+                            <div class="form-horizontal">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Colaborador</label>
-                                        <div class="col-md-9">
-                                            <input type="text" id="insert-usuario" class="form-control" list="insert-options-colaborador" placeholder="Colaborador">
+                                        <div class="col-md-9 input-group mar-btm">
+                                            <input type="text" id="ipt-search-colaborador" class="form-control" name="colaborador" list="insert-options-colaborador" placeholder="Colaborador">
+                                            <span class="input-group-btn">
+                                                <div class="btn-group dropdown" style="display: flex;">
+                                                    <button class="btn btn-default">DNI</button>
+                                                    <button class="btn btn-default dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
+                                                        <i class="dropdown-caret"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a>DNI</a></li>
+                                                        <li><a>Nombre</a></li>
+                                                    </ul>
+                                                </div>
+					                        </span>
                                         </div>
                                         <datalist id="insert-options-colaborador">
                                             <option value="No se obtuvo Dato">
@@ -1462,7 +1469,6 @@
                                 </div>
                                 
                             </div>
-
                         </div>
                     </fieldset>
                 </div>
@@ -1480,8 +1486,8 @@
 
     <!--Default Bootstrap Modal-->
     <!--===================================================-->
-    <div class="modal fade" id="search-colaborador" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="modal-search-colaborador" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
                 <!--Modal header-->
@@ -1506,7 +1512,93 @@
                                     </div>
                                 </div>                                  
                             </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped" role="table">
+                                    <thead role="rowgroup">
+                                        <tr role="row">
+                                            <th role="columnheader">First Name</th>
+                                            <th role="columnheader">Last Name</th>
+                                            <th role="columnheader">Job Title</th>
+                                            <th role="columnheader">Favorite Color</th>
+                                            <th role="columnheader">Wars or Trek?</th>
+                                            <th role="columnheader">Secret Alias</th>
+                                            <th role="columnheader">Date of Birth</th>
+                                            <th role="columnheader">Dream Vacation City</th>
+                                            <th role="columnheader">GPA</th>
+                                            <th role="columnheader">Arbitrary Data</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody role="rowgroup">
+                                        <tr role="row">
+                                            <td role="cell">James</td>
+                                            <td role="cell">Matman</td>
+                                            <td role="cell">Chief Sandwich Eater</td>
+                                            <td role="cell">Lettuce Green</td>
+                                            <td role="cell">Trek</td>
+                                            <td role="cell">Digby Green</td>
+                                            <td role="cell">January 13, 1979</td>
+                                            <td role="cell">Gotham City</td>
+                                            <td role="cell">3.1</td>
+                                            <td role="cell">RBX-12</td>
+                                        </tr>
+                                        <tr role="row">
+                                            <td role="cell">The</td>
+                                            <td role="cell">Tick</td>
+                                            <td role="cell">Crimefighter Sorta</td>
+                                            <td role="cell">Blue</td>
+                                            <td role="cell">Wars</td>
+                                            <td role="cell">John Smith</td>
+                                            <td role="cell">July 19, 1968</td>
+                                            <td role="cell">Athens</td>
+                                            <td role="cell">N/A</td>
+                                            <td role="cell">Edlund, Ben (July 1996).</td>
+                                        </tr>
+                                        <tr role="row">
+                                            <td role="cell">Jokey</td>
+                                            <td role="cell">Smurf</td>
+                                            <td role="cell">Giving Exploding Presents</td>
+                                            <td role="cell">Smurflow</td>
+                                            <td role="cell">Smurf</td>
+                                            <td role="cell">Smurflane Smurfmutt</td>
+                                            <td role="cell">Smurfuary Smurfteenth, 1945</td>
+                                            <td role="cell">New Smurf City</td>
+                                            <td role="cell">4.Smurf</td>
+                                            <td role="cell">One</td>
+                                        </tr>
+                                        <tr role="row">
+                                            <td role="cell">Cindy</td>
+                                            <td role="cell">Beyler</td>
+                                            <td role="cell">Sales Representative</td>
+                                            <td role="cell">Red</td>
+                                            <td role="cell">Wars</td>
+                                            <td role="cell">Lori Quivey</td>
+                                            <td role="cell">July 5, 1956</td>
+                                            <td role="cell">Paris</td>
+                                            <td role="cell">3.4</td>
+                                            <td role="cell">3451</td>
+                                        </tr>
+                                        <tr role="row">
+                                            <td role="cell">Captain</td>
+                                            <td role="cell">Cool</td>
+                                            <td role="cell">Tree Crusher</td>
+                                            <td role="cell">Blue</td>
+                                            <td role="cell">Wars</td>
+                                            <td role="cell">Steve 42nd</td>
+                                            <td role="cell">December 13, 1982</td>
+                                            <td role="cell">Las Vegas</td>
+                                            <td role="cell">1.9</td>
+                                            <td role="cell">Under the couch</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
 
+                            </div>
+                            
                         </div>
                     </fieldset>
                 </div>
@@ -1544,6 +1636,10 @@
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="..\js\demo\nifty-demo.min.js"></script>
 
+    <!--Bootstrap Validator [ OPTIONAL ]-->
+    <script src="plugins\bootstrap-validator\bootstrapValidator.min.js"></script>
+
+
     <!--Switchery [ OPTIONAL ]-->
     <script src="..\plugins\switchery\switchery.min.js"></script>
 
@@ -1555,8 +1651,14 @@
 
     <!--Form Component [ SAMPLE ]-->
     <script src="..\js\demo\form-component.js"></script>
+
+
+
+    
+
     <!--Form Component [ REQUIRED ]-->
     <script src="..\js\usuario.js"></script>
+
 
 </body>
 </html>

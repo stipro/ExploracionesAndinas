@@ -767,7 +767,7 @@ const fetchDataDNI = async (json) => {
     }
     const body = new FormData();
     body.append("data", JSON.stringify(jsonRequests));
-    const rpt = await fetch('./../controllers/controllerTrabajadorList.php', {
+    const rpt = await fetch('./../controllers/controllerColaboradorList.php', {
         method: "POST",
         body
     });

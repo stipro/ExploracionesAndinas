@@ -215,13 +215,7 @@
                                             <!--Submenu-->
                                             <ul class="collapse">
                                                 <li>
-                                                    <a href="#"><i class="fa fa-group"></i>Usuarios<i class="arrow"></i></a>
-                                                    <!--Submenu-->
-                                                    <ul class="collapse in">
-                                                        <li><a href="./usuarios.php">Inicio</a></li>
-                                                        <li><a href="./usuarios.php">Ingreso Usuario</a></li>
-                                                        <li><a href="#">Consulta de Usuario</a></li>
-                                                    </ul>
+                                                    <a href="./usuarios.php"><i class="fa fa-group"></i>Usuarios</a>
                                                 </li>
                                                 <li>
                                                     <a href="#">Perfil<i class="arrow"></i></a>
