@@ -985,13 +985,13 @@ const getfechForeignKey = async (json) => {
     });
     const rptJson = await rpt.json(); //await JSON.parse(returned);
 }
-// GUARDAMOS EN VARIABLE
+/*// GUARDAMOS EN VARIABLE
 const btnLogin = document.getElementById("user-logout");
 
 //Ejecutamos funcion
 btnLogin.addEventListener("click", () => {
     window.location.href = ('./../controllers/CtrlSalir.php');
-});
+});*/
 
 /*
 const btnExportarExcel = document.getElementById("btn-ExportarExcel");

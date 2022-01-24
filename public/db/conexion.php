@@ -54,14 +54,16 @@ class Conexion
         //return $_SERVER['REQUEST_URI'];
     }
 
+    //  Es el método recomendado cuando se esperan pocos datos.
     protected function ConsultaSimple(string $query): array
     {
         return $this->db->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    //  Es el método recomendado cuando se esperan muchos datos.
     protected function ConsultasPesadas(string $query): array
     {
-        return $this->db->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        return $this->db->query($query)->fetch(PDO::FETCH_ASSOC);
     }
 
     protected function ConsultaCompleja(string $table, string $where, array $array): array

@@ -1,4 +1,23 @@
 <?php
+	$vldclass_OAuthProvider = method_exists('OAuthProvider','read') ? (new OAuthProvider('')) : ('Error de version, debe ser PHP 7.4.19');
+
+	/*
+	$p = new OAuthProvider();
+
+	$t = $p->generateToken(4);
+
+	echo strlen($t),  PHP_EOL;
+	echo bin2hex($t), PHP_EOL;*/
+	$ipPublic = file_get_contents('https://api.ipify.org');
+	$namePageCurrent = array_key_exists('PHP_SELF', $_SERVER) ? $_SERVER['PHP_SELF'] : FALSE;
+	$nameServer = $_SERVER['SERVER_NAME'] ? $_SERVER['SERVER_NAME'] : FALSE;
+	$pageProcedente = array_key_exists('HTTP_REFERER', $_SERVER)  ? $_SERVER['HTTP_REFERER'] : "No se encontro";
+	$portConnect = $_SERVER['REMOTE_PORT'] ? $_SERVER['REMOTE_PORT'] : FALSE;
+	$agentNavegation = $_SERVER['HTTP_USER_AGENT'] ? $_SERVER['HTTP_USER_AGENT'] : FALSE;
+	$nameHost = $_SERVER['HTTP_HOST'];
+	$ipConnected = isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : (isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR']);
+
+
 	session_start();
 	if(!isset($_SESSION['username']))
 	{
@@ -18,7 +37,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Login | Exploraciones Andinas</title>
-
+	<div id="list"></div>  
 
     <!--STYLESHEET-->
     <!--=================================================-->
@@ -143,14 +162,14 @@
 		<div class="demo-bg">
 		    <div id="demo-bg-list">
 		        <div class="demo-loading"><i class="psi-repeat-2"></i></div>
-		        <img class="demo-chg-bg bg-trans active" src="img\bg-img\thumbs\bg-trns.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src="img\bg-img\thumbs\bg-img-1.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src="img\bg-img\thumbs\bg-img-2.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src="img\bg-img\thumbs\bg-img-3.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src="img\bg-img\thumbs\bg-img-4.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src="img\bg-img\thumbs\bg-img-5.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src="img\bg-img\thumbs\bg-img-6.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src="img\bg-img\thumbs\bg-img-7.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg bg-trans active" src=".\..\public\img\bg-img\thumbs\bg-trns.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src=".\..\public\img\bg-img\thumbs\bg-img-1.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src=".\..\public\img\bg-img\thumbs\bg-img-2.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src=".\..\public\img\bg-img\thumbs\bg-img-3.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src=".\..\public\img\bg-img\thumbs\bg-img-4.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src=".\..\public\img\bg-img\thumbs\bg-img-5.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src=".\..\public\img\bg-img\thumbs\bg-img-6.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src=".\..\public\img\bg-img\thumbs\bg-img-7.jpeg" alt="Background Image">
 		    </div>
 		</div>
 		<!--===================================================-->
@@ -246,7 +265,6 @@
 			"accion" : 'login',
 			"contenido" : formLogin
 			};
-			console.log(data);
 			body.append("data", JSON.stringify(data));
 			const returned = await fetch("./controllers/CtrlLogin.php", { method: "POST", body });
 			const result = await returned.json();//await JSON.parse(returned);
@@ -256,13 +274,15 @@
 		//Si necesitas hacer algo despues de que terminen las
 		//consultas, hacelas aqui.
 		const afterSendingFormLogin = (data) => {
-			sqlValidador = data['sql']['val'];
+			sqlValidador = data['sql']['rptValidador'];
+			idUsuario = data['sql']['id'];
 			ctrlRespuesta = data['rptController'];
 
 			//Validamos Acceso
 			if( sqlValidador == true){
 				console.log('Acceso concedido');
-				window.location.href = './views/tareo.php';
+				//window.location.href = './views/tareo.php';
+				request(idUsuario);
 			}
 			else{
 				console.log('Acceso denegado')
@@ -276,6 +296,119 @@
 				});
 			}    
 		};
+
+		const getIpInfor =  async (data) =>{
+
+
+			var requestOptions = {
+			method: 'GET',
+			redirect: 'follow'
+			};
+
+			const returned = await fetch("https://ipinfo.io/json", requestOptions)
+			return await returned.json();
+
+		}
+
+		//Registrar Detalles de Session
+		const request = async (requestForm) => {
+	
+			const rptIpInfor = await getIpInfor();
+			const rpttypeDevice = await typeDevice();		
+			console.log('Se obtuvo Api');
+			//Preparamos parametros
+			var detalleSession = {
+				"accion" : "insert",
+				"data" : {
+					"id_usuario": idUsuario,
+					"infoPhp" : {
+						"ipPublica" : '<?= $nameServer;?>',
+						"nombreServer" : '<?= $nameServer;?>',
+						"paginaProcedente" : '<?= $pageProcedente;?>',
+						"puertoConectado" : '<?= $portConnect;?>',
+						"agenteNavegacion" : '<?= $agentNavegation;?>',
+						"nombreHost" : '<?= $nameHost;?>',
+						"ipConnected" : '<?= $ipConnected?>'
+					},
+					"infoJs" : {
+						"tipoDispositivo" : rpttypeDevice,
+						"ipInfo" : rptIpInfor,
+					}
+				}
+
+			};
+			console.log(detalleSession);
+			const body = new FormData();
+			body.append("data", JSON.stringify(detalleSession));
+			const returned = await fetch("./controllers/controllerDetalleSession.php", { method: "POST", body });
+			const result = await returned.json();//await JSON.parse(returned);
+			
+			//afterSendingFormLogin(result);
+		};
+
+		//Detectar Tipo de Dispositivo
+		const typeDevice = async () => {
+
+			// Clase para detectar tipo de dispositivo
+			class Dispositivo {
+				esMovil = false;
+				esTablet = false;
+				esAndroid = false;
+				esiPhone = false;
+				esiPad = false;
+				esOrdenador = false;
+				esWindows = false;
+				esLinux = false;
+				esMac = false;
+			}
+
+			dispositivo = new Dispositivo()
+
+			if (navigator.userAgent.toLowerCase().match(/mobile/)) {
+				dispositivo.esMovil = true
+			} else {
+				if (navigator.userAgent.toLowerCase().match(/tablet/))
+					dispositivo.esTablet = true
+				else
+					dispositivo.esOrdenador = true
+			}
+
+			// console.log(navigator.userAgent.toLocaleLowerCase())
+
+			if (dispositivo.esMovil == true) {
+				if (navigator.userAgent.toLowerCase().match(/android/)) {
+					dispositivo.esAndroid = true
+					return await "Celular Android";
+					/* dispositivo__texto.innerText = "Celular Android" */
+				} else if (navigator.userAgent.toLowerCase().match(/ipad/)) {
+					dispositivo.esiPad = true
+					return await "iPad";
+					/* dispositivo__texto.innerText = "iPad" */
+				} else {
+					dispositivo.esiPhone = true
+					return await "Celular iPhone";
+					/* dispositivo__texto.innerText = "Celular iPhone" */
+				}
+			} else if (dispositivo.esTablet == true) {
+				dispositivo__texto.innerText = "Tablet"
+				return await "Tablet";
+			} else {
+				if (navigator.userAgent.toLowerCase().match(/mac/)) {
+					dispositivo.esMac = true
+					return await "Ordenador Ma";
+					/* dispositivo__texto.innerText = "Ordenador Mac" */
+				} else if (navigator.userAgent.toLowerCase().match(/linux/)) {
+					dispositivo.esLinux = true
+					return await "Ordenador Linux";
+					/* dispositivo__texto.innerText = "Ordenador Linux" */
+				} else {
+					dispositivo.esWindows = true
+					return await "Ordenador Windows";
+					/* dispositivo__texto.innerText = "Ordenador Windows" */
+				}
+			}
+		}
+
 	</script>
 
 </body>

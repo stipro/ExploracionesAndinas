@@ -26,6 +26,13 @@
         
         $cantidadResultado = count($result);
         session_start();
+        $hora = date('H:i');
+        $session_id = session_id();
+        $token = hash('sha256', $hora.$session_id);
+        
+        $_SESSION['token'] = $token;
+        
+        $tokenGenerado = $_SESSION['token'];
         // Validamos Login
         if($cantidadResultado){
             $validador = TRUE;
@@ -42,8 +49,9 @@
         }
         // Preparamos array
         $rptSql = array(
-            "rpt" => $result,
-            'val' => $validador,
+            "rptValidador" => $validador,
+            'id' => $result[0]['id_usuario'],
+            'token' => $tokenGenerado
         );
     }
     else{

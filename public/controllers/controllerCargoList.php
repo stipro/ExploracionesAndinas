@@ -2,10 +2,10 @@
 header('Content-type: application/json; charset=utf-8');
 // Si no se ha enviado nada por el POST y se intenta acceder al archivo se retornará a la página de inicio
 if($_POST){
+    $rptController = 'Se recibio datos';
     $table = 'cargos';
     $idTable = 'id_cargo';
-    $rptSql='';
-    $rptController = 'Se recibio datos';
+    $rptSql='';    
     try {
         require_once '../models/'.$table.'.php';
         $tableManager = new Cargos();

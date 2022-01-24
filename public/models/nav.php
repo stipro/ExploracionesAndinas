@@ -62,7 +62,7 @@ class Nav extends Conexion
     {
         //$query = "SELECT * FROM tareos LIMIT {$empezarDesde}, {$filasPage}";
         $query = "SELECT * FROM modulos AS md LEFT JOIN menu ON md.id_modulo = menu.id_modulo LEFT JOIN  submenu AS smenu ON menu.id_menu =  smenu.id_menu ORDER BY md.id_modulo, menu.nombre_menu;";
-        return $this->ConsultasPesadas($query);
+        return $this->ConsultaSimple($query);
     }
     public function insert(
         $idDigitador,
