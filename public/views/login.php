@@ -25,7 +25,7 @@
 		//header("location:./index.php");
 	}
 	else{
-		header("location:./views/tareo.php");
+		header("location:./views/inicio/main.php");
 	}
 ?>
 <!DOCTYPE html>
@@ -47,15 +47,15 @@
 
 
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
-    <link href="css\bootstrap.min.css" rel="stylesheet">
+    <link href=".\..\css\bootstrap.min.css" rel="stylesheet">
 
 
     <!--Nifty Stylesheet [ REQUIRED ]-->
-    <link href="css\nifty.min.css" rel="stylesheet">
+    <link href=".\..\css\nifty.min.css" rel="stylesheet">
 
 
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
-    <link href="css\demo\nifty-demo-icons.min.css" rel="stylesheet">
+    <link href=".\..\css\demo\nifty-demo-icons.min.css" rel="stylesheet">
 
 
     <!--=================================================-->
@@ -63,13 +63,13 @@
 
 
     <!--Pace - Page Load Progress Par [OPTIONAL]-->
-    <link href="plugins\pace\pace.min.css" rel="stylesheet">
-    <script src="plugins\pace\pace.min.js"></script>
+    <link href=".\..\plugins\pace\pace.min.css" rel="stylesheet">
+    <script src=".\..\plugins\pace\pace.min.js"></script>
 
 
         
     <!--Demo [ DEMONSTRATION ]-->
-    <link href="css\demo\nifty-demo.min.css" rel="stylesheet">
+    <link href=".\..\css\demo\nifty-demo.min.css" rel="stylesheet">
 
     
     <!--=================================================
@@ -162,14 +162,14 @@
 		<div class="demo-bg">
 		    <div id="demo-bg-list">
 		        <div class="demo-loading"><i class="psi-repeat-2"></i></div>
-		        <img class="demo-chg-bg bg-trans active" src=".\..\public\img\bg-img\thumbs\bg-trns.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src=".\..\public\img\bg-img\thumbs\bg-img-1.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src=".\..\public\img\bg-img\thumbs\bg-img-2.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src=".\..\public\img\bg-img\thumbs\bg-img-3.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src=".\..\public\img\bg-img\thumbs\bg-img-4.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src=".\..\public\img\bg-img\thumbs\bg-img-5.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src=".\..\public\img\bg-img\thumbs\bg-img-6.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src=".\..\public\img\bg-img\thumbs\bg-img-7.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg bg-trans active" src=".\..\img\bg-img\thumbs\bg-trns.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src=".\..\img\bg-img\thumbs\bg-img-1.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src=".\..\img\bg-img\thumbs\bg-img-2.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src=".\..\img\bg-img\thumbs\bg-img-3.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src=".\..\img\bg-img\thumbs\bg-img-4.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src=".\..\img\bg-img\thumbs\bg-img-5.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src=".\..\img\bg-img\thumbs\bg-img-6.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src=".\..\img\bg-img\thumbs\bg-img-7.jpeg" alt="Background Image">
 		    </div>
 		</div>
 		<!--===================================================-->
@@ -186,15 +186,15 @@
     <!--=================================================-->
 
     <!--jQuery [ REQUIRED ]-->
-    <script src="js\jquery.min.js"></script>
+    <script src=".\..\js\jquery.min.js"></script>
 
 
     <!--BootstrapJS [ RECOMMENDED ]-->
-    <script src="js\bootstrap.min.js"></script>
+    <script src=".\..\js\bootstrap.min.js"></script>
 
 
     <!--NiftyJS [ RECOMMENDED ]-->
-    <script src="js\nifty.min.js"></script>
+    <script src=".\..\js\nifty.min.js"></script>
 
 
 
@@ -202,7 +202,7 @@
     <!--=================================================-->
     
     <!--Background Image [ DEMONSTRATION ]-->
-    <script src="./js/demo/bg-images.js"></script>
+    <script src="./../js/demo/bg-images.js"></script>
 
 	<script>
 		/**
@@ -266,7 +266,7 @@
 			"contenido" : formLogin
 			};
 			body.append("data", JSON.stringify(data));
-			const returned = await fetch("./controllers/CtrlLogin.php", { method: "POST", body });
+			const returned = await fetch("./../controllers/CtrlLogin.php", { method: "POST", body });
 			const result = await returned.json();//await JSON.parse(returned);
 			afterSendingFormLogin(result);
 		};
@@ -281,7 +281,7 @@
 			//Validamos Acceso
 			if( sqlValidador == true){
 				console.log('Acceso concedido');
-				//window.location.href = './views/tareo.php';
+				window.location.href = './views/inicio/main.php';
 				request(idUsuario);
 			}
 			else{
@@ -340,7 +340,7 @@
 			console.log(detalleSession);
 			const body = new FormData();
 			body.append("data", JSON.stringify(detalleSession));
-			const returned = await fetch("./controllers/controllerDetalleSession.php", { method: "POST", body });
+			const returned = await fetch("./../controllers/controllerDetalleSession.php", { method: "POST", body });
 			const result = await returned.json();//await JSON.parse(returned);
 			
 			//afterSendingFormLogin(result);
