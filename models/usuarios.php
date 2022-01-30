@@ -7,7 +7,7 @@ header('Content-type: application/json; charset=utf-8');
 require_once ('../db/conexion.php');
 
 // Clase hereda classe conexion
-class usuario extends Conexion
+class usuarios extends Conexion
 {
     protected $table;
     // Constructor
@@ -26,7 +26,7 @@ class usuario extends Conexion
         return $this->ConsultasPesadas($query);
     }
 }
-$tableManager = new usuario();
+$tableManager = new usuarios();
 $rpt = $tableManager->getPermisos_Usuario();
 print_r($rpt);
 

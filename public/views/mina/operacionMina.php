@@ -1,15 +1,23 @@
 <?php
+    require_once('./../../../Config/config.php');
+    include_once('./../template/header.php');
+    include_once('./../template/javascript.php');
+    include_once('./../template/footer.php');
+    include_once('./../template/aside.php');
     session_start();
     if (!isset($_SESSION["username"])) {
         //echo 'No se inicio session ';
         
         header("location:./../index.php");
     } else {
+        $validacionSession =  $_SESSION["name"] ? $_SESSION["name"] : 'No se inicio, o ocurrio un error';
+        $idUsuario = $_SESSION["id"];
+        //include_once('./../menu.php');
+        $nameArchivo = basename( __FILE__ );
+        $parte = explode(".", $nameArchivo);
+        $nameMenu = ucfirst($parte[0]);
     }
-    $validacionSession =  $_SESSION["name"] ? $_SESSION["name"] : 'No se inicio';
-    $string = file_get_contents("./../data-logo.json");
-    $json_a = json_decode($string, true);
-    include_once ("../menu.php");
+    
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -18,66 +26,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Mod. Operación Mina | Sistema Explore Andina</title>
+    <title><?php echo $nameMenu .' | '. NOMBRE_SISTEMA ?></title>
+    <script>
+        var data = '';
+        var nombreUsuario = '<?= $validacionSession;?>';
+        var id_Usuario = '<?= $idUsuario;?>';
+    </script>
+
+    <script type="text/javascript" src="./../../../js/index.js"></script>
     <!--STYLESHEET-->
     <!--=================================================-->
 
-    <!--Open Sans Font [ OPTIONAL ]-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-
-
-    <!--Bootstrap Stylesheet [ REQUIRED ]-->
-    <link href="..\css\bootstrap.min.css" rel="stylesheet">
-
-
-    <!--Nifty Stylesheet [ REQUIRED ]-->
-    <link href="..\css\nifty.min.css" rel="stylesheet">
-
-
-    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
-    <link href="..\css\demo\nifty-demo-icons.min.css" rel="stylesheet">
-
-
-    <!--=================================================-->
-    <!--Pace - Page Load Progress Par [OPTIONAL]-->
-    <link href="..\plugins\pace\pace.min.css" rel="stylesheet">
-
-    <script src="..\plugins\pace\pace.min.js"></script>
-    <!--Demo [ DEMONSTRATION ]-->
-    <link href="..\css\demo\nifty-demo.min.css" rel="stylesheet">
+    <?php echo $template_header_css; ?>
 
     <!--Bootstrap Select [ OPTIONAL ]-->
-    <link href="..\plugins\bootstrap-select\bootstrap-select.min.css" rel="stylesheet">
+    <link href=".\..\..\..\plugins\bootstrap-select\bootstrap-select.min.css" rel="stylesheet">
 
     <!--Chosen [ OPTIONAL ]-->
-    <link href="..\plugins\chosen\chosen.min.css" rel="stylesheet">
+    <link href=".\..\..\..\plugins\chosen\chosen.min.css" rel="stylesheet">
 
     <!--noUiSlider [ OPTIONAL ]-->
-    <link href="..\plugins\noUiSlider\nouislider.min.css" rel="stylesheet">
+    <link href=".\..\..\..\plugins\noUiSlider\nouislider.min.css" rel="stylesheet">
 
     <!--Select2 [ OPTIONAL ]-->
-    <link href="..\plugins\select2\css\select2.min.css" rel="stylesheet">
+    <link href=".\..\..\..\plugins\select2\css\select2.min.css" rel="stylesheet">
 
     <!--Demo [ DEMONSTRATION ]-->
-    <link href="..\css\demo\nifty-demo.min.css" rel="stylesheet">
+    <link href=".\..\..\..\css\demo\nifty-demo.min.css" rel="stylesheet">
 
     <!--Themify Icons [ OPTIONAL ]-->
-    <link href="..\plugins\themify-icons\themify-icons.min.css" rel="stylesheet">
+    <link href=".\..\..\..\plugins\themify-icons\themify-icons.min.css" rel="stylesheet">
 
     <!--FooTable [ OPTIONAL ]
-    <link href="..\plugins\fooTable\css\footable.core.css" rel="stylesheet">-->
+    <link href=".\..\..\..\plugins\fooTable\css\footable.core.css" rel="stylesheet">-->
 
     <!--Ion Icons [ OPTIONAL ]-->
-    <link href="..\plugins\ionicons\css\ionicons.min.css" rel="stylesheet">
+    <link href=".\..\..\..\plugins\ionicons\css\ionicons.min.css" rel="stylesheet">
 
     <!--Chosen [ OPTIONAL ]-->
-    <link href="..\plugins\chosen\chosen.min.css" rel="stylesheet">
+    <link href=".\..\..\..\plugins\chosen\chosen.min.css" rel="stylesheet">
 
     <!--Nifty Stylesheet [ REQUIRED ]-->
-    <link href="..\css\operacionMina.css" rel="stylesheet">
+    <link href=".\..\..\..\css\operacionMina.css" rel="stylesheet">
     
     <!--Font Awesome [ OPTIONAL ]-->
-    <link href="..\plugins\font-awesome\css\font-awesome.min.css" rel="stylesheet">
+    <link href=".\..\..\..\plugins\font-awesome\css\font-awesome.min.css" rel="stylesheet">
 
             
     <!--=================================================
@@ -253,22 +246,22 @@
                                         <p class="dropdown-header"><i class="demo-pli-file-jpg icon-lg icon-fw"></i> Gallery</p>
                                         <div class="row img-gallery">
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="..\img\thumbs\img-1.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src=".\..\..\..\img\thumbs\img-1.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="..\img\thumbs\img-3.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src=".\..\..\..\img\thumbs\img-3.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="..\img\thumbs\img-2.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src=".\..\..\..\img\thumbs\img-2.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="..\img\thumbs\img-4.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src=".\..\..\..\img\thumbs\img-4.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="..\img\thumbs\img-6.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src=".\..\..\..\img\thumbs\img-6.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="..\img\thumbs\img-5.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src=".\..\..\..\img\thumbs\img-5.jpeg" alt="thumbs">
                                             </div>
                                         </div>
                                         <a href="#" class="btn btn-block btn-primary">Browse Gallery</a>
@@ -347,7 +340,7 @@
                                             <li>
                                                 <a class="media" href="#">
                                                     <div class="media-left">
-                                                        <img class="img-circle img-sm" alt="Profile Picture" src="..\img\profile-photos\9.png">
+                                                        <img class="img-circle img-sm" alt="Profile Picture" src=".\..\..\..\img\profile-photos\9.png">
                                                     </div>
                                                     <div class="media-body">
                                                         <p class="mar-no text-nowrap text-main text-semibold">Lucy sent you a message</p>
@@ -358,7 +351,7 @@
                                             <li>
                                                 <a class="media" href="#">
                                                     <div class="media-left">
-                                                        <img class="img-circle img-sm" alt="Profile Picture" src="..\img\profile-photos\3.png">
+                                                        <img class="img-circle img-sm" alt="Profile Picture" src=".\..\..\..\img\profile-photos\3.png">
                                                     </div>
                                                     <div class="media-body">
                                                         <p class="mar-no text-nowrap text-main text-semibold">Jackson sent you a message</p>
@@ -635,7 +628,7 @@
                                     <div class="list-group bg-trans">
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="..\img\profile-photos\2.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src=".\..\..\..\img\profile-photos\2.png" alt="Profile Picture">
 												<i class="badge badge-success badge-stat badge-icon pull-left"></i>
 							                </div>
 							                <div class="media-body">
@@ -645,7 +638,7 @@
 							            </a>
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="..\img\profile-photos\7.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src=".\..\..\..\img\profile-photos\7.png" alt="Profile Picture">
 							                </div>
 							                <div class="media-body">
 							                    <p class="mar-no text-main">Brittany Meyer</p>
@@ -654,7 +647,7 @@
 							            </a>
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="..\img\profile-photos\1.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src=".\..\..\..\img\profile-photos\1.png" alt="Profile Picture">
 												<i class="badge badge-info badge-stat badge-icon pull-left"></i>
 							                </div>
 							                <div class="media-body">
@@ -664,7 +657,7 @@
 							            </a>
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="..\img\profile-photos\4.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src=".\..\..\..\img\profile-photos\4.png" alt="Profile Picture">
 							                </div>
 							                <div class="media-body">
 							                    <p class="mar-no text-main">Donald Brown</p>
@@ -673,7 +666,7 @@
 							            </a>
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="..\img\profile-photos\8.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src=".\..\..\..\img\profile-photos\8.png" alt="Profile Picture">
 												<i class="badge badge-warning badge-stat badge-icon pull-left"></i>
 							                </div>
 							                <div class="media-body">
@@ -683,7 +676,7 @@
 							            </a>
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="..\img\profile-photos\9.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src=".\..\..\..\img\profile-photos\9.png" alt="Profile Picture">
 												<i class="badge badge-danger badge-stat badge-icon pull-left"></i>
 							                </div>
 							                <div class="media-body">
@@ -871,7 +864,6 @@
             
             <!--MAIN NAVIGATION-->
             <!--===================================================-->
-            <?php echo $templateNav ?>
             <!--===================================================-->
             <!--END MAIN NAVIGATION-->
 
@@ -2015,51 +2007,34 @@
     <!--JAVASCRIPT-->
     <!--=================================================-->
 
-    <!--jQuery [ REQUIRED ]-->
-    <script src="..\js\jquery.min.js"></script>
-
-
-    <!--BootstrapJS [ RECOMMENDED ]-->
-    <script src="..\js\bootstrap.min.js"></script>
-
-
-    <!--NiftyJS [ RECOMMENDED ]-->
-    <script src="..\js\nifty.min.js"></script>
-
-
-
-
-    <!--=================================================-->
-    
-    <!--Demo script [ DEMONSTRATION ]-->
-    <script src="..\js\demo\nifty-demo.min.js"></script>
+    <?php echo $template_javascript; ?>
 
     <!--Icons [ SAMPLE ]-->
-    <script src="..\js\demo\icons.js"></script>
+    <script src=".\..\..\..\js\demo\icons.js"></script>
 
     <!--FooTable Example [ SAMPLE ]
-    <script src="..\js\demo\tables-footable.js"></script>-->
+    <script src=".\..\..\..\js\demo\tables-footable.js"></script>-->
     
     <!--FooTable [ OPTIONAL ]
-    <script src="..\plugins\fooTable\dist\footable.all.min.js"></script>-->
+    <script src=".\..\..\..\plugins\fooTable\dist\footable.all.min.js"></script>-->
 
     <!--Bootstrap Select [ OPTIONAL ]-->
-    <script src="..\plugins\bootstrap-select\bootstrap-select.min.js"></script>
+    <script src=".\..\..\..\plugins\bootstrap-select\bootstrap-select.min.js"></script>
 
     <!--Chosen [ OPTIONAL ]-->
-    <script src="..\plugins\chosen\chosen.jquery.min.js"></script>
+    <script src=".\..\..\..\plugins\chosen\chosen.jquery.min.js"></script>
 
     <!--Select2 [ OPTIONAL ]-->
-    <script src="..\plugins\select2\js\select2.min.js"></script>
+    <script src=".\..\..\..\plugins\select2\js\select2.min.js"></script>
 
     <!--Form Component [ SAMPLE ]-->
-    <script src="..\js\demo\form-component.js"></script>
+    <script src=".\..\..\..\js\demo\form-component.js"></script>
 
     <!--Panel [ SAMPLE ]-->
-    <script src="..\js\demo\ui-panels.js"></script>
+    <script src=".\..\..\..\js\demo\ui-panels.js"></script>
         
     <!--Date-MYSQL [ REQUIRED ]-->
-    <script src="..\js\operacionMina.js"></script>
+    <script src=".\..\..\..\js\operacionMina.js"></script>
 
 </body>
 </html>

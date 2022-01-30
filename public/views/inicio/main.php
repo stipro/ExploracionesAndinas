@@ -19,20 +19,33 @@
     }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title><?php echo $nameMenu .' | '. NOMBRE_SISTEMA ?></title>
+    
     <script>
         var data = '';
         var nombreUsuario = '<?= $validacionSession;?>';
         var id_Usuario = '<?= $idUsuario;?>';
+        const getAsignado = async (id_Usuario) => {
+            const body = new FormData();
+            body.append("data", JSON.stringify(id_Usuario));
+            const res = await fetch('./../../../controllers/controllerNav.php', {
+                method: "POST",
+                body
+            });
+            data = await res.json()
+            pintarNav(data);
+            //pintarCards(data)
+        }
+        
+        
     </script>
 
-    <script type="text/javascript" src="./../../../js/index.js"></script>
 
     <!--STYLESHEET-->
     <!--=================================================-->
@@ -83,6 +96,334 @@
 
         <!--NAVBAR-->
         <!--===================================================-->
+        <header id="navbar">
+            <div id="navbar-container" class="boxed">
+
+                <!--Brand logo & name-->
+                <!--================================-->
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand">
+                        <img src="img\logo.png" alt="Nifty Logo" class="brand-icon">
+                        <div class="brand-title">
+                            <span class="brand-text">Nifty</span>
+                        </div>
+                    </a>
+                </div>
+                <!--================================-->
+                <!--End brand logo & name-->
+
+
+                <!--Navbar Dropdown-->
+                <!--================================-->
+                <div class="navbar-content">
+                    <ul class="nav navbar-top-links">
+
+                        <!--Navigation toogle button-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li class="tgl-menu-btn">
+                            <a class="mainnav-toggle" href="#">
+                                <i class="demo-pli-list-view"></i>
+                            </a>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End Navigation toogle button-->
+
+
+
+                        <!--Search-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li>
+                            <div class="custom-search-form">
+                                <label class="btn btn-trans" for="search-input" data-toggle="collapse" data-target="#nav-searchbox">
+                                    <i class="demo-pli-magnifi-glass"></i>
+                                </label>
+                                <form>
+                                    <div class="search-container collapse" id="nav-searchbox">
+                                        <input id="search-input" type="text" class="form-control" placeholder="Type for search...">
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End Search-->
+
+                    </ul>
+                    <ul class="nav navbar-top-links">
+
+
+                        <!--Mega dropdown-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li class="mega-dropdown">
+                            <a href="#" class="mega-dropdown-toggle">
+                                <i class="demo-pli-layout-grid"></i>
+                            </a>
+                            <div class="dropdown-menu mega-dropdown-menu">
+                                <div class="row">
+                                    <div class="col-sm-4 col-md-3">
+
+                                        <!--Mega menu list-->
+                                        <ul class="list-unstyled">
+									        <li class="dropdown-header"><i class="demo-pli-file icon-lg icon-fw"></i> Pages</li>
+									        <li><a href="#">Profile</a></li>
+									        <li><a href="#">Search Result</a></li>
+									        <li><a href="#">FAQ</a></li>
+									        <li><a href="#">Sreen Lock</a></li>
+									        <li><a href="#">Maintenance</a></li>
+									        <li><a href="#">Invoice</a></li>
+									        <li><a href="#" class="disabled">Disabled</a></li>                                        </ul>
+
+                                    </div>
+                                    <div class="col-sm-4 col-md-3">
+
+                                        <!--Mega menu list-->
+                                        <ul class="list-unstyled">
+									        <li class="dropdown-header"><i class="demo-pli-mail icon-lg icon-fw"></i> Mailbox</li>
+									        <li><a href="#"><span class="pull-right label label-danger">Hot</span>Indox</a></li>
+									        <li><a href="#">Read Message</a></li>
+									        <li><a href="#">Compose</a></li>
+									        <li><a href="#">Template</a></li>
+                                        </ul>
+                                        <p class="pad-top text-main text-sm text-uppercase text-bold"><i class="icon-lg demo-pli-calendar-4 icon-fw"></i>News</p>
+                                        <p class="pad-top mar-top bord-top text-sm">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+                                    </div>
+                                    <div class="col-sm-4 col-md-3">
+                                        <!--Mega menu list-->
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <a href="#" class="media mar-btm">
+                                                    <span class="badge badge-success pull-right">90%</span>
+                                                    <div class="media-left">
+                                                        <i class="demo-pli-data-settings icon-2x"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <p class="text-semibold text-main mar-no">Data Backup</p>
+                                                        <small class="text-muted">This is the item description</small>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="media mar-btm">
+                                                    <div class="media-left">
+                                                        <i class="demo-pli-support icon-2x"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <p class="text-semibold text-main mar-no">Support</p>
+                                                        <small class="text-muted">This is the item description</small>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="media mar-btm">
+                                                    <div class="media-left">
+                                                        <i class="demo-pli-computer-secure icon-2x"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <p class="text-semibold text-main mar-no">Security</p>
+                                                        <small class="text-muted">This is the item description</small>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="media mar-btm">
+                                                    <div class="media-left">
+                                                        <i class="demo-pli-map-2 icon-2x"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <p class="text-semibold text-main mar-no">Location</p>
+                                                        <small class="text-muted">This is the item description</small>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-12 col-md-3">
+                                        <p class="dropdown-header"><i class="demo-pli-file-jpg icon-lg icon-fw"></i> Gallery</p>
+                                        <div class="row img-gallery">
+                                            <div class="col-xs-4">
+                                                <img class="img-responsive" src="img\thumbs\img-1.jpeg" alt="thumbs">
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <img class="img-responsive" src="img\thumbs\img-3.jpeg" alt="thumbs">
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <img class="img-responsive" src="img\thumbs\img-2.jpeg" alt="thumbs">
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <img class="img-responsive" src="img\thumbs\img-4.jpeg" alt="thumbs">
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <img class="img-responsive" src="img\thumbs\img-6.jpeg" alt="thumbs">
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <img class="img-responsive" src="img\thumbs\img-5.jpeg" alt="thumbs">
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-block btn-primary">Browse Gallery</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End mega dropdown-->
+
+
+
+                        <!--Notification dropdown-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                <i class="demo-pli-bell"></i>
+                                <span class="badge badge-header badge-danger"></span>
+                            </a>
+
+
+                            <!--Notification dropdown menu-->
+                            <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
+                                <div class="nano scrollable">
+                                    <div class="nano-content">
+                                        <ul class="head-list">
+                                            <li>
+                                                <a href="#" class="media add-tooltip" data-title="Used space : 95%" data-container="body" data-placement="bottom">
+                                                    <div class="media-left">
+                                                        <i class="demo-pli-data-settings icon-2x text-main"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <p class="text-nowrap text-main text-semibold">HDD is full</p>
+                                                        <div class="progress progress-sm mar-no">
+                                                            <div style="width: 95%;" class="progress-bar progress-bar-danger">
+                                                                <span class="sr-only">95% Complete</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="media" href="#">
+                                                    <div class="media-left">
+                                                        <i class="demo-pli-file-edit icon-2x"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <p class="mar-no text-nowrap text-main text-semibold">Write a news article</p>
+                                                        <small>Last Update 8 hours ago</small>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="media" href="#">
+                                                    <span class="label label-info pull-right">New</span>
+                                                    <div class="media-left">
+                                                        <i class="demo-pli-speech-bubble-7 icon-2x"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <p class="mar-no text-nowrap text-main text-semibold">Comment Sorting</p>
+                                                        <small>Last Update 8 hours ago</small>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="media" href="#">
+                                                    <div class="media-left">
+                                                        <i class="demo-pli-add-user-star icon-2x"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <p class="mar-no text-nowrap text-main text-semibold">New User Registered</p>
+                                                        <small>4 minutes ago</small>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="media" href="#">
+                                                    <div class="media-left">
+                                                        <img class="img-circle img-sm" alt="Profile Picture" src="img\profile-photos\9.png">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <p class="mar-no text-nowrap text-main text-semibold">Lucy sent you a message</p>
+                                                        <small>30 minutes ago</small>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="media" href="#">
+                                                    <div class="media-left">
+                                                        <img class="img-circle img-sm" alt="Profile Picture" src="img\profile-photos\3.png">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <p class="mar-no text-nowrap text-main text-semibold">Jackson sent you a message</p>
+                                                        <small>40 minutes ago</small>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!--Dropdown footer-->
+                                <div class="pad-all bord-top">
+                                    <a href="#" class="btn-link text-main box-block">
+                                        <i class="pci-chevron chevron-right pull-right"></i>Show All Notifications
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End notifications dropdown-->
+
+
+
+                        <!--User dropdown-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li id="dropdown-user" class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                                <span class="ic-user pull-right">
+                                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                    <!--You can use an image instead of an icon.-->
+                                    <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
+                                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                    <i class="demo-pli-male"></i>
+                                </span>
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <!--You can also display a user name in the navbar.-->
+                                <!--<div class="username hidden-xs">Aaron Chavez</div>-->
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            </a>
+
+
+                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right panel-default">
+                                <ul class="head-list">
+                                    <li>
+                                        <a href="#"><i class="demo-pli-male icon-lg icon-fw"></i> Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><span class="badge badge-danger pull-right">9</span><i class="demo-pli-mail icon-lg icon-fw"></i> Messages</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><span class="label label-success pull-right">New</span><i class="demo-pli-gear icon-lg icon-fw"></i> Settings</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="demo-pli-computer-secure icon-lg icon-fw"></i> Lock screen</a>
+                                    </li>
+                                    <li>
+                                        <a href="pages-login.html"><i class="demo-pli-unlock icon-lg icon-fw"></i> Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End user dropdown-->
+ 
+                        
+                        <li>
+                            <a href="#" class="aside-toggle">
+                                <i class="demo-pli-dot-vertical"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--================================-->
+                <!--End Navbar Dropdown-->
+
+            </div>
+        </header>
         <!--===================================================-->
         <!--END NAVBAR-->
 
@@ -109,39 +450,6 @@
 
 
                     <div id="content-modules" class="row">
-                        <div class="col-md-2 col-md-offset-3">
-                            <div class="panel">
-                                <div class="panel-body text-center">
-                                    <div class="pad-ver mar-top text-main"><i class="demo-pli-data-settings icon-4x"></i></div>
-                                    <p class="text-lg text-semibold mar-no text-main">Almacenamiento</p>
-                                    <p class="text-muted">Almacenamiento total de 32 TB</p>
-                                    <p class="text-sm">El Gran Oxmox le aconsejó que no lo hiciera, porque había miles de malos.</p>
-                                    <button class="btn btn-primary mar-ver">Consiguelo ahora</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="panel">
-                                <div class="panel-body text-center">
-                                    <div class="pad-ver mar-top text-main"><i class="demo-pli-computer-secure icon-4x"></i></div>
-                                    <p class="text-lg text-semibold mar-no text-main">Mina</p>
-                                    <p class="text-muted">Area Mina</p>
-                                    <p class="text-sm">El modulo cuenta, Formulario, Exportacion de EXCEL, Pdf, etc</p>
-                                    <button class="btn btn-primary mar-ver">Ir Modulo</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="panel">
-                                <div class="panel-body text-center">
-                                    <div class="pad-ver mar-top text-main"><i class="demo-pli-consulting icon-4x"></i></div>
-                                    <p class="text-lg text-semibold mar-no text-main">Suporte</p>
-                                    <p class="text-muted">Nosotros estamos aqui 24/7</p>
-                                    <p class="text-sm">El Gran Oxmox le aconsejó que no lo hiciera, porque había miles de malos.</p>
-                                    <button class="btn btn-primary mar-ver">Contacta con nosotros</button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <hr class="new-section-md bord-no">
@@ -409,6 +717,216 @@
 
             <!--MAIN NAVIGATION-->
             <!--===================================================-->
+            <nav id="mainnav-container">
+                <div id="mainnav">
+
+
+                    <!--OPTIONAL : ADD YOUR LOGO TO THE NAVIGATION-->
+                    <!--It will only appear on small screen devices.-->
+                    <!--================================
+                    <div class="mainnav-brand">
+                        <a href="index.html" class="brand">
+                            <img src="img/logo.png" alt="Nifty Logo" class="brand-icon">
+                            <span class="brand-text">Nifty</span>
+                        </a>
+                        <a href="#" class="mainnav-toggle"><i class="pci-cross pci-circle icon-lg"></i></a>
+                    </div>
+                    -->
+
+
+
+                    <!--Menu-->
+                    <!--================================-->
+                    <div id="mainnav-menu-wrap">
+                        <div class="nano">
+                            <div class="nano-content">
+
+                                <!--Profile Widget-->
+                                <!--================================-->
+                                <div id="mainnav-profile" class="mainnav-profile">
+                                    <div class="profile-wrap text-center">
+                                        <div class="pad-btm">
+                                            <img class="img-circle img-md" src="./../../../img/profile-photos/1.png" alt="Profile Picture">
+                                        </div>
+                                        <a href="#profile-nav" class="box-block" data-toggle="collapse" aria-expanded="false">
+                                            <span class="pull-right dropdown-toggle">
+                                                <i class="dropdown-caret"></i>
+                                            </span>
+                                            <p class="mnp-name"><?php echo $validacionSession ?></p>
+                                            <!--<span class="mnp-desc">aaron.cha@themeon.net</span>-->
+                                        </a>
+                                    </div>
+                                    <div id="profile-nav" class="collapse list-group bg-trans">
+                                        <a href="#" class="list-group-item">
+                                            <i class="demo-pli-male icon-lg icon-fw"></i> View Profile
+                                        </a>
+                                        <a href="#" class="list-group-item">
+                                            <i class="demo-pli-gear icon-lg icon-fw"></i> Settings
+                                        </a>
+                                        <a href="#" class="list-group-item">
+                                            <i class="demo-pli-information icon-lg icon-fw"></i> Help
+                                        </a>
+                                        <a href="#" class="list-group-item">
+                                            <i class="demo-pli-unlock icon-lg icon-fw"></i> Logout
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                                <!--Shortcut buttons-->
+                                <!--================================-->
+                                <div id="mainnav-shortcut">
+                                    <ul class="list-unstyled shortcut-wrap">
+                                        <li class="col-xs-3" data-content="My Profile">
+                                            <a class="shortcut-grid" href="#">
+                                                <div class="icon-wrap icon-wrap-sm icon-circle bg-mint">
+                                                <i class="demo-pli-male"></i>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="col-xs-3" data-content="Messages">
+                                            <a class="shortcut-grid" href="#">
+                                                <div class="icon-wrap icon-wrap-sm icon-circle bg-warning">
+                                                <i class="demo-pli-speech-bubble-3"></i>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="col-xs-3" data-content="Activity">
+                                            <a class="shortcut-grid" href="#">
+                                                <div class="icon-wrap icon-wrap-sm icon-circle bg-success">
+                                                <i class="demo-pli-thunder"></i>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="col-xs-3" data-content="Lock Screen">
+                                            <a class="shortcut-grid" href="#">
+                                                <div class="icon-wrap icon-wrap-sm icon-circle bg-purple">
+                                                <i class="demo-pli-lock-2"></i>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--================================-->
+                                <!--End shortcut buttons-->
+
+
+                                <ul id="mainnav-menu" class="list-group">
+						
+						            <!--Category name-->
+						            <li class="list-header">Modulos</li>
+						
+						            <!--Menu list item-->
+						            <li>
+						                <a href="./../inicio/main.php">
+						                    <i class="demo-pli-home"></i>
+						                    <span class="menu-title">Inicio</span>
+						                </a>
+						            </li>
+
+
+                                    <!--Menu list item-->
+                                    <li>
+                                        <a href="#">
+                                            <i class="demo-pli-tactic"></i>
+                                            <span class="menu-title">Menu Level</span>
+                                            <i class="arrow"></i>
+                                        </a>
+
+                                        <!--Submenu-->
+                                        <ul class="collapse">
+                                            <li><a href="#">Second Level Item</a></li>
+                                            <li><a href="#">Second Level Item</a></li>
+                                            <li><a href="#">Second Level Item</a></li>
+                                            <li class="list-divider"></li>
+                                            <li>
+                                                <a href="#">Third Level<i class="arrow"></i></a>
+
+                                                <!--Submenu-->
+                                                <ul class="collapse">
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                    <li><a href="#">Third Level Item</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <template id="template-modulo">
+                                        <li>
+                                            <a href="#">
+                                                <i class="demo-pli-tactic"></i>
+                                                <span class="menu-title">Modulo Level</span>
+                                                <i class="arrow"></i>
+                                            </a>
+                                            <!--Submenu-->
+                                            <ul class="collapse">
+                                                <li>
+                                                    <a href="#"> Menu Item</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </template>
+                                    <template id="template-menu">
+                                        <!--Submenu-->
+                                        <ul class="collapse">
+                                            <li>
+                                                <a href="#"> Menu Item</a>
+                                            </li>
+                                        </ul>
+                                    </template>
+	
+                                </ul>
+
+
+                                <!--Widget-->
+                                <!--================================-->
+                                <div class="mainnav-widget">
+
+                                    <!-- Show the button on collapsed navigation -->
+                                    <div class="show-small">
+                                        <a href="#" data-toggle="menu-widget" data-target="#demo-wg-server">
+                                            <i class="demo-pli-monitor-2"></i>
+                                        </a>
+                                    </div>
+
+                                    <!-- Hide the content on collapsed navigation -->
+                                    <div id="demo-wg-server" class="hide-small mainnav-widget-content">
+                                        <ul class="list-group">
+                                            <li class="list-header pad-no mar-ver">Server Status</li>
+                                            <li class="mar-btm">
+                                                <span class="label label-primary pull-right">15%</span>
+                                                <p>CPU Usage</p>
+                                                <div class="progress progress-sm">
+                                                    <div class="progress-bar progress-bar-primary" style="width: 15%;">
+                                                        <span class="sr-only">15%</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="mar-btm">
+                                                <span class="label label-purple pull-right">75%</span>
+                                                <p>Bandwidth</p>
+                                                <div class="progress progress-sm">
+                                                    <div class="progress-bar progress-bar-purple" style="width: 75%;">
+                                                        <span class="sr-only">75%</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="pad-ver"><a href="#" class="btn btn-success btn-bock">View Details</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--================================-->
+                                <!--End widget-->
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--================================-->
+                    <!--End menu-->
+
+                </div>
+            </nav>
             <!--===================================================-->
             <!--END MAIN NAVIGATION-->
 
@@ -439,9 +957,158 @@
 
     <!--JAVASCRIPT-->
     <!--=================================================-->
+    <script>
+        const templateModulo = document.getElementById('template-modulo').content
+        const fragmentModulo = document.createDocumentFragment()
+    </script>
+    <?php 
+        echo $template_javascript;
+    ?>
+   
+    <script>
+        $("#mainnav-menu .list-header").after('<li><a href="#"><i class="demo-pli-tactic"></i><span class="menu-title">Modulo afuera</span><i class="arrow"></i></a><!--Submenu--><ul class="collapse"><li><a href="#"> Menu Item</a></li></ul></li>');
+            $.ajax({
 
-    <?php echo $template_javascript; ?>
-    
+                //indico el url donde se enviara los datos
+                url: './../../../controllers/controllerNav.php',
+                type: 'POST',
+                data: {id_Usuario},
+                beforeSend: function () {
+                },
+                //indico el metodo de envio, puede ser GET ó Post
+                success: function (rpta) {
+                    
+                    console.log(rpta);
+                    // PASAMOS RESPUESTA A UNA VARIABLE
+                    //json = JSON.parse(rpta);
+                },
+                error: function (error) {
+                    console.log('Primer Promesa error')
+                },
+                //Completado Solicitud
+                complete: function() {
+                },
+            })
+        $(document).ready(function() {
+            
+        });
+        //$("#mainnav-menu .list-header").after('<li><a href="#"><i class="demo-pli-tactic"></i><span class="menu-title">Modulo afuera</span><i class="arrow"></i></a><!--Submenu--><ul class="collapse"><li><a href="#"> Menu Item</a></li></ul></li>');
+        /* $("#mainnav-menu li").on("click", function(event){
+            console.log($(this).text());
+        }); */
+        const mainnav_menu = document.getElementById('mainnav-menu')
+        console.log('ID USUARIO ES : '+id_Usuario);
+        // Obtengo datos //
+        getAsignado(id_Usuario);
+         
+        const pintarNav = (data) => {
+            var modulo = 'false';
+            var menu = 'false';
+            var submenu = 'false';
+            var template_Modulo = '';
+            var template_Menu = '';
+            var template_subMenu = '';
+            for (var mo = 0; mo < data.length; mo++) {
+                /* li.textContent(''); */
+                // Almaceno modulo en variable
+                var nextModulo = data[mo]["nombre_modulo"];
+                // Comparacion
+                if (modulo !== nextModulo) {
+                    // Recorrer Menu
+                    for (var me = 0; me < data.length; me++) {
+                        // Almaceno menu en variable
+                        nextMenu = data[me]["nombre_menu"];
+                        // Comparacion
+                        if (data[mo]["nombre_modulo"] == data[me]["nombre_modulo"]) {
+                            // Comparacion
+                            if (menu != nextMenu) {
+
+                                if (data[me]["link_menu"] !== '/') {
+                                    /* template_Menu += '<!--Submenu-->\
+                                                    <ul class="collapse">\
+                                                        <li>\
+                                                            <a href="./../' + data[me]["link_modulo"] + '/' + data[me]["link_menu"] + '"><i class="fa fa-group"></i>' + data[me]["nombre_menu"] + '</a>\
+                                                        </li>\
+                                                    </ul>'; */
+
+                                } else {
+                                    console.log('Loco');
+                                    // emplateModulo.querySelector('li ul li a').textContent = data[me]["nombre_submenu"]; //
+                                    template_subMenu += '<ul class="collapse">';
+                                    for (var sme = 0; sme < data.length; sme++) {
+                                        // Almaceno submenu en variable
+                                        nextsubMenu = data[sme]["nombre_submenu"];
+                                        if (data[me]["nombre_menu"] == data[sme]["nombre_menu"]) {
+
+                                            if (submenu != nextsubMenu) {
+                                                /* template_subMenu += '\
+                                                        <li><a href="./../' + data[sme]["link_modulo"] + '/' + data[sme]["link_submenu"] + '">' + data[sme]["nombre_submenu"] + '</a></li>\
+                                                    '; */
+                                                submenu = data[sme]["nombre_submenu"]
+                                            }
+                                        }
+                                    }
+                                    /* template_subMenu += '</ul>';
+                                    template_Menu += '<!--Submenu-->\
+                                                    <ul class="collapse">\
+                                                        <li>\
+                                                            <a href="#"><i class="fa fa-group"></i>' + data[me]["nombre_menu"] + '<i class="arrow"></i></a>\
+                                                            ' + template_subMenu + '\
+                                                        </li>\
+                                                    </ul>'; */
+                                }
+
+                                menu = data[me]["nombre_menu"];
+                                /* template_subMenu = ''; */
+
+                            }
+                        }
+                    }
+                    
+                    //templateModulo.querySelector('li').appendChild(fragmentMenu);
+                    templateModulo.querySelector('li a span').textContent = data[mo]["nombre_modulo"];
+                    const cloneModulo = templateModulo.cloneNode(true);
+                    fragmentModulo.appendChild(cloneModulo);
+                    /* template_Modulo += '<!--Menu list item-->\
+                            <li class="">\
+                                                <a href="#">\
+                                                    <i class="ti-bookmark-alt"></i>\
+                                                        <span class="menu-title">' + data[mo]["nombre_modulo"] + '</span>\
+                                                    <i class="arrow"></i>\
+                                                </a>' + template_Menu +
+                        '</li>'; */
+                    modulo = data[mo]["nombre_modulo"];
+                    /* template_Menu = ''; */
+                }
+                // li.appendChild(fragmentModulo) //
+                // li.innerHTML = fragmentModulo //
+                // mainnav_menu.appendChild(fragmentModulo)
+            }
+            $("#mainnav-menu .list-header").after('<li><a href="#"><i class="demo-pli-tactic"></i><span class="menu-title">Modulo afuera</span><i class="arrow"></i></a><!--Submenu--><ul class="collapse"><li><a href="#"> Menu Item</a></li></ul></li>');
+            /* mainnav_menu.insertAdjacentHTML('beforeend', template_Modulo) */
+            $("#mainnav-menu").append(fragmentModulo);
+            /* $("#mainnav-menu li").after(template_Modulo); */
+            /* $.niftyNav('bind'); */
+
+        /* var li = document.createElement(li);
+        li.appendChild(templateModulo); */
+    }
+        // Attach a delegated event handler
+    $( "#mainnav li" ).on( "click", "a[href^='http']", function( event ) {
+        $( this ).attr( "target", "_blank" );
+        console.log('Hola');
+    });
+    /* $( "#mainnav li a" ).on( "click", function(i) {
+        var s = n(this),
+        a = s.parent(t.parentTrigger),
+        r = a.siblings(t.parentTrigger).children(t.triggerElement),
+        o = a.children(t.subMenu);
+        t.preventDefault && i.preventDefault(), "true" !== s.attr("aria-disabled") && (a.hasClass(t.activeClass) ? (s.attr("aria-expanded", !1), e.hide(o)) : (e.show(o), s.attr("aria-expanded", !0), t.toggle && r.attr("aria-expanded", !1)), t.onTransitionStart && t.onTransitionStart(i))
+    }) */
+    </script>
+
+
+
     <!--Morris.js [ OPTIONAL ]
     <script src=".\..\..\..\plugins\morris-js\morris.min.js"></script>
     <script src=".\..\..\..\plugins\morris-js\raphael-js\raphael.min.js"></script>-->
@@ -450,19 +1117,21 @@
 
     <!--Custom script [ DEMONSTRATION ]-->
     <!--===================================================-->
-   
+
     <script>
-        var cardModulo = 'false';
+/*         var cardModulo = 'false';
         var template_card_modulos = '';
         const contenedor_modulos = document.querySelector("#content-modules");
-        if(data.length > 3){
-            console.log('Si eres mayor a tres');
-        }
-        for (var mo = 0; mo < data.length; mo++) {
-            var nextcardModulo = data[mo]["nombre_modulo"];
-            if (cardModulo !== nextcardModulo) {
-                cardModulo = data[mo]["nombre_modulo"];
-                template_card_modulos += '\
+        const pintarCards = (data) => {
+            var contadorLinea = 1;
+            for (var mo = 0; mo < data.length; mo++) {
+                
+                var nextcardModulo = data[mo]["nombre_modulo"];
+                
+                if (cardModulo !== nextcardModulo) {
+                    console.log(contadorLinea);
+                    if(contadorLinea > 4){
+                        template_card_modulos += '\
                         <div class="col-md-2 col-md-offset-3">\
                             <div class="panel">\
                                 <div class="panel-body text-center">\
@@ -474,12 +1143,51 @@
                                 </div>\
                             </div>\
                         </div>';
-            }
-        }
-        contenedor_modulos.innerHTML = template_card_modulos;
+                        contadorLinea = 0;
+                        
+                    }
+                    else if (contadorLinea == 1){
+                        template_card_modulos += '\
+                        <div class="col-md-2 col-md-offset-3">\
+                            <div class="panel">\
+                                <div class="panel-body text-center">\
+                                    <div class="pad-ver mar-top text-main"><i class="demo-pli-data-settings icon-4x"></i></div>\
+                                    <p class="text-lg text-semibold mar-no text-main">' + data[mo]["nombre_modulo"] + '</p>\
+                                    <p class="text-muted">' + data[mo]["descripcion_modulo"] + '</p>\
+                                    <p class="text-sm">' + data[mo]["comentario_modulo"] + '</p>\
+                                    <button class="btn btn-primary mar-ver">Ir Modulo</button>\
+                                </div>\
+                            </div>\
+                        </div>';
+                    }
+                    else{
+                        template_card_modulos += '\
+                        <div class="col-md-2">\
+                            <div class="panel">\
+                                <div class="panel-body text-center">\
+                                    <div class="pad-ver mar-top text-main"><i class="demo-pli-data-settings icon-4x"></i></div>\
+                                    <p class="text-lg text-semibold mar-no text-main">' + data[mo]["nombre_modulo"] + '</p>\
+                                    <p class="text-muted">' + data[mo]["descripcion_modulo"] + '</p>\
+                                    <p class="text-sm">' + data[mo]["comentario_modulo"] + '</p>\
+                                    <button class="btn btn-primary mar-ver">Ir Modulo</button>\
+                                </div>\
+                            </div>\
+                        </div>';
+                        
+                        
+                    }
+                    contadorLinea++;
+                    cardModulo = data[mo]["nombre_modulo"];
+                }
+                cardModulo = data[mo]["nombre_modulo"];            
+            }        
+            contenedor_modulos.insertAdjacentHTML('beforeend', template_card_modulos)
+        } */
+
+        
     </script>
 
-
+    <!--<script type="text/javascript" src="./../../../js/index.js"></script>-->
 
 </body>
 

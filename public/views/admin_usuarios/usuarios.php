@@ -1,4 +1,9 @@
 <?php
+    require_once('./../../../Config/config.php');
+    include_once('./../template/header.php');
+    include_once('./../template/javascript.php');
+    include_once('./../template/footer.php');
+    include_once('./../template/aside.php');
     session_start();
     // Obtenemos URL HTTP
     function get_url(){
@@ -12,22 +17,12 @@
         //return $_SERVER['REQUEST_URI'];
     }
     $url_actual = get_url();
-    //var_dump($url_actual);
     $separador = "/"; // Usar una cadena
     $ubicaciones = explode($separador, $url_actual);
-    //print_r($ubicaciones);
-    //echo $ubicaciones[4];
-    
-    if (!isset($_SESSION["username"])) {
-        //echo 'No se inicio session ';
-        
-        header("location:../index.php");
-    } else {
-    }
-    $validacionSession =  $_SESSION["name"] ? $_SESSION["name"] : 'No se inicio';
-    $string = file_get_contents("./../data-logo.json");
-    $json_a = json_decode($string, true);
-    include_once ("../menu.php");   
+    $nameArchivo = basename( __FILE__ );
+    $parte = explode(".", $nameArchivo);
+    $nameMenu = ucfirst($parte[0]);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -36,43 +31,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Users 2 | Nifty - Admin Template</title>
+    <title><?php echo $nameMenu .' | '. NOMBRE_SISTEMA ?></title>
 
 
     <!--STYLESHEET-->
     <!--=================================================-->
 
-    <!--Open Sans Font [ OPTIONAL ]-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <?php echo $template_header_css; ?>
 
-
-    <!--Bootstrap Stylesheet [ REQUIRED ]-->
-    <link href="..\css\bootstrap.min.css" rel="stylesheet">
-
-
-    <!--Nifty Stylesheet [ REQUIRED ]-->
-    <link href="..\css\nifty.min.css" rel="stylesheet">
-
-
-    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
-    <link href="..\css\demo\nifty-demo-icons.min.css" rel="stylesheet">
-
-
-    <!--=================================================-->
-
-
-
-    <!--Pace - Page Load Progress Par [OPTIONAL]-->
-    <link href="..\plugins\pace\pace.min.css" rel="stylesheet">
-    <script src="..\plugins\pace\pace.min.js"></script>
-
-
-    <!--Demo [ DEMONSTRATION ]-->
-    <link href="..\css\demo\nifty-demo.min.css" rel="stylesheet">
-
+    <!--Switchery [ OPTIONAL ]-->
+    <link href=".\..\..\..\plugins\switchery\switchery.min.css" rel="stylesheet">
 
     <!--Bootstrap Validator [ OPTIONAL ]-->
-    <link href="plugins\bootstrap-validator\bootstrapValidator.min.css" rel="stylesheet">
+    <link href=".\..\..\..\plugins\bootstrap-validator\bootstrapValidator.min.css" rel="stylesheet">
 
 
     <!--Nifty Stylesheet [ REQUIRED ]
@@ -121,9 +92,9 @@
                 <!--================================-->
                 <div class="navbar-header">
                     <a href="index.html" class="navbar-brand">
-                        <img src="<?php echo $json_a['Empresa']['url'];?>" alt="Nifty Logo" class="brand-icon">
+                        <img src="<?php URL_LOGO ?>" alt="Nifty Logo" class="brand-icon">
                         <div class="brand-title">
-                            <span class="brand-text"><?php echo $json_a['Empresa']['nombre'];?></span>
+                            <span class="brand-text"><?php NOMBRE_SISTEMA ?></span>
                         </div>
                     </a>
                 </div>
@@ -258,22 +229,22 @@
                                         <p class="dropdown-header"><i class="demo-pli-file-jpg icon-lg icon-fw"></i> Gallery</p>
                                         <div class="row img-gallery">
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-1.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src=".\..\..\..\img\thumbs\img-1.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-3.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src=".\..\..\..\img\thumbs\img-3.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-2.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src=".\..\..\..\img\thumbs\img-2.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-4.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src=".\..\..\..\img\thumbs\img-4.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-6.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src=".\..\..\..\img\thumbs\img-6.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-5.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src=".\..\..\..\img\thumbs\img-5.jpeg" alt="thumbs">
                                             </div>
                                         </div>
                                         <a href="#" class="btn btn-block btn-primary">Browse Gallery</a>
@@ -352,7 +323,7 @@
                                             <li>
                                                 <a class="media" href="#">
                                                     <div class="media-left">
-                                                        <img class="img-circle img-sm" alt="Profile Picture" src="..\img\profile-photos\9.png">
+                                                        <img class="img-circle img-sm" alt="Profile Picture" src=".\..\..\..\img\profile-photos\9.png">
                                                     </div>
                                                     <div class="media-body">
                                                         <p class="mar-no text-nowrap text-main text-semibold">Lucy sent you a message</p>
@@ -363,7 +334,7 @@
                                             <li>
                                                 <a class="media" href="#">
                                                     <div class="media-left">
-                                                        <img class="img-circle img-sm" alt="Profile Picture" src="..\img\profile-photos\3.png">
+                                                        <img class="img-circle img-sm" alt="Profile Picture" src=".\..\..\..\img\profile-photos\3.png">
                                                     </div>
                                                     <div class="media-body">
                                                         <p class="mar-no text-nowrap text-main text-semibold">Jackson sent you a message</p>
@@ -515,7 +486,7 @@
 					                <div class="pad-all">
 					                    <div class="media pad-ver">
 					                        <div class="media-left">
-					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="..\img\profile-photos\8.png"></a>
+					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src=".\..\..\..\img\profile-photos\8.png"></a>
 					                        </div>
 					                        <div class="media-body pad-top">
 					                            <a href="#" class="box-inline">
@@ -561,7 +532,7 @@
 					                <div class="pad-all">
 					                    <div class="media pad-ver">
 					                        <div class="media-left">
-					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="..\img\profile-photos\10.png"></a>
+					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src=".\..\..\..\img\profile-photos\10.png"></a>
 					                        </div>
 					                        <div class="media-body pad-top">
 					                            <a href="#" class="box-inline">
@@ -607,7 +578,7 @@
 					                <div class="pad-all">
 					                    <div class="media pad-ver">
 					                        <div class="media-left">
-					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="..\img\profile-photos\1.png"></a>
+					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src=".\..\..\..\img\profile-photos\1.png"></a>
 					                        </div>
 					                        <div class="media-body pad-top">
 					                            <a href="#" class="box-inline">
@@ -653,7 +624,7 @@
 					                <div class="pad-all">
 					                    <div class="media pad-ver">
 					                        <div class="media-left">
-					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="..\img\profile-photos\5.png"></a>
+					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src=".\..\..\..\img\profile-photos\5.png"></a>
 					                        </div>
 					                        <div class="media-body pad-top">
 					                            <a href="#" class="box-inline">
@@ -699,7 +670,7 @@
 					                <div class="pad-all">
 					                    <div class="media pad-ver">
 					                        <div class="media-left">
-					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="..\img\profile-photos\9.png"></a>
+					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src=".\..\..\..\img\profile-photos\9.png"></a>
 					                        </div>
 					                        <div class="media-body pad-top">
 					                            <a href="#" class="box-inline">
@@ -745,7 +716,7 @@
 					                <div class="pad-all">
 					                    <div class="media pad-ver">
 					                        <div class="media-left">
-					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="..\img\profile-photos\4.png"></a>
+					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src=".\..\..\..\img\profile-photos\4.png"></a>
 					                        </div>
 					                        <div class="media-body pad-top">
 					                            <a href="#" class="box-inline">
@@ -791,7 +762,7 @@
 					                <div class="pad-all">
 					                    <div class="media pad-ver">
 					                        <div class="media-left">
-					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="..\img\profile-photos\7.png"></a>
+					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src=".\..\..\..\img\profile-photos\7.png"></a>
 					                        </div>
 					                        <div class="media-body pad-top">
 					                            <a href="#" class="box-inline">
@@ -837,7 +808,7 @@
 					                <div class="pad-all">
 					                    <div class="media pad-ver">
 					                        <div class="media-left">
-					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="..\img\profile-photos\8.png"></a>
+					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src=".\..\..\..\img\profile-photos\8.png"></a>
 					                        </div>
 					                        <div class="media-body pad-top">
 					                            <a href="#" class="box-inline">
@@ -883,7 +854,7 @@
 					                <div class="pad-all">
 					                    <div class="media pad-ver">
 					                        <div class="media-left">
-					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="..\img\profile-photos\8.png"></a>
+					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src=".\..\..\..\img\profile-photos\8.png"></a>
 					                        </div>
 					                        <div class="media-body pad-top">
 					                            <a href="#" class="box-inline">
@@ -929,7 +900,7 @@
 					                <div class="pad-all">
 					                    <div class="media pad-ver">
 					                        <div class="media-left">
-					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="..\img\profile-photos\2.png"></a>
+					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src=".\..\..\..\img\profile-photos\2.png"></a>
 					                        </div>
 					                        <div class="media-body pad-top">
 					                            <a href="#" class="box-inline">
@@ -975,7 +946,7 @@
 					                <div class="pad-all">
 					                    <div class="media pad-ver">
 					                        <div class="media-left">
-					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="..\img\profile-photos\10.png"></a>
+					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src=".\..\..\..\img\profile-photos\10.png"></a>
 					                        </div>
 					                        <div class="media-body pad-top">
 					                            <a href="#" class="box-inline">
@@ -1021,7 +992,7 @@
 					                <div class="pad-all">
 					                    <div class="media pad-ver">
 					                        <div class="media-left">
-					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="..\img\profile-photos\5.png"></a>
+					                            <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src=".\..\..\..\img\profile-photos\5.png"></a>
 					                        </div>
 					                        <div class="media-body pad-top">
 					                            <a href="#" class="box-inline">
@@ -1103,7 +1074,7 @@
                                     <div class="list-group bg-trans">
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="img\profile-photos\2.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src=".\..\..\..\img\profile-photos\2.png" alt="Profile Picture">
 												<i class="badge badge-success badge-stat badge-icon pull-left"></i>
 							                </div>
 							                <div class="media-body">
@@ -1113,7 +1084,7 @@
 							            </a>
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="img\profile-photos\7.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src=".\..\..\..\img\profile-photos\7.png" alt="Profile Picture">
 							                </div>
 							                <div class="media-body">
 							                    <p class="mar-no text-main">Brittany Meyer</p>
@@ -1122,7 +1093,7 @@
 							            </a>
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="img\profile-photos\1.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src=".\..\..\..\img\profile-photos\1.png" alt="Profile Picture">
 												<i class="badge badge-info badge-stat badge-icon pull-left"></i>
 							                </div>
 							                <div class="media-body">
@@ -1132,7 +1103,7 @@
 							            </a>
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="img\profile-photos\4.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src=".\..\..\..\img\profile-photos\4.png" alt="Profile Picture">
 							                </div>
 							                <div class="media-body">
 							                    <p class="mar-no text-main">Donald Brown</p>
@@ -1141,7 +1112,7 @@
 							            </a>
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="img\profile-photos\8.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src=".\..\..\..\img\profile-photos\8.png" alt="Profile Picture">
 												<i class="badge badge-warning badge-stat badge-icon pull-left"></i>
 							                </div>
 							                <div class="media-body">
@@ -1151,7 +1122,7 @@
 							            </a>
 							            <a href="#" class="list-group-item">
 							                <div class="media-left pos-rel">
-							                    <img class="img-circle img-xs" src="img\profile-photos\9.png" alt="Profile Picture">
+							                    <img class="img-circle img-xs" src=".\..\..\..\img\profile-photos\9.png" alt="Profile Picture">
 												<i class="badge badge-danger badge-stat badge-icon pull-left"></i>
 							                </div>
 							                <div class="media-body">
@@ -1413,6 +1384,29 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Colaborador</label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="ipt-search-nombreColaborador" class="form-control" name="nombre_colaborador" list="options-nombre" placeholder="Nombre" onkeypress="return soloLetras(event)">
+                                        </div>                                        
+                                        <datalist id="options-nombre">
+                                            <option value="No se pudo obtener Nombre">
+                                        </datalist>
+                                        <template id="template-opts-colaborador">
+                                            <option id="opt-colaborador" value="">
+                                        </template>
+                                        <div class="col-md-4">
+                                            <input type="number" id="ipt-search-dniColaborador" class="form-control" name="dni_colaborador" list="options-dni" placeholder="DNI" pattern="[0-9]+" onkeypress="return valideKey(event);">
+                                        </div>
+                                        <datalist id="options-dni">
+                                            <option value="No se pudo obtener DNI">
+                                        </datalist>
+                                    </div>
+                                </div>                                  
+                            </div>
+                            <!-- Opcion 2 --
+                            <div class="form-horizontal">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Colaborador</label>
                                         <div class="col-md-9 input-group mar-btm">
                                             <input type="text" id="ipt-search-colaborador" class="form-control" name="colaborador" list="insert-options-colaborador" placeholder="Colaborador">
                                             <span class="input-group-btn">
@@ -1436,7 +1430,7 @@
                                         </template>
                                     </div>
                                 </div>                                  
-                            </div>
+                            </div>-->
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -1446,7 +1440,7 @@
 					                    </div>
                                         <label class="col-md-2 control-label">Clave</label>
 					                    <div class="col-md-3">
-					                        <input type="text" class="form-control" name="lastName" placeholder="Clave">
+					                        <input type="password" class="form-control" name="lastName" placeholder="Clave">
 					                    </div>
 					                </div>
                                 </div>                                      
@@ -1617,47 +1611,29 @@
     <!--JAVASCRIPT-->
     <!--=================================================-->
 
-    <!--jQuery [ REQUIRED ]-->
-    <script src="..\js\jquery.min.js"></script>
-
-
-    <!--BootstrapJS [ RECOMMENDED ]-->
-    <script src="..\js\bootstrap.min.js"></script>
-
-
-    <!--NiftyJS [ RECOMMENDED ]-->
-    <script src="..\js\nifty.min.js"></script>
-
-
-
-
-    <!--=================================================-->
-    
-    <!--Demo script [ DEMONSTRATION ]-->
-    <script src="..\js\demo\nifty-demo.min.js"></script>
-
-    <!--Bootstrap Validator [ OPTIONAL ]-->
-    <script src="plugins\bootstrap-validator\bootstrapValidator.min.js"></script>
-
+    <?php echo $template_javascript; ?>
 
     <!--Switchery [ OPTIONAL ]-->
-    <script src="..\plugins\switchery\switchery.min.js"></script>
+    <script src=".\..\..\..\plugins\switchery\switchery.min.js"></script>
+
+    <!--Bootstrap Validator [ OPTIONAL ]-->
+    <script src=".\..\..\..\plugins\bootstrap-validator\bootstrapValidator.min.js"></script>
 
     <!--Chosen [ OPTIONAL ]-->
-    <script src="..\plugins\chosen\chosen.jquery.min.js"></script>
+    <script src=".\..\..\..\plugins\chosen\chosen.jquery.min.js"></script>
 
     <!--Select2 [ OPTIONAL ]-->
-    <script src="..\plugins\select2\js\select2.min.js"></script>
+    <script src=".\..\..\..\plugins\select2\js\select2.min.js"></script>
 
     <!--Form Component [ SAMPLE ]-->
-    <script src="..\js\demo\form-component.js"></script>
+    <script src=".\..\..\..\js\demo\form-component.js"></script>
 
 
 
     
 
     <!--Form Component [ REQUIRED ]-->
-    <script src="..\js\usuario.js"></script>
+    <script src=".\..\..\..\js\usuario.js"></script>
 
 
 </body>

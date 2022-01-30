@@ -2,10 +2,10 @@
     header('Content-type: application/json; charset=utf-8');
     // Comprobamos si recibio Informacion //
     if($_POST){
-        // Nombre del Modelo //
-        $nameModels = 'detalleSession';
         // Variable para almacenar respuesta de controller //
         $rptController = 'Se recibio datos';
+        // Nombre del Modelo //
+        $nameModels = 'detalleSession';
         // Varible almacenar respuesta Sql //
         $rptSql='';
         try {

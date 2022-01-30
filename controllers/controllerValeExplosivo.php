@@ -1,6 +1,5 @@
 <?php
 header('Content-type: application/json; charset=utf-8');
-
 // Verifico si se recibio Informacion
 if($_POST){
     $nametable = 'tvalexplosivos';

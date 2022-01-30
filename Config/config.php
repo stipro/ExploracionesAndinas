@@ -21,7 +21,7 @@
 	// Datos de la Empresa
 	const NOMBRE_COMERCIAL = "Exploraciones Andinas S.A.C.";
 	const URL_LOGO = ".\..\..\img\logo_letra.png";
-	const NOMBRE_SISTEMA = "Sistema Exploraciones Andinas";
+	const NOMBRE_SISTEMA = "Exploraciones Andinas";
 
 	//Datos envio de correo
 	const NOMBRE_REMITENTE = "Frank Stift";

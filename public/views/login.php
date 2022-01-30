@@ -281,7 +281,7 @@
 			//Validamos Acceso
 			if( sqlValidador == true){
 				console.log('Acceso concedido');
-				window.location.href = './views/inicio/main.php';
+				//window.location.href = './views/inicio/main.php';
 				request(idUsuario);
 			}
 			else{
@@ -298,8 +298,6 @@
 		};
 
 		const getIpInfor =  async (data) =>{
-
-
 			var requestOptions = {
 			method: 'GET',
 			redirect: 'follow'

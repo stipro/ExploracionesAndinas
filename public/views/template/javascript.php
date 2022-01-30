@@ -2,8 +2,15 @@
     /* <!--JAVASCRIPT--> */
     /* <!--=================================================--> */
     $template_javascript = '
-    <!--jQuery [ REQUIRED ]-->
-    <script src=".\..\..\..\js\jquery.min.js"></script>
+    <!-- jQuery library 
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>-->
+
+
+    <!--jQuery [ REQUIRED ] 
+    <script src=".\..\..\..\js\jquery.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+
 
 
     <!--BootstrapJS [ RECOMMENDED ]-->
@@ -18,8 +25,6 @@
 
     <!--=================================================-->
     
-    <!--Demo script [ DEMONSTRATION ]-->
-    <script src=".\..\..\..\js\demo\nifty-demo.min.js"></script>
     '
 ?>
 

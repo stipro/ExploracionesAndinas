@@ -1,6 +1,5 @@
 <?php
 declare (strict_types = 1);
-require_once('./../Config/config.php');
 class Conexion
 {
     protected $db;
@@ -22,7 +21,7 @@ class Conexion
                 $DBNAME = 'explore_andina';
                 $USER   = 'root';
                 $PASS   = '';
-                $con    = new PDO("mysql:host=".DB_HOST."; dbname=".DB_NAME, DB_USER, DB_PASSWORD);
+                $con    = new PDO("mysql:host={$HOST}; dbname={$DBNAME}", $USER, $PASS);
                 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $con->exec('SET CHARACTER SET UTF8');
             }else{
@@ -30,7 +29,7 @@ class Conexion
                 $DBNAME = 'explore_andina';
                 $USER   = 'root';
                 $PASS   = '';
-                $con    = new PDO("mysql:host=".DB_HOST."; dbname=".DB_NAME, DB_USER, DB_PASSWORD);
+                $con    = new PDO("mysql:host={$HOST}; dbname={$DBNAME}", $USER, $PASS);
                 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $con->exec('SET CHARACTER SET UTF8');
             }
