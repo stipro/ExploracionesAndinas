@@ -38,7 +38,7 @@ class Login extends Conexion
             $validador = FALSE;
 
             // Consulta
-            $sql = "SELECT colaboradores.col_nombres, colaboradores.col_ccostos, usuarios.id_usuario, usuarios.nombre_usuario, usuarios.clave_usuario, usuarios.estado_usuario, usuarios.session_usuario  FROM colaboradores RIGHT JOIN usuarios ON usuarios.id_colaborador = colaboradores.id_colaborador WHERE nombre_usuario = '{$user}' AND clave_usuario = '{$password}' AND estado_usuario = '1'";
+            $sql = "SELECT colaboradores.col_nombres, colaboradores.col_ccostos, usuarios.id_usuario, usuarios.nombre_usuario, usuarios.clave_usuario, usuarios.estado_usuario, usuarios.session_usuario, usuarios.token  FROM colaboradores RIGHT JOIN usuarios ON usuarios.id_colaborador = colaboradores.id_colaborador WHERE nombre_usuario = '{$user}' AND clave_usuario = '{$password}' AND estado_usuario = '1'";
 
             // Resultado
             $resultado = $this->ConsultaSimple($sql);
@@ -82,20 +82,30 @@ class Login extends Conexion
             return 'ERROR';
         }
     }
-    public function getAsignado($id_suuario)
+    public function update_token($user, $token)
     {
         try {
             //Declaramos Variables
             $sql = null;
             $resultado = null;
             $validador = FALSE;
-
             // Consulta
-            $sql = "SELECT * FROM modulos AS md LEFT JOIN menu ON md.id_modulo = menu.id_modulo LEFT JOIN  submenu AS smenu ON menu.id_menu =  smenu.id_menu RIGHT JOIN asignaciones ON smenu.id_submenu = asignaciones.subMenu_id WHERE usuario_id = {$id_suuario} ORDER BY md.id_modulo, menu.nombre_menu, smenu.nombre_submenu;";
+            $query = "UPDATE usuarios SET token = :token WHERE  id_usuario=:user;";
+            $sql_update = $this->db->prepare($query);            
+            $sql_update->bindParam(':token',$token,PDO::PARAM_INT);
+            $sql_update->bindParam(':user',$user,PDO::PARAM_STR); 
+            $resultado = $sql_update->execute();
+            if($sql_update->rowCount() > 0)
+            {
+                $count = $sql_update -> rowCount();
+    /*             echo "<div class='content alert alert-primary' > 
+                Gracias: $count registro ha sido actualizado  </div>"; */
+            }
+            else{
 
+                /* print_r($sql_update->errorInfo());  */
+            }
             // Resultado
-            $resultado = $this->ConsultaSimple($sql);
-
             //Retornamos Resultado
             return $resultado;
         } 

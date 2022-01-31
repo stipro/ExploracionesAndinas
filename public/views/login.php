@@ -213,7 +213,7 @@
 
 		// GUARDAMOS EN VARIABLE
 		const btnLogin = document.getElementById("btn-login");
-
+		var idUsuario = '';
 		//Ejecutamos funcion
 		btnLogin.addEventListener("click", () => {
 			
@@ -274,27 +274,32 @@
 		//Si necesitas hacer algo despues de que terminen las
 		//consultas, hacelas aqui.
 		const afterSendingFormLogin = (data) => {
-			sqlValidador = data['sql']['rptValidador'];
-			idUsuario = data['sql']['id'];
+			sqlRpt = data['sql'];
+			idUsuario = data['sql']['Id'];
 			ctrlRespuesta = data['rptController'];
-
 			//Validamos Acceso
-			if( sqlValidador == true){
-				console.log('Acceso concedido');
-				//window.location.href = './views/inicio/main.php';
-				request(idUsuario);
-			}
-			else{
-				console.log('Acceso denegado')
-				//Notificando Acceso
+			if (sqlRpt['Estado'] == 0) {
 				$.niftyNoty({
 					type: 'danger',
 					container : '#alert-login',
-					html : '<strong>Oh cielos!</strong> Acceso denegado, motivo : ' + ctrlRespuesta,
+					html : '<strong>Oh cielos!</strong> ' + ctrlRespuesta,
 					focus: false,
-					timer : 2000
+					timer : 4000
 				});
-			}    
+			}
+			else if (sqlRpt['Estado'] == 1 && sqlRpt['Sesion'] == 1){
+				$.niftyNoty({
+					type: 'danger',
+					container : '#alert-login',
+					html : '<strong>Oh cielos!</strong> ' + ctrlRespuesta,
+					focus: false,
+					timer : 4000
+				});
+			}
+			else {
+				console.log('Acceso concedido');
+				request(idUsuario);
+			}
 		};
 
 		const getIpInfor =  async (data) =>{
@@ -302,10 +307,8 @@
 			method: 'GET',
 			redirect: 'follow'
 			};
-
 			const returned = await fetch("https://ipinfo.io/json", requestOptions)
 			return await returned.json();
-
 		}
 
 		//Registrar Detalles de Session
@@ -340,6 +343,10 @@
 			body.append("data", JSON.stringify(detalleSession));
 			const returned = await fetch("./../controllers/controllerDetalleSession.php", { method: "POST", body });
 			const result = await returned.json();//await JSON.parse(returned);
+			if(returned){
+				window.location.href = './views/inicio/main.php';
+			}
+			
 			
 			//afterSendingFormLogin(result);
 		};

@@ -86,7 +86,6 @@ class detallSession extends Conexion
                 $insertValue->bindParam(':item5', $formInsert2['ipInfo']['org'], PDO::PARAM_STR);
                 $insertValue->bindParam(':item6', $formInsert2['ipInfo']['postal'], PDO::PARAM_STR);
                 $insertValue->bindParam(':item7', $formInsert2['ipInfo']['timezone'], PDO::PARAM_STR);
-                echo 'No existe error';
             }
             $insertValue->bindParam(':item8', $formInsert2['tipoDispositivo'], PDO::PARAM_STR);
             $sqlrpt = $insertValue->execute();

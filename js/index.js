@@ -397,10 +397,7 @@ const pintarNav = data => {
                     }
                 }
             }
-            /* templateModulo.querySelector('a').appendChild(fragmentmenu); */
-            templateModulo.querySelector('a span').textContent = data[mo]["nombre_modulo"];
-            const clone = templateModulo.cloneNode(true)
-            fragmentModulo.appendChild(clone)
+
             template_Modulo += '<!--Menu list item-->\
                     <li class="">\
                                         <a href="#">\

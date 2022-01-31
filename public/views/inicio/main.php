@@ -28,22 +28,10 @@
     <title><?php echo $nameMenu .' | '. NOMBRE_SISTEMA ?></title>
     
     <script>
+        //
         var data = '';
         var nombreUsuario = '<?= $validacionSession;?>';
-        var id_Usuario = '<?= $idUsuario;?>';
-        const getAsignado = async (id_Usuario) => {
-            const body = new FormData();
-            body.append("data", JSON.stringify(id_Usuario));
-            const res = await fetch('./../../../controllers/controllerNav.php', {
-                method: "POST",
-                body
-            });
-            data = await res.json()
-            pintarNav(data);
-            //pintarCards(data)
-        }
-        
-        
+        var id_Usuario = '<?= $idUsuario;?>';     
     </script>
 
 
@@ -103,7 +91,7 @@
                 <!--================================-->
                 <div class="navbar-header">
                     <a href="index.html" class="navbar-brand">
-                        <img src="img\logo.png" alt="Nifty Logo" class="brand-icon">
+                        <img src="./../../../img/logo.png" alt="Nifty Logo" class="brand-icon">
                         <div class="brand-title">
                             <span class="brand-text">Nifty</span>
                         </div>
@@ -240,22 +228,22 @@
                                         <p class="dropdown-header"><i class="demo-pli-file-jpg icon-lg icon-fw"></i> Gallery</p>
                                         <div class="row img-gallery">
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-1.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src="./../../../img/thumbs/img-1.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-3.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src="./../../../img/thumbs/img-3.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-2.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src="./../../../img/thumbs/img-2.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-4.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src="./../../../img/thumbs/img-4.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-6.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src="./../../../img/thumbs/img-6.jpeg" alt="thumbs">
                                             </div>
                                             <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-5.jpeg" alt="thumbs">
+                                                <img class="img-responsive" src="./../../../img/thumbs/img-5.jpeg" alt="thumbs">
                                             </div>
                                         </div>
                                         <a href="#" class="btn btn-block btn-primary">Browse Gallery</a>
@@ -334,7 +322,7 @@
                                             <li>
                                                 <a class="media" href="#">
                                                     <div class="media-left">
-                                                        <img class="img-circle img-sm" alt="Profile Picture" src="img\profile-photos\9.png">
+                                                        <img class="img-circle img-sm" alt="Profile Picture" src="./../../../img/profile-photos/9.png">
                                                     </div>
                                                     <div class="media-body">
                                                         <p class="mar-no text-nowrap text-main text-semibold">Lucy sent you a message</p>
@@ -345,7 +333,7 @@
                                             <li>
                                                 <a class="media" href="#">
                                                     <div class="media-left">
-                                                        <img class="img-circle img-sm" alt="Profile Picture" src="img\profile-photos\3.png">
+                                                        <img class="img-circle img-sm" alt="Profile Picture" src="./../../../img/profile-photos/3.png">
                                                     </div>
                                                     <div class="media-body">
                                                         <p class="mar-no text-nowrap text-main text-semibold">Jackson sent you a message</p>
@@ -799,7 +787,7 @@
                                             </a>
                                         </li>
                                         <li class="col-xs-3" data-content="Lock Screen">
-                                            <a class="shortcut-grid" href="#">
+                                            <a class="shortcut-grid" href="./../../../controllers/CtrlSalir.php">
                                                 <div class="icon-wrap icon-wrap-sm icon-circle bg-purple">
                                                 <i class="demo-pli-lock-2"></i>
                                                 </div>
@@ -824,34 +812,6 @@
 						                </a>
 						            </li>
 
-
-                                    <!--Menu list item-->
-                                    <li>
-                                        <a href="#">
-                                            <i class="demo-pli-tactic"></i>
-                                            <span class="menu-title">Menu Level</span>
-                                            <i class="arrow"></i>
-                                        </a>
-
-                                        <!--Submenu-->
-                                        <ul class="collapse">
-                                            <li><a href="#">Second Level Item</a></li>
-                                            <li><a href="#">Second Level Item</a></li>
-                                            <li><a href="#">Second Level Item</a></li>
-                                            <li class="list-divider"></li>
-                                            <li>
-                                                <a href="#">Third Level<i class="arrow"></i></a>
-
-                                                <!--Submenu-->
-                                                <ul class="collapse">
-                                                    <li><a href="#">Third Level Item</a></li>
-                                                    <li><a href="#">Third Level Item</a></li>
-                                                    <li><a href="#">Third Level Item</a></li>
-                                                    <li><a href="#">Third Level Item</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
                                     <template id="template-modulo">
                                         <li>
                                             <a href="#">
@@ -859,21 +819,17 @@
                                                 <span class="menu-title">Modulo Level</span>
                                                 <i class="arrow"></i>
                                             </a>
-                                            <!--Submenu-->
-                                            <ul class="collapse">
-                                                <li>
-                                                    <a href="#"> Menu Item</a>
-                                                </li>
-                                            </ul>
                                         </li>
                                     </template>
                                     <template id="template-menu">
-                                        <!--Submenu-->
                                         <ul class="collapse">
                                             <li>
-                                                <a href="#"> Menu Item</a>
+                                                <a href="#"> Menu Item<i class="arrow"></i></a>
                                             </li>
                                         </ul>
+                                    </template>
+                                    <template id="template-submenu">
+                                        <ul class="collapse"><li><a href="#"> Menu Item</a></li></ul>
                                     </template>
 	
                                 </ul>
@@ -957,59 +913,73 @@
 
     <!--JAVASCRIPT-->
     <!--=================================================-->
-    <script>
-        const templateModulo = document.getElementById('template-modulo').content
-        const fragmentModulo = document.createDocumentFragment()
-    </script>
     <?php 
         echo $template_javascript;
     ?>
    
     <script>
-        $("#mainnav-menu .list-header").after('<li><a href="#"><i class="demo-pli-tactic"></i><span class="menu-title">Modulo afuera</span><i class="arrow"></i></a><!--Submenu--><ul class="collapse"><li><a href="#"> Menu Item</a></li></ul></li>');
-            $.ajax({
+        const mainnav_menu = document.getElementById('mainnav-menu');
+        //Asigno id al variable
+        const templateModulo = document.getElementById('template-modulo').content;
+        // C<reo el fragment
+        const fragmentModulo = document.createDocumentFragment();
+        //Asigno id al variable
+        const templateMenu = document.getElementById('template-menu').content;
+        // C<reo el fragment
+        const fragmentMenu = document.createDocumentFragment();
+        //Asigno id al variable
+        const templateSubmenu = document.getElementById('template-submenu').content;
+        // C<reo el fragment
+        const fragmentSubmenu = document.createDocumentFragment();
+        const i = document.createElement('i');
+        const fragmenti = document.createDocumentFragment();
+        const u = document.createElement('u');
+        const fragmentu = document.createDocumentFragment();
 
-                //indico el url donde se enviara los datos
-                url: './../../../controllers/controllerNav.php',
-                type: 'POST',
-                data: {id_Usuario},
-                beforeSend: function () {
-                },
-                //indico el metodo de envio, puede ser GET ó Post
-                success: function (rpta) {
-                    
-                    console.log(rpta);
-                    // PASAMOS RESPUESTA A UNA VARIABLE
-                    //json = JSON.parse(rpta);
-                },
-                error: function (error) {
-                    console.log('Primer Promesa error')
-                },
-                //Completado Solicitud
-                complete: function() {
-                },
-            })
-        $(document).ready(function() {
-            
+        $(document).ready(function(){
+            $('#mainnav-menu').on("click", function(e){
+                
+                if(e.target.parentElement.querySelector('ul')){
+                    e.target.parentElement.querySelector('ul').classList.toggle('in');
+                    e.target.parentElement.classList.toggle('active');
+                }                
+                
+            });
+            $('#mainnav-menu li a ul').on("click", function(e){
+                e.target.parentElement.querySelector('ul').classList.toggle('in');
+                e.target.parentElement.classList.toggle('active');
+            });
         });
-        //$("#mainnav-menu .list-header").after('<li><a href="#"><i class="demo-pli-tactic"></i><span class="menu-title">Modulo afuera</span><i class="arrow"></i></a><!--Submenu--><ul class="collapse"><li><a href="#"> Menu Item</a></li></ul></li>');
-        /* $("#mainnav-menu li").on("click", function(event){
-            console.log($(this).text());
-        }); */
-        const mainnav_menu = document.getElementById('mainnav-menu')
+        
+        // Solictud de la data menu
+        const getAsignado = async (id_Usuario) => {
+            const body = new FormData();
+            body.append("data", JSON.stringify(id_Usuario));
+            const res = await fetch('./../../../controllers/controllerNav.php', {
+                method: "POST",
+                body
+            });
+            data = await res.json()
+            pintarNav(data);
+            pintarCards(data)
+        }
+        
         console.log('ID USUARIO ES : '+id_Usuario);
         // Obtengo datos //
         getAsignado(id_Usuario);
          
         const pintarNav = (data) => {
+            console.log(data);
+            // scope en js --- o en general
+            // const let var
             var modulo = 'false';
             var menu = 'false';
             var submenu = 'false';
             var template_Modulo = '';
             var template_Menu = '';
             var template_subMenu = '';
+
             for (var mo = 0; mo < data.length; mo++) {
-                /* li.textContent(''); */
                 // Almaceno modulo en variable
                 var nextModulo = data[mo]["nombre_modulo"];
                 // Comparacion
@@ -1024,16 +994,14 @@
                             if (menu != nextMenu) {
 
                                 if (data[me]["link_menu"] !== '/') {
-                                    /* template_Menu += '<!--Submenu-->\
+                                    template_Menu += '<!--Submenu-->\
                                                     <ul class="collapse">\
                                                         <li>\
                                                             <a href="./../' + data[me]["link_modulo"] + '/' + data[me]["link_menu"] + '"><i class="fa fa-group"></i>' + data[me]["nombre_menu"] + '</a>\
                                                         </li>\
-                                                    </ul>'; */
+                                                    </ul>';
 
                                 } else {
-                                    console.log('Loco');
-                                    // emplateModulo.querySelector('li ul li a').textContent = data[me]["nombre_submenu"]; //
                                     template_subMenu += '<ul class="collapse">';
                                     for (var sme = 0; sme < data.length; sme++) {
                                         // Almaceno submenu en variable
@@ -1041,70 +1009,43 @@
                                         if (data[me]["nombre_menu"] == data[sme]["nombre_menu"]) {
 
                                             if (submenu != nextsubMenu) {
-                                                /* template_subMenu += '\
+                                                template_subMenu += '\
                                                         <li><a href="./../' + data[sme]["link_modulo"] + '/' + data[sme]["link_submenu"] + '">' + data[sme]["nombre_submenu"] + '</a></li>\
-                                                    '; */
+                                                    ';
                                                 submenu = data[sme]["nombre_submenu"]
                                             }
                                         }
                                     }
-                                    /* template_subMenu += '</ul>';
+                                    template_subMenu += '</ul>';
                                     template_Menu += '<!--Submenu-->\
                                                     <ul class="collapse">\
                                                         <li>\
                                                             <a href="#"><i class="fa fa-group"></i>' + data[me]["nombre_menu"] + '<i class="arrow"></i></a>\
                                                             ' + template_subMenu + '\
                                                         </li>\
-                                                    </ul>'; */
+                                                    </ul>';
                                 }
 
                                 menu = data[me]["nombre_menu"];
-                                /* template_subMenu = ''; */
+                                template_subMenu = '';
 
                             }
                         }
                     }
-                    
-                    //templateModulo.querySelector('li').appendChild(fragmentMenu);
-                    templateModulo.querySelector('li a span').textContent = data[mo]["nombre_modulo"];
-                    const cloneModulo = templateModulo.cloneNode(true);
-                    fragmentModulo.appendChild(cloneModulo);
-                    /* template_Modulo += '<!--Menu list item-->\
+                    template_Modulo += '<!--Menu list item-->\
                             <li class="">\
                                                 <a href="#">\
                                                     <i class="ti-bookmark-alt"></i>\
                                                         <span class="menu-title">' + data[mo]["nombre_modulo"] + '</span>\
                                                     <i class="arrow"></i>\
                                                 </a>' + template_Menu +
-                        '</li>'; */
+                        '</li>';
                     modulo = data[mo]["nombre_modulo"];
-                    /* template_Menu = ''; */
+                    template_Menu = '';
                 }
-                // li.appendChild(fragmentModulo) //
-                // li.innerHTML = fragmentModulo //
-                // mainnav_menu.appendChild(fragmentModulo)
             }
-            $("#mainnav-menu .list-header").after('<li><a href="#"><i class="demo-pli-tactic"></i><span class="menu-title">Modulo afuera</span><i class="arrow"></i></a><!--Submenu--><ul class="collapse"><li><a href="#"> Menu Item</a></li></ul></li>');
-            /* mainnav_menu.insertAdjacentHTML('beforeend', template_Modulo) */
-            $("#mainnav-menu").append(fragmentModulo);
-            /* $("#mainnav-menu li").after(template_Modulo); */
-            /* $.niftyNav('bind'); */
-
-        /* var li = document.createElement(li);
-        li.appendChild(templateModulo); */
-    }
-        // Attach a delegated event handler
-    $( "#mainnav li" ).on( "click", "a[href^='http']", function( event ) {
-        $( this ).attr( "target", "_blank" );
-        console.log('Hola');
-    });
-    /* $( "#mainnav li a" ).on( "click", function(i) {
-        var s = n(this),
-        a = s.parent(t.parentTrigger),
-        r = a.siblings(t.parentTrigger).children(t.triggerElement),
-        o = a.children(t.subMenu);
-        t.preventDefault && i.preventDefault(), "true" !== s.attr("aria-disabled") && (a.hasClass(t.activeClass) ? (s.attr("aria-expanded", !1), e.hide(o)) : (e.show(o), s.attr("aria-expanded", !0), t.toggle && r.attr("aria-expanded", !1)), t.onTransitionStart && t.onTransitionStart(i))
-    }) */
+            mainnav_menu.innerHTML = template_Modulo;
+        }
     </script>
 
 
@@ -1119,17 +1060,14 @@
     <!--===================================================-->
 
     <script>
-/*         var cardModulo = 'false';
+        var cardModulo = 'false';
         var template_card_modulos = '';
         const contenedor_modulos = document.querySelector("#content-modules");
         const pintarCards = (data) => {
             var contadorLinea = 1;
             for (var mo = 0; mo < data.length; mo++) {
-                
                 var nextcardModulo = data[mo]["nombre_modulo"];
-                
                 if (cardModulo !== nextcardModulo) {
-                    console.log(contadorLinea);
                     if(contadorLinea > 4){
                         template_card_modulos += '\
                         <div class="col-md-2 col-md-offset-3">\
@@ -1144,7 +1082,6 @@
                             </div>\
                         </div>';
                         contadorLinea = 0;
-                        
                     }
                     else if (contadorLinea == 1){
                         template_card_modulos += '\
@@ -1173,8 +1110,6 @@
                                 </div>\
                             </div>\
                         </div>';
-                        
-                        
                     }
                     contadorLinea++;
                     cardModulo = data[mo]["nombre_modulo"];
@@ -1182,9 +1117,7 @@
                 cardModulo = data[mo]["nombre_modulo"];            
             }        
             contenedor_modulos.insertAdjacentHTML('beforeend', template_card_modulos)
-        } */
-
-        
+        }
     </script>
 
     <!--<script type="text/javascript" src="./../../../js/index.js"></script>-->

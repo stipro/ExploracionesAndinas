@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $idUsuario = $_SESSION["id"];
     // Nombre del Modelo //
     $nameModel = 'login';
@@ -8,7 +9,7 @@
     $tableManager = new login();
     // Enviamos datos
     $result = $tableManager->update_session($idUsuario, '0');
-    session_start();
+    
     session_unset();
     session_destroy();
 

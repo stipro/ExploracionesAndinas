@@ -37,19 +37,20 @@ if($_POST){
             // Validamos Login
             if($cantidadResultado){
                 //session_start();
-                $validador = 'Se encontro Usuario ';
+                $rptController = 'Se encontro Usuario';
                 $sqlrpt_Estado = $tableManager->validarEstado($user, $password);
                 $sqlId_User = $sqlrpt_Estado[0]['id_usuario'];
                 $sqlEstado_User = $sqlrpt_Estado[0]['estado_usuario'];
                 $sqlSession_User = $sqlrpt_Estado[0]['session_usuario'];
+                $sqlToken_User = $sqlrpt_Estado[0]['token'];
                 $tokenGenerado = '';
 
                 if ($sqlEstado_User == 0) {
-                    $rptController .= 'Usuario Desactivado. ';
+                    $rptController .= ', pero esta desactivado. ';
                 } elseif ($sqlEstado_User == 1 && $sqlSession_User == 1) {
-                    $rptController .= 'Usuario Conectado. ';
+                    $rptController .= ', pero esta conectado, Desea cerrar session? ';
                 } else {
-                    $rptController .= 'Acceso concedido. ';
+                    $rptController .= ', Acceso concedido. ';
                     // Enviamos datos
                     $result = $tableManager->update_session($sqlId_User, '1');
                     session_start();
@@ -62,12 +63,9 @@ if($_POST){
                     $_SESSION["username"] = $sqlrpt_Estado[0]['nombre_usuario'];
                     $_SESSION["clave"] = $sqlrpt_Estado[0]['clave_usuario'];
                     $_SESSION["name"] = $sqlrpt_Estado[0]['col_nombres'];
-                    
-                    
                     //$_SESSION["code"] = $result[0]['col_ccostos'];
                 }
                 $rptSql = array(
-                    "rptValidador" => $validador,
                     'Id' => $sqlId_User,
                     'Estado' => $sqlEstado_User,
                     'Sesion' => $sqlSession_User,

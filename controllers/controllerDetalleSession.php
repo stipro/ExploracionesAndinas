@@ -22,7 +22,6 @@
             
             switch ($accion) {
                 case 'insert':
-                    var_dump($formRequest);
                     $id = $formRequest['id_usuario'];
                     $formInsert = $formRequest['infoPhp'];
                     $rptSql = $tableManager->insert_infoPhp($formInsert);
@@ -139,5 +138,6 @@
         "sql" => $rptSql,
         "rptController" => $rptController,
     );
+    echo json_encode($rptjsonControlller);
 
 ?>

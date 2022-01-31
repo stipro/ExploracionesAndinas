@@ -4,10 +4,10 @@ const mainnav_menu = document.querySelector('.nav-links')
 const ulContenedor = document.getElementById('contendor');
 
 ulContenedor.addEventListener('click', (e) => {
-    console.log('Hicises click contenedor');
-    console.log(e);
-    if (e.target && e.target.tagName === 'LI') {
-        console.log('Hola');
+    console.log('click contenedor');
+    if (e.target && e.target.tagName === 'I') {
+        console.log('Click para abrir submenu');
+        console.log(e.target.parentElement.parentElement.classList.toggle('showMenu'))
     }
 });
 const getAsignado = async (id_Usuario) => {
