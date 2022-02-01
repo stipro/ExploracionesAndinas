@@ -39,6 +39,7 @@ if($_POST){
                 //session_start();
                 $rptController = 'Se encontro Usuario';
                 $sqlrpt_Estado = $tableManager->validarEstado($user, $password);
+                
                 $sqlId_User = $sqlrpt_Estado[0]['id_usuario'];
                 $sqlEstado_User = $sqlrpt_Estado[0]['estado_usuario'];
                 $sqlSession_User = $sqlrpt_Estado[0]['session_usuario'];
@@ -50,6 +51,7 @@ if($_POST){
                 } elseif ($sqlEstado_User == 1 && $sqlSession_User == 1) {
                     $rptController .= ', pero esta conectado, Desea cerrar session? ';
                 } else {
+                    
                     $rptController .= ', Acceso concedido. ';
                     // Enviamos datos
                     $result = $tableManager->update_session($sqlId_User, '1');

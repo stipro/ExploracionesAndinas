@@ -33,7 +33,7 @@
         var id_Usuario = '<?= $idUsuario;?>';
     </script>
 
-    <script type="text/javascript" src="./../../../js/index.js"></script>
+
     <!--STYLESHEET-->
     <!--=================================================-->
 
@@ -179,7 +179,7 @@
                                 <div id="mainnav-profile" class="mainnav-profile">
                                     <div class="profile-wrap text-center">
                                         <div class="pad-btm">
-                                            <img class="img-circle img-md" src="img\profile-photos\1.png" alt="Profile Picture">
+                                            <img class="img-circle img-md" src="./../../../img/profile-photos/1.png" alt="Profile Picture">
                                         </div>
                                         <a href="#profile-nav" class="box-block" data-toggle="collapse" aria-expanded="false">
                                             <span class="pull-right dropdown-toggle">

@@ -38,7 +38,7 @@ class Login extends Conexion
             $validador = FALSE;
 
             // Consulta
-            $sql = "SELECT colaboradores.col_nombres, colaboradores.col_ccostos, usuarios.id_usuario, usuarios.nombre_usuario, usuarios.clave_usuario, usuarios.estado_usuario, usuarios.session_usuario, usuarios.token  FROM colaboradores RIGHT JOIN usuarios ON usuarios.id_colaborador = colaboradores.id_colaborador WHERE nombre_usuario = '{$user}' AND clave_usuario = '{$password}' AND estado_usuario = '1'";
+            $sql = "SELECT colaboradores.col_nombres, colaboradores.col_ccostos, usuarios.id_usuario, usuarios.nombre_usuario, usuarios.clave_usuario, usuarios.estado_usuario, usuarios.session_usuario, usuarios.token  FROM colaboradores RIGHT JOIN usuarios ON usuarios.id_colaborador = colaboradores.id_colaborador WHERE nombre_usuario = '{$user}' AND clave_usuario = '{$password}'";
 
             // Resultado
             $resultado = $this->ConsultaSimple($sql);

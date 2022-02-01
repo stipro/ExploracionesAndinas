@@ -428,7 +428,7 @@
                         <!--<p>Consulte sus búsquedas anteriores y el contenido que ha explorado. <a href="#" class="btn-link">Ver últimos resultados</a></p>-->
                         <p>Sus Modulos permitidos, si desea mas modulo solicitar . <a href="#" class="btn-link">Solcitar modulos</a></p>
                     </div>
-                    <hr class="new-section-md bord-no">
+                    <!--<hr class="new-section-md bord-no">-->
                 </div>
 
 
@@ -916,200 +916,6 @@
     <?php 
         echo $template_javascript;
     ?>
-   
-    <script>
-        const mainnav_menu = document.getElementById('mainnav-menu');
-        //Asigno id al variable
-        const templateModulo = document.getElementById('template-modulo').content;
-        // C<reo el fragment
-        const fragmentModulo = document.createDocumentFragment();
-        //Asigno id al variable
-        const templateMenu = document.getElementById('template-menu').content;
-        // C<reo el fragment
-        const fragmentMenu = document.createDocumentFragment();
-        //Asigno id al variable
-        const templateSubmenu = document.getElementById('template-submenu').content;
-        // C<reo el fragment
-        const fragmentSubmenu = document.createDocumentFragment();
-        const i = document.createElement('i');
-        const fragmenti = document.createDocumentFragment();
-        const u = document.createElement('u');
-        const fragmentu = document.createDocumentFragment();
-
-        $(document).ready(function(){
-            $('#mainnav-menu').on("click", function(e){
-                if(e.target.parentElement.querySelector('ul')){
-                    var childrens = e.target.parentElement.querySelectorAll('ul');
-                    [].forEach.call(childrens, el => {
-                        el.classList.toggle('in');
-                    });
-                    e.target.parentElement.classList.toggle('active');
-                }                
-                
-            });
-            $('#mainnav-menu li a ul').on("click", function(e){
-                console.log(e.target.parentElement);
-                e.target.parentElement.querySelector('ul').classList.toggle('in');
-                e.target.parentElement.classList.toggle('active');
-            });
-        });
-        
-        // Solictud de la data menu
-        const getAsignado = async (id_Usuario) => {
-            const body = new FormData();
-            body.append("data", JSON.stringify(id_Usuario));
-            const res = await fetch('./../../../controllers/controllerNav.php', {
-                method: "POST",
-                body
-            });
-            data = await res.json()
-            pintarNav(data);
-            pintarCards(data)
-        }
-        
-        console.log('ID USUARIO ES : '+id_Usuario);
-        // Obtengo datos //
-        getAsignado(id_Usuario);
-         
-        const pintarNav = (data) => {
-            console.log(data);
-            // scope en js --- o en general
-            // const let var
-            var modulo = 'false';
-            var menu = 'false';
-            var submenu = 'false';
-            var template_Modulo = '';
-            var template_Menu = '';
-            var template_subMenu = '';
-            /* for (var mo = 0; mo < data.length; mo++){
-                nextmodulo =  data[mo]["nombre_modulo"];
-                //Comparo si son iguales
-                if(modulo == nextmodulo){
-                }
-                else{
-                    
-                    for(var me = 0; me < data.length; me++){
-                        nextmenu = data[me]["nombre_menu"];
-                        //console.log(menu+' vs '+nextmenu)
-                        if(data[me]["nombre_modulo"] == nextmodulo){
-                            if(menu == nextmenu){
-                            }
-                            else{
-                                
-                                // console.log('[['+data[me]["nombre_menu"]+']]');
-                                template_subMenu += '<ul class="collapse">';
-                                for (var sme = 0; sme < data.length; sme++){
-                                    nextsubmenu = data[sme]["nombre_submenu"];
-                                    if(submenu == nextsubmenu){
-                                    }
-                                    else{
-                                        if(nextmenu == data[sme]["nombre_menu"]){
-                                            
-                                            if(data[sme]["link_submenu"] == '-'){
-                                            }
-                                            else{
-                                                template_subMenu += '<li><a href="#">'+nextsubmenu+'</a></li>';
-                                                //console.log('['+nextsubmenu+']');
-                                            }
-                                            
-                                        }   
-                                    }
-                                    submenu = data[sme]["nombre_submenu"]
-                                }
-                                template_subMenu += '</ul>';
-                                template_Menu += '<ul class="collapse"><li><a href="#"><i class="fa fa-group"></i>' + data[me]["nombre_menu"] + '<i class="arrow"></i></a>'+template_subMenu+'</li></ul>';
-                                template_subMenu = ''
-                                
-                                //console.log('FIN');
-                            }
-                        }                
-                        menu = data[me]["nombre_menu"];
-                    }
-                    //console.log(template_Menu);
-                    template_Modulo += '\
-                        <li class="">\
-                            <a>\
-                                <i class="ti-bookmark-alt"></i>\
-                                <span class="menu-title">' + data[mo]["nombre_modulo"] + '</span>\
-                                <i class="arrow"></i></a>';
-                                template_Modulo+= template_Menu;
-                    template_Modulo += '</li>';
-                    //console.log('[[['+nextmodulo+']]]-------------------');
-                    
-                }
-                modulo = data[mo]["nombre_modulo"];
-                mainnav_menu.innerHTML = template_Modulo;
-                template_Menu = '';
-            } */
-            for (var mo = 0; mo < data.length; mo++) {
-                // Almaceno modulo en variable
-                nextModulo = data[mo]["nombre_modulo"];
-                // Comparacion
-                if (modulo !== nextModulo) {
-                    // Recorrer Menu
-                    for (var me = 0; me < data.length; me++) {
-                        // Almaceno menu en variable
-                        nextMenu = data[me]["nombre_menu"];
-                        // Comparacion
-                        if (menu != nextMenu) {
-                            // Comparacion
-                            if (nextModulo == data[me]["nombre_modulo"]) {
-
-                                if (data[me]["link_menu"] !== '/') {
-                                    template_Menu += '<!--Submenu-->\
-                                                    <ul class="collapse">\
-                                                        <li>\
-                                                            <a href="./../' + data[me]["link_modulo"] + '/' + data[me]["link_menu"] + '"><i class="fa fa-group"></i>' + data[me]["nombre_menu"] + '</a>\
-                                                        </li>\
-                                                    </ul>';
-
-                                } else {
-                                    template_subMenu += '<ul class="collapse">';
-                                    for (var sme = 0; sme < data.length; sme++) {
-                                        // Almaceno submenu en variable
-                                        nextsubMenu = data[sme]["nombre_submenu"];
-                                        if (data[me]["nombre_menu"] == data[sme]["nombre_menu"]) {
-
-                                            if (submenu != nextsubMenu) {
-                                                template_subMenu += '\
-                                                        <li><a href="./../' + data[sme]["link_modulo"] + '/' + data[sme]["link_submenu"] + '">' + data[sme]["nombre_submenu"] + '</a></li>\
-                                                    ';
-                                                submenu = data[sme]["nombre_submenu"]
-                                            }
-                                        }
-                                    }
-                                    template_subMenu += '</ul>';
-                                    template_Menu += '<!--Submenu-->\
-                                                    <ul class="collapse">\
-                                                        <li>\
-                                                            <a href="#"><i class="fa fa-group"></i>' + data[me]["nombre_menu"] + '<i class="arrow"></i></a>\
-                                                            ' + template_subMenu + '\
-                                                        </li>\
-                                                    </ul>';
-                                }
-                                template_subMenu = '';
-
-                            }                            
-                        }
-                        menu = data[me]["nombre_menu"];
-
-                    }
-                    template_Modulo += '<!--Menu list item-->\
-                            <li class="">\
-                                                <a href="#">\
-                                                    <i class="ti-bookmark-alt"></i>\
-                                                        <span class="menu-title">' + data[mo]["nombre_modulo"] + '</span>\
-                                                    <i class="arrow"></i>\
-                                                </a>' + template_Menu +
-                        '</li>';
-                    modulo = data[mo]["nombre_modulo"];
-                    template_Menu = '';
-                }
-            }
-            mainnav_menu.innerHTML = template_Modulo;
-            
-        }
-    </script>
 
 
 
@@ -1123,6 +929,8 @@
     <!--===================================================-->
 
     <script>
+        
+        var array = '';
         var cardModulo = 'false';
         var template_card_modulos = '';
         const contenedor_modulos = document.querySelector("#content-modules");
@@ -1178,9 +986,22 @@
                     cardModulo = data[mo]["nombre_modulo"];
                 }
                 cardModulo = data[mo]["nombre_modulo"];            
-            }        
+            }
             contenedor_modulos.insertAdjacentHTML('beforeend', template_card_modulos)
         }
+        // Solictud de la data menu
+        const getAsignadoCard = async (id_Usuario) => {
+            const body = new FormData();
+            body.append("data", JSON.stringify(id_Usuario));
+            const res = await fetch('./../../../controllers/controllerNav.php', {
+                method: "POST",
+                body
+            });
+            array = await res.json()
+            pintarCards(array);
+        }
+        // Obtengo datos //
+        getAsignadoCard(id_Usuario);
     </script>
 
     <!--<script type="text/javascript" src="./../../../js/index.js"></script>-->

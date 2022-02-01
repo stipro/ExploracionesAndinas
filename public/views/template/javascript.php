@@ -7,20 +7,22 @@
 
 
     <!--jQuery [ REQUIRED ] -->
-    <script src=".\..\..\..\js\jquery.min.js"></script>
+    <script src="./../../../js/jquery.min.js"></script>
     <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
     
 
 
 
     <!--BootstrapJS [ RECOMMENDED ]-->
-    <script src=".\..\..\..\js\bootstrap.min.js"></script>
+    <script src="./../../../js/bootstrap.min.js"></script>
 
 
     <!--NiftyJS [ RECOMMENDED ]-->
-    <script src=".\..\..\..\js\nifty.min.js"></script>
+    <script src="./../../../js/nifty.min.js"></script>
 
-
+    
+    <!--Base [ RECOMMENDED ]-->
+    <script type="text/javascript" src="./../../../js/index.js"></script>
 
 
     <!--=================================================-->
