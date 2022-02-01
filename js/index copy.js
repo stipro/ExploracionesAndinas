@@ -485,11 +485,11 @@ const pintarNav = data => {
             }
             template_Modulo += '<!--Menu list item-->\
                 <li class="">\
-                                    <a href="#">\
-                                        <i class="ti-bookmark-alt"></i>\
-                                            <span class="menu-title">' + data[mo]["nombre_modulo"] + '</span>\
-                                        <i class="arrow"></i>\
-                                    </a>' + template_Menu +
+                    <a href="#">\
+                        <i class="ti-bookmark-alt"></i>\
+                            <span class="menu-title">' + data[mo]["nombre_modulo"] + '</span>\
+                        <i class="arrow"></i>\
+                    </a>' + template_Menu +
                 '</li>';
             modulo = data[mo]["nombre_modulo"];
             template_Menu = '';

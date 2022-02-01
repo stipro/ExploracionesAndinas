@@ -938,17 +938,14 @@
 
         $(document).ready(function(){
             $('#mainnav-menu').on("click", function(e){
+                
                 if(e.target.parentElement.querySelector('ul')){
-                    var childrens = e.target.parentElement.querySelectorAll('ul');
-                    [].forEach.call(childrens, el => {
-                        el.classList.toggle('in');
-                    });
+                    e.target.parentElement.querySelector('ul').classList.toggle('in');
                     e.target.parentElement.classList.toggle('active');
                 }                
                 
             });
             $('#mainnav-menu li a ul').on("click", function(e){
-                console.log(e.target.parentElement);
                 e.target.parentElement.querySelector('ul').classList.toggle('in');
                 e.target.parentElement.classList.toggle('active');
             });
@@ -981,10 +978,10 @@
             var template_Modulo = '';
             var template_Menu = '';
             var template_subMenu = '';
-            /* for (var mo = 0; mo < data.length; mo++){
+            for (var mo = 0; mo < data.length; mo++){
                 nextmodulo =  data[mo]["nombre_modulo"];
-                //Comparo si son iguales
                 if(modulo == nextmodulo){
+
                 }
                 else{
                     
@@ -995,52 +992,53 @@
                             if(menu == nextmenu){
                             }
                             else{
-                                
-                                // console.log('[['+data[me]["nombre_menu"]+']]');
-                                template_subMenu += '<ul class="collapse">';
+                                console.log('[['+data[me]["nombre_menu"]+']]');
                                 for (var sme = 0; sme < data.length; sme++){
                                     nextsubmenu = data[sme]["nombre_submenu"];
                                     if(submenu == nextsubmenu){
                                     }
                                     else{
                                         if(nextmenu == data[sme]["nombre_menu"]){
-                                            
+                                            template_subMenu += '<ul class="collapse">';
                                             if(data[sme]["link_submenu"] == '-'){
                                             }
                                             else{
                                                 template_subMenu += '<li><a href="#">'+nextsubmenu+'</a></li>';
-                                                //console.log('['+nextsubmenu+']');
+                                                console.log('['+nextsubmenu+']');
                                             }
-                                            
+                                            template_subMenu += '</ul>';
                                         }   
                                     }
                                     submenu = data[sme]["nombre_submenu"]
                                 }
-                                template_subMenu += '</ul>';
-                                template_Menu += '<ul class="collapse"><li><a href="#"><i class="fa fa-group"></i>' + data[me]["nombre_menu"] + '<i class="arrow"></i></a>'+template_subMenu+'</li></ul>';
-                                template_subMenu = ''
-                                
-                                //console.log('FIN');
+                            console.log('FIN');
                             }
                         }                
                         menu = data[me]["nombre_menu"];
                     }
-                    //console.log(template_Menu);
-                    template_Modulo += '\
+                    template_Modulo += '<!--Menu list item-->\
                         <li class="">\
-                            <a>\
+                            <a href="">\
                                 <i class="ti-bookmark-alt"></i>\
                                 <span class="menu-title">' + data[mo]["nombre_modulo"] + '</span>\
-                                <i class="arrow"></i></a>';
-                                template_Modulo+= template_Menu;
-                    template_Modulo += '</li>';
-                    //console.log('[[['+nextmodulo+']]]-------------------');
-                    
+                                <i class="arrow"></i>\
+                            </a>\
+                        </li>';
+                    console.log('[[['+nextmodulo+']]]-------------------');
                 }
                 modulo = data[mo]["nombre_modulo"];
-                mainnav_menu.innerHTML = template_Modulo;
-                template_Menu = '';
-            } */
+            }
+            
+            
+            var modulo = 'false';
+            var menu = 'false';
+            var submenu = 'false';
+            var template_Modulo = '';
+            var template_Menu = '';
+            var template_subMenu = '';
+            mo = 0;
+            me = 0;
+            sme = 0;
             for (var mo = 0; mo < data.length; mo++) {
                 // Almaceno modulo en variable
                 nextModulo = data[mo]["nombre_modulo"];
@@ -1107,7 +1105,6 @@
                 }
             }
             mainnav_menu.innerHTML = template_Modulo;
-            
         }
     </script>
 

@@ -8,7 +8,8 @@
 
 	echo strlen($t),  PHP_EOL;
 	echo bin2hex($t), PHP_EOL;*/
-	$ipPublic = file_get_contents('https://api.ipify.org');
+	//$ipPublic = file_get_contents('https://api.ipify.org') ? file_get_contents('https://api.ipify.org') : FALSE;
+	$ipPublic = '';
 	$namePageCurrent = array_key_exists('PHP_SELF', $_SERVER) ? $_SERVER['PHP_SELF'] : FALSE;
 	$nameServer = $_SERVER['SERVER_NAME'] ? $_SERVER['SERVER_NAME'] : FALSE;
 	$pageProcedente = array_key_exists('HTTP_REFERER', $_SERVER)  ? $_SERVER['HTTP_REFERER'] : "No se encontro";
@@ -297,8 +298,15 @@
 				});
 			}
 			else {
-				console.log('Acceso concedido');
+				$.niftyNoty({
+					type: 'success',
+					container : '#alert-login',
+					html : '<strong>¡Bien hecho!</strong> ' + ctrlRespuesta,
+					focus: false,
+					timer : 4000
+				});
 				request(idUsuario);
+				window.location.href = './views/inicio/main.php';
 			}
 		};
 
