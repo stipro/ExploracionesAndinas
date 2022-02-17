@@ -49,7 +49,7 @@ if($_POST){
                 if ($sqlEstado_User == 0) {
                     $rptController .= ', pero esta desactivado. ';
                 } elseif ($sqlEstado_User == 1 && $sqlSession_User == 1) {
-                    $rptController .= ', pero esta conectado, Desea cerrar session? ';
+                    $rptController .= ', pero esta conectado, Desea cerrar session?, <a class="alert-link" href="./../controllers/CtrlSession.php?id='.$sqlId_User.'">click aqui </a>';
                 } else {
                     
                     $rptController .= ', Acceso concedido. ';

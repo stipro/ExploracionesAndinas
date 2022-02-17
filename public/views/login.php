@@ -285,7 +285,7 @@
 					container : '#alert-login',
 					html : '<strong>Oh cielos!</strong> ' + ctrlRespuesta,
 					focus: false,
-					timer : 4000
+					//timer : 4000
 				});
 			}
 			else if (sqlRpt['Estado'] == 1 && sqlRpt['Sesion'] == 1){
@@ -294,7 +294,7 @@
 					container : '#alert-login',
 					html : '<strong>Oh cielos!</strong> ' + ctrlRespuesta,
 					focus: false,
-					timer : 4000
+					//timer : 4000
 				});
 			}
 			else {
