@@ -48,9 +48,9 @@ if($_POST){
                 $dato21 = $formRequest['limpieza_cantidadWinche'];
                 $dato22 = $formRequest['limpieza_mineral'];
                 $dato23 = $formRequest['limpieza_desmont'];
-                if (!empty($dato1) && !empty($dato2) && !empty($dato3) && !empty($dato4) && !empty($dato5) && !empty($dato6) && !empty($dato7)&& !empty($dato8) && !empty($dato9) && !empty($dato10) && !empty($dato11) && !empty($dato12) && !empty($dato13)&& !empty($dato14) && !empty($dato15) && !empty($dato16)&& !empty($dato17) && !empty($dato18) && !empty($dato19) && !empty($dato20) && !empty($dato21) && !empty($dato22)&& !empty($dato23)) 
+                if (!empty($dato1) && !empty($dato2) && !empty($dato3) && !empty($dato5) && !empty($dato6)) 
                     {
-                        $rptSql = $tableManager->insert($dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7, $dato8, $dato9, $dato10, $dato11, $dato12, $dato13, $dato14, $dato15, $dato16, $dato17, $dato18, $dato19, $dato20, $dato21, $dato22, $dato23);
+                        $rptSql = $tableManager->insert($dato1, $dato2, $dato3, $dato5, $dato6);
                         $rptController = [
                             "estado" => 1,
                             "mensaje" => "No hay variables vacios",

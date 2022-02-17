@@ -110,7 +110,7 @@ const fetchData = async (json) => {
     console.log(json);
     const body = new FormData();
     body.append("data", JSON.stringify(json));
-    const rpt = await fetch('./../controllers/controllerValeExplosivoList.php', {
+    const rpt = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
         method: "POST",
         body
     });
@@ -301,7 +301,7 @@ const requestInsert = async (form) => {
     };
     console.log(data);
     body.append("data", JSON.stringify(data));
-    const returned = await fetch("./../controllers/controllerValeExplosivo.php", {
+    const returned = await fetch("./../../../controllers/controllerValeExplosivo.php", {
         method: "POST",
         body
     });
@@ -460,7 +460,7 @@ const fetchDataZona = async (json) => {
     console.log(jsonRequests);
     const body = new FormData();
     body.append("data", JSON.stringify(jsonRequests));
-    const rpt = await fetch('./../controllers/controllerZonaList.php', {
+    const rpt = await fetch('./../../../controllers/controllerZonaList.php', {
         method: "POST",
         body
     });
@@ -495,7 +495,7 @@ const fetchDataLabor = async (json) => {
     console.log(json);
     const body = new FormData();
     body.append("data", JSON.stringify(json));
-    const rpt = await fetch('./../controllers/controllerLaborList.php', {
+    const rpt = await fetch('./../../../controllers/controllerLaborList.php', {
         method: "POST",
         body
     });
@@ -553,7 +553,7 @@ $('#val_explosivo-text-form-labor_codigo').change(function() {
 const fechLab_nombre = async (json) => {
     const body = new FormData();
     body.append("data", JSON.stringify(json));
-    const rpt = await fetch('./../controllers/controllerLaborNameList.php', {
+    const rpt = await fetch('./../../../controllers/controllerLaborNameList.php', {
         method: "POST",
         body
     });
@@ -621,7 +621,7 @@ const fetchDataPerforista = async (json) => {
 
     const body = new FormData();
     body.append("data", JSON.stringify(json));
-    const rpt = await fetch('./../controllers/controllerColaboradorList.php', {
+    const rpt = await fetch('./../../../controllers/controllerColaboradorList.php', {
         method: "POST",
         body
     });
@@ -743,7 +743,7 @@ const fetchDataPerforista = async (json) => {
   console.log(jsonRequests);
   const body = new FormData();
   body.append("data", JSON.stringify(jsonRequests));
-  const rpt = await fetch('./../controllers/controllerPerforistaList.php', { method: "POST", body });
+  const rpt = await fetch('./../../../controllers/controllerPerforistaList.php', { method: "POST", body });
   const rptJson = await rpt.json();//await JSON.parse(returned);
   console.log(rptJson);
   paintSelectPerforista(rptJson);

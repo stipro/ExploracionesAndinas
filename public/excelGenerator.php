@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+require './../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -13,7 +13,7 @@ if($_GET){
     $numeroDeColumna = 1;
     
     # Trae Base Datos
-    require_once './models/excelGenerator.php';
+    require_once './../models/excelGenerator.php';
 
     # Se instancia Consulta
     $exportExcel = new ExportExcel();

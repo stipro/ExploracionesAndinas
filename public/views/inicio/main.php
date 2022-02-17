@@ -91,9 +91,9 @@
                 <!--================================-->
                 <div class="navbar-header">
                     <a href="index.html" class="navbar-brand">
-                        <img src="./../../../img/logo.png" alt="Nifty Logo" class="brand-icon">
+                        <img src="<?php echo URL_LOGO;?>" alt="Nifty Logo" class="brand-icon">
                         <div class="brand-title">
-                            <span class="brand-text">Nifty</span>
+                            <span class="brand-text"><?php echo NOMBRE_SISTEMA;?></span>
                         </div>
                     </a>
                 </div>

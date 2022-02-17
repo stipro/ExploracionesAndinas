@@ -1,21 +1,28 @@
 <?php
-    require_once('./../../Config/config.php');
-    include_once('./template/header.php');
-    include_once('./template/aside.php');
-    include_once('./template/javascript.php');
-    include_once('./template/footer.php');
     session_start();
     if (!isset($_SESSION["username"])) {
         //echo 'No se inicio session ';
-        
         header("location:../index.php");
     } else {
+        $validacionSession =  $_SESSION["name"] ? $_SESSION["name"] : 'No se inicio, o ocurrio un error';
+        $idUsuario = $_SESSION["id"];
+        $actual_url = __FILE__;
+        $partsActual_url = explode("\\", $actual_url);
+        $name_modulo = $partsActual_url[5];
+        $nameArchivo = basename( __FILE__, '.php');
+        $parte = explode("_", $nameArchivo);
+        require_once('./../../../Config/config.php');
+        include_once('./../template/header.php');
+        include_once('./../template/menu.php');
+        include_once('./../template/footer.php');
+        include_once('./../template/aside.php');
+        include_once('./../template/javascript.php');
+        $name_menu = '';
+        for ($i=0; $i < count($parte); $i++) {
+            $name_menu .= ucfirst($parte[$i]).' ';
+        }
+
     }
-    $validacionSession =  $_SESSION["name"] ? $_SESSION["name"] : 'No se inicio';
-    include_once('../menu.php');
-    $nameArchivo = basename( __FILE__ );
-    $parte = explode(".", $nameArchivo);
-    $nameMenu = ucfirst($parte[0]);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,69 +31,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title><?php echo $nameMenu .' | '. NOMBRE_SISTEMA ?></title>
+    <title><?php echo $name_menu .' | '. NOMBRE_SISTEMA ?></title>
+    <script>
+        var data = '';
+        var nombreUsuario = '<?= $validacionSession;?>';
+        var id_Usuario = '<?= $idUsuario;?>';     
+    </script>
     <!--STYLESHEET-->
     <!--=================================================-->
 
-    <!--Open Sans Font [ OPTIONAL ]-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-
-
-    <!--Bootstrap Stylesheet [ REQUIRED ]-->
-    <link href="..\css\bootstrap.min.css" rel="stylesheet">
-
-
-    <!--Nifty Stylesheet [ REQUIRED ]-->
-    <link href="..\css\nifty.min.css" rel="stylesheet">
-
-
-    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
-    <link href="..\css\demo\nifty-demo-icons.min.css" rel="stylesheet">
-
-
-    <!--=================================================-->
-    <!--Pace - Page Load Progress Par [OPTIONAL]-->
-    <link href="..\plugins\pace\pace.min.css" rel="stylesheet">
-
-    <script src="..\plugins\pace\pace.min.js"></script>
-    <!--Demo [ DEMONSTRATION ]-->
-    <link href="..\css\demo\nifty-demo.min.css" rel="stylesheet">
-
+    <?php echo $template_header_css; ?>
+    
     <!--Bootstrap Select [ OPTIONAL ]-->
-    <link href="..\plugins\bootstrap-select\bootstrap-select.min.css" rel="stylesheet">
+    <link href="./../../../plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
 
     <!--Chosen [ OPTIONAL ]-->
-    <link href="..\plugins\chosen\chosen.min.css" rel="stylesheet">
+    <link href="./../../../plugins/chosen/chosen.min.css" rel="stylesheet">
 
     <!--noUiSlider [ OPTIONAL ]-->
-    <link href="..\plugins\noUiSlider\nouislider.min.css" rel="stylesheet">
+    <link href="./../../../plugins/noUiSlider/nouislider.min.css" rel="stylesheet">
 
     <!--Select2 [ OPTIONAL ]-->
-    <link href="..\plugins\select2\css\select2.min.css" rel="stylesheet">
+    <link href="./../../../plugins/select2/css/select2.min.css" rel="stylesheet">
 
     <!--Demo [ DEMONSTRATION ]-->
-    <link href="..\css\demo\nifty-demo.min.css" rel="stylesheet">
+    <link href="./../../../css/demo/nifty-demo.min.css" rel="stylesheet">
 
     <!--Themify Icons [ OPTIONAL ]-->
-    <link href="..\plugins\themify-icons\themify-icons.min.css" rel="stylesheet">
+    <link href="./../../../plugins/themify-icons/themify-icons.min.css" rel="stylesheet">
 
     <!--FooTable [ OPTIONAL ]
-    <link href="..\plugins\fooTable\css\footable.core.css" rel="stylesheet">-->
+    <link href="./../../../plugins/fooTable/css/footable.core.css" rel="stylesheet">-->
 
     <!--Ion Icons [ OPTIONAL ]-->
-    <link href="..\plugins\ionicons\css\ionicons.min.css" rel="stylesheet">
+    <link href="./../../../plugins/ionicons/css/ionicons.min.css" rel="stylesheet">
 
     <!--Chosen [ OPTIONAL ]-->
-    <link href="..\plugins\chosen\chosen.min.css" rel="stylesheet">
+    <link href="./../../../plugins/chosen/chosen.min.css" rel="stylesheet">
 
     <!--Nifty Stylesheet [ REQUIRED ]-->
-    <link href="..\css\valeExplosivos.css" rel="stylesheet">
+    <link href="./../../../css/valeExplosivos.css" rel="stylesheet">
 
     <!--Font Awesome [ OPTIONAL ]-->
-    <link href="..\plugins\font-awesome\css\font-awesome.min.css" rel="stylesheet">
+    <link href="./../../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <!--Bootstrap Validator [ OPTIONAL ]-->
-    <link href="..\plugins\bootstrap-validator\bootstrapValidator.min.css" rel="stylesheet">
+    <link href="./../../../plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet">
 
     <!--=================================================
 
@@ -122,329 +112,7 @@
     <div id="container" class="effect aside-float aside-bright mainnav-lg">
         <!--NAVBAR-->
         <!--===================================================-->
-        <header id="navbar">
-            <div id="navbar-container" class="boxed">
-                <!--Brand logo & name-->
-                <!--================================-->
-                <div class="navbar-header">
-                    <a href="index.html" class="navbar-brand">
-                        <img src=".\..\img\logo_letra.png" alt="Nifty Logo" class="brand-icon">
-                        <div class="brand-title">
-                            <span class="brand-text">Exploraciones Andinas S.A.C.</span>
-                        </div>
-                    </a>
-                </div>
-                <!--================================-->
-                <!--End brand logo & name-->
-                <!--Navbar Dropdown-->
-                <!--================================-->
-                <div class="navbar-content">
-                    <ul class="nav navbar-top-links">
-
-                        <!--Navigation toogle button-->
-                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                        <li class="tgl-menu-btn">
-                            <a class="mainnav-toggle" href="#">
-                                <i class="demo-pli-list-view"></i>
-                            </a>
-                        </li>
-                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                        <!--End Navigation toogle button-->
-                        <!--Search-->
-                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                        <li>
-                            <div class="custom-search-form">
-                                <label class="btn btn-trans" for="search-input" data-toggle="collapse" data-target="#nav-searchbox">
-                                    <i class="demo-pli-magnifi-glass"></i>
-                                </label>
-                                <form>
-                                    <div class="search-container collapse" id="nav-searchbox">
-                                        <input id="search-input" type="text" class="form-control" placeholder="Escriba para buscar ...">
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                        <!--End Search-->
-
-                    </ul>
-                    <ul class="nav navbar-top-links">
-
-                        <!--Mega dropdown-->
-                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                        <li class="mega-dropdown">
-                            <a href="#" class="mega-dropdown-toggle">
-                                <i class="demo-pli-layout-grid"></i>
-                            </a>
-                            <div class="dropdown-menu mega-dropdown-menu">
-                                <div class="row">
-                                    <div class="col-sm-4 col-md-3">
-
-                                        <!--Mega menu list-->
-                                        <ul class="list-unstyled">
-									        <li class="dropdown-header"><i class="demo-pli-file icon-lg icon-fw"></i> Pages</li>
-									        <li><a href="#">Profile</a></li>
-									        <li><a href="#">Search Result</a></li>
-									        <li><a href="#">FAQ</a></li>
-									        <li><a href="#">Sreen Lock</a></li>
-									        <li><a href="#">Maintenance</a></li>
-									        <li><a href="#">Invoice</a></li>
-									        <li><a href="#" class="disabled">Disabled</a></li>                                        
-                                        </ul>
-
-                                    </div>
-                                    <div class="col-sm-4 col-md-3">
-
-                                        <!--Mega menu list-->
-                                        <ul class="list-unstyled">
-									        <li class="dropdown-header"><i class="demo-pli-mail icon-lg icon-fw"></i> Mailbox</li>
-									        <li><a href="#"><span class="pull-right label label-danger">Hot</span>Indox</a></li>
-									        <li><a href="#">Read Message</a></li>
-									        <li><a href="#">Compose</a></li>
-									        <li><a href="#">Template</a></li>
-                                        </ul>
-
-                                        <p class="pad-top text-main text-sm text-uppercase text-bold"><i class="icon-lg demo-pli-calendar-4 icon-fw"></i>News</p>
-                                        <p class="pad-top mar-top bord-top text-sm">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
-                                    </div>
-                                    <div class="col-sm-4 col-md-3">
-                                        <!--Mega menu list-->
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                <a href="#" class="media mar-btm">
-                                                    <span class="badge badge-success pull-right">90%</span>
-                                                    <div class="media-left">
-                                                        <i class="demo-pli-data-settings icon-2x"></i>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <p class="text-semibold text-main mar-no">Data Backup</p>
-                                                        <small class="text-muted">This is the item description</small>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="media mar-btm">
-                                                    <div class="media-left">
-                                                        <i class="demo-pli-support icon-2x"></i>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <p class="text-semibold text-main mar-no">Support</p>
-                                                        <small class="text-muted">This is the item description</small>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="media mar-btm">
-                                                    <div class="media-left">
-                                                        <i class="demo-pli-computer-secure icon-2x"></i>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <p class="text-semibold text-main mar-no">Security</p>
-                                                        <small class="text-muted">This is the item description</small>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="media mar-btm">
-                                                    <div class="media-left">
-                                                        <i class="demo-pli-map-2 icon-2x"></i>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <p class="text-semibold text-main mar-no">Location</p>
-                                                        <small class="text-muted">This is the item description</small>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-12 col-md-3">
-                                        <p class="dropdown-header"><i class="demo-pli-file-jpg icon-lg icon-fw"></i> Gallery</p>
-                                        <div class="row img-gallery">
-                                            <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-1.jpeg" alt="thumbs">
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-3.jpeg" alt="thumbs">
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-2.jpeg" alt="thumbs">
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-4.jpeg" alt="thumbs">
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-6.jpeg" alt="thumbs">
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <img class="img-responsive" src="img\thumbs\img-5.jpeg" alt="thumbs">
-                                            </div>
-                                        </div>
-                                        <a href="#" class="btn btn-block btn-primary">Browse Gallery</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                        <!--End mega dropdown-->
-
-
-
-                        <!--Notification dropdown-->
-                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                                <i class="demo-pli-bell"></i>
-                                <span class="badge badge-header badge-danger"></span>
-                            </a>
-
-
-                            <!--Notification dropdown menu-->
-                            <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-                                <div class="nano scrollable">
-                                    <div class="nano-content">
-                                        <ul class="head-list">
-                                            <li>
-                                                <a href="#" class="media add-tooltip" data-title="Used space : 95%" data-container="body" data-placement="bottom">
-                                                    <div class="media-left">
-                                                        <i class="demo-pli-data-settings icon-2x text-main"></i>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <p class="text-nowrap text-main text-semibold">HDD is full</p>
-                                                        <div class="progress progress-sm mar-no">
-                                                            <div style="width: 95%;" class="progress-bar progress-bar-danger">
-                                                                <span class="sr-only">95% Complete</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="media" href="#">
-                                                    <div class="media-left">
-                                                        <i class="demo-pli-file-edit icon-2x"></i>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <p class="mar-no text-nowrap text-main text-semibold">Write a news article</p>
-                                                        <small>Last Update 8 hours ago</small>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="media" href="#">
-                                                    <span class="label label-info pull-right">New</span>
-                                                    <div class="media-left">
-                                                        <i class="demo-pli-speech-bubble-7 icon-2x"></i>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <p class="mar-no text-nowrap text-main text-semibold">Comment Sorting</p>
-                                                        <small>Last Update 8 hours ago</small>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="media" href="#">
-                                                    <div class="media-left">
-                                                        <i class="demo-pli-add-user-star icon-2x"></i>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <p class="mar-no text-nowrap text-main text-semibold">New User Registered</p>
-                                                        <small>4 minutes ago</small>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="media" href="#">
-                                                    <div class="media-left">
-                                                        <img class="img-circle img-sm" alt="Profile Picture" src="img\profile-photos\9.png">
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <p class="mar-no text-nowrap text-main text-semibold">Lucy sent you a message</p>
-                                                        <small>30 minutes ago</small>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="media" href="#">
-                                                    <div class="media-left">
-                                                        <img class="img-circle img-sm" alt="Profile Picture" src="img\profile-photos\3.png">
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <p class="mar-no text-nowrap text-main text-semibold">Jackson sent you a message</p>
-                                                        <small>40 minutes ago</small>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <!--Dropdown footer-->
-                                <div class="pad-all bord-top">
-                                    <a href="#" class="btn-link text-main box-block">
-                                        <i class="pci-chevron chevron-right pull-right"></i>Show All Notifications
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                        <!--End notifications dropdown-->
-
-
-
-                        <!--User dropdown-->
-                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                        <li id="dropdown-user" class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
-                                <span class="ic-user pull-right">
-                                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                                    <!--You can use an image instead of an icon.-->
-                                    <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
-                                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                                    <i class="demo-pli-male"></i>
-                                </span>
-                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                                <!--You can also display a user name in the navbar.-->
-                                <!--<div class="username hidden-xs">Aaron Chavez</div>-->
-                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                            </a>
-
-
-                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right panel-default">
-                                <ul class="head-list">
-                                    <li>
-                                        <a href="#"><i class="demo-pli-male icon-lg icon-fw"></i> Profile</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="badge badge-danger pull-right">9</span><i class="demo-pli-mail icon-lg icon-fw"></i> Messages</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="label label-success pull-right">New</span><i class="demo-pli-gear icon-lg icon-fw"></i> Settings</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="demo-pli-computer-secure icon-lg icon-fw"></i> Lock screen</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-login.html"><i class="demo-pli-unlock icon-lg icon-fw"></i> Logout</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                        <!--End user dropdown-->
- 
-                        
-                        <li>
-                            <a href="#" class="aside-toggle">
-                                <i class="demo-pli-dot-vertical"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!--================================-->
-                <!--End Navbar Dropdown-->
-
-            </div>
-        </header>
+        <?php echo $template_navBar ?>
         <!--===================================================-->
         <!--END NAVBAR-->
 
@@ -454,10 +122,26 @@
             <!--===================================================-->
             <div id="content-container">
                 <div id="page-head">
-                    <div class="pad-all text-center">
-                        <h3>Bienvenido de nuevo al Panel de control.</h3>
-                        <p1>Desplácese hacia abajo para ver enlaces rápidos y descripciones generales de su servidor, lista de tareas pendientes, estado del pedido u obtener ayuda con Soporte TI.</p1>
+                    
+                    <!--Page Title-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <div id="page-title">
+                        <h1 class="page-header text-overflow"><?php echo $name_menu; ?></h1>
                     </div>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End page title-->
+
+
+                    <!--Breadcrumb-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <ol class="breadcrumb">
+					<li><a href="#"><i class="demo-pli-home"></i></a></li>
+					<li><a href="#"><?php echo ucfirst($name_modulo); ?></a></li>
+					<li class="active"><?php echo $name_menu; ?></li>
+                    </ol>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End breadcrumb-->
+
                 </div>
 
                 
@@ -478,7 +162,7 @@
 					                    <div class="row">
 					                        <div class="col-sm-6 table-toolbar-left">
 					                            <button id="btn-Agregar" data-target="#stack1" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add icon-fw"></i>Agregar</button>
-					                            <a href="./../excelGenerator.php?table=view_vales_explosivo" class="btn btn-default" download="" title="Descargar Archivo">
+					                            <a href="./../../excelGenerator.php?table=view_vales_explosivo" class="btn btn-default" download="" title="Descargar Archivo">
                                                     <i class="fa fa-file-excel-o icon-lg"></i>
                                                 </a>
 					                            <div class="btn-group">
@@ -1257,60 +941,43 @@
     <!--JAVASCRIPT-->
     <!--=================================================-->
 
-    <!--jQuery [ REQUIRED ]-->
-    <script src="..\js\jquery.min.js"></script>
-
-
-    <!--BootstrapJS [ RECOMMENDED ]-->
-    <script src="..\js\bootstrap.min.js"></script>
-
-
-    <!--NiftyJS [ RECOMMENDED ]-->
-    <script src="..\js\nifty.min.js"></script>
-
-
-
-
-    <!--=================================================-->
-    
-    <!--Demo script [ DEMONSTRATION ]-->
-    <script src="..\js\demo\nifty-demo.min.js"></script>
+    <?php echo $template_javascript;?>
 
     <!--Icons [ SAMPLE ]-->
-    <script src="..\js\demo\icons.js"></script>
+    <script src="./../../../js/demo/icons.js"></script>
 
     <!--FooTable Example [ SAMPLE ]
-    <script src="..\js\demo\tables-footable.js"></script>-->
+    <script src="./../../../js/demo/tables-footable.js"></script>-->
     
     <!--FooTable [ OPTIONAL ]
-    <script src="..\plugins\fooTable\dist\footable.all.min.js"></script>-->
+    <script src="./../../../plugins/fooTable/dist/footable.all.min.js"></script>-->
 
     <!--Bootstrap Select [ OPTIONAL ]-->
-    <script src="..\plugins\bootstrap-select\bootstrap-select.min.js"></script>
+    <script src="./../../../plugins/bootstrap-select/bootstrap-select.min.js"></script>
 
     <!--Chosen [ OPTIONAL ]-->
-    <script src="..\plugins\chosen\chosen.jquery.min.js"></script>
+    <script src="./../../../plugins/chosen/chosen.jquery.min.js"></script>
 
     <!--Select2 [ OPTIONAL ]-->
-    <script src="..\plugins\select2\js\select2.min.js"></script>
+    <script src="./../../../plugins/select2/js/select2.min.js"></script>
 
     <!--Form Component [ SAMPLE ]-->
-    <script src="..\js\demo\form-component.js"></script>
+    <script src="./../../../js/demo/form-component.js"></script>
 
     <!--Panel [ SAMPLE ]-->
-    <script src="..\js\demo\ui-panels.js"></script>
+    <script src="./../../../js/demo/ui-panels.js"></script>
 
     <!--Date-MYSQL [ REQUIRED ]-->
-    <script src="..\js\valeExplosivos.js"></script>
+    <script src="./../../../js/valeExplosivos.js"></script>
 
     <!--Bootstrap Validator [ OPTIONAL ]-->
-    <script src="..\plugins\bootstrap-validator\bootstrapValidator.min.js"></script>
+    <script src="./../../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
     
     <!--Masked Input [ OPTIONAL ]-->
-    <script src="..\plugins\masked-input\jquery.maskedinput.min.js"></script>
+    <script src="./../../../plugins/masked-input/jquery.maskedinput.min.js"></script>
 
     <!--Form validation [ SAMPLE ]-->
-    <script src="..\js\demo\form-validation.js"></script>
+    <script src="./../../../js/demo/form-validation.js"></script>
     <script>
         $('.chosenTurno').chosen();
     </script>

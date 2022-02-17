@@ -1,6 +1,7 @@
 var arraySelectColaboradores;
 var indice;
 
+const alertInsert = document.getElementById("alert-form-insert");
 var objectarrayInstalacion;
 // Declarando variables
 const btnIncrementar = document.getElementById("btn-increase");
@@ -235,7 +236,7 @@ btnInsert.addEventListener("click", () => {
 const requestInsert = async (form) => {
     const body = new FormData();
     body.append("data", JSON.stringify(form));
-    const returned = await fetch("./../controllers/controllerOperacionMina.php", {
+    const returned = await fetch("./../../../controllers/controllerOperacionMina.php", {
         method: "POST",
         body
     });
@@ -375,7 +376,7 @@ const fetchCargoMaestro = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
     //Enviamos solicitud
-    const res = await fetch('./../controllers/controllerCargoList.php', {
+    const res = await fetch('./../../../controllers/controllerCargoList.php', {
         method: "POST",
         body
     });
@@ -441,7 +442,7 @@ const fetchCargoAyudante = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
     //Enviamos solicitud
-    const res = await fetch('./../controllers/controllerCargoList.php', {
+    const res = await fetch('./../../../controllers/controllerCargoList.php', {
         method: "POST",
         body
     });
@@ -507,7 +508,7 @@ const fetchCargoTercerPersona = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
     //Enviamos solicitud
-    const res = await fetch('./../controllers/controllerCargoList.php', {
+    const res = await fetch('./../../../controllers/controllerCargoList.php', {
         method: "POST",
         body
     });
@@ -574,7 +575,7 @@ const fetchCargoCuartaPersona = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
     //Enviamos solicitud
-    const res = await fetch('./../controllers/controllerCargoList.php', {
+    const res = await fetch('./../../../controllers/controllerCargoList.php', {
         method: "POST",
         body
     });
@@ -599,7 +600,7 @@ const fetchCodzona = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
     //Enviamos solicitud
-    const res = await fetch('./../controllers/controllerLaborZoneList.php', {
+    const res = await fetch('./../../../controllers/controllerLaborZoneList.php', {
         method: "POST",
         body
     });
@@ -628,7 +629,7 @@ const paintZonas = (data) => {
 const fetchCodlabor = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
-    const res = await fetch('./../controllers/controllerLaborList.php', {
+    const res = await fetch('./../../../controllers/controllerLaborList.php', {
         method: "POST",
         body
     });
@@ -641,7 +642,7 @@ const fetchzonalabornivel = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
     //Enviamos solicitud
-    const res = await fetch('./../controllers/controllerLaborList.php', {
+    const res = await fetch('./../../../controllers/controllerLaborList.php', {
         method: "POST",
         body
     });
@@ -655,7 +656,7 @@ const fetchColaborador = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
     //Enviamos solicitud
-    const res = await fetch('./../controllers/controllerColaboradorList.php', {
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
         method: "POST",
         body
     });
@@ -863,7 +864,7 @@ const fetchInstalaciones = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
     //Enviamos solicitud
-    const res = await fetch('./../controllers/controllerInstalacionMinaList.php', {
+    const res = await fetch('./../../../controllers/controllerInstalacionMinaList.php', {
         method: "POST",
         body
     });
@@ -937,7 +938,6 @@ btnInsertTable.addEventListener("click", () => {
             fragmentInstalacion.appendChild(clone_tdInstalaciones);
 
             tbodyInstalaciones.appendChild(fragmentInstalacion);
-
 
             $(function() {
                 $(document).on('click', '.borrar', function(event) {

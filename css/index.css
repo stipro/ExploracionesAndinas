@@ -1,13 +1,20 @@
-.aparecer{
+.aparecer {
     transition: opacity .7s;
 }
-.desvanecer{
-    opacity:0;
+
+.desvanecer {
+    opacity: 0;
 }
+
 .toolbar-right,
 .table-toolbar-right {
- text-align: center !important;
+    text-align: center !important;
 }
-#alerts-general{
+
+#alerts-general {
     margin-bottom: 1rem;
+}
+
+.form-control {
+    border: 1px solid #ced4da !important;
 }
