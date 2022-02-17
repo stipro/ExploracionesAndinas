@@ -41,7 +41,13 @@ if($_POST){
                 $datoTipDisparo = $formRequest['tip_disparo'];
                 $idPerforista = $formRequest['id_Perforista'];
                 $datotipEn = $formRequest['tip_en'];
-                $datoBarra = $formRequest['barra'];
+                
+                if (array_key_exists('barra', $formRequest)) {
+                    $datoBarra = $formRequest['barra'];
+                }
+                else{
+                    $rptController = 'Falta seleccionar barra';
+                }
                 $datoLgt = $formRequest['lgt'];
                 $datonTaladro = $formRequest['ntaladro'];
                 $datotalVacio = $formRequest['tal_vacio'];
@@ -62,7 +68,7 @@ if($_POST){
                 $datoconecMecha = $formRequest['me_conector_mecha'];
                 $datoBlockSegacion = $formRequest['me_BlockSegecion'];
                 $datoCarCortrece = $formRequest['me_Carcortadotrece'];
-                if (!empty($idDigitador) && !empty($datoRegistro) && !empty($idZona) && !empty($datonVale) && !empty($datoTurno) && !empty($datopreImpreso) && !empty($idLabor)&& !empty($datoTipDisparo) && !empty($idPerforista) && !empty($datotipEn) && !empty($datoBarra) && !empty($datoLgt) && !empty($datonTaladro)&& !empty($datotalVacio) && !empty($datopiePerf) && !empty($datopieReal)&& !empty($datonnMaquinas) && !empty($datoemulTresmil) && !empty($datoDinaSemi) && !empty($datocalDinaSemi) && !empty($datoDinaPulv) && !empty($datocalDinaPulv)&& !empty($datosumSemiPulv)) 
+                if (!empty($idDigitador) && !empty($datoRegistro) && !empty($idZona) && !empty($datonVale) && !empty($idLabor)) 
                     {
                         $rptSql = $table->insert(
                             $idDigitador, 
