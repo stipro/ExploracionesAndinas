@@ -946,20 +946,23 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Colaborador</label>
                                         <div class="col-md-4">
-                                            <input type="text" id="ipt-insert-nombreColaborador-usuario" class="form-control" name="nombre_colaborador" list="options-nombre" placeholder="Nombre" onkeypress="return soloLetras(event)">
+                                            <input type="text" id="ipt-insert-nombreColaborador-usuario" class="form-control" name="nombre_colaborador" list="options-nombreColaborador-usuario" placeholder="Nombre" onkeypress="return soloLetras(event)">
                                         </div>                                        
-                                        <datalist id="options-nombre">
+                                        <datalist id="options-nombreColaborador-usuario">
                                             <option value="No se pudo obtener Nombre">
                                         </datalist>
-                                        <template id="template-opts-colaborador">
-                                            <option id="opt-colaborador" value="">
+                                        <template id="template-opts-nombreColaborador-usuario">
+                                            <option id="opt-nombreColaborador-usuario" value="">
                                         </template>
                                         <div class="col-md-4">
-                                            <input type="number" id="ipt-insert-dniColaborador-usuario" class="form-control" name="dni_colaborador" list="options-dni" placeholder="DNI" pattern="[0-9]+" onkeypress="return valideKey(event);">
+                                            <input type="number" id="ipt-insert-dniColaborador-usuario" class="form-control" name="dni_colaborador" list="options-dniColaborador-usuario" placeholder="DNI" pattern="[0-9]+" onkeypress="return valideKey(event);">
                                         </div>
-                                        <datalist id="options-dni">
+                                        <datalist id="options-dniColaborador-usuario">
                                             <option value="No se pudo obtener DNI">
                                         </datalist>
+										<template id="template-opts-dniColaborador-usuario">
+                                            <option id="opt-dniColaborador-usuario" value="">
+                                        </template>
                                     </div>
                                 </div>                                  
                             </div>
@@ -1030,8 +1033,9 @@
 
                 <!--Modal footer-->
                 <div class="modal-footer">
+					<button id="mbtn-new" class="btn btn-primary">Nuevo</button>
                     <button data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
-                    <button class="btn btn-primary">Registrar</button>
+                    <button id="mbtn-insert" class="btn btn-success">Registrar</button>
                 </div>
             </div>
         </div>
