@@ -1,4 +1,6 @@
 <?php
+    $dateServer = date('Y-m-d');
+    $mindate = date("Y-m-d",strtotime($dateServer."- 2 days"));
     session_start();
     if (!isset($_SESSION["username"])) {
         //echo 'No se inicio session ';
@@ -484,7 +486,7 @@
                                     <div class="form-group">
                                         <label for="insert-operacionMina-registro" class="col-md-4 control-label">Fecha</label>
                                         <div class="col-md-8">                                                    
-                                            <input type="date" placeholder="Dia" class="form-control" id="insert-operacionMina-registro"  value="<?php echo date('Y-m-d') ?>" > <!--min="2021-12-12" max="2021-12-13"-->
+                                            <input type="date" placeholder="Dia" class="form-control" id="insert-operacionMina-registro"  value="<?php echo $dateServer ?>" min="<?php echo $mindate ?>" max="<?php echo $dateServer ?>"> <!--min="2021-12-12" max="2021-12-13"-->
                                         </div>
                                     </div>
                                     <div class="form-group">

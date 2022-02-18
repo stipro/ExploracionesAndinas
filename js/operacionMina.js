@@ -8,6 +8,8 @@ const btnIncrementar = document.getElementById("btn-increase");
 const btndisminuir = document.getElementById("btn-decline");
 const btnAgregar = document.getElementById("btn-Agregar");
 const btnInsert = document.getElementById("mbtn-insert");
+const btnNew = document.getElementById("mbtn-new");
+
 
 const btnInsertTable = document.getElementById("insert-option-table");
 
@@ -103,7 +105,9 @@ document.addEventListener('DOMContentLoaded', e => {
 
 });
 
-
+btnNew.addEventListener("click", () => {
+    resetFormulario();
+});
 btnAgregar.addEventListener("click", () => {
     iptinsertRegistro.value;
     iptinsertTurno.value;
@@ -258,7 +262,7 @@ const afterRequestInsert = (data) => {
             focus: false,
             timer: 8000
         });
-        console.log('Si');
+        resetFormulario();
     } else {
         if (data['rptController']['estado'] == 0) {
             $.niftyNoty({
@@ -980,3 +984,51 @@ btnInsertTable.addEventListener("click", () => {
         }
     }
 })
+const resetFormulario = () => {
+    // Datos
+    iptinsertTurno.value = '';
+    iptinsertGuardia.value = '';
+    iptinsertNVale.value = '';
+    // Centro de Costos
+    iptinsertCodZona.value = '';
+    iptinsertCodLabor.value = '';
+    iptinsertZona.value = '';
+    iptinsertLabor.value = '';
+    iptinsertNivel.value = '';
+    // Tareas
+    iptinsert_dniMaestro.value = '';
+    iptinsert_nameMaestro.value = '';
+    ipt_cargoMaestro.value = '';
+    iptinsert_dniAyudante.value = '';
+    iptinsert_nameAyudante.value = '';
+    ipt_cargoAyudante.value = '';
+    iptinsert_dniTercerpersona.value = '';
+    iptinsert_nameTercerpersona.value = '';
+    ipt_cargoTercerPersona.value = '';
+    iptinsert_dniCuartopersona.value = '';
+    iptinsert_nameCuartopersona.value = '';
+    ipt_cargoCuartaPersona.value = '';
+    iptinsertl.value = '';
+    iptinsertlpv.value = '';
+    iptinsertstto.value = '';
+    iptinsertserv.value = '';
+    iptinsertcomentario.value = '';
+    // Instalaciones
+    iptinsertTable_name.value = '';
+    iptinsertTable_cantidad.value = '';
+    tbodyInstalaciones.innerHTML = '';
+    // Avance Actual
+    iptinserttipAvance.value = '';
+    iptinsertmt.value = '';
+    iptinsertmt3.value = '';
+    iptinsertintDisparo.value = '';
+    iptinsertresuelto.value = '';
+    // Limpieza
+    iptinsertmanual.value = '';
+    iptinsertpala.value = '';
+    iptinsertcantidadPala.value = '';
+    iptinsertmineral.value = '';
+    iptinsertWinche.value = '';
+    iptinsertcantidadWinche.value = '';
+    iptinsertdesmont.value = '';
+}
