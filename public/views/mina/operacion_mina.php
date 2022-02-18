@@ -1,5 +1,4 @@
 <?php
-    
     session_start();
     if (!isset($_SESSION["username"])) {
         //echo 'No se inicio session ';
@@ -23,7 +22,6 @@
         for ($i=0; $i < count($parte); $i++) {
             $name_menu .= ucfirst($parte[$i]).' ';
         }
-
     }
 ?>
 <!DOCTYPE html>
@@ -608,7 +606,6 @@
                     <div class="row">
                         <!-- Inicio -->
                         <div class="tab-base">
-
                             <!--Nav Tabs-->
                             <ul class="nav nav-tabs">
                                 <li class="active">
@@ -618,7 +615,6 @@
                                     <a data-toggle="tab" href="#demo-lft-tab-2" aria-expanded="false">Instalaciónes</a>
                                 </li>
                             </ul>
-
                             <!--Tabs Content-->
                             <div class="tab-content">
                                 <div id="demo-lft-tab-1" class="tab-pane fade active in">
@@ -1222,7 +1218,7 @@
                                                     <input class="form-control" id="cantidad-instalaciones-table" placeholder="Ingrese Cantidad...">
                                                 </div>
                                             </div>
-                                            <button id="insert-option-table" type="button" class="btn btn-primary">Registrar</button>
+                                            <button id="insert-option-table" type="button" class="btn btn-primary">Agregar</button>
                                             <!-- Fin Table 
                                             <button type="button" class="btn btn-primary btn-get-all">Obtener Todo</button>-->
                                         </div>                                        

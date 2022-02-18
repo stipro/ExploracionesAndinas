@@ -159,14 +159,14 @@
 					    <div class="col-xs-12">
 					        <div class="panel">
 					            <div class="panel-heading">
-					                <h3 class="panel-title">Operación Mina</h3>
+					                <h3 class="panel-title">Extracción Mina</h3>
 					            </div>
 					
 					            <div class="panel-body">
 					                <div class="pad-btm form-inline">
 					                    <div class="row">
 					                        <div class="col-sm-6 table-toolbar-left">
-					                            <button id="btn-Agregar" data-target="#stack1" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add icon-fw"></i>Agregar</button>
+					                            <button id="btn-Agregar" data-target="#demo-lg-modal" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add icon-fw"></i>Agregar</button>
 					                            <a href="./../../excelGenerator.php?table=view_vales_explosivo" class="btn btn-default" download="" title="Descargar Archivo">
                                                     <i class="fa fa-file-excel-o icon-lg"></i>
                                                 </a>
@@ -478,10 +478,12 @@
             </div>
         </div>
     </div>
-    <!--Default Bootstrap Modal-->
     <!--===================================================-->
-    <div id="stack1" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-        <div id="inserForm"  class="modal-dialog modal-lg" style="margin: 1rem;">
+    <!--End Editar Bootstrap Modal-->
+    <!--Insertar Bootstrap Modal-->
+    <!--===================================================-->
+    <div class="modal fade" id="demo-lg-modal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+        <div id="inserForm"  class="modal-dialog" style="margin: 1rem;">
             <div class="modal-content">
                 <!--Modal header-->
                 <div class="modal-header">                    
@@ -503,62 +505,62 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="insert-extrMineral-extractor" class="col-md-4 form-label">Locomotora:</label>
+                                    <label for="insert-extrMineral-locomotora" class="col-md-4 form-label">Locomotora:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" list="datalistOptions" id="insert-extrMineral-extractor" placeholder="Ingrese Extractor...">
+                                        <input class="form-control" list="datalistOptions-Locomotora" id="insert-extrMineral-locomotora" placeholder="Ingrese Extractor...">
                                     </div>                                        
-                                    <datalist id="datalistOptions">
-                                        <option value="San Francisco">
-                                        <option value="New York">
-                                        <option value="Seattle">
-                                        <option value="Los Angeles">
-                                        <option value="Chicago">
+                                    <datalist id="datalistOptions-Locomotora">
+                                        <option value="LM-1">
+                                        <option value="LM-2">
+                                        <option value="LM-3">
                                     </datalist>
                                 </div>
                                 <div class="form-group">
                                     <label for="insert-extrMineral-tolva" class="col-md-4 form-label">Tolva:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" list="datalistOptions" id="insert-extrMineral-tolva" placeholder="Ingrese Tolva...">
+                                        <input class="form-control" list="datalistOptions-Tolva" id="insert-extrMineral-tolva" placeholder="Ingrese Tolva...">
                                     </div>                                        
-                                    <datalist id="datalistOptions">
-                                        <option value="San Francisco">
-                                        <option value="New York">
-                                        <option value="Seattle">
-                                        <option value="Los Angeles">
-                                        <option value="Chicago">
+                                    <datalist id="datalistOptions-Tolva">
+                                        <option value="Tolva-1">
+                                        <option value="Tolva-2">
                                     </datalist>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="insert-extrMineral-contrata" class="col-md-4 form-label">Uni Empresa:</label>
+                                    <label for="insert-extrMineral-unidadEmpresa" class="col-md-4 form-label">Uni Empresa:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" list="datalistOptions-UniEmpresa" id="insert-extrMineral-contrata" placeholder="Ingrese Contrata...">
+                                        <input class="form-control" list="datalistOptions-UniEmpresa" id="insert-extrMineral-unidadEmpresa" placeholder="Ingrese Contrata...">
                                     </div>                                        
                                     <datalist id="datalistOptions-UniEmpresa">
                                         <option value="San Andres">
-                                        <option value="willo">
+                                        <option value="Huinllo">
+                                        <option value="Torrellas">
                                     </datalist>
                                 </div>
                                 <div class="form-group">
                                     <label for="insert-extrMineral-motorista" class="col-md-4 form-label">Motorista/Scooper:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" list="datalistOptions" id="insert-extrMineral-motorista" placeholder="Ingrese Motorista/Scooper...">
+                                        <input class="form-control" list="datalistOptions-motorista" id="insert-extrMineral-motorista" placeholder="Ingrese Motorista/Scooper...">
                                     </div>                                        
-                                    <datalist id="datalistOptions">
-                                        <option value="San Andres">
-                                        <option value="willo">
+                                    <datalist id="datalistOptions-motorista">
+                                        <option value="...">
                                     </datalist>
+                                    <template id="template-opt-motorista">
+                                        <option id="template-opts-motorista" value="">
+                                    </template>
                                 </div>
                                 <div class="form-group">
                                     <label for="insert-extrMineral-ayudante" class="col-md-4 form-label">Ayudante:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" list="datalistOptions" id="insert-extrMineral-ayudante" placeholder="Ingrese Ayudante...">
+                                        <input class="form-control" list="datalistOptions-ayudante" id="insert-extrMineral-ayudante" placeholder="Ingrese Ayudante...">
                                     </div>                                        
-                                    <datalist id="datalistOptions">
-                                        <option value="San Andres">
-                                        <option value="willo">
+                                    <datalist id="datalistOptions-ayudante">
+                                        <option value="...">
                                     </datalist>
+                                    <template id="template-opt-ayudante">
+                                        <option id="template-opts-ayudante" value="">
+                                    </template>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -606,19 +608,22 @@
                                         <!--Bootstrap Timepicker : Component-->
 					                    <!--===================================================-->
 					                    <div class="input-group date">
-					                        <input id="insert-extrMineral-hrs-extractor" type="text" class="form-control">
+					                        <input id="insert-extrMineral-hrs-extractor" type="time" class="form-control">
 					                        <span class="input-group-addon"><i class="demo-pli-clock"></i></span>
 					                    </div>
 					                    <!--===================================================-->
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-10">
                                 <div class="form-group">
                                     <label for="insert-extrMineral-observacion" class="col-md-4 control-label">Observaciones:</label>
                                     <textarea class="form-control" id="insert-extrMineral-observacion" rows="1"></textarea>
                                 </div>
-                            </div>                                
+                            </div>
+                            <div class="col-md-2">
+                                <button id="insert-option-table-detalleExtraccion" type="button" class="btn btn-primary">Agregar</button>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -628,25 +633,29 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="insert-extrMineral-codigo" class="col-md-4 form-label">Código:</label>
-                                        <div class="col-md-8">
+                                        <!-- <div class="col-md-8">
                                             <input class="form-control" list="options-codigo" id="insert-extrMineral-codigo" placeholder="Ingrese Código...">
                                         </div>                                        
                                         <datalist id="options-codigo">
                                             <option value="1">
                                             <option value="2">
-                                        </datalist>
+                                        </datalist> -->
+                                        <select class="selectpicker col-md-8" id="insert-extrMineral-codigo" name="browser">
+                                            <option value="Mineral" selected>1</option>
+                                            <option value="Desmonte">2</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="insert-extrMineral-descripcion" class="col-md-4 form-label">Descripción:</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="options-descripcion-ExtracionMineral" id="insert-extrMineral-descripcion" placeholder="Ingrese Descripción...">
+                                            <input class="form-control" value="Mineral" list="options-descripcion-ExtracionMineral" id="insert-extrMineral-descripcion" placeholder="Ingrese Descripción..." disabled>
                                         </div>                                        
-                                        <datalist id="options-descripcion-ExtracionMineral">
+                                        <!-- <datalist id="options-descripcion-ExtracionMineral">
                                             <option value="Mineral">
                                             <option value="Desmonte">
-                                        </datalist>
+                                        </datalist> -->
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -665,7 +674,7 @@
                             </div>
                             <div class="row">
                                 <div class="table-responsive table-hover">
-                                    <table class="table">
+                                    <table class="table" id="detalleExtraccion">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Empresa Esp.</th>
@@ -685,29 +694,20 @@
 
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th>1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                                <th>1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                            </tr>
-                                            <tr>
-                                                <th>2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                                <th>1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                            </tr>
+                                        <tbody id="detalleExtraccion-body">
                                         </tbody>
                                     </table>
+                                    <template id="template-detalleExtraccion">
+                                        <tr>
+                                            <td id="template-tds-uni_empresa"></td>
+                                            <td id="template-tds-tolva"></td>
+                                            <td id="template-tds-codigo"></td>
+                                            <td id="template-tds-labor"></td>
+                                            <td id="template-tds-zona"></td>
+                                            <td id="template-tds-nivel"></td>
+                                            <td id="template-tds-veta"></td>
+                                        </tr>
+                                    </template>
                                 </div>
                             </div>
                         </div>
@@ -769,7 +769,7 @@
         </div>
     </div>
     <!--===================================================-->
-    <!--End Default Bootstrap Modal-->    
+    <!--End Insertar Bootstrap Modal-->
     
     <!--JAVASCRIPT-->
     <!--=================================================-->

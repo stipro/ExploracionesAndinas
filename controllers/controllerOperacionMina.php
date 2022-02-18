@@ -31,7 +31,7 @@ if($_POST){
                 $dato4 = $formRequest['datos_nvale'];
                 $dato5 = $formRequest['datos_actividad'];
                 $dato6 = array_key_exists('id_Labor', $formRequest) ? $formRequest['id_Labor'] : '';
-                $dato7 = $formRequest['tareas_l'];
+                $dato7 = array_key_exists('tareas_l', $formRequest) ? $formRequest['tareas_l'] : 0.00;
                 $dato8 = $formRequest['tareas_lpv'];
                 $dato9 = $formRequest['tareas_stto'];
                 $dato10 = $formRequest['tareas_serv'];

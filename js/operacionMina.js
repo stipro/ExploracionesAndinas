@@ -869,6 +869,7 @@ const fetchInstalaciones = async (request) => {
         body
     });
     const data = await res.json();
+    console.log("Instalaciones");
     console.log(data);
     objectarrayInstalacion = data['sql']
     datalistinsert_optionsInstalaciones.innerHTML = "";
@@ -878,6 +879,7 @@ const fetchInstalaciones = async (request) => {
     objectarrayInstalacion.forEach(item => {
         template_optsInstalaciones.querySelector('#template-opt-name-instalaciones').value = item.instalacionesMIna_nombre;
         template_optsInstalaciones.querySelector('#template-opt-name-instalaciones').dataset.idInstalacionmina = item.id_instalacionMina;
+        template_optsInstalaciones.querySelector('#template-opt-name-instalaciones').dataset.medidaInstalacionmina = item.instalacionMina_medida;
         const clone_optsInstalaciones = template_optsInstalaciones.cloneNode(true);
         fragment_optsInstalaciones.appendChild(clone_optsInstalaciones);
     });
@@ -920,33 +922,35 @@ btnInsertTable.addEventListener("click", () => {
 
     if (valNameInstalacion && valCantidadInstalacion) {
         var val = $('#nombre-instalaciones-table').val();
+        var valnameInstalacion = $('#nombre-instalaciones-options').find('option[value="' + val + '"]').val();
         var validInstalacion = $('#nombre-instalaciones-options').find('option[value="' + val + '"]').data('id-instalacionmina');
+        var valmedidaInstalacion = $('#nombre-instalaciones-options').find('option[value="' + val + '"]').data('medida-instalacionmina');
         console.log(validInstalacion);
-        var rptsearch_Instalacion = objectarrayInstalacion.find(item => item.id_instalacionMina == validInstalacion);
-        if (rptsearch_Instalacion) {
-            console.log(rptsearch_Instalacion);
-            const templatetdInstalacion = document.querySelector("#template-td-instalaciones").content;
-            const fragmentInstalacion = document.createDocumentFragment();
-            indice++;
-            //templatetdInstalacion.querySelector('#indice').textContent = indice;
-            templatetdInstalacion.querySelector('#template-tds-name-instalaciones').textContent = rptsearch_Instalacion.instalacionesMIna_nombre;
-            templatetdInstalacion.querySelector('#template-tds-name-instalaciones').dataset.idInstalacionmina = rptsearch_Instalacion.id_instalacionMina;
-            templatetdInstalacion.querySelector('#template-tds-cantidad-instalaciones').textContent = valCantidadInstalacion;
-            templatetdInstalacion.querySelector('#template-tds-unidad-instalaciones').textContent = rptsearch_Instalacion.instalacionMina_medida;
+        console.log(valmedidaInstalacion);
+        /* var rptsearch_Instalacion = objectarrayInstalacion.find(item => item.id_instalacionMina == validInstalacion);
+        if (rptsearch_Instalacion) { */
+        const templatetdInstalacion = document.querySelector("#template-td-instalaciones").content;
+        const fragmentInstalacion = document.createDocumentFragment();
+        indice++;
+        //templatetdInstalacion.querySelector('#indice').textContent = indice;
+        templatetdInstalacion.querySelector('#template-tds-name-instalaciones').textContent = valnameInstalacion;
+        templatetdInstalacion.querySelector('#template-tds-name-instalaciones').dataset.idInstalacionmina = validInstalacion;
+        templatetdInstalacion.querySelector('#template-tds-cantidad-instalaciones').textContent = valCantidadInstalacion;
+        templatetdInstalacion.querySelector('#template-tds-unidad-instalaciones').textContent = valmedidaInstalacion;
 
-            const clone_tdInstalaciones = templatetdInstalacion.cloneNode(true);
-            fragmentInstalacion.appendChild(clone_tdInstalaciones);
+        const clone_tdInstalaciones = templatetdInstalacion.cloneNode(true);
+        fragmentInstalacion.appendChild(clone_tdInstalaciones);
 
-            tbodyInstalaciones.appendChild(fragmentInstalacion);
+        tbodyInstalaciones.appendChild(fragmentInstalacion);
 
-            $(function() {
-                $(document).on('click', '.borrar', function(event) {
-                    event.preventDefault();
-                    $(this).closest('tr').remove();
-                });
+        $(function() {
+            $(document).on('click', '.borrar', function(event) {
+                event.preventDefault();
+                $(this).closest('tr').remove();
             });
-            //enumeracion_Table();
-        } else {
+        });
+        //enumeracion_Table();
+        /* } else {
             $.niftyNoty({
                 type: 'warning',
                 container: '#alert-form-insert',
@@ -954,7 +958,7 @@ btnInsertTable.addEventListener("click", () => {
                 focus: false,
                 timer: 2000
             });
-        }
+        } */
     } else {
         if (!valNameInstalacion) {
             $.niftyNoty({
