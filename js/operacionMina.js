@@ -953,6 +953,9 @@ btnInsertTable.addEventListener("click", () => {
                 $(this).closest('tr').remove();
             });
         });
+
+        iptinsertTable_name.value = '';
+        iptinsertTable_cantidad.value = '';
         //enumeracion_Table();
         /* } else {
             $.niftyNoty({
@@ -1031,4 +1034,46 @@ const resetFormulario = () => {
     iptinsertWinche.value = '';
     iptinsertcantidadWinche.value = '';
     iptinsertdesmont.value = '';
+}
+document.getElementById('insert-operacionMina-registro').addEventListener('keydown', inputCharacters_registro);
+document.getElementById('insert-operacionaMina-turno').addEventListener('keydown', inputCharacters_turno);
+document.getElementById('insert-operacionMina-guardia').addEventListener('keydown', inputCharacters_guardia);
+document.getElementById('insert-operacionMina-nvale').addEventListener('keydown', inputCharacters_nvale);
+document.getElementById('opcion-tipo_disparo1').addEventListener('keydown', inputCharacters_tipDisparo);
+document.getElementById('insert-operacionMina-codzona').addEventListener('keydown', inputCharacters_codZona);
+
+function inputCharacters_registro(event) {
+    if (event.keyCode == 13) {
+        document.getElementById('insert-operacionaMina-turno').focus();
+    }
+}
+
+function inputCharacters_turno(event) {
+    if (event.keyCode == 13) {
+        document.getElementById('insert-operacionMina-guardia').focus();
+    }
+}
+
+function inputCharacters_guardia(event) {
+    if (event.keyCode == 13) {
+        document.getElementById('insert-operacionMina-nvale').focus();
+    }
+}
+
+function inputCharacters_nvale(event) {
+    if (event.keyCode == 13) {
+        document.getElementById('opcion-tipo_disparo1').focus();
+    }
+}
+
+function inputCharacters_tipDisparo(event) {
+    if (event.keyCode == 13) {
+        document.getElementById('insert-operacionMina-codzona').focus();
+    }
+}
+
+function inputCharacters_codZona(event) {
+    if (event.keyCode == 13) {
+        document.getElementById('insert-operacionMina-codLabor').focus();
+    }
 }
