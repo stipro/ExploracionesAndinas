@@ -32,8 +32,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <title><?php echo $name_menu .' | '. NOMBRE_SISTEMA ?></title>
+    <meta name="description" content="sistema para Mina">
+    <meta name="keywords" content="EA, Exploraciones Andinas">
+    <meta name="author" content="Frank Sitft">
     <script>
         var data = '';
         var nombreUsuario = '<?= $validacionSession;?>';
@@ -43,6 +45,9 @@
     <!--=================================================-->
 
     <?php echo $template_header_css; ?>
+
+    <!--Icono Importar [ OPTIONAL ]-->
+    <link href="./../../../css/icons.css" rel="stylesheet">
 
     <!--Bootstrap Select [ OPTIONAL ]-->
     <link href=".\..\..\..\plugins\bootstrap-select\bootstrap-select.min.css" rel="stylesheet">
@@ -162,9 +167,14 @@
 					                    <div class="row">
 					                        <div class="col-sm-6 table-toolbar-left">
 					                            <button id="btn-Agregar" data-target="#demo-lg-modal" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add icon-fw"></i>Agregar</button>
-					                            <a href="./../../excelGenerator.php?table=view_operacion_mina" class="btn btn-default" download="" title="Descargar Archivo">
-                                                    <i class="fa fa-file-excel-o icon-lg"></i>
-                                                </a>
+                                                <div class="btn-group">
+                                                    <a href="./../../excelGenerator.php?table=view_operacion_mina" class="btn btn-success" download="" title="Descargar Archivo">
+                                                        <i class="fa fa-file-excel-o icon-lg"></i>
+                                                    </a>
+                                                    <button class="btn btn-primary" id="btn-modal-import" data-target="#modal-import" data-toggle="modal">
+                                                        <i class="fa fa-cloud-upload icon-lg"></i>
+                                                    </button>
+                                                </div>
 					                            <div class="btn-group">
 					                                <button class="btn btn-default"><i class="demo-pli-information icon-lg"></i></button>
 					                                <button class="btn btn-default"><i class="demo-pli-trash icon-lg"></i></button>
@@ -1400,7 +1410,46 @@
     <!--===================================================-->
     <!--End Default Bootstrap Modal-->
 
+    <!--Modal Importacion-->
+    <!--===================================================-->
+    <div class="modal fade" id="modal-import" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
+                <!--Modal header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                    <h4 class="modal-title">Importación Archivo</h4>
+                </div>
+
+
+                <!--Modal body-->
+                <div class="modal-body">
+                    <!--Icono Excel-->
+                    <label id="contenerdor-ico" class="btn-import">
+                        <img class="ico-exce" src="./../../../svg/excel2.svg" alt="Icono Excel">
+                            <!--<span class="exc-letra">Importar Archivo</span>-->
+                            <!--<input type="file" id="excelfile" value="image1" name="excelfile" multiple="multiple"/>-->
+                            <form id="" class="fsubiarchivo" action="herramientas/php/cargar_archivo.php" method="post" enctype="multipart/form-data">
+                                <div>
+                                    <input type="file" id="excelfile" value="image1" name="excelfile" multiple="multiple"/>
+                                </div>                                    
+                                <button id="btn-subir-archivo" class="btn btn-confirmar" type="submit">Cargar Fichero</button>
+                            </form>  
+                    </label>
+                </div>
+
+
+                <!--Modal footer-->
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                    <button class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--===================================================-->
+    <!--End Bootstrap Modal without Animation-->
     
     
     <!--JAVASCRIPT-->

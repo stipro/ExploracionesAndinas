@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css">-->
 
     <!--Stylesheet [ PERSONALIZADO ]-->
+    <link href=".\..\..\..\css\base.css" rel="stylesheet">
+
+    <!--Stylesheet [ PERSONALIZADO ]-->
     <link href=".\..\..\..\css\index.css" rel="stylesheet">
 
     <!--Bootstrap Stylesheet [ REQUIRED ]-->

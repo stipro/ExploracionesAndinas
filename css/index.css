@@ -1,3 +1,11 @@
+.modal-header {
+    padding-bottom: 0 !important;
+}
+
+.modal-body {
+    padding-top: 0 !important;
+}
+
 .aparecer {
     transition: opacity .7s;
 }

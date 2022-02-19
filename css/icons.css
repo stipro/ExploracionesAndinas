@@ -1,0 +1,21 @@
+/* ---- Icono Excel ----*/
+#excelfile[type=file] {
+    outline: 0;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    display: none;
+  }
+.btn-import{
+    width: 5rem;
+    height: 5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed grey;
+    border-radius: .8rem;
+    cursor: pointer;
+}
+/*----- Menu Circular ----*/
