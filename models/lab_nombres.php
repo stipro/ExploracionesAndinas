@@ -19,8 +19,8 @@ class LaboresName extends Conexion
     // Obtiene Lista especifica
     public function getSelectWhere(string $column, string $parament)
     {
-        $where = "WHERE lbN.id_labNombre = '{$parament}'";
-        $query = "SELECT lbN.{$column}, lbN.id_labNombre FROM lab_nombres AS lbN " .$where; 
+        $where = "INNER JOIN labores AS lb ON lbN.id_labNombre = lb.id_labNombre WHERE lb.lab_ccostos = '{$parament}'";
+        $query = "SELECT lbN.labNombre_nombre, lbN.id_labNombre, lb.lab_nivel FROM lab_nombres AS lbN " .$where; 
         return $this->ConsultaSimple($query);
     }
     //OBTIENE TODA LA TABLA

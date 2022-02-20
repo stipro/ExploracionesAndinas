@@ -73,6 +73,8 @@ var selectNMaquinas = document.getElementById('val_explosivo-text-form-nmaquinas
 var iconValidadorPerforista = document.getElementById('validadorPerforista-icon');
 var comtenedorformPerforista = document.getElementById('contenedor-Perforista');
 // Materiales de Explosivos
+// Emulnor 1000
+var inputFormEmulnormil = document.getElementById('val_explosivo-text-form-emulnor_mil');
 // Emulnor 3000
 var inputFormEmulnostresmil = document.getElementById('val_explosivo-text-form-emulnor_tresmil');
 // Dinamita Pulverulenta 65_7/8
@@ -240,7 +242,7 @@ btnInsertar.addEventListener("click", () => {
 
     valSunaSemi_Pulv = inputFormSumaPulSemi.value;
 
-    //valEmulnormil = inputFormEmulnormil.value;
+    valEmulnormil = inputFormEmulnormil.value;
 
     valEmulnostresmil = inputFormEmulnostresmil.value;
 
@@ -273,6 +275,7 @@ btnInsertar.addEventListener("click", () => {
         "pies_perf": valinputFormPPerf,
         "pies_real": valinputFormPReal,
         "n_maquinas": valselectNMaquinas,
+        "emulno_mil": valEmulnormil,
         "emulno_tresmil": valEmulnostresmil,
         "me_dina_semi": valdinSemi,
         "cal_dina_semi": valdinSemiResult,
@@ -535,21 +538,23 @@ const paintSelectLabor = (data) => {
 $('#val_explosivo-text-form-labor_codigo').change(function() {
     //Obteniendo Valor Seleccionado
     codLaborSelect = selectCostLabor.options[selectCostLabor.selectedIndex];
-    idLaborNombre = codLaborSelect.dataset.idLaborNombre;
-    console.log('id Nombre_Labor: ' + idLaborNombre)
+    //idLaborNombre = codLaborSelect.dataset.idLaborNombre;
+    console.log(codLaborSelect);
+    lab_ccostos = codLaborSelect.textContent;
     var selectNombreLaborForm = {
         "accion": "getcolumnWhere",
-        "column": "labNombre_nombre",
-        "parament": idLaborNombre
+        "column": "lab_ccostos",
+        "parament": lab_ccostos
     }
     var selectNivelLaborForm = {
         "accion": "getcolumnWhere",
         "column": "labNombre_nombre",
-        "parament": idLaborNombre
+        "parament": lab_ccostos
     }
     fechLab_nombre(selectNombreLaborForm);
 });
 
+//Obtiene el nombre de Labor
 const fechLab_nombre = async (json) => {
     const body = new FormData();
     body.append("data", JSON.stringify(json));
@@ -558,8 +563,6 @@ const fechLab_nombre = async (json) => {
         body
     });
     const rptJson = await rpt.json(); //await JSON.parse(returned);
-    console.log('Detalle');
-    console.log(rptJson);
     paintselectnomLabor(rptJson);
 }
 
@@ -571,6 +574,7 @@ const paintselectnomLabor = (data) => {
     arraySelect = data['sql'];
 
     selectNombLabor.innerHTML = '';
+    inputNivelLabor.value = '';
     //selectTipoLabor.innerHTML = '';
 
     if (document.getElementById('val_explosivo_text_form_labor_chosen')) {
@@ -588,13 +592,20 @@ const paintselectnomLabor = (data) => {
 
     const fragment = document.createDocumentFragment();
     //const fragmentSelectLabTipo = document.createDocumentFragment();
-
+    console.log(arraySelect);
+    inputNivelLabor.value = arraySelect[0]['lab_nivel'];
     arraySelect.forEach(function(valor, indice, array) {
 
         objNombrelabor = valor['labNombre_nombre'];
-        //objtipoLabor = valor['labExplosivos_tipo'];
+        objnivelLabor = valor['lab_nivel'];
 
         templateSelectLabNombre.querySelector("#optlabNombre").textContent = objNombrelabor;
+
+        if (arraySelect.length == 1) {
+            templateSelectLabNombre.querySelector("#optlabNombre").selected = 'selected';
+        } else {
+
+        }
         //templateSelectLabTipo.querySelector("#optlabTipo").textContent =  objtipoLabor;
 
         const clone = templateSelectLabNombre.cloneNode(true);
@@ -612,10 +623,14 @@ const paintselectnomLabor = (data) => {
     /*
     $('.chosenTipo').chosen();
     $('.chosenTipo').trigger("chosen:updated");*/
-    inputNivelLabor.value = '3125';
+    //inputNivelLabor.value = '3125';
 };
 // FIN CODIGO LABOR
-
+//Detectando Seleccion Nombre Labor
+$('#val_explosivo_text_form_labor_chosen a span').change(function() {
+    //Obteniendo Valor Seleccionado
+    console.log('Se hizo un cambio');
+});
 // CODIGO LABOR
 const fetchDataPerforista = async (json) => {
 

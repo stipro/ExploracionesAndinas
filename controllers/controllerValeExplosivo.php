@@ -54,6 +54,7 @@ if($_POST){
                 $datopiePerf = $formRequest['pies_perf'];
                 $datopieReal = $formRequest['pies_real'];
                 $datonnMaquinas = $formRequest['n_maquinas'];
+                $datoemulMil = $formRequest['emulno_mil'];
                 $datoemulTresmil = $formRequest['emulno_tresmil'];
                 $datoDinaSemi = $formRequest['me_dina_semi'];
                 $datocalDinaSemi = $formRequest['cal_dina_semi'];
@@ -88,6 +89,7 @@ if($_POST){
                             $datopiePerf,
                             $datopieReal,
                             $datonnMaquinas,
+                            $datoemulMil,
                             $datoemulTresmil,
                             $datoDinaSemi,
                             $datocalDinaSemi,

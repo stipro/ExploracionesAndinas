@@ -59,6 +59,7 @@ class ValeExplosivos extends Conexion
         $datopiePerf,
         $datopieReal,
         $datonnMaquinas,
+        $datoemulMil,
         $datoemulTresmil,
         $datoDinaSemi,
         $datocalDinaSemi,
@@ -102,8 +103,9 @@ class ValeExplosivos extends Conexion
             :valexplosivo_talVacio,  
             :valexplosivo_piePerf,  
             :valexplosivo_pieReal,  
-            :valexplosivo_numMaquina, 
-            :valexplosivo_emultresmil, 
+            :valexplosivo_numMaquina,
+            :valexplosivo_emulmil,
+            :valexplosivo_emultresmil,
             :valexplosivo_dimSemigelatinosa,  
             :valexplosivo_dimSemigelatinosa_Result,  
             :valexplosivo_dimPulverulenta,  
@@ -136,6 +138,7 @@ class ValeExplosivos extends Conexion
             $insertValue->bindParam(':valexplosivo_piePerf', $datopiePerf, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_pieReal', $datopieReal, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_numMaquina', $datonnMaquinas, PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_emulmil', $datoemulMil, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_emultresmil', $datoemulTresmil, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_dimSemigelatinosa', $datoDinaSemi, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_dimSemigelatinosa_Result', $datocalDinaSemi, PDO::PARAM_STR);

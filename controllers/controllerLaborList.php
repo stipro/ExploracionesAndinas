@@ -33,7 +33,6 @@ if($_POST){
             case "table":
                 break;
             default:
-                echo "ola";
                 break;
         }
 

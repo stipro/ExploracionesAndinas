@@ -575,8 +575,8 @@
                                             <select class="form-control chosenLabCodigo" data-placeholder="Elige un Codigo" id="val_explosivo-text-form-labor_codigo" tabindex="2">
                                             </select>
                                             <template id="template-opt-ccostos">
-                                                <option id="" value=""></option>
-                                                <option id="optccostos" value=""></option>
+                                                <option id="" value="" selected></option>
+                                                <option id="optccostos" value="" ></option>
                                             </template>
                                             <!--===================================================-->
                                         </div>
@@ -590,8 +590,8 @@
                                                 <option value=""></option>
                                             </select>
                                             <template id="template-opt-labor_nombre">
-                                                <option id="0" value="" selected></option>
-                                                <option id="optlabNombre" value=""></option>
+                                                <option id="0" value="" ></option>
+                                                <option id="optlabNombre" value="" selected></option>
                                             </template>
                                             <!--===================================================-->
                                         </div>
@@ -776,6 +776,14 @@
                                     </thead>
                                     <tbody id="tbody-tareo">
                                         <tr id="tr-tbody-tareo">
+                                            <td>SSO 000652</td>
+                                            <td>Emulnor 1000</td>
+                                            <td>CAR</td>
+                                            <td data-type="number">
+                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-emulnor_mil" name="">
+                                            </td>
+                                        </tr>
+                                        <tr id="tr-tbody-tareo">
                                             <td>SSO 000631</td>
                                             <td>Emulnor 3000</td>
                                             <td>CAR</td>
@@ -864,14 +872,7 @@
                                             </td>                                                        
                                         </tr>
                                         <!--
-                                        <tr>
-                                            <td>SSO 000652</td>
-                                            <td>Emulnor 1000</td>
-                                            <td>CAR</td>
-                                            <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-emulnor_mil" name="">
-                                            </td>
-                                        </tr>
+                                        
                                         
                                         
                                         <tr>

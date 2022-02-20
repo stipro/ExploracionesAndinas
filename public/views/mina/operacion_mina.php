@@ -47,7 +47,7 @@
     <?php echo $template_header_css; ?>
 
     <!--Icono Importar [ OPTIONAL ]-->
-    <link href="./../../../css/icons.css" rel="stylesheet">
+    <link href=".\..\..\..\css\icons.css" rel="stylesheet">
 
     <!--Bootstrap Select [ OPTIONAL ]-->
     <link href=".\..\..\..\plugins\bootstrap-select\bootstrap-select.min.css" rel="stylesheet">
