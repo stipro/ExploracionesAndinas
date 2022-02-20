@@ -708,13 +708,13 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="col-md-2">
-                                        <input class="form-control" type="number" name="" id="val_explosivo-text-form-resdin_semi" disabled>
+                                        <input class="form-control" type="number" name="" value="0" id="val_explosivo-text-form-resdin_semi" disabled>
                                     </div>
                                     <div class="col-md-2">
-                                        <input class="form-control" type="number" name="" id="val_explosivo-text-form-resdin_pulv" disabled>
+                                        <input class="form-control" type="number" name="" value="0" id="val_explosivo-text-form-resdin_pulv" disabled>
                                     </div>
                                     <div class="col-md-2">
-                                        <input class="form-control" type="number" name="" id="suma-dimPulv-dimSemi" disabled>
+                                        <input class="form-control" type="number" name="" value="0" id="suma-dimPulv-dimSemi" disabled>
                                     </div>
                                     <!-- FORMULARIO -->
                                     <label for="val_explosivo-text-form-nmaquinas" class="col-md-1 control-label">N° Maquina</label>

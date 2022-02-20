@@ -69,6 +69,8 @@ if($_POST){
                 $datoconecMecha = $formRequest['me_conector_mecha'];
                 $datoBlockSegacion = $formRequest['me_BlockSegecion'];
                 $datoCarCortrece = $formRequest['me_Carcortadotrece'];
+                $datoDEmulnorMil = $formRequest['totalKilos_DEmulnorMil'];
+                $datoDEmulnorTresmil = $formRequest['totalKilos_DEmulnorTresmil'];
                 if (!empty($idDigitador) && !empty($datoRegistro) && !empty($idZona) && !empty($datonVale) && !empty($idLabor)) 
                     {
                         $rptSql = $table->insert(
@@ -103,7 +105,9 @@ if($_POST){
                             $datofulmOcho,
                             $datoconecMecha,
                             $datoBlockSegacion,
-                            $datoCarCortrece);
+                            $datoCarCortrece,
+                            $datoDEmulnorMil,
+                            $datoDEmulnorTresmil);
                             $rptSql;
                             $rptController = [
                                 "estado" => 1,

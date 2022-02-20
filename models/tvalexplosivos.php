@@ -73,7 +73,9 @@ class ValeExplosivos extends Conexion
         $datofulmOcho,
         $datoconecMecha,
         $datoBlockSegacion,
-        $datoCarCortrece
+        $datoCarCortrece,
+        $datoDEmulnorMil,
+        $datoDEmulnorTresmil
         )
     {
         try 
@@ -118,7 +120,9 @@ class ValeExplosivos extends Conexion
             :valexplosivo_fulN,  
             :valexplosivo_conMecha, 
             :valexplosivo_BlockSugecion, 
-            :valexplosivo_carcortrece);";
+            :valexplosivo_carcortrece,
+            :valexplosivo_totalKiloEmul1000,
+            :valexplosivo_totalKiloEmul3000);";
             $insertValue = $this->db->prepare($query);
             $insertValue->bindParam(':id_valexplosivo', $id, PDO::PARAM_INT);
             $insertValue->bindParam(':id_usuario', $idDigitador, PDO::PARAM_INT);
@@ -153,6 +157,8 @@ class ValeExplosivos extends Conexion
             $insertValue->bindParam(':valexplosivo_conMecha', $datoconecMecha, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_BlockSugecion', $datoBlockSegacion, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_carcortrece', $datoCarCortrece, PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_totalKiloEmul1000', $datoDEmulnorMil, PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_totalKiloEmul3000', $datoDEmulnorTresmil, PDO::PARAM_STR);
             $sqlrpt = $insertValue->execute();
             /*
             $result->execute(array(

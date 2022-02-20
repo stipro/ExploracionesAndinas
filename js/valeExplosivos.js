@@ -241,10 +241,13 @@ btnInsertar.addEventListener("click", () => {
     Carmexocho = inputFormCarmexocho.value;
 
     valSunaSemi_Pulv = inputFormSumaPulSemi.value;
-
+    // Obtenemos valor Emulnor de 1000 y 3000
     valEmulnormil = inputFormEmulnormil.value;
-
     valEmulnostresmil = inputFormEmulnostresmil.value;
+    const totalKilos_dinamitaEmulnorMil = calcular_KilosDinamita(valEmulnormil, parseFloat('0.09615385'));
+    const totalKilos_dinamitaEmulnorTresmil = calcular_KilosDinamita(valEmulnostresmil, parseFloat('0.09469697'));
+    console.log('Total dinamita Emulnor Mil : ' + totalKilos_dinamitaEmulnorMil);
+    console.log('Total dinamita Emulnor Tresmil : ' + totalKilos_dinamitaEmulnorTresmil);
 
     valMechaRapida = inputFormMechaRapida.value;
     valMechaLenta = inputFormMechaLenta.value;
@@ -290,6 +293,8 @@ btnInsertar.addEventListener("click", () => {
         "me_conector_mecha": valConector_Mecha,
         "me_BlockSegecion": valBlockSegecion,
         "me_Carcortadotrece": valCarcortado13,
+        "totalKilos_DEmulnorMil": totalKilos_dinamitaEmulnorMil,
+        "totalKilos_DEmulnorTresmil": totalKilos_dinamitaEmulnorTresmil
     };
     requestInsert(listInsert);
     console.log(listInsert);
@@ -961,6 +966,9 @@ function calPies_Perf_Real() {
     inputFormPReal.value = valFormPReal.toFixed(2);
 }
 
+const calcular_KilosDinamita = (pesototal, peso) => {
+    return totalKilo = pesototal * peso;
+}
 /*
 btnCalKg_explosivos.addEventListener("click", () => {
   sumaMaterialExplosivo();
