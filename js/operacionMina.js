@@ -690,7 +690,7 @@ const paintZonaLaborNivel = (data) => {
     arraySelect.forEach(item => {
         iptinsertZona.value = item.nombre;
         iptinsertLabor.value = item.labNombre_nombre;
-        iptinsertNivel.value = item.nivel;
+        iptinsertNivel.value = item.lab_nivel;
     });
 }
 

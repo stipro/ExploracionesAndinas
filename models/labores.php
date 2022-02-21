@@ -35,7 +35,7 @@ class Labores extends Conexion
     # EJEMPLO OBTENER UNA LISTA SEGUN SOLICITADO
     public function getColumnsWhere(string $table, string $parament)
     {
-        $query = "SELECT lbz.nombre, lbn.labNombre_nombre, lbz.nivel FROM labores AS lb LEFT JOIN lab_zonas AS lbz ON  lb.id_zona = lbz.id_zona LEFT JOIN lab_nombres AS lbn ON lb.id_labNombre = lbn.id_labNombre WHERE lb.id_labor = {$parament};";
+        $query = "SELECT lbz.nombre, lbn.labNombre_nombre, lb.lab_nivel FROM labores AS lb LEFT JOIN lab_zonas AS lbz ON  lb.id_zona = lbz.id_zona LEFT JOIN lab_nombres AS lbn ON lb.id_labNombre = lbn.id_labNombre WHERE lb.id_labor = {$parament};";
         return $this->ConsultaSimple($query);
     }
 
