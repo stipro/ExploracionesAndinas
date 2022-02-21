@@ -5,7 +5,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 if($_GET){
-    // Obtenemos nombre Tabla
+    # Obtenemos nombre Tabla
     $table = $_GET['table'];
     # Indica la posicion de la Fila
     $numeroDeFila = 2;

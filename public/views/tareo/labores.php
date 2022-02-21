@@ -401,6 +401,22 @@
 					    <form class="form-horizontal">
 					        <div class="panel-body">
                                 <!-- FORMULARIO -->
+                                <div class="col-sm-6">
+					                <label for="demo-is-inputnormal" class="control-label">Unidad Minera</label>
+					                <input type="text" placeholder="Unidad Minera" class="form-control" id="formIptTextZona">
+					            </div>
+                                <div class="col-sm-6">
+					                <label for="demo-is-inputnormal" class="control-label">Abrev. Minera</label>
+					                <input type="text" placeholder="Unidad Minera" class="form-control" id="formIptTextZona">
+					            </div>
+					            <div class="col-sm-6">
+					                <label class="control-label">Zona</label>
+					                <input type="text" placeholder="Zona" class="form-control">
+					            </div>
+					            <div class="col-sm-6">
+					                <label class="control-label">Letra</label>
+					                <input type="text" placeholder="Letra" class="form-control">
+					            </div>
                                 <div class="form-group">
 					                <label for="demo-is-inputnormal" class="col-sm-3 control-label">Zona</label>
 					                <div class="col-sm-6">
@@ -420,9 +436,33 @@
 					                </div>
 					            </div>
                                 <div class="form-group">
+					                <label for="demo-is-inputnormal" class="col-sm-3 control-label">Veta</label>
+					                <div class="col-sm-6">
+					                    <input type="text" placeholder="Veta" class="form-control" id="formIptNumNivel">
+					                </div>
+					            </div>
+                                <div class="form-group">
+					                <label for="demo-is-inputnormal" class="col-sm-3 control-label">Tipo Roca</label>
+					                <div class="col-sm-6">
+					                    <input type="text" placeholder="Tipo roca" class="form-control" id="formIptNumNivel">
+					                </div>
+					            </div>
+                                <div class="form-group">
 					                <label for="demo-is-inputnormal" class="col-sm-3 control-label">labor</label>
 					                <div class="col-sm-6">
 					                    <input type="text" placeholder="labor" class="form-control" id="formIptTextLabor">
+					                </div>
+					            </div>
+                                <div class="form-group">
+					                <label for="demo-is-inputnormal" class="col-sm-3 control-label">Prefijo</label>
+					                <div class="col-sm-6">
+					                    <input type="text" placeholder="Prefijo" class="form-control" id="formIptTextLabor">
+					                </div>
+					            </div>
+                                <div class="form-group">
+					                <label for="demo-is-inputnormal" class="col-sm-3 control-label">Tipo Labor</label>
+					                <div class="col-sm-6">
+					                    <input type="text" placeholder="Tipo Labor" class="form-control" id="formIptTextLabor">
 					                </div>
 					            </div>
 					        </div>
