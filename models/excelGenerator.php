@@ -15,5 +15,13 @@ class ExportExcel extends Conexion{
         # $resultExcel->execute(); SOLO CON QUERY
         return $resultExcel;
     }
+    public function getData_dev(string $tipUsuario, string $table){
+        # Preparamos la consulta
+        $consulta = "SELECT * FROM {$table}";
+        # Ejecutamos la consulta
+        $resultExcel = $this->db->query($consulta);
+        # $resultExcel->execute(); SOLO CON QUERY
+        return $resultExcel;
+    }
 }
 ?>
