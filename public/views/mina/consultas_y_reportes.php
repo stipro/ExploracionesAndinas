@@ -184,17 +184,17 @@
                                         <fieldset>
                                             <legend>Reporte de Operacion Mina</legend>
                                             <div class="table-responsive-sm">
-                                                <table id="reporte-OperMina" class="display nowrap" style="width:100%">
+                                                <table id="reporte-OperMina" class="display nowrap table-striped table-bordered" style="width:100%">
                                                     <thead>
                                                         <tr>
                                                             <th>Instalacion_mina</th>                                                            
                                                             <th>Fecha</th>
-                                                            <th>CCosto</th>
-                                                            <th>Labor</th>
                                                             <th>Zona</th>
+                                                            <th>CCosto</th>
+                                                            <th>Labor</th>                                                            
                                                             <th>Instalacion</th>
-                                                            <th>Cantidad</th>
                                                             <th>Medida</th>
+                                                            <th>Cantidad</th>                                                            
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -204,7 +204,7 @@
                                             </div>
                                         </fieldset>
                                         <fieldset>
-                                            <legend>Reporte de Vale Explosivos</legend>
+                                            <legend>Reporte dePies Perforados</legend>
                                             <div class="table-responsive-sm">
                                                 <table id="reporte-ValeExplosivo" class="display nowrap" style="width:100%">
                                                     <thead>
@@ -342,14 +342,15 @@
                     responsive: true,
                     data: obj,
                     columns: [
-                        { data: 'name_archivo' },                        
+                        { data: 'name_archivo' },     
                         { data: 'Fecha' },
+                        { data: 'Zona' },
                         { data: 'CCosto' },
                         { data: 'Labor' },
-                        { data: 'Zona' },            
                         { data: 'instalacionesMina_nombre' },
+                        { data: 'instalacionMina_medida' },
                         { data: 'Cantidad' },
-                        { data: 'instalacionMina_medida' }
+                        
                     ],
                     /* "pageLength": 3, */
                     
@@ -430,11 +431,13 @@
                     responsive: true,
                     data: obj,
                     columns: [
-                        { data: 'Pie_perforados' },
                         { data: 'Fecha' },
                         { data: 'Numero_Maquinas' },
-                        { data: 'Ccostos' },            
+                        { data: 'Pie_perforados' },
+                        
                         { data: 'Numero_Maquinas' },
+                        { data: 'Ccostos' },            
+                        
                         { data: 'Zona' }
                     ],
                     /* "pageLength": 3, */
