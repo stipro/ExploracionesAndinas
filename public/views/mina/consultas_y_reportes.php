@@ -84,6 +84,8 @@
     <!--Font Awesome [ OPTIONAL ]-->
     <link href=".\..\..\..\plugins\font-awesome\css\font-awesome.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/fixedheader/3.2.1/css/fixedHeader.dataTables.min.css" rel="stylesheet">
     <style>
@@ -165,9 +167,9 @@
 					<div class="row">
 					    <div class="col-xs-12">
 					        <div class="panel">
-					            <div class="panel-heading">
-					                <h3 class="panel-title">Operación Mina</h3>
-					            </div>
+					            <!-- <div class="panel-heading">
+					                <h3 class="panel-title">Reportes</h3>
+					            </div> -->
 					
 					            <!--Data Table-->
 					            <!--===================================================-->
@@ -179,23 +181,48 @@
                                     <!-- Foo Table - Row Toggler -->
                                     <!--===================================================-->
                                     <div class="panel-body">
-                                        <div class="table-responsive-sm">
-                                            <table id="table4" class="display" style="width:100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>CCosto</th>
-                                                        <th>Fecha</th>
-                                                        <th>Labor</th>
-                                                        <th>Zona</th>
-                                                        <th>Instalacion</th>
-                                                        <th>Medida</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
+                                        <fieldset>
+                                            <legend>Reporte de Operacion Mina</legend>
+                                            <div class="table-responsive-sm">
+                                                <table id="reporte-OperMina" class="display nowrap" style="width:100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Instalacion_mina</th>                                                            
+                                                            <th>Fecha</th>
+                                                            <th>CCosto</th>
+                                                            <th>Labor</th>
+                                                            <th>Zona</th>
+                                                            <th>Instalacion</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Medida</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
 
-                                                </tbody>
-                                            </table>
-                                        </div>                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset>
+                                            <legend>Reporte de Vale Explosivos</legend>
+                                            <div class="table-responsive-sm">
+                                                <table id="reporte-ValeExplosivo" class="display nowrap" style="width:100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Pies Perforados</th>
+                                                            <th>Dia</th>
+                                                            <th>n. Maquina</th>
+                                                            <th>C. Costos</th>
+                                                            <th>Nombre Labor</th>
+                                                            <th>Zona</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </fieldset>
                                     </div>
                                     <!--===================================================-->
                                     <!-- End Foo Table - Row Toggler -->
@@ -274,8 +301,10 @@
     <!--Date-MYSQL [ REQUIRED ]
     <script src=".\..\..\..\js\operacionMina.js"></script>-->
 
-    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
@@ -288,51 +317,147 @@
 <script>
     $(document).ready(function() {
         // Configuración: agregue una entrada de texto a cada celda de pie de página
-        $('#table4 thead tr')
-            .clone(true)
-            .addClass('filters')
-            .appendTo('#table4 thead');
+        $('#reporte-OperMina thead tr').clone(true).addClass('filters').appendTo('#reporte-OperMina thead');
+        $('#reporte-ValeExplosivo thead tr').clone(true).addClass('filters').appendTo('#reporte-ValeExplosivo thead');
         var dataTable = '';
         ptipUsuario= 'nom'; // Cogemos del formulario el valor nom
         ptabla= 'reporte_operacion_mina_1'; // Cogemos del formulario el valor pass
-        // Función que envía y recibe respuesta con AJAX
+            // Función que envía y recibe respuesta con AJAX
         $.ajax({
             type: 'GET',  // Envío con método POST
             url: './../../json.php',  // Fichero destino (el PHP que trata los datos)
             dataType: 'json',
             data: { tipoUsuario: ptipUsuario, table: ptabla },
             success: function(obj, textstatus){
-                $('#table4').DataTable({
+                for (const property in obj) {
+                    console.log(`${property}: ${obj[property]}`);
+                    Object.assign(obj[property], {name_archivo: "reporte_operacion_mina_1"});
+                }
+                Object.assign(obj, {key3: "value3"});
+                console.log(obj);
+                $('#reporte-OperMina').DataTable({
+                    rowReorder: {
+                        selector: 'td:nth-child(2)'
+                    },
+                    responsive: true,
                     data: obj,
                     columns: [
-                        { data: 'CCosto'},
+                        { data: 'name_archivo' },                        
                         { data: 'Fecha' },
+                        { data: 'CCosto' },
                         { data: 'Labor' },
                         { data: 'Zona' },            
                         { data: 'instalacionesMina_nombre' },
+                        { data: 'Cantidad' },
                         { data: 'instalacionMina_medida' }
                     ],
                     /* "pageLength": 3, */
-                    responsive: true,
+                    
                     language: {
-                    "decimal": "",
-                    "emptyTable": "No hay información",
-                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Documentos",
-                    "infoEmpty": "Mostrando 0 to 0 of 0 Documentos",
-                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Mostrar _MENU_ Documentos",
-                    "loadingRecords": "Cargando...",
-                    "processing": "Procesando...",
-                    "search": "Buscar:",
-                    "zeroRecords": "Sin resultados encontrados",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Ultimo",
-                        "next": "Siguiente",
-                        "previous": "Anterior"
+                        "decimal": "",
+                        "emptyTable": "No hay información",
+                        "info": "Mostrando _START_ a _END_ de _TOTAL_ Documentos",
+                        "infoEmpty": "Mostrando 0 to 0 of 0 Documentos",
+                        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                        "infoPostFix": "",
+                        "thousands": ",",
+                        "lengthMenu": "Mostrar _MENU_ Documentos",
+                        "loadingRecords": "Cargando...",
+                        "processing": "Procesando...",
+                        "search": "Buscar:",
+                        "zeroRecords": "Sin resultados encontrados",
+                        "paginate": {
+                            "first": "Primero",
+                            "last": "Ultimo",
+                            "next": "Siguiente",
+                            "previous": "Anterior"
+                        },
                     },
+                    dom: 'lBfrtip',
+                    buttons: [
+                        'copyHtml5',
+                        'excelHtml5',
+                        'csvHtml5',
+                        'pdfHtml5',
+                        'print'
+                    ],
+                    orderCellsTop: true,
+                    fixedHeader: true,
+                    initComplete: function () {
+                        var api = this.api();
+                        // For each column
+                        api.columns().eq(0).each(function (colIdx) {
+                            // Set the header cell to contain the input element
+                            var cell = $('.filters th').eq(
+                                $(api.column(colIdx).header()).index()
+                            );
+                            var title = $(cell).text();
+                            $(cell).html('<input type="text" placeholder="' + title + '" />');
+                            // On every keypress in this input
+                            $('input',$('.filters th').eq($(api.column(colIdx).header()).index())).off('keyup change').on('keyup change', function (e) {
+                                e.stopPropagation();
+            
+                                // Get the search value
+                                $(this).attr('title', $(this).val());
+                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
+            
+                                var cursorPosition = this.selectionStart;
+                                // Search the column for that value
+                                api.column(colIdx).search(
+                                    this.value != '' ? regexr.replace('{search}', '(((' + this.value + ')))') : '',
+                                    this.value != '',
+                                    this.value == ''
+                                ).draw();
+            
+                                $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
+                            });
+                        });
+                    },
+                });
+            }// Datos que se envían
+        })
+
+        $.ajax({
+            type: 'GET',  // Envío con método POST
+            url: './../../json.php',  // Fichero destino (el PHP que trata los datos)
+            dataType: 'json',
+            data: { tipoUsuario: 'nom', table: 'reporte_vales_explosivos_1' },
+            success: function(obj, textstatus){
+                $('#reporte-ValeExplosivo').DataTable({
+                    rowReorder: {
+                        selector: 'td:nth-child(2)'
+                    },
+                    responsive: true,
+                    data: obj,
+                    columns: [
+                        { data: 'Pie_perforados' },
+                        { data: 'Fecha' },
+                        { data: 'Numero_Maquinas' },
+                        { data: 'Ccostos' },            
+                        { data: 'Numero_Maquinas' },
+                        { data: 'Zona' }
+                    ],
+                    /* "pageLength": 3, */
+                    
+                    language: {
+                        "decimal": "",
+                        "emptyTable": "No hay información",
+                        "info": "Mostrando _START_ a _END_ de _TOTAL_ Documentos",
+                        "infoEmpty": "Mostrando 0 to 0 of 0 Documentos",
+                        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                        "infoPostFix": "",
+                        "thousands": ",",
+                        "lengthMenu": "Mostrar _MENU_ Documentos",
+                        "loadingRecords": "Cargando...",
+                        "processing": "Procesando...",
+                        "search": "Buscar:",
+                        "zeroRecords": "Sin resultados encontrados",
+                        "paginate": {
+                            "first": "Primero",
+                            "last": "Ultimo",
+                            "next": "Siguiente",
+                            "previous": "Anterior"
+                        },
                     },
                     dom: 'lBfrtip',
                     buttons: [
@@ -348,51 +473,34 @@
                         var api = this.api();
             
                         // For each column
-                        api
-                            .columns()
-                            .eq(0)
-                            .each(function (colIdx) {
-                                // Set the header cell to contain the input element
-                                var cell = $('.filters th').eq(
-                                    $(api.column(colIdx).header()).index()
-                                );
-                                var title = $(cell).text();
-                                $(cell).html('<input type="text" placeholder="' + title + '" />');
+                        api.columns().eq(0).each(function (colIdx) {
+                            // Set the header cell to contain the input element
+                            var cell = $('#reporte-ValeExplosivo thead .filters th').eq(
+                                $(api.column(colIdx).header()).index()
+                            );
+                            var title = $(cell).text();
+                            $(cell).html('<input type="text" placeholder="' + title + '" />');
+                            // On every keypress in this input
+                            $('input',$('#reporte-ValeExplosivo thead .filters th').eq($(api.column(colIdx).header()).index())).off('keyup change').on('keyup change', function (e) {
+                                e.stopPropagation();
             
-                                // On every keypress in this input
-                                $(
-                                    'input',
-                                    $('.filters th').eq($(api.column(colIdx).header()).index())
-                                )
-                                    .off('keyup change')
-                                    .on('keyup change', function (e) {
-                                        e.stopPropagation();
+                                // Get the search value
+                                $(this).attr('title', $(this).val());
+                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
             
-                                        // Get the search value
-                                        $(this).attr('title', $(this).val());
-                                        var regexr = '({search})'; //$(this).parents('th').find('select').val();
+                                var cursorPosition = this.selectionStart;
+                                // Search the column for that value
+                                api.column(colIdx).search(
+                                    this.value != '' ? regexr.replace('{search}', '(((' + this.value + ')))') : '',
+                                    this.value != '',
+                                    this.value == ''
+                                ).draw();
             
-                                        var cursorPosition = this.selectionStart;
-                                        // Search the column for that value
-                                        api
-                                            .column(colIdx)
-                                            .search(
-                                                this.value != ''
-                                                    ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                                    : '',
-                                                this.value != '',
-                                                this.value == ''
-                                            )
-                                            .draw();
-            
-                                        $(this)
-                                            .focus()[0]
-                                            .setSelectionRange(cursorPosition, cursorPosition);
-                                    });
+                                $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
                             });
+                        });
                     },
-                }); 
-
+                });
             }// Datos que se envían
         })
     });    

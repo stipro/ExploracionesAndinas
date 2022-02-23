@@ -189,90 +189,24 @@
                                         <!-- Foo Table - Row Toggler -->
                                         <!--===================================================-->
                                         <div class="panel-body">
-                                            <table class="table table-striped table-hover" role="table">
-                                                <thead class="thead-dark" role="rowgroup">
-                                                    <tr role="row">
-                                                    <th scope="col">#<span></span></th>
-                                                    <th role="columnheader">First Name<span></span></th>
-                                                    <th role="columnheader">Last Name<span></span></th>
-                                                    <th role="columnheader">Job Title<span></span></th>
-                                                    <th role="columnheader">Favorite Color<span></span></th>
-                                                    <th role="columnheader">Wars or Trek?<span></span></th>
-                                                    <th role="columnheader">Secret Alias<span></span></th>
-                                                    <th role="columnheader">Date of Birth<span></span></th>
-                                                    <th role="columnheader">Dream Vacation City<span></span></th>
-                                                    <th role="columnheader">GPA<span></span></th>
-                                                    <th role="columnheader">Arbitrary Data<span></span></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody role="rowgroup">
-                                                    <tr role="row">
-                                                    <th scope="row">1</th>
-                                                    <td role="cell">James</td>
-                                                    <td role="cell">Matman</td>
-                                                    <td role="cell">Chief Sandwich Eater</td>
-                                                    <td role="cell">Lettuce Green</td>
-                                                    <td role="cell">Trek</td>
-                                                    <td role="cell">Digby Green</td>
-                                                    <td role="cell">January 13, 1979</td>
-                                                    <td role="cell">Gotham City</td>
-                                                    <td role="cell">3.1</td>
-                                                    <td role="cell">RBX-12</td>
-                                                    </tr>
-                                                    <tr role="row">
-                                                    <th scope="row">2</th>
-                                                    <td role="cell">The</td>
-                                                    <td role="cell">Tick</td>
-                                                    <td role="cell">Crimefighter Sorta</td>
-                                                    <td role="cell">Blue</td>
-                                                    <td role="cell">Wars</td>
-                                                    <td role="cell">John Smith</td>
-                                                    <td role="cell">July 19, 1968</td>
-                                                    <td role="cell">Athens</td>
-                                                    <td role="cell">N/A</td>
-                                                    <td role="cell">Edlund, Ben (July 1996).</td>
-                                                    </tr>
-                                                    <tr role="row">
-                                                    <th scope="row">3</th>
-                                                    <td role="cell">Jokey</td>
-                                                    <td role="cell">Smurf</td>
-                                                    <td role="cell">Giving Exploding Presents</td>
-                                                    <td role="cell">Smurflow</td>
-                                                    <td role="cell">Smurf</td>
-                                                    <td role="cell">Smurflane Smurfmutt</td>
-                                                    <td role="cell">Smurfuary Smurfteenth, 1945</td>
-                                                    <td role="cell">New Smurf City</td>
-                                                    <td role="cell">4.Smurf</td>
-                                                    <td role="cell">One</td>
-                                                    </tr>
-                                                    <tr role="row">
-                                                    <th scope="row">4</th>
-                                                    <td role="cell">Cindy</td>
-                                                    <td role="cell">Beyler</td>
-                                                    <td role="cell">Sales Representative</td>
-                                                    <td role="cell">Red</td>
-                                                    <td role="cell">Wars</td>
-                                                    <td role="cell">Lori Quivey</td>
-                                                    <td role="cell">July 5, 1956</td>
-                                                    <td role="cell">Paris</td>
-                                                    <td role="cell">3.4</td>
-                                                    <td role="cell">3451</td>
-                                                    </tr>
-                                                    <tr role="row">
-                                                    <th scope="row">5</th>
-                                                    <td role="cell">Captain</td>
-                                                    <td role="cell">Cool</td>
-                                                    <td role="cell">Tree Crusher</td>
-                                                    <td role="cell">Blue</td>
-                                                    <td role="cell">Wars</td>
-                                                    <td role="cell">Steve 42nd</td>
-                                                    <td role="cell">December 13, 1982</td>
-                                                    <td role="cell">Las Vegas</td>
-                                                    <td role="cell">1.9</td>
-                                                    <td role="cell">Under the couch</td>
-                                                    </tr>
-                                                </tbody>
-                                                </table>
+                                            <fieldset>
+                                                <legend>Labores</legend>
+                                                <div class="table-responsive-sm">
+                                                    <table id="example" class="display" cellspacing="0" width="100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th></th>
+                                                                <th width="15%">Unidad Minera</th>
+                                                                <th width="6%">Abrev</th>
+                                                                <th>Zona</th>
+                                                                <th width="6%">Letra</th>
+                                                                <th width="18%">C. Costos</th>
+                                                                <th>Nombre</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </fieldset>
                                             <!-- <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="5">
                                                 <thead>
                                                     <tr>
