@@ -1,0 +1,29 @@
+﻿{
+  "roomsData": [
+    {
+      "id": 1,
+      "room": "Basic",
+      "price": "$49"
+    },
+    {
+      "id": 2,
+      "room": "Common",
+      "price": "$59"
+    },
+    {
+      "id": 3,
+      "room": "Luxury",
+      "price": "$99"
+    },
+    {
+      "id": 4,
+      "room": "Deluxe",
+      "price": "$89"
+    },
+    {
+      "id": 5,
+      "room": "Super",
+      "price": "$199"
+    }
+  ]
+}

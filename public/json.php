@@ -1,7 +1,7 @@
 <?php
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json; charset=UTF-8");
-
+    # SHOW CREATE VIEW my_view_name
     if ($_GET) {       
         # $table = array_key_exists('table', $_GET) ? $_GET['table'] : ($condicion2 ? 'verdadero2' : json_encode(array("message" => "No se recibio parametro.")));
         if (!array_key_exists('tipoUsuario', $_GET)){

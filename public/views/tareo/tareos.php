@@ -21,7 +21,6 @@
         for ($i=0; $i < count($parte); $i++) {
             $name_menu .= ucfirst($parte[$i]).' ';
         }
-
     }
 ?>
 <!DOCTYPE html>
