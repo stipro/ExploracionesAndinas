@@ -1,10 +1,12 @@
 <?php
     $template_header_title = '
     <title>Mod. Inventario | Sistema Explore Andina</title>
+    
     ';
     /* <!--STYLESHEET--> */
     /* <!--=================================================--> */
     $template_header_css = '
+    <link rel="shortcut icon" href="./../../../img/logo_letra.ico">
     <!--Open Sans Font [ OPTIONAL ]
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css">-->
 

@@ -95,10 +95,10 @@
         ptabla= 'reporte_operacion_mina_1'; // Cogemos del formulario el valor pass
         // Función que envía y recibe respuesta con AJAX
         $.ajax({
-        type: 'GET',  // Envío con método POST
-        url: './../../json.php',  // Fichero destino (el PHP que trata los datos)
-        dataType: 'json',
-        data: { tipoUsuario: ptipUsuario, table: ptabla } // Datos que se envían
+            type: 'GET',  // Envío con método POST
+            url: './../../json.php',  // Fichero destino (el PHP que trata los datos)
+            dataType: 'json',
+            data: { tipoUsuario: ptipUsuario, table: ptabla } // Datos que se envían
         }).done(function( obj, textstatus ) {// Función que se ejecuta si todo ha ido bien
             var table = $('#table4').DataTable({
                 rowReorder: {
@@ -139,7 +139,15 @@
                 },
                 lengthChange: false,
                 dom: 'lBfrtip',
+                lengthMenu: [
+                    [ 10, 25, 50, -1 ],
+                    [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+                ],
                 buttons: [
+                    {
+                        extend:    'pageLength',
+                        className: 'btn btn-secondary'
+                    },
                     {
                         extend:    'copy',
                         text:      '<i class="fa fa-files-o"></i> Copiar',

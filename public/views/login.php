@@ -38,6 +38,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Login | Exploraciones Andinas</title>
+	<link rel="shortcut icon" href="./../img/logo_letra.ico">
 	<div id="list"></div>  
 
     <!--STYLESHEET-->
