@@ -150,7 +150,7 @@
 		                    <input id="demo-form-checkbox" class="magic-checkbox" type="checkbox">
 		                    <label for="demo-form-checkbox">Recuérdame</label>
 		                </div>
-		                <button class="btn btn-primary btn-lg btn-block" id="btn-login">Iniciar sesión</button>
+		                <button class="btn btn-primary btn-lg btn-block" id="btn-login">Ingresar</button>
 		        </div>
 		
 		        <div class="pad-all">
