@@ -6,7 +6,8 @@
     /* <!--STYLESHEET--> */
     /* <!--=================================================--> */
     $template_header_css = '
-    <link rel="shortcut icon" href="./../../../img/logo_letra.ico">
+    <meta name="application-name" content="OpenStreetMap">
+    <link rel="shortcut icon" type="image/x-icon" href="./../../../img/favicon.ico">
     <!--Open Sans Font [ OPTIONAL ]
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css">-->
 

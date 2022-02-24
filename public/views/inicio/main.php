@@ -26,7 +26,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title><?php echo $nameMenu .' | '. NOMBRE_SISTEMA ?></title>
-    
+    <meta name="description" content="sistema para Mina">
+    <meta name="keywords" content="EA, Exploraciones Andinas">
+    <meta name="author" content="Frank Sitft">
     <script>
         //
         var data = '';

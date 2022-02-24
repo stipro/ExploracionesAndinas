@@ -38,7 +38,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Login | Exploraciones Andinas</title>
-	<link rel="shortcut icon" href="./../img/logo_letra.ico">
+	<meta name="description" content="sistema para Mina">
+    <meta name="keywords" content="EA, Exploraciones Andinas">
+    <meta name="author" content="Frank Sitft">
+	<meta name="application-name" content="Exploraciones Andinas">
+	<link rel="shortcut icon" type="image/x-icon" href="./../img/favicon.ico">
+	<!-- Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<!-- IOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'">
+	<meta name="color-scheme" content="dark">
+	<link rel="manifest" href="./manifest.json">
+	<!-- Android -->
+	<meta name="theme-color" content="black">
+	<!-- IOS -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<div id="list"></div>  
 
     <!--STYLESHEET-->
