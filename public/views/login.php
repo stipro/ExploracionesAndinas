@@ -47,7 +47,7 @@
 	<meta name="mobile-web-app-capable" content="yes">
 	<!-- IOS -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'">
+	<!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'"> -->
 	<meta name="color-scheme" content="dark">
 	<link rel="manifest" href="./manifest.json">
 	<!-- Android -->
