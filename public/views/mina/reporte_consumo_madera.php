@@ -41,8 +41,82 @@
     </script>
     <!--STYLESHEET-->
     <!--=================================================-->
+    <style>
+        #inserForm{
+            width: 60% !important;
+        }
 
-    <?php echo $template_header_css; ?>
+        /* .form-group>label {
+        bottom: 34px;
+        left: 15px;
+        position: relative;
+        background-color: white;
+        padding: 0px 5px 0px 5px;
+        font-size: 1.1em;
+        transition: 0.2s;
+        pointer-events: none;
+        }
+
+        .form-control:focus~label {
+        bottom: 55px;
+        }
+
+        .form-control:valid~label {
+        bottom: 55px;
+        } */
+    </style>
+    <?php /* echo $template_header_css; */ ?>
+
+    <!--Open Sans Font [ OPTIONAL ]-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css">
+
+    <!--Stylesheet [ REQUIRED - REQUERIDO ]-->
+    <link href=".\..\..\..\css\base.css" rel="stylesheet">
+
+    <!--=================================================-->
+
+    <!--Bootstrap Stylesheet 3.3.7 [ REQUIRED ]-->
+    <link href=".\..\..\..\bootstrap_3\css\bootstrap.min.css" rel="stylesheet">
+
+    <!--Bootstrap DataTables Stylesheet 1.10.15 [ REQUIRED ]-->
+    <link href=".\..\..\..\bootstrap_3\css\dataTables.bootstrap.min.css" rel="stylesheet">
+
+    <!--Bootstrap DataTables Stylesheet 2.1.1 [ REQUIRED ]-->
+    <link href=".\..\..\..\bootstrap_3\css\responsive.bootstrap.min.css" rel="stylesheet">
+
+    <!--FixedHeader Bootstrap DataTables Stylesheet 1.11.4 [ REQUIRED ]-->
+    <link href=".\..\..\..\bootstrap_3\css\fixedHeader.bootstrap.css" rel="stylesheet">
+
+    <!--Bootstrap DataTables Stylesheet [ REQUIRED ]-->
+    <link href=".\..\..\..\bootstrap_3\css\buttons.bootstrap.min.css" rel="stylesheet">
+
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href=".\..\..\..\css\nifty.min.css" rel="stylesheet">
+
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href=".\..\..\..\css\demo\nifty-demo-icons.min.css" rel="stylesheet">
+
+
+    <!--=================================================-->
+
+
+
+    <!--Pace - Page Load Progress Par [OPTIONAL]-->
+    <link href=".\..\..\..\plugins\pace\pace.min.css" rel="stylesheet">
+    <script src=".\..\..\..\plugins\pace\pace.min.js"></script>
+
+
+    <!--Demo [ DEMONSTRATION ]-->
+    <link href=".\..\..\..\css\demo\nifty-demo.min.css" rel="stylesheet">
+
+    <!--Ion Icons [ OPTIONAL ]-->
+    <link href=".\..\..\..\plugins\ionicons\css\ionicons.min.css" rel="stylesheet">
+
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href=".\..\..\..\plugins\font-awesome\css\font-awesome.min.css" rel="stylesheet">
+
+    <!--Themify Icons [ OPTIONAL ]-->
+    <link href=".\..\..\..\plugins\themify-icons\themify-icons.min.css" rel="stylesheet">
 
     <!--Bootstrap Select [ OPTIONAL ]-->
     <link href=".\..\..\..\plugins\bootstrap-select\bootstrap-select.min.css" rel="stylesheet">
@@ -152,115 +226,27 @@
 					    <div class="col-xs-12">
 					        <div class="panel">					
 					            <div class="panel-body">
-					                <div class="pad-btm form-inline">
-					                    <div class="row">
-					                        <div class="col-sm-6 table-toolbar-left">
-					                            <button id="btn-add" data-target="#demo-lg-modal" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add icon-fw"></i>Agregar</button>
-					                            <a href="./../../excelGenerator.php?table=view_operacion_mina" class="btn btn-default" download="" title="Descargar Archivo">
-                                                    <i class="fa fa-file-excel-o icon-lg"></i>
-                                                </a>
-					                            <div class="btn-group">
-					                                <button class="btn btn-default"><i class="demo-pli-information icon-lg"></i></button>
-					                                <button class="btn btn-default"><i class="demo-pli-trash icon-lg"></i></button>
-					                            </div>
-					                        </div>
-					                        <div class="col-sm-6 table-toolbar-right">
-                                                <div class="btn-group">
-                                                        <div class="input-group">
-                                                            <input id="ipt-Buscar" type="text" placeholder="Busqueda por columna" class="form-control">
-                                                            <span class="input-group-btn">
-                                                                <button id="btn-Buscar"class="btn btn-primary" type="button">Buscar</button>
-                                                            </span>
-                                                        </div>			
-                                                        <!--===================================================-->
-                                                        <select data-placeholder="Elija Columna" id="demo-chosen-select" tabindex="2">
-                                                            <option value="codigo">codigo</option>
-                                                            <option value="nombre">nombre</option>
-                                                            <option value="cargo">cargo</option>
-                                                        </select>
-                                                    </div>
-					                        </div>
-					                    </div>
-					                </div>
-                                    <!-- Foo Table - Row Toggler -->
-                                    <!--===================================================-->
-                                    <div class="panel-body">
-                                        <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="5">
-                                            <thead>
-                                                <tr>
-                                                    <th data-sort-ignore="true" class="min-width"></th>
-                                                    <th data-sort-initial="true" data-toggle="true">Código</th>
-                                                    <th>Apellidos y Nombres</th>
-                                                    <th data-hide="phone, tablet">Cargo</th>
-                                                    <th data-hide="phone, tablet">Dia</th>
-                                                    <!--<th data-hide="phone, tablet">Actividad</th>-->
-                                                    <th data-hide="phone, tablet">Turno</th>
-                                                    <th data-hide="phone, tablet">Ht</th>
-                                                    <th data-hide="phone, tablet">Ht Sev_Ad</th>
-                                                    <th data-hide="phone, tablet">**Ccostos</th>
-                                                    <th data-hide="phone, tablet">Labor</th>
-                                                    <th data-hide="phone, tablet">Nivel</th>
-                                                    <th data-hide="phone, tablet">He</th>
-                                                    <th data-hide="phone, tablet">He Ser Ad</th>
-                                                    <th data-hide="phone, tablet">C. Costos He</th>
-                                                    <th data-hide="phone, tablet">V.B</th>
-                                                    <th data-hide="phone, tablet">Guardia</th>
-                                                    <th data-hide="phone, tablet">Cod_Actividad</th>
-                                                    <th data-hide="phone, tablet">Área</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="tbody-tareo">
+                                    <div class="table-responsive-md">
+                                        <fieldset>
+                                            <legend>REPORTE CONSUMO DE MADERA</legend>
+                                            <table class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" cellspacing="0" id="table-master">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col" width="2%"><input type="checkbox"/></th>
+                                                        <th scope="col">N° Reporte</th>
+                                                        <th scope="col">Fecha</th>
+                                                        <th scope="col" width="10%">Acciónes</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
 
-                                            </tbody>
-                                            <template id="template-td-tareo">
-                                                <tr id="registro-tareo">
-                                                    <td>
-                                                        <button id="btn-delete" class="btn btn-danger btn-xs btn-delete">
-                                                            <i class="demo-pli-cross"></i>
-                                                        </button>
-                                                        <button id="btn-edit" class="btn btn-warning btn-xs btn-edit" data-target="#modal-edit"  data-toggle="modal">
-                                                        <i class="ti-pencil-alt"></i></button>
-                                                    </td>
-                                                    <td id="codigo">..</td>
-                                                    <td id="nombreCompleto">Boudreaux</td>
-                                                    <td id="cargo">Traffic Court Referee</td>
-                                                    <td id="dia">22 Jun 1972</td>
-                                                    <!--<td id="actividad">22 Jun 1972</td>-->
-                                                    <td id="turno">Isidra</td>
-                                                    <td id="ht">Boudreaux</td>
-                                                    <td id="htSev_ad">Isidra</td>
-                                                    <td id="costos">Boudreaux</td>
-                                                    <td id="labor">Traffic Court Referee</td>
-                                                    <td id="nivel">22 Jun 1972</td>
-                                                    <td id="hE">22 Jun 1972</td>
-                                                    <td id="heSerAd">Isidra</td>
-                                                    <td id="cCostosHe">Boudreaux</td>
-                                                    <td id="VB">Traffic Court Referee</td>
-                                                    <td id="guardia">22 Jun 1972</td>
-                                                    <td id="codActividad">22 Jun 1972</td>
-                                                    <td id="Area">..</td>
-                                                </tr>
-                                                </template>
-                                            <tfoot>
-                                              <!-- Paginación -->
-                                              <nav aria-label="Page navigation example">
-                                                    <ul class="pagination" id="pagination">
-                                                        <!--<li class="disabled"><a class="page-link" href="#">Anterior</a></li>-->
+                                                </tbody>
+                                                <tfoot>
 
-                                                        <!--
-                                                            <li class="disabled"><span>...</span></li>
-                                                            <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
-                                                        -->
-                                                    </ul>
-                                                    <template id="template-pagination">
-                                                        <li id="itemPage" class="page-item"><a class="page-link" href="#">2</a></li>
-                                                    </template>
-                                                </nav>
-                                            </tfoot>
-                                        </table>
+                                                </tfoot>
+                                            </table>
+                                        </fieldset>
                                     </div>
-                                    <!--===================================================-->
-                                    <!-- End Foo Table - Row Toggler -->
 					            </div>
 					        </div>
 					    </div>
@@ -467,131 +453,123 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
                     <h4 class="modal-title col-md-7">Registro Reporte Consumo Madera</h4>
-                    <div class="col-md-5">
-                        <!-- FORMULARIO -->
-                        <div class="form-group">
-                            <label for="insert-reportConsumoMadera-numero  " class="col-md-5 control-label">n° Reporte</label>
-                            <div class="col-md-7">
-                                <input type="text" placeholder="Nª Reporte" class="form-control" name="fullname" id="insert-reportConsumoMadera-numero" autofocus>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!--Modal body-->
                 <div class="modal-body">
                     <div id="alert-form-insert">
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <p class="bord-btm pad-ver text-main text-bold">Datos
-                            </p>
+                        <div class="col-md-10">
+                            <!-- <p class="bord-btm pad-ver text-main text-bold">Datos </p> -->
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="insert-reportConsumoMadera-fecha" class="col-md-4 control-label">Fecha</label>
-                                        <div class="col-md-8">                                                    
-                                            <input type="date" placeholder="Dia" class="form-control" id="insert-reportConsumoMadera-fecha"  value="<?php echo date('Y-m-d') ?>" > <!--min="2021-12-12" max="2021-12-13"-->
-                                        </div>
+                                        <label for="" class="control-label">Fecha</label>
+                                        <input type="text" placeholder="Fecha" class="form-control" id=""  value="" > <!--min="2021-12-12" max="2021-12-13"-->
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="insert-reportConsumoMadera-turno" class="col-md-4 control-label">Turno</label>
-                                        <div class="col-md-8">
-                                            <input class="form-control"  id="insert-reportConsumoMadera-turno" placeholder="Ingrese Turno..." list="insert-options-reportConsumoMadera-turno">
-                                        </div>
-                                        <datalist id="insert-options-reportConsumoMadera-turno">
-                                            <option value="Dia">
-                                            <option value="Noche">
-                                        </datalist>
+                                        <label for="" class="control-label">N° Reporte</label>
+                                        <input type="text" placeholder="N° Reporte" class="form-control" id=""  value="" > <!--min="2021-12-12" max="2021-12-13"-->
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                            </div>
+                            <div class="row">                                
+                                <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="insert-reportConsumoMadera-nombre" class="col-md-4 control-label">Jefe de Guardia</label>
-                                        <div class="col-md-8">                                                    
-                                            <input type="text" placeholder="Nombre" class="form-control" id="insert-reportConsumoMadera-nombre"  value="" >
-                                        </div>
+                                        <label for="" class="control-label">C. Costo</label>
+                                        <input type="text" class="form-control" id="" placeholder="C. Costo">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-2">
                                     <div class="form-group">
-                                        <div class="col-md-12">                                                    
-                                            <input type="text" placeholder="DNI" class="form-control" id="insert-reportConsumoMadera-dni"  value="" >
-                                        </div>
+                                        <label for="" class="control-label">Labor</label>
+                                        <input type="text" placeholder="Labor" class="form-control" id=""  value="" >
+                                    </div>
+                                </div>                                
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="" class="control-label">Zona</label>
+                                        <input type="text" placeholder="Zona" class="form-control" id=""  value="" > <!--min="2021-12-12" max="2021-12-13"-->
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="" class="control-label">Descripción</label>
+                                        <input type="text" placeholder="Descripción" class="form-control" id=""  value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="" class="control-label">Und Medida</label>
+                                        <input type="text" placeholder="Und Medida" class="form-control" id=""  value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="" class="control-label">Cantidad</label>
+                                        <input type="text" placeholder="Cantidad" class="form-control" id=""  value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive-md">
+                                        <fieldset>
+                                            <legend>Detalle</legend>
+                                            <table id="table-details-insert" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" cellspacing="0" >
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th scope="col" width="2%"><input type="checkbox"/></th>
+                                                        <th scope="col">C. Costos</th>
+                                                        <th scope="col">Labor</th>
+                                                        <th scope="col">Zona</th>
+                                                        <th scope="col">Descripción</th>
+                                                        <th scope="col">Und. Medida</th>
+                                                        <th scope="col">Cantidad</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </fieldset>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="bord-btm pad-ver text-main text-bold">Detalle</p>
-                            <div class="form-group">
-                                <label for="insert-reportConsumoMadera-labor" class="col-md-3 control-label">Labor</label>
-                                <div class="col-md-9">
-                                    <input class="form-control"  id="insert-reportConsumoMadera-labor" placeholder="Seleccion opcion.." list="insert-options-reportConsumoMadera-labor">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <button class="btn btn-success col-md-12" id="btn-add-table-insert">Registrar</button>
+                                    </div>
                                 </div>
-                                <datalist id="insert-options-reportConsumoMadera-labor">
-                                    <option value="Aun no carga">
-                                </datalist>
-                                <template id="template-opts-reportConsumoMadera-labor">
-                                    <option id="template-opt-reportConsumoMadera-labor" value="">
-                                </template>
-                                <label for="insert-reportConsumoMadera-cantidad" class="col-md-3 control-label">Cantidad</label>
-                                <div class="col-md-9">
-                                    <input class="form-control" id="insert-reportConsumoMadera-cantidad" placeholder="Ingrese Cantidad...">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <button class="btn btn-default col-md-12" id="btn-new-table-insert">Nuevo</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <button class="btn btn-warning col-md-12" id="btn-edit-table-insert">Modificar</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <button class="btn btn-default col-md-12" id="btn-exportExcel-table-insert" ><i class="fa fa-file-excel-o"></i> Excel</button>
+                                    </div>
                                 </div>
                             </div>
-                            <button id="insert-option-table" type="button" class="btn btn-primary">Agregar</button>
-                            <!-- Fin Table 
-                            <button type="button" class="btn btn-primary btn-get-all">Obtener Todo</button>-->
-                        </div>  
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="bord-btm pad-ver text-main text-bold"></p>
-                            <div class="row">
-                                <div id="myTabDiv" class="table-responsive-lg col-md-12">
-                                    <!-- Table -->
-                                    <table name="mytab" id="mytab1" class="table table-md table-hover table-instalaciones">
-                                        <thead>
-                                            <tr class="ui-widget-header ">
-                                                <th class="indice" scope="col">#</th>
-                                                <th style="width:20%" scope="col" data-sort-initial="true" data-toggle="true">Labor</th>
-                                                <th scope="col">Centro de Costos</th>
-                                                <th scope="col">Material</th>
-                                                <th scope="col">Cantidad</th>
-                                                <th scope="col">Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="instalacion-body">
-                                        </tbody>
-                                    </table>
-                                    <template id="template-td-instalaciones">
-                                        <tr>
-                                            <th id="indice" class="indice" scope="row"></th>
-                                            <td id="template-tds-labor-reporteConsumoMadera">val 22</td>
-                                            <td id="template-tds-ccostos-reporteConsumoMadera">val 23</td>
-                                            <td id="template-tds-material-reporteConsumoMadera">val 23</td>
-                                            <td id="template-tds-cantidad-reporteConsumoMadera">val 23</td>
-                                            <td>
-                                                <button  class="borrar btn btn-danger btn-xs btn-delete" value="Delete">
-                                                    <i class="demo-pli-cross"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </template>
-                                </div>
-                            </div> 
                         </div>
                     </div>
                 </div>
                 <!--Modal footer-->
                 <div class="modal-footer">
-                    <button id="mbtn-new" class="btn btn-primary">Nuevo</button>
-                    <button data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
-                    <button id="mbtn-insert" class="btn btn-success">Registrar</button>
+                    <button class="btn btn-primary" id="mbtn-new">Nuevo</button>
+                    <button class="btn btn-default" data-dismiss="modal" type="button">Cerrar</button>
+                    <button class="btn btn-success" id="mbtn-insert" >Registrar</button>
                 </div>
             </div>
         </div>
@@ -605,16 +583,70 @@
     <!--JAVASCRIPT-->
     <!--=================================================-->
 
-    <?php echo $template_javascript; ?>
+    <?php /* echo $template_javascript; */ ?>
+
+        <!--jQuery 1.12.4 [ REQUIRED ]-->
+        <script src="./../../../bootstrap_3/js/jquery-1.12.4.js"></script>
+
+        <!--BootstrapJS [ RECOMMENDED ]-->
+        <script src="./../../../js/bootstrap.min.js"></script>
+
+        <!--Jquery DataTables 1.11.4 -->
+        <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+
+        <!--Jquery DataTables 1.11.4 -->
+        <script src="./../../../bootstrap_3/js/dataTables.bootstrap.min.js"></script>
+
+        <!--Responsive Bootstrap DataTables 2.1.1[ REQUIRED ]-->
+        <script src="./../../../bootstrap_3/js/responsive.bootstrap.min.js"></script>
+        
+        <!--DataTables Responsive 1.0.7 [ REQUIRED ]-->
+        <script src="./../../../bootstrap_3/js/dataTables.responsive.min.js"></script>
+
+        <!--Bootstrap DataTables 3.1.5[ REQUIRED ]-->
+        <script src="./../../../bootstrap_3/js/dataTables.fixedHeader.js"></script>
+
+        <!--DataTables Buttons 2.2.2[ REQUIRED ]-->
+        <script src="./../../../bootstrap_3/js/dataTables.buttons.min.js"></script>
+
+        <!--Buttons Bootstrap 2.2.2[ REQUIRED ]-->
+        <script src="./../../../bootstrap_3/js/buttons.bootstrap.min.js"></script>
+
+        <!--Buttons Bootstrap JSZip 3.1.3[ REQUIRED ]-->
+        <script src="./../../../bootstrap_3/js/jszip.min.js"></script>
+
+        <!--Buttons Bootstrap pdfmake 0.1.53[ REQUIRED ]-->
+        <script src="./../../../bootstrap_3/js/pdfmake.min.js"></script>
+
+        <!--Buttons Bootstrap vfs_fonts 0.1.53[ REQUIRED ]-->
+        <script src="./../../../bootstrap_3/js/vfs_fonts.js"></script>
+
+        <!--Buttons Html5 2.2.2[ REQUIRED ]-->
+        <script src="./../../../bootstrap_3/js/buttons.html5.min.js"></script>
+
+        <!--Buttons Html5 Print 2.2.2[ REQUIRED ]-->
+        <script src="./../../../bootstrap_3/js/buttons.print.min.js"></script>
+
+        <!--Buttons Html5 colVis 2.2.2[ REQUIRED ]-->
+        <script src="./../../../bootstrap_3/js/buttons.colVis.min.js"></script>
+
+
+
+
+        <!--=================================================-->
+
+        <!--NiftyJS [ RECOMMENDED ]-->
+        <script src="./../../../js/nifty.min.js"></script>
+
+
+        <!--Base [ RECOMMENDED ]-->
+        <script type="text/javascript" src="./../../../js/index.js"></script>
+
+
+        <!--=================================================-->
 
     <!--Icons [ SAMPLE ]-->
     <script src=".\..\..\..\js\demo\icons.js"></script>
-
-    <!--FooTable Example [ SAMPLE ]
-    <script src=".\..\..\..\js\demo\tables-footable.js"></script>-->
-    
-    <!--FooTable [ OPTIONAL ]
-    <script src=".\..\..\..\plugins\fooTable\dist\footable.all.min.js"></script>-->
 
     <!--Bootstrap Select [ OPTIONAL ]-->
     <script src=".\..\..\..\plugins\bootstrap-select\bootstrap-select.min.js"></script>

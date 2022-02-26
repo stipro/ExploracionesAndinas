@@ -49,7 +49,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'"> -->
 	<meta name="color-scheme" content="dark">
-	<link rel="manifest" href="./manifest.json">
+	<!-- <link rel="manifest" href="./manifest.json"> -->
 	<!-- Android -->
 	<meta name="theme-color" content="black">
 	<!-- IOS -->
@@ -60,11 +60,11 @@
     <!--=================================================-->
 
     <!--Open Sans Font [ OPTIONAL ]-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href='.\..\bootstrap_3\css\css.css' rel='stylesheet' type='text/css'>
 
 
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
-    <link href=".\..\css\bootstrap.min.css" rel="stylesheet">
+    <link href=".\..\bootstrap_3\css\bootstrap.min.css" rel="stylesheet">
 
 
     <!--Nifty Stylesheet [ REQUIRED ]-->
@@ -125,7 +125,7 @@
         
 		<!-- BACKGROUND IMAGE -->
 		<!--===================================================-->
-		<div id="bg-overlay"></div>
+		<div id="bg-overlay" class="bg-img" style='background-image: url("./../img/bg-img/bg-img-3.jpeg");'></div>
 		
 		
 		<!-- LOGIN FORM -->
@@ -177,16 +177,16 @@
 		<!-- DEMO PURPOSE ONLY -->
 		<!--===================================================-->
 		<div class="demo-bg">
-		    <div id="demo-bg-list">
+		    <div id="demo-bg-list" class="">
 		        <div class="demo-loading"><i class="psi-repeat-2"></i></div>
-		        <img class="demo-chg-bg bg-trans active" src=".\..\img\bg-img\thumbs\bg-trns.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src=".\..\img\bg-img\thumbs\bg-img-1.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src=".\..\img\bg-img\thumbs\bg-img-2.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src=".\..\img\bg-img\thumbs\bg-img-3.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src=".\..\img\bg-img\thumbs\bg-img-4.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src=".\..\img\bg-img\thumbs\bg-img-5.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src=".\..\img\bg-img\thumbs\bg-img-6.jpeg" alt="Background Image">
-		        <img class="demo-chg-bg" src=".\..\img\bg-img\thumbs\bg-img-7.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg bg-trans" src="./../img/bg-img/thumbs/bg-trns.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src="./../img/bg-img/thumbs/bg-img-1.jpg" alt="Background Image">
+		        <img class="demo-chg-bg active" src="./../img/bg-img/thumbs/bg-img-2.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src="./../img/bg-img/thumbs/bg-img-3.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src="./../img/bg-img/thumbs/bg-img-4.jpeg" alt="Background Image">
+		        <img class="demo-chg-bg" src="./../img/bg-img/thumbs/bg-img-5.jpg" alt="Background Image">
+		        <img class="demo-chg-bg" src="./../img/bg-img/thumbs/bg-img-6.jpg" alt="Background Image">
+		        <img class="demo-chg-bg" src="./../img/bg-img/thumbs/bg-img-7.jpg" alt="Background Image">
 		    </div>
 		</div>
 		<!--===================================================-->

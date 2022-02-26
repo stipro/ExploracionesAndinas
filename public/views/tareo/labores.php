@@ -530,6 +530,7 @@
                 var title = $('#table-labores thead tr:eq(0) th').eq($(this).index()).text();
                 $(this).html('<input type="text" placeholder="Search ' + title + '" />');
             });
+            $('#table-labores thead .filters th input').addClass('form-control input-md');
             $.ajax({
                 type: 'GET',  // Envío con método POST
                 url: './../../json.php',  // Fichero destino (el PHP que trata los datos)
@@ -538,7 +539,7 @@
                 success: (function(obj, textstatus){
                     console.log(obj);
                     let $table_labores = $('#table-labores');
-                    var table_labores = $table_labores.DataTable({
+                    var table_labores = $('#table-labores').DataTable({
                         // Cabezera 
                         fixedHeader: true,
                         // informacion
@@ -738,14 +739,10 @@
                     });
                     new $.fn.dataTable.FixedHeader( table_labores );
                     table_labores.buttons().container().appendTo( '#table-labores .col-sm-6:eq(0)' );
-                    
-                    
+                    $('#table-labores input').addClass('form-control'); // <-- add this line
+                    $('#table-labores input').attr('placeholder', 'Search');
                 })
             });
-            
-            function create (){
-                
-            }
         });
     </script>
 </body>

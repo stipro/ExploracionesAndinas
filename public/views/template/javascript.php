@@ -5,32 +5,23 @@
     <!--jQuery 1.12.4 [ REQUIRED ]-->
     <script src="./../../../bootstrap_3/js/jquery-1.12.4.js"></script>
 
-    <!--BootstrapJS [ RECOMMENDED ]-
-    <script src="./../../../js/bootstrap.min.js"></script>->
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="./../../../js/bootstrap.min.js"></script>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--Jquery DataTables 1.11.4 -->
+    <script src="./../../../bootstrap_3/js/jquery.dataTables.min.js"></script>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <!--Jquery DataTables 1.11.4 -->
+    <script src="./../../../bootstrap_3/js/dataTables.bootstrap.min.js"></script>
 
-    <!--Bootstrap DataTables 1.11.4[ REQUIRED ]
-    <script src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js"></script>
+    <!--DataTables Responsive 1.0.7 [ REQUIRED ]-->
+    <script src="./../../../bootstrap_3/js/dataTables.responsive.min.js"></script>
 
-    <!--Bootstrap DataTables 3 [ REQUIRED ]-->
-    <script src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>
+    <!--Responsive Bootstrap DataTables 2.1.1[ REQUIRED ]-->
+    <script src="./../../../bootstrap_3/js/responsive.bootstrap.min.js"></script>
 
     <!--Bootstrap DataTables 3.1.5[ REQUIRED ]-->
     <script src="./../../../bootstrap_3/js/dataTables.fixedHeader.js"></script>
-
-    <!--Responsive DataTables 2.2.9[ REQUIRED ]
-    <script src="./../../../bootstrap_3/js/dataTables.responsive.min.js"></script>-->
-
-    <!--Responsive DataTables 2.2.9[ REQUIRED ]-->
-    <script src="./../../../bootstrap_3/js/dataTables.responsive.1.0.7.js"></script>
-
-    <!--Responsive DataTables 2.1.1[ REQUIRED ]-->
-    <script src="./../../../bootstrap_3/js/responsive.2.1.1.bootstrap.min.js"></script>
 
     <!--DataTables Buttons 2.2.2[ REQUIRED ]-->
     <script src="./../../../bootstrap_3/js/dataTables.buttons.min.js"></script>
