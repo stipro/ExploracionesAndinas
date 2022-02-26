@@ -170,7 +170,7 @@
                         titleAttr: 'PDF'
                     },
                     {
-                        extend:    'copy',
+                        extend:    'print',
                         text:      '<i class="fas fa-print"></i> print',
                         titleAttr: 'PDF'
                     },

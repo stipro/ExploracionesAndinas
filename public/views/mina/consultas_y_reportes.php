@@ -198,7 +198,6 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -434,10 +433,8 @@
                         { data: 'Fecha' },
                         { data: 'Numero_Maquinas' },
                         { data: 'Pie_perforados' },
-                        
                         { data: 'Numero_Maquinas' },
                         { data: 'Ccostos' },            
-                        
                         { data: 'Zona' }
                     ],
                     /* "pageLength": 3, */

@@ -42,11 +42,20 @@
     </script>
     <!--STYLESHEET-->
     <!--=================================================-->
-
+    <style>
+        thead input {
+            width: 100%;
+        }
+        .filters input {
+            width: 100%;
+            padding: 3px;
+            box-sizing: border-box;
+        }
+    </style>
     <?php echo $template_header_css; ?>
 
-    <!--Icono Importar [ OPTIONAL ]-->
-    <link href=".\..\..\..\css\tabla.css" rel="stylesheet">
+    <!--Icono Importar [ OPTIONAL ]
+    <link href=".\..\..\..\css\tabla.css" rel="stylesheet">-->
 
     <!--Bootstrap Select [ OPTIONAL ]-->
     <link href=".\..\..\..\plugins\bootstrap-select\bootstrap-select.min.css" rel="stylesheet">
@@ -69,9 +78,7 @@
     <!--Ion Icons [ OPTIONAL ]-->
     <link href=".\..\..\..\plugins\ionicons\css\ionicons.min.css" rel="stylesheet">
 
-    <!--Nifty Stylesheet [ REQUIRED ]-->
-    <link href=".\..\..\..\css\index.css" rel="stylesheet">
-            
+    
     <!--=================================================
 
     REQUIRED
@@ -112,7 +119,6 @@
         <!--END NAVBAR-->
 
         <div class="boxed">
-
             <!--CONTENT CONTAINER-->
             <!--===================================================-->
             <div id="content-container">
@@ -147,64 +153,61 @@
                     <div class="row">
                             <div class="col-xs-12">
                                 <div class="panel">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">LABORES</h3>
-                                    </div>
                                     <!--Data Table-->
                                     <!--===================================================-->
                                     <div class="panel-body">
                                         <div id="alerts-general" class="mb-5">
 
                                         </div>
-                                        <!-- Default choosen -->
-                                        <div class="pad-btm form-inline">
-                                            <div class="row">
-                                                <div class="col-sm-6 table-toolbar-left">
-                                                    <button data-target="#modal-insert" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add icon-fw"></i>Agregar</button>
-                                                    <button class="btn btn-default"><i class="demo-pli-printer icon-lg"></i></button>
-                                                    <div class="btn-group">
-                                                        <button class="btn btn-default"><i class="demo-pli-information icon-lg"></i></button>
-                                                        <button class="btn btn-default"><i class="demo-pli-trash icon-lg"></i></button>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 table-toolbar-right">
-                                                    <div class="btn-group">
-                                                        <div class="input-group">
-                                                            <input id="ipt-Buscar" type="text" placeholder="Busqueda por columna" class="form-control">
-                                                            <span class="input-group-btn">
-                                                                <button id="btn-Buscar"class="btn btn-primary" type="button">Buscar</button>
-                                                            </span>
-                                                        </div>			
-                                                        <!--===================================================-->
-                                                        <select data-placeholder="Choose a Country..." id="demo-chosen-select" tabindex="2">
-                                                            <option value="CCostos">ccostos</option>
-                                                            <option value="Labor">labor</option>
-                                                            <option value="Nivel">nivel</option>
-                                                            <option value="Tipo">tipo</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Foo Table - Row Toggler -->
-                                        <!--===================================================-->
                                         <div class="panel-body">
                                             <fieldset>
                                                 <legend>Labores</legend>
-                                                <div class="table-responsive-sm">
-                                                    <table id="example" class="display" cellspacing="0" width="100%">
-                                                        <thead>
+                                                <div class="table-responsive-md"> <!-- class  table-hover display-->
+                                                    <table id="table-labores" class="table table-striped table-bordered dt-responsive nowrap" data-page-length="2" cellspacing="0" width="100%">
+                                                        <thead class="thead-dark">
                                                             <tr>
-                                                                <th></th>
-                                                                <th width="15%">Unidad Minera</th>
-                                                                <th width="6%">Abrev</th>
-                                                                <th>Zona</th>
-                                                                <th width="6%">Letra</th>
-                                                                <th width="18%">C. Costos</th>
-                                                                <th>Nombre</th>
+                                                                <th scope="col" width="2%"><input type="checkbox"/></th>
+                                                                <th scope="col">C. Costos</th>
+                                                                <th scope="col">Veta</th>
+                                                                <th scope="col">Nivel</th>
+                                                                <th scope="col">M. Explotacion</th>
+                                                                <th scope="col">Sección</th>
+                                                                <th scope="col">Tipo de EQ</th>
+                                                                <th scope="col">Tipo de Roca</th>
+                                                                <th scope="col">Acción</th>
+                                                            </tr>
+                                                            <tr class="filters">
+                                                                <th scope="col" width="2%"><input type="checkbox"/></th>
+                                                                <th scope="col">C. Costos</th>
+                                                                <th scope="col">Veta</th>
+                                                                <th scope="col">Nivel</th>
+                                                                <th scope="col">M. Explotacion</th>
+                                                                <th scope="col">Sección</th>
+                                                                <th scope="col">Tipo de EQ</th>
+                                                                <th scope="col">Tipo de Roca</th>
+                                                                <th scope="col">Acción</th>
                                                             </tr>
                                                         </thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                        <tfoot>
+                                                            <tr>
+                                                                <th><input type="checkbox"/></th>
+                                                                <th scope="col">C. Costos</th>
+                                                                <th scope="col">Veta</th>
+                                                                <th scope="col">Nivel</th>
+                                                                <th scope="col">M. Explotacion</th>
+                                                                <th scope="col">Sección</th>
+                                                                <th scope="col">Tipo de EQ</th>
+                                                                <th scope="col">Tipo de Roca</th>
+                                                                <th scope="col">Acción</th>
+                                                            </tr>
+                                                        </tfoot>
                                                     </table>
+                                                    <!--<label>Total</label>-->
+                                                    <input type="text" id="total" class="form-control" readonly value="0.0" />
+                                                    <br>
+                                                    <button id="btnObtener">Obtener</button>
                                                 </div>
                                             </fieldset>
                                             <!-- <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="5">
@@ -289,8 +292,6 @@
             <!--END MAIN NAVIGATION-->
 
         </div>
-
-        
 
         <!-- FOOTER -->
         <!--===================================================-->
@@ -478,20 +479,7 @@
             </div>
         </div>
     </div>
-                                                    <!-- Paginación 
-                                                <nav aria-label="Page navigation example">
-                                                    <ul class="pagination">
-                                                        <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
-                                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                                        <li class="disabled"><span>...</span></li>
-                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                                        <li class="disabled"><span>...</span></li>
-                                                        <li class="page-item"><a class="page-link" href="#">920</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
-                                                    </ul>
-                                                </nav>-->
+
     <!--===================================================-->
     <!--End Editar Bootstrap Modal-->
     
@@ -519,14 +507,246 @@
     <script src=".\..\..\..\js\demo\form-component.js"></script>
     <!--Panel [ SAMPLE ]-->
     <script src=".\..\..\..\js\demo\ui-panels.js"></script>
-    <!--Date-MYSQL [ REQUIRED ]-->
-    <script src=".\..\..\..\js/labor.js"></script>
+    <!--Date-MYSQL [ REQUIRED ]
+    <script src=".\..\..\..\js/labor.js"></script>-->
     <!--FooTable Example [ SAMPLE ]-->
     <!--<script src="js\demo\tables-footable.js"></script>-->
     
     <!--FooTable [ OPTIONAL ]-->
-    <!--<script src="plugins\fooTable\dist\footable.all.min.js"></script>
--->
+    <!--<script src="plugins\fooTable\dist\footable.all.min.js"></script>-->
     <!--=================================================-->
+    <script>
+        $(document).ready(function() {
+            // ACA suscribimos un listener
+            $('#btnObtener').on('click', function() {
+                let table_labores = $('#table-labores').DataTable();
+                let checkeds = table_labores.data().toArray().filter((data) => data.checked);
+                console.log(checkeds);
+            });
+            // Configuración: agregue una entrada de texto a cada celda de pie de página
+            // $('#table-labores thead tr').clone(true).addClass('filters').appendTo('#table-labores thead');
+            // Setup - add a text input to each footer cell
+            $('#table-labores thead .filters th').each(function() {
+                var title = $('#table-labores thead tr:eq(0) th').eq($(this).index()).text();
+                $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+            });
+            $.ajax({
+                type: 'GET',  // Envío con método POST
+                url: './../../json.php',  // Fichero destino (el PHP que trata los datos)
+                dataType: 'json',
+                data: { tipoUsuario: 'nom', table: 'labores' },
+                success: (function(obj, textstatus){
+                    console.log(obj);
+                    let $table_labores = $('#table-labores');
+                    var table_labores = $table_labores.DataTable({
+                        // Cabezera 
+                        fixedHeader: true,
+                        // informacion
+                        data: obj,
+                        // Declaracon de columnas con key
+                        columns: [
+                            {
+                                render: function(data, type, full, meta) {
+                                    // ACA controlamos la propiedad para des/marcar el input
+                                    return "<input type='checkbox'" + (full.checked ? ' checked' : '') + "/>";
+                                },
+                                orderable: false
+                            },
+                            { data: 'lab_ccostos' },
+                            { data: 'lab_veta' },
+                            { data: 'lab_nivel' },
+                            { data: 'lab_metodoExplotacion' },
+                            { data: 'lab_seccion' },
+                            { data: 'lab_tipoEq' },
+                            { data: 'lab_tipoRoca' },
+                            { defaultContent: '<button type="button" class="name btn btn-primary">Editar</button><button type="button" class="position btn btn-danger">Eliminar</button>'}
+                        ],
+                        pageLength: 4,
+                        // Traduccion
+                        language: {
+                            "decimal": "",
+                            "emptyTable": "No hay información",
+                            "info": "Mostrando _START_ a _END_ de _TOTAL_ Labores",
+                            "infoEmpty": "Mostrando 0 to 0 of 0 Labores",
+                            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                            "infoPostFix": "",
+                            "thousands": ",",
+                            "lengthMenu": "Mostrar _MENU_ Labores",
+                            "loadingRecords": "Cargando...",
+                            "processing": "Procesando...",
+                            "search": "Buscar:",
+                            "zeroRecords": "Sin resultados encontrados",
+                            "paginate": {
+                                "first": "Primero",
+                                "last": "Ultimo",
+                                "next": "Siguiente",
+                                "previous": "Anterior"
+                            },
+                            "buttons":{
+                                "copy": "Copiar",
+                                "colvis": "Visibilidad",
+                                "collection": "Colección",
+                                "colvisRestore": "Restaurar visibilidad",
+                                "print": "Imprimir",
+                                "pageLength": {
+                                    "-1": "Mostrar todas las filas",
+                                    "_": "Mostrar %d filas"
+                                },
+                            }
+                            
+                            
+                        },
+                        
+                        responsive: true,
+                        // Activacion Boon
+                        dom: 'lBfrtip',
+                        dom:    "<'row'<'col-sm-4'l><'col-sm-4'B><'col-sm-4'f>>" +
+                                "<'row'<'col-sm-12'tr>>" +
+                                "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+                        // Estado mostrar/ocultar columna simple
+                        lengthChange: true,
+                        // Estado mostrar/ocultar columna simple
+                        lengthMenu: [
+                            [ 10, 25, 50, -1 ],
+                            [ '10 Filas', '25 Filas', '50 Filas', 'Mostrar todo' ]
+                        ],
+                        // Declaracion de botones
+                        buttons: [
+                            {
+                                text: '<i class="demo-pli-add icon-fw" ></i> Agregar',
+                                action: function ( e, dt, node, conf ) {
+                                    $("#modal-insert").modal("show");
+                                },
+                                className: 'btn btn-primary' //Primary class for all buttons
+                            },
+                            /* {
+                                extend:    'pageLength',
+                                className: 'btn btn-secondary'
+                            }, */
+                            {
+                                extend:    'copy',
+                                text:      '<i class="fa fa-files-o"></i> Copiar',
+                                titleAttr: 'Copy',
+                                className: 'btn btn-secondary'
+                            },
+                            {
+                                extend: 'collection',
+                                text: '<i class="fa fa-download"></i> Exportar',
+                                buttons: [
+                                    {
+                                        extend:     'excel',
+                                        text:       '<i class="fa fa-file-excel-o"></i> Excel',
+                                        titleAttr:  'Excel',
+                                    },
+                                    {
+                                        extend:    'csv',
+                                        text:      '<i class="fa fa-file-csv"></i> CSV',
+                                        titleAttr: 'CSV'
+                                    },
+                                    {
+                                        extend:    'pdf',
+                                        text:      '<i class="fa fa-file-pdf-o"></i> PDF',
+                                        titleAttr: 'PDF'
+                                    },
+                                ]
+                            },
+                            {
+                                extend:    'print',
+                                text:      '<i class="fa fa-print"></i> print',
+                                titleAttr: 'PDF'
+                            },
+                            {
+                                extend: 'colvis',
+                                text:   '<i class="fa fa-eye"></i> Mostrar / Ocultar',
+                            }
+                            /* 'colvis' */
+                        ],
+                        // Configuracion de ordnamiento
+                        orderCellsTop: true,
+                        fixedHeader: true,
+                        // Filtrar columnas
+                        /*
+                        initComplete: function () {
+                            var api = this.api();
+                
+                            // For each column
+                            api.columns().eq(0).each(function (colIdx) {
+                                // Set the header cell to contain the input element
+                                var cell = $('#table-labores thead .filters th').eq(
+                                    $(api.column(colIdx).header()).index()
+                                );
+                                var title = $(cell).text();
+                                $(cell).html('<input type="text" placeholder="' + title + '" />');
+                                // On every keypress in this input
+                                $('input',$('#table-labores thead .filters th').eq($(api.column(colIdx).header()).index())).off('keyup change').on('keyup change', function (e) {
+                                    e.stopPropagation();
+                
+                                    // Get the search value
+                                    $(this).attr('title', $(this).val());
+                                    var regexr = '({search})'; //$(this).parents('th').find('select').val();
+                
+                                    var cursorPosition = this.selectionStart;
+                                    // Search the column for that value
+                                    api.column(colIdx).search(
+                                        this.value != '' ? regexr.replace('{search}', '(((' + this.value + ')))') : '',
+                                        this.value != '',
+                                        this.value == ''
+                                    ).draw();
+                
+                                    $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
+                                });
+                            });
+                        },*/
+                    });
+                    // Apply the search
+                    table_labores.columns().eq(0).each(function(colIdx) {
+                        $('input', $('.filters th')[colIdx]).on('keyup change', function() {
+                            table_labores
+                                .column(colIdx)
+                                .search(this.value)
+                                .draw();
+                        });
+                    });
+                    let $total = $('#total');
+
+                    // Cuando hacen click en el checkbox del thead
+                    $table_labores.on('change', 'thead input', function(evt) {
+                        let checked = this.checked;
+                        let total = 0;
+                        let data = [];
+
+                        table_labores.data().each(function(info) {
+                            // ACA cambiamos el valor de la propiedad
+                            info.checked = checked;
+                            // ACA accedemos a las propiedades del objeto
+                            if (info.checked) total += info.Precio;
+                            data.push(info);
+                        });
+
+                        table_labores.clear().rows.add(data).draw();
+                        $total.val(total);
+                    });
+                    // Cuando hacen click en los checkbox del tbody
+                    $table_labores.on('change', 'tbody input', function() {
+                        let info = table_labores.row($(this).closest('tr')).data();
+                        let total = parseFloat($total.val());
+                        // ACA accedemos a las propiedades del objeto
+                        info.checked = this.checked;
+                        let price = info.Precio;
+                        total += info.checked ? price : price * -1;
+                        $total.val(total);
+                    });
+                    new $.fn.dataTable.FixedHeader( table_labores );
+                    table_labores.buttons().container().appendTo( '#table-labores .col-sm-6:eq(0)' );
+                    
+                    
+                })
+            });
+            
+            function create (){
+                
+            }
+        });
+    </script>
 </body>
 </html>
