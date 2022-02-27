@@ -607,7 +607,7 @@
         <script src="./../../../js/bootstrap.min.js"></script>
 
         <!--Jquery DataTables 1.11.4 -->
-        <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+        <script src="./../../../bootstrap_3/js/jquery.dataTables.min.js"></script>
 
         <!--Jquery DataTables 1.11.4 -->
         <script src="./../../../bootstrap_3/js/dataTables.bootstrap.min.js"></script>
