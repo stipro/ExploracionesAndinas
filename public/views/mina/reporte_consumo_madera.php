@@ -534,9 +534,11 @@
                                                 <thead class="thead-dark">
                                                     <tr>
                                                         <th scope="col" width="2%"><input type="checkbox"/></th>
+                                                        <th scope="col">id_labor</th>
                                                         <th scope="col">C. Costos</th>
                                                         <th scope="col">Labor</th>
                                                         <th scope="col">Zona</th>
+                                                        <th scope="col">id_instalacionMina</th>
                                                         <th scope="col">Descripción</th>
                                                         <th scope="col">Und. Medida</th>
                                                         <th scope="col">Cantidad</th>

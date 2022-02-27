@@ -13,7 +13,7 @@ class InstalacionMina extends Conexion
 
     public function getunidMedida($where)
     {
-        $query = "SELECT insMina.instalacionesMina_nombre, insMina.instalacionMina_medida FROM instalaciones_mina AS insMina WHERE id_instalacionMina = {$where};";
+        $query = "SELECT insMina.id_instalacionMina, insMina.instalacionesMina_nombre, insMina.instalacionMina_medida FROM instalaciones_mina AS insMina WHERE id_instalacionMina = {$where};";
         return $this->ConsultaSimple($query);
     }
     // Obtiene Lista especifica

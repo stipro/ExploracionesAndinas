@@ -11,7 +11,7 @@ class Labores extends Conexion
 
     public function getLaborZona($where)
     {
-        $query = "SELECT lbnombre.labNombre_nombre, lbzonas.nombre FROM labores AS lb LEFT JOIN lab_nombres AS lbnombre ON lb.id_labNombre = lbnombre.id_labNombre LEFT JOIN lab_zonas AS lbzonas ON lb.id_zona = lbzonas.id_zona WHERE id_labor = {$where};";
+        $query = "SELECT lb.id_labor, lbnombre.labNombre_nombre, lbzonas.nombre FROM labores AS lb LEFT JOIN lab_nombres AS lbnombre ON lb.id_labNombre = lbnombre.id_labNombre LEFT JOIN lab_zonas AS lbzonas ON lb.id_zona = lbzonas.id_zona WHERE id_labor = {$where};";
         return $this->ConsultaSimple($query);
     }
 

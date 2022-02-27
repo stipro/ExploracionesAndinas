@@ -42,12 +42,6 @@ btnInsertar.addEventListener("click", (e) => {
     var f = form_data;
     for (var i = 0; f.length > i; i++) {
         var n = f[i].length;
-        console.log(f[i][1]);
-        console.log(f[i][2]);
-        console.log(f[i][3]);
-        console.log(f[i][4]);
-        console.log(f[i][5]);
-        console.log(f[i][6]);
         arrObjt.push({
             ccostos: f[i][1],
             nom_labor: f[i][2],
@@ -202,21 +196,42 @@ $(document).ready(function(e) {
                     "_": "Mostrar %d filas"
                 },
             }
-
-
         },
+        column: [{
+                visible: false
+            },
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        dom: 'lBfrtip',
+        buttons: [{
+            extend: 'excel',
+            text: '<i class="fa fa-file-excel-o"></i> Excel',
+            titleAttr: 'Excel',
+            exportOptions: {
+                columns: [1, 2, 3, 4, 5, 6, 7, 8]
+            }
+        }, ]
     });
+    tableDetails.columns(1).visible(false);
+    tableDetails.columns(5).visible(false);
     $('#table-details-insert').on('click', '.removeRow', function() {
-        var table = $('#table-details-insert').DataTable();
-        table.row($(this).parents('tr')).remove().draw();
+        tableDetails.row($(this).parents('tr')).remove().draw();
     });
     // Boton Agregar Fila
     $("#btn-add-table-insert").on('click', function(e) {
+        const valIdLabor = iptreg_reportConsumoMadera_labor.dataset.idLabor;
         const valCCosto = iptreg_reportConsumoMadera_ccosto.value;
         const valNLabor = iptreg_reportConsumoMadera_labor.value;
         const valZona = iptreg_reportConsumoMadera_zona.value;
-        const valUMedida = iptreg_reportConsumoMadera_undmedida.value;
+        const valIdInstalacion = iptreg_reportConsumoMadera_undmedida.dataset.idInstalacionmina;
         const valDescripcion = iptreg_reportConsumoMadera_descripcion.value;
+        const valUMedida = iptreg_reportConsumoMadera_undmedida.value;
         const valCantidad = iptreg_reportConsumoMadera_cantidad.value;
 
         if (!valCCosto) {
@@ -271,9 +286,11 @@ $(document).ready(function(e) {
         } else {
             tableDetails.row.add([
                 counter,
+                valIdLabor,
                 valCCosto,
                 valNLabor,
                 valZona,
+                valIdInstalacion,
                 valDescripcion,
                 valUMedida,
                 valCantidad,
@@ -391,7 +408,9 @@ const getDataLabor = async (rptSql) => {
 }
 
 const pintarAsociadosLabor = (rptSql) => {
+    iptreg_reportConsumoMadera_labor.dataset.idLabor = '';
     iptreg_reportConsumoMadera_labor.value = rptSql[0].labNombre_nombre;
+    iptreg_reportConsumoMadera_labor.dataset.idLabor = rptSql[0].id_labor;
     iptreg_reportConsumoMadera_zona.value = rptSql[0].nombre;
 }
 
@@ -408,5 +427,7 @@ const getDataInstalacion = async (rptSql) => {
 }
 
 const pintarAsociadosInstalacion = (rptSql) => {
+    iptreg_reportConsumoMadera_undmedida.dataset.idInstalacionmina = '';
     iptreg_reportConsumoMadera_undmedida.value = rptSql[0].instalacionMina_medida;
+    iptreg_reportConsumoMadera_undmedida.dataset.idInstalacionmina = rptSql[0].id_instalacionMina;
 }
