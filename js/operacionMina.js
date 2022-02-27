@@ -9,16 +9,10 @@ const btndisminuir = document.getElementById("btn-decline");
 const btnAgregar = document.getElementById("btn-Agregar");
 const btnInsert = document.getElementById("mbtn-insert");
 const btnNew = document.getElementById("mbtn-new");
-
-
 const btnInsertTable = document.getElementById("insert-option-table");
-
-
 const iptinsertTable_name = document.getElementById("nombre-instalaciones-table");
 const iptinsertTable_cantidad = document.getElementById("cantidad-instalaciones-table");
 const tbodyInstalaciones = document.getElementById("instalacion-body");
-
-
 const iptinsertRegistro = document.getElementById("insert-operacionMina-registro");
 const iptinsertTurno = document.getElementById("insert-operacionaMina-turno");
 const iptinsertGuardia = document.getElementById("insert-operacionMina-guardia");
@@ -27,22 +21,17 @@ const iptinsertNVale = document.getElementById("insert-operacionMina-nvale");
 // Seccion Centro de CCostos
 const iptinsertCodZona = document.getElementById("insert-operacionMina-codzona");
 const dtlistOptionCodZona = document.getElementById("insert-options-codzona");
-
 const iptinsertCodLabor = document.getElementById("insert-operacionMina-codLabor");
 const dtlistOptionscodlabor = document.getElementById("insert-options-codLabor");
-
 const iptinsertZona = document.getElementById("insert-operacionMina-zona");
 const iptinsertLabor = document.getElementById("insert-operacionMina-labor");
 const iptinsertNivel = document.getElementById("insert-operacionMina-nivel");
-
 
 // Seccion Tareas
 // Maestro
 const iptinsert_dniMaestro = document.getElementById("insert-operacionaMina-dni-maestro");
 const datalistinsert_optiondniMaestro = document.getElementById("insert-options-dni-maestro");
 const ipt_cargoMaestro = document.getElementById("insert-operacionaMina-cargo-maestro");
-
-
 const iptinsert_nameMaestro = document.getElementById("insert-operacionaMina-name-maestro");
 const datalistinsert_optionnameMaestro = document.getElementById("insert-options-name-maestro");
 
@@ -50,8 +39,6 @@ const datalistinsert_optionnameMaestro = document.getElementById("insert-options
 const iptinsert_dniAyudante = document.getElementById("insert-operacionaMina-dni-ayudante");
 const datalistinsert_optiondniAyudante = document.getElementById("insert-options-dni-ayudante");
 const ipt_cargoAyudante = document.getElementById("insert-operacionaMina-cargo-ayudante");
-
-
 const iptinsert_nameAyudante = document.getElementById("insert-operacionaMina-name-ayudante");
 const datalistinsert_optionnameAyudante = document.getElementById("insert-options-name-ayudante");
 
@@ -59,7 +46,6 @@ const datalistinsert_optionnameAyudante = document.getElementById("insert-option
 const iptinsert_dniTercerpersona = document.getElementById("insert-operacionaMina-dni-tercer-hombre");
 const datalistinsert_optiondniTercerPersona = document.getElementById("insert-options-dni-tercer-hombre");
 const ipt_cargoTercerPersona = document.getElementById("insert-operacionaMina-cargo-tercer-hombre");
-
 const iptinsert_nameTercerpersona = document.getElementById("insert-operacionaMina-name-tercer-hombre");
 const datalistinsert_optionnameTercerPersona = document.getElementById("insert-options-name-tercer-hombre");
 
@@ -67,29 +53,23 @@ const datalistinsert_optionnameTercerPersona = document.getElementById("insert-o
 const iptinsert_dniCuartopersona = document.getElementById("insert-operacionaMina-dni-cuarto-hombre");
 const datalistinsert_optiondniCuartaPersona = document.getElementById("insert-options-dni-cuarto-hombre");
 const ipt_cargoCuartaPersona = document.getElementById("insert-operacionaMina-cargo-cuarto-hombre");
-
 const iptinsert_nameCuartopersona = document.getElementById("insert-operacionaMina-name-cuarto-hombre");
 const datalistinsert_optionnameCuartaPersona = document.getElementById("insert-options-name-cuarto-hombre");
 
 // Instalaciones
 const datalistinsert_optionsInstalaciones = document.getElementById("nombre-instalaciones-options");
 const datalistinsert_optionsCuadro = document.getElementById("insert-options-cuadro");
-
 const datalistinsert_optionsCribing = document.getElementById("insert-options-cribing");
-
-
 const iptinsertl = document.getElementById("insert-operacionMina-l");
 const iptinsertlpv = document.getElementById("insert-operacionMina-lpv");
 const iptinsertstto = document.getElementById("insert-operacionMina-stto");
 const iptinsertserv = document.getElementById("insert-operacionMina-Serv");
 const iptinsertcomentario = document.getElementById("insert-operacionMina-comentario");
-
 const iptinserttipAvance = document.getElementById("insert-operacionMina-tipo-avance");
 const iptinsertmt = document.getElementById("insert-operacionMina-mt");
 const iptinsertmt3 = document.getElementById("insert-operacionMina-mt3");
 const iptinsertintDisparo = document.getElementById("insert-operacionMina-int-disparo");
 const iptinsertresuelto = document.getElementById("insert-operacionMina-resuelto");
-
 const iptinsertmanual = document.getElementById("insert-operacionMina-Manual");
 const iptinsertpala = document.getElementById("insert-operacionMina-pala");
 const iptinsertcantidadPala = document.getElementById("insert-operMina-cantidadPala");
@@ -98,12 +78,9 @@ const iptinsertWinche = document.getElementById("insert-operacionMina-winche");
 const iptinsertcantidadWinche = document.getElementById("insert-operacionMina-cantidadWinche");
 const iptinsertdesmont = document.getElementById("insert-operacionMina-Desmon");
 
-
 // Eventos
 // El evento DOMContentLoaded es disparado cuando el documento HTML ha sido completamente cargado y parseado
-document.addEventListener('DOMContentLoaded', e => {
-
-});
+document.addEventListener('DOMContentLoaded', e => {});
 
 btnNew.addEventListener("click", () => {
     resetFormulario();
@@ -145,9 +122,7 @@ btnInsert.addEventListener("click", () => {
     valradioTipo_dis = document.querySelector('input[name="radio-tipo_disparo"]:checked').value
     var valdatalist = $('#insert-operacionMina-codLabor').val();
     var validLabor = $('#insert-options-codLabor').find('option[value="' + valdatalist + '"]').data('id-codlabor');
-
     valNivel = iptinsertNivel.value;
-
     // Tareas
     var datalistMaestro = $('#insert-operacionaMina-dni-maestro').val();
     var validMaestro = $('#insert-options-dni-maestro').find('option[value="' + datalistMaestro + '"]').data('id-colaborador');

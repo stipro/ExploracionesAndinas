@@ -1,6 +1,7 @@
 // ipt = input
 // reg = registrar
 // csm = consumo
+var tableDetails = '';
 // Boton para agregar o abrir model
 const btnAgregar = document.getElementById("btn-add");
 // boton para registrar o insertar registro
@@ -8,59 +9,73 @@ const btnInsertar = document.getElementById("mbtn-insert");
 // boton para un nuevo formulario o limpiar formulario
 const btnNuevo = document.getElementById("mbtn-new");
 // Los inputs de formaulario
-const iptreg_reportConsumoMadera_numero = document.getElementById('insert-reportConsumoMadera-numero');
-const iptreg_reportConsumoMadera_fecha = document.getElementById('insert-reportConsumoMadera-fecha');
-const iptreg_reportConsumoMadera_turno = document.getElementById('insert-reportConsumoMadera-turno');
-const iptreg_reportConsumoMadera_nombre = document.getElementById('insert-reportConsumoMadera-nombre');
-const iptreg_reportConsumoMadera_dni = document.getElementById('insert-reportConsumoMadera-dni');
-const iptreg_reportConsumoMadera_labor = document.getElementById('insert-reportConsumoMadera-labor');
-const iptreg_reportConsumoMadera_cantidad = document.getElementById('insert-reportConsumoMadera-cantidad');
+const iptreg_reportConsumoMadera_fecha = document.getElementById('input-fecha-insert');
+const iptreg_reportConsumoMadera_nreporte = document.getElementById('input-nreporte-insert');
+//
+const iptreg_reportConsumoMadera_ccosto = document.getElementById('input-ccosto-insert');
+const iptreg_reportConsumoMadera_labor = document.getElementById('input-labor-insert');
+const iptreg_reportConsumoMadera_zona = document.getElementById('input-zona-insert');
+//
+const iptreg_reportConsumoMadera_descripcion = document.getElementById('input-descripcion-insert');
+const iptreg_reportConsumoMadera_undmedida = document.getElementById('input-undmedida-insert');
+//
+const iptreg_reportConsumoMadera_cantidad = document.getElementById('input-cantidad-insert');
+// Tablas
+const table_master = document.getElementById('table-master');
+const table_details = document.getElementById('table-details-insert');
 
-const iptreg_oprtion_table = document.getElementById('insert-option-table');
-
+// Datalist
+const datalist_ccostos = document.getElementById('insert-options-ccostos');
+const datalist_instalaciones = document.getElementById('nombre-instalaciones-options');
+var counter = 1;
 
 let listInsert = {}
 
-document.addEventListener('DOMContentLoaded', e => {
-
-});
-
+document.addEventListener('DOMContentLoaded', e => {});
+// JAVASCRIPT VANILLA
+// Boton registrar
 btnInsertar.addEventListener("click", (e) => {
-    console.log('Se obtuvo la informacion siguiente');
-    const valNumReporte = iptreg_reportConsumoMadera_numero.value;
+    var arrObjt = [];
     const valfecha = iptreg_reportConsumoMadera_fecha.value;
-    const valturno = iptreg_reportConsumoMadera_turno.value;
-    const valnombre = iptreg_reportConsumoMadera_nombre.value;
-    const valdni = iptreg_reportConsumoMadera_dni.value;
-    listInsert = {
-        "numReporte": valNumReporte,
-        "fecha": valfecha,
-        "turno": valturno,
-        "nombre": valnombre,
-        "dni": valdni,
-        "labor": vallabor,
-        "cantidad": valcantidad,
+    const valNReporte = iptreg_reportConsumoMadera_nreporte.value;
+    var form_data = tableDetails.rows().data();
+    var f = form_data;
+    for (var i = 0; f.length > i; i++) {
+        var n = f[i].length;
+        console.log(f[i][1]);
+        console.log(f[i][2]);
+        console.log(f[i][3]);
+        console.log(f[i][4]);
+        console.log(f[i][5]);
+        console.log(f[i][6]);
+        arrObjt.push({
+            ccostos: f[i][1],
+            nom_labor: f[i][2],
+            nom_zona: f[i][3],
+            nom_instalacion: f[i][4],
+            uni_medida: f[i][5],
+            uni_medida: f[i][6],
+        });
     }
-    const vallabor = iptreg_reportConsumoMadera_labor.value;
-    const valcantidad = iptreg_reportConsumoMadera_cantidad.value;
-    console.log(listInsert);
+    listInsert = {
+        "Fecha": valfecha,
+        "NReporte": valNReporte,
+    }
+    console.log(form_data);
+    console.log(arrObjt);
 });
 // JQUERY
 
-// Boton Agregar Fila
-$("#btn-add-table-insert").on('click', 'button.alert', function(e) {
-    console.log('boton registrar');
-});
 // Boton Nueva Fila
-$("#btn-new-table-insert").on('click', 'button.alert', function(e) {
-    console.log('boton nuevo');
+$("#btn-new-table-insert").on('click', function(e) {
+    resetFormulario();
 });
-// Boton Agregar Fila
-$("#btn-edit-table-insert").on('click', 'button.alert', function(e) {
+// Boton Editar Fila
+$("#btn-edit-table-insert").on('click', function(e) {
     console.log('boton nuevo');
 });
 // Boton Exportar Fila en Excel
-$("#btn-exportExcel-table-insert").on('click', 'button.alert', function(e) {
+$("#btn-exportExcel-table-insert").on('click', function(e) {
     console.log('boton nuevo');
 });
 // Ejecuta despues de DOM cargado por completo
@@ -106,6 +121,16 @@ $(document).ready(function(e) {
                 text: '<i class="demo-pli-add icon-fw" ></i> Agregar',
                 action: function(e, dt, node, conf) {
                     $("#demo-lg-modal").modal("show");
+                    var select1 = {
+                        "accion": "getcolumnAll",
+                        "column": "lab_ccostos"
+                    }
+                    var select2 = {
+                        "accion": "getcolumnAll",
+                        "column": "instalacionesMina_nombre"
+                    }
+                    fetchSelect_labor(select1);
+                    fetchSelect_instalacionMina(select2);
                 },
                 className: 'btn btn-primary' //Primary class for all buttons
             },
@@ -131,9 +156,7 @@ $(document).ready(function(e) {
             },
             {
                 text: '<i class="fa fa-hdd-o" ></i> Importar',
-                action: function(e, dt, node, conf) {
-                    $("#modal-insert").modal("show");
-                },
+                action: function(e, dt, node, conf) {},
                 className: 'btn btn-primary' //Primary class for all buttons
             },
             {
@@ -147,7 +170,7 @@ $(document).ready(function(e) {
             }
         ],
     });
-    $('#table-details-insert').DataTable({
+    tableDetails = $('#table-details-insert').DataTable({
         // Traduccion
         language: {
             "decimal": "",
@@ -183,8 +206,207 @@ $(document).ready(function(e) {
 
         },
     });
+    $('#table-details-insert').on('click', '.removeRow', function() {
+        var table = $('#table-details-insert').DataTable();
+        table.row($(this).parents('tr')).remove().draw();
+    });
+    // Boton Agregar Fila
+    $("#btn-add-table-insert").on('click', function(e) {
+        const valCCosto = iptreg_reportConsumoMadera_ccosto.value;
+        const valNLabor = iptreg_reportConsumoMadera_labor.value;
+        const valZona = iptreg_reportConsumoMadera_zona.value;
+        const valUMedida = iptreg_reportConsumoMadera_undmedida.value;
+        const valDescripcion = iptreg_reportConsumoMadera_descripcion.value;
+        const valCantidad = iptreg_reportConsumoMadera_cantidad.value;
+
+        if (!valCCosto) {
+            $.niftyNoty({
+                type: 'danger',
+                container: '#alert-form-insert',
+                html: '<strong>Oh cielos!</strong> CCosto no seleccionado',
+                focus: false,
+                timer: 2000
+
+            });
+        } else if (!valNLabor) {
+            $.niftyNoty({
+                type: 'danger',
+                container: '#alert-form-insert',
+                html: '<strong>Oh cielos!</strong> Labor vacio',
+                focus: false,
+                timer: 2000
+            });
+        } else if (!valZona) {
+            $.niftyNoty({
+                type: 'danger',
+                container: '#alert-form-insert',
+                html: '<strong>Oh cielos!</strong> Zona vacio',
+                focus: false,
+                timer: 2000
+            });
+        } else if (!valDescripcion) {
+            $.niftyNoty({
+                type: 'danger',
+                container: '#alert-form-insert',
+                html: '<strong>Oh cielos!</strong> Descripcion no seleccionado',
+                focus: false,
+                timer: 2000
+            });
+        } else if (!valUMedida) {
+            $.niftyNoty({
+                type: 'danger',
+                container: '#alert-form-insert',
+                html: '<strong>Oh cielos!</strong> Unidad de medida vacia',
+                focus: false,
+                timer: 2000
+            });
+        } else if (!valCantidad) {
+            $.niftyNoty({
+                type: 'danger',
+                container: '#alert-form-insert',
+                html: '<strong>Oh cielos!</strong> Cantidad vacia',
+                focus: false,
+                timer: 2000
+            });
+        } else {
+            tableDetails.row.add([
+                counter,
+                valCCosto,
+                valNLabor,
+                valZona,
+                valDescripcion,
+                valUMedida,
+                valCantidad,
+                '<button class="btn btn-danger removeRow">Eliminar</button>'
+            ]).draw(false);
+            counter++;
+            resetFormulario();
+        }
+
+    });
 });
+const resetFormulario = () => {
+    iptreg_reportConsumoMadera_ccosto.value = '';
+    iptreg_reportConsumoMadera_labor.value = '';
+    iptreg_reportConsumoMadera_zona.value = '';
+    iptreg_reportConsumoMadera_undmedida.value = '';
+    iptreg_reportConsumoMadera_descripcion.value = '';
+    iptreg_reportConsumoMadera_cantidad.value = '';
+}
 // Ejecuta despues de DOM y Imagenes o iframes cargado por completo
 $(window).on("load", function(e) {
     console.log("cargo el Dom y recursos");
 });
+const fetchSelect_labor = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    const res = await fetch('./../../../controllers/controllerLaborList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    rptSql = data['sql'];
+    selectLabor(rptSql)
+}
+
+const fetchSelect_instalacionMina = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    const res = await fetch('./../../../controllers/controllerInstalacionMinaList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    rptSql = data['sql'];
+    selectInstalacion(rptSql);
+}
+
+const selectLabor = (rptSql) => {
+    datalist_ccostos.innerHTML = '';
+    const templatelabor = document.getElementById('template-opt-ccostos').content
+    const fragmentLabor = document.createDocumentFragment()
+    Object.values(rptSql).forEach(labor => {
+        templatelabor.querySelector('#opt-ccostos').textContent = labor.lab_ccostos;
+        templatelabor.querySelector('#opt-ccostos').value = labor.lab_ccostos;
+        templatelabor.querySelector('#opt-ccostos').dataset.idLabor = labor.id_labor;
+        const clone = templatelabor.cloneNode(true);;
+        fragmentLabor.appendChild(clone)
+    })
+    datalist_ccostos.appendChild(fragmentLabor);
+}
+
+const selectInstalacion = (rptSql) => {
+    datalist_instalaciones.innerHTML = '';
+    const templateInstalacion = document.getElementById('template-opts-name-instalaciones').content
+    const fragmentInstalacion = document.createDocumentFragment()
+    Object.values(rptSql).forEach(instalacion => {
+        templateInstalacion.querySelector('#template-opt-name-instalaciones').textContent = instalacion.instalacionesMina_nombre;
+        templateInstalacion.querySelector('#template-opt-name-instalaciones').value = instalacion.instalacionesMina_nombre;
+        templateInstalacion.querySelector('#template-opt-name-instalaciones').dataset.idInstalacionmina = instalacion.id_instalacionMina;
+        const clone = templateInstalacion.cloneNode(true);;
+        fragmentInstalacion.appendChild(clone)
+    })
+    datalist_instalaciones.appendChild(fragmentInstalacion);
+}
+
+$("#input-ccosto-insert").on('input', function() {
+    var val = $('#input-ccosto-insert').val();
+    var validccosto = $('#insert-options-ccostos').find('option[value="' + val + '"]').data('id-labor');
+    if (validccosto) {
+        var selectForm_labor = {
+            "accion": "getLaborZona",
+            "paramentWhere": validccosto,
+        }
+        getDataLabor(selectForm_labor);
+    } else {
+        iptreg_reportConsumoMadera_labor.value = '';
+        iptreg_reportConsumoMadera_zona.value = '';
+    }
+});
+
+$("#input-descripcion-insert").on('input', function() {
+    var val = $('#input-descripcion-insert').val();
+    var validinstalacion = $('#nombre-instalaciones-options').find('option[value="' + val + '"]').data('id-instalacionmina');
+    if (validinstalacion) {
+        var selectForm_instalacionMina = {
+            "accion": "getLaborZona",
+            "paramentWhere": validinstalacion,
+        }
+        getDataInstalacion(selectForm_instalacionMina);
+    } else {
+        iptreg_reportConsumoMadera_undmedida.value = '';
+    }
+});
+
+const getDataLabor = async (rptSql) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(rptSql));
+    const res = await fetch('./../../../controllers/controllerLaborList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    rptSql = data['sql'];
+    pintarAsociadosLabor(rptSql);
+}
+
+const pintarAsociadosLabor = (rptSql) => {
+    iptreg_reportConsumoMadera_labor.value = rptSql[0].labNombre_nombre;
+    iptreg_reportConsumoMadera_zona.value = rptSql[0].nombre;
+}
+
+const getDataInstalacion = async (rptSql) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(rptSql));
+    const res = await fetch('./../../../controllers/controllerInstalacionMinaList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    rptSql = data['sql'];
+    pintarAsociadosInstalacion(rptSql);
+}
+
+const pintarAsociadosInstalacion = (rptSql) => {
+    iptreg_reportConsumoMadera_undmedida.value = rptSql[0].instalacionMina_medida;
+}

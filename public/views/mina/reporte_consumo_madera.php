@@ -435,7 +435,7 @@
 					            </form>
 					            <!--===================================================-->
 					            <!--End Input Size-->
-                </div>
+                    </div>
                 <!--Modal footer-->
                 <div class="modal-footer">
                     <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
@@ -464,52 +464,64 @@
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="" class="control-label">Fecha</label>
-                                        <input type="text" placeholder="Fecha" class="form-control" id=""  value="" > <!--min="2021-12-12" max="2021-12-13"-->
+                                        <label for="input-fecha-insert" class="control-label">Fecha</label>
+                                        <input type="date" placeholder="Fecha" class="form-control" id="input-fecha-insert"  value="<?php echo date('Y-m-d') ?>" > <!--min="2021-12-12" max="2021-12-13"-->
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="" class="control-label">N° Reporte</label>
-                                        <input type="text" placeholder="N° Reporte" class="form-control" id=""  value="" > <!--min="2021-12-12" max="2021-12-13"-->
+                                        <label for="input-nreporte-insert" class="control-label">N° Reporte</label>
+                                        <input type="text" placeholder="N° Reporte" class="form-control" id="input-nreporte-insert"  value="000000" >
                                     </div>
                                 </div>
                             </div>
                             <div class="row">                                
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="" class="control-label">C. Costo</label>
-                                        <input type="text" class="form-control" id="" placeholder="C. Costo">
+                                        <label for="input-ccosto-insert" class="control-label">C. Costo</label>
+                                        <input type="text" class="form-control" id="input-ccosto-insert" list="insert-options-ccostos" placeholder="C. Costo">
+                                        <datalist id="insert-options-ccostos">
+                                            <option value="Nose ejecuto">
+                                        </datalist>
+                                        <template id="template-opt-ccostos">
+                                            <option id="opt-ccostos" value="">
+                                        </template>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="" class="control-label">Labor</label>
-                                        <input type="text" placeholder="Labor" class="form-control" id=""  value="" >
+                                        <label for="input-labor-insert" class="control-label">Labor</label>
+                                        <input type="text" placeholder="Labor" class="form-control" id="input-labor-insert"  value="" disabled>
                                     </div>
                                 </div>                                
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="" class="control-label">Zona</label>
-                                        <input type="text" placeholder="Zona" class="form-control" id=""  value="" > <!--min="2021-12-12" max="2021-12-13"-->
+                                        <label for="input-zona-insert" class="control-label">Zona</label>
+                                        <input type="text" placeholder="Zona" class="form-control" id="input-zona-insert"  value="" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="" class="control-label">Descripción</label>
-                                        <input type="text" placeholder="Descripción" class="form-control" id=""  value="">
+                                        <label for="input-descripcion-insert" class="control-label">Descripción</label>
+                                        <input type="text" class="form-control" id="input-descripcion-insert" list="nombre-instalaciones-options" placeholder="Descripción">
+                                        <datalist id="nombre-instalaciones-options">
+                                            <option value="Nose ejecuto">
+                                        </datalist>
+                                        <template id="template-opts-name-instalaciones">
+                                            <option id="template-opt-name-instalaciones" value="">
+                                        </template>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="" class="control-label">Und Medida</label>
-                                        <input type="text" placeholder="Und Medida" class="form-control" id=""  value="">
+                                        <label for="input-undmedida-insert" class="control-label">Und Medida</label>
+                                        <input type="text" placeholder="Und Medida" class="form-control" id="input-undmedida-insert"  value="" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="" class="control-label">Cantidad</label>
-                                        <input type="text" placeholder="Cantidad" class="form-control" id=""  value="">
+                                        <label for="input-cantidad-insert" class="control-label">Cantidad</label>
+                                        <input type="number" placeholder="Cantidad" class="form-control" id="input-cantidad-insert"  value="">
                                     </div>
                                 </div>
                             </div>
@@ -528,6 +540,7 @@
                                                         <th scope="col">Descripción</th>
                                                         <th scope="col">Und. Medida</th>
                                                         <th scope="col">Cantidad</th>
+                                                        <th scope="col">Acciónes</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -543,7 +556,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <button class="btn btn-success col-md-12" id="btn-add-table-insert">Registrar</button>
+                                        <button class="btn btn-success col-md-12" id="btn-add-table-insert">Agregar</button>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

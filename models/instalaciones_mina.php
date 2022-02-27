@@ -11,6 +11,11 @@ class InstalacionMina extends Conexion
         parent::__construct();
     }
 
+    public function getunidMedida($where)
+    {
+        $query = "SELECT insMina.instalacionesMina_nombre, insMina.instalacionMina_medida FROM instalaciones_mina AS insMina WHERE id_instalacionMina = {$where};";
+        return $this->ConsultaSimple($query);
+    }
     // Obtiene Lista especifica
     public function getSelect(string $table, string $column, string $idTable)
     {

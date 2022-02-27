@@ -1,11 +1,11 @@
 <?php
 header('Content-type: application/json; charset=utf-8');
 // Si no se ha enviado nada por el POST y se intenta acceder al archivo se retornará a la página de inicio
+$rptSql='';
 if($_POST){
     $table = 'labores';
     $idTable = 'id_labor';
-    $rptSql='';
-    $rptController = 'Se recibio datos';
+    $rptController = 'se recibio datos';
     try {
         require_once '../models/'.$table.'.php';
         $tableManager = new Labores();
@@ -28,6 +28,10 @@ if($_POST){
                 $parament = $arrayForm['parament'];
                 $rptSql = $tableManager->getColumnsWhere($table, $parament);
                 break;
+            case "getLaborZona":
+                $where = $arrayForm['paramentWhere'];
+                $rptSql = $tableManager->getLaborZona($where);         
+                break;
             case "search":                
                 break;
             case "table":
@@ -41,7 +45,7 @@ if($_POST){
     }
 }
 else{
-    $rptController = 'no Se recibio datos';
+    $rptController = 'no se recibio datos';
 }
 $rptjsonControlller = array(
     "sql" => $rptSql,

@@ -28,6 +28,10 @@ if($_POST){
                 $parament = $arrayForm['parament'];
                 //$rptSql = $tableManager->getColumnsWhere($table, $parament);
                 break;
+            case "getLaborZona":
+                $where = $arrayForm['paramentWhere'];
+                $rptSql = $tableManager->getunidMedida($where);         
+                    break;
             case "search":                
                 break;
             case "table":
