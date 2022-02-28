@@ -232,8 +232,8 @@
                                             <table class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" cellspacing="0" id="table-master">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col" width="2%"><input type="checkbox"/></th>
-                                                        <th scope="col">N° Reporte</th>
+                                                        <!-- <th scope="col" width="2%"><input type="checkbox"/></th> -->
+                                                        <th scope="col" width="20%">N° Reporte</th>
                                                         <th scope="col">Fecha</th>
                                                         <th scope="col" width="10%">Acciónes</th>
                                                     </tr>
@@ -583,7 +583,7 @@
                 <!--Modal footer-->
                 <div class="modal-footer">
                     <button class="btn btn-primary" id="mbtn-new">Nuevo</button>
-                    <button class="btn btn-default" data-dismiss="modal" type="button">Cerrar</button>
+                    <button class="btn btn-default" id="mbtn-close" data-dismiss="modal" type="button">Cerrar</button>
                     <button class="btn btn-success" id="mbtn-insert" >Registrar</button>
                 </div>
             </div>

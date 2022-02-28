@@ -31,51 +31,55 @@ var counter = 1;
 
 let listInsert = {}
 
-document.addEventListener('DOMContentLoaded', e => {});
-// JAVASCRIPT VANILLA
-// Boton registrar
-btnInsertar.addEventListener("click", (e) => {
-    var arrObjt = [];
-    const valfecha = iptreg_reportConsumoMadera_fecha.value;
-    const valNReporte = iptreg_reportConsumoMadera_nreporte.value;
-    var form_data = tableDetails.rows().data();
-    var f = form_data;
-    for (var i = 0; f.length > i; i++) {
-        var n = f[i].length;
-        arrObjt.push({
-            ccostos: f[i][1],
-            nom_labor: f[i][2],
-            nom_zona: f[i][3],
-            nom_instalacion: f[i][4],
-            uni_medida: f[i][5],
-            uni_medida: f[i][6],
-        });
-    }
-    listInsert = {
-        "Fecha": valfecha,
-        "NReporte": valNReporte,
-    }
-    console.log(form_data);
-    console.log(arrObjt);
+document.addEventListener('DOMContentLoaded', e => {
+    mainEvents();
 });
-// JQUERY
 
-// Boton Nueva Fila
-$("#btn-new-table-insert").on('click', function(e) {
-    resetFormulario();
-});
-// Boton Editar Fila
-$("#btn-edit-table-insert").on('click', function(e) {
-    console.log('boton nuevo');
-});
-// Boton Exportar Fila en Excel
-$("#btn-exportExcel-table-insert").on('click', function(e) {
-    console.log('boton nuevo');
-});
-// Ejecuta despues de DOM cargado por completo
-$(document).ready(function(e) {
-    console.log("cargo el Dom!");
+function mainEvents() {
+    let form_request1 = {
+        "accion": "table_master",
+    }
+    fetchData(form_request1);
+}
+const fetchData = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    const res = await fetch('./../../../controllers/controllerConsumoMaderaList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    let rptSql = data['sql'];
+    console.log(rptSql);
+    paintTable(rptSql)
+}
+
+const paintTable = (rptSql) => {
     $('#table-master').DataTable({
+        /* ajax: {
+            url: "./../../../controllers/controllerConsumoMaderaList.php",
+            dataSrc: 'sql',
+            dataType: 'json',
+            contentType: "application/json",
+            type: 'POST',
+            data: {
+                accion: 'table_master'
+            },
+        },
+        "initComplete": function(settings, json) {
+            console.log(json);
+        }, */
+        data: rptSql,
+        columns: [{
+                data: "consumoMader_nVale"
+            },
+            {
+                data: "consumoMader_fecha"
+            },
+            {
+                defaultContent: '<button type="button" class="btn-view btn btn-success"><i class="fa fa-eye"></i> Detalle</button> <button type="button" class="name btn btn-primary"><i class="fa fa-edit"></i> Editar</button> <button type="button" class="position btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>'
+            }
+        ],
         // Traduccion
         language: {
             "decimal": "",
@@ -164,6 +168,85 @@ $(document).ready(function(e) {
             }
         ],
     });
+}
+// JAVASCRIPT VANILLA
+// Boton registrar
+btnInsertar.addEventListener("click", (e) => {
+    mainEvents();
+    var listDetalles = [];
+    const valfecha = iptreg_reportConsumoMadera_fecha.value;
+    const valNReporte = iptreg_reportConsumoMadera_nreporte.value;
+    var form_data = tableDetails.rows().data();
+    console.log(form_data);
+    var f = form_data;
+    for (var i = 0; f.length > i; i++) {
+        var n = f[i].length;
+        listDetalles.push({
+            id_labor: f[i][1],
+            ccostos: f[i][2],
+            nom_labor: f[i][2],
+            nom_zona: f[i][4],
+            id_instalacionMina: f[i][5],
+            nom_instalacion: f[i][6],
+            uni_medida: f[i][7],
+            cantidad: f[i][8],
+        });
+    }
+    listInsert = {
+        "Fecha": valfecha,
+        "NReporte": valNReporte,
+        "detalles": listDetalles
+    }
+    var form_insert = {
+        "accion": "insert",
+        "form": listInsert
+    }
+    console.log(form_insert);
+    recordForm(form_insert);
+});
+
+const recordForm = async (listInsert) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(listInsert));
+    const res = await fetch('./../../../controllers/controllerConsumoMadera.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    rptSql = data['sql'];
+    notificationBackend(rptSql)
+}
+const notificationBackend = (rptSql) => {
+    if (rptSql) {
+        if (rptSql['sql1']['estado'] == 1) {
+            $.niftyNoty({
+                type: 'success',
+                container: '#alert-form-insert',
+                html: '<strong>¡Bien hecho!</strong> ' + rptSql['sql1']['mensaje'],
+                focus: false,
+                timer: 5000
+            });
+        }
+    }
+}
+// JQUERY
+
+// Boton Nueva Fila
+$("#btn-new-table-insert").on('click', function(e) {
+    resetFormulario();
+});
+// Boton Editar Fila
+$("#btn-edit-table-insert").on('click', function(e) {
+    console.log('boton nuevo');
+});
+// Boton Exportar Fila en Excel
+$("#btn-exportExcel-table-insert").on('click', function(e) {
+    console.log('boton nuevo');
+});
+// Ejecuta despues de DOM cargado por completo
+$(document).ready(function(e) {
+    console.log("cargo el Dom!");
+
     tableDetails = $('#table-details-insert').DataTable({
         // Traduccion
         language: {
@@ -209,6 +292,9 @@ $(document).ready(function(e) {
             null
         ],
         dom: 'lBfrtip',
+        dom: "<'row'<'col-md-4'l><'col-md-4'B><'col-md-4'f>>" +
+            "<'row'<'col-md-12'tr>>" +
+            "<'row'<'col-md-5'i><'col-md-7'p>>",
         buttons: [{
             extend: 'excel',
             text: '<i class="fa fa-file-excel-o"></i> Excel',
