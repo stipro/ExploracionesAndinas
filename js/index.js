@@ -8,8 +8,8 @@ $(document).ready(function() {
             });
             e.target.parentElement.classList.toggle('active');
         }
-
     });
+
     $('#mainnav-menu li a ul').on("click", function(e) {
         console.log(e.target.parentElement);
         e.target.parentElement.querySelector('ul').classList.toggle('in');

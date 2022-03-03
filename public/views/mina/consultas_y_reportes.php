@@ -272,12 +272,6 @@
     </div>
     <!--===================================================-->
     <!-- END OF CONTAINER -->
-
-
-
-
-
-    
     
     <!--JAVASCRIPT-->
     <!--=================================================-->
@@ -329,11 +323,11 @@
             data: { tipoUsuario: ptipUsuario, table: ptabla },
             success: function(obj, textstatus){
                 for (const property in obj) {
-                    console.log(`${property}: ${obj[property]}`);
+                    //console.log(`${property}: ${obj[property]}`);
                     Object.assign(obj[property], {name_archivo: "reporte_operacion_mina_1"});
                 }
                 Object.assign(obj, {key3: "value3"});
-                console.log(obj);
+                //console.log(obj);
                 $('#reporte-OperMina').DataTable({
                     rowReorder: {
                         selector: 'td:nth-child(2)'

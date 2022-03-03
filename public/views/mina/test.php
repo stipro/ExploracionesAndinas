@@ -1,243 +1,184 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- Bootstrap CSS -->
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css"/>
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap5.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <!-- Custom fonts for this template -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.1/css/fixedHeader.dataTables.min.css" />
-    
+    <button type="button" id="Crear" class="btn btn-primary">
+        <span class="fa fa-plus"></span> Agregar
+    </button>
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-  <style>
-    thead input {
-        width: 100%;
-    }
-    </style>
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    <div class="table-responsive-sm">
-        <table id="table4" class="table table-striped display" style="width:100%">
-            <thead>
-                <tr>
-                    <th>CCosto</th>
-                    <th>Fecha</th>
-                    <th>Labor</th>
-                    <th>Zona</th>
-                    <th>Instalacion</th>
-                    <th>Medida</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>CCosto</th>
-                    <th>Fecha</th>
-                    <th>Labor</th>
-                    <th>Zona</th>
-                    <th>Instalacion</th>
-                    <th>Medida</th>
-                </tr>
-            </tfoot>
-        </table>
+    <div id="ModalCrear" class="modal fade" role="dialog" style="overflow-y: scroll;"> 
+    	<div class="modal-dialog">
+    		<div class="modal-content">
+    			<div class="modal-header"> 
+    				<h4 class="modal-tittle">Crear</h4> 
+    			</div> 
+    			<form class="form-horizontal" role="form" id="form-crear">
+    				<div class="modal-body"> 
+    					<div class="row form-group col-md-12">
+    						<label for="crear_codigo" class="control-label col-sm-2 col-xs-12">Código: </label>
+    						<div class="col-sm-4 col-xs-6">
+    							<input type="number" class="form-control" id="crear_codigo" name="crear_codigo">
+    						</div>
+    					</div>  
+    					<div class="row form-group col-md-12">
+    						<label for="crear_nombre" class="control-label col-sm-2 col-xs-12">Nombre: </label>
+    						<div class="col-sm-6 col-xs-10 selectContainer">
+    							<select id="crear_nombre" name="crear_nombre" class="form-control" style="width: 100%;">
+                                        <option value="0">Seleccione...</option>
+                                        <option value="1">Clorace</option>
+                                        <option value="2">Miovit</option>
+    							</select>
+    						</div>
+    						<div class="col-sm-2 col-xs-2">
+    							<button type="button" class="btn btn-primary" id="agregar_nombres">
+    								<span class="fa fa-plus"></span>
+                        			<span class="hidden-xs"> Agregar Items</span> 
+    							</button>
+    						</div>
+    					</div> 
+    					<div class="row form-group col-md-12">
+    						<label for="crear_formas_farmaceuticas" class="control-label col-sm-2 col-xs-12">Forma Farmacéutica: </label>
+    						<div class="col-sm-6 col-xs-10 selectContainer">
+    							<select id="crear_formas_farmaceuticas" class="form-control" name="crear_formas_farmaceuticas" style="width: 100%;">
+                                        <option value="0">Seleccione...</option>
+                                        <option value="1">Inyección</option>
+                                        <option value="2">Jarabe</option>
+    							</select>
+    						</div>
+    						<div class="col-sm-1 col-xs-2">
+    							<button type="button" class="btn btn-primary" id="agregar_formas">
+    								<span class="fa fa-plus"></span>
+                        			<span class="hidden-xs"> Agregar Items</span> 
+    							</button>
+    						</div>
+    					</div>
+    					<div class="row form-group col-md-12">
+    						<label for="crear_presentacion" class="control-label col-sm-2 col-xs-12">Presentación: </label>
+    						<div class="col-sm-3 col-xs-5">
+    							<input type="number" class="form-control" id="crear_presentacion" name="crear_presentacion">
+    						</div> 
+    						<div class="col-sm-4 col-xs-7 selectContainer">
+    							<select id="crear_unidad_de_medicion_p" class="form-control" name="crear_unidad_de_medicion_p" style="width: 100%;">
+                                        <option value="0">Seleccione...</option>
+                                        <option value="1">(und) Unidad</option>
+                                        <option value="2">(ml) Mililitro</option>
+                                        <option value="2">(mg) Miligramo</option>
+    							</select>
+    						</div>
+    					</div>
+    					<div class="row form-group col-md-12">
+    						<label for="crear_unidad_teorica" class="control-label col-sm-2 col-xs-12">Unidad Teórica: </label>
+    						<div class="col-sm-5 col-xs-5">
+    							<input type="number" class="form-control" id="crear_unidad_teorica" name="crear_unidad_teorica">
+    						</div> 
+    						<div class="col-sm-4 col-xs-7 selectContainer">
+    							<select id="crear_unidad_de_medicion_u" class="form-control" name="crear_unidad_de_medicion_u" style="width: 100%;">
+                                        <option value="0">Seleccione...</option>
+                                        <option value="1">(und) Unidad</option>
+                                        <option value="2">(ml) Mililitro</option>
+                                        <option value="2">(mg) Miligramo</option>
+    							</select>
+    						</div>
+    					</div>
+    					<div class="row form-group col-md-12">
+    						<label for="crear_velocidad" class="control-label col-sm-2 col-xs-12">Velocidad del Producto: </label>
+    						<div class="col-sm-3 col-xs-5">
+    							<input type="number" class="form-control" id="crear_velocidad" name="crear_velocidad">
+    						</div> 
+    						<label class="col-sm-5 col-xs-7">
+    							<h4>
+    								<sup id="crear_unidad_de_medicion_v_u" name="crear_unidad_de_medicion_v_u">
+    									
+    								</sup>
+    								/
+    								<sub id="crear_unidad_de_medicion_v_t" name="crear_unidad_de_medicion_v_t">
+    									min
+    								</sub>
+    							</h4>
+    						</label>
+    					</div>
+    					<div class="row form-group col-md-12">
+    						<label class="control-label col-sm-2 col-xs-12">Tiempo Teórico: </label>
+    						<label class="col-sm-7 col-xs-7">
+    							<h4>
+    								<sub id="crear_tiempo_teorico" name="crear_tiempo_teorico">
+    									
+    								</sub>
+    							</h4>
+    						</label>
+    					</div>
+    					<div class="row form-group col-md-12">
+    						<label for="crear_linea_de_produccion" class="control-label col-sm-2">Linea de Producción:</label>
+    						<div class="col-sm-8 selectContainer">
+    							<select id="crear_linea_de_produccion" class="form-control" name="crear_linea_de_produccion" style="width: 100%;">
+                                        <option value="0">Seleccione...</option>
+                                        <option value="1">Liquidos Esteriles</option>
+                                        <option value="2">Liquidos No Esteriles</option>
+                                        <option value="2">Solidos</option>
+    							</select>
+    						</div>
+    					</div>
+    				</div>
+    				<div class="modal-footer">
+    					<button type="button" class="btn btn-default" data-dismiss="modal">
+    						<span class="glyphicon glyphicon-remove"></span>
+                        	<span class="hidden-xs"> Cerrar</span> 
+    					</button>
+    					<button type="button" id="Guardar" name="Guardar" class="btn btn-primary">
+    						<span class="fa fa-save"></span>
+                        	<span class="hidden-xs"> Guardar</span> 
+    					</button>
+    				</div>
+    			</form>
+    		</div>
+    	</div>
     </div>
-    
-    <!-- Optional JavaScript; choose one of the two! -->
 
-
-    
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    
-    -->
-      <!-- Bootstrap core JavaScript 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>-->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/fixedheader/3.2.1/js/dataTables.fixedHeader.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.bootstrap5.min.js"></script>
-    <!-- <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
+    <div id="ModalAgregarNombre" class="modal fade" role="dialog"> 
+    	<div class="modal-dialog">
+    		<div class="modal-content">
+    			<div class="modal-header"> 
+    				<h4 class="modal-tittle">Agregar</h4>
+    			</div> 
+    			<form class="form-horizontal" role="form" id="form-agregar">
+    				<div class="modal-body"> 
+    					<div class="form-group col-md-12">
+    						<label for="agregar_nombre" class="control-label col-sm-4">Nombre: </label>
+    						<div class="col-sm-8">
+    							<input type="text" class="form-control" id="agregar_nombre" name="agregar_nombre">
+    						</div>
+    					</div> 
+    				</div>
+    				<div class="modal-footer">
+    					<button type="button" class="btn btn-default" data-dismiss="modal">
+    						<span class="glyphicon glyphicon-remove"></span><span class="hidden-xs"> Cerrar</span>
+    					</button>
+    					<button type="button" id="GuardarNombre" name="GuardarNombre" class="btn btn-primary">
+    						<span class="fa fa-save"></span><span class="hidden-xs"> Guardar</span>
+    					</button>
+    				</div>
+    			</form>
+    		</div>
+    	</div>
+    </div>
     <script>
-    $(document).ready(function() {
-        // Setup - add a text input to each footer cell
-        // Setup - add a text input to each footer cell
-        $('#table4 thead tr')
-            .clone(true)
-            .addClass('filters')
-            .appendTo('#table4 thead');
-        var dataTable = '';
-        ptipUsuario= 'nom'; // Cogemos del formulario el valor nom
-        ptabla= 'reporte_operacion_mina_1'; // Cogemos del formulario el valor pass
-        // Función que envía y recibe respuesta con AJAX
-        $.ajax({
-            type: 'GET',  // Envío con método POST
-            url: './../../json.php',  // Fichero destino (el PHP que trata los datos)
-            dataType: 'json',
-            data: { tipoUsuario: ptipUsuario, table: ptabla } // Datos que se envían
-        }).done(function( obj, textstatus ) {// Función que se ejecuta si todo ha ido bien
-            var table = $('#table4').DataTable({
-                rowReorder: {
-                    selector: 'td:nth-child(2)'
-                },
-                data: obj,
-                columns: [
-                    {
-                        data: 'CCosto',
-                    },
-                    { data: 'Fecha' },
-                    { data: 'Labor' },
-                    { data: 'Zona' },            
-                    { data: 'instalacionesMina_nombre' },
-                    { data: 'instalacionMina_medida' }
-                ],
-                "pageLength": 3,
-                responsive: true,
-                language: {
-                    "decimal": "",
-                    "emptyTable": "No hay información",
-                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Documentos",
-                    "infoEmpty": "Mostrando 0 to 0 of 0 Documentos",
-                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Mostrar _MENU_ Documentos",
-                    "loadingRecords": "Cargando...",
-                    "processing": "Procesando...",
-                    "search": "Buscar:",
-                    "zeroRecords": "Sin resultados encontrados",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Ultimo",
-                        "next": "Siguiente",
-                        "previous": "Anterior"
-                    },
-                },
-                lengthChange: false,
-                dom: 'lBfrtip',
-                lengthMenu: [
-                    [ 10, 25, 50, -1 ],
-                    [ '10 rows', '25 rows', '50 rows', 'Show all' ]
-                ],
-                buttons: [
-                    {
-                        extend:    'pageLength',
-                        className: 'btn btn-secondary'
-                    },
-                    {
-                        extend:    'copy',
-                        text:      '<i class="fa fa-files-o"></i> Copiar',
-                        titleAttr: 'Copy',
-                        className: 'btn btn-secondary'
-                    },
-                    {
-                        extend:    'excel',
-                        text:      '<i class="fa fa-file-excel-o"></i> Excel',
-                        titleAttr: 'Excel'
-                    },
-                    {
-                        extend:    'csvHtml5',
-                        text:      '<i class="fas fa-file-csv"></i> CSV',
-                        titleAttr: 'CSV'
-                    },
-                    {
-                        extend:    'pdf',
-                        text:      '<i class="fa fa-file-pdf-o"></i> PDF',
-                        titleAttr: 'PDF'
-                    },
-                    {
-                        extend:    'print',
-                        text:      '<i class="fas fa-print"></i> print',
-                        titleAttr: 'PDF'
-                    },
-                    'colvis',
+    $(document).on('click', '#Crear', function() {
+        $('#ModalCrear').modal('show');
+    });
 
-                /* 'excel', 'csv', 'pdf', 'print', 'copy', */
-                ],
-                orderCellsTop: true,
-                fixedHeader: true,
-                initComplete: function () {
-                        var api = this.api();
-            
-                        // For each column
-                        api
-                            .columns()
-                            .eq(0)
-                            .each(function (colIdx) {
-                                // Set the header cell to contain the input element
-                                var cell = $('.filters th').eq(
-                                    $(api.column(colIdx).header()).index()
-                                );
-                                var title = $(cell).text();
-                                $(cell).html('<input type="text" placeholder="' + title + '" />');
-            
-                                // On every keypress in this input
-                                $(
-                                    'input',
-                                    $('.filters th').eq($(api.column(colIdx).header()).index())
-                                )
-                                    .off('keyup change')
-                                    .on('keyup change', function (e) {
-                                        e.stopPropagation();
-            
-                                        // Get the search value
-                                        $(this).attr('title', $(this).val());
-                                        var regexr = '({search})'; //$(this).parents('th').find('select').val();
-            
-                                        var cursorPosition = this.selectionStart;
-                                        // Search the column for that value
-                                        api
-                                            .column(colIdx)
-                                            .search(
-                                                this.value != ''
-                                                    ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                                    : '',
-                                                this.value != '',
-                                                this.value == ''
-                                            )
-                                            .draw();
-            
-                                        $(this)
-                                            .focus()[0]
-                                            .setSelectionRange(cursorPosition, cursorPosition);
-                                    });
-                            });
-                    },
-            });
-            table.buttons().container().appendTo( '#table4_wrapper .col-md-6:eq(0)' );
-            /* console.log(msg);
-            console.log(typeof(msg));
-            dataTable = JSON.stringify(msg);  // Escribimos en el div consola el mensaje devuelto
-            console.log(typeof(dataTable)); */
-        }).fail(function (jqXHR, textStatus, errorThrown){ // Función que se ejecuta si algo ha ido mal
-        // Mostramos en consola el mensaje con el error que se ha producido
-        console.log("The following error occured: "+ textStatus +" "+ errorThrown);
-        });
-    });    
-</script>
-  </body>
+    $(document).on('click', '#agregar_nombres', function() {
+        $('#ModalAgregarNombre').modal('show');
+    });
+    </script>
+</body>
 </html>

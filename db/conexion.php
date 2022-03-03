@@ -28,7 +28,7 @@ class Conexion
                 $HOST   = '127.0.0.1';
                 $DBNAME = 'explore_andina';
                 $USER   = 'root';
-                $PASS   = 'misterio1';
+                $PASS   = '';
                 $con    = new PDO("mysql:host={$HOST}; dbname={$DBNAME}", $USER, $PASS);
                 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $con->exec('SET CHARACTER SET UTF8');

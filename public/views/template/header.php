@@ -55,8 +55,8 @@
     <!--Ion Icons [ OPTIONAL ]-->
     <link href=".\..\..\..\plugins\ionicons\css\ionicons.min.css" rel="stylesheet">
 
-    <!--Font Awesome [ OPTIONAL ]-->
-    <link href=".\..\..\..\plugins\font-awesome\css\font-awesome.min.css" rel="stylesheet">
+    <!--Font Awesome [ OPTIONAL ]
+    <link href=".\..\..\..\plugins\font-awesome\css\font-awesome.min.css" rel="stylesheet">-->
 
     <!--Themify Icons [ OPTIONAL ]-->
     <link href=".\..\..\..\plugins\themify-icons\themify-icons.min.css" rel="stylesheet">

@@ -1,5 +1,6 @@
 <?php
-    
+    $ip_usuario = $_SERVER['REMOTE_ADDR'];  
+    echo $ip_usuario;
     session_start();
     if (!isset($_SESSION["username"])) {
         //echo 'No se inicio session ';

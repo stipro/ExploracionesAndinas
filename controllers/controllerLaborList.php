@@ -35,6 +35,7 @@ if($_POST){
             case "search":                
                 break;
             case "table":
+                $rptSql = $tableManager->getAll(); 
                 break;
             default:
                 break;

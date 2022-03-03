@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', e => {
 });
 
 function mainEvents() {
+    $('#table-master').DataTable().clear().destroy();
     let form_request1 = {
         "accion": "table_master",
     }
@@ -54,17 +55,20 @@ const fetchData = async (request) => {
     paintTable(rptSql)
 }
 
-const paintTable = (rptSql) => {
-    $('#table-master').DataTable({
+const paintTable = async (rptSql) => {
+    /* let form_request1 = {
+        "accion": "table_master",
+    }
+    const body = new FormData();
+    body.append("data", JSON.stringify(form_request1)); */
+    var tableMaster = $('#table-master').DataTable({
         /* ajax: {
             url: "./../../../controllers/controllerConsumoMaderaList.php",
             dataSrc: 'sql',
             dataType: 'json',
             contentType: "application/json",
             type: 'POST',
-            data: {
-                accion: 'table_master'
-            },
+            data: body,
         },
         "initComplete": function(settings, json) {
             console.log(json);
@@ -74,7 +78,8 @@ const paintTable = (rptSql) => {
                 data: "consumoMader_nVale"
             },
             {
-                data: "consumoMader_fecha"
+                data: "consumoMader_fecha",
+                defaultContent: 'raaaa',
             },
             {
                 defaultContent: '<button type="button" class="btn-view btn btn-success"><i class="fa fa-eye"></i> Detalle</button> <button type="button" class="name btn btn-primary"><i class="fa fa-edit"></i> Editar</button> <button type="button" class="position btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>'
@@ -139,6 +144,7 @@ const paintTable = (rptSql) => {
                         extend: 'excel',
                         text: '<i class="fa fa-file-excel-o"></i> Excel',
                         titleAttr: 'Excel',
+                        title: 'Consumo_Madera_excel',
                     },
                     {
                         extend: 'csv',
@@ -153,7 +159,7 @@ const paintTable = (rptSql) => {
                 ]
             },
             {
-                text: '<i class="fa fa-hdd-o" ></i> Importar',
+                text: '<i class="fa fa-upload" ></i> Importar',
                 action: function(e, dt, node, conf) {},
                 className: 'btn btn-primary' //Primary class for all buttons
             },
@@ -245,6 +251,13 @@ $("#btn-exportExcel-table-insert").on('click', function(e) {
 });
 // Ejecuta despues de DOM cargado por completo
 $(document).ready(function(e) {
+    var btn_prueba = document.querySelector("#mainnav-menu"); // Encuentra el elemento "p" en el sitio
+    btn_prueba.onclick = muestraAlerta; // Agrega función onclick al elemento
+
+    function muestraAlerta(evento) {
+        console.log();
+        ("Evento onclick ejecutado!");
+    }
     console.log("cargo el Dom!");
 
     tableDetails = $('#table-details-insert').DataTable({
