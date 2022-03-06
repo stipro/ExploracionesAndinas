@@ -11,10 +11,209 @@ class Labores extends Conexion
     {
         parent::__construct();
     }
+    public function insertPrincipal($items){
+        try {
+            $query = "INSERT INTO labores (lab_ccostos, lab_tipo, lab_veta, lab_nivel, lab_metodoExplotacion, lab_seccion, lab_tipoEq, lab_tipoRoca, id_labNombre, id_zona, unidadMedica_id) 
+                            VALUES (:item1, :item2, :item3, :item4, :item5, :item6, :item7, :item8, :item9, :item10, :item11)";
+            $insertValue = $this->db->prepare($query);
+            $insertValue->bindParam(':item1', $items['ccosto_labor'], PDO::PARAM_STR);
+            $insertValue->bindParam(':item2', $items['tipo_labor'], PDO::PARAM_STR);
+            $insertValue->bindParam(':item3', $items['veta_labor'], PDO::PARAM_STR);
+            $insertValue->bindParam(':item4', $items['nivel_labor'], PDO::PARAM_STR);
+            $insertValue->bindParam(':item5', $items['mexplotacion_labor'], PDO::PARAM_STR);
+            $insertValue->bindParam(':item6', $items['seccion_labor'], PDO::PARAM_STR);
+            $insertValue->bindParam(':item7', $items['tipoEq_labor'], PDO::PARAM_STR);
+            $insertValue->bindParam(':item8', $items['tipRocca_labor'], PDO::PARAM_STR);
+            $insertValue->bindParam(':item9', $items['id_laborName'], PDO::PARAM_STR);
+            $insertValue->bindParam(':item10', $items['id_laborZone'], PDO::PARAM_STR);
+            $insertValue->bindParam(':item11', $items['id_laborUnitMining'], PDO::PARAM_STR);
+            $sqlrpt = $insertValue->execute();
+            $lastcolIdsql = $this->db->lastInsertId();
+            if($sqlrpt){
+                $rptSql = [
+                    "estado" => 1,
+                    "mensaje" => "Se registro correctamente",
+                    "id" => $lastcolIdsql
+                ];
+            }
+            return $rptSql;
+                
+        } catch (PDOException $e) {
+            
+            if($e->getCode() == 23000){
+                $messageUser = "Se duplico n° de Vale";
+            }
+            elseif ($e->getCode() == 22001) {
+                $messageUser = "Tamaño excedido";
+            }
+            elseif ($e->getCode() == 'HY000') {
+                $messageUser = "Tipo de valor incorrecto";
+            }
+            else{
+                $messageUser = "";
+            }
+            $rptSql = [
+                "estado" => 0,
+                "messageDeveloper" => "Se encontro ERROR ".$e->getMessage(),
+                "mensaje" => $messageUser,
+                "messageUser" => $messageUser,
+                "codigo" => $e->getCode(),
+                "string" => $e->__toString(),
+            ];
+            return $rptSql;
+        }
+    }
+
+    public function insert_selectUno($datonombreLabor, int $datoid_laborName, $datoprefijoLabor, $datotipoLabor)
+    {
+        try {
+            $query = "INSERT INTO lab_nombres (labNombre_nombre, labNombEtapas_id, labNombre_prefijo, labNombre_tipo) 
+                            VALUES (:item1,:item2,:item3,:item4)";
+            $insertValue = $this->db->prepare($query);
+            $insertValue->bindParam(':item1', $datonombreLabor, PDO::PARAM_STR);
+            $insertValue->bindParam(':item2', $datoid_laborName, PDO::PARAM_STR);
+            $insertValue->bindParam(':item3', $datoprefijoLabor, PDO::PARAM_STR);
+            $insertValue->bindParam(':item4', $datotipoLabor, PDO::PARAM_STR);
+            $sqlrpt = $insertValue->execute();
+            $lastcolIdsql = $this->db->lastInsertId();
+            if($sqlrpt){
+                $rptSql = [
+                    "estado" => 1,
+                    "mensaje" => "Se registro correctamente",
+                    "id" => $lastcolIdsql
+                ];
+            }
+            return $rptSql;
+                
+        } catch (PDOException $e) {
+            
+            if($e->getCode() == 23000){
+                $messageUser = "Se duplico n° de Vale";
+            }
+            elseif ($e->getCode() == 22001) {
+                $messageUser = "Tamaño excedido";
+            }
+            elseif ($e->getCode() == 'HY000') {
+                $messageUser = "Tipo de valor incorrecto";
+            }
+            else{
+                $messageUser = "";
+            }
+            $rptSql = [
+                "estado" => 0,
+                "messageDeveloper" => "Se encontro ERROR ".$e->getMessage(),
+                "mensaje" => $messageUser,
+                "messageUser" => $messageUser,
+                "codigo" => $e->getCode(),
+                "string" => $e->__toString(),
+            ];
+            return $rptSql;
+        }
+    }
+    public function insert_selectUno_selectUno($items){
+        try {
+            $query = "INSERT INTO lab_nomb_etapas (nombre_etapa) 
+                            VALUES (:item1)";
+            $insertValue = $this->db->prepare($query);
+            $insertValue->bindParam(':item1', $items['nombre_etapa'], PDO::PARAM_STR);
+            $sqlrpt = $insertValue->execute();
+            $lastcolIdsql = $this->db->lastInsertId();
+            if($sqlrpt){
+                $rptSql = [
+                    "estado" => 1,
+                    "mensaje" => "Se registro correctamente",
+                    "id" => $lastcolIdsql
+                ];
+            }
+            return $rptSql;
+                
+        } catch (PDOException $e) {
+            
+            if($e->getCode() == 23000){
+                $messageUser = "Se duplico n° de Vale";
+            }
+            elseif ($e->getCode() == 22001) {
+                $messageUser = "Tamaño excedido";
+            }
+            elseif ($e->getCode() == 'HY000') {
+                $messageUser = "Tipo de valor incorrecto";
+            }
+            else{
+                $messageUser = "";
+            }
+            $rptSql = [
+                "estado" => 0,
+                "messageDeveloper" => "Se encontro ERROR ".$e->getMessage(),
+                "messageUser" => $messageUser,
+                "codigo" => $e->getCode(),
+                "string" => $e->__toString(),
+            ];
+            return $rptSql;
+        }
+    }
+    public function insert_selectdos($items){
+        try {
+            $query = "INSERT INTO unidad_mineras (nombre_unidad_mineras, abrev_unidad_mineras) 
+                            VALUES (:item1,:item2)";
+            $insertValue = $this->db->prepare($query);
+            $insertValue->bindParam(':item1', $items['unidMinera_nombre'], PDO::PARAM_STR);
+            $insertValue->bindParam(':item2', $items['unidMinera_abrev'], PDO::PARAM_STR);
+            $sqlrpt = $insertValue->execute();
+            $lastcolIdsql = $this->db->lastInsertId();
+            if($sqlrpt){
+                $rptSql = [
+                    "estado" => 1,
+                    "mensaje" => "Se registro correctamente",
+                    "id" => $lastcolIdsql
+                ];
+            }
+            return $rptSql;
+                
+        } catch (PDOException $e) {
+            
+            if($e->getCode() == 23000){
+                $messageUser = "Se duplico n° de Vale";
+            }
+            elseif ($e->getCode() == 22001) {
+                $messageUser = "Tamaño excedido";
+            }
+            elseif ($e->getCode() == 'HY000') {
+                $messageUser = "Tipo de valor incorrecto";
+            }
+            else{
+                $messageUser = "";
+            }
+            $rptSql = [
+                "estado" => 0,
+                "messageDeveloper" => "Se encontro ERROR ".$e->getMessage(),
+                "mensaje" => $messageUser,
+                "messageUser" => $messageUser,
+                "codigo" => $e->getCode(),
+                "string" => $e->__toString(),
+            ];
+            return $rptSql;
+        }
+    }
+    public function getLaborNombre(){
+        $query = "SELECT lb_nb.id_labNombre, lb_nb.labNombre_nombre, lb_nb_ep.nombre_etapa, lb_nb.labNombre_prefijo, lb_nb.labNombre_tipo FROM lab_nombres AS lb_nb LEFT JOIN lab_nomb_etapas AS lb_nb_ep ON lb_nb.id_labNombre = lb_nb_ep.id_etapa;";
+        return $this->ConsultaSimple($query);
+    }
+    public function getLaborZona(){
+        $query = "SELECT lb_zn.id_zona, lb_zn.labZona_nombre, lb_zn.labZona_letra FROM lab_zonas AS lb_zn;";
+        return $this->ConsultaSimple($query);
+    }
+    public function getUnidMinera(){
+        $query = "SELECT ud_me.id_unidad_mineras, ud_me.nombre_unidad_mineras, ud_me.abrev_unidad_mineras FROM unidad_mineras AS ud_me;";
+        return $this->ConsultaSimple($query);
+    }
+    public function getLaborNombre_etapa(){
+        $query = "SELECT lbNomEtapas.id_etapa, lbNomEtapas.nombre_etapa FROM lab_nomb_etapas AS lbNomEtapas;";
+        return $this->ConsultaSimple($query);
+    }
     // DataTables
     // Obtener Tabla
     public function getAll(){
-        $query = "SELECT lb.id_labor, lb.lab_codigo, lb.lab_ccostos, lb_nom.labNombre_nombre, lb_nom.labNombre_etapa, lb_nom.labNombre_prefijo, lb_nom.labNombre_tipo, lb_zn.labZona_nombre, lb_zn.labZona_letra, lb.lab_tipo, lb.lab_veta, lb.lab_nivel, lb.lab_metodoExplotacion, lb.lab_seccion, lb.lab_tipoEq, lb.lab_tipoRoca , sd.nombre_sede, sd.abrev_sede FROM {$this->table} AS lb LEFT JOIN lab_nombres AS lb_nom ON lb.id_labNombre = lb_nom.id_labNombre LEFT JOIN lab_zonas AS lb_zn ON lb.id_zona = lb_zn.id_zona LEFT JOIN sedes AS sd ON lb.sede_id = sd.id_sede";
+        $query = "SELECT lb.id_labor, lb.lab_codigo, lb.lab_ccostos, lb_nom.labNombre_nombre, lb_nom_etap.nombre_etapa, lb_nom.labNombre_prefijo, lb_nom.labNombre_tipo, lb_zn.labZona_nombre, lb_zn.labZona_letra, lb.lab_tipo, lb.lab_veta, lb.lab_nivel, lb.lab_metodoExplotacion, lb.lab_seccion, lb.lab_tipoEq, lb.lab_tipoRoca , umina.nombre_unidad_mineras, umina.abrev_unidad_mineras FROM labores AS lb LEFT JOIN lab_nombres AS lb_nom ON lb.id_labNombre = lb_nom.id_labNombre LEFT JOIN lab_nomb_etapas AS lb_nom_etap ON lb_nom.labNombEtapas_id = lb_nom_etap.id_etapa JOIN lab_zonas AS lb_zn ON lb.id_zona = lb_zn.id_zona LEFT JOIN unidad_mineras AS umina ON lb.unidadMedica_id = umina.id_unidad_mineras;  ";
         return $this->ConsultaSimple($query);
     }
 }

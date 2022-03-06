@@ -201,7 +201,7 @@
                                     <!-- Foo Table - Row Toggler -->
                                     <!--===================================================-->
                                     <div class="panel-body">
-                                        <table id="" class="table table-bordered table-hover toggle-circle" data-page-size="5">
+                                        <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="5">
                                             <thead>
                                                 <tr>
                                                     <th data-sort-ignore="true" class="min-width"></th>

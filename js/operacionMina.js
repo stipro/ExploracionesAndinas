@@ -1052,3 +1052,6 @@ function inputCharacters_codZona(event) {
         document.getElementById('insert-operacionMina-codLabor').focus();
     }
 }
+$(document).ready(function() {
+    $('#example').DataTable();
+});

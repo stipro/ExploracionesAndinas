@@ -13,6 +13,18 @@ if($_POST){
         // ACCION
         $accion = $arrayForm['accion'];
         switch ($accion) {
+            case "getLaborNombre":
+                $rptSql = $tableManager->getLaborNombre();
+                break;
+            case "getLaborZona":
+                $rptSql = $tableManager->getLaborZona();
+                break;
+            case "getUnidMinera":
+                $rptSql = $tableManager->getUnidMinera();
+                break;
+            case "getLaborNombre_etapa":
+                $rptSql = $tableManager->getLaborNombre_etapa();
+                break;
             case "getcolumnAll":
                 $column = $arrayForm['column'];
                 $rptSql = $tableManager->getSelect($table, $column, $idTable);
@@ -22,6 +34,9 @@ if($_POST){
                 $parament = $arrayForm['parament'];
                 $columnWhere = $arrayForm['columnWhere'];
                 $rptSql = $tableManager->getSelectWhere($table, $column, $parament, $idTable, $columnWhere);
+                break;
+            case "getcolumns":
+
                 break;
             case "getcolumnsWhere":
                 $columns = $arrayForm['columns'];
