@@ -16,8 +16,8 @@ if($_POST){
             case "getLaborNombre":
                 $rptSql = $tableManager->getLaborNombre();
                 break;
-            case "getLaborZona":
-                $rptSql = $tableManager->getLaborZona();
+            case "getCcosto":
+                $rptSql = $tableManager->getCcosto();
                 break;
             case "getUnidMinera":
                 $rptSql = $tableManager->getUnidMinera();

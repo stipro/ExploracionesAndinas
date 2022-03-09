@@ -125,7 +125,7 @@ const paintTable = async (rptSql) => {
                 action: function(e, dt, node, conf) {
                     $("#demo-lg-modal").modal("show");
                     var select1 = {
-                        "accion": "getcolumnAll",
+                        "accion": "getCcosto",
                         "column": "lab_ccostos"
                     }
                     var select2 = {
@@ -510,7 +510,7 @@ const pintarAsociadosLabor = (rptSql) => {
     iptreg_reportConsumoMadera_labor.dataset.idLabor = '';
     iptreg_reportConsumoMadera_labor.value = rptSql[0].labNombre_nombre;
     iptreg_reportConsumoMadera_labor.dataset.idLabor = rptSql[0].id_labor;
-    iptreg_reportConsumoMadera_zona.value = rptSql[0].nombre;
+    iptreg_reportConsumoMadera_zona.value = rptSql[0].labZona_nombre;
 }
 
 const getDataInstalacion = async (rptSql) => {

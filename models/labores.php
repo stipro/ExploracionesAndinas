@@ -64,8 +64,7 @@ class Labores extends Conexion
         }
     }
 
-    public function insert_selectUno($datonombreLabor, int $datoid_laborName, $datoprefijoLabor, $datotipoLabor)
-    {
+    public function insert_selectUno($datonombreLabor, int $datoid_laborName, $datoprefijoLabor, $datotipoLabor){
         try {
             $query = "INSERT INTO lab_nombres (labNombre_nombre, labNombEtapas_id, labNombre_prefijo, labNombre_tipo) 
                             VALUES (:item1,:item2,:item3,:item4)";
@@ -194,12 +193,23 @@ class Labores extends Conexion
             return $rptSql;
         }
     }
+    // Obtiene Lista especifica
+    public function getSelect(string $table, string $column, string $idTable)
+    {
+        $query = "SELECT {$idTable}, {$column}, id_labNombre FROM {$table} ORDER BY {$column} ASC ;";
+        return $this->ConsultaSimple($query);
+    }
     public function getLaborNombre(){
         $query = "SELECT lb_nb.id_labNombre, lb_nb.labNombre_nombre, lb_nb_ep.nombre_etapa, lb_nb.labNombre_prefijo, lb_nb.labNombre_tipo FROM lab_nombres AS lb_nb LEFT JOIN lab_nomb_etapas AS lb_nb_ep ON lb_nb.id_labNombre = lb_nb_ep.id_etapa;";
         return $this->ConsultaSimple($query);
     }
-    public function getLaborZona(){
-        $query = "SELECT lb_zn.id_zona, lb_zn.labZona_nombre, lb_zn.labZona_letra FROM lab_zonas AS lb_zn;";
+    public function getLaborZona($where)
+    {
+        $query = "SELECT lb.id_labor, lbnombre.labNombre_nombre, lbzonas.labZona_nombre FROM labores AS lb LEFT JOIN lab_nombres AS lbnombre ON lb.id_labNombre = lbnombre.id_labNombre LEFT JOIN lab_zonas AS lbzonas ON lb.id_zona = lbzonas.id_zona WHERE id_labor = {$where};";
+        return $this->ConsultaSimple($query);
+    }
+    public function getCcosto(){
+        $query = "SELECT lb.id_labor, lb.lab_ccostos FROM labores AS lb WHERE lb.id_labor;";
         return $this->ConsultaSimple($query);
     }
     public function getUnidMinera(){
