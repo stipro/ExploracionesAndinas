@@ -108,25 +108,3 @@
 .chosen-container {
     width: 100% !important;
 }
-
-body {
-    --table-width: 100%;
-    /* Or any value, this will change dinamically */
-}
-
-tbody {
-    display: block;
-    max-height: 200px;
-    overflow-y: auto;
-}
-
-thead,
-tbody tr {
-    display: table;
-    width: var(--table-width);
-    table-layout: fixed;
-}
-
-.indice {
-    width: 1rem;
-}

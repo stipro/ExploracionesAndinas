@@ -82,7 +82,9 @@
     <!--Font Awesome [ OPTIONAL ]-->
     <link href=".\..\..\..\plugins\font-awesome\css\font-awesome.min.css" rel="stylesheet">
 
-            
+    <style>
+        div.container { max-width: 1200px }
+    </style>
     <!--=================================================
 
     REQUIRED
@@ -156,128 +158,81 @@
 					<div class="row">
 					    <div class="col-xs-12">
 					        <div class="panel">
-					            <div class="panel-heading">
+					           <!--  <div class="panel-heading">
 					                <h3 class="panel-title">Operación Mina</h3>
-					            </div>
-					
-					            <!--Data Table-->
-					            <!--===================================================-->
-					            <div class="panel-body">
-					                <div class="pad-btm form-inline">
-					                    <div class="row">
-					                        <div class="col-sm-6 table-toolbar-left">
-					                            <button id="btn-Agregar" data-target="#demo-lg-modal" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add icon-fw"></i>Agregar</button>
-                                                <div class="btn-group">
-                                                    <a href="./../../excelGenerator.php?table=view_operacion_mina" class="btn btn-success" download="" title="Descargar Archivo">
-                                                        <i class="fa fa-file-excel-o icon-lg"></i>
-                                                    </a>
-                                                    <button class="btn btn-primary" id="btn-modal-import" data-target="#modal-import" data-toggle="modal">
-                                                        <i class="fa fa-cloud-upload icon-lg"></i>
-                                                    </button>
-                                                </div>
-					                            <div class="btn-group">
-					                                <button class="btn btn-default"><i class="demo-pli-information icon-lg"></i></button>
-					                                <button class="btn btn-default"><i class="demo-pli-trash icon-lg"></i></button>
-					                            </div>
-					                        </div>
-					                        <div class="col-sm-6 table-toolbar-right">
-                                                <div class="btn-group">
-                                                        <div class="input-group">
-                                                            <input id="ipt-Buscar" type="text" placeholder="Busqueda por columna" class="form-control">
-                                                            <span class="input-group-btn">
-                                                                <button id="btn-Buscar"class="btn btn-primary" type="button">Buscar</button>
-                                                            </span>
-                                                        </div>			
-                                                        <!--===================================================-->
-                                                        <select data-placeholder="Elija Columna" id="demo-chosen-select" tabindex="2">
-                                                            <option value="codigo">codigo</option>
-                                                            <option value="nombre">nombre</option>
-                                                            <option value="cargo">cargo</option>
-                                                        </select>
-                                                    </div>
-					                        </div>
-					                    </div>
-					                </div>
-                                    <!-- Foo Table - Row Toggler -->
-                                    <!--===================================================-->
-                                    <div class="panel-body">
-                                        <table id="" class="table table-bordered table-hover toggle-circle" data-page-size="5">
-                                            <thead>
-                                                <tr>
-                                                    <th data-sort-ignore="true" class="min-width"></th>
-                                                    <th data-sort-initial="true" data-toggle="true">Código</th>
-                                                    <th>Apellidos y Nombres</th>
-                                                    <th data-hide="phone, tablet">Cargo</th>
-                                                    <th data-hide="phone, tablet">Dia</th>
-                                                    <!--<th data-hide="phone, tablet">Actividad</th>-->
-                                                    <th data-hide="phone, tablet">Turno</th>
-                                                    <th data-hide="phone, tablet">Ht</th>
-                                                    <th data-hide="phone, tablet">Ht Sev_Ad</th>
-                                                    <th data-hide="phone, tablet">**Ccostos</th>
-                                                    <th data-hide="phone, tablet">Labor</th>
-                                                    <th data-hide="phone, tablet">Nivel</th>
-                                                    <th data-hide="phone, tablet">He</th>
-                                                    <th data-hide="phone, tablet">He Ser Ad</th>
-                                                    <th data-hide="phone, tablet">C. Costos He</th>
-                                                    <th data-hide="phone, tablet">V.B</th>
-                                                    <th data-hide="phone, tablet">Guardia</th>
-                                                    <th data-hide="phone, tablet">Cod_Actividad</th>
-                                                    <th data-hide="phone, tablet">Área</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="tbody-tareo">
-
-                                            </tbody>
-                                            <template id="template-td-tareo">
-                                                <tr id="registro-tareo">
-                                                    <td>
-                                                        <button id="btn-delete" class="btn btn-danger btn-xs btn-delete">
-                                                            <i class="demo-pli-cross"></i>
-                                                        </button>
-                                                        <button id="btn-edit" class="btn btn-warning btn-xs btn-edit" data-target="#modal-edit"  data-toggle="modal">
-                                                        <i class="ti-pencil-alt"></i></button>
-                                                    </td>
-                                                    <td id="codigo">..</td>
-                                                    <td id="nombreCompleto">Boudreaux</td>
-                                                    <td id="cargo">Traffic Court Referee</td>
-                                                    <td id="dia">22 Jun 1972</td>
-                                                    <!--<td id="actividad">22 Jun 1972</td>-->
-                                                    <td id="turno">Isidra</td>
-                                                    <td id="ht">Boudreaux</td>
-                                                    <td id="htSev_ad">Isidra</td>
-                                                    <td id="costos">Boudreaux</td>
-                                                    <td id="labor">Traffic Court Referee</td>
-                                                    <td id="nivel">22 Jun 1972</td>
-                                                    <td id="hE">22 Jun 1972</td>
-                                                    <td id="heSerAd">Isidra</td>
-                                                    <td id="cCostosHe">Boudreaux</td>
-                                                    <td id="VB">Traffic Court Referee</td>
-                                                    <td id="guardia">22 Jun 1972</td>
-                                                    <td id="codActividad">22 Jun 1972</td>
-                                                    <td id="Area">..</td>
-                                                </tr>
-                                                </template>
-                                            <tfoot>
-                                              <!-- Paginación -->
-                                              <nav aria-label="Page navigation example">
-                                                    <ul class="pagination" id="pagination">
-                                                        <!--<li class="disabled"><a class="page-link" href="#">Anterior</a></li>-->
-
-                                                        <!--
-                                                            <li class="disabled"><span>...</span></li>
-                                                            <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
-                                                        -->
-                                                    </ul>
-                                                    <template id="template-pagination">
-                                                        <li id="itemPage" class="page-item"><a class="page-link" href="#">2</a></li>
-                                                    </template>
-                                                </nav>
-                                            </tfoot>
-                                        </table>
+					            </div> -->
+                                <!-- Foo Table - Row Toggler -->
+                                <!--===================================================-->
+                                <div class="panel-body">
+                                        <fieldset>
+                                            <legend>Operación Mina</legend>
+                                            <div class="table-responsive-md">
+                                                <table class="table display nowrap table-striped table-bordered dt-responsive " style="width:100%" id="table-operacion-mina">
+                                                    <thead>
+                                                        <tr>
+                                                            <th width="2%"><input type="checkbox"/></th>
+                                                            <th>Fecha registro</th>
+                                                            <th>Turno</th>
+                                                            <th>Guardia</th>
+                                                            <th>n° Vale</th>
+                                                            <th>Actividad</th>
+                                                            <th>L</th>
+                                                            <th>Lpv</th>
+                                                            <th>Stto</th>
+                                                            <th>Serv</th>
+                                                            <th>Comentario</th>
+                                                            <th>Tipo Avance</th>
+                                                            <th>Avance Mt</th>
+                                                            <th>Avance Mt3</th>
+                                                            <th>Int Disparo</th>
+                                                            <th>Resuelto</th>
+                                                            <th>Manual Cantidad</th>
+                                                            <th>Pala</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Winche</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Mineral</th>
+                                                            <th>Desmonte</th>
+                                                            <th class="all">Operaciónes</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th width="2%"><input type="checkbox"/></th>
+                                                            <th>Fecha registro</th>
+                                                            <th>Turno</th>
+                                                            <th>Guardia</th>
+                                                            <th>n° Vale</th>
+                                                            <th>Actividad</th>
+                                                            <th>L</th>
+                                                            <th>Lpv</th>
+                                                            <th>Stto</th>
+                                                            <th>Serv</th>
+                                                            <th>Comentario</th>
+                                                            <th>Tipo Avance</th>
+                                                            <th>Avance Mt</th>
+                                                            <th>Avance Mt3</th>
+                                                            <th>Int Disparo</th>
+                                                            <th>Resuelto</th>
+                                                            <th>Manual Cantidad</th>
+                                                            <th>Pala</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Winche</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Mineral</th>
+                                                            <th>Desmonte</th>
+                                                            <th class="all">Operaciónes</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </fieldset>
                                     </div>
                                     <!--===================================================-->
                                     <!-- End Foo Table - Row Toggler -->
-					            </div>
+
 					        </div>
 					    </div>
                     </div>
@@ -476,7 +431,7 @@
     </div>
     <!--Default Bootstrap Modal-->
     <!--===================================================-->
-    <div class="modal fade" id="demo-lg-modal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+    <div class="modal fade" id="modal-insert" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
         <div id="inserForm" class="modal-dialog" style="margin: 1rem;">
             <div class="modal-content">
                 <!--Modal header-->
@@ -1456,6 +1411,8 @@
     <!--=================================================-->
 
     <?php echo $template_javascript; ?>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!--Icons [ SAMPLE ]-->
     <script src=".\..\..\..\js\demo\icons.js"></script>

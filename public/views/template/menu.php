@@ -54,7 +54,7 @@
                     <!--Mega dropdown-->
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                     <li class="">
-                        <a href="#" class="">
+                        <a href="./../../../controllers/CtrlSalir.php" class="">
                             <i class="fa fa-sign-out"></i> Salir
                         </a>
                     </li>

@@ -141,6 +141,10 @@ document.addEventListener('DOMContentLoaded', e => {
                 },
             }
         },
+        rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+        responsive: true,
         pagingType: "full_numbers",
         // Indica la inicial a mostrar
         //pageLength: 5,
@@ -190,7 +194,7 @@ document.addEventListener('DOMContentLoaded', e => {
                         extend: 'excel',
                         text: '<i class="btn-label fa fa-file-excel-o"></i> Excel',
                         titleAttr: 'Excel',
-                        title: 'Consumo_Madera_excel',
+                        title: 'Labor',
                         className: 'btn-labeled',
                         exportOptions: {
                             columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]

@@ -103,7 +103,7 @@ if($_POST){
                     $rptSql3 = 'VACIO';
                 }             
                 break;
-            case "editar":
+            case "edit":
                 $formRequest = $arrayForm['datos'];
                 $datoidLabor = $formRequest['id'];
                 $datoZona = $formRequest['zona'];
@@ -112,8 +112,8 @@ if($_POST){
                 $datoLabor = $formRequest['labor'];
                 //$rptSql = $table->edit($datoidLabor, $datoZona, $datoCCosto, $datoNivel, $datoLabor);
                 break;
-            case "eliminar":
-                $idEliminar = $arrayForm['datos'];
+            case "delet":
+                $idEliminar = $arrayForm['id'];
                 $rptSql = $tableManager->delete($idEliminar);
                 break;
         }

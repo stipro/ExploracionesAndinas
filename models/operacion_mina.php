@@ -35,10 +35,10 @@ class operacionMina extends Conexion
     }*/
     
     //OBTIENE TODA LA TABLA
-    public function getAll(int $empezarDesde, int $filasPage): array
+    public function getAll(): array
     {
         //$query = "SELECT * FROM tareos LIMIT {$empezarDesde}, {$filasPage}";
-        $query = "SELECT * FROM tvalexplosivos LEFT JOIN colaboradores ON tareos.id_colaborador = colaboradores.id_colaborador LEFT JOIN labores ON tareos.id_labor = labores.id_labor LIMIT {$empezarDesde}, {$filasPage}";
+        $query = "SELECT oper_mine.id_operacionMina, oper_mine.operacionMina_registro, oper_mine.operacionMina_turno, oper_mine.operacionMina_guardia, oper_mine.operacionMina_nVale, oper_mine.operacionMina_actividad, oper_mine.operacionMina_l, oper_mine.operacionMina_lpv, oper_mine.operacionMina_stto, oper_mine.operacionMina_serv, oper_mine.operacionMina_comentario, oper_mine.operacionMina_tipAvance, oper_mine.operacionMina_avanceMt, oper_mine.operacionMina_avanceMt3, oper_mine.operacionMina_intDisparo, oper_mine.operacionMina_Resuelto, oper_mine.operacionMina_manualCantidad, oper_mine.operacionMina_palaNombre, oper_mine.operacionMina_palaCantidad, oper_mine.operacionMina_wincheNombre, oper_mine.operacionMina_wincheCantidad, oper_mine.operacionMina_mineralCantidad, oper_mine.operacionMina_desmonCantidad FROM operacion_mina AS oper_mine";
         return $this->ConsultaSimple($query);
     }
     public function insert($dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7, $dato8, $dato9, $dato10, $dato11, $dato12, $dato13, $dato14, $dato15, $dato16, $dato17, $dato18, $dato19, $dato20, $dato21, $dato22, $dato23)
@@ -161,7 +161,7 @@ class operacionMina extends Conexion
     {
         //error_reporting(0);
         try {
-            $query  = "DELETE FROM tareos WHERE id_tareo=:id;";
+            $query  = "DELETE FROM operacion_mina WHERE id_operacionMina=:id;";
             $result = $this->db->prepare($query);
             $result->execute(array(':id' => $id));
             return 'Se elimino correctamente.';

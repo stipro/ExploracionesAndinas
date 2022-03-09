@@ -41,11 +41,7 @@
     </script>
     <!--STYLESHEET-->
     <!--=================================================-->
-    <style>
-        .modal-content{
-            border: 1px solid rgba(0,0,0,.2) !important;
-        }
-    </style>
+    
     <?php echo $template_header_css; ?>
 
     <!--Icono Importar [ OPTIONAL ]
@@ -71,7 +67,12 @@
 
     <!--Ion Icons [ OPTIONAL ]-->
     <link href=".\..\..\..\plugins\ionicons\css\ionicons.min.css" rel="stylesheet">
-
+    <style>
+        .modal-content{
+            border: 1px solid rgba(0,0,0,.2) !important;
+        }
+        div.container { max-width: 1200px !important}
+    </style>
     
     <!--=================================================
 
@@ -157,37 +158,37 @@
                                             <fieldset>
                                                 <legend>Labores</legend>
                                                 <div class="table-responsive-md"> <!-- class  table-hover display-->
-                                                    <table class="table table-striped table-bordered dt-responsive nowrap display" style="width:100%" cellspacing="0" width="100%" id="table-labores">
+                                                    <table class="table nowrap display table-striped table-bordered dt-responsive " style="width:100%" id="table-labores">
                                                         <thead class="thead-dark">
                                                             <tr>
-                                                                <th scope="col">C. Costos</th>
-                                                                <th scope="col">Labor</th>
-                                                                <th scope="col">Etapa L.</th>
-                                                                <th scope="col">Prefijo L.</th>
-                                                                <th scope="col">Tipo L.</th>
-                                                                <th scope="col">Zona</th>
-                                                                <th scope="col">Letra Z</th>
-                                                                <th scope="col">Tipo</th>
-                                                                <th scope="col">Veta</th>
-                                                                <th scope="col">Nivel</th>
-                                                                <th scope="col">M. Explotacion</th>
-                                                                <th scope="col">Sección</th>
-                                                                <th scope="col">Tipo de EQ</th>
-                                                                <th scope="col">Tipo de Roca</th>
-                                                                <th scope="col">Unidad Minera</th>
-                                                                <th scope="col">Acción</th>
+                                                                <th>C. Costos</th>
+                                                                <th>Labor</th>
+                                                                <th>Etapa L.</th>
+                                                                <th>Prefijo L.</th>
+                                                                <th>Tipo L.</th>
+                                                                <th>Zona</th>
+                                                                <th>Letra Z</th>
+                                                                <th>Tipo</th>
+                                                                <th>Veta</th>
+                                                                <th>Nivel</th>
+                                                                <th>M. Explotacion</th>
+                                                                <th>Sección</th>
+                                                                <th>Tipo de EQ</th>
+                                                                <th>Tipo de Roca</th>
+                                                                <th>Unidad Minera</th>
+                                                                <th>Acción</th>
                                                             </tr>
                                                         </thead>
                                                         <tfoot>
                                                             <tr>
                                                                 <th>C. Costos</th>
                                                                 <th>Labor</th>
-                                                                <th scope="col">Etapa L.</th>
-                                                                <th scope="col">Prefijo L.</th>
-                                                                <th scope="col">Tipo L.</th>
-                                                                <th scope="col">Zona</th>
-                                                                <th scope="col">Letra Z</th>
-                                                                <th scope="col">Tipo</th>
+                                                                <th>Etapa L.</th>
+                                                                <th>Prefijo L.</th>
+                                                                <th>Tipo L.</th>
+                                                                <th>Zona</th>
+                                                                <th>Letra Z</th>
+                                                                <th>Tipo</th>
                                                                 <th>Veta</th>
                                                                 <th>Nivel</th>
                                                                 <th>M. Explotacion</th>
@@ -291,7 +292,7 @@
 
     <!--Insertar Bootstrap Modal Principal-->
     <!--===================================================-->
-    <div id="modal-insert" class="modal fade" role="dialog" style="overflow-y: scroll;"> 
+    <div class="modal fade" id="modal-insert" role="dialog" style="overflow-y: scroll;"> 
     	<div class="modal-dialog modal-lg">
     		<div class="modal-content">
     			<div class="modal-header">
