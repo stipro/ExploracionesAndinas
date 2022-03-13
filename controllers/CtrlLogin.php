@@ -18,6 +18,7 @@ if($_POST){
         //GUARDAMOS VALOR EN SU VARIABLE
         $user = $arraydos['usuario'];
         $password = $arraydos['clave'];
+        $ip = $arraydos['ip'];
 
         // VALIDAMOS CONTENIDO
         if(isset($user) && isset($password)){

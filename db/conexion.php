@@ -1,5 +1,5 @@
 <?php
-declare (strict_types = 1);
+//declare (strict_types = 1);
 class Conexion
 {
     protected $db;
@@ -11,10 +11,10 @@ class Conexion
     {
         try
         {
-
             $url_actual = $this->get_url();
             $separador = "/"; // Usar una cadena
             $ubicaciones = explode($separador, $url_actual);
+            //var_dump($ubicaciones);
             if($ubicaciones[2] == 'localhost'){
 
                 $HOST   = '127.0.0.1';
@@ -25,21 +25,24 @@ class Conexion
                 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $con->exec('SET CHARACTER SET UTF8');
             }
-            elseif($a == $b){
-
-            }
-            else{
-
-            }
-            /* else{
+            elseif($ubicaciones[2] == '179.43.97.31'){
                 $HOST   = '127.0.0.1';
                 $DBNAME = 'explore_andina';
-                $USER   = 'roo1t';
+                $USER   = 'root';
                 $PASS   = 'misterio1';
                 $con    = new PDO("mysql:host={$HOST}; dbname={$DBNAME}", $USER, $PASS);
                 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $con->exec('SET CHARACTER SET UTF8');
-            } */
+            }
+            else{
+                $HOST   = '127.0.0.1';
+                $DBNAME = 'explore_andina';
+                $USER   = 'root';
+                $PASS   = '';
+                $con    = new PDO("mysql:host={$HOST}; dbname={$DBNAME}", $USER, $PASS);
+                $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $con->exec('SET CHARACTER SET UTF8');
+            }
             return $con;
         }
         catch (PDOException $e)
