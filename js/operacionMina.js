@@ -623,7 +623,7 @@ const paintZonas = (data) => {
     const templateSelect = document.querySelector("#template-opt-cod_zona").content;
     const fragment = document.createDocumentFragment();
     arraySelect.forEach(item => {
-        templateSelect.querySelector('#opt-codzona').value = item.letra;
+        templateSelect.querySelector('#opt-codzona').value = item.labZona_letra;
         templateSelect.querySelector('#opt-codzona').dataset.idCodzona = item.id_zona;
         const clone = templateSelect.cloneNode(true);
         fragment.appendChild(clone)
@@ -690,7 +690,7 @@ const paintCodLabor = (data) => {
 const paintZonaLaborNivel = (data) => {
     arraySelect = data['sql'];
     arraySelect.forEach(item => {
-        iptinsertZona.value = item.nombre;
+        iptinsertZona.value = item.labZona_nombre;
         iptinsertLabor.value = item.labNombre_nombre;
         iptinsertNivel.value = item.lab_nivel;
     });
@@ -1201,7 +1201,7 @@ $(document).ready(function() {
                 action: function(e, dt, node, conf) {
                     var selectFoorm_codZona = {
                         "accion": "getcolumnAll",
-                        "column": "letra"
+                        "column": "labZona_letra"
                     }
                     fetchCodzona(selectFoorm_codZona);
                     var selectFoorm_colaborador = {
@@ -1323,37 +1323,37 @@ $(document).ready(function() {
     $('#table-operacion-mina tbody').on('click', '.btn-tableMaster-detalle', function() {
         var data = tableMaster.row($(this).parents('tr')).data();
         alert("El id: " + data['id_operacionMina']);
+
     });
 
     $('#table-operacion-mina tbody').on('click', '.btn-tableMaster-edit', function() {
         var data = tableMaster.row($(this).parents('tr')).data();
-        alert("El id: " + data['id_operacionMina']);
-
+        //alert("El id: " + data['id_operacionMina']);
+        $("#modal-edit").modal("show");
     });
 
     $('#table-operacion-mina tbody').on('click', '.btn-tableMaster-delet', function() {
         var data = tableMaster.row($(this).parents('tr')).data();
         swal({
-                title: "Estas seguro?",
-                text: "Una vez eliminado, no podrá recuperarlo!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    var form_request = {
-                        "accion": "delet",
-                        "id": data['id_operacionMina']
-                    }
-                    request(form_request);
-                    swal("¡La información ha sido eliminado!", {
-                        icon: "success",
-                    });
-                } else {
-                    swal("¡La información está a salvo!");
+            title: "Estas seguro?",
+            text: "Una vez eliminado, no podrá recuperarlo!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                var form_request = {
+                    "accion": "delet",
+                    "id": data['id_operacionMina']
                 }
-            });
+                request(form_request);
+                swal("¡La información ha sido eliminado!", {
+                    icon: "success",
+                });
+            } else {
+                swal("¡La información está a salvo!");
+            }
+        });
     });
 });
 const request = async (request) => {

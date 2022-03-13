@@ -382,7 +382,7 @@
                                     <div class="table-responsive-md">
                                         <fieldset>
                                             <legend>Detalle</legend>
-                                            <table id="table-details-insert" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" cellspacing="0" >
+                                            <table id="table-details-insert" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" cellspacing="0">
                                                 <thead class="thead-dark">
                                                     <tr>
                                                         <th scope="col" width="2%"><input type="checkbox"/></th>

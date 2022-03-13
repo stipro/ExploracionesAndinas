@@ -69,8 +69,8 @@
     <!--Chosen [ OPTIONAL ]-->
     <link href=".\..\..\..\plugins\chosen\chosen.min.css" rel="stylesheet">
 
-    <!--Nifty Stylesheet [ REQUIRED ]-->
-    <link href=".\..\..\..\css\valeExplosivos.css" rel="stylesheet">
+    <!--Nifty Stylesheet [ REQUIRED ]
+    <link href=".\..\..\..\css\valeExplosivos.css" rel="stylesheet">-->
 
     <!--Font Awesome [ OPTIONAL ]-->
     <link href=".\..\..\..\plugins\font-awesome\css\font-awesome.min.css" rel="stylesheet">
@@ -157,126 +157,30 @@
                 <div id="page-content">
 					<div class="row">
 					    <div class="col-xs-12">
-					        <div class="panel">
-					            <div class="panel-heading">
-					                <h3 class="panel-title">Extracción Mina</h3>
-					            </div>
-					
+					        <div class="panel">					
 					            <div class="panel-body">
-					                <div class="pad-btm form-inline">
-					                    <div class="row">
-					                        <div class="col-sm-6 table-toolbar-left">
-					                            <button id="btn-Agregar" data-target="#demo-lg-modal" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add icon-fw"></i>Agregar</button>
-					                            <a href="./../../excelGenerator.php?table=view_vales_explosivo" class="btn btn-default" download="" title="Descargar Archivo">
-                                                    <i class="fa fa-file-excel-o icon-lg"></i>
-                                                </a>
-					                            <div class="btn-group">
-					                                <button class="btn btn-default"><i class="demo-pli-information icon-lg"></i></button>
-					                                <button class="btn btn-default"><i class="demo-pli-trash icon-lg"></i></button>
-					                            </div>
-					                        </div>
-					                        <div class="col-sm-6 table-toolbar-right">
-                                                <div class="btn-group">
-                                                        <div class="input-group">
-                                                            <input id="ipt-Buscar" type="text" placeholder="Busqueda por columna" class="form-control">
-                                                            <span class="input-group-btn">
-                                                                <button id="btn-Buscar"class="btn btn-primary" type="button">Buscar</button>
-                                                            </span>
-                                                        </div>			
-                                                        <!--===================================================-->
-                                                        <select data-placeholder="Elija Columna" id="demo-chosen-select" tabindex="2">
-                                                            <option value="codigo">codigo</option>
-                                                            <option value="nombre">nombre</option>
-                                                            <option value="cargo">cargo</option>
-                                                        </select>
-                                                    </div>
-					                        </div>
-					                    </div>
-					                </div>
-                                    <!-- Foo Table - Row Toggler -->
-                                    <!--===================================================-->
-                                    <div class="panel-body table-responsive">
-                                        <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="5">
-                                            <thead>
-                                                <tr>
-                                                    <th data-sort-ignore="true" class="min-width"></th>
-                                                    <th data-sort-initial="true" data-toggle="true">Usuario</th>
-                                                    <th>Fecha</th>
-                                                    <th data-hide="phone, tablet">Zona</th>
-                                                    <th data-hide="phone, tablet">N° Vale</th>
-                                                    <th data-hide="phone, tablet">Turno</th>
-                                                    <th data-hide="phone, tablet">preImpreso</th>
-                                                    <th data-hide="phone, tablet">Labor</th>
-                                                    <th data-hide="phone, tablet">tip Disparo</th>
-                                                    <th data-hide="phone, tablet">Colaborador</th>
-                                                    <th data-hide="phone, tablet">TipEn</th>
-                                                    <th data-hide="phone, tablet">Barra</th>
-                                                    <th data-hide="phone, tablet">Lgt</th>
-                                                    <th data-hide="phone, tablet">n° Taladro</th>
-                                                    <th data-hide="phone, tablet">Taladro Vacio</th>
-                                                    <th data-hide="phone, tablet">Pie Perforado</th>
-                                                    <th data-hide="phone, tablet">n° Maquina</th>
-                                                    <th data-hide="phone, tablet">Din Semigelationsa 65</th>
-                                                    <th data-hide="phone, tablet">Din Semigelationsa Calculado</th>
-                                                    <th data-hide="phone, tablet">Din Pulverulenta 65</th>
-                                                    <th data-hide="phone, tablet">Din Pulverulenta 65 Calculado</th>
-                                                    <th data-hide="phone, tablet">Emulnor 1000</th>
-                                                    <th data-hide="phone, tablet">Emulsion Emulnor 3000 I"X7"</th>
-                                                    <th data-hide="phone, tablet">Mecha Rapida Z18</th>
-                                                    <th data-hide="phone, tablet">Mecha</th>
-                                                    <th data-hide="phone, tablet">Fulminante N°8</th>
-                                                    <th data-hide="phone, tablet">Conector para Mecha</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="tbody-tareo">
-
-                                            </tbody>
-                                            <template id="template-td-tareo">
-                                                <tr id="registro-tareo">
-                                                    <td>
-                                                        <button id="btn-delete" class="btn btn-danger btn-xs btn-delete">
-                                                            <i class="demo-pli-cross"></i>
-                                                        </button>
-                                                        <button id="btn-edit" class="btn btn-warning btn-xs btn-edit" data-target="#modal-edit"  data-toggle="modal">
-                                                        <i class="ti-pencil-alt"></i></button>
-                                                    </td>
-                                                    <td id="codigo">..</td>
-                                                    <td id="nombreCompleto"></td>
-                                                    <td id="cargo"></td>
-                                                    <td id="dia"></td>
-                                                    <!--<td id="actividad">22 Jun 1972</td>-->
-                                                    <td id="turno"></td>
-                                                    <td id="ht"></td>
-                                                    <td id="htSev_ad"></td>
-                                                    <td id="costos"></td>
-                                                    <td id="labor"></td>
-                                                    <td id="nivel"></td>
-                                                    <td id="hE"></td>
-                                                    <td id="heSerAd"></td>
-                                                    <td id="cCostosHe"></td>
-                                                    <td id="VB"></td>
-                                                    <td id="guardia"></td>
-                                                    <td id="codActividad"></td>
-                                                    <td id="Area">..</td>
-                                                </tr>
-                                                </template>
-                                            <tfoot>
-                                              <!-- Paginación -->
-                                              <nav aria-label="Page navigation example">
-                                                    <ul class="pagination" id="pagination">
-                                                        <!--<li class="disabled"><a class="page-link" href="#">Anterior</a></li>-->
-
-                                                        <!--
-                                                            <li class="disabled"><span>...</span></li>
-                                                            <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
-                                                        -->
-                                                    </ul>
-                                                    <template id="template-pagination">
-                                                        <li id="itemPage" class="page-item"><a class="page-link" href="#">2</a></li>
-                                                    </template>
-                                                </nav>
-                                            </tfoot>
+                                    <fieldset>
+                                        <legend><h3 class="panel-title">Extracción Mina</h3></legend>
+                                        <div class="panel-body table-responsive-md">
+                                            <table id="table-master" class="table table-bordered table-hover toggle-circle" data-page-size="5">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-sort-ignore="true" class="min-width"></th>
+                                                        <th data-sort-initial="true" data-toggle="true">Fecha Extracción</th>
+                                                        <th>Unid. Empresa</th>
+                                                        <th data-hide="phone, tablet">Zona</th>
+                                                        <th data-hide="phone, tablet">Extractor</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                </tfoot>
+                                                <tbody id="tbody-tareo">
+                                                </tbody>
                                         </table>
+                                        </div>
+                                    </fieldset>
+                                    <div class="panel-body table-responsive">
+                                        
                                     </div>
                                     <!--===================================================-->
                                     <!-- End Foo Table - Row Toggler -->
@@ -332,7 +236,7 @@
     <!--Editar Bootstrap Modal-->
     <!--===================================================-->
     <div class="modal fade" id="modal-edit" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
 
                 <!--Modal header-->
@@ -482,8 +386,8 @@
     <!--End Editar Bootstrap Modal-->
     <!--Insertar Bootstrap Modal-->
     <!--===================================================-->
-    <div class="modal fade" id="demo-lg-modal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-        <div id="inserForm"  class="modal-dialog" style="margin: 1rem;">
+    <div class="modal fade" id="modal-insert" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+        <div id="inserForm"  class="modal-dialog modal-xl" style="margin: 1rem;">
             <div class="modal-content">
                 <!--Modal header-->
                 <div class="modal-header">                    
@@ -495,7 +399,7 @@
                     <div id="alert-form-insert">
                     </div>
                     <div class="row">
-                        <p class="bord-btm pad-ver text-main text-bold"><!--Titulo Fragmento--></p>
+                        <!-- <p class="bord-btm pad-ver text-main text-bold"></p> -->
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
@@ -673,8 +577,8 @@
                                 
                             </div>
                             <div class="row">
-                                <div class="table-responsive table-hover">
-                                    <table class="table" id="detalleExtraccion">
+                                <div class="table-responsive">
+                                    <table class="table display nowrap table-striped table-bordered dt-responsive" style="width:100%" id="detalleExtraccion">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Empresa Esp.</th>
@@ -691,72 +595,43 @@
                                                 <th scope="col">Equipo Limpieza</th>
                                                 <th scope="col">Fec. Creación</th>
                                                 <th scope="col">N° Cole.</th>
-
                                             </tr>
                                         </thead>
-                                        <tbody id="detalleExtraccion-body">
+                                        <tbody>
                                         </tbody>
                                     </table>
-                                    <template id="template-detalleExtraccion">
-                                        <tr>
-                                            <td id="template-tds-uni_empresa"></td>
-                                            <td id="template-tds-tolva"></td>
-                                            <td id="template-tds-codigo"></td>
-                                            <td id="template-tds-labor"></td>
-                                            <td id="template-tds-zona"></td>
-                                            <td id="template-tds-nivel"></td>
-                                            <td id="template-tds-veta"></td>
-                                        </tr>
-                                    </template>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-10">
                             <p class="bord-btm pad-ver text-main text-bold">Detalle de Material Extraido:</p>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="table-responsive table-hover">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Tipo Mat</th>
-                                                    <th scope="col">Cant. Carros</th>
-                                                    <th scope="col">Cod Tolva</th>
-                                                    <th scope="col">Nombre Tolva Destino</th>
-                                                    <th scope="col">Tipo</th>
-                                                    <th scope="col">Extractor</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th>1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                    <th>1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                    <th>1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                            <div class="table-responsive">
+                                <table class="table display nowrap table-striped table-bordered dt-responsive" style="width: 100%" cellspacing="0" id="detalleMaterialExtraido">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Tipo Mat</th>
+                                            <th scope="col">Cant. Carros</th>
+                                            <th scope="col">Cod Tolva</th>
+                                            <th scope="col">Nombre Tolva Destino</th>
+                                            <th scope="col">Tipo</th>
+                                            <th scope="col">Extractor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-
+                        <div class="col-md-2">
+                            <div class="btn-group-vertical">
+                                <button class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button>
+                                <button class="btn btn-default"><i class="fa fa-plus"></i></button>
+                                <button class="btn btn-default"><i class="fa fa-minus"></i></button>
+                            </div>
+                            <button class="btn btn-default"><i class="fa fa-lock"></i>Cerrar Digitación Diaria</button>
+                        </div>
                     </div>
                 </div>
                     <!--Modal footer-->
@@ -826,6 +701,170 @@
 
     <script>
         $('.chosenTurno').chosen();
+        var idiomaEs = {
+            "decimal": "",
+            "emptyTable": "No hay registro",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ Datos",
+            "infoEmpty": "Mostrando 0 to 0 of 0 Datos",
+            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ Datos",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Busqueda General :",
+            "zeroRecords": "Sin resultados encontrados",
+            "paginate": {
+                "first": "Primero",
+                "last": "Ultimo",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+            "buttons": {
+                "copy": "Copiar",
+                "colvis": "Visibilidad",
+                "collection": "Colección",
+                "colvisRestore": "Restaurar visibilidad",
+                "print": "Imprimir",
+                "pageLength": {
+                    "-1": "Mostrar todas las filas",
+                    "_": "Mostrar %d filas",
+                },
+            }
+        };
+        $(document).ready(function() {
+            $('#table-master').DataTable({
+                language: idiomaEs,
+                scrollY:       "200px",
+                scrollCollapse: true,
+                dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+                buttons: [{
+                    text: '<i class="btn-label fa-solid fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>',
+                    action: function(e, dt, node, conf) {
+                        $("#modal-insert").modal("show");
+
+                    },
+                    className: 'btn btn-success btn-labeled', //Primary class for all buttons
+                    attr: {
+                        title: 'Agregar nuevo labor',
+                        id: 'btn-insert'
+                    }
+                },
+                {
+                    text: '<i class="btn-label fa fa-refresh"></i><span class="hidden-xs">Actualizar</span>',
+                    action: function(e, dt, node, conf) {
+                        let form_request1 = {
+                            "accion": "table",
+                        }
+                        fetchData(form_request1);
+                    },
+                    className: 'btn btn-info btn-labeled' //Primary class for all buttons
+                },
+                {
+                    extend: 'collection',
+                    text: '<i class="btn-label fa fa-download"></i><span class="hidden-xs"> Exportar</span>',
+                    className: 'btn-labeled',
+                    buttons: [{
+                            extend: 'excel',
+                            text: '<i class="btn-label fa fa-file-excel-o"></i> Excel',
+                            titleAttr: 'Excel',
+                            title: '',
+                            className: 'btn-labeled',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                            }
+                        },
+                        {
+                            extend: 'csv',
+                            text: '<i class="btn-label fa fa-file-csv"></i> CSV',
+                            titleAttr: 'CSV',
+                            className: 'btn-labeled',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                            }
+                        },
+                        {
+                            extend: 'pdf',
+                            text: '<i class="btn-label fa fa-file-pdf-o"></i> PDF',
+                            titleAttr: 'PDF',
+                            className: 'btn-labeled',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                            }
+                        },
+                    ]
+                },
+                {
+                    text: '<i class="btn-label fa fa-file-excel-o"></i><span class="hidden-xs"> Excel</span>',
+                    className: 'btn btn-primary', //Primary class for all buttons
+                    tag: 'a',
+                    action: function(e, dt, node, config) {
+                        //This will send the page to the location specified
+                        window.location.href = './../../excelGenerator.php?table=view_vales_explosivo';
+                    },
+                    init: function(dt, node, config) {
+                        $(node).attr('href', './../../excelGenerator.php?table=view_vales_explosivo');
+                        $(node).attr('download', '');
+                        $(node).attr('title', 'Descargar Archivo');
+                    }
+                },
+                {
+                    text: '<i class="btn-label fa fa-upload"></i><span class="hidden-xs">Importar</span>',
+                    action: function(e, dt, node, conf) {
+                        $("#modal-import").modal("show");
+                    },
+                    className: 'btn btn-primary btn-labeled' //Primary class for all buttons
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="btn-label fa fa-print"></i><span class="hidden-xs">print</span>',
+                    titleAttr: 'PDF',
+                    className: 'btn-labeled', //Primary class for all buttons
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                    }
+                },
+                {
+                    extend: 'colvis',
+                    text: '<i class="btn-label fa fa-eye"></i><span class="hidden-xs">Mostrar / Ocultar</span>',
+                    className: 'btn-labeled' //Primary class for all buttons
+                },
+                'refresh',
+
+            ],
+            });
+            $('#detalleExtraccion').DataTable({
+                language: idiomaEs,
+                /* scrollY:       "200px",
+                scrollCollapse: true, */
+                // boton de cantidad a visualizar //
+                lengthChange: false,
+                filter: false,
+                column: [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                ],
+            });
+            $('#detalleMaterialExtraido').DataTable({
+                language: idiomaEs,
+                /* scrollY:       "200px",
+                scrollCollapse: true, */
+                lengthChange: false,
+                filter: false,
+            });
+        });
     </script>
 
 </body>

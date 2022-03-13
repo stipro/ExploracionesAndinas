@@ -1,12 +1,12 @@
 <?php
-    $dateServer = date('Y-m-d');
-    $mindate = date("Y-m-d",strtotime($dateServer."- 2 days"));
     session_start();
     if (!isset($_SESSION["username"])) {
         //echo 'No se inicio session ';
         
         header("location:../index.php");
     } else {
+        $dateServer = date('Y-m-d');
+        $mindate = date("Y-m-d",strtotime($dateServer."- 2 days"));
         $validacionSession =  $_SESSION["name"] ? $_SESSION["name"] : 'No se inicio, o ocurrio un error';
         $idUsuario = $_SESSION["id"];
         $actual_url = __FILE__;
@@ -33,7 +33,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title><?php echo $nameMenu .' | '. NOMBRE_SISTEMA ?></title>
+    <title><?php echo $name_menu .' | '. NOMBRE_SISTEMA ?></title>
     <meta name="description" content="sistema para Mina">
     <meta name="keywords" content="EA, Exploraciones Andinas">
     <meta name="author" content="Frank Sitft">
@@ -124,247 +124,6 @@
                     </div>
 
                     <hr class="new-section-md bord-no">
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                            <!-- Line Chart -->
-                            <!---------------------------------->
-                            <!--
-                            <div class="panel">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Ventas Recientes</h3>
-                                </div>
-                                <div class="pad-all">
-                                    <div id="demo-morris-line-legend" class="text-center"></div>
-                                    <div id="demo-morris-line" style="height:268px"></div>
-                                </div>
-                            </div>-->
-                            <!---------------------------------->
-
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="panel panel-warning panel-colorful media middle pad-all">
-                                        <div class="media-left">
-                                            <div class="pad-hor">
-                                                <i class="demo-pli-file-word icon-3x"></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <p class="text-2x mar-no text-semibold">241</p>
-                                            <p class="mar-no">Documentos</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="panel panel-info panel-colorful media middle pad-all">
-                                        <div class="media-left">
-                                            <div class="pad-hor">
-                                                <i class="demo-pli-file-zip icon-3x"></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <p class="text-2x mar-no text-semibold">241</p>
-                                            <p class="mar-no">Archivos comprimidos</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="panel panel-mint panel-colorful media middle pad-all">
-                                        <div class="media-left">
-                                            <div class="pad-hor">
-                                                <i class="demo-pli-camera-2 icon-3x"></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <p class="text-2x mar-no text-semibold">241</p>
-                                            <p class="mar-no">Fotos</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="panel panel-purple panel-colorful media middle pad-all">
-                                        <div class="media-left">
-                                            <div class="pad-hor">
-                                                <i class="demo-pli-video icon-3x"></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <p class="text-2x mar-no text-semibold">241</p>
-                                            <p class="mar-no">Videos</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="panel">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title">Noticias</h3>
-                                        </div>
-                                        <div class="nano" style="height:360px">
-                                            <div class="nano-content">
-                                                <div class="panel-body bord-btm">
-                                                    <p class="text-bold text-main text-sm">#68464</p>
-                                                    <p class="pad-btm">Para lograr esto, sería necesario tener una gramática uniforme, pronunciación y palabras más comunes. </p>
-                                                    <a href="#" class="task-footer">
-                                                        <span class="box-inline">
-                                                            <label class="label label-warning">Solicitud de función</label>
-                                                            <label class="label label-danger">Bug</label>
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                                <div class="panel-body bord-btm">
-                                                    <p class="text-bold text-main text-sm">#45684</p>
-                                                    <p class="pad-btm">Un pequeño río llamado Duden fluye por su lugar y lo abastece con los accesorios necesarios. Es un país paradisíaco, en el que te vuelan a la boca trozos asados ​​de frases.</p>
-                                                    <a href="#" class="task-footer">
-                                                        <span class="box-inline">
-                                                            <span class="pad-rgt"><i class="demo-pli-speech-bubble-7"></i> 45</span>
-                                                            <span class="pad-rgt"><i class="demo-pli-like"></i> 45</span>
-                                                        </span>
-                                                        <span class="text-sm"><i class="demo-pli-clock icon-fw text-main"></i>9:25</span>
-                                                    </a>
-                                                </div>
-                                                <div class="panel-body bord-btm">
-                                                    <p class="text-bold text-main text-sm">#84564</p>
-                                                    <div class="task-img">
-                                                        <img class="img-responsive" src=".\..\..\..\img\shared-img-2.jpeg" alt="Image">
-                                                    </div>
-                                                    <p class="pad-btm">Nadie rechaza, disgusta o evita el placer en sí mismo, porque es placer.</p>
-                                                    <a href="#" class="task-footer">
-                                                        <span class="box-inline">
-                                                            <span class="pad-rgt"><i class="demo-pli-heart-2"></i> 54K</span>
-                                                        </span>
-                                                        <span class="text-sm"><i class="demo-pli-clock icon-fw text-main"></i>03:08</span>
-                                                    </a>
-                                                </div>
-                                                <div class="panel-body bord-btm">
-                                                    <p class="text-bold text-main text-sm">#23255</p>
-                                                    <p class="pad-btm">El nuevo lenguaje común será más simple y regular que los idiomas europeos existentes.</p>
-                                                    <a href="#" class="task-footer">
-                                                        <span class="box-inline">
-                                                            <img class="img-xs img-circle" src=".\..\..\..\img\profile-photos\8.png" alt="task-user">
-                                                            Brenda Fuller
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                                <div class="panel-body bord-btm">
-                                                    <p class="text-bold text-main text-sm">#34522</p>
-                                                    <p class="pad-btm">Para tomar un ejemplo trivial, ¿quién de nosotros emprende alguna vez un ejercicio físico laborioso, excepto para obtener alguna ventaja de él?</p>
-                                                    <a href="#" class="task-footer">
-                                                        <span class="text-sm"><i class="demo-pli-clock icon-fw text-main"></i>9:25</span>
-                                                    </a>
-                                                </div>
-                                                <div class="panel-body bord-btm">
-                                                    <p class="text-bold text-main text-sm">#45684</p>
-                                                    <p class="pad-btm">Un pequeño río llamado Duden fluye por su lugar y lo abastece con los accesorios necesarios. Es un país paradisíaco, en el que te vuelan a la boca trozos asados ​​de frases.</p>
-                                                    <a href="#" class="task-footer">
-                                                        <span class="box-inline">
-                                                            <span class="pad-rgt"><i class="demo-pli-speech-bubble-7"></i> 45</span>
-                                                            <span class="pad-rgt"><i class="demo-pli-like"></i> 45</span>
-                                                        </span>
-                                                        <span class="text-sm"><i class="demo-pli-clock icon-fw text-main"></i>9:25</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel-footer text-right">
-                                            <button class="btn btn-sm btn-Default">Carga más</button>
-                                            <button class="btn btn-sm btn-primary">Ver todo</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="panel">
-
-                                        <div class="panel">
-                                            <div class="panel-heading">
-                                                <h3 class="panel-title">Usuarios Registrado</h3>
-                                            </div>
-
-                                            <!--Bordered Table-->
-                                            <!--===================================================-->
-                                            <div class="panel-body">
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="text-center">#</th>
-                                                                <th>Usuarioz</th>
-                                                                <th>Fecha de orden</th>
-                                                                <th>Plan</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="text-center">34521</td>
-                                                                <td><a href="#" class="btn-link">Scott S. Calabrese</a></td>
-                                                                <td><span class="text-muted">Oct 10, 2017</span></td>
-                                                                <td><span class="label label-purple">Negocio</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-center">23422</td>
-                                                                <td><a href="#" class="btn-link">Teresa L. Doe</a></td>
-                                                                <td><span class="text-muted">Oct 22, 2017</span></td>
-                                                                <td><span class="label label-info">Personal</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-center">73455</td>
-                                                                <td><a href="#" class="btn-link">Steve N. Horton</a></td>
-                                                                <td><span class="text-muted">Oct 22, 2017</span></td>
-                                                                <td><span class="label label-warning">Juicio</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-center">34523</td>
-                                                                <td><a href="#" class="btn-link">Charles S Boyle</a></td>
-                                                                <td><span class="text-muted">Nov 03, 2017</span></td>
-                                                                <td><span class="label label-purple">Negocio</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-center">74634</td>
-                                                                <td><a href="#" class="btn-link">Lucy Doe</a></td>
-                                                                <td><span class="text-muted">Nov 05, 2017</span></td>
-                                                                <td><span class="label label-success">Especial</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-center">23423</td>
-                                                                <td><a href="#" class="btn-link">Michael Bunr</a></td>
-                                                                <td><span class="text-muted">Nov 07, 2017</span></td>
-                                                                <td><span class="label label-info">Personal</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-center">23422</td>
-                                                                <td><a href="#" class="btn-link">Teresa L. Doe</a></td>
-                                                                <td><span class="text-muted">Nov 10, 2017</span></td>
-                                                                <td><span class="label label-info">Personal</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-center">73455</td>
-                                                                <td><a href="#" class="btn-link">Steve N. Horton</a></td>
-                                                                <td><span class="text-muted">Nov 10, 2017</span></td>
-                                                                <td><span class="label label-danger">VIP</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-center">34521</td>
-                                                                <td><a href="#" class="btn-link">Scott S. Calabrese</a></td>
-                                                                <td><span class="text-muted">Nov 11, 2017</span></td>
-                                                                <td><span class="label label-purple">Negocio</span></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <!--===================================================-->
-                                            <!--End Bordered Table-->
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
 
 
 
@@ -437,6 +196,7 @@
         var template_card_modulos = '';
         const contenedor_modulos = document.querySelector("#content-modules");
         const pintarCards = (data) => {
+            console.log(data);
             var contadorLinea = 1;
             for (var mo = 0; mo < data.length; mo++) {
                 var nextcardModulo = data[mo]["nombre_modulo"];
@@ -450,7 +210,8 @@
                                     <p class="text-lg text-semibold mar-no text-main">' + data[mo]["nombre_modulo"] + '</p>\
                                     <p class="text-muted">' + data[mo]["descripcion_modulo"] + '</p>\
                                     <p class="text-sm">' + data[mo]["comentario_modulo"] + '</p>\
-                                    <button class="btn btn-primary mar-ver">Ir Modulo</button>\
+                                    <a href="./../' + data[mo]["link_modulo"] + ' "><button class="btn btn-primary mar-ver">Ir Modulo</button></a>\
+                                    \
                                 </div>\
                             </div>\
                         </div>';
@@ -465,7 +226,7 @@
                                     <p class="text-lg text-semibold mar-no text-main">' + data[mo]["nombre_modulo"] + '</p>\
                                     <p class="text-muted">' + data[mo]["descripcion_modulo"] + '</p>\
                                     <p class="text-sm">' + data[mo]["comentario_modulo"] + '</p>\
-                                    <button class="btn btn-primary mar-ver">Ir Modulo</button>\
+                                    <a href="./../' + data[mo]["link_modulo"] + ' "><button class="btn btn-primary mar-ver">Ir Modulo</button></a>\
                                 </div>\
                             </div>\
                         </div>';
@@ -479,7 +240,7 @@
                                     <p class="text-lg text-semibold mar-no text-main">' + data[mo]["nombre_modulo"] + '</p>\
                                     <p class="text-muted">' + data[mo]["descripcion_modulo"] + '</p>\
                                     <p class="text-sm">' + data[mo]["comentario_modulo"] + '</p>\
-                                    <button class="btn btn-primary mar-ver">Ir Modulo</button>\
+                                    <a href="./../' + data[mo]["link_modulo"] + ' "><button class="btn btn-primary mar-ver">Ir Modulo</button></a>\
                                 </div>\
                             </div>\
                         </div>';

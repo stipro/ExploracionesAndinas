@@ -41,7 +41,7 @@ if($_POST){
             case "getcolumnsWhere":
                 $columns = $arrayForm['columns'];
                 $parament = $arrayForm['parament'];
-                $rptSql = $tableManager->getColumnsWhere($table, $parament);
+                $rptSql = $tableManager->getColumnsWhere($parament);
                 break;
             case "getLaborZona":
                 $where = $arrayForm['paramentWhere'];

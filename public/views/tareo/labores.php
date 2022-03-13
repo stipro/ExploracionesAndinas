@@ -5,6 +5,8 @@
         
         header("location:../index.php");
     } else {
+        $dateServer = date('Y-m-d');
+        $mindate = date("Y-m-d",strtotime($dateServer."- 2 days"));
         $validacionSession =  $_SESSION["name"] ? $_SESSION["name"] : 'No se inicio, o ocurrio un error';
         $idUsuario = $_SESSION["id"];
         $actual_url = __FILE__;
@@ -144,7 +146,6 @@
                 <!--Page content-->
                 <!--===================================================-->
                 <div id="page-content">
-                
                     <div class="row">
                             <div class="col-xs-12">
                                 <div class="panel">
@@ -156,9 +157,9 @@
                                         </div>
                                         <div class="panel-body">
                                             <fieldset>
-                                                <legend>Labores</legend>
+                                                <legend><h3 class="panel-title">Labores</h3></legend>
                                                 <div class="table-responsive-md"> <!-- class  table-hover display-->
-                                                    <table class="table nowrap display table-striped table-bordered dt-responsive " style="width:100%" id="table-labores">
+                                                    <table class="table display nowrap table-striped table-bordered dt-responsive" style="width:100%" id="table-labores">
                                                         <thead class="thead-dark">
                                                             <tr>
                                                                 <th>C. Costos</th>

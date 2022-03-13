@@ -81,13 +81,15 @@
     margin: 0;
 }
 
-th,
+
+
+/* th,
 td {
     border: 1px solid blue;
     width: 100px;
     word-wrap: break-word;
     height: auto;
-}
+} */
 
 #tr-tbody-tareo td {
     min-width: 235px;

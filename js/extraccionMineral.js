@@ -1,4 +1,4 @@
-const btnAgregar = document.getElementById("btn-Agregar");
+/* const btnAgregar = document.getElementById("btn-Agregar"); */
 
 
 const tbodyDetalleExtraccion = document.getElementById("detalleExtraccion-body");
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
 });
 
-btnAgregar.addEventListener("click", () => {
+/* btnAgregar.addEventListener("click", () => {
     var selectFoorm_colaborador = {
         "accion": "getcolumnAll",
         "column": "col_dni"
@@ -36,7 +36,7 @@ btnAgregar.addEventListener("click", () => {
     $("#insert-extrMineral-codigo").change(function() {
         iptinsertDescripcion.value = $('select[id=insert-extrMineral-codigo]').val();
     });
-});
+}); */
 btnAdd_DetalleExtraccion.addEventListener("click", () => {
     console.log('Agregando');
     valFechaExtraccion = iptinsertFechaExtraccion.value;

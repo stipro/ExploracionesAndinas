@@ -61,6 +61,11 @@ document.addEventListener('DOMContentLoaded', e => {
 
     mainEvents();
     tableMaster = $('#table-labores').DataTable({
+        scrollX: true,
+        scrollCollapse: true,
+        fixedColumns: {
+            right: 1,
+        },
         columns: [{
                 data: "lab_ccostos"
             },
@@ -110,6 +115,7 @@ document.addEventListener('DOMContentLoaded', e => {
                 defaultContent: '<button type="button" class="btn-view btn btn-success"><i class="fa fa-eye"></i> Detalle</button> <button type="button" class="name btn btn-primary"><i class="fa fa-edit"></i> Editar</button> <button type="button" class="position btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>'
             }
         ],
+        fixedHeader: true,
         language: {
             "decimal": "",
             "emptyTable": "No hay registro de labores",

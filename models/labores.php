@@ -207,6 +207,27 @@ class Labores extends Conexion
     {
         $query = "SELECT lb.id_labor, lbnombre.labNombre_nombre, lbzonas.labZona_nombre FROM labores AS lb LEFT JOIN lab_nombres AS lbnombre ON lb.id_labNombre = lbnombre.id_labNombre LEFT JOIN lab_zonas AS lbzonas ON lb.id_zona = lbzonas.id_zona WHERE id_labor = {$where};";
         return $this->ConsultaSimple($query);
+    
+    }
+    # EJEMPLO OBTENER UNA LISTA SEGUN SOLICITADO
+    public function getColumnsWhere(string $parament)
+    {
+        $query = "SELECT lbz.labZona_nombre, lbn.labNombre_nombre, lb.lab_nivel FROM labores AS lb LEFT JOIN lab_zonas AS lbz ON  lb.id_zona = lbz.id_zona LEFT JOIN lab_nombres AS lbn ON lb.id_labNombre = lbn.id_labNombre WHERE lb.id_labor = {$parament};";
+        return $this->ConsultaSimple($query);
+    }
+
+    public function getSizeColumn(string $table)
+    {
+        $query = "SELECT COUNT(*) FROM {$table};";
+        return  intval($this->db->query($query)->fetch(PDO::FETCH_BOTH)[0]);
+    }
+    // Obtiene Lista especifica
+    public function getSelectWhere(string $table, string $column, string $parament, string $idTable, string $columnWhere)
+    {
+        $sizeRow = $this->getSizeColumn($table);
+        $where = "WHERE {$columnWhere} = '{$parament}'";
+        $query = "SELECT {$column}, {$idTable} FROM {$table} " .$where; 
+        return $this->ConsultaSimple($query);
     }
     public function getCcosto(){
         $query = "SELECT lb.id_labor, lb.lab_ccostos FROM labores AS lb WHERE lb.id_labor;";

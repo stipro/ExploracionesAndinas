@@ -5,3 +5,7 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+#inserForm {
+    width: 1540px !important;
+}
