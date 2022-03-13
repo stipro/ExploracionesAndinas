@@ -1,4 +1,5 @@
 <?php
+	$ipUsuario_notSession = $_SERVER['REMOTE_ADDR'];
 	$vldclass_OAuthProvider = method_exists('OAuthProvider','read') ? (new OAuthProvider('')) : ('Error de version, debe ser PHP 7.4.19');
 
 	/*
@@ -17,6 +18,7 @@
 	$agentNavegation = $_SERVER['HTTP_USER_AGENT'] ? $_SERVER['HTTP_USER_AGENT'] : FALSE;
 	$nameHost = $_SERVER['HTTP_HOST'];
 	$ipConnected = isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : (isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR']);
+	echo $ipConnected;
 
 
 	session_start();
@@ -254,6 +256,7 @@
 				var objectloginForm = {
 					'usuario' : textUsuario.value,
 					'clave' : textPassword.value,
+					'ipPrivado' : textPassword.value,
 				}
 
 				// Enviando Datos

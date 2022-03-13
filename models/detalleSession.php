@@ -34,7 +34,7 @@ class detallSession extends Conexion
             if($sqlrpt){
                 $rptSql = [
                     "estado" => 1,
-                    "mensaje" => "Se registro correctamen detalle_session_php",
+                    "mensaje" => "Se registro correctamen detalle session",
                     "id" => $lastcolIdsql
                 ];
             }

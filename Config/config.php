@@ -15,8 +15,9 @@
 	const SPD = ".";
 	const SPM = ",";
 
-	//Simbolo de moneda
-	const SMONEY = "¢";
+	//Simbolo Y Letra de moneda
+	const SMONEY = "S/";
+	const SLMONEY = "PEN";
 
 	// Datos de la Empresa
 	const NOMBRE_COMERCIAL = "Exploraciones Andinas S.A.C.";

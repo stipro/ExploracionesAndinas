@@ -24,15 +24,23 @@ class Conexion
                 $con    = new PDO("mysql:host={$HOST}; dbname={$DBNAME}", $USER, $PASS);
                 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $con->exec('SET CHARACTER SET UTF8');
-            }else{
+            }
+            elseif($a == $b){
+
+            }
+            else{
+
+            }
+            /* else{
                 $HOST   = '127.0.0.1';
                 $DBNAME = 'explore_andina';
-                $USER   = 'root';
+                $USER   = 'roo1t';
                 $PASS   = 'misterio1';
                 $con    = new PDO("mysql:host={$HOST}; dbname={$DBNAME}", $USER, $PASS);
                 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $con->exec('SET CHARACTER SET UTF8');
-            }
+            } */
+            return $con;
         }
         catch (PDOException $e)
         {
@@ -40,7 +48,7 @@ class Conexion
         }
         finally {
         
-            return $con;
+            
         }
     }
     public function get_url(){

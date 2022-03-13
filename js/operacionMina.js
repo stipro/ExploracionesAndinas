@@ -1321,15 +1321,16 @@ $(document).ready(function() {
     });
 
     $('#table-operacion-mina tbody').on('click', '.btn-tableMaster-detalle', function() {
-        var data = tableMaster.row($(this).parents('tr')).data();
+        const data = tableMaster.row($(this).parents('tr')).data();
         alert("El id: " + data['id_operacionMina']);
 
     });
 
     $('#table-operacion-mina tbody').on('click', '.btn-tableMaster-edit', function() {
-        var data = tableMaster.row($(this).parents('tr')).data();
+        const data = tableMaster.row($(this).parents('tr')).data();
         //alert("El id: " + data['id_operacionMina']);
         $("#modal-edit").modal("show");
+        getRecord(data['id_operacionMina']);
     });
 
     $('#table-operacion-mina tbody').on('click', '.btn-tableMaster-delet', function() {
@@ -1366,4 +1367,35 @@ const request = async (request) => {
     const data = await res.json()
     let rptSql = data['sql'];
     console.log(rptSql);
+}
+
+const iptedit_registro = document.getElementById("edit-operacionMina-registro");
+const iptedit_turno = document.getElementById("edit-operacionaMina-turno");
+const iptedit_guardia = document.getElementById("edit-operacionMina-guardia");
+const iptedit_nvale = document.getElementById("edit-operacionMina-nvale");
+
+const getRecord = (parament) => {
+    let form_request1 = {
+        "accion": "record",
+        "id": parament
+    }
+    fetchRecord(form_request1);
+}
+const fetchRecord = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    const res = await fetch('./../../../controllers/controllerOperacionMinaList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    let rptSql = data['sql'];
+    console.log(rptSql);
+    paintForm_record(rptSql);
+}
+const paintForm_record = async (rptSql) => {
+    iptedit_registro.value = rptSql[0]['operacionMina_registro'];
+    iptedit_turno.value = rptSql[0]['operacionMina_turno'];
+    iptedit_guardia.value = rptSql[0]['operacionMina_guardia'];
+    iptedit_nvale.value = rptSql[0]['operacionMina_nVale'];
 }

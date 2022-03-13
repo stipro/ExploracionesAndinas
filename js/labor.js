@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', e => {
                 }
             },
             {
-                text: '<i class="btn-label fa fa-refresh"></i><span class="hidden-xs">Actualizar</span>',
+                text: '<i class="btn-label fa fa-refresh"></i><span class="hidden-xs hidden-sm">Actualizar</span>',
                 action: function(e, dt, node, conf) {
                     let form_request1 = {
                         "accion": "table",
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', e => {
             },
             {
                 extend: 'collection',
-                text: '<i class="btn-label fa fa-download"></i><span class="hidden-xs"> Exportar</span>',
+                text: '<i class="btn-label fa fa-download"></i><span class="hidden-xs hidden-sm"> Exportar</span>',
                 className: 'btn-labeled',
                 buttons: [{
                         extend: 'excel',
@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', e => {
                 ]
             },
             {
-                text: '<i class="btn-label fa fa-upload"></i><span class="hidden-xs">Importar</span>',
+                text: '<i class="btn-label fa fa-upload"></i><span class="hidden-xs hidden-sm">Importar</span>',
                 action: function(e, dt, node, conf) {
                     $("#modal-import").modal("show");
                 },
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', e => {
             },
             {
                 extend: 'print',
-                text: '<i class="btn-label fa fa-print"></i><span class="hidden-xs">print</span>',
+                text: '<i class="btn-label fa fa-print"></i><span class="hidden-xs  hidden-sm">print</span>',
                 titleAttr: 'PDF',
                 className: 'btn-labeled', //Primary class for all buttons
                 exportOptions: {
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', e => {
             },
             {
                 extend: 'colvis',
-                text: '<i class="btn-label fa fa-eye"></i><span class="hidden-xs">Mostrar / Ocultar</span>',
+                text: '<i class="btn-label fa fa-eye"></i><span class="hidden-xs hidden-sm">Mostrar / Ocultar</span>',
                 className: 'btn-labeled' //Primary class for all buttons
             },
             'refresh',

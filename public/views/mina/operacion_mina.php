@@ -289,7 +289,7 @@
 
                 <!--Modal body-->
                 <div class="modal-body">
-                <div id="alert-form-insert">
+                    <div id="alert-form-edit">
                     </div>
                     <div class="row">
                         <div class="col-md-8">
@@ -297,36 +297,36 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="insert-operacionMina-registro" class="col-md-4 control-label">Fecha</label>
+                                        <label for="edit-operacionMina-registro" class="col-md-4 control-label">Fecha</label>
                                         <div class="col-md-8">                                                    
-                                            <input type="date" placeholder="Dia" class="form-control" id="insert-operacionMina-registro"  value="<?php echo $dateServer ?>" min="<?php echo $mindate ?>" max="<?php echo $dateServer ?>"> <!--min="2021-12-12" max="2021-12-13"-->
+                                            <input type="date" placeholder="Dia" class="form-control" id="edit-operacionMina-registro"  value="" min="" max=""> <!--min="2021-12-12" max="2021-12-13"-->
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="insert-operacionaMina-turno" class="col-md-4 control-label">Turno</label>
+                                        <label for="edit-operacionaMina-turno" class="col-md-4 control-label">Turno</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="insert-options-turno" id="insert-operacionaMina-turno" placeholder="Ingrese Turno...">
+                                            <input class="form-control" list="edit-options-turno" id="edit-operacionaMina-turno" placeholder="Ingrese Turno...">
                                         </div>
-                                        <datalist id="insert-options-turno">
+                                        <datalist id="edit-options-turno">
                                             <option value="Dia">
                                             <option value="Noche">
                                         </datalist>
                                     </div>
                                     <div class="form-group">
-                                        <label for="insert-operacionMina-guardia" class="col-md-4 control-label">Guardia</label>
+                                        <label for="edit-operacionMina-guardia" class="col-md-4 control-label">Guardia</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="insert-options-guardia" id="insert-operacionMina-guardia" placeholder="Ingrese Guardia...">
+                                            <input class="form-control" list="edit-options-guardia" id="edit-operacionMina-guardia" placeholder="Ingrese Guardia...">
                                         </div>
-                                        <datalist id="insert-options-guardia">
+                                        <datalist id="edit-options-guardia">
                                             <option value="A">
                                             <option value="B">
                                             <option value="C">
                                         </datalist>
                                     </div>
                                     <div class="form-group">
-                                        <label for="insert-operacionMina-nvale" class="col-md-4 control-label">N° Vale</label>
+                                        <label for="edit-operacionMina-nvale" class="col-md-4 control-label">N° Vale</label>
                                         <div class="col-md-8">                                                    
-                                            <input type="texto" placeholder="n° vale" class="form-control" id="insert-operacionMina-nvale">
+                                            <input type="texto" placeholder="n° vale" class="form-control" id="edit-operacionMina-nvale">
                                         </div>
                                     </div>
                                 </div>
