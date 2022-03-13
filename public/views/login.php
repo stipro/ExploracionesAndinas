@@ -1,5 +1,6 @@
 <?php
 	$ipUsuario_notSession = $_SERVER['REMOTE_ADDR'];
+	echo 'IP 1 : '.$ipUsuario_notSession.';';
 	$vldclass_OAuthProvider = method_exists('OAuthProvider','read') ? (new OAuthProvider('')) : ('Error de version, debe ser PHP 7.4.19');
 
 	/*
