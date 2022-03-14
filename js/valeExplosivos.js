@@ -13,8 +13,9 @@ var rowstoDisplay = 5;
 const alertInsert = document.getElementById("alert-form-insert");
 
 // Declaramos BOTONES
-const btnAgregar = document.getElementById("btn-Agregar");
+/* const btnAgregar = document.getElementById("btn-Agregar"); */
 const btnInsertar = document.getElementById("mbtn-insert");
+
 const btnNuevo = document.getElementById("mbtn-new");
 // Dclaramos Formularios
 // Codigo vale o numero de Impreso
@@ -71,6 +72,7 @@ var selectNMaquinas = document.getElementById('val_explosivo-text-form-nmaquinas
 
 //var valFormPPerf;
 var iconValidadorPerforista = document.getElementById('validadorPerforista-icon');
+
 var comtenedorformPerforista = document.getElementById('contenedor-Perforista');
 // Materiales de Explosivos
 // Emulnor 1000
@@ -100,14 +102,14 @@ var inputFormCalDimValorSemigelatinosa = document.getElementById('val_explosivo-
 // Eventos
 // El evento DOMContentLoaded es disparado cuando el documento HTML ha sido completamente cargado y parseado
 document.addEventListener('DOMContentLoaded', e => {
-    var formId = {
+    /* var formId = {
         "accion": "idTable",
         "column": "id_valexplosivo"
     }
-    fetchData(formId)
+    fetchData(formId) */
 });
 
-// Traer productos
+/* // Traer productos
 const fetchData = async (json) => {
     console.log(json);
     const body = new FormData();
@@ -123,7 +125,7 @@ const fetchData = async (json) => {
     }
     part_preImpreso = idRegistro;
     console.log(rptJson);
-}
+} */
 
 btnNuevo.addEventListener("click", (e) => {
     inputPreImpre.value = "0";
@@ -146,6 +148,7 @@ btnNuevo.addEventListener("click", (e) => {
     inputFormPPerf.value = "0";
     inputFormPReal.value = "0";
     $(".chosenNMaquina").val('').trigger("chosen:updated");
+    inputFormEmulnormil.value = "0";
     inputFormEmulnostresmil.value = "0";
     inputFormCalDimValorPulverulenta.value = "0";
     inputFormCarmexsiete.value = "0";
@@ -196,8 +199,8 @@ btnInsertar.addEventListener("click", () => {
 
 
     // Nombre Labor
-    nombLaborSelect = selectNombLabor.options[selectNombLabor.selectedIndex];
-    valselectNombLabor = nombLaborSelect.textContent;
+    nombLaborSelect = selectNombLabor.options[selectNombLabor.selectedIndex] ? selectNombLabor.options[selectNombLabor.selectedIndex] : "0"
+    valselectNombLabor = nombLaborSelect.textContent ? nombLaborSelect.textContent : "0";
 
     // Nivel Labor
     valinputNivelLabor = inputNivelLabor.value;
@@ -404,7 +407,7 @@ function zfill(number, width) {
 // Fin Aumento de numeros
 
 // Funcion Boton Agregar
-btnAgregar.addEventListener("click", () => {
+/* btnAgregar.addEventListener("click", () => {
     console.log('numero de vale es : ' + idRegistro);
     // Funcion para enfocar input
     setTimeout(function() {
@@ -420,11 +423,11 @@ btnAgregar.addEventListener("click", () => {
         nvalzfill = nvale, padStart(7, 0);
     } catch (e) {
         nvalzfill = zfill(nvale, 7);
-        /* Manejar Errores
-        console.error('Se encontro error : '+e);
-        console.error('Nombre : '+e.name);
-        console.error('Mensaje : '+e.message);
-        */
+        // Manejar Errores
+        //console.error('Se encontro error : '+e);
+        //console.error('Nombre : '+e.name);
+        //console.error('Mensaje : '+e.message);
+        //
     } finally {
         // Obtengo N° vale
         inputNVale.value = nvalzfill;
@@ -452,7 +455,7 @@ btnAgregar.addEventListener("click", () => {
     // Enviamos Formato Perforista
     fetchDataPerforista(selectPerforistaForm);
 
-});
+}); */
 
 // Traer JSON para Tabla (ZONA)
 const fetchDataZona = async (json) => {
@@ -485,8 +488,8 @@ const paintSelectZona = (data) => {
     const fragment = document.createDocumentFragment();
     arraySelect.forEach(function(valor, indice, array) {
         objidZona = valor['id_zona'];
-        objcodigo = valor['codigo'];
-        objNombre = valor['nombre'];
+        objcodigo = valor['labZona_letra'];
+        objNombre = valor['labZona_nombre'];
         templateSelectZona.querySelector("#optzona").dataset.idZona = objidZona;
         templateSelectZona.querySelector("#optzona").textContent = objNombre;
         templateSelectZona.querySelector("#optzona").value = objNombre;

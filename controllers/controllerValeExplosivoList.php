@@ -25,9 +25,11 @@ if($_POST){
                 $parament = $arrayForm['parament'];
                 $rptSql = $tableManager->getSelectWhere($column, $parament);
                 break;
-            case "search":                
+            case "getLast_record":
+                $rptSql = $tableManager->getLast_record(); 
                 break;
             case "table":
+                $rptSql = $tableManager->getAll(); 
                 break;
             default:
                 echo "ola";

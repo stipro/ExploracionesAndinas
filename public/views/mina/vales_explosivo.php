@@ -153,130 +153,60 @@
 					<div class="row">
 					    <div class="col-xs-12">
 					        <div class="panel">
-					            <div class="panel-heading">
-					                <h3 class="panel-title">VALES DE EXPLOSIVOS</h3>
-					            </div>
-					
-					            <!--Data Table-->
-					            <!--===================================================-->
 					            <div class="panel-body">
-					                <div class="pad-btm form-inline">
-					                    <div class="row">
-					                        <div class="col-sm-6 table-toolbar-left">
-					                            <button id="btn-Agregar" data-target="#stack1" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add icon-fw"></i>Agregar</button>
-					                            <a href="./../../excelGenerator.php?table=view_vales_explosivo" class="btn btn-default" download="" title="Descargar Archivo">
-                                                    <i class="fa fa-file-excel-o icon-lg"></i>
-                                                </a>
-					                            <div class="btn-group">
-					                                <button class="btn btn-default"><i class="demo-pli-information icon-lg"></i></button>
-					                                <button class="btn btn-default"><i class="demo-pli-trash icon-lg"></i></button>
-					                            </div>
+                                    <fieldset>
+                                        <legend>
+                                            <div class="panel-heading">
+					                            <h3 class="panel-title">VALES DE EXPLOSIVOS</h3>
 					                        </div>
-					                        <div class="col-sm-6 table-toolbar-right">
-                                                <div class="btn-group">
-                                                        <div class="input-group">
-                                                            <input id="ipt-Buscar" type="text" placeholder="Busqueda por columna" class="form-control">
-                                                            <span class="input-group-btn">
-                                                                <button id="btn-Buscar"class="btn btn-primary" type="button">Buscar</button>
-                                                            </span>
-                                                        </div>			
-                                                        <!--===================================================-->
-                                                        <select data-placeholder="Elija Columna" id="demo-chosen-select" tabindex="2">
-                                                            <option value="codigo">codigo</option>
-                                                            <option value="nombre">nombre</option>
-                                                            <option value="cargo">cargo</option>
-                                                        </select>
-                                                    </div>
-					                        </div>
-					                    </div>
-					                </div>
-                                    <!-- Foo Table - Row Toggler -->
-                                    <!--===================================================-->
-                                    <div class="panel-body table-responsive">
-                                        <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="5">
-                                            <thead>
-                                                <tr>
-                                                    <th data-sort-ignore="true" class="min-width"></th>
-                                                    <th data-sort-initial="true" data-toggle="true">Usuario</th>
-                                                    <th>Fecha</th>
-                                                    <th data-hide="phone, tablet">Zona</th>
-                                                    <th data-hide="phone, tablet">N° Vale</th>
-                                                    <th data-hide="phone, tablet">Turno</th>
-                                                    <th data-hide="phone, tablet">preImpreso</th>
-                                                    <th data-hide="phone, tablet">Labor</th>
-                                                    <th data-hide="phone, tablet">tip Disparo</th>
-                                                    <th data-hide="phone, tablet">Colaborador</th>
-                                                    <th data-hide="phone, tablet">TipEn</th>
-                                                    <th data-hide="phone, tablet">Barra</th>
-                                                    <th data-hide="phone, tablet">Lgt</th>
-                                                    <th data-hide="phone, tablet">n° Taladro</th>
-                                                    <th data-hide="phone, tablet">Taladro Vacio</th>
-                                                    <th data-hide="phone, tablet">Pie Perforado</th>
-                                                    <th data-hide="phone, tablet">n° Maquina</th>
-                                                    <th data-hide="phone, tablet">Din Semigelationsa 65</th>
-                                                    <th data-hide="phone, tablet">Din Semigelationsa Calculado</th>
-                                                    <th data-hide="phone, tablet">Din Pulverulenta 65</th>
-                                                    <th data-hide="phone, tablet">Din Pulverulenta 65 Calculado</th>
-                                                    <th data-hide="phone, tablet">Emulnor 1000</th>
-                                                    <th data-hide="phone, tablet">Emulsion Emulnor 3000 I"X7"</th>
-                                                    <th data-hide="phone, tablet">Mecha Rapida Z18</th>
-                                                    <th data-hide="phone, tablet">Mecha</th>
-                                                    <th data-hide="phone, tablet">Fulminante N°8</th>
-                                                    <th data-hide="phone, tablet">Conector para Mecha</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="tbody-tareo">
-
-                                            </tbody>
-                                            <template id="template-td-tareo">
-                                                <tr id="registro-tareo">
-                                                    <td>
-                                                        <button id="btn-delete" class="btn btn-danger btn-xs btn-delete">
-                                                            <i class="demo-pli-cross"></i>
-                                                        </button>
-                                                        <button id="btn-edit" class="btn btn-warning btn-xs btn-edit" data-target="#modal-edit"  data-toggle="modal">
-                                                        <i class="ti-pencil-alt"></i></button>
-                                                    </td>
-                                                    <td id="codigo">..</td>
-                                                    <td id="nombreCompleto"></td>
-                                                    <td id="cargo"></td>
-                                                    <td id="dia"></td>
-                                                    <!--<td id="actividad">22 Jun 1972</td>-->
-                                                    <td id="turno"></td>
-                                                    <td id="ht"></td>
-                                                    <td id="htSev_ad"></td>
-                                                    <td id="costos"></td>
-                                                    <td id="labor"></td>
-                                                    <td id="nivel"></td>
-                                                    <td id="hE"></td>
-                                                    <td id="heSerAd"></td>
-                                                    <td id="cCostosHe"></td>
-                                                    <td id="VB"></td>
-                                                    <td id="guardia"></td>
-                                                    <td id="codActividad"></td>
-                                                    <td id="Area">..</td>
-                                                </tr>
-                                                </template>
-                                            <tfoot>
-                                              <!-- Paginación -->
-                                              <nav aria-label="Page navigation example">
-                                                    <ul class="pagination" id="pagination">
-                                                        <!--<li class="disabled"><a class="page-link" href="#">Anterior</a></li>-->
-
-                                                        <!--
-                                                            <li class="disabled"><span>...</span></li>
-                                                            <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
-                                                        -->
-                                                    </ul>
-                                                    <template id="template-pagination">
-                                                        <li id="itemPage" class="page-item"><a class="page-link" href="#">2</a></li>
-                                                    </template>
-                                                </nav>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                    <!--===================================================-->
-                                    <!-- End Foo Table - Row Toggler -->
+                                        </legend>
+                                        <div class="table-responsive-md">
+                                            <table class="table display nowrap table-striped table-bordered dt-responsive" style="width:100%" id="table-master">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th>Fecha</th>
+                                                        <th>N. Vale</th>
+                                                        <th>Turno</th>                                                       
+                                                        <th>Zona</th>
+                                                        <th>C. Costos</th>
+                                                        <th>Nombre</th>
+                                                        <th>Nivel</th>
+                                                        <th>Tipo Disparo</th>
+                                                        <th>Disparo en</th>
+                                                        <th class="all">Operaciónes</th>
+                                                        <!-- <th data-sort-ignore="true" class="min-width"></th>
+                                                        <th data-sort-initial="true" data-toggle="true">Usuario</th>
+                                                        <th>Fecha</th>
+                                                        <th data-hide="phone, tablet">Zona</th>
+                                                        <th data-hide="phone, tablet">N° Vale</th>
+                                                        <th data-hide="phone, tablet">Turno</th>
+                                                        <th data-hide="phone, tablet">preImpreso</th>
+                                                        <th data-hide="phone, tablet">Labor</th>
+                                                        <th data-hide="phone, tablet">tip Disparo</th>
+                                                        <th data-hide="phone, tablet">Colaborador</th>
+                                                        <th data-hide="phone, tablet">TipEn</th>
+                                                        <th data-hide="phone, tablet">Barra</th>
+                                                        <th data-hide="phone, tablet">Lgt</th>
+                                                        <th data-hide="phone, tablet">n° Taladro</th>
+                                                        <th data-hide="phone, tablet">Taladro Vacio</th>
+                                                        <th data-hide="phone, tablet">Pie Perforado</th>
+                                                        <th data-hide="phone, tablet">n° Maquina</th>
+                                                        <th data-hide="phone, tablet">Din Semigelationsa 65</th>
+                                                        <th data-hide="phone, tablet">Din Semigelationsa Calculado</th>
+                                                        <th data-hide="phone, tablet">Din Pulverulenta 65</th>
+                                                        <th data-hide="phone, tablet">Din Pulverulenta 65 Calculado</th>
+                                                        <th data-hide="phone, tablet">Emulnor 1000</th>
+                                                        <th data-hide="phone, tablet">Emulsion Emulnor 3000 I"X7"</th> -->
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                </tfoot>
+                                                <tbody id="tbody-tareo">
+                                                </tbody>
+                                                
+                                            </table>
+                                        </div>
+                                    </fieldset>
 					            </div>
 					        </div>
 					    </div>
@@ -340,131 +270,126 @@
                 <!--Modal body-->
                 <div class="modal-body">
                     <div id="alerts-Edit">
-                        
                     </div>
-					            <!--Input Size-->
-					            <!--===================================================-->
-					            <form class="form-horizontal">
-					                <div class="panel-body">
-                                        <!-- FORMULARIO -->
-                                        <div class="form-group">
-					                        <label for="formIptTextCodigoEdit" class="col-sm-3 control-label">Código</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="Código" class="form-control" id="formIptTextCodigoEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptTextNombreEdit" class="col-sm-3 control-label">Nombre</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="Nombre" class="form-control" id="formIptTextNombreEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptTextCargoEdit" class="col-sm-3 control-label">Cargo</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="Cargo" class="form-control" id="formIptTextCargoEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptTextCargoEdit" class="col-sm-3 control-label">Area</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="Cargo" class="form-control" id="formIptTextCargoEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptTextDiaEdit" class="col-sm-3 control-label">Dia</label>
-					                        <div class="col-sm-6">
-					                            <input type="date" placeholder="Dia" class="form-control" id="formIptTextDiaEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptTextTurnoEdit" class="col-sm-3 control-label">Turno</label>
-					                        <div class="col-sm-6">
-                                            <!--<input type="text" placeholder="Nombre" class="form-control" id="formIptTextNombreEdit">
-                                                -===================================================-->
-                                                <select data-placeholder="elige un turno" id="formIptTextTurnoEdit" tabindex="2">
-                                                    <option value="Día">Día</option>
-                                                    <option value="Noche">Noche</option>
-                                                    <option value="Blanco">Descanso</option>
-                                                </select>
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptNumHTEdit" class="col-sm-3 control-label">H.T.</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="Horas Trabajo" class="form-control" id="formIptNumHTEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptTextHTSerAdiEdit" class="col-sm-3 control-label">H.T. Serv. Adicional</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="H. T. Servicio Adicional" class="form-control" id="formIptTextHTSerAdiEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptTextCCostosEdit" class="col-sm-3 control-label">C. Costos</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="Centro de costos" class="form-control" id="formIptTextCCostosEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptTextLaborEdit" class="col-sm-3 control-label">Labor</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="Labor" class="form-control" id="formIptTextLaborEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptNumNivelEdit" class="col-sm-3 control-label">Nivel</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="Nivel" class="form-control" id="formIptNumNivelEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptNumHEEdit" class="col-sm-3 control-label">Horas Extras (H.E.)</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="Horas Extras" class="form-control" id="formIptNumHEEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptNumHESerAdiEdit" class="col-sm-3 control-label">H.E. Servicio Adicional</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="H.E Servicio Adicional" class="form-control" id="formIptNumHESerAdiEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptNumCCostosHorasExtrasEdit" class="col-sm-3 control-label">C.Costos Horas E.</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="C. Costos Horas Extras" class="form-control" id="formIptNumCCostosHorasExtrasEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptTextZonaEdit" class="col-sm-3 control-label">Zona</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="Zona" class="form-control" id="formIptTextZonaEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptTextGuardiaEdit" class="col-sm-3 control-label">Cod. Guardia</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="Codigo Guardia" class="form-control" id="formIptTextGuardiaEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptNumActividadEdit" class="col-sm-3 control-label">Numero Actividad</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="N° Actividad" class="form-control" id="formIptNumActividadEdit">
-					                        </div>
-					                    </div>
-                                        <div class="form-group">
-					                        <label for="formIptTextAreaEdit" class="col-sm-3 control-label">Area</label>
-					                        <div class="col-sm-6">
-					                            <input type="text" placeholder="Área" class="form-control" id="formIptTextAreaEdit">
-					                        </div>
-					                    </div>
-					                </div>
-					            </form>
-					            <!--===================================================-->
-					            <!--End Input Size-->
+					<form class="form-horizontal">
+					    <div class="panel-body">
+                            <!-- FORMULARIO -->
+                            <div class="form-group">
+					            <label for="formIptTextCodigoEdit" class="col-sm-3 control-label">Código</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="Código" class="form-control" id="formIptTextCodigoEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptTextNombreEdit" class="col-sm-3 control-label">Nombre</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="Nombre" class="form-control" id="formIptTextNombreEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptTextCargoEdit" class="col-sm-3 control-label">Cargo</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="Cargo" class="form-control" id="formIptTextCargoEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptTextCargoEdit" class="col-sm-3 control-label">Area</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="Cargo" class="form-control" id="formIptTextCargoEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptTextDiaEdit" class="col-sm-3 control-label">Dia</label>
+					            <div class="col-sm-6">
+					                <input type="date" placeholder="Dia" class="form-control" id="formIptTextDiaEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptTextTurnoEdit" class="col-sm-3 control-label">Turno</label>
+					            <div class="col-sm-6">
+                                <!--<input type="text" placeholder="Nombre" class="form-control" id="formIptTextNombreEdit">
+                                    -===================================================-->
+                                    <select data-placeholder="elige un turno" id="formIptTextTurnoEdit" tabindex="2">
+                                        <option value="Día">Día</option>
+                                        <option value="Noche">Noche</option>
+                                        <option value="Blanco">Descanso</option>
+                                    </select>
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptNumHTEdit" class="col-sm-3 control-label">H.T.</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="Horas Trabajo" class="form-control" id="formIptNumHTEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptTextHTSerAdiEdit" class="col-sm-3 control-label">H.T. Serv. Adicional</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="H. T. Servicio Adicional" class="form-control" id="formIptTextHTSerAdiEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptTextCCostosEdit" class="col-sm-3 control-label">C. Costos</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="Centro de costos" class="form-control" id="formIptTextCCostosEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptTextLaborEdit" class="col-sm-3 control-label">Labor</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="Labor" class="form-control" id="formIptTextLaborEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptNumNivelEdit" class="col-sm-3 control-label">Nivel</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="Nivel" class="form-control" id="formIptNumNivelEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptNumHEEdit" class="col-sm-3 control-label">Horas Extras (H.E.)</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="Horas Extras" class="form-control" id="formIptNumHEEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptNumHESerAdiEdit" class="col-sm-3 control-label">H.E. Servicio Adicional</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="H.E Servicio Adicional" class="form-control" id="formIptNumHESerAdiEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptNumCCostosHorasExtrasEdit" class="col-sm-3 control-label">C.Costos Horas E.</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="C. Costos Horas Extras" class="form-control" id="formIptNumCCostosHorasExtrasEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptTextZonaEdit" class="col-sm-3 control-label">Zona</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="Zona" class="form-control" id="formIptTextZonaEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptTextGuardiaEdit" class="col-sm-3 control-label">Cod. Guardia</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="Codigo Guardia" class="form-control" id="formIptTextGuardiaEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptNumActividadEdit" class="col-sm-3 control-label">Numero Actividad</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="N° Actividad" class="form-control" id="formIptNumActividadEdit">
+					            </div>
+					        </div>
+                            <div class="form-group">
+					            <label for="formIptTextAreaEdit" class="col-sm-3 control-label">Area</label>
+					            <div class="col-sm-6">
+					                <input type="text" placeholder="Área" class="form-control" id="formIptTextAreaEdit">
+					            </div>
+					        </div>
+					    </div>
+					</form>
                 </div>
                 <!--Modal footer-->
                 <div class="modal-footer">
@@ -476,7 +401,7 @@
     </div>
     <!--Default Bootstrap Modal-->
     <!--===================================================-->
-    <div id="stack1" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+    <div class="modal fade" id="modal-insert" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
         <div id="inserForm"  class="modal-dialog modal-lg" style="margin: 1rem;">
             <div class="modal-content">
                 <!--Modal header-->
@@ -672,7 +597,7 @@
                                         <!-- Default choosen -->
                                         <!--===================================================-->
                                         <select class="form-control" data-placeholder="Barra" id="val_explosivo-input-form-barra" tabindex="2">
-                                            <option value="" selected></option>
+                                            <option value="0" selected>0</option>
                                             <option value="4">4</option>
                                             <option value="5">5</option>
                                             <option value="6">6</option>
@@ -698,12 +623,12 @@
                                     <!-- FORMULARIO -->
                                     <label for="val_explosivo-input-form-pies_perf" class="col-md-1 control-label">Pies Perf</label>
                                     <div class="col-md-1">
-                                        <input class="form-control" name="" id="val_explosivo-input-form-pies_perf" disabled>
+                                        <input class="form-control" value="0" name="" id="val_explosivo-input-form-pies_perf" disabled>
                                     </div>
                                     <!-- FORMULARIO -->
                                     <label for="val_explosivo-input-form-pies_real" class="col-md-1 control-label">Pie Real</label>
                                     <div class="col-md-1">
-                                        <input class="form-control" name="" id="val_explosivo-input-form-pies_real" disabled>
+                                        <input class="form-control" value="0" name="" id="val_explosivo-input-form-pies_real" disabled>
                                     </div> 
                                 </div>
                                 <div class="col-md-12">
@@ -732,12 +657,20 @@
                                             <option value="">PSecan_01</option>
                                             <option value="">PSecan_02</option>
                                             <option value="">PSecan_03</option>
+                                            <option value="">PSecan_04</option>
+                                            <option value="">PSecan_05</option>
+                                            <option value="">PSecan_06</option>
+                                            <option value="">PSecan_07</option>
+                                            <option value="">PSecan_08</option>
+                                            <option value="">PSecan_09</option>
+                                            <option value="">PSecan_10</option>
                                             <option value="">RNP_01</option>
                                             <option value="">RNP_02</option>
                                             <option value="">RNP_03</option>
                                             <option value="">RNP_04</option>
                                             <option value="">RNP_05</option>
                                             <option value="">RNP_06</option>
+                                            <option value="">RNP_07</option>
                                             <option value="">PT_03</option>
                                             <option value="">PT_04</option>
                                         </select>                                            
@@ -943,7 +876,284 @@
     <!--Form validation [ SAMPLE ]-->
     <script src="./../../../js/demo/form-validation.js"></script>
     <script>
+        var tableMaster;
+        document.addEventListener('DOMContentLoaded', e => {
+            mainEvents();
+        });
+        const mainEvents = () => {
+            let form_request1 = {
+                "accion": "table",
+            }
+            fetchData(form_request1);
+        }
+        const fetchData = async (request) => {
+            const body = new FormData();
+            body.append("data", JSON.stringify(request));
+            const res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
+                method: "POST",
+                body
+            });
+            const data = await res.json()
+            let rptSql = data['sql'];
+            paintTable(rptSql);
+        }
+        const paintTable = async (rptSql) => {
+            // Actualiza la tabla
+            tableMaster.clear();
+            tableMaster.rows.add(rptSql).draw();
+        }
+        const getLast_record = async (request) => {
+            const body = new FormData();
+            body.append("data", JSON.stringify(request));
+            const res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
+                method: "POST",
+                body
+            });
+            console.log('eeeee');
+            const data = await res.json();
+            rptSql = data['sql'];
+            console.log(rptSql);
+            paintNVale(rptSql);
+        }
+        const paintNVale = async (rptSql) => {
+            console.log('paintNVale');
+            console.log(rptSql);
+            /* try {
+                nvalzfill = nvale, padStart(6, 0);
+            } catch (e) {
+                nvalzfill = zfill(nvale, 6);
+                // Manejar Errores
+                //console.error('Se encontro error : '+e);
+                //console.error('Nombre : '+e.name);
+                //console.error('Mensaje : '+e.message);
+            } finally {
+                // Obtengo N° vale
+                inputNVale.value = nvalzfill;
+            } */
+            inputNVale.value = rptSql[0]['valexplosivo_nvale'];
+        }
         $('.chosenTurno').chosen();
+        $(document).ready(function() {
+            tableMaster = $('#table-master').DataTable({
+                scrollX: true,
+                scrollCollapse: true,
+                fixedColumns: {
+                    right: 1,
+                },
+                fixedHeader: true,
+                order: [[ 1, "desc" ]],
+                columns: [
+                    {
+                        data: "valexplosivo_fecha",
+                    },
+                    {
+                        data: "valexplosivo_nvale",
+                    },
+                    {
+                        data: "valexplosivo_turno",
+                    },
+                    {
+                        data: "labZona_nombre",
+                    },
+                    {
+                        data: "lab_ccostos",
+                    },
+                    {
+                        data: "labNombre_nombre",
+                    },
+                    {
+                        data: "lab_nivel",
+                    },
+                    {
+                        data: "valexplosivo_tipDisparo",
+                    },
+                    {
+                        data: "valexplosivo_tipEn",
+                    },
+                    {
+                        defaultContent: '<button type="button" class="btn-view btn btn-success btn-tableMaster-detalle"><i class="fa fa-eye"></i> Detalle</button> <button type="button" class="name btn btn-primary btn-tableMaster-edit"><i class="fa fa-edit"></i> Editar</button> <button type="button" class="position btn btn-danger btn-tableMaster-delet"><i class="fa fa-trash-o"></i> Eliminar</button>'
+                    }
+                ],
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay registro de ",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 ",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ ",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Busqueda General :",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    },
+                    "buttons": {
+                        "copy": "Copiar",
+                        "colvis": "Visibilidad",
+                        "collection": "Colección",
+                        "colvisRestore": "Restaurar visibilidad",
+                        "print": "Imprimir",
+                        "pageLength": {
+                            "-1": "Mostrar todas las filas",
+                            "_": "Mostrar %d filas",
+                        },
+                    }
+                },
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+                buttons: [
+                    {
+                        text: '<i class="btn-label fa-solid fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>',
+                        action: function(e, dt, node, conf) {
+                            console.log('run');
+                            const form_request1 = {
+                                "accion": "getLast_record",
+                            }
+                            getLast_record(form_request1);
+                            // Funcion para enfocar input
+                            setTimeout(function() {
+                                // JQUERY
+                                // $('#val_explosivo-text-form-n_vale').focus();
+                                // JAVASCRIPT
+                                inputNVale.focus();
+                            }, 1000);
+                            //Declaramos variables
+                            /* nvale = '9000';
+
+                            //Capturo posible error compatibilidad con navegador
+                            try {
+                                nvalzfill = nvale, padStart(7, 0);
+                            } catch (e) {
+                                nvalzfill = zfill(nvale, 7);
+                                // Manejar Errores
+                                //console.error('Se encontro error : '+e);
+                                //console.error('Nombre : '+e.name);
+                                //console.error('Mensaje : '+e.message);
+                            } finally {
+                                // Obtengo N° vale
+                                inputNVale.value = nvalzfill;
+                            } */
+
+                            //Preparamos formato
+                            var selectCodZonaForm = {
+                                "accion": "select",
+                            }
+                            var selectCostLaborForm = {
+                                "accion": "getcolumnAll",
+                                "column": "lab_ccostos"
+                            }
+                            var selectPerforistaForm = {
+                                "accion": "getcolumnAll",
+                                "column": "col_nombres"
+                            }
+
+                            // Enviamos Formato Zona
+                            fetchDataZona(selectCodZonaForm);
+
+                            // Enviamos Formato Labor
+                            fetchDataLabor(selectCostLaborForm);
+
+                            // Enviamos Formato Perforista
+                            fetchDataPerforista(selectPerforistaForm);
+                            $("#modal-insert").modal("show");
+                        },
+                        className: 'btn btn-success btn-labeled', //Primary class for all buttons
+                        attr: {
+                            title: 'Agregar nuevo labor',
+                            id: 'btn-insert'
+                        }
+                    },
+                    {
+                        text: '<i class="btn-label fa fa-refresh"></i><span class="hidden-xs">Actualizar</span>',
+                        action: function(e, dt, node, conf) {
+                            let form_request1 = {
+                                "accion": "table",
+                            }
+                            fetchData(form_request1);
+                        },
+                        className: 'btn btn-info btn-labeled' //Primary class for all buttons
+                    },
+                    {
+                        extend: 'collection',
+                        text: '<i class="btn-label fa fa-download"></i><span class="hidden-xs"> Exportar</span>',
+                        className: 'btn-labeled',
+                        buttons: [{
+                                extend: 'excel',
+                                text: '<i class="btn-label fa fa-file-excel-o"></i> Excel',
+                                titleAttr: 'Excel',
+                                title: '',
+                                className: 'btn-labeled',
+                                exportOptions: {
+                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                                }
+                            },
+                            {
+                                extend: 'csv',
+                                text: '<i class="btn-label fa fa-file-csv"></i> CSV',
+                                titleAttr: 'CSV',
+                                className: 'btn-labeled',
+                                exportOptions: {
+                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                                }
+                            },
+                            {
+                                extend: 'pdf',
+                                text: '<i class="btn-label fa fa-file-pdf-o"></i> PDF',
+                                titleAttr: 'PDF',
+                                className: 'btn-labeled',
+                                exportOptions: {
+                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                                }
+                            },
+                        ]
+                    },
+                    {
+                        text: '<i class="btn-label fa fa-file-excel-o"></i><span class="hidden-xs"> Excel</span>',
+                        className: 'btn btn-primary', //Primary class for all buttons
+                        tag: 'a',
+                        action: function(e, dt, node, config) {
+                            //This will send the page to the location specified
+                            window.location.href = './../../excelGenerator.php?table=view_vales_explosivo';
+                        },
+                        init: function(dt, node, config) {
+                            $(node).attr('href', './../../excelGenerator.php?table=view_vales_explosivo');
+                            $(node).attr('download', '');
+                            $(node).attr('title', 'Descargar Archivo');
+                        }
+                    },
+                    {
+                        text: '<i class="btn-label fa fa-upload"></i><span class="hidden-xs">Importar</span>',
+                        action: function(e, dt, node, conf) {
+                            $("#modal-import").modal("show");
+                        },
+                        className: 'btn btn-primary btn-labeled' //Primary class for all buttons
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="btn-label fa fa-print"></i><span class="hidden-xs">print</span>',
+                        titleAttr: 'PDF',
+                        className: 'btn-labeled', //Primary class for all buttons
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                        }
+                    },
+                    {
+                        extend: 'colvis',
+                        text: '<i class="btn-label fa fa-eye"></i><span class="hidden-xs">Mostrar / Ocultar</span>',
+                        className: 'btn-labeled' //Primary class for all buttons
+                    },
+                    'refresh',
+                ],
+            });
+        });
     </script>
 </body>
 </html>

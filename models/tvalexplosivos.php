@@ -34,11 +34,22 @@ class ValeExplosivos extends Conexion
         return $this->ConsultaSimple($query);
     }*/
     
-    //OBTIENE TODA LA TABLA
-    public function getAll(int $empezarDesde, int $filasPage): array
+    /* public function getAll(int $empezarDesde, int $filasPage): array
     {
         //$query = "SELECT * FROM tareos LIMIT {$empezarDesde}, {$filasPage}";
         $query = "SELECT * FROM tvalexplosivos LEFT JOIN colaboradores ON tareos.id_colaborador = colaboradores.id_colaborador LEFT JOIN labores ON tareos.id_labor = labores.id_labor LIMIT {$empezarDesde}, {$filasPage}";
+        return $this->ConsultaSimple($query);
+    } */
+
+    public function getLast_record(){
+        $query = "SELECT vl_es.valexplosivo_nvale FROM tvalexplosivos AS vl_es ORDER BY vl_es.valexplosivo_nvale DESC LIMIT 1";
+        return $this->ConsultaSimple($query);
+    }
+    //OBTIENE TODA LA TABLA
+    public function getAll(): array
+    {
+        //$query = "SELECT * FROM tareos LIMIT {$empezarDesde}, {$filasPage}";
+        $query = "SELECT vl_es.valexplosivo_fecha, vl_es.valexplosivo_nvale, vl_es.valexplosivo_turno, vl_es.valexplosivo_preimpresor, lb_zn.labZona_nombre, lb.lab_ccostos, lb_nm.labNombre_nombre, lb.lab_nivel, vl_es.valexplosivo_tipDisparo, vl_es.valexplosivo_tipEn FROM tvalexplosivos AS vl_es LEFT JOIN lab_zonas AS lb_zn ON vl_es.id_zona = lb_zn.id_zona LEFT JOIN labores AS lb ON vl_es.id_labor = lb.id_labor LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre";
         return $this->ConsultaSimple($query);
     }
     public function insert(

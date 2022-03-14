@@ -159,8 +159,8 @@
 					    <div class="col-xs-12">
 					        <div class="panel">
                                 <div class="panel-body">
-                                        <fieldset>
-                                            <legend><h3 class="panel-title">Operación Mina</h3></legend>
+                                    <fieldset>
+                                        <legend><h3 class="panel-title">Operación Mina</h3></legend>
                                             <div class="table-responsive-md">
                                                 <table class="table display nowrap table-striped table-bordered dt-responsive" style="width:100%" id="table-operacion-mina">
                                                     <thead class="thead-dark">
@@ -225,9 +225,6 @@
                                             </div>
                                         </fieldset>
                                     </div>
-                                    <!--===================================================-->
-                                    <!-- End Foo Table - Row Toggler -->
-
 					        </div>
 					    </div>
                     </div>

@@ -16,7 +16,6 @@ if($_POST){
             case "record":
                 $parament_id = $arrayForm['id'];
                 $rptSql = $tableManager->getRecord($parament_id);
-                
                 break;
             case "getLaborNombre":
                 $rptSql = $tableManager->getLaborNombre();
