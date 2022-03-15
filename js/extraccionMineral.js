@@ -11,6 +11,9 @@ const iptinsertNivel = document.getElementById("insert-extrMineral-nivel");
 const iptinsertTolva = document.getElementById("insert-extrMineral-tolva");
 const iptinsertAyudante = document.getElementById("insert-extrMineral-ayudante");
 
+const iptInsert_extraccionMineral_guardia = document.getElementById("insert-extrMineral-guardia-normal");
+
+
 const iptinsertDescripcion = document.getElementById("insert-extrMineral-descripcion")
 
 const datalistInsert_unidadMineral = document.getElementById("datalist-insert-extrMineral-unidMineral");
@@ -21,7 +24,16 @@ const datalistinsert_optionayudante = document.getElementById("datalist-insert-e
 
 const datalistInsert_optionzona = document.getElementById("datalist-insert-extrMineral-zona");
 
+const selectInsert_codigo = document.getElementById("insert-extrMineral-codigo");
+const iptInsert_extraccionMineral_cCosto = document.getElementById("insert-extrMineral-cCostos");
+const dtlInsert_extraccionMineral_cCosto = document.getElementById("datalist-insert-extrMineral-cCostos");
+const iptInsert_extraccionMinera_laborNombre = document.getElementById("insert-extrMineral-nombre");
+
+const iptInsert_extraccionMinera_cantidad = document.getElementById("insert-extrMineral-cantidad");
+
+
 const fragment = document.createDocumentFragment()
+var tbl_detalleExtraccion;
 
 cont = 0;
 // Eventos
@@ -84,14 +96,16 @@ $(document).ready(function() {
                         "accion": "getSelect_zona",
                     }
                     fetch_zona(form_request3);
-
-
+                    let form_request4 = {
+                        "accion": "getSelect_cCosto",
+                    }
+                    fetch_cCosto(form_request4);
                     $("#modal-insert").modal("show");
 
                 },
                 className: 'btn btn-success btn-labeled', //Primary class for all buttons
                 attr: {
-                    title: 'Agregar nuevo labor',
+                    title: 'Agregar',
                     id: 'btn-insert'
                 }
             },
@@ -175,7 +189,7 @@ $(document).ready(function() {
 
         ],
     });
-    $('#detalleExtraccion').DataTable({
+    tbl_detalleExtraccion = $('#detalleExtraccion').DataTable({
         language: idiomaEs,
         /* scrollY:       "200px",
         scrollCollapse: true, */
@@ -192,12 +206,19 @@ $(document).ready(function() {
             null,
             null,
             null,
-            null,
-            null,
-            null,
-            null,
-            null,
         ],
+        dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+        buttons: [{
+            extend: 'excel',
+            text: '<i class="btn-label fa fa-file-excel-o"></i> Excel',
+            titleAttr: 'Excel',
+            title: '',
+            className: 'btn-labeled',
+            /* exportOptions: {
+                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+            } */
+        }]
+
     });
     $('#detalleMaterialExtraido').DataTable({
         language: idiomaEs,
@@ -218,6 +239,9 @@ $(document).ready(function() {
         iptinsertDescripcion.value = $('select[id=insert-extrMineral-codigo]').val();
     });
 }); */
+$("#insert-extrMineral-codigo").change(function() {
+    iptinsertDescripcion.value = $('select[id=insert-extrMineral-codigo]').val();
+});
 btnAdd_DetalleExtraccion.addEventListener("click", () => {
     console.log('Agregando');
     valFechaExtraccion = iptinsertFechaExtraccion.value;
@@ -229,18 +253,36 @@ btnAdd_DetalleExtraccion.addEventListener("click", () => {
     valNivel = iptinsertNivel.value;
     valTolva = iptinsertTolva.value;
     valAyudante = iptinsertAyudante.value;
-    /* tableDetails.row.add([
-        counter,
-        valIdLabor,
-        valCCosto,
-        valNLabor,
+    valGuardia = iptInsert_extraccionMineral_guardia.value;
+    valCodigo = selectInsert_codigo.options[selectInsert_codigo.selectedIndex].text;
+    valcCosto = iptInsert_extraccionMineral_cCosto.value;
+    valCantidad = iptInsert_extraccionMinera_cantidad.value;;
+    data = {
+        "fecha_extraccion": valFechaExtraccion,
+        "locomotora": valLocomotora,
+        "tolva": valTolva,
+        "Unidad_minera": valUniEmpresa,
+        "Motorista": valMotorista,
+        "Ayudante": valAyudante,
+        "Zona": valZona,
+        "Nivel": valNivel,
+        "fecha_digitacion": valDigitacion,
+        "guardia": valGuardia,
+        "codigo": valCodigo
+    }
+    console.log(data);
+    tbl_detalleExtraccion.row.add([
+        valUniEmpresa,
+        valTolva,
+        valCodigo,
+        valcCosto,
         valZona,
-        valIdInstalacion,
-        valDescripcion,
-        valUMedida,
+        valNivel,
+        null,
+        valDigitacion,
         valCantidad,
-        '<button class="btn btn-danger removeRow">Eliminar</button>'
-    ]).draw(false); */
+        '<button class="btn btn-danger removeRow"><i class="fa fa-trash-o" aria-hidden="true"></i></button>'
+    ]).draw(false);
 });
 
 iptinsertLocomotora.addEventListener('keyup', function(e) {
@@ -320,8 +362,6 @@ const fetch_unidadMinera = async (request) => {
         body
     });
     const data = await res.json() //await JSON.parse(returned);
-    console.log('Unidad Minera')
-    console.log(data);
     pintar_unidadMinera(data);
 }
 const pintar_unidadMinera = (data) => {
@@ -361,4 +401,54 @@ const pintar_Zona = (data) => {
         fragment_zona.appendChild(clone_zona);
     });
     datalistInsert_optionzona.appendChild(fragment_zona);
+}
+
+const fetch_cCosto = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    const res = await fetch("./../../../controllers/controllerExtraccionMinera_list.php", {
+        method: "POST",
+        body
+    });
+    const data = await res.json() //await JSON.parse(returned);
+    pintar_cCosto(data);
+}
+const pintar_cCosto = (data) => {
+    arraySelect_cCosto = data['sql'];
+    dtlInsert_extraccionMineral_cCosto.innerHTML = '';
+    const templateSelect_cCostos = document.querySelector("#template-insert-extrMineral-cCostos").content;
+    const fragment_cCostos = document.createDocumentFragment();
+    arraySelect_cCosto.forEach(item => {
+        templateSelect_cCostos.querySelector('option').value = item.lab_ccostos
+        templateSelect_cCostos.querySelector('option').dataset.idCosto = item.id_labor;
+        const clone_cCostos = templateSelect_cCostos.cloneNode(true);
+        fragment_cCostos.appendChild(clone_cCostos);
+    });
+    dtlInsert_extraccionMineral_cCosto.appendChild(fragment_cCostos);
+}
+
+iptInsert_extraccionMineral_cCosto.addEventListener('input', (e) => {
+    const val_cCosto = iptInsert_extraccionMineral_cCosto.value;
+    if (val_cCosto) {
+        var val_idCCosto = document.querySelector('#datalist-insert-extrMineral-cCostos option[value="' + iptInsert_extraccionMineral_cCosto.value + '"]').dataset.idCosto;
+
+        const data = {
+            "id": val_idCCosto
+        }
+        const form = {
+            "accion": "getIpt_laborName",
+            "datos": data
+        }
+        get_nameLabor(form)
+    }
+});
+const get_nameLabor = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    const res = await fetch("./../../../controllers/controllerExtraccionMinera_list.php", {
+        method: "POST",
+        body
+    });
+    const data = await res.json() //await JSON.parse(returned);
+    iptInsert_extraccionMinera_laborNombre.value = data['sql'][0]['labNombre_nombre'];
 }

@@ -309,6 +309,7 @@ $("#insert-operacionMina-codzona").on('input', function() {
         "parament": validcodzona,
         "columnWhere": "id_zona",
     }
+    console.log('Weee');
     if (validcodzona) {
         fetchCodlabor(selectForm_codLabor);
     }

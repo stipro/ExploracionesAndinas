@@ -432,7 +432,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="insert-extrMineral-unidadEmpresa" class="col-md-4 form-label">Uni Empresa:</label>
+                                    <label for="insert-extrMineral-unidadEmpresa" class="col-md-4 form-label">ud. Empresa:</label>
                                     <div class="col-md-8">
                                         <input class="form-control" list="datalist-insert-extrMineral-unidMineral" id="insert-extrMineral-unidadEmpresa" placeholder="Ingrese Contrata...">
                                     </div>                                        
@@ -496,14 +496,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="insert-extrMineral-guardia-normal" class="col-md-4 form-label">Guardia Normal:</label>
+                                    <label for="insert-extrMineral-guardia-normal" class="col-md-4 form-label">Turno</label>
                                     <div class="col-md-8">
                                         <input class="form-control" list="datalist-insert-extrMineral-guardia" id="insert-extrMineral-guardia-normal" placeholder="Ingrese Guardia...">
                                     </div>                                        
                                     <datalist id="datalist-insert-extrMineral-guardia">
-                                        <option value="A">
-                                        <option value="B">
-                                        <option value="C">
+                                        <option value="Dia">
+                                        <option value="Noche">
                                     </datalist>
                                 </div>
                                 <div class="form-group">
@@ -545,8 +544,8 @@
                                             <option value="2">
                                         </datalist> -->
                                         <select class="selectpicker col-md-8" id="insert-extrMineral-codigo" name="browser">
-                                            <option value="Mineral" selected>1</option>
-                                            <option value="Desmonte">2</option>
+                                            <option value="Mineral" data-id="1" selected>1</option>
+                                            <option value="Desmonte" data-id="2">2</option>
                                         </select>
                                     </div>
                                 </div>
@@ -554,7 +553,7 @@
                                     <div class="form-group">
                                         <label for="insert-extrMineral-descripcion" class="col-md-4 form-label">Descripción:</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" value="Mineral" list="options-descripcion-ExtracionMineral" id="insert-extrMineral-descripcion" placeholder="Ingrese Descripción..." disabled>
+                                            <input class="form-control" value="Mineral" id="insert-extrMineral-descripcion" placeholder="Ingrese Descripción..." disabled>
                                         </div>                                        
                                         <!-- <datalist id="options-descripcion-ExtracionMineral">
                                             <option value="Mineral">
@@ -564,37 +563,50 @@
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="insert-extrMineral-programa" class="col-md-4 form-label">Programa:</label>
+                                        <label for="insert-extrMineral-cCostos" class="col-md-4 form-label">C. Costos:</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="optionsPrograma" id="insert-extrMineral-programa" placeholder="Ingrese Programa...">
+                                            <input class="form-control" list="datalist-insert-extrMineral-cCostos" name="datalist-insert-extrMineral-cCostos" id="insert-extrMineral-cCostos" placeholder="C. Costos">
                                         </div>                                        
-                                        <datalist id="optionsPrograma">
-                                            <option value="[TODAS]">
-                                            <option value="">
+                                        <datalist id="datalist-insert-extrMineral-cCostos">
+                                            <option value="...">
                                         </datalist>
-                                    </div> 
+                                        <template id="template-insert-extrMineral-cCostos">
+                                            <option value="">
+                                        </template>
+                                    </div>
                                 </div>
-                                
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="insert-extrMineral-nombre" class="col-md-4 form-label">Nombre</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" type="text" id="insert-extrMineral-nombre" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="insert-extrMineral-cantidad" class="col-md-4 form-label">Cantidad</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" type="text" id="insert-extrMineral-cantidad">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="table-responsive">
                                     <table class="table display nowrap table-striped table-bordered dt-responsive" style="width:100%" id="detalleExtraccion">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Empresa Esp.</th>
+                                                <th scope="col">ud. Minera</th>
                                                 <th scope="col">Tolva</th>
-                                                <th scope="col">Código</th>
+                                                <th scope="col">Tipo Mat</th>
                                                 <th scope="col">Labor</th>
                                                 <th scope="col">Zona</th>
                                                 <th scope="col">Nivel</th>
                                                 <th scope="col">Veta</th>
-                                                <th scope="col">Tipo</th>
-                                                <th scope="col">Programa</th>
-                                                <th scope="col">Sección</th>
-                                                <th scope="col">Roca</th>
-                                                <th scope="col">Equipo Limpieza</th>
-                                                <th scope="col">Fec. Creación</th>
-                                                <th scope="col">N° Cole.</th>
+                                                <th scope="col">Fec. Extracción</th>
+                                                <th scope="col">Cant. Carros</th>
+                                                <th scope="col">Acciónes</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -604,7 +616,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="display: flex;align-items: center;justify-content: center;">
+                    <!-- <div class="row" style="display: flex;align-items: center;justify-content: center;">
                         <div class="col-md-10">
                             <p class="bord-btm pad-ver text-main text-bold">Detalle de Material Extraido:</p>
                             <div class="table-responsive">
@@ -632,7 +644,7 @@
                             </div>
                             <button class="btn btn-default"><i class="fa fa-lock"></i> Cerrar Digitación Diaria</button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                     <!--Modal footer-->
                 <div class="modal-footer">

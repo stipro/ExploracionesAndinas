@@ -38,27 +38,36 @@ class extraccionMineral extends Conexion
     public function getAll(): array
     {
         //$query = "SELECT * FROM tareos LIMIT {$empezarDesde}, {$filasPage}";
-        $query = "SELECT oper_mine.id_operacionMina, oper_mine.operacionMina_registro, oper_mine.operacionMina_turno, oper_mine.operacionMina_guardia, oper_mine.operacionMina_nVale, oper_mine.operacionMina_actividad, oper_mine.operacionMina_l, oper_mine.operacionMina_lpv, oper_mine.operacionMina_stto, oper_mine.operacionMina_serv, oper_mine.operacionMina_comentario, oper_mine.operacionMina_tipAvance, oper_mine.operacionMina_avanceMt, oper_mine.operacionMina_avanceMt3, oper_mine.operacionMina_intDisparo, oper_mine.operacionMina_Resuelto, oper_mine.operacionMina_manualCantidad, oper_mine.operacionMina_palaNombre, oper_mine.operacionMina_palaCantidad, oper_mine.operacionMina_wincheNombre, oper_mine.operacionMina_wincheCantidad, oper_mine.operacionMina_mineralCantidad, oper_mine.operacionMina_desmonCantidad FROM operacion_mina AS oper_mine";
+        $query = "SELECT oper_mine.id_operacionMina, oper_mine.operacionMina_registro, oper_mine.operacionMina_turno, oper_mine.operacionMina_guardia, oper_mine.operacionMina_nVale, oper_mine.operacionMina_actividad, oper_mine.operacionMina_l, oper_mine.operacionMina_lpv, oper_mine.operacionMina_stto, oper_mine.operacionMina_serv, oper_mine.operacionMina_comentario, oper_mine.operacionMina_tipAvance, oper_mine.operacionMina_avanceMt, oper_mine.operacionMina_avanceMt3, oper_mine.operacionMina_intDisparo, oper_mine.operacionMina_Resuelto, oper_mine.operacionMina_manualCantidad, oper_mine.operacionMina_palaNombre, oper_mine.operacionMina_palaCantidad, oper_mine.operacionMina_wincheNombre, oper_mine.operacionMina_wincheCantidad, oper_mine.operacionMina_mineralCantidad, oper_mine.operacionMina_desmonCantidad FROM operacion_mina AS oper_mine;";
         return $this->ConsultaSimple($query);
     }
     public function getSelect_unidadMinera(): array
     {
-        $query = "SELECT und_mn.nombre_unidadMinera, und_mn.id_unidadMinera FROM unidad_mineras AS und_mn";
+        $query = "SELECT und_mn.nombre_unidadMinera, und_mn.id_unidadMinera FROM unidad_mineras AS und_mn;";
         return $this->ConsultaSimple($query);
     }
     public function getSelect_colaboradores(): array
     {
-        $query = "SELECT crs.col_nombres, crs.col_apePaterno, crs.col_apeMaterno, crs.id_colaborador FROM colaboradores AS crs";
+        $query = "SELECT crs.col_nombres, crs.col_apePaterno, crs.col_apeMaterno, crs.id_colaborador FROM colaboradores AS crs;";
         return $this->ConsultaSimple($query);
     }
     public function getSelect_zona(): array
     {
-        $query = "SELECT lb_zn.labZona_nombre, lb_zn.id_zona FROM lab_zonas AS lb_zn";
+        $query = "SELECT lb_zn.labZona_nombre, lb_zn.id_zona FROM lab_zonas AS lb_zn;";
+        return $this->ConsultaSimple($query);
+    }
+    public function getSelect_cCosto(): array
+    {
+        $query = "SELECT lb.lab_ccostos, lb.id_labor FROM labores AS lb;";
+        return $this->ConsultaSimple($query);
+    }
+    public function getIpt_laborName($parament_id){
+        $query = "SELECT lb_nm.labNombre_nombre, lb.id_labor FROM labores AS lb LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre WHERE lb.id_labor = '{$parament_id}'";
         return $this->ConsultaSimple($query);
     }
     public function getRecord($parament_id)
     {
-        $query = "SELECT op_mn.operacionMina_registro, op_mn.operacionMina_turno, op_mn.operacionMina_guardia, op_mn.operacionMina_nVale FROM operacion_mina AS op_mn WHERE op_mn.id_operacionMina='{$parament_id}'";
+        $query = "SELECT op_mn.operacionMina_registro, op_mn.operacionMina_turno, op_mn.operacionMina_guardia, op_mn.operacionMina_nVale FROM operacion_mina AS op_mn WHERE op_mn.id_operacionMina = '{$parament_id}'";
         return $this->ConsultaSimple($query);
     }
     public function insert($dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7, $dato8, $dato9, $dato10, $dato11, $dato12, $dato13, $dato14, $dato15, $dato16, $dato17, $dato18, $dato19, $dato20, $dato21, $dato22, $dato23)

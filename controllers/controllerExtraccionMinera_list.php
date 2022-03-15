@@ -24,7 +24,13 @@ if($_POST){
             case "getSelect_zona":
                 $rptSql = $tableManager->getSelect_zona();
                 break;
-
+            case "getSelect_cCosto":
+                $rptSql = $tableManager->getSelect_cCosto();
+                break;
+            case "getIpt_laborName":
+                $parament_id = $arrayForm['datos']['id'];
+                $rptSql = $tableManager->getIpt_laborName($parament_id);
+                break;
             case "getcolumnWhere":
                 $column = $arrayForm['column'];
                 $parament = $arrayForm['parament'];
@@ -39,9 +45,6 @@ if($_POST){
             case "search":                
                 break;
             case "table":
-                break;
-            default:
-                echo "ola";
                 break;
         }
 
