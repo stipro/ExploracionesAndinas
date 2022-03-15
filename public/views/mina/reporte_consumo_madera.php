@@ -1,6 +1,6 @@
 <?php
     $ip_usuario = $_SERVER['REMOTE_ADDR'];  
-    echo $ip_usuario;
+    /* echo $ip_usuario; */
     session_start();
     if (!isset($_SESSION["username"])) {
         //echo 'No se inicio session ';
@@ -24,7 +24,6 @@
         for ($i=0; $i < count($parte); $i++) {
             $name_menu .= ucfirst($parte[$i]).' ';
         }
-
     }
 ?>
 <!DOCTYPE html>

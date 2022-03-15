@@ -1,6 +1,3 @@
-/* const btnAgregar = document.getElementById("btn-Agregar"); */
-
-
 const tbodyDetalleExtraccion = document.getElementById("detalleExtraccion-body");
 
 const btnAdd_DetalleExtraccion = document.getElementById("insert-option-table-detalleExtraccion");
@@ -16,15 +13,199 @@ const iptinsertAyudante = document.getElementById("insert-extrMineral-ayudante")
 
 const iptinsertDescripcion = document.getElementById("insert-extrMineral-descripcion")
 
-const datalistinsert_optionmotorista = document.getElementById("datalistOptions-motorista");
-const datalistinsert_optionayudante = document.getElementById("datalistOptions-ayudante");
+const datalistInsert_unidadMineral = document.getElementById("datalist-insert-extrMineral-unidMineral");
 
+const datalistinsert_optionmotorista = document.getElementById("datalist-insert-extrMineral-motorista");
+const tpeInsert_extractionMineral_motorista = document.getElementById("template-opt-motorista");
+const datalistinsert_optionayudante = document.getElementById("datalist-insert-extrMineral-ayudante");
+
+const datalistInsert_optionzona = document.getElementById("datalist-insert-extrMineral-zona");
+
+const fragment = document.createDocumentFragment()
 
 cont = 0;
 // Eventos
 // El evento DOMContentLoaded es disparado cuando el documento HTML ha sido completamente cargado y parseado
 document.addEventListener('DOMContentLoaded', e => {
 
+});
+
+$('.chosenTurno').chosen();
+var idiomaEs = {
+    "decimal": "",
+    "emptyTable": "No hay registro",
+    "info": "Mostrando _START_ a _END_ de _TOTAL_ Datos",
+    "infoEmpty": "Mostrando 0 to 0 of 0 Datos",
+    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+    "infoPostFix": "",
+    "thousands": ",",
+    "lengthMenu": "Mostrar _MENU_ Datos",
+    "loadingRecords": "Cargando...",
+    "processing": "Procesando...",
+    "search": "Busqueda General :",
+    "zeroRecords": "Sin resultados encontrados",
+    "paginate": {
+        "first": "Primero",
+        "last": "Ultimo",
+        "next": "Siguiente",
+        "previous": "Anterior"
+    },
+    "buttons": {
+        "copy": "Copiar",
+        "colvis": "Visibilidad",
+        "collection": "Colección",
+        "colvisRestore": "Restaurar visibilidad",
+        "print": "Imprimir",
+        "pageLength": {
+            "-1": "Mostrar todas las filas",
+            "_": "Mostrar %d filas",
+        },
+    }
+};
+$(document).ready(function() {
+    $('#table-master').DataTable({
+        language: idiomaEs,
+        scrollY: "200px",
+        scrollCollapse: true,
+        dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+        buttons: [{
+                text: '<i class="btn-label fa-solid fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>',
+                action: function(e, dt, node, conf) {
+                    console.log('Boton crear');
+                    let form_request1 = {
+                        "accion": "getSelect_unidadMinera",
+                    }
+                    fetch_unidadMinera(form_request1);
+                    let form_request2 = {
+                        "accion": "getSelect_colaboradores",
+                    }
+                    fetch_colaboradores(form_request2);
+                    let form_request3 = {
+                        "accion": "getSelect_zona",
+                    }
+                    fetch_zona(form_request3);
+
+
+                    $("#modal-insert").modal("show");
+
+                },
+                className: 'btn btn-success btn-labeled', //Primary class for all buttons
+                attr: {
+                    title: 'Agregar nuevo labor',
+                    id: 'btn-insert'
+                }
+            },
+            {
+                text: '<i class="btn-label fa fa-refresh"></i><span class="hidden-xs">Actualizar</span>',
+                action: function(e, dt, node, conf) {
+
+                },
+                className: 'btn btn-info btn-labeled' //Primary class for all buttons
+            },
+            {
+                extend: 'collection',
+                text: '<i class="btn-label fa fa-download"></i><span class="hidden-xs"> Exportar</span>',
+                className: 'btn-labeled',
+                buttons: [{
+                        extend: 'excel',
+                        text: '<i class="btn-label fa fa-file-excel-o"></i> Excel',
+                        titleAttr: 'Excel',
+                        title: '',
+                        className: 'btn-labeled',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                        }
+                    },
+                    {
+                        extend: 'csv',
+                        text: '<i class="btn-label fa fa-file-csv"></i> CSV',
+                        titleAttr: 'CSV',
+                        className: 'btn-labeled',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        text: '<i class="btn-label fa fa-file-pdf-o"></i> PDF',
+                        titleAttr: 'PDF',
+                        className: 'btn-labeled',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                        }
+                    },
+                ]
+            },
+            {
+                text: '<i class="btn-label fa fa-file-excel-o"></i><span class="hidden-xs"> Excel</span>',
+                className: 'btn btn-primary', //Primary class for all buttons
+                tag: 'a',
+                action: function(e, dt, node, config) {
+                    //This will send the page to the location specified
+                    window.location.href = './../../excelGenerator.php?table=view_vales_extraccionMineral';
+                },
+                init: function(dt, node, config) {
+                    $(node).attr('href', './../../excelGenerator.php?table=view_vales_extraccionMineral');
+                    $(node).attr('download', '');
+                    $(node).attr('title', 'Descargar Archivo');
+                }
+            },
+            {
+                text: '<i class="btn-label fa fa-upload"></i><span class="hidden-xs">Importar</span>',
+                action: function(e, dt, node, conf) {
+                    $("#modal-import").modal("show");
+                },
+                className: 'btn btn-primary btn-labeled' //Primary class for all buttons
+            },
+            {
+                extend: 'print',
+                text: '<i class="btn-label fa fa-print"></i><span class="hidden-xs">print</span>',
+                titleAttr: 'PDF',
+                className: 'btn-labeled', //Primary class for all buttons
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                }
+            },
+            {
+                extend: 'colvis',
+                text: '<i class="btn-label fa fa-eye"></i><span class="hidden-xs">Mostrar / Ocultar</span>',
+                className: 'btn-labeled' //Primary class for all buttons
+            },
+            'refresh',
+
+        ],
+    });
+    $('#detalleExtraccion').DataTable({
+        language: idiomaEs,
+        /* scrollY:       "200px",
+        scrollCollapse: true, */
+        // boton de cantidad a visualizar //
+        lengthChange: false,
+        filter: false,
+        column: [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+        ],
+    });
+    $('#detalleMaterialExtraido').DataTable({
+        language: idiomaEs,
+        /* scrollY:       "200px",
+        scrollCollapse: true, */
+        lengthChange: false,
+        filter: false,
+    });
 });
 
 /* btnAgregar.addEventListener("click", () => {
@@ -48,38 +229,18 @@ btnAdd_DetalleExtraccion.addEventListener("click", () => {
     valNivel = iptinsertNivel.value;
     valTolva = iptinsertTolva.value;
     valAyudante = iptinsertAyudante.value;
-    if (valUniEmpresa && valTolva) {
-        const templateTable_DetalleExtraccion = document.getElementById("template-detalleExtraccion").content;
-        const fragmentDetalleExtraccin = document.createDocumentFragment();
-
-        templateTable_DetalleExtraccion.querySelector('#template-tds-uni_empresa').textContent = valUniEmpresa;
-        templateTable_DetalleExtraccion.querySelector('#template-tds-tolva').textContent = valTolva;
-
-        const clonetds_DetalleExtraccion = templateTable_DetalleExtraccion.cloneNode(true);
-        fragmentDetalleExtraccin.appendChild(clonetds_DetalleExtraccion);
-        tbodyDetalleExtraccion.appendChild(fragmentDetalleExtraccin);
-    }
-    if (!valUniEmpresa) {
-        $.niftyNoty({
-            type: 'warning',
-            container: '#alert-form-insert',
-            html: '<strong>¡Advertencia!</strong> Seleccione Empresa.',
-            focus: false,
-            timer: 2000
-        });
-    }
-    if (!valTolva) {
-        $.niftyNoty({
-            type: 'warning',
-            container: '#alert-form-insert',
-            html: '<strong>¡Advertencia!</strong> Seleccione Tolva.',
-            focus: false,
-            timer: 2000
-        });
-    }
-
-
-
+    /* tableDetails.row.add([
+        counter,
+        valIdLabor,
+        valCCosto,
+        valNLabor,
+        valZona,
+        valIdInstalacion,
+        valDescripcion,
+        valUMedida,
+        valCantidad,
+        '<button class="btn btn-danger removeRow">Eliminar</button>'
+    ]).draw(false); */
 });
 
 iptinsertLocomotora.addEventListener('keyup', function(e) {
@@ -112,10 +273,10 @@ iptinsertAyudante.addEventListener('keyup', function(e) {
 });
 
 // Traer cohicidencia
-const fetchData = async (request) => {
+const fetch_colaboradores = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
-    const res = await fetch("./../../../controllers/controllerColaboradorList.php", {
+    const res = await fetch("./../../../controllers/controllerExtraccionMinera_list.php", {
         method: "POST",
         body
     });
@@ -130,6 +291,7 @@ const pintarMotorista = (data) => {
     const fragmentMotorista = document.createDocumentFragment();
     arraySelectColaboradores.forEach(item => {
         templateSelectMotorista.querySelector('#template-opts-motorista').value = item.col_apePaterno + " " + item.col_apeMaterno + " " + item.col_nombres;
+        templateSelectMotorista.querySelector('#template-opts-motorista').dataset.idColaboradorMotorista = item.id_colaborador;
         const cloneMotorista = templateSelectMotorista.cloneNode(true);
         fragmentMotorista.appendChild(cloneMotorista);
     });
@@ -142,9 +304,61 @@ const pintarAyudante = (data) => {
     const fragmentAyudante = document.createDocumentFragment();
     arraySelectColaboradores.forEach(item => {
         templateSelectAyudante.querySelector('#template-opts-ayudante').value = item.col_apePaterno + " " + item.col_apeMaterno + " " + item.col_nombres;
+        templateSelectAyudante.querySelector('#template-opts-ayudante').dataset.idColaboradorAyudante = item.id_colaborador;
         const cloneAyudante = templateSelectAyudante.cloneNode(true);
         fragmentAyudante.appendChild(cloneAyudante);
     });
     datalistinsert_optionayudante.appendChild(fragmentAyudante);
+}
 
+// Traer cohicidencia
+const fetch_unidadMinera = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    const res = await fetch("./../../../controllers/controllerExtraccionMinera_list.php", {
+        method: "POST",
+        body
+    });
+    const data = await res.json() //await JSON.parse(returned);
+    console.log('Unidad Minera')
+    console.log(data);
+    pintar_unidadMinera(data);
+}
+const pintar_unidadMinera = (data) => {
+    arraySelect_unidadMinera = data['sql'];
+    datalistInsert_unidadMineral.innerHTML = '';
+    const templateSelect_unidadMinera = document.querySelector("#template-insert-extrMineral-unidadMinera").content;
+    const fragment_unidadMinera = document.createDocumentFragment();
+    arraySelect_unidadMinera.forEach(item => {
+        templateSelect_unidadMinera.querySelector('option').value = item.nombre_unidadMinera
+        templateSelect_unidadMinera.querySelector('option').dataset.idunidadMinera = item.id_unidadMinera;
+        const clone_unidadMinera = templateSelect_unidadMinera.cloneNode(true);
+        fragment_unidadMinera.appendChild(clone_unidadMinera);
+    });
+    datalistInsert_unidadMineral.appendChild(fragment_unidadMinera);
+}
+
+// Traer cohicidencia
+const fetch_zona = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    const res = await fetch("./../../../controllers/controllerExtraccionMinera_list.php", {
+        method: "POST",
+        body
+    });
+    const data = await res.json() //await JSON.parse(returned);
+    pintar_Zona(data);
+}
+const pintar_Zona = (data) => {
+    arraySelect_zona = data['sql'];
+    datalistInsert_optionzona.innerHTML = '';
+    const templateSelect_zona = document.querySelector("#template-insert-extrMineral-zona").content;
+    const fragment_zona = document.createDocumentFragment();
+    arraySelect_zona.forEach(item => {
+        templateSelect_zona.querySelector('option').value = item.labZona_nombre
+        templateSelect_zona.querySelector('option').dataset.idZona = item.id_zona;
+        const clone_zona = templateSelect_zona.cloneNode(true);
+        fragment_zona.appendChild(clone_zona);
+    });
+    datalistInsert_optionzona.appendChild(fragment_zona);
 }

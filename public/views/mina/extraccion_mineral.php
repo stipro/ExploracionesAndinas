@@ -236,7 +236,7 @@
     <!--Editar Bootstrap Modal-->
     <!--===================================================-->
     <div class="modal fade" id="modal-edit" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
                 <!--Modal header-->
@@ -434,20 +434,21 @@
                                 <div class="form-group">
                                     <label for="insert-extrMineral-unidadEmpresa" class="col-md-4 form-label">Uni Empresa:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" list="datalistOptions-UniEmpresa" id="insert-extrMineral-unidadEmpresa" placeholder="Ingrese Contrata...">
+                                        <input class="form-control" list="datalist-insert-extrMineral-unidMineral" id="insert-extrMineral-unidadEmpresa" placeholder="Ingrese Contrata...">
                                     </div>                                        
-                                    <datalist id="datalistOptions-UniEmpresa">
-                                        <option value="San Andres">
-                                        <option value="Huinllo">
-                                        <option value="Torrellas">
+                                    <datalist id="datalist-insert-extrMineral-unidMineral">
+                                        <option value="...">
                                     </datalist>
+                                    <template id="template-insert-extrMineral-unidadMinera">
+                                        <option value="">
+                                    </template>
                                 </div>
                                 <div class="form-group">
                                     <label for="insert-extrMineral-motorista" class="col-md-4 form-label">Motorista/Scooper:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" list="datalistOptions-motorista" id="insert-extrMineral-motorista" placeholder="Ingrese Motorista/Scooper...">
+                                        <input class="form-control" list="datalist-insert-extrMineral-motorista" id="insert-extrMineral-motorista" placeholder="Ingrese Motorista/Scooper...">
                                     </div>                                        
-                                    <datalist id="datalistOptions-motorista">
+                                    <datalist id="datalist-insert-extrMineral-motorista">
                                         <option value="...">
                                     </datalist>
                                     <template id="template-opt-motorista">
@@ -457,9 +458,9 @@
                                 <div class="form-group">
                                     <label for="insert-extrMineral-ayudante" class="col-md-4 form-label">Ayudante:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" list="datalistOptions-ayudante" id="insert-extrMineral-ayudante" placeholder="Ingrese Ayudante...">
+                                        <input class="form-control" list="datalist-insert-extrMineral-ayudante" id="insert-extrMineral-ayudante" placeholder="Ingrese Ayudante...">
                                     </div>                                        
-                                    <datalist id="datalistOptions-ayudante">
+                                    <datalist id="datalist-insert-extrMineral-ayudante">
                                         <option value="...">
                                     </datalist>
                                     <template id="template-opt-ayudante">
@@ -471,22 +472,20 @@
                                 <div class="form-group">
                                     <label for="insert-extrMineral-zona" class="col-md-4 form-label">Zona:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" list="datalistOptions" id="insert-extrMineral-zona" placeholder="Ingrese Zona...">
+                                        <input class="form-control" list="datalist-insert-extrMineral-zona" id="insert-extrMineral-zona" placeholder="Ingrese Zona...">
                                     </div>                                        
-                                    <datalist id="datalistOptions">
-                                        <option value="San Andres">
-                                        <option value="willo">
+                                    <datalist id="datalist-insert-extrMineral-zona">
+                                        <option value="...">
                                     </datalist>
+                                    <template id="template-insert-extrMineral-zona">
+                                        <option value="">
+                                    </template>
                                 </div>
                                 <div class="form-group">
                                     <label for="insert-extrMineral-nivel" class="col-md-4 form-label">Nivel:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" list="datalistOptions" id="insert-extrMineral-nivel" placeholder="Ingrese Nivel...">
-                                    </div>                                        
-                                    <datalist id="datalistOptions">
-                                        <option value="San Andres">
-                                        <option value="willo">
-                                    </datalist>
+                                        <input class="form-control" id="insert-extrMineral-nivel" placeholder="Nivel">
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -499,11 +498,12 @@
                                 <div class="form-group">
                                     <label for="insert-extrMineral-guardia-normal" class="col-md-4 form-label">Guardia Normal:</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" list="datalistOptions" id="insert-extrMineral-guardia-normal" placeholder="Ingrese Guardia...">
+                                        <input class="form-control" list="datalist-insert-extrMineral-guardia" id="insert-extrMineral-guardia-normal" placeholder="Ingrese Guardia...">
                                     </div>                                        
-                                    <datalist id="datalistOptions">
-                                        <option value="A: [11:20 - 20:51]">
-                                        <option value="">
+                                    <datalist id="datalist-insert-extrMineral-guardia">
+                                        <option value="A">
+                                        <option value="B">
+                                        <option value="C">
                                     </datalist>
                                 </div>
                                 <div class="form-group">
@@ -604,7 +604,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style="display: flex;align-items: center;justify-content: center;">
                         <div class="col-md-10">
                             <p class="bord-btm pad-ver text-main text-bold">Detalle de Material Extraido:</p>
                             <div class="table-responsive">
@@ -626,11 +626,11 @@
                         </div>
                         <div class="col-md-2">
                             <div class="btn-group-vertical">
-                                <button class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button>
                                 <button class="btn btn-default"><i class="fa fa-plus"></i></button>
+                                <button class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button>
                                 <button class="btn btn-default"><i class="fa fa-minus"></i></button>
                             </div>
-                            <button class="btn btn-default"><i class="fa fa-lock"></i>Cerrar Digitación Diaria</button>
+                            <button class="btn btn-default"><i class="fa fa-lock"></i> Cerrar Digitación Diaria</button>
                         </div>
                     </div>
                 </div>
@@ -655,217 +655,49 @@
     <!--=================================================-->
     
     <!--Demo script [ DEMONSTRATION ]
-    <script src="..\js\demo\nifty-demo.min.js"></script>-->
+    <script src="../js/demo/nifty-demo.min.js"></script>-->
 
     <!--Icons [ SAMPLE ]-->
-    <script src="./../../../js\demo\icons.js"></script>
+    <script src="./../../../js/demo/icons.js"></script>
 
     <!--FooTable Example [ SAMPLE ]
-    <script src="./../../../js\demo\tables-footable.js"></script>-->
+    <script src="./../../../js/demo/tables-footable.js"></script>-->
     
     <!--FooTable [ OPTIONAL ]
-    <script src="./../../../plugins\fooTable\dist\footable.all.min.js"></script>-->
+    <script src="./../../../plugins/fooTable/dist/footable.all.min.js"></script>-->
 
     <!--Bootstrap Select [ OPTIONAL ]-->
-    <script src="./../../../plugins\bootstrap-select\bootstrap-select.min.js"></script>
+    <script src="./../../../plugins/bootstrap-select/bootstrap-select.min.js"></script>
 
     <!--Chosen [ OPTIONAL ]-->
-    <script src="./../../../plugins\chosen\chosen.jquery.min.js"></script>
+    <script src="./../../../plugins/chosen/chosen.jquery.min.js"></script>
 
     <!--Select2 [ OPTIONAL ]-->
-    <script src="./../../../plugins\select2\js\select2.min.js"></script>
+    <script src="./../../../plugins/select2/js/select2.min.js"></script>
 
     <!--Panel [ SAMPLE ]-->
-    <script src="./../../../js\demo\ui-panels.js"></script>
+    <script src="./../../../js/demo/ui-panels.js"></script>
 
     <!--Date-MYSQL [ REQUIRED ]-->
-    <script src="./../../../js\extraccionMineral.js"></script>
+    <script src="./../../../js/extraccionMineral.js"></script>
 
     <!--Bootstrap Validator [ OPTIONAL ]-->
-    <script src="./../../../plugins\bootstrap-validator\bootstrapValidator.min.js"></script>
+    <script src="./../../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
     
     <!--Masked Input [ OPTIONAL ]-->
-    <script src="./../../../plugins\masked-input\jquery.maskedinput.min.js"></script>
+    <script src="./../../../plugins/masked-input/jquery.maskedinput.min.js"></script>
 
     
     <!--Bootstrap Timepicker [ OPTIONAL ]-->
-    <script src="./../../../plugins\bootstrap-timepicker\bootstrap-timepicker.min.js"></script>
+    <script src="./../../../plugins/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
 
 
     <!--Bootstrap Datepicker [ OPTIONAL ]-->
-    <script src="./../../../plugins\bootstrap-datepicker\bootstrap-datepicker.min.js"></script>
+    <script src="./../../../plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
 
     <!--Form Component [ SAMPLE ]-->
-    <script src="./../../../js\demo\form-component.js"></script>
-
-    <script>
-        $('.chosenTurno').chosen();
-        var idiomaEs = {
-            "decimal": "",
-            "emptyTable": "No hay registro",
-            "info": "Mostrando _START_ a _END_ de _TOTAL_ Datos",
-            "infoEmpty": "Mostrando 0 to 0 of 0 Datos",
-            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-            "infoPostFix": "",
-            "thousands": ",",
-            "lengthMenu": "Mostrar _MENU_ Datos",
-            "loadingRecords": "Cargando...",
-            "processing": "Procesando...",
-            "search": "Busqueda General :",
-            "zeroRecords": "Sin resultados encontrados",
-            "paginate": {
-                "first": "Primero",
-                "last": "Ultimo",
-                "next": "Siguiente",
-                "previous": "Anterior"
-            },
-            "buttons": {
-                "copy": "Copiar",
-                "colvis": "Visibilidad",
-                "collection": "Colección",
-                "colvisRestore": "Restaurar visibilidad",
-                "print": "Imprimir",
-                "pageLength": {
-                    "-1": "Mostrar todas las filas",
-                    "_": "Mostrar %d filas",
-                },
-            }
-        };
-        $(document).ready(function() {
-            $('#table-master').DataTable({
-                language: idiomaEs,
-                scrollY:       "200px",
-                scrollCollapse: true,
-                dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
-                buttons: [{
-                    text: '<i class="btn-label fa-solid fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>',
-                    action: function(e, dt, node, conf) {
-                        $("#modal-insert").modal("show");
-
-                    },
-                    className: 'btn btn-success btn-labeled', //Primary class for all buttons
-                    attr: {
-                        title: 'Agregar nuevo labor',
-                        id: 'btn-insert'
-                    }
-                },
-                {
-                    text: '<i class="btn-label fa fa-refresh"></i><span class="hidden-xs">Actualizar</span>',
-                    action: function(e, dt, node, conf) {
-                        let form_request1 = {
-                            "accion": "table",
-                        }
-                        fetchData(form_request1);
-                    },
-                    className: 'btn btn-info btn-labeled' //Primary class for all buttons
-                },
-                {
-                    extend: 'collection',
-                    text: '<i class="btn-label fa fa-download"></i><span class="hidden-xs"> Exportar</span>',
-                    className: 'btn-labeled',
-                    buttons: [{
-                            extend: 'excel',
-                            text: '<i class="btn-label fa fa-file-excel-o"></i> Excel',
-                            titleAttr: 'Excel',
-                            title: '',
-                            className: 'btn-labeled',
-                            exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-                            }
-                        },
-                        {
-                            extend: 'csv',
-                            text: '<i class="btn-label fa fa-file-csv"></i> CSV',
-                            titleAttr: 'CSV',
-                            className: 'btn-labeled',
-                            exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-                            }
-                        },
-                        {
-                            extend: 'pdf',
-                            text: '<i class="btn-label fa fa-file-pdf-o"></i> PDF',
-                            titleAttr: 'PDF',
-                            className: 'btn-labeled',
-                            exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-                            }
-                        },
-                    ]
-                },
-                {
-                    text: '<i class="btn-label fa fa-file-excel-o"></i><span class="hidden-xs"> Excel</span>',
-                    className: 'btn btn-primary', //Primary class for all buttons
-                    tag: 'a',
-                    action: function(e, dt, node, config) {
-                        //This will send the page to the location specified
-                        window.location.href = './../../excelGenerator.php?table=view_vales_explosivo';
-                    },
-                    init: function(dt, node, config) {
-                        $(node).attr('href', './../../excelGenerator.php?table=view_vales_explosivo');
-                        $(node).attr('download', '');
-                        $(node).attr('title', 'Descargar Archivo');
-                    }
-                },
-                {
-                    text: '<i class="btn-label fa fa-upload"></i><span class="hidden-xs">Importar</span>',
-                    action: function(e, dt, node, conf) {
-                        $("#modal-import").modal("show");
-                    },
-                    className: 'btn btn-primary btn-labeled' //Primary class for all buttons
-                },
-                {
-                    extend: 'print',
-                    text: '<i class="btn-label fa fa-print"></i><span class="hidden-xs">print</span>',
-                    titleAttr: 'PDF',
-                    className: 'btn-labeled', //Primary class for all buttons
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-                    }
-                },
-                {
-                    extend: 'colvis',
-                    text: '<i class="btn-label fa fa-eye"></i><span class="hidden-xs">Mostrar / Ocultar</span>',
-                    className: 'btn-labeled' //Primary class for all buttons
-                },
-                'refresh',
-
-            ],
-            });
-            $('#detalleExtraccion').DataTable({
-                language: idiomaEs,
-                /* scrollY:       "200px",
-                scrollCollapse: true, */
-                // boton de cantidad a visualizar //
-                lengthChange: false,
-                filter: false,
-                column: [
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                ],
-            });
-            $('#detalleMaterialExtraido').DataTable({
-                language: idiomaEs,
-                /* scrollY:       "200px",
-                scrollCollapse: true, */
-                lengthChange: false,
-                filter: false,
-            });
-        });
-    </script>
+    <script src="./../../../js/demo/form-component.js"></script>
 
 </body>
 </html>
