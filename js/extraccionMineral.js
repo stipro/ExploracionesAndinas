@@ -96,7 +96,20 @@ const recordForm = async (listInsert) => {
     });
     const data = await res.json()
     rptSql = data['sql'];
-    //notificationBackend(rptSql)
+    notificationBackend(rptSql)
+}
+const notificationBackend = (rptSql) => {
+    if (rptSql) {
+        if (rptSql['estado'] == 1) {
+            $.niftyNoty({
+                type: 'success',
+                container: '#alert-form-insert',
+                html: '<strong>¡Bien hecho!</strong> ' + rptSql['mensaje'],
+                focus: false,
+                timer: 5000
+            });
+        }
+    }
 }
 $('.chosenTurno').chosen();
 var idiomaEs = {

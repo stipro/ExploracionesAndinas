@@ -122,7 +122,7 @@ class extraccionMineral extends Conexion
                 //$this->db->commit();
                 $rptSql = [
                     "estado" => 1,
-                    "mensaje" => "Se registro correctamente Operacion Mina",
+                    "mensaje" => "Se registro correctamente Extraccion Mineral",
                     "id" => $lastcolIdsql
                 ];
             }
