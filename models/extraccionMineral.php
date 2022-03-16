@@ -70,34 +70,25 @@ class extraccionMineral extends Conexion
         $query = "SELECT op_mn.operacionMina_registro, op_mn.operacionMina_turno, op_mn.operacionMina_guardia, op_mn.operacionMina_nVale FROM operacion_mina AS op_mn WHERE op_mn.id_operacionMina = '{$parament_id}'";
         return $this->ConsultaSimple($query);
     }
-    public function insert($dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7, $dato8, $dato9, $dato10, $dato11, $dato12, $dato13, $dato14, $dato15, $dato16, $dato17, $dato18, $dato19, $dato20, $dato21, $dato22, $dato23)
+    public function insert($formRequest)
     {
         try 
         {
-            $query = "INSERT INTO operacion_mina (
-            operacionMina_registro, 
-            operacionMina_turno, 
-            operacionMina_guardia, 
-            operacionMina_nVale, 
-            operacionMina_actividad, 
-            id_labor, 
-            operacionMina_l, 
-            operacionMina_lpv, 
-            operacionMina_stto, 
-            operacionMina_serv, 
-            operacionMina_comentario, 
-            operacionMina_tipAvance, 
-            operacionMina_avanceMt, 
-            operacionMina_avanceMt3, 
-            operacionMina_intDisparo, 
-            operacionMina_Resuelto, 
-            operacionMina_manualCantidad, 
-            operacionMina_palaNombre, 
-            operacionMina_palaCantidad, 
-            operacionMina_wincheNombre, 
-            operacionMina_wincheCantidad, 
-            operacionMina_mineralCantidad, 
-            operacionMina_desmonCantidad) 
+            $sqlrpt = '';
+            $rptSql = '';
+            $lastcolIdsql = '';
+            $query = "INSERT INTO extraccion_mineral (
+            fechaRegistro_extraccionMineral,
+            fechaExtraccion_extraccionMineral,
+            horasExtraccion_extraccionMineral,
+            locomotora_extraccionMineral,
+            tolva_extraccionMineral, 
+            nivel_extraccionMineral,
+            unidadMineral_id, 
+            motorista_id, 
+            ayudante_id, 
+            zona_id,
+            turno_extraccionMineral)
             VALUES (
             :item1,
             :item2,
@@ -108,46 +99,25 @@ class extraccionMineral extends Conexion
             :item7,
             :item8,
             :item9,
-            :item10,
-            :item11,
-            :item12,
-            :item13,
-            :item14,
-            :item15,
-            :item16,
-            :item17,
-            :item18,
-            :item19,
-            :item20,
-            :item21,
-            :item22,
-            :item23)";
+            :item10, 
+            :item11)";
             $insertValue = $this->db->prepare($query);
-            $insertValue->bindParam(':item1', $dato1, PDO::PARAM_STR);
-            $insertValue->bindParam(':item2', $dato2, PDO::PARAM_STR);
-            $insertValue->bindParam(':item3', $dato3, PDO::PARAM_STR);
-            $insertValue->bindParam(':item4', $dato4, PDO::PARAM_STR);
-            $insertValue->bindParam(':item5', $dato5, PDO::PARAM_STR);
-            $insertValue->bindParam(':item6', $dato6, PDO::PARAM_STR);
-            $insertValue->bindParam(':item7', $dato7, PDO::PARAM_STR);
-            $insertValue->bindParam(':item8', $dato8, PDO::PARAM_STR);
-            $insertValue->bindParam(':item9', $dato9, PDO::PARAM_STR);
-            $insertValue->bindParam(':item10', $dato10, PDO::PARAM_STR);
-            $insertValue->bindParam(':item11', $dato11, PDO::PARAM_STR);
-            $insertValue->bindParam(':item12', $dato12, PDO::PARAM_STR);
-            $insertValue->bindParam(':item13', $dato13, PDO::PARAM_STR);
-            $insertValue->bindParam(':item14', $dato14, PDO::PARAM_STR);
-            $insertValue->bindParam(':item15', $dato15, PDO::PARAM_STR);
-            $insertValue->bindParam(':item16', $dato16, PDO::PARAM_STR);
-            $insertValue->bindParam(':item17', $dato17, PDO::PARAM_STR);
-            $insertValue->bindParam(':item18', $dato18, PDO::PARAM_STR);
-            $insertValue->bindParam(':item19', $dato19, PDO::PARAM_STR);
-            $insertValue->bindParam(':item20', $dato20, PDO::PARAM_STR);
-            $insertValue->bindParam(':item21', $dato21, PDO::PARAM_STR);
-            $insertValue->bindParam(':item22', $dato22, PDO::PARAM_STR);
-            $insertValue->bindParam(':item23', $dato23, PDO::PARAM_STR);
-            $sqlrpt = $insertValue->execute();
-            $lastcolIdsql = $this->db->lastInsertId();
+            foreach ($formRequest as $clave) {
+                $insertValue->bindParam(':item1', $clave['fech_extraccion'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item2', $clave['fech_extraccion'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item3', $clave['hora'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item4', $clave['Locomotora'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item5', $clave['tolva'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item6', $clave['nivel'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item7', $clave['id_unidadMinera'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item8', $clave['id_motorista'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item9', $clave['id_ayudante'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item10', $clave['id_zona'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item11', $clave['turno'], PDO::PARAM_STR);
+                $sqlrpt = $insertValue->execute();
+                $lastcolIdsql = $this->db->lastInsertId();
+            }
+            
             if($sqlrpt){
                 //$this->db->commit();
                 $rptSql = [
@@ -164,6 +134,7 @@ class extraccionMineral extends Conexion
         }
         catch (PDOException $e)
         {
+            echo $e->getMessage();
             //$this->db->rollback();
             
             if($e->getCode() == 23000){

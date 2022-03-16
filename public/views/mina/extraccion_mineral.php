@@ -432,7 +432,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="insert-extrMineral-unidadEmpresa" class="col-md-4 form-label">ud. Empresa:</label>
+                                    <label for="insert-extrMineral-unidadEmpresa" class="col-md-4 form-label">ud. Minera:</label>
                                     <div class="col-md-8">
                                         <input class="form-control" list="datalist-insert-extrMineral-unidMineral" id="insert-extrMineral-unidadEmpresa" placeholder="Ingrese Contrata...">
                                     </div>                                        
@@ -597,14 +597,25 @@
                                     <table class="table display nowrap table-striped table-bordered dt-responsive" style="width:100%" id="detalleExtraccion">
                                         <thead>
                                             <tr>
+                                                <th scope="col">id_unidadMinera</th>
                                                 <th scope="col">ud. Minera</th>
+                                                <th scope="col">id_motorista</th>
+                                                <th scope="col">Motorista</th>
+                                                <th scope="col">id_ayudante</th>
+                                                <th scope="col">Ayudante</th>
+                                                <th scope="col">Locomotora</th>
                                                 <th scope="col">Tolva</th>
                                                 <th scope="col">Tipo Mat</th>
+                                                <th scope="col">id_labor</th>
+                                                <th scope="col">C. Costo</th>
                                                 <th scope="col">Labor</th>
+                                                <th scope="col">id_zona</th>
                                                 <th scope="col">Zona</th>
                                                 <th scope="col">Nivel</th>
                                                 <th scope="col">Veta</th>
                                                 <th scope="col">Fec. Extracción</th>
+                                                <th scope="col">Hora</th>
+                                                <th scope="col">Turno</th>
                                                 <th scope="col">Cant. Carros</th>
                                                 <th scope="col">Acciónes</th>
                                             </tr>

@@ -220,7 +220,7 @@ const recordForm = async (listInsert) => {
     });
     const data = await res.json()
     rptSql = data['sql'];
-    notificationBackend(rptSql)
+    //notificationBackend(rptSql)
 }
 const notificationBackend = (rptSql) => {
     if (rptSql) {
