@@ -149,11 +149,8 @@
                     <div class="row">
                             <div class="col-xs-12">
                                 <div class="panel">
-                                    <!--Data Table-->
-                                    <!--===================================================-->
                                     <div class="panel-body">
                                         <div id="alerts-general" class="mb-5">
-
                                         </div>
                                         <div class="panel-body">
                                             <fieldset>
@@ -206,8 +203,6 @@
                                                 </div>
                                             </fieldset>
                                         </div>
-                                        <!--===================================================-->
-                                        <!-- End Foo Table - Row Toggler -->
                                     </div>
                                 </div>
                             </div>

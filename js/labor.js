@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', e => {
                 data: "lab_tipoRoca",
             },
             {
-                data: "nombre_unidad_mineras",
+                data: "nombre_unidadMinera",
             },
             {
                 defaultContent: '<button type="button" class="btn-view btn btn-success"><i class="fa fa-eye"></i> Detalle</button> <button type="button" class="name btn btn-primary"><i class="fa fa-edit"></i> Editar</button> <button type="button" class="position btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>'
@@ -553,7 +553,7 @@ function resetForm() {
 const mainEvents = () => {
     //$('#table-master').DataTable().clear().destroy();
     let form_request1 = {
-        "accion": "table",
+        "accion": "getTable",
     }
     fetchData(form_request1);
 }

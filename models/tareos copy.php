@@ -9,10 +9,10 @@ class Tareos extends Conexion
         parent::__construct();
     }
     //OBTIENE TODA LA TABLA
-    public function getTable(): array
+    public function getAll(int $empezarDesde, int $filasPage): array
     {
         //$query = "SELECT * FROM tareos LIMIT {$empezarDesde}, {$filasPage}";
-        $query = "SELECT * FROM tareos LEFT JOIN colaboradores ON tareos.id_colaborador = colaboradores.id_colaborador LEFT JOIN labores ON tareos.id_labor = labores.id_labor";
+        $query = "SELECT * FROM tareos LEFT JOIN colaboradores ON tareos.id_colaborador = colaboradores.id_colaborador LEFT JOIN labores ON tareos.id_labor = labores.id_labor LIMIT {$empezarDesde}, {$filasPage}";
         return $this->ConsultaSimple($query);
     }
     public function insert(int $idColaborador, string $dia, string $turno, string $HT, string $guardia,string $idLabor, string $Actividad, string $cod_actividad, string $HE, $HTSer_Ad, string $HESer_Ad, string $CCSer_Ad, string $CCostosHe)

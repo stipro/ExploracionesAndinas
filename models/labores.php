@@ -244,7 +244,7 @@ class Labores extends Conexion
     // DataTables
     // Obtener Tabla
     public function getAll(){
-        $query = "SELECT lb.id_labor, lb.lab_codigo, lb.lab_ccostos, lb_nom.labNombre_nombre, lb_nom_etap.nombre_etapa, lb_nom.labNombre_prefijo, lb_nom.labNombre_tipo, lb_zn.labZona_nombre, lb_zn.labZona_letra, lb.lab_tipo, lb.lab_veta, lb.lab_nivel, lb.lab_metodoExplotacion, lb.lab_seccion, lb.lab_tipoEq, lb.lab_tipoRoca , umina.nombre_unidad_mineras, umina.abrev_unidad_mineras FROM labores AS lb LEFT JOIN lab_nombres AS lb_nom ON lb.id_labNombre = lb_nom.id_labNombre LEFT JOIN lab_nomb_etapas AS lb_nom_etap ON lb_nom.labNombEtapas_id = lb_nom_etap.id_etapa JOIN lab_zonas AS lb_zn ON lb.id_zona = lb_zn.id_zona LEFT JOIN unidad_mineras AS umina ON lb.unidadMedica_id = umina.id_unidad_mineras;  ";
+        $query = "SELECT lb.lab_ccostos, lb_nm.labNombre_nombre, lb_nm_ep.nombre_etapa, lb_nm.labNombre_prefijo, lb_nm.labNombre_tipo, lb_zn.labZona_nombre, lb_zn.labZona_letra, lb.lab_tipo, lb.lab_veta, lb.lab_nivel, lb.lab_metodoExplotacion, lb.lab_seccion, lb.lab_tipoEq, lb.lab_tipoRoca, ud_mn.nombre_unidadMinera FROM labores AS lb LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre LEFT JOIN lab_nomb_etapas AS lb_nm_ep ON lb_nm.labNombEtapas_id = lb_nm_ep.id_etapa LEFT JOIN lab_zonas AS lb_zn ON lb.id_zona = lb_zn.id_zona LEFT JOIN unidad_mineras AS ud_mn ON lb.unidadMedica_id = ud_mn.id_unidadMinera;";
         return $this->ConsultaSimple($query);
     }
 }

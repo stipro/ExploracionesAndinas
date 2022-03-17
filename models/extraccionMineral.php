@@ -117,7 +117,13 @@ class extraccionMineral extends Conexion
                 $sqlrpt = $insertValue->execute();
                 $lastcolIdsql = $this->db->lastInsertId();
             }
-            
+            /**
+             * 
+             * 
+             * @author
+             * 
+             * 
+             */
             if($sqlrpt){
                 //$this->db->commit();
                 $rptSql = [

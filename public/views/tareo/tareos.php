@@ -140,121 +140,62 @@
 					<div class="row">
 					    <div class="col-xs-12">
 					        <div class="panel">
-					            <div class="panel-heading">
-					                <h3 class="panel-title">TAREO</h3>
-					            </div>
-					            <!--Data Table-->
-					            <!--===================================================-->
+                                <div id="alerts-general" class="mb-5">
+                                </div>
 					            <div class="panel-body">
-					                <div class="pad-btm form-inline">
-					                    <div class="row">
-					                        <div class="col-sm-6 table-toolbar-left">
-					                            <button id="btn-Agregar" data-target="#demo-lg-modal" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add icon-fw"></i>Agregar</button>
-					                            <a href="./../excelGenerator.php?docDescarga='. $value['nombre'].'&extension='. $value['extension'].'&time='.date('h:m:y').'" class="btn btn-default" download="" title="Descargar Archivo">
-                                                    <i class="fa fa-file-excel-o icon-lg"></i>
-                                                </a>
-					                            <div class="btn-group">
-					                                <button class="btn btn-default"><i class="demo-pli-information icon-lg"></i></button>
-					                                <button class="btn btn-default"><i class="demo-pli-trash icon-lg"></i></button>
-					                            </div>
-					                        </div>
-					                        <div class="col-sm-6 table-toolbar-right">
-                                                <div class="btn-group">
-                                                        <div class="input-group">
-                                                            <input id="ipt-Buscar" type="text" placeholder="Busqueda por columna" class="form-control">
-                                                            <span class="input-group-btn">
-                                                                <button id="btn-Buscar"class="btn btn-primary" type="button">Buscar</button>
-                                                            </span>
-                                                        </div>			
-                                                        <!--===================================================-->
-                                                        <select data-placeholder="Elija Columna" id="demo-chosen-select" tabindex="2">
-                                                            <option value="codigo">codigo</option>
-                                                            <option value="nombre">nombre</option>
-                                                            <option value="cargo">cargo</option>
-                                                        </select>
-                                                    </div>
-					                        </div>
-					                    </div>
-					                </div>
-                                    <!-- Foo Table - Row Toggler -->
-                                    <!--===================================================-->
-                                    <div class="panel-body">
-                                        <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="5">
-                                            <thead>
-                                                <tr>
-                                                    <th data-sort-ignore="true" class="min-width"></th>
-                                                    <th data-sort-initial="true" data-toggle="true">Código</th>
-                                                    <th>Apellidos y Nombres</th>
-                                                    <th data-hide="phone, tablet">Cargo</th>
-                                                    <th data-hide="phone, tablet">Dia</th>
-                                                    <!--<th data-hide="phone, tablet">Actividad</th>-->
-                                                    <th data-hide="phone, tablet">Turno</th>
-                                                    <th data-hide="phone, tablet">Ht</th>
-                                                    <th data-hide="phone, tablet">Ht Sev_Ad</th>
-                                                    <th data-hide="phone, tablet">**Ccostos</th>
-                                                    <th data-hide="phone, tablet">Labor</th>
-                                                    <th data-hide="phone, tablet">Nivel</th>
-                                                    <th data-hide="phone, tablet">He</th>
-                                                    <th data-hide="phone, tablet">He Ser Ad</th>
-                                                    <th data-hide="phone, tablet">C. Costos He</th>
-                                                    <th data-hide="phone, tablet">V.B</th>
-                                                    <th data-hide="phone, tablet">Guardia</th>
-                                                    <th data-hide="phone, tablet">Cod_Actividad</th>
-                                                    <th data-hide="phone, tablet">Área</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="tbody-tareo">
-
-                                            </tbody>
-                                            <template id="template-td-tareo">
-                                                <tr id="registro-tareo">
-                                                    <td>
-                                                        <button id="btn-delete" class="btn btn-danger btn-xs btn-delete">
-                                                            <i class="demo-pli-cross"></i>
-                                                        </button>
-                                                        <button id="btn-edit" class="btn btn-warning btn-xs btn-edit" data-target="#modal-edit"  data-toggle="modal">
-                                                        <i class="ti-pencil-alt"></i></button>
-                                                    </td>
-                                                    <td id="codigo">..</td>
-                                                    <td id="nombreCompleto">Boudreaux</td>
-                                                    <td id="cargo">Traffic Court Referee</td>
-                                                    <td id="dia">22 Jun 1972</td>
-                                                    <!--<td id="actividad">22 Jun 1972</td>-->
-                                                    <td id="turno">Isidra</td>
-                                                    <td id="ht">Boudreaux</td>
-                                                    <td id="htSev_ad">Isidra</td>
-                                                    <td id="costos">Boudreaux</td>
-                                                    <td id="labor">Traffic Court Referee</td>
-                                                    <td id="nivel">22 Jun 1972</td>
-                                                    <td id="hE">22 Jun 1972</td>
-                                                    <td id="heSerAd">Isidra</td>
-                                                    <td id="cCostosHe">Boudreaux</td>
-                                                    <td id="VB">Traffic Court Referee</td>
-                                                    <td id="guardia">22 Jun 1972</td>
-                                                    <td id="codActividad">22 Jun 1972</td>
-                                                    <td id="Area">..</td>
-                                                </tr>
-                                                </template>
-                                            <tfoot>
-                                              <!-- Paginación -->
-                                              <nav aria-label="Page navigation example">
-                                                    <ul class="pagination" id="pagination">
-                                                        <!--<li class="disabled"><a class="page-link" href="#">Anterior</a></li>-->
-
-                                                        <!--
-                                                            <li class="disabled"><span>...</span></li>
-                                                            <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
-                                                        -->
-                                                    </ul>
-                                                    <template id="template-pagination">
-                                                        <li id="itemPage" class="page-item"><a class="page-link" href="#">2</a></li>
-                                                    </template>
-                                                </nav>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                    <!--===================================================-->
-                                    <!-- End Foo Table - Row Toggler -->
+                                    <fieldset>
+                                        <legend><h3 class="panel-title">Tareos</h3></legend>
+                                        <div class="table-responsive-md"> <!-- class  table-hover display-->
+                                            <table class="table display nowrap table-striped table-bordered dt-responsive" style="width:100%" id="table-master">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th>Código</th>
+                                                        <th>Apellidos y Nombres</th>
+                                                        <th>Cargo</th>
+                                                        <th>Dia</th>
+                                                        <th>Turno</th>
+                                                        <th>Ht</th>
+                                                        <th>Ht Sev_Ad</th>
+                                                        <th>**Ccostos</th>
+                                                        <th>Labor</th>
+                                                        <th>Nivel</th>
+                                                        <th>He</th>
+                                                        <th>He Ser Ad</th>
+                                                        <th>C. Costos He</th>
+                                                        <th>V.B</th>
+                                                        <th>Guardia</th>
+                                                        <th>Cod_Actividad</th>
+                                                        <th>Área</th>
+                                                        <th>Acción</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>Código</th>
+                                                        <th>Apellidos y Nombres</th>
+                                                        <th>Cargo</th>
+                                                        <th>Dia</th>
+                                                        <th>Turno</th>
+                                                        <th>Ht</th>
+                                                        <th>Ht Sev_Ad</th>
+                                                        <th>**Ccostos</th>
+                                                        <th>Labor</th>
+                                                        <th>Nivel</th>
+                                                        <th>He</th>
+                                                        <th>He Ser Ad</th>
+                                                        <th>C. Costos He</th>
+                                                        <th>V.B</th>
+                                                        <th>Guardia</th>
+                                                        <th>Cod_Actividad</th>
+                                                        <th>Área</th>
+                                                        <th>Acción</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </fieldset>
 					            </div>
 					        </div>
 					    </div>
@@ -454,7 +395,7 @@
     </div>
     <!--Default Bootstrap Modal-->
     <!--===================================================-->
-    <div class="modal fade" id="demo-lg-modal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+    <div class="modal fade" id="modal-insert" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
         <div class="modal-dialog modal-lg" style="margin: 1rem;">
             <div class="modal-content">
                 <!--Modal header-->
@@ -470,16 +411,6 @@
                         <div id="group1Form">
                             <div id="g1item1Form">
                                 <p class="bord-btm pad-ver text-main text-bold">Personal</p>
-                                <fieldset class="form-group form-group-style">
-                                        <label for="" class="">DNI</label>
-                                        <input type="number" class="form-control" placeholder="DNI" id="">
-                                    </fieldset>
-                                <fieldset>
-                                <fieldset class="form-group form-group-style">
-                                        <label for="" class="">DNI</label>
-                                        <input type="number" class="form-control" placeholder="DNI" id="">
-                                    </fieldset>
-                                <fieldset>
                                     <!-- FORMULARIO -->
                                     <div class="form-group">
                                         <label for="formIptNumberNTarjeta" class="col-sm-3 control-label">N. Tarjeta</label>
@@ -490,13 +421,13 @@
                                     <div id="rptBusquedaDni">
                                     </div>
                                     
-                                    <!-- FORMULARIO 
+                                    <!-- FORMULARIO -->
                                     <div class="form-group">
                                         <label for="formIptNumberDni" class="col-sm-3 control-label">DNI</label>
                                         <div class="col-sm-6">
                                             <input type="number" placeholder="DNI" class="form-control" id="formIptNumberDni">
                                         </div>
-                                    </div>-->
+                                    </div>
                                     <!-- FORMULARIO -->
                                     <div class="form-group">
                                         <label for="formIptTextNombre" class="col-sm-3 control-label">Nombre</label>
@@ -807,8 +738,160 @@
     <!--Panel [ SAMPLE ]-->
     <script src=".\..\..\..\js\demo\ui-panels.js"></script>
     
-    <!--Date-MYSQL [ REQUIRED ]-->
-    <script src=".\..\..\..\js\tareo.js"></script>
+    <!--Date-MYSQL [ REQUIRED ]
+    <script src=".\..\..\..\js\tareo.js"></script>-->
 
+    <script>
+        document.addEventListener('DOMContentLoaded', e => {
+            mainEvents();
+        });
+        const mainEvents = () => {
+            let form_request1 = {
+                "accion": "getTable",
+            }
+            fetchData(form_request1);
+        }
+        const fetchData = async (request) => {
+            const body = new FormData();
+            body.append("data", JSON.stringify(request));
+            const res = await fetch('./../../../controllers/controllerTareoList.php', {
+                method: "POST",
+                body
+            });
+            const data = await res.json()
+            let rptSql = data['sql'];
+            //paintTable(rptSql);
+        }
+        const paintTable = async (rptSql) => {
+            // Actualiza la tabla
+            tableMaster.clear();
+            tableMaster.rows.add(rptSql).draw();
+        }
+        tableMaster = $('#table-master').DataTable({
+                scrollX: true,
+                scrollCollapse: true,
+                fixedColumns: {
+                    right: 1,
+                },
+                fixedHeader: true,
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay registro de labores",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Labores",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 Labores",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Labores",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Busqueda General :",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    },
+                    "buttons": {
+                        "copy": "Copiar",
+                        "colvis": "Visibilidad",
+                        "collection": "Colección",
+                        "colvisRestore": "Restaurar visibilidad",
+                        "print": "Imprimir",
+                        "pageLength": {
+                            "-1": "Mostrar todas las filas",
+                            "_": "Mostrar %d filas",
+                        },
+                    }
+                },
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                responsive: true,
+                pagingType: "full_numbers",
+                dom: '<"row"<"text-center col-sm-12 col-md-3"l><"col-sm-12 col-md-6 d-flex justify-content-center text-center"<"dt-buttons btn-group flex-wrap"B>><"text-center col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+                buttons: [{
+                            text: '<i class="btn-label fa-solid fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>',
+                            action: function(e, dt, node, conf) {
+                                $("#modal-insert").modal("show");
+
+                            },
+                            className: 'btn btn-success btn-labeled', //Primary class for all buttons
+                            attr: {
+                                title: 'Agregar nuevo labor',
+                                id: 'btn-insert'
+                            }
+                        },
+                        {
+                            text: '<i class="btn-label fa fa-refresh"></i><span class="hidden-xs hidden-sm">Actualizar</span>',
+                            action: function(e, dt, node, conf) {
+                                let form_request1 = {
+                                    "accion": "table",
+                                }
+                                fetchData(form_request1);
+                            },
+                            className: 'btn btn-info btn-labeled' //Primary class for all buttons
+                        },
+                        {
+                            extend: 'collection',
+                            text: '<i class="btn-label fa fa-download"></i><span class="hidden-xs hidden-sm"> Exportar</span>',
+                            className: 'btn-labeled',
+                            buttons: [{
+                                    extend: 'excel',
+                                    text: '<i class="btn-label fa fa-file-excel-o"></i> Excel',
+                                    titleAttr: 'Excel',
+                                    title: 'Labor',
+                                    className: 'btn-labeled',
+                                    exportOptions: {
+                                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                                    }
+                                },
+                                {
+                                    extend: 'csv',
+                                    text: '<i class="btn-label fa fa-file-csv"></i> CSV',
+                                    titleAttr: 'CSV',
+                                    className: 'btn-labeled',
+                                    exportOptions: {
+                                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                                    }
+                                },
+                                {
+                                    extend: 'pdf',
+                                    text: '<i class="btn-label fa fa-file-pdf-o"></i> PDF',
+                                    titleAttr: 'PDF',
+                                    className: 'btn-labeled',
+                                    exportOptions: {
+                                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                                    }
+                                },
+                            ]
+                        },
+                        {
+                            text: '<i class="btn-label fa fa-upload"></i><span class="hidden-xs hidden-sm">Importar</span>',
+                            action: function(e, dt, node, conf) {
+                                $("#modal-import").modal("show");
+                            },
+                            className: 'btn btn-primary btn-labeled' //Primary class for all buttons
+                        },
+                        {
+                            extend: 'print',
+                            text: '<i class="btn-label fa fa-print"></i><span class="hidden-xs  hidden-sm">print</span>',
+                            titleAttr: 'PDF',
+                            className: 'btn-labeled', //Primary class for all buttons
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                            }
+                        },
+                        {
+                            extend: 'colvis',
+                            text: '<i class="btn-label fa fa-eye"></i><span class="hidden-xs hidden-sm">Mostrar / Ocultar</span>',
+                            className: 'btn-labeled' //Primary class for all buttons
+                        },
+                        'refresh',
+
+                    ],
+            });
+    </script>
 </body>
 </html>

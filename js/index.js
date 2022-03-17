@@ -32,6 +32,7 @@ const getAsignado = async (id_Usuario) => {
 getAsignado(id_Usuario);
 
 const pintarNav = (data) => {
+    console.log(data);
     // scope en js --- o en general
     // const let var
     var modulo = 'false';

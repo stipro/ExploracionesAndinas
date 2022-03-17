@@ -61,7 +61,8 @@ class Nav extends Conexion
     public function getall($arrayForm): array
     {
         //$query = "SELECT * FROM modulos AS md LEFT JOIN menu ON md.id_modulo = menu.id_modulo LEFT JOIN  submenu AS smenu ON menu.id_menu =  smenu.id_menu ORDER BY md.id_modulo, menu.nombre_menu;";
-        $query = "SELECT * FROM modulos AS md LEFT JOIN menu ON md.id_modulo = menu.id_modulo LEFT JOIN  submenu AS smenu ON menu.id_menu =  smenu.id_menu RIGHT JOIN asignaciones ON smenu.id_submenu = asignaciones.subMenu_id WHERE usuario_id = {$arrayForm} ORDER BY md.id_modulo, menu.nombre_menu, smenu.nombre_submenu;";
+        //$query = "SELECT * FROM modulos AS md LEFT JOIN menu ON md.id_modulo = menu.id_modulo LEFT JOIN  submenu AS smenu ON menu.id_menu =  smenu.id_menu RIGHT JOIN asignaciones ON smenu.id_submenu = asignaciones.subMenu_id WHERE usuario_id = {$arrayForm} ORDER BY md.id_modulo, menu.nombre_menu, smenu.nombre_submenu;";
+        $query = "SELECT * FROM modulos AS md LEFT JOIN menu ON md.id_modulo = menu.id_modulo LEFT JOIN  submenu AS smenu ON menu.id_menu =  smenu.id_menu RIGHT JOIN asignaciones ON smenu.id_submenu = asignaciones.subMenu_id WHERE usuario_id = '1' ORDER BY md.id_modulo, menu.nombre_menu, smenu.orden_submenu;";
         return $this->ConsultaSimple($query);
     }
     public function insert(

@@ -1215,19 +1215,6 @@ $(document).ready(function() {
                         "column": "instalacionesMIna_nombre"
                     }
                     fetchInstalaciones(selectForm_instalacionMina);
-
-                    /* const form_uno = {
-                        "accion": "getLaborNombre",
-                    }
-                    getSelect_workName(form_uno);
-                    const form_dos = {
-                        "accion": "getLaborZona",
-                    }
-                    getSelect_workZone(form_dos);
-                    const form_tres = {
-                        "accion": "getUnidMinera",
-                    }
-                    getSelect_unitMining(form_tres); */
                     $("#modal-insert").modal("show");
 
                 },
