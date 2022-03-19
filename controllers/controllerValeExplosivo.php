@@ -132,8 +132,8 @@ if($_POST){
                 $datoLabor = $formRequest['labor'];
                 //$rptSql = $table->edit($datoidLabor, $datoZona, $datoCCosto, $datoNivel, $datoLabor);
                 break;
-            case "eliminar":
-                $idEliminar = $arrayForm['datos'];
+            case "delete":
+                $idEliminar = $arrayForm['id'];
                 $rptSql = $table->delete($idEliminar);
                 break;
         }

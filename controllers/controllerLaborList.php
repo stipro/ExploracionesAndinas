@@ -22,6 +22,10 @@ if($_POST){
             case "getUnidMinera":
                 $rptSql = $tableManager->getUnidMinera();
                 break;
+            case "getLaborZona":
+                //$where = $arrayForm['paramentWhere'];
+                $rptSql = $tableManager->getLaborZona($where);         
+                break;
             case "getLaborNombre_etapa":
                 $rptSql = $tableManager->getLaborNombre_etapa();
                 break;
@@ -43,10 +47,7 @@ if($_POST){
                 $parament = $arrayForm['parament'];
                 $rptSql = $tableManager->getColumnsWhere($parament);
                 break;
-            case "getLaborZona":
-                $where = $arrayForm['paramentWhere'];
-                $rptSql = $tableManager->getLaborZona($where);         
-                break;
+            
             case "search":                
                 break;
             case "getTable":

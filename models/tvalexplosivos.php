@@ -49,7 +49,7 @@ class ValeExplosivos extends Conexion
     public function getAll(): array
     {
         //$query = "SELECT * FROM tareos LIMIT {$empezarDesde}, {$filasPage}";
-        $query = "SELECT vl_es.valexplosivo_fecha, vl_es.valexplosivo_nvale, vl_es.valexplosivo_turno, vl_es.valexplosivo_preimpresor, lb_zn.labZona_nombre, lb.lab_ccostos, lb_nm.labNombre_nombre, lb.lab_nivel, vl_es.valexplosivo_tipDisparo, vl_es.valexplosivo_tipEn FROM tvalexplosivos AS vl_es LEFT JOIN lab_zonas AS lb_zn ON vl_es.id_zona = lb_zn.id_zona LEFT JOIN labores AS lb ON vl_es.id_labor = lb.id_labor LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre";
+        $query = "SELECT vl_es.valexplosivo_preimpresor, vl_es.valexplosivo_fecha, vl_es.valexplosivo_preimpresor, vl_es.valexplosivo_nvale, vl_es.valexplosivo_turno, lb_zn.labZona_nombre, lb.lab_ccostos, lb_nm.labNombre_nombre, lb.lab_nivel, vl_es.valexplosivo_tipDisparo, vl_es.valexplosivo_tipEn FROM tvalexplosivos AS vl_es LEFT JOIN lab_zonas AS lb_zn ON vl_es.id_zona = lb_zn.id_zona LEFT JOIN labores AS lb ON vl_es.id_labor = lb.id_labor LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre;";
         return $this->ConsultaSimple($query);
     }
     public function insert(
@@ -247,13 +247,13 @@ class ValeExplosivos extends Conexion
             //print_r($this->db->errorInfo());
         }
     }
-    public function delete(int $id)
+    public function delete(string $idEliminar)
     {
         //error_reporting(0);
         try {
-            $query  = "DELETE FROM tareos WHERE id_tareo=:id;";
+            $query  = "DELETE FROM tvalexplosivos WHERE valexplosivo_preimpresor=:id;";
             $result = $this->db->prepare($query);
-            $result->execute(array(':id' => $id));
+            $result->execute(array(':id' => $idEliminar));
             return 'Se elimino correctamente.';
         } catch (PDOException $e) {
             return 'Ocurrio un ERROR al eliminar a'. $e->getMessage();
@@ -263,7 +263,7 @@ class ValeExplosivos extends Conexion
     {
         //error_reporting(0);
         try {
-            $query  = "UPDATE tareos SET codigo=:codigo, nombre=:nombre, cargo=:cargo, dia=:dia turno=:turno, ht=:ht, h_serv_ad=:htseradi, ccostos=:ccostos labor=:labor, nivel=:nivel, he=:he, heSer_Ad=:heseradi cCostosHe=:ccostoshe, vB=:zona, guardia=:guardia, Cod_Actividad=:actividad area=:area WHERE id_tareo=:datoid;";
+            $query  = "UPDATE tvalexplosivos SET codigo=:codigo, nombre=:nombre, cargo=:cargo, dia=:dia turno=:turno, ht=:ht, h_serv_ad=:htseradi, ccostos=:ccostos labor=:labor, nivel=:nivel, he=:he, heSer_Ad=:heseradi cCostosHe=:ccostoshe, vB=:zona, guardia=:guardia, Cod_Actividad=:actividad area=:area WHERE id_tareo=:datoid;";
             $result = $this->db->prepare($query);
             $result->execute(array(':datoid' => $datoid, 
             ':codigo' => $codigo, 

@@ -10,6 +10,18 @@ class LaboresName extends Conexion
     }
 
     // Obtiene Lista especifica
+    public function getSelect_letra()
+    {
+        $query = "SELECT lb_zn.id_zona, lb_zn.labZona_letra FROM lab_zonas AS lb_zn;";
+        return $this->ConsultaSimple($query);
+    }
+    // Obtiene Lista especifica
+    public function getSelect_zonaNombre()
+    {
+        $query = "SELECT lb_zn.id_zona, lb_zn.labZona_nombre FROM lab_zonas AS lb_zn;";
+        return $this->ConsultaSimple($query);
+    }
+    // Obtiene Lista especifica
     public function getSelect(string $table, string $column, string $idTable)
     {
         $query = "SELECT {$column}, {$idTable} FROM {$table} ORDER BY {$column} ASC ";

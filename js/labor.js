@@ -325,10 +325,10 @@ document.addEventListener('DOMContentLoaded', e => {
         const templateLabor_unitMining = document.getElementById('template-datalist-insert-labor-unitMining').content
         const fragmentLabor_unitMining = document.createDocumentFragment()
         Object.values(answerSql).forEach(unidMinera => {
-            templateLabor_unitMining.querySelector('option').textContent = unidMinera.nombre_unidad_mineras;
-            templateLabor_unitMining.querySelector('option').value = unidMinera.nombre_unidad_mineras;
-            templateLabor_unitMining.querySelector('option').dataset.id = unidMinera.id_unidad_mineras;
-            templateLabor_unitMining.querySelector('option').dataset.abrev = unidMinera.abrev_unidad_mineras;
+            templateLabor_unitMining.querySelector('option').textContent = unidMinera.nombre_unidadMinera;
+            templateLabor_unitMining.querySelector('option').value = unidMinera.nombre_unidadMinera;
+            templateLabor_unitMining.querySelector('option').dataset.id = unidMinera.id_unidadMinera;
+            templateLabor_unitMining.querySelector('option').dataset.abrev = unidMinera.abrev_unidadMinera;
             const clone = templateLabor_unitMining.cloneNode(true);;
             fragmentLabor_unitMining.appendChild(clone)
         })

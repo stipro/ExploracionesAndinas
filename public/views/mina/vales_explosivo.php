@@ -41,7 +41,11 @@
     </script>
     <!--STYLESHEET-->
     <!--=================================================-->
-
+    <style>
+        /* #table-master thead input {
+        width: 20%; 
+    }*/
+    </style>
     <?php echo $template_header_css; ?>
 
     <!--Bootstrap Select [ OPTIONAL ]-->
@@ -161,10 +165,12 @@
 					                        </div>
                                         </legend>
                                         <div class="table-responsive-md">
-                                            <table class="table display nowrap table-striped table-bordered dt-responsive" style="width:100%" id="table-master">
+                                            <table class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" cellspacing="0" id="table-master">
                                                 <thead class="thead-dark">
                                                     <tr>
+                                                        <th width="20% !important">PreImpreso</th>
                                                         <th>Fecha</th>
+                                                        <th>cód. Registro</th>
                                                         <th>N. Vale</th>
                                                         <th>Turno</th>                                                       
                                                         <th>Zona</th>
@@ -199,11 +205,11 @@
                                                         <th data-hide="phone, tablet">Emulsion Emulnor 3000 I"X7"</th> -->
                                                     </tr>
                                                 </thead>
-                                                <tfoot>
-                                                </tfoot>
-                                                <tbody id="tbody-tareo">
+                                                <tbody>
                                                 </tbody>
-                                                
+                                                <tfoot>
+                                                    
+                                                </tfoot>
                                             </table>
                                         </div>
                                     </fieldset>
@@ -255,6 +261,34 @@
     <!--===================================================-->
     <!-- END OF CONTAINER -->
 
+    <!--Detalle Bootstrap Modal-->
+    <!--===================================================-->
+    <div class="modal fade" id="modal-detail" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!--Modal header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                    <h4 class="modal-title">Detalle Registro</h4>
+                </div>
+
+                <!--Modal body-->
+                <div class="modal-body">
+                    <div id="alerts-detail">
+                    </div>
+                </div>
+
+                <!--Modal footer-->
+                <div class="modal-footer">
+                    <button id="mbtn-edit" class="btn btn-primary">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--===================================================-->
+    <!-- End Detalle Bootstrap Modal -->
+
     <!--Editar Bootstrap Modal-->
     <!--===================================================-->
     <div class="modal fade" id="modal-edit" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
@@ -271,126 +305,8 @@
                 <div class="modal-body">
                     <div id="alerts-Edit">
                     </div>
-					<form class="form-horizontal">
-					    <div class="panel-body">
-                            <!-- FORMULARIO -->
-                            <div class="form-group">
-					            <label for="formIptTextCodigoEdit" class="col-sm-3 control-label">Código</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="Código" class="form-control" id="formIptTextCodigoEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptTextNombreEdit" class="col-sm-3 control-label">Nombre</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="Nombre" class="form-control" id="formIptTextNombreEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptTextCargoEdit" class="col-sm-3 control-label">Cargo</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="Cargo" class="form-control" id="formIptTextCargoEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptTextCargoEdit" class="col-sm-3 control-label">Area</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="Cargo" class="form-control" id="formIptTextCargoEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptTextDiaEdit" class="col-sm-3 control-label">Dia</label>
-					            <div class="col-sm-6">
-					                <input type="date" placeholder="Dia" class="form-control" id="formIptTextDiaEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptTextTurnoEdit" class="col-sm-3 control-label">Turno</label>
-					            <div class="col-sm-6">
-                                <!--<input type="text" placeholder="Nombre" class="form-control" id="formIptTextNombreEdit">
-                                    -===================================================-->
-                                    <select data-placeholder="elige un turno" id="formIptTextTurnoEdit" tabindex="2">
-                                        <option value="Día">Día</option>
-                                        <option value="Noche">Noche</option>
-                                        <option value="Blanco">Descanso</option>
-                                    </select>
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptNumHTEdit" class="col-sm-3 control-label">H.T.</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="Horas Trabajo" class="form-control" id="formIptNumHTEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptTextHTSerAdiEdit" class="col-sm-3 control-label">H.T. Serv. Adicional</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="H. T. Servicio Adicional" class="form-control" id="formIptTextHTSerAdiEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptTextCCostosEdit" class="col-sm-3 control-label">C. Costos</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="Centro de costos" class="form-control" id="formIptTextCCostosEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptTextLaborEdit" class="col-sm-3 control-label">Labor</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="Labor" class="form-control" id="formIptTextLaborEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptNumNivelEdit" class="col-sm-3 control-label">Nivel</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="Nivel" class="form-control" id="formIptNumNivelEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptNumHEEdit" class="col-sm-3 control-label">Horas Extras (H.E.)</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="Horas Extras" class="form-control" id="formIptNumHEEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptNumHESerAdiEdit" class="col-sm-3 control-label">H.E. Servicio Adicional</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="H.E Servicio Adicional" class="form-control" id="formIptNumHESerAdiEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptNumCCostosHorasExtrasEdit" class="col-sm-3 control-label">C.Costos Horas E.</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="C. Costos Horas Extras" class="form-control" id="formIptNumCCostosHorasExtrasEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptTextZonaEdit" class="col-sm-3 control-label">Zona</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="Zona" class="form-control" id="formIptTextZonaEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptTextGuardiaEdit" class="col-sm-3 control-label">Cod. Guardia</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="Codigo Guardia" class="form-control" id="formIptTextGuardiaEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptNumActividadEdit" class="col-sm-3 control-label">Numero Actividad</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="N° Actividad" class="form-control" id="formIptNumActividadEdit">
-					            </div>
-					        </div>
-                            <div class="form-group">
-					            <label for="formIptTextAreaEdit" class="col-sm-3 control-label">Area</label>
-					            <div class="col-sm-6">
-					                <input type="text" placeholder="Área" class="form-control" id="formIptTextAreaEdit">
-					            </div>
-					        </div>
-					    </div>
-					</form>
                 </div>
+
                 <!--Modal footer-->
                 <div class="modal-footer">
                     <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
@@ -399,11 +315,14 @@
             </div>
         </div>
     </div>
-    <!--Default Bootstrap Modal-->
+    <!--===================================================-->
+    <!-- End Editar Bootstrap Modal -->
+    <!--Insertar Bootstrap Modal-->
     <!--===================================================-->
     <div class="modal fade" id="modal-insert" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
         <div id="inserForm"  class="modal-dialog modal-lg" style="margin: 1rem;">
             <div class="modal-content">
+
                 <!--Modal header-->
                 <div class="modal-header">                    
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pci-cross pci-circle"></i></button>
@@ -434,6 +353,7 @@
                         </div>
                     </div>                    
                 </div>
+
                 <!--Modal body-->
                 <div class="modal-body">
                     <div id="alert-form-insert">
@@ -823,7 +743,8 @@
                         </div>
                     </div>
                 </div>
-                    <!--Modal footer-->
+
+                <!--Modal footer-->
                 <div class="modal-footer">
                     <button id="mbtn-new" class="btn btn-primary">Nuevo</button>
                     <button data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
@@ -833,12 +754,36 @@
         </div>
     </div>
     <!--===================================================-->
-    <!--End Default Bootstrap Modal-->    
+    <!--End Insertar Bootstrap Modal-->    
     
+      <!-- Modal-->
+    <div class="modal fade" id="mi_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">TITULO</h4>
+            </div>
+            <div class="modal-body">
+            <div class="row" style="padding:15px">
+                ESPACIO PARA TEXTO ESPACIO PARA TEXTO ESPACIO PARA TEXTO ESPACIO PARA TEXTO ESPACIO PARA TEXTO
+                ESPACIO PARA TEXTO                   
+            </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+        </div>
+    </div>
     <!--JAVASCRIPT-->
     <!--=================================================-->
 
     <?php echo $template_javascript;?>
+    <!--Aleta-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!--Icons [ SAMPLE ]-->
     <script src="./../../../js/demo/icons.js"></script>
@@ -879,72 +824,80 @@
         var tableMaster;
         document.addEventListener('DOMContentLoaded', e => {
             mainEvents();
-        });
-        const mainEvents = () => {
-            let form_request1 = {
-                "accion": "table",
-            }
-            fetchData(form_request1);
-        }
-        const fetchData = async (request) => {
-            const body = new FormData();
-            body.append("data", JSON.stringify(request));
-            const res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
-                method: "POST",
-                body
-            });
-            const data = await res.json()
-            let rptSql = data['sql'];
-            paintTable(rptSql);
-        }
-        const paintTable = async (rptSql) => {
-            // Actualiza la tabla
-            tableMaster.clear();
-            tableMaster.rows.add(rptSql).draw();
-        }
-        const getLast_record = async (request) => {
-            const body = new FormData();
-            body.append("data", JSON.stringify(request));
-            const res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
-                method: "POST",
-                body
-            });
-            console.log('eeeee');
-            const data = await res.json();
-            rptSql = data['sql'];
-            console.log(rptSql);
-            paintNVale(rptSql);
-        }
-        const paintNVale = async (rptSql) => {
-            console.log('paintNVale');
-            console.log(rptSql);
-            /* try {
-                nvalzfill = nvale, padStart(6, 0);
-            } catch (e) {
-                nvalzfill = zfill(nvale, 6);
-                // Manejar Errores
-                //console.error('Se encontro error : '+e);
-                //console.error('Nombre : '+e.name);
-                //console.error('Mensaje : '+e.message);
-            } finally {
-                // Obtengo N° vale
-                inputNVale.value = nvalzfill;
-            } */
-            inputNVale.value = rptSql[0]['valexplosivo_nvale'];
-        }
-        $('.chosenTurno').chosen();
-        $(document).ready(function() {
-            tableMaster = $('#table-master').DataTable({
+            $('#table-master thead tr').clone(true).addClass('filters').appendTo('#table-master thead');
+            tableMaster = $('#table-master').DataTable
+            ({
+                //* Activa el desplazamiento horizontal agregar class a tabla(nowrap)
                 scrollX: true,
-                scrollCollapse: true,
-                fixedColumns: {
-                    right: 1,
-                },
+                //* Forzará la altura de la ventana gráfica de la tabla segun al tamaño indicado
+                //scrollY: 400,
+                //scrollCollapse: true,
+                //* Configuracion columna filtro
+                responsive: true,
+                orderCellsTop: true,
                 fixedHeader: true,
+                initComplete: function () {
+                var api = this.api();
+    
+                // For each column
+                api
+                    .columns()
+                    .eq(0)
+                    .each(function (colIdx) {
+                        // Set the header cell to contain the input element
+                        var cell = $('.filters th').eq(
+                            $(api.column(colIdx).header()).index()
+                        );
+                        var title = $(cell).text();
+                        $(cell).html('<input class="form-control" type="text" placeholder="Buscar ' + title + '" />');
+    
+                        // On every keypress in this input
+                        $(
+                            'input',
+                            $('.filters th').eq($(api.column(colIdx).header()).index())
+                        )
+                            .off('keyup change')
+                            .on('keyup change', function (e) {
+                                e.stopPropagation();
+    
+                                // Get the search value
+                                $(this).attr('title', $(this).val());
+                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
+    
+                                var cursorPosition = this.selectionStart;
+                                // Search the column for that value
+                                api
+                                    .column(colIdx)
+                                    .search(
+                                        this.value != ''
+                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                            : '',
+                                        this.value != '',
+                                        this.value == ''
+                                    )
+                                    .draw();
+    
+                                $(this)
+                                    .focus()[0]
+                                    .setSelectionRange(cursorPosition, cursorPosition);
+                            });
+                    });
+            },
+                /* fixedColumns: {
+                    right: 1,
+                }, */
                 order: [[ 1, "desc" ]],
                 columns: [
                     {
+                        data: "valexplosivo_preimpresor",
+                        responsivePriority: 1,
+                        //width: "50% !important",
+                    },
+                    {
                         data: "valexplosivo_fecha",
+                    },
+                    {
+                        data: "valexplosivo_preimpresor",
                     },
                     {
                         data: "valexplosivo_nvale",
@@ -971,7 +924,7 @@
                         data: "valexplosivo_tipEn",
                     },
                     {
-                        defaultContent: '<button type="button" class="btn-view btn btn-success btn-tableMaster-detalle"><i class="fa fa-eye"></i> Detalle</button> <button type="button" class="name btn btn-primary btn-tableMaster-edit"><i class="fa fa-edit"></i> Editar</button> <button type="button" class="position btn btn-danger btn-tableMaster-delet"><i class="fa fa-trash-o"></i> Eliminar</button>'
+                        defaultContent: '<button type="button" class="btn-view btn btn-success btn-tableMaster-detalle"><i class="fa fa-eye"></i> <span class="hidden-xs hidden-sm">Detalle<span></button> <button type="button" class="name btn btn-primary btn-tableMaster-edit"><i class="fa fa-edit"></i> <span class="hidden-xs hidden-sm">Editar</span></button> <button type="button" class="position btn btn-danger btn-tableMaster-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>'
                     }
                 ],
                 language: {
@@ -1013,23 +966,19 @@
                     {
                         text: '<i class="btn-label fa-solid fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>',
                         action: function(e, dt, node, conf) {
-                            console.log('run');
                             const form_request1 = {
                                 "accion": "getLast_record",
                             }
                             getLast_record(form_request1);
                             // Funcion para enfocar input
                             setTimeout(function() {
-                                // JQUERY
-                                // $('#val_explosivo-text-form-n_vale').focus();
-                                // JAVASCRIPT
-                                inputNVale.focus();
+                            // JQUERY
+                            // $('#val_explosivo-text-form-n_vale').focus();
+                            // JAVASCRIPT
+                            inputNVale.focus();
                             }, 1000);
-                            //Declaramos variables
-                            /* nvale = '9000';
-
                             //Capturo posible error compatibilidad con navegador
-                            try {
+                            /* try {
                                 nvalzfill = nvale, padStart(7, 0);
                             } catch (e) {
                                 nvalzfill = zfill(nvale, 7);
@@ -1037,14 +986,14 @@
                                 //console.error('Se encontro error : '+e);
                                 //console.error('Nombre : '+e.name);
                                 //console.error('Mensaje : '+e.message);
-                            } finally {
-                                // Obtengo N° vale
-                                inputNVale.value = nvalzfill;
-                            } */
+                                } finally {
+                                    // Obtengo N° vale
+                                    inputNVale.value = nvalzfill;
+                                } */
 
                             //Preparamos formato
                             var selectCodZonaForm = {
-                                "accion": "select",
+                                "accion": "getSelect_zonaNombre",
                             }
                             var selectCostLaborForm = {
                                 "accion": "getcolumnAll",
@@ -1085,14 +1034,33 @@
                         extend: 'collection',
                         text: '<i class="btn-label fa fa-download"></i><span class="hidden-xs"> Exportar</span>',
                         className: 'btn-labeled',
-                        buttons: [{
+                        //* Botones
+                        buttons: [
+                            //* Boton exportar copiar
+                            {
+                                //* Indicar Acción
+                                extend: 'copy',
+                                //* Mensaje hove
+                                titleAttr: 'Copiar Tabla',
+                                //
+                                title: '',
+                                //* Clases agregados
+                                className: 'btn-labeled',
+                                //* Texto u Boton
+                                text: '<i class="btn-label fas fa-copy"></i> Copiar',
+                                //* Indicar que columns se usará
+                                exportOptions: {
+                                    columns: [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                                }
+                            },
+                            {
                                 extend: 'excel',
                                 text: '<i class="btn-label fa fa-file-excel-o"></i> Excel',
                                 titleAttr: 'Excel',
                                 title: '',
                                 className: 'btn-labeled',
                                 exportOptions: {
-                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                                 }
                             },
                             {
@@ -1101,7 +1069,7 @@
                                 titleAttr: 'CSV',
                                 className: 'btn-labeled',
                                 exportOptions: {
-                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                                 }
                             },
                             {
@@ -1110,14 +1078,14 @@
                                 titleAttr: 'PDF',
                                 className: 'btn-labeled',
                                 exportOptions: {
-                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                                 }
                             },
                         ]
                     },
                     {
                         text: '<i class="btn-label fa fa-file-excel-o"></i><span class="hidden-xs"> Excel</span>',
-                        className: 'btn btn-primary', //Primary class for all buttons
+                            className: 'btn btn-primary', //Primary class for all buttons
                         tag: 'a',
                         action: function(e, dt, node, config) {
                             //This will send the page to the location specified
@@ -1142,7 +1110,7 @@
                         titleAttr: 'PDF',
                         className: 'btn-labeled', //Primary class for all buttons
                         exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                         }
                     },
                     {
@@ -1151,9 +1119,128 @@
                         className: 'btn-labeled' //Primary class for all buttons
                     },
                     'refresh',
-                ],
+                ], 
+            });
+        //* CONFIGURACIONES EXTERNOS
+        });
+        const mainEvents = () => {
+            let form_request1 = {
+                "accion": "table",
+            }
+            fetchData(form_request1);
+        }
+        const fetchData = async (request) => {
+            const body = new FormData();
+            body.append("data", JSON.stringify(request));
+            const res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
+                method: "POST",
+                body
+            });
+            const data = await res.json()
+            let rptSql = data['sql'];
+            paintTable(rptSql);
+        }
+        const paintTable = async (rptSql) => {
+            // Actualiza la tabla
+            tableMaster.clear();
+            tableMaster.rows.add(rptSql).draw();
+        }
+        $('.chosenTurno').chosen();
+        // Setup - add a text input to each footer cell
+        // ARREGLAR RESPONSIVE
+        
+        let options = {
+            "sScrollX": "100%",
+            "sScrollXInner": "110%",
+            "bScrollCollapse": true,
+            "colReorder": true
+        };
+        
+        
+        $('#table-master tbody').on('click', '.btn-tableMaster-detalle', function() {
+            $("#modal-detail").modal("show");
+        const data = tableMaster.row($(this).parents('tr')).data();
+        alert("El id: " + data['valexplosivo_preimpresor']);
+        });
+
+        $('#table-master tbody').on('click', '.btn-tableMaster-edit', function() {
+            const data = tableMaster.row($(this).parents('tr')).data();
+            //alert("El id: " + data['id_operacionMina']);
+            $("#modal-edit").modal("show");
+            getRecord(data['valexplosivo_preimpresor']);
+        });
+        //* ELIMINAR REGISTRO
+        $('#table-master tbody').on('click', '.btn-tableMaster-delet', function() {
+            mainEvents()
+            var data = tableMaster.row($(this).parents('tr')).data();
+            console.log(data);
+            swal({
+                title: "Estas seguro?",
+                text: "Una vez eliminado, no podrá recuperarlo!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    var form_request = {
+                        "accion": "delete",
+                        "id": data['valexplosivo_preimpresor']
+                    }
+                    console.log(form_request);
+                    requestDelete(form_request);
+                    swal("¡La información ha sido eliminado!", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("¡La información está a salvo!");
+                }
             });
         });
+        // Se envia Formulario
+        const requestDelete = async (form_request) => {
+            const body = new FormData();
+            body.append("data", JSON.stringify(form_request));
+            const returned = await fetch("./../../../controllers/controllerValeExplosivo.php", {
+                method: "POST",
+                body
+            });
+            const result = await returned.json(); //await JSON.parse(returned);
+
+            afterRequestInsert(result);
+        }
+        //*
+        const getLast_record = async (request) => {
+            const body = new FormData();
+            body.append("data", JSON.stringify(request));
+            const res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
+                method: "POST",
+                body
+            });
+            const data = await res.json();
+            rptSql = data['sql'];
+            paintNVale(rptSql);
+        }
+
+        //*
+        const paintNVale = async (rptSql) => {
+            
+            nvalAnterior = rptSql[0]['valexplosivo_nvale'];
+            console.log(nvalAnterior);
+            nvaleProx = parseInt(nvalAnterior)+parseInt(1);
+            try {
+                valZFill_nvalProx = zfill(nvaleProx, 6);
+                console.log(zfill(nvaleProx, 6)); //00324 
+            } catch (e) {
+                nvalzfill = zfill(nvale, 6);
+                // Manejar Errores
+                //console.error('Se encontro error : '+e);
+                //console.error('Nombre : '+e.name);
+                //console.error('Mensaje : '+e.message);
+            } finally {
+                // Obtengo N° vale
+                inputNVale.value = valZFill_nvalProx;
+            }
+        }
     </script>
 </body>
 </html>

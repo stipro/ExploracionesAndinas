@@ -209,6 +209,12 @@ class Labores extends Conexion
         return $this->ConsultaSimple($query);
     
     }
+    public function getLaborZona_detalle($where)
+    {
+        $query = "SELECT lb.id_labor, lbnombre.labNombre_nombre, lbzonas.labZona_nombre FROM labores AS lb LEFT JOIN lab_nombres AS lbnombre ON lb.id_labNombre = lbnombre.id_labNombre LEFT JOIN lab_zonas AS lbzonas ON lb.id_zona = lbzonas.id_zona WHERE id_labor = {$where};";
+        return $this->ConsultaSimple($query);
+    
+    }
     # EJEMPLO OBTENER UNA LISTA SEGUN SOLICITADO
     public function getColumnsWhere(string $parament)
     {
@@ -234,7 +240,7 @@ class Labores extends Conexion
         return $this->ConsultaSimple($query);
     }
     public function getUnidMinera(){
-        $query = "SELECT ud_me.id_unidad_mineras, ud_me.nombre_unidad_mineras, ud_me.abrev_unidad_mineras FROM unidad_mineras AS ud_me;";
+        $query = "SELECT ud_me.id_unidadMinera, ud_me.nombre_unidadMinera, ud_me.abrev_unidadMinera FROM unidad_mineras AS ud_me;";
         return $this->ConsultaSimple($query);
     }
     public function getLaborNombre_etapa(){

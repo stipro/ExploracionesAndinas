@@ -179,9 +179,7 @@ btnInsertar.addEventListener("click", () => {
     //Generamos PreImpreso
     diaRegistro = new Date();
     idNumeracion = 1;
-    codigoValeExplosivo = 'VE' + diaRegistro.getDate() + valselectTurno.charAt(0).toUpperCase() + valselectZona.charAt(0).toUpperCase() + idNumeracion;
-    console.log(codigoValeExplosivo);
-    inputPreImpre.value = codigoValeExplosivo;
+    
 
     // Obteniendo Dato
     valDigitador = inputDigitador.dataset.id;
@@ -189,6 +187,10 @@ btnInsertar.addEventListener("click", () => {
     valdateRegistro = dateRegistro.value;
 
     valinputNVale = inputNVale.value;
+
+    codigoValeExplosivo = 'VE' + diaRegistro.getDate() + valselectTurno.charAt(0).toUpperCase() + valselectZona.charAt(0).toUpperCase() + idNumeracion + valinputNVale;
+    console.log(codigoValeExplosivo);
+    inputPreImpre.value = codigoValeExplosivo;
 
     valinputPreImpre = inputPreImpre.value;
 
@@ -325,7 +327,7 @@ const requestInsert = async (form) => {
 const afterRequestInsert = (data) => {
     alertInsert.innerHTML = '';
     sqlRpt = data['sql'];
-
+    mainEvents();
     if (sqlRpt['estado'] == 1) {
         $.niftyNoty({
             type: 'success',
@@ -459,30 +461,19 @@ function zfill(number, width) {
 
 // Traer JSON para Tabla (ZONA)
 const fetchDataZona = async (json) => {
-    if (json) {
-        var accionSelect = 'mostrar';
-    } else {
-        accionSelect = 'mostrar';
-    }
-    var jsonRequests = {
-        "accion": accionSelect,
-        "other": json,
-    }
-    console.log(jsonRequests);
     const body = new FormData();
-    body.append("data", JSON.stringify(jsonRequests));
+    body.append("data", JSON.stringify(json));
     const rpt = await fetch('./../../../controllers/controllerZonaList.php', {
         method: "POST",
         body
     });
-    console.log('Zona : ');
+    
     const rptJson = await rpt.json(); //await JSON.parse(returned);
-    console.log(rptJson);
     paintSelectZona(rptJson);
 };
 
 const paintSelectZona = (data) => {
-    arraySelect = data['sql']['list'];
+    arraySelect = data['sql'];
     selectZona.innerHTML = '';
     const templateSelectZona = document.querySelector("#template-opt-zona").content;
     const fragment = document.createDocumentFragment();
@@ -503,7 +494,6 @@ const paintSelectZona = (data) => {
 
 // CODIGO LABOR
 const fetchDataLabor = async (json) => {
-    console.log(json);
     const body = new FormData();
     body.append("data", JSON.stringify(json));
     const rpt = await fetch('./../../../controllers/controllerLaborList.php', {
@@ -517,8 +507,7 @@ const fetchDataLabor = async (json) => {
 
 //Pintando Seleccion Codigo Labor
 const paintSelectLabor = (data) => {
-    arraySelect = data['sql'];
-    console.log('Labor..');
+    let arraySelect = data['sql'];
     console.log(arraySelect);
     selectCostLabor.innerHTML = '';
     const templateSelectCostoLabor = document.querySelector("#template-opt-ccostos").content;
@@ -976,3 +965,4 @@ const calcular_KilosDinamita = (pesototal, peso) => {
 btnCalKg_explosivos.addEventListener("click", () => {
   sumaMaterialExplosivo();
 });*/
+
