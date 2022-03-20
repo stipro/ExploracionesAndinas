@@ -9,3 +9,24 @@
 #inserForm {
     width: 1540px !important;
 }
+.modal-xl {
+    width: 60% !important;
+    max-width:1200px;
+}
+
+.form-group .form-control {
+    padding-right: 2.375rem;
+}
+
+.form-control-icon {
+    position: absolute;
+    z-index: 2;
+    right: 1.5rem;
+    top: 1rem;
+}
+@media (min-width: 768px) {
+    .modal-xl {
+        width: 90%;
+        max-width:1200px;
+    }
+  }

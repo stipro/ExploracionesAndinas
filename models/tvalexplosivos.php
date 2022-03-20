@@ -16,6 +16,11 @@ class ValeExplosivos extends Conexion
         $query = "SELECT MAX({$column}) AS id FROM {$table}";
         return $this->ConsultaSimple($query);
     }
+    public function getRow($parament)
+    {
+        $query = "SELECT * FROM tvalexplosivos AS vl_xp LEFT JOIN lab_zonas AS lb_zn ON vl_xp.id_zona = lb_zn.id_zona LEFT JOIN labores AS lb ON vl_xp.id_labor = lb.id_labor LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre LEFT JOIN colaboradores AS cb ON vl_xp.id_colaborador = cb.id_colaborador WHERE vl_xp.valexplosivo_codigoRegistro = {$parament}";
+        return $this->ConsultaSimple($query);
+    }
     public function getSelectNormal(string $table, array $columns):array
     {
         $query = "SELECT {$columns[0]}, {$columns[1]} FROM {$table}";
@@ -42,14 +47,14 @@ class ValeExplosivos extends Conexion
     } */
 
     public function getLast_record(){
-        $query = "SELECT vl_es.valexplosivo_nvale FROM tvalexplosivos AS vl_es ORDER BY vl_es.valexplosivo_nvale DESC LIMIT 1";
+        $query = "SELECT vl_xp.valexplosivo_nvale FROM tvalexplosivos AS vl_xp ORDER BY vl_xp.valexplosivo_nvale DESC LIMIT 1";
         return $this->ConsultaSimple($query);
     }
     //OBTIENE TODA LA TABLA
     public function getAll(): array
     {
         //$query = "SELECT * FROM tareos LIMIT {$empezarDesde}, {$filasPage}";
-        $query = "SELECT vl_es.valexplosivo_preimpresor, vl_es.valexplosivo_fecha, vl_es.valexplosivo_preimpresor, vl_es.valexplosivo_nvale, vl_es.valexplosivo_turno, lb_zn.labZona_nombre, lb.lab_ccostos, lb_nm.labNombre_nombre, lb.lab_nivel, vl_es.valexplosivo_tipDisparo, vl_es.valexplosivo_tipEn FROM tvalexplosivos AS vl_es LEFT JOIN lab_zonas AS lb_zn ON vl_es.id_zona = lb_zn.id_zona LEFT JOIN labores AS lb ON vl_es.id_labor = lb.id_labor LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre;";
+        $query = "SELECT vl_xp.valexplosivo_preimpresor, vl_xp.valexplosivo_fecha, vl_xp.valexplosivo_codigoRegistro, vl_xp.valexplosivo_nvale, vl_xp.valexplosivo_turno, lb_zn.labZona_nombre, lb.lab_ccostos, lb_nm.labNombre_nombre, lb.lab_nivel, vl_xp.valexplosivo_tipDisparo, vl_xp.valexplosivo_tipEn FROM tvalexplosivos AS vl_xp LEFT JOIN lab_zonas AS lb_zn ON vl_xp.id_zona = lb_zn.id_zona LEFT JOIN labores AS lb ON vl_xp.id_labor = lb.id_labor LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre;";
         return $this->ConsultaSimple($query);
     }
     public function insert(
@@ -251,7 +256,7 @@ class ValeExplosivos extends Conexion
     {
         //error_reporting(0);
         try {
-            $query  = "DELETE FROM tvalexplosivos WHERE valexplosivo_preimpresor=:id;";
+            $query  = "DELETE FROM tvalexplosivos WHERE valexplosivo_codigoRegistro=:id;";
             $result = $this->db->prepare($query);
             $result->execute(array(':id' => $idEliminar));
             return 'Se elimino correctamente.';

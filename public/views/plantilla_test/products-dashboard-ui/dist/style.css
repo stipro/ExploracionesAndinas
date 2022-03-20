@@ -101,6 +101,9 @@ body {
 .sidebar-list-item.active {
   background-color: var(--sidebar-active-link);
 }
+.link-dark.active {
+  background-color: var(--sidebar-active-link);
+}
 .sidebar-list-item.active:before {
   content: "";
   position: absolute;

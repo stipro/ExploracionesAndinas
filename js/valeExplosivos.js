@@ -39,7 +39,7 @@ var selectNombLabor = document.getElementById('val_explosivo-text-form-labor');
 // Nivel de Zona
 var inputNivelLabor = document.getElementById('val_explosivo-text-form-nivel');
 //var selectTipoLabor = document.getElementById('val_explosivo-text-form-labor_tipo');
-
+var option;
 // --Tipo de Disparo
 
 // --Disparo en
@@ -99,6 +99,65 @@ var inputFormBlockSegecion = document.getElementById('val_explosivo-text-form-bl
 var inputFormCarcortado13 = document.getElementById('val_explosivo-text-form-carcortado13');
 // Dinamita Semigelatinosa de 65%
 var inputFormCalDimValorSemigelatinosa = document.getElementById('val_explosivo-text-form-valdin_semi');
+//* ELEMENTOS VER
+const iptView_digitador = document.getElementById('view-valesExplosivo-digitador');
+const iptView_preImpreso = document.getElementById('view-valesExplosivo-preImpreso');
+const iptView_nVale = document.getElementById('view-valesExplosivo-nVale');
+const iptView_zona = document.getElementById('view-valesExplosivo-zona');
+const iptView_turno = document.getElementById('view-valesExplosivo-turno');
+const iptView_fecha = document.getElementById('view-valesExplosivo-fecha');
+const iptView_laborCodigo = document.getElementById('view-valesExplosivo-laborCodigo');
+const iptView_laborNombre = document.getElementById('view-valesExplosivo-laborNombre');
+const iptView_laborNivel = document.getElementById('view-valesExplosivo-laborNivel');
+
+const iptView_barra = document.getElementById('view-valesExplosivo-barra');
+const iptView_lgtMt = document.getElementById('view-valesExplosivo-lgtMt');
+const iptView_nTaladror = document.getElementById('view-valesExplosivo-nTaladro');
+const iptView_talVacio = document.getElementById('view-valesExplosivo-talVacio');
+const iptView_piesPerf = document.getElementById('view-valesExplosivo-piesPerf');
+const iptView_piesReal = document.getElementById('view-valesExplosivo-piesReal');
+
+const iptView_dinSemi_res = document.getElementById('view-valesExplosivo-resdin_semi');
+const iptView_dinPulv_res = document.getElementById('view-valesExplosivo-resdin_pulv');
+const iptView_dinPulv_dinSemi_suma = document.getElementById('view-valesExplosivo-suma-dimPulv-dimSemi');
+const iptView_nMaquinas = document.getElementById('view-valesExplosivo-nMaquinas');
+const iptView_perforista = document.getElementById('view-valesExplosivo-perforista');
+
+const iptView_emulnorMil = document.getElementById('view-valesExplosivo-emulnorMil');
+const iptView_emulnorTresMil = document.getElementById('view-valesExplosivo-emulnorTresMil');
+const iptView_dinPulv = document.getElementById('view-valesExplosivo-dinPulv');
+const iptView_carmexSiete = document.getElementById('view-valesExplosivo-carmexSiete');
+const iptView_carmexOcho = document.getElementById('view-valesExplosivo-carmexOcho');
+const iptView_mechaRapida = document.getElementById('view-valesExplosivo-mechaRapida');
+const iptView_mechaLenta = document.getElementById('view-valesExplosivo-mechaLenta');
+const iptView_Fulminante = document.getElementById('view-valesExplosivo-Fulminante');
+const iptView_conectorMecha = document.getElementById('view-valesExplosivo-conectorMecha');
+const iptView_blkSugecion = document.getElementById('view-valesExplosivo-blkSugecion');
+const iptView_carCortado = document.getElementById('view-valesExplosivo-carCortado');
+const iptView_dinSemi = document.getElementById('view-valesExplosivo-dinSemi');
+
+
+//* ELEMENTOS EDITAR
+
+const iptEdit_digitador = document.getElementById('edit-valesExplosivo-digitador');
+const iptEdit_preImpreso = document.getElementById('edit-valesExplosivo-pre_impre');
+const iptEdit_nVale = document.getElementById('edit-valesExplosivo-n_vale');
+const iptEdit_zona = document.getElementById('edit-valesExplosivo-zona');
+const iptEdit_turno = document.getElementById('edit-valesExplosivo-turno');
+    //* TABLA MATERIALES EXPLOSIVOS
+    const iptEdit_emulnorMil = document.getElementById('edit-valesExplosivo-emulnor_mil');
+    const iptEdit_emulnorTresmil = document.getElementById('edit-valesExplosivo-emulnor_tresmil');
+    const iptEdit_dinamitaPulverulenta65 = document.getElementById('edit-valesExplosivo-valdin_pulv');
+    const iptEdit_carmen7 = document.getElementById('edit-valesExplosivo-carmexsiete');
+    const iptEdit_carmen8 = document.getElementById('edit-valesExplosivo-carmexocho');
+    const iptEdit_mechaRapida = document.getElementById('edit-valesExplosivo-mecha_rapida_zdiesocho');
+    const iptEdit_mechaLenta = document.getElementById('edit-valesExplosivo-mecha_lenta');
+    const iptEdit_fulminante = document.getElementById('edit-valesExplosivo-fuminante_ocho');
+    const iptEdit_conectorMecha = document.getElementById('edit-valesExplosivo-conecto_mecha');
+    const iptEdit_blockSugeccion = document.getElementById('edit-valesExplosivo-blSugecion');
+    const iptEdit_carCortado13 = document.getElementById('edit-valesExplosivo-carcortado13');
+    const iptEdit_dinamitaSemigelatinosa65 = document.getElementById('edit-valesExplosivo-valdin_semi');
+
 // Eventos
 // El evento DOMContentLoaded es disparado cuando el documento HTML ha sido completamente cargado y parseado
 document.addEventListener('DOMContentLoaded', e => {

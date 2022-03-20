@@ -12,6 +12,10 @@ if($_POST){
         // ACCION
         $accion = $arrayForm['accion'];
         switch ($accion) {
+            case "getRow":
+                $parament = $arrayForm['id'];
+                $rptSql = $tableManager->getRow($parament);
+                break;
             case "idTable":
                 $column = $arrayForm['column'];
                 $rptSql = $tableManager->getidTable($table, $column);
