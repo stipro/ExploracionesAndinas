@@ -98,19 +98,21 @@ class ValeExplosivos extends Conexion
         {
             $rptId = $this->getidTable('tvalexplosivos', 'id_valexplosivo');
             $id = $rptId[0]['id'];
+            $codigoPrueba = '000000';
             $id++;
             //echo $id;
             date_default_timezone_set('America/Lima');
             $converdatoRegistro = date($datoRegistro.' H:i:s');
             /* Iniciar una transacción, desactivando 'autocommit' */
             //$this->db->beginTransaction();
-            $query = "INSERT INTO tvalexplosivos VALUES (:id_valexplosivo,
+            $query = "INSERT INTO tvalexplosivos VALUES (:id_valexplosivo, 
             :id_usuario, 
             :valexplosivo_fecha, 
             :id_zona, 
             :valexplosivo_nvale, 
             :valexplosivo_turno, 
             :valexplosivo_preimpresor, 
+            :valexplosivo_codigoRegistro, 
             :id_labor, 
             :valexplosivo_tipDisparo, 
             :id_colaborador,  
@@ -147,6 +149,7 @@ class ValeExplosivos extends Conexion
             $insertValue->bindParam(':valexplosivo_nvale', $datonVale, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_turno', $datoTurno, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_preimpresor', $datopreImpreso, PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_codigoRegistro', $codigoPrueba, PDO::PARAM_STR);
             $insertValue->bindParam(':id_labor', $idLabor, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_tipDisparo', $datoTipDisparo, PDO::PARAM_STR);
             $insertValue->bindParam(':id_colaborador', $idPerforista, PDO::PARAM_STR);

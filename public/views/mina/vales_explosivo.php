@@ -392,16 +392,16 @@
                             
                                             <!-- Radio Buttons -->
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="Avance" name="form-radio-tipo_disparo" id="opcion-tipo_disparo1">
-                                                <label for="opcion-tipo_disparo1">Avance</label>
+                                                <input class="magic-radio" type="radio" value="Avance" name="view-form-radio-tipo_disparo" id="">
+                                                <label for="">Avance</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="Realce" name="form-radio-tipo_disparo" id="opcion-tipo_disparo2">
-                                                <label for="opcion-tipo_disparo2">Realce</label>
+                                                <input class="magic-radio" type="radio" value="Realce" name="view-form-radio-tipo_disparo" id="">
+                                                <label for="">Realce</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="Breasting" name="form-radio-tipo_disparo" id="opcion-tipo_disparo3">
-                                                <label for="opcion-tipo_disparo3">Breasting</label>
+                                                <input class="magic-radio" type="radio" value="Breasting" name="view-form-radio-tipo_disparo" id="">
+                                                <label for="">Breasting</label>
                                             </div>
                             
                                         </div>
@@ -409,16 +409,16 @@
                             
                                             <!-- Radio Buttons -->
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="Desquinche" name="form-radio-tipo_disparo" id="opcion-tipo_disparo4">
-                                                <label for="opcion-tipo_disparo4">Desquinche</label>
+                                                <input class="magic-radio" type="radio" value="Desquinche" name="view-form-radio-tipo_disparo" id="">
+                                                <label for="">Desquinche</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="Reperforacion" name="form-radio-tipo_disparo" id="opcion-tipo_disparo5">
-                                                <label for="opcion-tipo_disparo5">Reperforacion</label>
+                                                <input class="magic-radio" type="radio" value="Reperforacion" name="view-form-radio-tipo_disparo" id="">
+                                                <label for="">Reperforacion</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="Recarga" name="form-radio-tipo_disparo" id="opcion-tipo_disparo6">
-                                                <label for="opcion-tipo_disparo6">Recarga</label>
+                                                <input class="magic-radio" type="radio" value="Recarga" name="view-form-radio-tipo_disparo" id="">
+                                                <label for="">Recarga</label>
                                             </div>
                             
                                         </div>
@@ -430,12 +430,12 @@
                                         <div class="col-md-8">
                                             <!-- Radio Buttons -->
                                             <div class="radio">
-                                                <input id="demo-form-radio" class="magic-radio" type="radio" name="form-radio-tipo_en" value="Mineral" checked="">
-                                                <label for="demo-form-radio">Mineral</label>
+                                                <input id="" class="magic-radio" type="radio" name="view-form-radio-tipo_en" value="Mineral" checked="">
+                                                <label for="">Mineral</label>
                                             </div>
                                             <div class="radio">
-                                                <input id="demo-form-radio-2" class="magic-radio" type="radio" name="form-radio-tipo_en" value="Desmonte">
-                                                <label for="demo-form-radio-2">Desmonte</label>
+                                                <input id="" class="magic-radio" type="radio" name="view-form-radio-tipo_en" value="Desmonte">
+                                                <label for="">Desmonte</label>
                                             </div>
                                         </div>
                                     </div>

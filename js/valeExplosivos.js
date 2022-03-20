@@ -248,7 +248,6 @@ btnInsertar.addEventListener("click", () => {
     valinputNVale = inputNVale.value;
 
     codigoValeExplosivo = 'VE' + diaRegistro.getDate() + valselectTurno.charAt(0).toUpperCase() + valselectZona.charAt(0).toUpperCase() + idNumeracion + valinputNVale;
-    console.log(codigoValeExplosivo);
     inputPreImpre.value = codigoValeExplosivo;
 
     valinputPreImpre = inputPreImpre.value;
@@ -273,7 +272,6 @@ btnInsertar.addEventListener("click", () => {
     perforistaSelect = selectPerforista.options[selectPerforista.selectedIndex];
     valselectPerforista = perforistaSelect.value;
     valIdPerforista = perforistaSelect.getAttribute('data-id-perforista');
-    console.log(valIdPerforista);
 
     // Tipo en
     valradioTipo_en = document.querySelector('input[name="form-radio-tipo_en"]:checked').value
@@ -310,8 +308,6 @@ btnInsertar.addEventListener("click", () => {
     valEmulnostresmil = inputFormEmulnostresmil.value;
     const totalKilos_dinamitaEmulnorMil = calcular_KilosDinamita(valEmulnormil, parseFloat('0.09615385'));
     const totalKilos_dinamitaEmulnorTresmil = calcular_KilosDinamita(valEmulnostresmil, parseFloat('0.09469697'));
-    console.log('Total dinamita Emulnor Mil : ' + totalKilos_dinamitaEmulnorMil);
-    console.log('Total dinamita Emulnor Tresmil : ' + totalKilos_dinamitaEmulnorTresmil);
 
     valMechaRapida = inputFormMechaRapida.value;
     valMechaLenta = inputFormMechaLenta.value;

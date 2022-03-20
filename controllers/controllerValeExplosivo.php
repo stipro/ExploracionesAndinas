@@ -24,7 +24,12 @@ if($_POST){
                 $formRequest = $arrayForm['list'];
                 $idDigitador = $formRequest['id_digitador'];
                 $datoRegistro = $formRequest['fechRegistro'];
-                $idZona = $formRequest['id_zona'];
+                if (array_key_exists('id_zona', $formRequest)) {
+                    $idZona = $formRequest['id_zona'];
+                }
+                else{
+                    $rptController = 'Falta seleccionar Zona';
+                }
                 $datonVale = $formRequest['n_vale'];
                 $datoTurno = $formRequest['turno'];
                 $datopreImpreso = $formRequest['pre_impreso'];
