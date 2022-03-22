@@ -1113,19 +1113,6 @@
                                                     <input type="number" class="form-control" value="0" id="edit-valesExplosivo-dinSemi" name="">
                                                 </td>                                                        
                                             </tr>
-                                            <!--
-                                            
-                                            
-                                            
-                                            <tr>
-                                                <td>SSO 000436</td>
-                                                <td>Mecha</td>
-                                                <td>MTS</td>
-                                                <td data-type="number">
-                                                    <input type="number" class="form-control" value="0" id="val_explosivo-text-form-mecha" name="">
-                                                </td>
-                                            </tr>
-                                        -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -2210,7 +2197,9 @@
             iptEdit_dinamitaSemigelatinosa.value = rptSql[0]['valexplosivo_dimSemigelatinosa'];
         }
         btnEdit_insert.addEventListener("click", (e) => {
+            console.log('Se insertara');
             alertEdit.innerHTML = ''
+            val_preImpreso = iptEdit_preImpreso.value;
             val_nVale = iptEdit_nVale.value
             val_zonaNombre = iptEdit_zonaNombre.value;
             val_zonaId = document.querySelector('#edit-dt-valesExplosivo-zonaNombre option[value="' + val_zonaNombre + '"]').dataset.idZona;
@@ -2234,7 +2223,7 @@
             val_perforista_idColaborador = document.querySelector('#edit-dt-valesExplosivo-perforista option[value="' + val_perforista + '"]').dataset.idPerforista;
             val_emulnorMil = iptEdit_emulnorMil.value;
             val_emulnorTresmil = iptEdit_emulnorTresmil.value;
-            val_dinamitaPulverulenta65 = iptEdit_dinamitaPulverulenta.value;
+            val_dinamitaPulverulenta = iptEdit_dinamitaPulverulenta.value;
             val_carmen7 = iptEdit_carmen7.value;
             val_carmen8 = iptEdit_carmen8.value;
             val_mechaRapida = iptEdit_mechaRapida.value;
@@ -2247,6 +2236,7 @@
             let val_totalKilos_dinamitaEmulnorMil = calcular_KilosDinamita(val_emulnorMil, parseFloat('0.09615385'));
             let val_totalKilos_dinamitaEmulnorTresmil = calcular_KilosDinamita(val_emulnorTresmil, parseFloat('0.09469697'));
             let formList = {
+                'preImpreso': val_preImpreso,
                 'nVale': val_nVale,
                 'zonId': val_zonaId,
                 'zonaNombre': val_zonaNombre,
@@ -2299,7 +2289,42 @@
             });
             const result = await returned.json(); //await JSON.parse(returned);
             console.log(result);
+            afterRequestEdit(result)
         }
+        const afterRequestEdit = (data) => {
+            alertInsert.innerHTML = '';
+            sqlRpt = data['sql'];
+            mainEvents();
+            if (sqlRpt['estado'] == 1) {
+                $.niftyNoty({
+                    type: 'success',
+                    container: '#alerts-Edit',
+                    html: '<strong>Bien hecho!</strong> ' + sqlRpt['mensaje'] + ', codigo generado : [' + sqlRpt['coperacion'] + ']',
+                    focus: false,
+                    timer: 8000
+                });
+                console.log('Si');
+            } else {
+                if (data['rptController']['estado'] == 0) {
+                    $.niftyNoty({
+                        type: 'danger',
+                        container: '#alerts-Edit',
+                        html: '<strong>Oh cielos!</strong> ' + data['rptController']['mensaje'],
+                        focus: false,
+                    });
+                } else {
+                    $.niftyNoty({
+                        type: 'danger',
+                        container: '#alerts-Edit',
+                        html: '<strong>Oh cielos!</strong> ' + sqlRpt['messageUser'],
+                        focus: false,
+                    });
+                }
+
+                console.log('No');
+            }
+            console.log(data);
+        };
 
         //* ELIMINAR REGISTRO
         $('#table-master tbody').on('click', '.btn-tableMaster-delet', function() {

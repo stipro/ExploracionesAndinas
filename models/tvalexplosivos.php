@@ -229,9 +229,6 @@ class ValeExplosivos extends Conexion
                 echo "\nPDO::errorInfo():\n";
                 //print_r($result->errorInfo());
             }
-            
-
-            
             return $rptSql;
 
         } catch (PDOException $e) {
@@ -279,21 +276,21 @@ class ValeExplosivos extends Conexion
             valexplosivo_numMaquina = :valexplosivo_numMaquina,
             id_colaborador = :id_colaborador,
             valexplosivo_emulmil = :valexplosivo_emulmil,
-            valexplosivo_emultresmil = :valexplosivo_emultresmil
-            valexplosivo_dimSemigelatinosa = :valexplosivo_dimSemigelatinosa
-            valexplosivo_dimPulverulenta = :valexplosivo_dimPulverulenta
-            valexplosivo_sumaSemiPulv = :valexplosivo_sumaSemiPulv
-            valexplosivo_carmexsiete = :valexplosivo_carmexsiete
-            valexplosivo_carmexocho = :valexplosivo_carmexocho
-            valexplosivo_mecRapida = :valexplosivo_mecRapida
-            valexplosivo_mecLenta = :valexplosivo_mecLenta
-            valexplosivo_fulN = :valexplosivo_fulN
-            valexplosivo_conMecha = :valexplosivo_conMecha
-            valexplosivo_BlockSugecion = :valexplosivo_BlockSugecion
-            valexplosivo_carcortrece = :valexplosivo_carcortrece
-            valexplosivo_totalKiloEmul1000 = :valexplosivo_totalKiloEmul1000
+            valexplosivo_emultresmil = :valexplosivo_emultresmil,
+            valexplosivo_dimSemigelatinosa = :valexplosivo_dimSemigelatinosa,
+            valexplosivo_dimPulverulenta = :valexplosivo_dimPulverulenta,
+            valexplosivo_sumaSemiPulv = :valexplosivo_sumaSemiPulv,
+            valexplosivo_carmexsiete = :valexplosivo_carmexsiete,
+            valexplosivo_carmexocho = :valexplosivo_carmexocho,
+            valexplosivo_mecRapida = :valexplosivo_mecRapida,
+            valexplosivo_mecLenta = :valexplosivo_mecLenta,
+            valexplosivo_fulN = :valexplosivo_fulN,
+            valexplosivo_conMecha = :valexplosivo_conMecha,
+            valexplosivo_BlockSugecion = :valexplosivo_BlockSugecion,
+            valexplosivo_carcortrece = :valexplosivo_carcortrece,
+            valexplosivo_totalKiloEmul1000 = :valexplosivo_totalKiloEmul1000,
             valexplosivo_totalKiloEmul3000 = :valexplosivo_totalKiloEmul3000
-            WHERE valexplosivo_codigoRegistro=:datoid;";
+            WHERE valexplosivo_preimpresor = :preImpreso;";
             $insertValue = $this->db->prepare($query);
             $insertValue->bindParam(':valexplosivo_nvale', $formRequest['nVale'], PDO::PARAM_STR);
             $insertValue->bindParam(':id_zona', $formRequest['zonId'], PDO::PARAM_STR);
@@ -327,9 +324,42 @@ class ValeExplosivos extends Conexion
             $insertValue->bindParam(':valexplosivo_carcortrece', $formRequest['carCortado13'], PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_totalKiloEmul1000', $formRequest['totalKilos_dinamitaEmulnorMil'], PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_totalKiloEmul3000', $formRequest['totalKilos_dinamitaEmulnorTresmil'], PDO::PARAM_STR);
-
+            $insertValue->bindParam(':preImpreso', $formRequest['preImpreso'], PDO::PARAM_STR);
+            $sqlrpt = $insertValue->execute();
+            if($sqlrpt){
+                //$this->db->commit();
+                $rptSql = [
+                    "estado" => 1,
+                    "mensaje" => "Se actulizo correctamente",
+                    "coperacion" => '...',
+                ];
+            }
+            else{
+                echo "\nPDO::errorInfo():\n";
+                //print_r($result->errorInfo());
+            }
+            return $rptSql;
         } catch (PDOException $e) {
-            return 'ERROR';
+            if($e->getCode() == 23000){
+                $messageUser = "Se duplico n° de Vale";
+            }
+            elseif($e->getCode() == 42000){
+                $messageUser = "La sintaxis esta mal";
+            }
+            else{
+                $messageUser = "";
+            }
+            $rptSql = [
+                "estado" => 0,
+                "messageDeveloper" => "Se encontro ERROR ".$e->getMessage(),
+                "messageUser" => $messageUser,
+                "codigo" => $e->getCode(),
+                "string" => $e->__toString(),
+            ];
+            return $rptSql;
+        }
+        finally {
+            //print_r($this->db->errorInfo());
         }
 
     }
