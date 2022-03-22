@@ -167,7 +167,7 @@ const iptEdit_perforista = document.getElementById('edit-valesExplosivo-perforis
     //* TABLA MATERIALES EXPLOSIVOS
     const iptEdit_emulnorMil = document.getElementById('edit-valesExplosivo-emulnoMil');
     const iptEdit_emulnorTresmil = document.getElementById('edit-valesExplosivo-emulnorTresmil');
-    const iptEdit_dinamitaPulverulenta = document.getElementById('edit-valesExplosivo-dinPulv');
+    const iptEdit_dinamitaPulverulenta65 = document.getElementById('edit-valesExplosivo-dinPulv');
     const iptEdit_carmen7 = document.getElementById('edit-valesExplosivo-carmexSiete');
     const iptEdit_carmen8 = document.getElementById('edit-valesExplosivo-carmexOcho');
     const iptEdit_mechaRapida = document.getElementById('edit-valesExplosivo-mecha_mechaRapida');
@@ -176,7 +176,7 @@ const iptEdit_perforista = document.getElementById('edit-valesExplosivo-perforis
     const iptEdit_conectorMecha = document.getElementById('edit-valesExplosivo-conectorMecha');
     const iptEdit_blockSugeccion = document.getElementById('edit-valesExplosivo-blockSugecion');
     const iptEdit_carCortado13 = document.getElementById('edit-valesExplosivo-carCortado13');
-    const iptEdit_dinamitaSemigelatinosa = document.getElementById('edit-valesExplosivo-dinSemi');
+    const iptEdit_dinamitaSemigelatinosa65 = document.getElementById('edit-valesExplosivo-dinSemi');
 
 // Eventos
 // El evento DOMContentLoaded es disparado cuando el documento HTML ha sido completamente cargado y parseado
@@ -932,7 +932,7 @@ $('#val_explosivo-input-form-barra').change(function() {
 function calLgt() {
     barraSelect = selectFormBarra.options[selectFormBarra.selectedIndex];
     valselectFormBarra = barraSelect.value;
-    let rptLgt = parseFloat(valselectFormBarra) * 0.3;
+    rptLgt = parseFloat(valselectFormBarra) * 0.3;
     inputFormLgt_mt.value = rptLgt;
 }
 $(document).ready(function() {
@@ -970,143 +970,12 @@ $(document).ready(function() {
         sumaMaterialExplosivo();
     });
 });
-//* DETECCION DE INPUT
-//* Input Dinamita Pulverulenta
-iptEdit_barra.addEventListener('input', (e) => {
-    // Obtenemos y capturamos valor
-    let val_Barra = iptEdit_barra.value;
-    let val_nTaladro = iptEdit_nTaladro.value;
-    let val_talVacio = iptEdit_talVacio.value;
-    // Verificamos el dato
-    val_Barra = val_Barra ? val_Barra : 0;
-    val_nTaladro = val_nTaladro ? val_nTaladro : 0;
-    val_talVacio = val_talVacio ? val_talVacio : 0;
-    // Enviamos y capturamos la respuesta del valor
-    let calRes_lgt = cal_lgt(val_Barra);
-    // Mostamos en la vista
-    iptEdit_lgtMt.value = calRes_lgt;
-    // Enviamos y capturamos la respuesta del valor
-    valRpt_piesPerf = cal_piesPerf(val_Barra, val_nTaladro, val_talVacio);
-    valRpt_piesReal = cal_piesReal(val_Barra, val_nTaladro, val_talVacio);
-    //* Mostramos en la vista
-    iptEdit_piesPerf.value = valRpt_piesPerf.toFixed(2);
-    iptEdit_piesReal.value = valRpt_piesReal.toFixed(2);
-});
-iptEdit_nTaladro.addEventListener('input', (e) => {
-    // Obtenemos y capturamos valores
-    let val_Barra = iptEdit_barra.value;
-    let val_nTaladro = iptEdit_nTaladro.value;
-    let val_talVacio = iptEdit_talVacio.value;
-    // Verificamos el dato
-    val_Barra = val_Barra ? val_Barra : 0;
-    val_nTaladro = val_nTaladro ? val_nTaladro : 0;
-    val_talVacio = val_talVacio ? val_talVacio : 0;
-    // Enviamos y capturamos la respuesta del valor
-    valRpt_piesPerf = cal_piesPerf(val_Barra, val_nTaladro, val_talVacio);
-    valRpt_piesReal = cal_piesReal(val_Barra, val_nTaladro, val_talVacio);
-    //* Mostramos en la vista
-    iptEdit_piesPerf.value = valRpt_piesPerf.toFixed(2);
-    iptEdit_piesReal.value = valRpt_piesReal.toFixed(2);
-});
-iptEdit_talVacio.addEventListener('input', (e) => {
-    // Obtenemos y capturamos valores
-    let val_Barra = iptEdit_barra.value;
-    let val_nTaladro = iptEdit_nTaladro.value;
-    let val_talVacio = iptEdit_talVacio.value;
-    // Verificamos el dato
-    val_Barra = val_Barra ? val_Barra : 0;
-    val_nTaladro = val_nTaladro ? val_nTaladro : 0;
-    val_talVacio = val_talVacio ? val_talVacio : 0;
-    // Enviamos y capturamos la respuesta del valor
-    valRpt_piesPerf = cal_piesPerf(val_Barra, val_nTaladro, val_talVacio);
-    valRpt_piesReal = cal_piesReal(val_Barra, val_nTaladro, val_talVacio);
-    //* Mostramos en la vista
-    iptEdit_piesPerf.value = valRpt_piesPerf.toFixed(2);
-    iptEdit_piesReal.value = valRpt_piesReal.toFixed(2);
-});
-const cal_piesPerf = (val_Barra, val_nTaladro, val_talVacio) => {
-    //* Suma
-    let sumanTaladrotVacio = parseFloat(val_nTaladro) + parseFloat(val_talVacio);
-    //* Multiplica
-    let valFormPPerf = parseFloat(val_Barra) * parseFloat(sumanTaladrotVacio);
-    return valFormPPerf;
-}
-const cal_piesReal = (val_Barra, val_nTaladro, val_talVacio) =>{
-    //* Suma
-    let sumaTal_TalVacio = parseFloat(val_nTaladro) + parseFloat(val_talVacio);
-    //* Multiplica
-    let valFormtalVacioBarra = parseFloat(sumaTal_TalVacio) * parseFloat(val_Barra)
-    //* Multiplica
-    let valFormPReal = parseFloat(valFormtalVacioBarra) * parseFloat('0.95');
-    return valFormPReal;
-
-}
-const cal_lgt = (val) => {
-    // Realiza la operacion
-    let rptLgt = parseFloat(val) * 0.3;
-    // Retornamos valor
-    return rptLgt;
-}
-//* Input Dinamita Pulverulenta
-iptEdit_dinamitaPulverulenta.addEventListener('input', (e) => {
-    //* Declaraciones de variables *//
-    var resulDinamitaPulverulenta;
-    var resulDinamitaSemigelationsa;
-
-    //* Obteniendo valores de Inputs *//
-    let val_dinamitaPulverulenta = iptEdit_dinamitaPulverulenta.value;
-    let val_dinamitaSemigelatinosa = iptEdit_dinamitaSemigelatinosa.value;
-
-    //* EVENTOS *//
-    calcular_dinamitas(val_dinamitaPulverulenta, 0.08012821).then(val => {
-        iptEdit_res_dinPulv.value = val;
-        resulDinamitaPulverulenta = val;
-    });
-    calcular_dinamitas(val_dinamitaSemigelatinosa, 0.07911392).then(val => {
-        iptEdit_res_dinSemi.value = val;
-        resulDinamitaSemigelationsa = val;
-        sumaDinamitas(resulDinamitaPulverulenta, resulDinamitaSemigelationsa).then(resultado_fixex => iptEdit_suma_dimPulv_dimSemi.value = resultado_fixex);
-    });
-    //* FIN DE EVENTOS *//
-});
-//* Input Dinamita Semigelatinosa
-iptEdit_dinamitaSemigelatinosa.addEventListener('input', (e) => {
-    //* Declaraciones de variables *//
-    var resulDinamitaPulverulenta;
-    var resulDinamitaSemigelationsa;
-
-    //* Obteniendo valores de Inputs *//
-    let val_dinamitaPulverulenta = iptEdit_dinamitaPulverulenta.value;
-    let val_dinamitaSemigelatinosa = iptEdit_dinamitaSemigelatinosa.value;
-
-    //* EVENTOS *//
-    calcular_dinamitas(val_dinamitaPulverulenta, 0.08012821).then(val => {
-        iptEdit_res_dinPulv.value = val;
-        resulDinamitaPulverulenta = val;
-    });
-    calcular_dinamitas(val_dinamitaSemigelatinosa, 0.07911392).then(val => {
-        iptEdit_res_dinSemi.value = val;
-        resulDinamitaSemigelationsa = val;
-        sumaDinamitas(resulDinamitaPulverulenta, resulDinamitaSemigelationsa).then(resultado_fixex => iptEdit_suma_dimPulv_dimSemi.value = resultado_fixex);
-    });
-    //* FIN DE EVENTOS *//
-});
 
 /*
 btnCalPies_PerfReal.addEventListener("click", () => {
   calPies_Perf_Real();
 });*/
-
-const sumaDinamitas = async (resulDinamitaPulverulenta, resulDinamitaSemigelationsa) => {
-    sumaDinamitas_SemigelatinosaPulverulenta = parseFloat(resulDinamitaSemigelationsa) + parseFloat(resulDinamitaPulverulenta);
-    return resultado_fixex = sumaDinamitas_SemigelatinosaPulverulenta.toFixed(8);
-}
-const calcular_dinamitas = async (valDinamita, multiplicador) => {
-    const result = valDinamita * multiplicador;
-    resultFixed = result.toFixed(8);
-    return resultFixed;
-}
-const sumaMaterialExplosivo = () => {
+function sumaMaterialExplosivo() {
     caldimSemigelatinosa65(0.07911392);
     caldimPulverulenta65(0.08012821);
     //Resultado
@@ -1116,45 +985,54 @@ const sumaMaterialExplosivo = () => {
     inputFormSumaPulSemi.value = valresultSumaDimSemiPul.toFixed(8);
 }
 
-const caldimSemigelatinosa65 = (multiplicador) => {
+function caldimSemigelatinosa65(multiplicador) {
     // Calculo Dinamita Semigelatina
     valorDimSemigelatinosa = inputFormCalDimValorSemigelatinosa.value;
     resulOperDimSemigelatinosa = valorDimSemigelatinosa * multiplicador;
     inputFormCalDimResultSemigelatinosa.value = resulOperDimSemigelatinosa.toFixed(8);
 }
 
-const caldimPulverulenta65 = (multiplicador) => {
+function caldimPulverulenta65(multiplicador) {
     //
     valorDimPulverulenta = inputFormCalDimValorPulverulenta.value;
     resulOperDimvalorDimPulverulenta = valorDimPulverulenta * multiplicador;
     inputFormCalDimResultPulverulenta.value = resulOperDimvalorDimPulverulenta.toFixed(8);
 }
 
-const calPies_Perf_Real = () => {
+function calPies_Perf_Real() {
+
     inputFormPReal.value = 0;
     inputFormPPerf.value = 0;
-    //* Obtenemos Valor
+
     barraSelect = selectFormBarra.options[selectFormBarra.selectedIndex];
     valFormBarra = barraSelect.value;
+
+    //valFormBarra = selectFormBarra.value;
+
+    //console.log('Barra : ' + valFormBarra);
     valFormNTaladro = inputFormNTaladro.value;
+    //console.log('N_taladro : ' + valFormNTaladro);
     valFormTVacio = inputFormTVacio.value;
+    //console.log('Total_vacio : ' + valFormTVacio);
+
+
     // Taladro Perforado
-    //* Suma
+    //console.log(valFormBarra + '*' + valFormNTaladro);
     sumanTaladrotVacio = parseFloat(valFormNTaladro) + parseFloat(valFormTVacio);
-    //* Multiplica
     valFormPPerf = parseFloat(valFormBarra) * parseFloat(sumanTaladrotVacio);
-    //* Mostramos en la vista
     inputFormPPerf.value = valFormPPerf.toFixed(2);
-    //* Suma
+    // Taladro Real
     sumaTal_TalVacio = parseFloat(valFormNTaladro) + parseFloat(valFormTVacio);
-    //* Multiplica
+    //console.log('Suma : ' + sumaTal_TalVacio);
     valFormtalVacioBarra = parseFloat(sumaTal_TalVacio) * parseFloat(valFormBarra)
-    //* Multiplica
+    //console.log('Multiplicacion : ' + valFormtalVacioBarra);
+    //console.log(parseFloat('0.95'));
     valFormPReal = parseFloat(valFormtalVacioBarra) * parseFloat('0.95');
-    //* Resultado Final
+    //console.log('Resultado Final : ' + valFormPReal);
+
     inputFormPReal.value = valFormPReal.toFixed(2);
 }
-//* Calcula los kilos de dimanita
+
 const calcular_KilosDinamita = (pesototal, peso) => {
     return totalKilo = pesototal * peso;
 }

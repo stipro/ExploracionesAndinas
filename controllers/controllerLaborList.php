@@ -13,6 +13,15 @@ if($_POST){
         // ACCION
         $accion = $arrayForm['accion'];
         switch ($accion) {
+            case "getDatalistAll_zonaNombre":
+                $rptSql = $tableManager->getDatalistAll_zonaNombre();
+                break;
+            case "getDatalistAll_ccosto":
+                $rptSql = $tableManager->getDatalistAll_ccosto();
+                break;
+            case "getDt_labZonas_nombre":
+                $rptSql = $tableManager->getDt_labZonas_nombre();
+                break;
             case "getLaborNombre":
                 $rptSql = $tableManager->getLaborNombre();
                 break;

@@ -10,6 +10,13 @@ class Colaboradores extends Conexion
     }
 
     // Obtiene Lista especifica
+    public function getDatalistAll_nombres_perforista()
+    {
+        $query = "SELECT clb.id_colaborador, clb.col_nombres, clb.col_apePaterno, clb.col_apeMaterno FROM colaboradores AS clb";
+        return $this->ConsultaSimple($query);
+    }
+
+    // Obtiene Lista especifica
     public function getSelect(string $table, string $column)
     {
         $query = "SELECT {$column}, col_apePaterno, col_apeMaterno, col_nombres, id_colaborador, id_cargo FROM {$table}";

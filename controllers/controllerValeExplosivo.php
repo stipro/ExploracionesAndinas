@@ -128,14 +128,29 @@ if($_POST){
                     }
                 
                 break;
-            case "editar":
-                $formRequest = $arrayForm['datos'];
-                $datoidLabor = $formRequest['id'];
-                $datoZona = $formRequest['zona'];
-                $datoCCosto = $formRequest['ccosto'];
-                $datoNivel = $formRequest['nivel'];
-                $datoLabor = $formRequest['labor'];
-                //$rptSql = $table->edit($datoidLabor, $datoZona, $datoCCosto, $datoNivel, $datoLabor);
+            case "edit":
+                $formRequest = $arrayForm['form'];
+                /* $dato1 = $formRequest['nVale'];
+                $dato2 = $formRequest['zonId'];
+                $dato3 = $formRequest['zonaNombre'];
+                $dato4 = $formRequest['turno'];
+                $dato5 = $formRequest['fecha'];
+                $dato6 = $formRequest['idLabor'];
+                $dato7 = $formRequest['ccosto'];
+                $dato8 = $formRequest['tipoDisparo'];
+                $dato9 = $formRequest['tipoEn'];
+                $dato10 = $formRequest['barra'];
+                $dato11 = $formRequest['lgt'];
+                $dato12 = $formRequest['nTaladros'];
+                $dato13 = $formRequest['talVacio'];
+                $dato14 = $formRequest['piesPerf'];
+                $dato15 = $formRequest['piesReal'];
+                $dato16 = $formRequest['res_dinSemi'];
+                $dato17 = $formRequest['res_dinPulv'];
+                $dato18 = $formRequest['suma_dimPulv_dimSemi'];
+                $dato19 = $formRequest['nMaquinas'];
+                $dato20 = $formRequest['idColaborador']; */
+                $rptSql = $table->edit($formRequest);
                 break;
             case "delete":
                 $idEliminar = $arrayForm['id'];

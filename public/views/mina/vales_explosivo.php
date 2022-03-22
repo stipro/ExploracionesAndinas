@@ -497,7 +497,7 @@
                                     </div>
                                     <!-- FORMULARIO -->
                                     <label for="view-valesExplosivo-nMaquinas" class="col-md-1 control-label">N° Maquina</label>
-                                    <div class="col-md-2" id="contenedor-Perforista">
+                                    <div class="col-md-2">
                                         <div class="">
                                             <input type="text" class="form-control" id="view-valesExplosivo-nMaquinas" placeholder="N° Maquinas" disabled>
                                             <span class="fa fa-toggle-down form-control-icon"></span>
@@ -505,7 +505,7 @@
                                     </div>
                                     <!-- FORMULARIO -->
                                     <label for="view-valesExplosivo-perforista" class="col-md-1 control-label">Perforista</label>
-                                    <div class="col-md-2" id="contenedor-Perforista">
+                                    <div class="col-md-2">
                                         <div class="">
                                             <input type="text" class="form-control" id="view-valesExplosivo-perforista" placeholder="Perforista" disabled>
                                             <span class="fa fa-toggle-down form-control-icon"></span>
@@ -664,16 +664,22 @@
             <div class="modal-content">
 
                 <!--Modal header-->
-                <div class="modal-header">
+                <div class="modal-header bord-btm">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pci-cross pci-circle"></i></button>
                     <div class="row">
 
-                        <h4 class="modal-title col-md-5">Editar Registro</h4>
-                        <label for="edit-valesExplosivo-digitador" class="col-md-1 control-label">Digitador</label>
-                        <div class="col-md-1">
-                            <input type="text" placeholder="..." class="form-control" name="digitador" id="edit-valesExplosivo-digitador" value="" disabled>
+                        <h4 class="modal-title col-md-5 col-sm-12">Editar Registro</h4>
+
+                        <div class="col-md-3 col-sm-4">
+                            <div class="form-group">
+                                <label for="edit-valesExplosivo-digitador" class="col-md-2 control-label">Digitador</label>
+                                <div class="col-md-10">
+                                    <input type="text" placeholder="..." class="form-control" name="digitador" id="edit-valesExplosivo-digitador" value="" disabled>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-2">
+                        
+                        <div class="col-md-2 col-sm-4">
                             <!-- FORMULARIO -->
                             <div class="form-group">
                                 <label for="edit-valesExplosivo-preImpreso" class="col-md-4 control-label">PreImpre</label>
@@ -682,7 +688,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-4">
                             <!-- FORMULARIO -->
                             <div class="form-group">
                                 <label for="edit-valesExplosivo-nVale" class="col-md-4 control-label">n°Vale</label>
@@ -692,21 +698,446 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
-
                 <!--Modal body-->
                 <div class="modal-body">
 
                     <!--Alert body-->
                     <div id="alerts-Edit">
+                        <div class="alert alert alert-info" style="margin:0">
+                            <button class="close" data-dismiss="alert">
+                                <i class="pci-cross pci-circle"></i>
+                            </button>
+                            <div class="media-left">
+                                <span class="icon-wrap icon-wrap-xs icon-circle alert-icon">
+                                    <i class="fa fa-edit"></i>
+                                </span>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="alert-title">Aviso!</h4>
+                                <p class="alert-message">Estimado usuario se aplicara los cambios segun el usuario en automativo ...</p>
+                            </div>
+                        </div>					
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p class="bord-btm pad-ver text-main text-bold">Información General del Vale</p>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-4">
+                                    <div class="form-group">
+                                        <label for="edit-valesExplosivo-zonaNombre" class="col-md-4 control-label">Zona <span class="text-danger">*</span></label>
+                                        <div class="col-md-8">
+                                            <!-- Default choosen -->
+                                            <!--===================================================-->
+                                            <input class="form-control" list="edit-dt-valesExplosivo-zonaNombre" id="edit-valesExplosivo-zonaNombre" placeholder="Eliga opción...">
+                                            <span class="fa fa-toggle-down form-control-icon"></span>
+                                            <datalist id="edit-dt-valesExplosivo-zonaNombre">
+                                                <option value="">Hubo un Error ! </option>
+                                            </datalist>
+                                            <template id="edit-tpt-zonaNombre">
+                                                <option id="" value=""></option>
+                                            </template>
+                                            <!--===================================================-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-4">
+                                    <div class="form-group">
+                                        <label for="edit-valesExplosivo-turno" class="col-md-4 control-label">Turno <span class="text-danger">*</span></label>
+                                        <div class="col-md-8">
+                                            <!-- Default choosen -->
+                                            <!--===================================================-->
+                                            <input class="form-control" list="edit-dt-valesExplosivo-turno" id="edit-valesExplosivo-turno" placeholder="Eliga opción...">
+                                            <span class="fa fa-toggle-down form-control-icon"></span>
+                                            <datalist id="edit-dt-valesExplosivo-turno">
+                                                <option value="Dia">Dia</option>
+                                                <option value="Noche">Noche</option>
+                                            </datalist>
+                                            <!--===================================================-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-4">
+                                    <div class="form-group">
+                                        <label for="edit-valesExplosivo-fecha" class="col-md-4 control-label">Fecha <span class="text-danger">*</span></label>
+                                        <div class="col-md-8">                                                    
+                                            <input type="date" placeholder="Fecha" class="form-control" id="edit-valesExplosivo-fecha"  value=""> <!--min="2021-12-12" max="2021-12-13"-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <p class="bord-btm pad-ver text-main text-bold">Detalle del Vale</p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-4">
+                                            <div class="form-group">
+                                                <label for="edit-valesExplosivo-laborCCosto" class="col-md-4 control-label">Codigo <span class="text-danger">*</span></label>
+                                                <div class="col-md-8">
+                                                    <!-- Default choosen -->
+                                                    <!--===================================================-->
+                                                    <input class="form-control" list="edit-dt-valesExplosivo-laborCCosto" id="edit-valesExplosivo-laborCCosto" placeholder="Eliga opción...">
+                                                    <span class="fa fa-toggle-down form-control-icon"></span>
+                                                    <datalist id="edit-dt-valesExplosivo-laborCCosto">
+                                                        <option value="">Hubo un Error ! </option>
+                                                    </datalist>
+                                                    <template id="edit-tpt-laborCCosto">
+                                                        <option id="" value=""></option>
+                                                    </template>
+                                                    <!--===================================================-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-4">
+                                            <div class="form-group">
+                                                <label for="edit-valesExplosivo-laborNombre" class="col-md-4 control-label">Labor</label>
+                                                <div class="col-md-8">
+                                                    <!-- Default choosen -->
+                                                    <!--===================================================-->
+                                                    <input class="form-control" list="edit-dt-valesExplosivo-laborNombre" id="edit-valesExplosivo-laborNombre" placeholder="Eliga opción...">
+                                                    <span class="fa fa-toggle-down form-control-icon"></span>
+                                                    <datalist id="edit-dt-valesExplosivo-laborNombre">
+                                                        <option value="">Hubo un Error ! </option>
+                                                    </datalist>
+                                                    <template id="edit-tpt-laborNombre">
+                                                        <option id="" value=""></option>
+                                                    </template>
+                                                    <!--===================================================-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-4">
+                                            <div class="form-group">
+                                                <label for="edit-valesExplosivo-laborNivel" class="col-md-4 control-label">Nivel</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" placeholder="Nivel" class="form-control" id="edit-valesExplosivo-laborNivel" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Tipo de Disparo <span class="text-danger">*</span></label>
+                                        <div class="col-md-4">
+                            
+                                            <!-- Radio Buttons -->
+                                            <div class="radio">
+                                                <input class="magic-radio" type="radio" value="Avance" name="edit-form-radio-tipo_disparo" id="edit-opcion-tipo_disparo1" checked="">
+                                                <label for="edit-opcion-tipo_disparo1">Avance</label>
+                                            </div>
+                                            <div class="radio">
+                                                <input class="magic-radio" type="radio" value="Realce" name="edit-form-radio-tipo_disparo" id="edit-opcion-tipo_disparo2">
+                                                <label for="edit-opcion-tipo_disparo2">Realce</label>
+                                            </div>
+                                            <div class="radio">
+                                                <input class="magic-radio" type="radio" value="Breasting" name="edit-form-radio-tipo_disparo" id="edit-opcion-tipo_disparo3" >
+                                                <label for="edit-opcion-tipo_disparo3">Breasting</label>
+                                            </div>
+                            
+                                        </div>
+                                        <div class="col-md-4">
+                            
+                                            <!-- Radio Buttons -->
+                                            <div class="radio">
+                                                <input class="magic-radio" type="radio" value="Desquinche" name="edit-form-radio-tipo_disparo" id="edit-opcion-tipo_disparo4">
+                                                <label for="edit-opcion-tipo_disparo4">Desquinche</label>
+                                            </div>
+                                            <div class="radio">
+                                                <input class="magic-radio" type="radio" value="Reperforacion" name="edit-form-radio-tipo_disparo" id="edit-opcion-tipo_disparo5">
+                                                <label for="edit-opcion-tipo_disparo5">Reperforacion</label>
+                                            </div>
+                                            <div class="radio">
+                                                <input class="magic-radio" type="radio" value="Recarga" name="edit-form-radio-tipo_disparo" id="edit-opcion-tipo_disparo6" >
+                                                <label for="edit-opcion-tipo_disparo6">Recarga</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Disparo en <span class="text-danger">*</span></label>
+                                        <div class="col-md-8">
+                                        <!-- Radio Buttons -->
+                                            <div class="radio">
+                                                <input id="edit-demo-form-radio" class="magic-radio" type="radio" name="edit-form-radio-tipo_en" value="Mineral" checked="">
+                                                <label for="edit-demo-form-radio">Mineral</label>
+                                            </div>
+                                            <div class="radio">
+                                                <input id="edit-demo-form-radio-2" class="magic-radio" type="radio" name="edit-form-radio-tipo_en" value="Desmonte">
+                                                <label for="edit-demo-form-radio-2">Desmonte</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="bord-btm pad-ver text-main text-bold">Registro de Perforadoras</p>
+                            <div class="row">
+                                <div class="col-md-12"> 
+                                    <!-- FORMULARIO -->
+                                    <div class="col-md-2 col-sm-4">
+                                        <label for="edit-valesExplosivo-barra" class="col-md-4 control-label">Barra</label>
+                                        <!-- Default choosen -->
+                                        <!--===================================================-->
+                                        <div class="col-md-8">
+                                            <input class="form-control" list="edit-dt-valesExplosivo-barra" id="edit-valesExplosivo-barra" placeholder="Eliga opción...">
+                                            <span class="fa fa-toggle-down form-control-icon"></span>
+                                            <datalist id="edit-dt-valesExplosivo-barra">
+                                                <option value="0" selected>0</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="8">8</option>
+                                            </datalist>
+                                        </div>                                        
+                                        <!--===================================================-->
+                                    </div>
+                                    <div class="col-md-2 col-sm-4">
+                                        <!-- FORMULARIO -->
+                                        <label for="edit-valesExplosivo-lgtMt" class="col-md-4 control-label">Lgt (mt)</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" value="0" name="" id="edit-valesExplosivo-lgtMt">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-sm-4">
+                                        <!-- FORMULARIO -->
+                                        <label for="edit-valesExplosivo-nTaladro" class="col-md-4 control-label">N° Taladros</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" value="0" name="" id="edit-valesExplosivo-nTaladro">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-sm-4">
+                                        <!-- FORMULARIO -->
+                                        <label for="edit-valesExplosivo-talVacio" class="col-md-4 control-label">Tal_Vacio</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" value="0" name="" id="edit-valesExplosivo-talVacio">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-sm-4">
+                                        <!-- FORMULARIO -->
+                                        <label for="edit-valesExplosivo-piesPerf" class="col-md-4 control-label">Pies Perf</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" value="0" name="" id="edit-valesExplosivo-piesPerf" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-sm-4">
+                                        <!-- FORMULARIO -->
+                                        <label for="edit-valesExplosivo-piesReal" class="col-md-4 control-label">Pie Real</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" value="0" name="" id="edit-valesExplosivo-piesReal" disabled>
+                                        </div> 
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-2 col-sm-4">
+                                        <input class="form-control" type="number" name="" value="0" id="edit-valesExplosivo-res_dinSemi" disabled>
+                                    </div>
+                                    <div class="col-md-2 col-sm-4">
+                                        <input class="form-control" type="number" name="" value="0" id="edit-valesExplosivo-res_dinPulv" data-toggle="tooltip" data-placement="top" title="dinamita Pulverulenta" disabled>
+                                    </div>
+                                    <div class="col-md-2 col-sm-4">
+                                        <input class="form-control" type="number" name="" value="0" id="edit-valesExplosivo-suma-dimPulv-dimSemi" disabled>
+                                    </div>
+                                    <!-- FORMULARIO -->
+                                    <div class="col-md-3 col-sm-6">
+                                        <label for="edit-valesExplosivo-nMaquinas" class="col-md-4 control-label">N° Maquina</label>
+                                        <div class="col-md-8">
+                                            <select class="form-control" data-placeholder="Seleccione N° Maquinas" id="edit-valesExplosivo-nMaquinas" tabindex="2">
+                                                <option value="PA_20">PA_20</option>
+                                                <option value="PA_30">PA_30</option>
+                                                <option value="PA_36">PA_36</option>
+                                                <option value="PS_04"></option>
+                                                <option value="PS_05">PS_05</option>
+                                                <option value="PS_06">PS_06</option>
+                                                <option value="PS_07">PS_07</option>
+                                                <option value="PSS_01">PSS_01</option>
+                                                <option value="PSecan_01<">PSecan_01</option>
+                                                <option value="PSecan_02<">PSecan_02</option>
+                                                <option value="PSecan_03<">PSecan_03</option>
+                                                <option value="PSecan_04<">PSecan_04</option>
+                                                <option value="PSecan_05<">PSecan_05</option>
+                                                <option value="PSecan_06<">PSecan_06</option>
+                                                <option value="PSecan_07<">PSecan_07</option>
+                                                <option value="PSecan_08<">PSecan_08</option>
+                                                <option value="PSecan_09<">PSecan_09</option>
+                                                <option value="PSecan_10<">PSecan_10</option>
+                                                <option value="RNP_01">RNP_01</option>
+                                                <option value="RNP_02">RNP_02</option>
+                                                <option value="RNP_03">RNP_03</option>
+                                                <option value="RNP_04">RNP_04</option>
+                                                <option value="RNP_05">RNP_05</option>
+                                                <option value="RNP_06">RNP_06</option>
+                                                <option value="RNP_07">RNP_07</option>
+                                                <option value="PT_03">PT_03</option>
+                                                <option value="PT_04">PT_04</option>
+                                            </select>                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-6">
+                                        <!-- FORMULARIO -->
+                                        <label for="edit-valesExplosivo-perforista" class="col-md-4 control-label">Perforista <span class="text-danger">*</span></label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" list="edit-dt-valesExplosivo-perforista" id="edit-valesExplosivo-perforista" placeholder="Ingrese Nombre o Dni...">
+                                            <span class="fa fa-toggle-down form-control-icon"></span>
+                                            <datalist id="edit-dt-valesExplosivo-perforista">
+                                                <option value="">Hubo un Error ! </option>
+                                            </datalist>
+                                            <template id="edit-tpt-perforista">
+                                                <option id="" value=""></option>
+                                            </template>                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="bord-btm pad-ver text-main text-bold">Materiales de Explosivos</p>
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover toggle-circle" data-page-size="5">
+                                        <colgroup>
+                                            <col span="3">
+                                            <col span="1" style="border-left: 2px solid #295C80">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th style="width:20%" data-sort-initial="true" data-toggle="true">Código</th>
+                                                <th style="width:30%">Nombre del Material de Explosivo</th>
+                                                <th style="width:20%" data-hide="phone, tablet">Unid. Medida</th>
+                                                <th data-hide="phone, tablet">Cantidad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody-tareo">
+                                            <tr id="tr-tbody-tareo">
+                                                <td>SSO 000652</td>
+                                                <td>Emulnor 1000</td>
+                                                <td>CAR</td>
+                                                <td data-type="number">
+                                                    <input type="number" class="form-control" value="0" id="edit-valesExplosivo-emulnoMil" name="">
+                                                </td>
+                                            </tr>
+                                            <tr id="tr-tbody-tareo">
+                                                <td>SSO 000631</td>
+                                                <td>Emulnor 3000</td>
+                                                <td>CAR</td>
+                                                <td data-type="number">
+                                                    <input type="number" class="form-control" value="0" id="edit-valesExplosivo-emulnorTresmil" name="">
+                                                </td>                                                        
+                                            </tr>
+                                            <tr id="tr-tbody-tareo">
+                                                <td>SSO 000568</td>
+                                                <td>Dinamita Pulverulenta 65_7/8</td>
+                                                <td>CAR</td>
+                                                <td data-type="number">
+                                                    <input type="number" class="form-control" value="0" id="edit-valesExplosivo-dinPulv" name="">
+                                                </td>
+                                            </tr>
+                                            <tr id="tr-tbody-tareo">
+                                                <td>SSO 000632</td>
+                                                <td>Carmex 7</td>
+                                                <td>CAR</td>
+                                                <td data-type="number">
+                                                    <input type="number" class="form-control" value="0" id="edit-valesExplosivo-carmexSiete" name="">
+                                                </td>                                                        
+                                            </tr>
+                                            <tr id="tr-tbody-tareo">
+                                                <td>SSO 000633</td>
+                                                <td>Carmex 8</td>
+                                                <td>CAR</td>
+                                                <td data-type="number">
+                                                    <input type="number" class="form-control" value="0" id="edit-valesExplosivo-carmexOcho" name="">
+                                                </td>                                                        
+                                            </tr>
+                                            <tr id="tr-tbody-tareo">
+                                                <td>SSO 000438</td>
+                                                <td>Mecha Rapida</td>
+                                                <td>MTS</td>
+                                                <td data-type="number">
+                                                    <input type="number" class="form-control" value="0" id="edit-valesExplosivo-mecha_mechaRapida" name="">
+                                                </td>
+                                            </tr>
+                                            <tr id="tr-tbody-tareo">
+                                                <td>SSO 000436</td>
+                                                <td>Mecha Lenta</td>
+                                                <td>MTS</td>
+                                                <td data-type="number">
+                                                    <input type="number" class="form-control" value="0" id="edit-valesExplosivo-mechaLenta" name="">
+                                                </td>
+                                            </tr>
+                                            <tr id="tr-tbody-tareo">
+                                                <td>SSO 000454</td>
+                                                <td>Fulminantes</td>
+                                                <td>UND</td>
+                                                <td data-type="number">
+                                                    <input type="number" class="form-control" value="0" id="edit-valesExplosivo-fuminante" name="">
+                                                </td>
+                                            </tr>
+                                            <tr id="tr-tbody-tareo">
+                                                <td>SSO 000514</td>
+                                                <td>Conector para Mecha</td>
+                                                <td>UND</td>
+                                                <td data-type="number">
+                                                    <input type="number" class="form-control" value="0" id="edit-valesExplosivo-conectorMecha" name="">
+                                                </td>
+                                            </tr>
+                                            <tr id="tr-tbody-tareo">
+                                                <td>SSO 000613</td>
+                                                <td>Block de Sugeción</td>
+                                                <td>UND</td>
+                                                <td data-type="number">
+                                                    <input type="number" class="form-control" value="0" id="edit-valesExplosivo-blockSugecion" name="">
+                                                </td>
+                                            </tr>
+                                            <tr id="tr-tbody-tareo">
+                                                <td>MTC000077</td>
+                                                <td>Car. cortado 13 cm</td>
+                                                <td>UND</td>
+                                                <td data-type="number">
+                                                    <input type="number" class="form-control" value="0" id="edit-valesExplosivo-carCortado13" name="">
+                                                </td>
+                                            </tr>
+                                            <tr id="tr-tbody-tareo">
+                                                <td>SSO 000439</td>
+                                                <td>Dinamita Semigelatinosa de 65%</td>
+                                                <td>CAR</td>
+                                                <td data-type="number">
+                                                    <input type="number" class="form-control" value="0" id="edit-valesExplosivo-dinSemi" name="">
+                                                </td>                                                        
+                                            </tr>
+                                            <!--
+                                            
+                                            
+                                            
+                                            <tr>
+                                                <td>SSO 000436</td>
+                                                <td>Mecha</td>
+                                                <td>MTS</td>
+                                                <td data-type="number">
+                                                    <input type="number" class="form-control" value="0" id="val_explosivo-text-form-mecha" name="">
+                                                </td>
+                                            </tr>
+                                        -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!--Modal footer-->
                 <div class="modal-footer">
                     <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
-                    <button id="mbtn-edit" class="btn btn-primary">Editar</button>
+                    <button id="mbtnEdit-edit" class="btn btn-primary">Actualizar</button>
                 </div>
             </div>
         </div>
@@ -721,7 +1152,7 @@
             <div class="modal-content">
 
                 <!--Modal header-->
-                <div class="modal-header">                    
+                <div class="modal-header bord-btm">                    
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pci-cross pci-circle"></i></button>
                     <div class="row">
                         
@@ -742,7 +1173,9 @@
                         <div class="col-md-2">
                             <!-- FORMULARIO -->
                             <div class="form-group">
-                                <label for="val_explosivo-text-form-n_vale" class="col-md-4 control-label">n°Vale</label>
+                                <label for="val_explosivo-text-form-n_vale" class="col-md-4 control-label">N° vale
+                                    <span class="text-danger">*</span>
+                                </label>
                                 <div class="col-md-8">
                                     <input type="text" placeholder="Nª Vale" class="form-control" name="fullname" id="val_explosivo-text-form-n_vale" autofocus>
                                 </div>
@@ -763,7 +1196,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="val_explosivo-text-form-zona" class="col-md-4 control-label">Zona</label>
+                                        <label for="val_explosivo-text-form-zona" class="col-md-4 control-label">Zona <span class="text-danger">*</span></label>
                                         <div class="col-md-8">
                                             <!-- Default choosen -->
                                             <!--===================================================-->
@@ -782,7 +1215,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label for="val_explosivo-text-form-turno" class="col-md-4 control-label">Turno</label>
+                                        <label for="val_explosivo-text-form-turno" class="col-md-4 control-label">Turno <span class="text-danger">*</span></label>
                                         <div class="col-md-8">
                                             <!-- Default choosen -->
                                             <!--===================================================-->
@@ -799,7 +1232,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="val_explosivo-text-form-fecha" class="col-md-4 control-label">Fecha</label>
+                                        <label for="val_explosivo-text-form-fecha" class="col-md-4 control-label">Fecha <span class="text-danger">*</span></label>
                                         <div class="col-md-8">                                                    
                                             <input type="date" placeholder="Dia" class="form-control" id="val_explosivo-text-form-fecha"  value="<?php echo date('Y-m-d') ?>" > <!--min="2021-12-12" max="2021-12-13"-->
                                         </div>
@@ -812,7 +1245,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="val_explosivo-ipt-text-form-digitador" class="col-md-4 control-label">Codigo</label>
+                                        <label for="val_explosivo-text-form-labor_codigo" class="col-md-4 control-label">Codigo <span class="text-danger">*</span></label>
                                         <div class="col-md-8">
                                             <!-- Default choosen -->
                                             <!--===================================================-->
@@ -826,7 +1259,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="val_explosivo-ipt-text-form-digitador" class="col-md-4 control-label">Labor</label>
+                                        <label for="val_explosivo-text-form-labor" class="col-md-4 control-label">Labor</label>
                                         <div class="col-md-8">
                                             <!-- Default choosen -->
                                             <!--===================================================-->
@@ -849,7 +1282,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label">Tipo de Disparo</label>
+                                        <label class="col-md-4 control-label">Tipo de Disparo <span class="text-danger">*</span></label>
                                         <div class="col-md-4">
                             
                                             <!-- Radio Buttons -->
@@ -888,7 +1321,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label">Disparo en</label>
+                                        <label class="col-md-4 control-label">Disparo en <span class="text-danger">*</span></label>
                                         <div class="col-md-8">
                                         <!-- Radio Buttons -->
                                             <div class="radio">
@@ -962,7 +1395,7 @@
                                     </div>
                                     <!-- FORMULARIO -->
                                     <label for="val_explosivo-text-form-nmaquinas" class="col-md-1 control-label">N° Maquina</label>
-                                    <div class="col-md-2" id="contenedor-Perforista">
+                                    <div class="col-md-2">
                                         <select class="form-control chosenNMaquina" data-placeholder="Seleccione N° Maquinas" id="val_explosivo-text-form-nmaquinas" tabindex="2">
                                             <option value=""></option>
                                             <option value="">PA_20</option>
@@ -995,8 +1428,8 @@
                                         </select>                                            
                                     </div>
                                     <!-- FORMULARIO -->
-                                    <label for="val_explosivo-text-form-perforista" class="col-md-1 control-label">Perforista</label>
-                                    <div class="col-md-2" id="contenedor-Perforista">
+                                    <label for="val_explosivo-text-form-perforista" class="col-md-1 control-label">Perforista <span class="text-danger">*</span></label>
+                                    <div class="col-md-2">
                                         <select class="form-control chosenPerforistaName" data-placeholder="Ingrese Nombre o Dni" id="val_explosivo-text-form-perforista" tabindex="2">
                                             <option value=""></option>
                                         </select>
@@ -1220,6 +1653,15 @@
     <!--Form validation [ SAMPLE ]-->
     <script src="./../../../js/demo/form-validation.js"></script>
     <script>
+        
+        const alertEdit = document.getElementById('alerts-Edit');
+        const datalist_zonaNombre = document.getElementById('edit-dt-valesExplosivo-zonaNombre');
+        const datalist_laborCCosto = document.getElementById('edit-dt-valesExplosivo-laborCCosto');
+        const datalist_perforistaNombres = document.getElementById('edit-dt-valesExplosivo-perforista');
+        const templateDatalist_zonaNombre = document.getElementById('edit-tpt-zonaNombre').content;
+        const templateDatalist_laborCCosto = document.getElementById('edit-tpt-laborCCosto').content;
+        const templateDatalist_perforista_colaborador = document.getElementById('edit-tpt-perforista').content;
+        const fragment = document.createDocumentFragment()
         var tableMaster;
         document.addEventListener('DOMContentLoaded', e => {
             mainEvents();
@@ -1563,16 +2005,9 @@
                 "accion": "getRow",
                 "id": data['valexplosivo_codigoRegistro']
             }
-            getRow(form_request);
+            getRowView(form_request);
         });
-        //* EDITAR REGISTRO
-        $('#table-master tbody').on('click', '.btn-tableMaster-edit', function() {
-            const data = tableMaster.row($(this).parents('tr')).data();
-            //alert("El id: " + data['id_operacionMina']);
-            $("#modal-edit").modal("show");
-        });
-
-        const getRow = async (request) => {
+        const getRowView = async (request) => {
             const body = new FormData();
             body.append("data", JSON.stringify(request));
             const res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
@@ -1584,8 +2019,9 @@
             console.log(rptSql);
             paintForm_view(rptSql)
         }
+        
         const paintForm_view = (rptSql) => {
-            iptView_digitador.value = rptSql[0]['id_usuario'];
+            iptView_digitador.value = rptSql[0]['cbUsu_nombres']+' '+rptSql[0]['cbUsu_apePaterno']+' '+rptSql[0]['cbUsu_apeMaterno'];
             iptView_preImpreso.value = rptSql[0]['valexplosivo_preimpresor'];
             iptView_nVale.value = rptSql[0]['valexplosivo_nvale'];
             iptView_zona.value = rptSql[0]['labZona_nombre'];
@@ -1594,8 +2030,8 @@
             iptView_laborCodigo.value = rptSql[0]['lab_ccostos'];
             iptView_laborNombre.value = rptSql[0]['labNombre_nombre'];
             iptView_laborNivel.value = rptSql[0]['lab_nivel'];
-            document.querySelector('input[name=form-radio-tipo_disparo][value='+rptSql[0]['valexplosivo_tipDisparo']+']').checked = true;
-            document.querySelector('input[name=form-radio-tipo_en][value='+rptSql[0]['valexplosivo_tipEn']+']').checked = true;
+            document.querySelector('input[name=view-form-radio-tipo_disparo][value='+rptSql[0]['valexplosivo_tipDisparo']+']').checked = true;
+            document.querySelector('input[name=view-form-radio-tipo_en][value='+rptSql[0]['valexplosivo_tipEn']+']').checked = true;
             iptView_barra.value = rptSql[0]['valexplosivo_barra'];
             iptView_lgtMt.value = rptSql[0]['valexplosivo_lgt'];
             iptView_nTaladror.value = rptSql[0]['valexplosivo_numTaladro'];
@@ -1606,7 +2042,7 @@
             iptView_dinPulv_res.value = rptSql[0]['valexplosivo_dimPulverulenta_Result'];
             iptView_dinPulv_dinSemi_suma.value = rptSql[0]['valexplosivo_sumaSemiPulv'];
             iptView_nMaquinas.value = rptSql[0]['valexplosivo_numMaquina'];
-            iptView_perforista.value = rptSql[0]['col_nombres']+' '+rptSql[0]['col_apePaterno']+' '+rptSql[0]['col_apeMaterno'];
+            iptView_perforista.value = rptSql[0]['col_apePaterno']+' '+rptSql[0]['col_apeMaterno']+' '+rptSql[0]['col_nombres'];
 
             iptView_emulnorMil.value = rptSql[0]['valexplosivo_emulmil'];
             iptView_emulnorTresMil.value = rptSql[0]['valexplosivo_emultresmil'];
@@ -1620,6 +2056,249 @@
             iptView_blkSugecion.value = rptSql[0]['valexplosivo_BlockSugecion'];
             iptView_carCortado.value = rptSql[0]['valexplosivo_carcortrece'];
             iptView_dinSemi.value = rptSql[0]['valexplosivo_dimSemigelatinosa'];
+        }
+        //* EDITAR REGISTRO
+        $('#table-master tbody').on('click', '.btn-tableMaster-edit', function() {
+            $("#modal-edit").modal("show");
+            const data = tableMaster.row($(this).parents('tr')).data();
+            let formRequest = {
+                "accion": "getRow",
+                "id": data['valexplosivo_codigoRegistro']
+            }
+            getRowEdit(formRequest);
+        });
+        const getRowEdit = async (formRequest) => {
+            try {
+                //* DECLARAION DE VARIABLES *//
+                var body = new FormData();
+                let form_request;
+                let res;
+                let data;
+                let state;
+
+                //* PETICIONES *//
+                form_request = {
+                    "accion": "getDatalistAll_zonaNombre",
+                }
+                //* Primera petición DATALIST ZONA
+                body.append('data', JSON.stringify(form_request));
+                res = await fetch('./../../../controllers/controllerLaborList.php', {
+                    method: "POST",
+                    body
+                });
+                body.delete('data');
+                data = await res.json();
+                data = data['sql'];
+                state = await paintSelectEdit_laborZona_zonaNombre(data);
+                
+                //* Segunda Petición DATALIST LABOR
+                form_request = {
+                "accion": "getDatalistAll_ccosto",
+                }
+                body.append('data', JSON.stringify(form_request));
+                res = await fetch('./../../../controllers/controllerLaborList.php', {
+                    method: "POST",
+                    body
+                });
+                body.delete('data');
+                data = await res.json();
+                data = data['sql'];
+                state = await paintSelectEdit_labor_laborCCosto(data);
+                //* Tercera Petición DATALIST PERFORISTA
+                form_request = {
+                "accion": "getDatalistAll_nombres_perforista",
+                }
+                body.append('data', JSON.stringify(form_request));
+                res = await fetch('./../../../controllers/controllerColaboradorList.php', {
+                    method: "POST",
+                    body
+                });
+                body.delete('data');
+                data = await res.json();
+                data = data['sql'];
+                state = await paintSelectEdit_perforista_colaborador(data);
+                //* Cuarta Petición Seleccionar
+                body.append('data', JSON.stringify(formRequest));
+                res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
+                    method: "POST",
+                    body
+                });
+                body.delete('data');
+                data = await res.json();
+                data = data['sql']
+                painFrom_edit(data);
+                //paintSelectEdit_colaborador_nombres_perforista();
+            }
+            catch (e) {
+                console.error(e);
+            } finally {
+                console.log('Nosotras hacemos limpieza aqui');
+            }
+           
+        }
+        const paintSelectEdit_laborZona_zonaNombre = data => {
+            datalist_zonaNombre.innerHTML = '';
+            /* console.log('Pintando Zona');
+            console.log(typeof data);
+            console.log(data); */
+            data.forEach(item => {
+                templateDatalist_zonaNombre.querySelector('option').textContent = item.labZona_nombre;
+                templateDatalist_zonaNombre.querySelector('option').value = item.labZona_nombre;
+                templateDatalist_zonaNombre.querySelector('option').dataset.idZona = item.id_zona;
+                const clone = templateDatalist_zonaNombre.cloneNode(true)
+                fragment.appendChild(clone)
+            })
+            datalist_zonaNombre.appendChild(fragment);
+        }
+        const paintSelectEdit_labor_laborCCosto = data =>{
+            datalist_laborCCosto.innerHTML = '';
+            data.forEach(item => {
+                templateDatalist_laborCCosto.querySelector('option').textContent = item.lab_ccostos;
+                templateDatalist_laborCCosto.querySelector('option').value = item.lab_ccostos;
+                templateDatalist_laborCCosto.querySelector('option').dataset.idCCosto = item.id_labor;
+                const clone = templateDatalist_laborCCosto.cloneNode(true)
+                fragment.appendChild(clone)
+            })
+            datalist_laborCCosto.appendChild(fragment);
+        }
+        const paintSelectEdit_perforista_colaborador = data =>{
+            datalist_perforistaNombres.innerHTML = '';
+            data.forEach(item => {
+                templateDatalist_perforista_colaborador.querySelector('option').textContent = item.col_apePaterno+' '+item.col_apeMaterno+' '+item.col_nombres;
+                templateDatalist_perforista_colaborador.querySelector('option').value = item.col_apePaterno+' '+item.col_apeMaterno+' '+item.col_nombres;
+                templateDatalist_perforista_colaborador.querySelector('option').dataset.idPerforista = item.id_colaborador;
+                const clone = templateDatalist_perforista_colaborador.cloneNode(true)
+                fragment.appendChild(clone)
+            })
+            datalist_perforistaNombres.appendChild(fragment);
+        }
+        const painFrom_edit = (rptSql) => {
+            iptEdit_digitador.value = rptSql[0]['cbUsu_nombres']+' '+rptSql[0]['cbUsu_apePaterno']+' '+rptSql[0]['cbUsu_apeMaterno'];
+            iptEdit_preImpreso.value = rptSql[0]['valexplosivo_preimpresor'];
+            iptEdit_nVale.value = rptSql[0]['valexplosivo_nvale'];
+            iptEdit_zonaNombre.value = rptSql[0]['labZona_nombre'];
+            iptEdit_turno.value = rptSql[0]['valexplosivo_turno'];
+            iptEdit_fecha.value = rptSql[0]['valexplosivo_fecha'];
+            iptEdit_ccosto.value = rptSql[0]['lab_ccostos'];
+            iptEdit_laborNombre.value = rptSql[0]['labNombre_nombre'];
+            iptEdit_laborNivel.value = rptSql[0]['lab_nivel'];
+            document.querySelector('input[name=edit-form-radio-tipo_disparo][value='+rptSql[0]['valexplosivo_tipDisparo']+']').checked = true;
+            document.querySelector('input[name=edit-form-radio-tipo_en][value='+rptSql[0]['valexplosivo_tipEn']+']').checked = true;
+            iptEdit_barra.value = rptSql[0]['valexplosivo_barra'];
+            iptEdit_lgtMt.value = rptSql[0]['valexplosivo_lgt'];
+            iptEdit_nTaladro.value = rptSql[0]['valexplosivo_numTaladro'];
+            iptEdit_talVacio.value = rptSql[0]['valexplosivo_talVacio'];
+            iptEdit_piesPerf.value = rptSql[0]['valexplosivo_piePerf'];
+            iptEdit_piesReal.value = rptSql[0]['valexplosivo_pieReal'];
+            iptEdit_res_dinSemi.value = rptSql[0]['valexplosivo_dimSemigelatinosa_Result'];
+            iptEdit_res_dinPulv.value = rptSql[0]['valexplosivo_dimPulverulenta_Result'];
+            iptEdit_suma_dimPulv_dimSemi.value = rptSql[0]['valexplosivo_sumaSemiPulv'];
+            iptEdit_nMaquinas.value = rptSql[0]['valexplosivo_numMaquina'];
+            iptEdit_perforista.value = rptSql[0]['col_apePaterno']+' '+rptSql[0]['col_apeMaterno']+' '+rptSql[0]['col_nombres'];
+
+            iptEdit_emulnorMil.value = rptSql[0]['valexplosivo_emulmil'];
+            iptEdit_emulnorTresmil.value = rptSql[0]['valexplosivo_emultresmil'];
+            iptEdit_dinamitaPulverulenta.value = rptSql[0]['valexplosivo_dimPulverulenta'];
+            iptEdit_carmen7.value = rptSql[0]['valexplosivo_carmexsiete'];
+            iptEdit_carmen8.value = rptSql[0]['valexplosivo_carmexocho'];
+            iptEdit_mechaRapida.value = rptSql[0]['valexplosivo_mecRapida'];
+            iptEdit_mechaLenta.value = rptSql[0]['valexplosivo_mecLenta'];
+            iptEdit_fulminante.value = rptSql[0]['valexplosivo_fulN'];
+            iptEdit_conectorMecha.value = rptSql[0]['valexplosivo_conMecha'];
+            iptEdit_blockSugeccion.value = rptSql[0]['valexplosivo_BlockSugecion'];
+            iptEdit_carCortado13.value = rptSql[0]['valexplosivo_carcortrece'];
+            iptEdit_dinamitaSemigelatinosa.value = rptSql[0]['valexplosivo_dimSemigelatinosa'];
+        }
+        btnEdit_insert.addEventListener("click", (e) => {
+            alertEdit.innerHTML = ''
+            val_nVale = iptEdit_nVale.value
+            val_zonaNombre = iptEdit_zonaNombre.value;
+            val_zonaId = document.querySelector('#edit-dt-valesExplosivo-zonaNombre option[value="' + val_zonaNombre + '"]').dataset.idZona;
+            val_turno = iptEdit_turno.value;
+            val_fecha = iptEdit_fecha.value;
+            val_ccosto = iptEdit_ccosto.value;
+            val_laborId = document.querySelector('#edit-dt-valesExplosivo-laborCCosto option[value="' + val_ccosto + '"]').dataset.idCCosto;
+            val_tipoDisparo = document.querySelector('input[name="edit-form-radio-tipo_disparo"]:checked').value;
+            val_tipoEn = document.querySelector('input[name="edit-form-radio-tipo_en"]:checked').value;
+            val_barra = iptEdit_barra.value;
+            val_lgtMt = iptEdit_lgtMt.value;
+            val_nTaladro = iptEdit_nTaladro.value;
+            val_talVacio = iptEdit_talVacio.value;
+            val_piesPerf = iptEdit_piesPerf.value;
+            val_piesReal = iptEdit_piesReal.value;
+            val_res_dinSemi = iptEdit_res_dinSemi.value;
+            val_res_dinPulv = iptEdit_res_dinPulv.value;
+            val_suma_dimPulv_dimSemi = iptEdit_suma_dimPulv_dimSemi.value;
+            val_nMaquinas = iptEdit_nMaquinas.value;
+            val_perforista = iptEdit_perforista.value;
+            val_perforista_idColaborador = document.querySelector('#edit-dt-valesExplosivo-perforista option[value="' + val_perforista + '"]').dataset.idPerforista;
+            val_emulnorMil = iptEdit_emulnorMil.value;
+            val_emulnorTresmil = iptEdit_emulnorTresmil.value;
+            val_dinamitaPulverulenta65 = iptEdit_dinamitaPulverulenta.value;
+            val_carmen7 = iptEdit_carmen7.value;
+            val_carmen8 = iptEdit_carmen8.value;
+            val_mechaRapida = iptEdit_mechaRapida.value;
+            val_mechaLenta = iptEdit_mechaLenta.value;
+            val_fulminante = iptEdit_fulminante.value;
+            val_conectorMecha = iptEdit_conectorMecha.value;
+            val_blockSugeccion = iptEdit_blockSugeccion.value;
+            val_carCortado13 = iptEdit_carCortado13.value;
+            val_dinamitaSemigelatinosa = iptEdit_dinamitaSemigelatinosa.value;
+            let val_totalKilos_dinamitaEmulnorMil = calcular_KilosDinamita(val_emulnorMil, parseFloat('0.09615385'));
+            let val_totalKilos_dinamitaEmulnorTresmil = calcular_KilosDinamita(val_emulnorTresmil, parseFloat('0.09469697'));
+            let formList = {
+                'nVale': val_nVale,
+                'zonId': val_zonaId,
+                'zonaNombre': val_zonaNombre,
+                'turno': val_turno,
+                'fecha': val_fecha,
+                'idLabor': val_laborId,
+                'ccosto': val_ccosto,
+                'tipoDisparo': val_tipoDisparo,
+                'tipoEn': val_tipoEn,
+                'barra': val_barra,
+                'lgt': val_lgtMt,
+                'nTaladros': val_nTaladro,
+                'talVacio': val_talVacio,
+                'piesPerf': val_piesPerf,
+                'piesReal': val_piesReal,
+                'res_dinSemi': val_res_dinSemi,
+                'res_dinPulv': val_res_dinPulv,
+                'suma_dimPulv_dimSemi': val_suma_dimPulv_dimSemi,
+                'nMaquinas': val_nMaquinas,
+                'idColaborador_perforista': val_perforista_idColaborador,
+                'emulnorMil': val_emulnorMil,
+                'emulnorTresmil': val_emulnorTresmil,
+                'dinamitaPulverulenta': val_dinamitaPulverulenta,
+                'carmen7': val_carmen7,
+                'carmen8': val_carmen8,
+                'mechaRapida': val_mechaRapida,
+                'mechaLenta': val_mechaLenta,
+                'fulminante': val_fulminante,
+                'conectorMecha': val_conectorMecha,
+                'blockSugeccion': val_blockSugeccion,
+                'carCortado13': val_carCortado13,
+                'dinamitaSemigelatinosa': val_dinamitaSemigelatinosa,
+                'totalKilos_dinamitaEmulnorMil': val_totalKilos_dinamitaEmulnorMil,
+                'totalKilos_dinamitaEmulnorTresmil': val_totalKilos_dinamitaEmulnorTresmil
+            }
+            form_request = {
+                "accion": "edit",
+                'form':formList
+            }
+            console.log(formList);
+            requestEdit(form_request);
+        });
+
+        const requestEdit = async (form_request) => {
+            const body = new FormData();
+            body.append("data", JSON.stringify(form_request));
+            const returned = await fetch("./../../../controllers/controllerValeExplosivo.php", {
+                method: "POST",
+                body
+            });
+            const result = await returned.json(); //await JSON.parse(returned);
+            console.log(result);
         }
 
         //* ELIMINAR REGISTRO
@@ -1659,7 +2338,7 @@
 
             afterRequestInsert(result);
         }
-        //*
+        //* Obtenemos el valor siguiente
         const getLast_record = async (request) => {
             const body = new FormData();
             body.append("data", JSON.stringify(request));
@@ -1691,6 +2370,22 @@
                 inputNVale.value = valZFill_nvalProx;
             }
         }
+        // Traer JSON para Tabla (ZONA)
+        const fetchEdit_Zona = async (json) => {
+            try {
+                
+            } catch (error) {
+                
+            }
+            const body = new FormData();
+            body.append("data", JSON.stringify(json));
+            const rpt = await fetch('./../../../controllers/controllerZonaList.php', {
+                method: "POST",
+                body
+            });
+            
+            const rptJson = await rpt.json(); //await JSON.parse(returned);
+        };
     </script>
 </body>
 </html>

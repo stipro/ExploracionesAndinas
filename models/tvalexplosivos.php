@@ -18,7 +18,7 @@ class ValeExplosivos extends Conexion
     }
     public function getRow($parament)
     {
-        $query = "SELECT * FROM tvalexplosivos AS vl_xp LEFT JOIN lab_zonas AS lb_zn ON vl_xp.id_zona = lb_zn.id_zona LEFT JOIN labores AS lb ON vl_xp.id_labor = lb.id_labor LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre LEFT JOIN colaboradores AS cb ON vl_xp.id_colaborador = cb.id_colaborador WHERE vl_xp.valexplosivo_codigoRegistro = {$parament}";
+        $query = "SELECT *, cb_usuarios.col_nombres AS cbUsu_nombres, cb_usuarios.col_apePaterno AS cbUsu_apePaterno, cb_usuarios.col_apeMaterno AS cbUsu_apeMaterno, vl_xp.valexplosivo_preimpresor, vl_xp.valexplosivo_nvale  FROM tvalexplosivos AS vl_xp LEFT JOIN usuarios AS uao ON vl_xp.id_usuario = uao.id_usuario  LEFT JOIN colaboradores AS cb_usuarios ON uao.id_colaborador = cb_usuarios.id_colaborador LEFT JOIN lab_zonas AS lb_zn ON vl_xp.id_zona = lb_zn.id_zona LEFT JOIN labores AS lb ON vl_xp.id_labor = lb.id_labor LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre LEFT JOIN colaboradores AS cb ON vl_xp.id_colaborador = cb.id_colaborador WHERE vl_xp.valexplosivo_codigoRegistro = {$parament}";
         return $this->ConsultaSimple($query);
     }
     public function getSelectNormal(string $table, array $columns):array
@@ -98,38 +98,39 @@ class ValeExplosivos extends Conexion
         {
             $rptId = $this->getidTable('tvalexplosivos', 'id_valexplosivo');
             $id = $rptId[0]['id'];
-            $codigoPrueba = '000000';
             $id++;
+            $preImpreso_final= $datopreImpreso.$id;
+            $codRegistro = str_pad(intval($id), 6, "0", STR_PAD_LEFT);
             //echo $id;
             date_default_timezone_set('America/Lima');
             $converdatoRegistro = date($datoRegistro.' H:i:s');
             /* Iniciar una transacción, desactivando 'autocommit' */
             //$this->db->beginTransaction();
             $query = "INSERT INTO tvalexplosivos VALUES (:id_valexplosivo, 
-            :id_usuario, 
-            :valexplosivo_fecha, 
-            :id_zona, 
-            :valexplosivo_nvale, 
-            :valexplosivo_turno, 
+            :id_usuario,
             :valexplosivo_preimpresor, 
             :valexplosivo_codigoRegistro, 
+            :valexplosivo_nvale,
+            :id_zona, 
+            :valexplosivo_fecha, 
+            :valexplosivo_turno, 
             :id_labor, 
             :valexplosivo_tipDisparo, 
-            :id_colaborador,  
-            :valexplosivo_tipEn, 
+            :valexplosivo_tipEn,
             :valexplosivo_barra,  
             :valexplosivo_lgt,  
             :valexplosivo_numTaladro,  
             :valexplosivo_talVacio,  
             :valexplosivo_piePerf,  
-            :valexplosivo_pieReal,  
+            :valexplosivo_pieReal, 
+            :valexplosivo_dimSemigelatinosa_Result, 
+            :valexplosivo_dimPulverulenta_Result, 
             :valexplosivo_numMaquina,
+            :id_colaborador, 
             :valexplosivo_emulmil,
             :valexplosivo_emultresmil,
             :valexplosivo_dimSemigelatinosa,  
-            :valexplosivo_dimSemigelatinosa_Result,  
-            :valexplosivo_dimPulverulenta,  
-            :valexplosivo_dimPulverulenta_Result,  
+            :valexplosivo_dimPulverulenta, 
             :valexplosivo_sumaSemiPulv, 
             :valexplosivo_carmexsiete, 
             :valexplosivo_carmexocho,
@@ -144,15 +145,14 @@ class ValeExplosivos extends Conexion
             $insertValue = $this->db->prepare($query);
             $insertValue->bindParam(':id_valexplosivo', $id, PDO::PARAM_INT);
             $insertValue->bindParam(':id_usuario', $idDigitador, PDO::PARAM_INT);
-            $insertValue->bindParam(':valexplosivo_fecha', $converdatoRegistro, PDO::PARAM_STR);
-            $insertValue->bindParam(':id_zona', $idZona, PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_preimpresor', $preImpreso_final, PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_codigoRegistro', $codRegistro, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_nvale', $datonVale, PDO::PARAM_STR);
+            $insertValue->bindParam(':id_zona', $idZona, PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_fecha', $converdatoRegistro, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_turno', $datoTurno, PDO::PARAM_STR);
-            $insertValue->bindParam(':valexplosivo_preimpresor', $datopreImpreso, PDO::PARAM_STR);
-            $insertValue->bindParam(':valexplosivo_codigoRegistro', $codigoPrueba, PDO::PARAM_STR);
             $insertValue->bindParam(':id_labor', $idLabor, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_tipDisparo', $datoTipDisparo, PDO::PARAM_STR);
-            $insertValue->bindParam(':id_colaborador', $idPerforista, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_tipEn', $datotipEn, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_barra', $datoBarra, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_lgt', $datoLgt, PDO::PARAM_STR);
@@ -160,13 +160,14 @@ class ValeExplosivos extends Conexion
             $insertValue->bindParam(':valexplosivo_talVacio', $datotalVacio, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_piePerf', $datopiePerf, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_pieReal', $datopieReal, PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_dimSemigelatinosa_Result', $datocalDinaSemi, PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_dimPulverulenta_Result', $datocalDinaPulv, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_numMaquina', $datonnMaquinas, PDO::PARAM_STR);
+            $insertValue->bindParam(':id_colaborador', $idPerforista, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_emulmil', $datoemulMil, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_emultresmil', $datoemulTresmil, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_dimSemigelatinosa', $datoDinaSemi, PDO::PARAM_STR);
-            $insertValue->bindParam(':valexplosivo_dimSemigelatinosa_Result', $datocalDinaSemi, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_dimPulverulenta', $datoDinaPulv, PDO::PARAM_STR);
-            $insertValue->bindParam(':valexplosivo_dimPulverulenta_Result', $datocalDinaPulv, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_sumaSemiPulv', $datosumSemiPulv, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_carmexsiete', $datCarmexsiete, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_carmexocho', $datCarmexocho, PDO::PARAM_STR);
@@ -221,7 +222,7 @@ class ValeExplosivos extends Conexion
                 $rptSql = [
                     "estado" => 1,
                     "mensaje" => "Se registro correctamente",
-                    "coperacion" => $datopreImpreso,
+                    "coperacion" => $preImpreso_final,
                 ];
             }
             else{
@@ -255,6 +256,84 @@ class ValeExplosivos extends Conexion
             //print_r($this->db->errorInfo());
         }
     }
+    
+    public function edit($formRequest)
+    {
+        //error_reporting(0);
+        try {
+            $query = "UPDATE tvalexplosivos SET valexplosivo_nvale = :valexplosivo_nvale,
+            id_zona = :id_zona,
+            valexplosivo_fecha = :valexplosivo_fecha,
+            valexplosivo_turno = :valexplosivo_turno,
+            id_labor = :id_labor,
+            valexplosivo_tipDisparo = :valexplosivo_tipDisparo,
+            valexplosivo_tipEn = :valexplosivo_tipEn,
+            valexplosivo_barra = :valexplosivo_barra,
+            valexplosivo_lgt = :valexplosivo_lgt,
+            valexplosivo_numTaladro = :valexplosivo_numTaladro,
+            valexplosivo_talVacio = :valexplosivo_talVacio,
+            valexplosivo_piePerf = :valexplosivo_piePerf,
+            valexplosivo_pieReal = :valexplosivo_pieReal,
+            valexplosivo_dimSemigelatinosa_Result = :valexplosivo_dimSemigelatinosa_Result,
+            valexplosivo_dimPulverulenta_Result = :valexplosivo_dimPulverulenta_Result,
+            valexplosivo_numMaquina = :valexplosivo_numMaquina,
+            id_colaborador = :id_colaborador,
+            valexplosivo_emulmil = :valexplosivo_emulmil,
+            valexplosivo_emultresmil = :valexplosivo_emultresmil
+            valexplosivo_dimSemigelatinosa = :valexplosivo_dimSemigelatinosa
+            valexplosivo_dimPulverulenta = :valexplosivo_dimPulverulenta
+            valexplosivo_sumaSemiPulv = :valexplosivo_sumaSemiPulv
+            valexplosivo_carmexsiete = :valexplosivo_carmexsiete
+            valexplosivo_carmexocho = :valexplosivo_carmexocho
+            valexplosivo_mecRapida = :valexplosivo_mecRapida
+            valexplosivo_mecLenta = :valexplosivo_mecLenta
+            valexplosivo_fulN = :valexplosivo_fulN
+            valexplosivo_conMecha = :valexplosivo_conMecha
+            valexplosivo_BlockSugecion = :valexplosivo_BlockSugecion
+            valexplosivo_carcortrece = :valexplosivo_carcortrece
+            valexplosivo_totalKiloEmul1000 = :valexplosivo_totalKiloEmul1000
+            valexplosivo_totalKiloEmul3000 = :valexplosivo_totalKiloEmul3000
+            WHERE valexplosivo_codigoRegistro=:datoid;";
+            $insertValue = $this->db->prepare($query);
+            $insertValue->bindParam(':valexplosivo_nvale', $formRequest['nVale'], PDO::PARAM_STR);
+            $insertValue->bindParam(':id_zona', $formRequest['zonId'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_fecha', $formRequest['fecha'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_turno', $formRequest['turno'], PDO::PARAM_STR);
+            $insertValue->bindParam(':id_labor', $formRequest['idLabor'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_tipDisparo', $formRequest['tipoDisparo'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_tipEn', $formRequest['tipoEn'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_barra', $formRequest['barra'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_lgt', $formRequest['lgt'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_numTaladro', $formRequest['nTaladros'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_talVacio', $formRequest['talVacio'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_piePerf', $formRequest['piesPerf'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_pieReal', $formRequest['piesReal'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_dimSemigelatinosa_Result', $formRequest['res_dinSemi'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_dimPulverulenta_Result', $formRequest['res_dinPulv'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_numMaquina', $formRequest['nMaquinas'], PDO::PARAM_STR);
+            $insertValue->bindParam(':id_colaborador', $formRequest['idColaborador_perforista'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_emulmil', $formRequest['emulnorMil'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_emultresmil', $formRequest['emulnorTresmil'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_dimSemigelatinosa', $formRequest['val_dinamitaSemigelatinosa'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_dimPulverulenta', $formRequest['dinamitaPulverulenta'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_sumaSemiPulv', $formRequest['carmen7'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_carmexsiete', $formRequest['carmen7'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_carmexocho', $formRequest['carmen8'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_mecRapida', $formRequest['mechaRapida'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_mecLenta', $formRequest['mechaLenta'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_fulN', $formRequest['fulminante'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_conMecha', $formRequest['conectorMecha'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_BlockSugecion', $formRequest['blockSugeccion'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_carcortrece', $formRequest['carCortado13'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_totalKiloEmul1000', $formRequest['totalKilos_dinamitaEmulnorMil'], PDO::PARAM_STR);
+            $insertValue->bindParam(':valexplosivo_totalKiloEmul3000', $formRequest['totalKilos_dinamitaEmulnorTresmil'], PDO::PARAM_STR);
+
+        } catch (PDOException $e) {
+            return 'ERROR';
+        }
+
+    }
+
     public function delete(string $idEliminar)
     {
         //error_reporting(0);
@@ -266,41 +345,6 @@ class ValeExplosivos extends Conexion
         } catch (PDOException $e) {
             return 'Ocurrio un ERROR al eliminar a'. $e->getMessage();
         }
-    }
-    public function edit(int $datoid, string $codigo, string $nombre, string $cargo, string $dia, string $turno, int  $ht, int $htseradi, string $ccostos, string $labor, int $nivel, int $he, int  $heseradi, int  $ccostoshe, string $zona, string $guardia, string  $actividad, string $area)
-    {
-        //error_reporting(0);
-        try {
-            $query  = "UPDATE tvalexplosivos SET codigo=:codigo, nombre=:nombre, cargo=:cargo, dia=:dia turno=:turno, ht=:ht, h_serv_ad=:htseradi, ccostos=:ccostos labor=:labor, nivel=:nivel, he=:he, heSer_Ad=:heseradi cCostosHe=:ccostoshe, vB=:zona, guardia=:guardia, Cod_Actividad=:actividad area=:area WHERE id_tareo=:datoid;";
-            $result = $this->db->prepare($query);
-            $result->execute(array(':datoid' => $datoid, 
-            ':codigo' => $codigo, 
-            ':nombre' => $nombre, 
-            ':cargo' => $cargo, 
-            ':dia' => $dia,
-            ':turno' => $turno, 
-            ':ht' => $ht, 
-            ':htseradi' => $htseradi, 
-            ':ccostos' => $ccostos,
-            ':labor' => $labor, 
-            ':nivel' => $nivel, 
-            ':he' => $he, 
-            ':heseradi' => $heseradi,
-            ':ccostoshe' => $ccostoshe, 
-            ':zona' => $zona, 
-            ':guardia' => $guardia, 
-            ':actividad' => $actividad,
-            ':area' => $area
-        ));
-            if ($result->rowCount()) {
-                return 'Se edito correctamente.';
-            } else {
-                return 'IGUAL';
-            }
-        } catch (PDOException $e) {
-            return 'ERROR';
-        }
-
     }
 
     public function getSearch(string $table, string $termiCol, string $termino): array

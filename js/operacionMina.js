@@ -83,7 +83,7 @@ const iptinsertdesmont = document.getElementById("insert-operacionMina-Desmon");
 /**
  * 
  * *BOTON NUEVO
- * @description Limpia todo el formularop
+ * @description Limpia todo el formulario
  */
 btnNew.addEventListener("click", () => {
     resetFormulario();

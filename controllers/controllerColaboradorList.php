@@ -22,6 +22,9 @@ if($_POST){
                 break;
             case "table":
                 break;
+            case "getDatalistAll_nombres_perforista":
+                $rptSql = $tableManager->getDatalistAll_nombres_perforista();
+                break;
         }
 
     } catch (Exception $e) {

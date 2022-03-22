@@ -23,8 +23,6 @@ if($_POST){
                 $columnWhere = $arrayForm['columnWhere'];
                 $rptSql = $tableManager->getSelectWhere($table, $column, $parament, $idTable, $columnWhere);
                 break;
-            case "search":                
-                break;
             case "table":
                 break;
             default:

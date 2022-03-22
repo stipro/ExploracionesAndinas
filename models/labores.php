@@ -11,6 +11,19 @@ class Labores extends Conexion
     {
         parent::__construct();
     }
+    public function getDatalistAll_zonaNombre(){
+        $query = "SELECT lb_zn.id_zona, lb_zn.labZona_nombre FROM lab_zonas AS lb_zn;";
+        return $this->ConsultaSimple($query);
+    }
+    public function getDatalistAll_ccosto(){
+        $query = "SELECT lb.id_labor, lb.lab_ccostos FROM labores AS lb;";
+        return $this->ConsultaSimple($query);
+    }
+
+    public function getDt_labZonas_nombre(){
+        $query = "SELECT lb_zn.id_zona, lb_zn.labZona_nombre FROM lab_zonas AS lb_zn";
+        return $this->ConsultaSimple($query);
+    }
     public function insertPrincipal($items){
         try {
             $query = "INSERT INTO labores (lab_ccostos, lab_tipo, lab_veta, lab_nivel, lab_metodoExplotacion, lab_seccion, lab_tipoEq, lab_tipoRoca, id_labNombre, id_zona, unidadMedica_id) 
