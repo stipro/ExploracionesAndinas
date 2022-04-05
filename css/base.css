@@ -30,6 +30,18 @@
 .modal-body{
     padding-top: 0 !important;
 }
+.green{
+    background-color:#85e085 !important;
+}
+.orange{
+    background-color:#ffb366 !important;
+}
+.blue{
+    background-color:#0d6efd !important;
+}
+.red{
+    background-color:#ff6666 !important;
+}
 @media (min-width: 768px) {
     .modal-xl {
         width: 90%;

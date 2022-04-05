@@ -21,3 +21,25 @@ SELECT * FROM tareos LEFT JOIN colaboradores ON tareos.id_colaborador = colabora
 SELECT ll.id_laborLetra, ll.letra_laborLetra FROM labor_letra AS ll WHERE ll.letra_laborLetra LIKE 'A%' ORDER BY ll.letra_laborLetra LIMIT 0,10;
 SELECT ll.id_laborLetra, ll.letra_laborLetra FROM labor_letra AS ll ORDER BY ll.letra_laborLetra LIMIT 0,15;
 SELECT lbN.labNombre_nombre FROM lab_nombres AS lbN WHERE lbN.id_labNombre = '441'*/
+
+# DISPARADOR
+/** OBTENE EL VALOR INGRESADO DE UNA TABLA Y HACE UNA OPERACION SEGUN EL TIPO DE MOVIMIENTO **/
+CREATE DEFINER=`root`@`localhost` TRIGGER `actualizacion_entrada` AFTER INSERT ON `entrada` FOR EACH ROW BEGIN
+
+SET @ID:= (SELECT MAX(id) FROM stock);
+SET @SALDO_ULT:= (SELECT IFNULL(saldo, 0) FROM stock WHERE id = @ID);
+/*SET @SALDO_ULT:= (SELECT IF( (SELECT IFNULL(saldo, 0) AS comp FROM stock WHERE id = @ID) = '', (SELECT IFNULL(saldo, 0) AS comp FROM stock WHERE id = @ID), 0));*/
+/*SET @SALDO_ULT:= (SELECT IF((SELECT IFNULL(saldo, 0) AS comp FROM stock WHERE id = @ID) = '',(SELECT IFNULL(saldo, 0) FROM stock WHERE id = @ID), NEW.cantidad));*/
+/*SET @SALDO_ULT:= (SELECT IF( (SELECT IFNULL(saldo, 0) AS comp FROM stock WHERE id = @ID) = '', (SELECT IFNULL(saldo, 0) AS comp FROM stock WHERE id = @ID), 0));*/
+/*SET @SALDO_ULT:= (SELECT IFNULL(saldo, 0) AS comp FROM stock WHERE id = @ID);*/
+/*SELECT MAX(id) FROM stock
+/*(SELECT cantidad, IF(NEW.tipMov ='01-INGRESO',(NEW.cantidad+cantidad),(NEW.cantidad-cantidad)) FROM stock)*/
+
+INSERT INTO stock SET item = NEW.item , articulo = NEW.articulo, tipMov = NEW.tipMov, cantidad = NEW.cantidad, 
+saldo = IF((SELECT IFNULL(@ID, 0)) = '',NEW.cantidad ,IF(NEW.tipMov ='01-INGRESO',(@SALDO_ULT+NEW.cantidad),(@SALDO_ULT-NEW.cantidad)));
+
+
+/*INSERT INTO stock SET item = NEW.item , articulo = NEW.articulo, tipMov = NEW.tipMov, cantidad = NEW.cantidad, saldo = IF(NEW.tipMov ='01-INGRESO',(@SALDO_ULT+NEW.cantidad),(@SALDO_ULT-NEW.cantidad));*/
+
+
+END

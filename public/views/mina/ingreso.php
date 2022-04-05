@@ -161,7 +161,7 @@
                                     <fieldset>
                                         <legend>
                                             <div class="panel-heading">
-					                            <h3 class="panel-title">VALES DE EXPLOSIVOS</h3>
+					                            <h3 class="panel-title">INGRESO</h3>
 					                        </div>
                                         </legend>
                                         <div class="table-responsive-md">
@@ -306,16 +306,16 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3">
-                            <p class="bord-btm pad-ver text-main text-bold">Información General del Vale</p>
+                            <p class="bord-btm pad-ver text-main text-bold">DIRECCION DE PARTIDA</p>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="view-valesExplosivo-zona" class="col-md-4 control-label">Zona</label>
+                                        <label for="" class="col-md-4 control-label">VIA TIPO</label>
                                         <div class="col-md-8">
                                             <!-- zona choosen -->
                                             <!--===================================================-->
                                             <div class="">
-                                                <input type="text" class="form-control" id="view-valesExplosivo-zona" placeholder="Zona" disabled>
+                                                <input type="text" class="form-control" id="" placeholder="Via Tipo" >
                                                 <span class="fa fa-toggle-down form-control-icon"></span>
                                             </div>
                                             <!--===================================================-->
@@ -326,12 +326,12 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label for="view-valesExplosivo-turno" class="col-md-4 control-label">Turno</label>
+                                        <label for="" class="col-md-4 control-label">N°</label>
                                         <div class="col-md-8">
                                             <!-- turno choosen -->
                                             <!--===================================================-->
                                             <div class="">
-                                                <input type="text" class="form-control" id="view-valesExplosivo-turno" placeholder="Turno" disabled>
+                                                <input type="text" class="form-control" id="" placeholder="N°" >
                                                 <span class="fa fa-toggle-down form-control-icon"></span>
                                             </div>
                                             <!--===================================================-->
@@ -342,16 +342,16 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="">
-                                        <label for="view-valesExplosivo-fecha" class="col-md-4 control-label">Fecha</label>
+                                        <label for="" class="col-md-4 control-label">DISTRITO</label>
                                         <div class="col-md-8">                                                    
-                                            <input type="date" placeholder="Dia" class="form-control" id="view-valesExplosivo-fecha" placeholder="Fecha" disabled> <!--min="2021-12-12" max="2021-12-13"-->
+                                            <input type="date" placeholder="Dia" class="form-control" id="" placeholder="Fecha" disabled> <!--min="2021-12-12" max="2021-12-13"-->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-9">
-                            <p class="bord-btm pad-ver text-main text-bold">Detalle del Vale</p>
+                            <p class="bord-btm pad-ver text-main text-bold">DIRECCION DE LLEGADA</p>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -444,71 +444,138 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <p class="bord-btm pad-ver text-main text-bold">Registro de Perforadoras</p>
+                        <div class="col-md-3">
+                            <p class="bord-btm pad-ver text-main text-bold">REMITENTE</p>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <!-- FORMULARIO -->
-                                    <label for="view-valesExplosivo-barra" class="col-md-1 control-label">Barra</label>
-                                    <div class="col-md-1">
+                                    <div class="form-group">
+                                        <label for="view-valesExplosivo-zona" class="col-md-4 control-label">Zona</label>
+                                        <div class="col-md-8">
+                                            <!-- zona choosen -->
+                                            <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="view-valesExplosivo-zona" placeholder="Zona" disabled>
+                                                <span class="fa fa-toggle-down form-control-icon"></span>
+                                            </div>
+                                            <!--===================================================-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="view-valesExplosivo-turno" class="col-md-4 control-label">Turno</label>
+                                        <div class="col-md-8">
+                                            <!-- turno choosen -->
+                                            <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="view-valesExplosivo-turno" placeholder="Turno" disabled>
+                                                <span class="fa fa-toggle-down form-control-icon"></span>
+                                            </div>
+                                            <!--===================================================-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="">
+                                        <label for="view-valesExplosivo-fecha" class="col-md-4 control-label">Fecha</label>
+                                        <div class="col-md-8">                                                    
+                                            <input type="date" placeholder="Dia" class="form-control" id="view-valesExplosivo-fecha" placeholder="Fecha" disabled> <!--min="2021-12-12" max="2021-12-13"-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <p class="bord-btm pad-ver text-main text-bold">DESTINATARIO</p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="view-valesExplosivo-laborCodigo" class="col-md-4 control-label">Codigo</label>
+                                        <div class="col-md-8">
                                         <!-- Default choosen -->
                                         <!--===================================================-->
-                                        <div class="">
-                                            <input type="text" class="form-control" id="view-valesExplosivo-barra" placeholder="labor" disabled>
-                                            <span class="fa fa-toggle-down form-control-icon"></span>
-                                        </div>
+                                            <div class="">
+                                                <input type="text" class="form-control" id="view-valesExplosivo-laborCodigo" placeholder="Codigo" disabled>
+                                                <span class="fa fa-toggle-down form-control-icon"></span>
+                                            </div>
                                         <!--===================================================-->
+                                        </div>
                                     </div>
-                                    <!-- FORMULARIO -->
-                                    <label for="view-valesExplosivo-lgtMt" class="col-md-1 control-label">Lgt (mt)</label>
-                                    <div class="col-md-1">
-                                        <input class="form-control" value="0" name="" id="view-valesExplosivo-lgtMt" disabled>
+                                    <div class="form-group">
+                                        <label for="view-valesExplosivo-laborNombre" class="col-md-4 control-label">Labor</label>
+                                        <div class="col-md-8">
+                                            <!-- Default choosen -->
+                                            <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="view-valesExplosivo-laborNombre" placeholder="labor" disabled>
+                                                <span class="fa fa-toggle-down form-control-icon"></span>
+                                            </div>
+                                            <!--===================================================-->
+                                        </div>
                                     </div>
-                                    <!-- FORMULARIO -->
-                                    <label for="view-valesExplosivo-nTaladro" class="col-md-1 control-label">N° Taladros</label>
-                                    <div class="col-md-1">
-                                        <input class="form-control" value="0" name="" id="view-valesExplosivo-nTaladro" disabled>
+                                    <div class="form-group">
+                                        <label for="view-valesExplosivo-laborNivel" class="col-md-4 control-label">Nivel</label>
+                                        <div class="col-md-8">
+                                            <input type="text" placeholder="Nivel" class="form-control" id="view-valesExplosivo-laborNivel" disabled>
+                                        </div>
                                     </div>
-                                    <!-- FORMULARIO -->
-                                    <label for="view-valesExplosivo-talVacio" class="col-md-1 control-label">Tal_Vacio</label>
-                                    <div class="col-md-1">
-                                        <input class="form-control" value="0" name="" id="view-valesExplosivo-talVacio" disabled>
-                                    </div>
-                                    <!-- FORMULARIO -->
-                                    <label for="view-valesExplosivo-piesPerf" class="col-md-1 control-label">Pies Perf</label>
-                                    <div class="col-md-1">
-                                        <input class="form-control" value="0" name="" id="view-valesExplosivo-piesPerf" disabled>
-                                    </div>
-                                    <!-- FORMULARIO -->
-                                    <label for="view-valesExplosivo-piesReal" class="col-md-1 control-label">Pie Real</label>
-                                    <div class="col-md-1">
-                                        <input class="form-control" value="0" name="" id="view-valesExplosivo-piesReal" disabled>
-                                    </div> 
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="col-md-2">
-                                        <input class="form-control" type="number" name="" value="0" id="view-valesExplosivo-resdin_semi" disabled>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Tipo de Disparo</label>
+                                        <div class="col-md-4">
+                            
+                                            <!-- Radio Buttons -->
+                                            <div class="radio">
+                                                <input class="magic-radio" type="radio" value="Avance" name="view-form-radio-tipo_disparo" id="">
+                                                <label for="">Avance</label>
+                                            </div>
+                                            <div class="radio">
+                                                <input class="magic-radio" type="radio" value="Realce" name="view-form-radio-tipo_disparo" id="">
+                                                <label for="">Realce</label>
+                                            </div>
+                                            <div class="radio">
+                                                <input class="magic-radio" type="radio" value="Breasting" name="view-form-radio-tipo_disparo" id="">
+                                                <label for="">Breasting</label>
+                                            </div>
+                            
+                                        </div>
+                                        <div class="col-md-4">
+                            
+                                            <!-- Radio Buttons -->
+                                            <div class="radio">
+                                                <input class="magic-radio" type="radio" value="Desquinche" name="view-form-radio-tipo_disparo" id="">
+                                                <label for="">Desquinche</label>
+                                            </div>
+                                            <div class="radio">
+                                                <input class="magic-radio" type="radio" value="Reperforacion" name="view-form-radio-tipo_disparo" id="">
+                                                <label for="">Reperforacion</label>
+                                            </div>
+                                            <div class="radio">
+                                                <input class="magic-radio" type="radio" value="Recarga" name="view-form-radio-tipo_disparo" id="">
+                                                <label for="">Recarga</label>
+                                            </div>
+                            
+                                        </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <input class="form-control" type="number" name="" value="0" id="view-valesExplosivo-resdin_pulv" disabled>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input class="form-control" type="number" name="" value="0" id="view-valesExplosivo-suma-dimPulv-dimSemi" disabled>
-                                    </div>
-                                    <!-- FORMULARIO -->
-                                    <label for="view-valesExplosivo-nMaquinas" class="col-md-1 control-label">N° Maquina</label>
-                                    <div class="col-md-2">
-                                        <div class="">
-                                            <input type="text" class="form-control" id="view-valesExplosivo-nMaquinas" placeholder="N° Maquinas" disabled>
-                                            <span class="fa fa-toggle-down form-control-icon"></span>
-                                        </div>                                          
-                                    </div>
-                                    <!-- FORMULARIO -->
-                                    <label for="view-valesExplosivo-perforista" class="col-md-1 control-label">Perforista</label>
-                                    <div class="col-md-2">
-                                        <div class="">
-                                            <input type="text" class="form-control" id="view-valesExplosivo-perforista" placeholder="Perforista" disabled>
-                                            <span class="fa fa-toggle-down form-control-icon"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Disparo en</label>
+                                        <div class="col-md-8">
+                                            <!-- Radio Buttons -->
+                                            <div class="radio">
+                                                <input id="" class="magic-radio" type="radio" name="view-form-radio-tipo_en" value="Mineral" checked="">
+                                                <label for="">Mineral</label>
+                                            </div>
+                                            <div class="radio">
+                                                <input id="" class="magic-radio" type="radio" name="view-form-radio-tipo_en" value="Desmonte">
+                                                <label for="">Desmonte</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1143,7 +1210,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pci-cross pci-circle"></i></button>
                     <div class="row">
                         
-                        <h4 class="modal-title col-md-5">Ingreso de Vales de Explosivos</h4>
+                        <h4 class="modal-title col-md-5">Ingreso de Documento</h4>
                         <label for="val_explosivo-ipt-text-form-digitador" class="col-md-1 control-label">Digitador</label>
                         <div class="col-md-1">
                             <input type="text" placeholder="..." class="form-control" name="digitador" id="val_explosivo-ipt-text-form-digitador" data-id="<?php echo $_SESSION["id"]?>" value="<?php echo $_SESSION["name"]?>" disabled>
@@ -1160,7 +1227,7 @@
                         <div class="col-md-2">
                             <!-- FORMULARIO -->
                             <div class="form-group">
-                                <label for="val_explosivo-text-form-n_vale" class="col-md-4 control-label">N° vale
+                                <label for="val_explosivo-text-form-n_vale" class="col-md-4 control-label">N° Documento
                                     <span class="text-danger">*</span>
                                 </label>
                                 <div class="col-md-8">
@@ -1178,147 +1245,233 @@
                     <div id="alert-form-insert">
                     </div>
                     <div class="row">
-                        <div class="col-md-3">
-                            <p class="bord-btm pad-ver text-main text-bold">Información General del Vale</p>
+                        <div class="col-md-6">
+                            <p class="bord-btm pad-ver text-main text-bold">DIRECCION DE PARTIDA</p>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="val_explosivo-text-form-zona" class="col-md-4 control-label">Zona <span class="text-danger">*</span></label>
-                                        <div class="col-md-8">
+                                        <label for="" class="col-md-3 control-label">VIA TIPO</label>
+                                        <div class="col-md-9">
+                                        <!-- Default choosen -->
+                                        <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="" placeholder="Via tipo">
+                                            </div>
+                                        <!--===================================================-->
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="" class="col-md-3 control-label">VIA NOMBRE</label>
+                                        <div class="col-md-9">
                                             <!-- Default choosen -->
                                             <!--===================================================-->
-                                            <select class="form-control chosenZona" data-placeholder="Elija una Zona ..." id="val_explosivo-text-form-zona" tabindex="2">
-                                                <option value="#">Hubo un Error ! </option>
-                                            </select>
-                                            <template id="template-opt-zona">
-                                                <option id="0" value="" selected></option>
-                                                <option id="optzona" value="">A</option>
-                                            </template>
+                                            <div class="">
+                                                <input type="text" class="form-control" id="" placeholder="Via nombre">
+                                            </div>
                                             <!--===================================================-->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="val_explosivo-text-form-turno" class="col-md-4 control-label">Turno <span class="text-danger">*</span></label>
+                                        <label for="" class="col-md-2 control-label">N°</label>
+                                        <div class="col-md-10">
+                                        <!-- Default choosen -->
+                                        <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="" placeholder="N°">
+                                            </div>
+                                        <!--===================================================-->
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-md-4 control-label">INTERIOR</label>
                                         <div class="col-md-8">
                                             <!-- Default choosen -->
                                             <!--===================================================-->
-                                            <select class="form-control chosenTurno" data-placeholder="Elija un Turno ..." id="val_explosivo-text-form-turno" tabindex="2">
-                                                <option value="0" selected></option>
-                                                <option value="Dia">Dia</option>
-                                                <option value="Noche">Noche</option>
-                                            </select>
+                                            <div class="">
+                                                <input type="text" class="form-control" id="" placeholder="Interior">
+                                            </div>
+                                            <!--===================================================-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="" class="col-md-3 control-label">ZONA</label>
+                                        <div class="col-md-9">
+                                            <!-- Default choosen -->
+                                            <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="" placeholder="Zona">
+                                            </div>
                                             <!--===================================================-->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="val_explosivo-text-form-fecha" class="col-md-4 control-label">Fecha <span class="text-danger">*</span></label>
-                                        <div class="col-md-8">                                                    
-                                            <input type="date" placeholder="Dia" class="form-control" id="val_explosivo-text-form-fecha"  value="<?php echo date('Y-m-d') ?>" > <!--min="2021-12-12" max="2021-12-13"-->
+                                        <label for="" class="col-md-4 control-label">DISTRITO</label>
+                                        <div class="col-md-8">
+                                        <!-- Default choosen -->
+                                        <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="" placeholder="Distrito">
+                                            </div>
+                                        <!--===================================================-->
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="" class="col-md-3 control-label">PROV.</label>
+                                        <div class="col-md-9">
+                                            <!-- Default choosen -->
+                                            <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="" placeholder="Prov.">
+                                            </div>
+                                            <!--===================================================-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="" class="col-md-3 control-label">DEP.</label>
+                                        <div class="col-md-9">
+                                            <!-- Default choosen -->
+                                            <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="" placeholder="Dep.">
+                                            </div>
+                                            <!--===================================================-->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-9">
-                            <p class="bord-btm pad-ver text-main text-bold">Detalle del Vale</p>
+                        <div class="col-md-6">
+                            <p class="bord-btm pad-ver text-main text-bold">DIRECCION DE LLEGADA</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="view-valesExplosivo-laborCodigo" class="col-md-3 control-label">VIA TIPO</label>
+                                        <div class="col-md-9">
+                                        <!-- Default choosen -->
+                                        <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="view-valesExplosivo-laborCodigo" placeholder="Via tipo">
+                                            </div>
+                                        <!--===================================================-->
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="" class="col-md-3 control-label">VIA NOMBRE</label>
+                                        <div class="col-md-9">
+                                            <!-- Default choosen -->
+                                            <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="" placeholder="Via nombre">
+                                            </div>
+                                            <!--===================================================-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="" class="col-md-2 control-label">N°</label>
+                                        <div class="col-md-10">
+                                        <!-- Default choosen -->
+                                        <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="" placeholder="N°">
+                                            </div>
+                                        <!--===================================================-->
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-md-4 control-label">INTERIOR</label>
+                                        <div class="col-md-8">
+                                            <!-- Default choosen -->
+                                            <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="" placeholder="Interior">
+                                            </div>
+                                            <!--===================================================-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="" class="col-md-3 control-label">ZONA</label>
+                                        <div class="col-md-9">
+                                            <!-- Default choosen -->
+                                            <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="" placeholder="Zona">
+                                            </div>
+                                            <!--===================================================-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="val_explosivo-text-form-labor_codigo" class="col-md-4 control-label">Codigo <span class="text-danger">*</span></label>
+                                        <label for="" class="col-md-4 control-label">DISTRITO</label>
                                         <div class="col-md-8">
-                                            <!-- Default choosen -->
-                                            <!--===================================================-->
-                                            <select class="form-control chosenLabCodigo" data-placeholder="Elige un Codigo" id="val_explosivo-text-form-labor_codigo" tabindex="2">
-                                            </select>
-                                            <template id="template-opt-ccostos">
-                                                <option id="" value="" selected></option>
-                                                <option id="optccostos" value="" ></option>
-                                            </template>
-                                            <!--===================================================-->
+                                        <!-- Default choosen -->
+                                        <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="" placeholder="Distrito">
+                                            </div>
+                                        <!--===================================================-->
                                         </div>
                                     </div>
+                                    
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="val_explosivo-text-form-labor" class="col-md-4 control-label">Labor</label>
-                                        <div class="col-md-8">
+                                        <label for="" class="col-md-3 control-label">PROV.</label>
+                                        <div class="col-md-9">
                                             <!-- Default choosen -->
                                             <!--===================================================-->
-                                            <select class="form-control chosenLabNombre" data-placeholder="Elige un Codigo" id="val_explosivo-text-form-labor" tabindex="2">
-                                                <option value=""></option>
-                                            </select>
-                                            <template id="template-opt-labor_nombre">
-                                                <option id="0" value="" ></option>
-                                                <option id="optlabNombre" value="" selected></option>
-                                            </template>
+                                            <div class="">
+                                                <input type="text" class="form-control" id="" placeholder="Prov.">
+                                            </div>
                                             <!--===================================================-->
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="val_explosivo-text-form-nivel" class="col-md-4 control-label">Nivel</label>
-                                        <div class="col-md-8">
-                                            <input type="text" placeholder="Nivel" class="form-control" id="val_explosivo-text-form-nivel" disabled>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label">Tipo de Disparo <span class="text-danger">*</span></label>
-                                        <div class="col-md-4">
-                            
-                                            <!-- Radio Buttons -->
-                                            <div class="radio">
-                                                <input class="magic-radio" type="radio" value="Avance" name="form-radio-tipo_disparo" id="opcion-tipo_disparo1" checked="">
-                                                <label for="opcion-tipo_disparo1">Avance</label>
+                                        <label for="" class="col-md-3 control-label">DEP.</label>
+                                        <div class="col-md-9">
+                                            <!-- Default choosen -->
+                                            <!--===================================================-->
+                                            <div class="">
+                                                <input type="text" class="form-control" id="" placeholder="Dep.">
                                             </div>
-                                            <div class="radio">
-                                                <input class="magic-radio" type="radio" value="Realce" name="form-radio-tipo_disparo" id="opcion-tipo_disparo2">
-                                                <label for="opcion-tipo_disparo2">Realce</label>
-                                            </div>
-                                            <div class="radio">
-                                                <input class="magic-radio" type="radio" value="Breasting" name="form-radio-tipo_disparo" id="opcion-tipo_disparo3" >
-                                                <label for="opcion-tipo_disparo3">Breasting</label>
-                                            </div>
-                            
-                                        </div>
-                                        <div class="col-md-4">
-                            
-                                            <!-- Radio Buttons -->
-                                            <div class="radio">
-                                                <input class="magic-radio" type="radio" value="Desquinche" name="form-radio-tipo_disparo" id="opcion-tipo_disparo4">
-                                                <label for="opcion-tipo_disparo4">Desquinche</label>
-                                            </div>
-                                            <div class="radio">
-                                                <input class="magic-radio" type="radio" value="Reperforacion" name="form-radio-tipo_disparo" id="opcion-tipo_disparo5">
-                                                <label for="opcion-tipo_disparo5">Reperforacion</label>
-                                            </div>
-                                            <div class="radio">
-                                                <input class="magic-radio" type="radio" value="Recarga" name="form-radio-tipo_disparo" id="opcion-tipo_disparo6" >
-                                                <label for="opcion-tipo_disparo6">Recarga</label>
-                                            </div>
-                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Disparo en <span class="text-danger">*</span></label>
-                                        <div class="col-md-8">
-                                        <!-- Radio Buttons -->
-                                            <div class="radio">
-                                                <input id="demo-form-radio" class="magic-radio" type="radio" name="form-radio-tipo_en" value="Mineral" checked="">
-                                                <label for="demo-form-radio">Mineral</label>
-                                            </div>
-                                            <div class="radio">
-                                                <input id="demo-form-radio-2" class="magic-radio" type="radio" name="form-radio-tipo_en" value="Desmonte">
-                                                <label for="demo-form-radio-2">Desmonte</label>
-                                            </div>
+                                            <!--===================================================-->
                                         </div>
                                     </div>
                                 </div>
@@ -1326,105 +1479,44 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <p class="bord-btm pad-ver text-main text-bold">Registro de Perforadoras</p>
+                        <div class="col-md-6">
+                            <p class="bord-btm pad-ver text-main text-bold">REMITENTE</p>
                             <div class="row">
-                                <div class="col-md-12"> 
-                                    <!-- FORMULARIO -->
-                                    <label for="val_explosivo-input-form-barra" class="col-md-1 control-label">Barra</label>
-                                    <div class="col-md-1">
-                                        <!-- Default choosen -->
-                                        <!--===================================================-->
-                                        <select class="form-control" data-placeholder="Barra" id="val_explosivo-input-form-barra" tabindex="2">
-                                            <option value="0" selected>0</option>
-                                            <option value="4">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="8">8</option>
-                                        </select>
-                                        <!--===================================================-->
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="" class="col-md-12">APELLIDOS Y NOMBRES / RAZÓN SOCIAL</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control" id="" placeholder="Apellidos y nombres / Razón Social">
+                                        </div>                                        
                                     </div>
-                                    <!-- FORMULARIO -->
-                                    <label for="val_explosivo-input-form-lgt_mt" class="col-md-1 control-label">Lgt (mt)</label>
-                                    <div class="col-md-1">
-                                        <input class="form-control" value="0" name="" id="val_explosivo-input-form-lgt_mt">
-                                    </div>
-                                    <!-- FORMULARIO -->
-                                    <label for="val_explosivo-input-form-n_taladro" class="col-md-1 control-label">N° Taladros</label>
-                                    <div class="col-md-1">
-                                        <input class="form-control" value="0" name="" id="val_explosivo-input-form-n_taladro">
-                                    </div>
-                                    <!-- FORMULARIO -->
-                                    <label for="val_explosivo-input-form-tal_vacio" class="col-md-1 control-label">Tal_Vacio</label>
-                                    <div class="col-md-1">
-                                        <input class="form-control" value="0" name="" id="val_explosivo-input-form-tal_vacio">
-                                    </div>
-                                    <!-- FORMULARIO -->
-                                    <label for="val_explosivo-input-form-pies_perf" class="col-md-1 control-label">Pies Perf</label>
-                                    <div class="col-md-1">
-                                        <input class="form-control" value="0" name="" id="val_explosivo-input-form-pies_perf" disabled>
-                                    </div>
-                                    <!-- FORMULARIO -->
-                                    <label for="val_explosivo-input-form-pies_real" class="col-md-1 control-label">Pie Real</label>
-                                    <div class="col-md-1">
-                                        <input class="form-control" value="0" name="" id="val_explosivo-input-form-pies_real" disabled>
-                                    </div> 
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="col-md-2">
-                                        <input class="form-control" type="number" name="" value="0" id="val_explosivo-text-form-resdin_semi" disabled>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="" class="col-md-12">R.U.C.:</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control" id="" placeholder="R.U.C.">
+                                        </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <input class="form-control" type="number" name="" value="0" id="val_explosivo-text-form-resdin_pulv" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="bord-btm pad-ver text-main text-bold">DESTINATARIO</p>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="" class="col-md-12">APELLIDOS Y NOMBRES / RAZÓN SOCIAL</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control" id="" placeholder="Apellidos y nombres / Razón Social">
+                                        </div>                                        
                                     </div>
-                                    <div class="col-md-2">
-                                        <input class="form-control" type="number" name="" value="0" id="suma-dimPulv-dimSemi" disabled>
-                                    </div>
-                                    <!-- FORMULARIO -->
-                                    <label for="val_explosivo-text-form-nmaquinas" class="col-md-1 control-label">N° Maquina</label>
-                                    <div class="col-md-2">
-                                        <select class="form-control chosenNMaquina" data-placeholder="Seleccione N° Maquinas" id="val_explosivo-text-form-nmaquinas" tabindex="2">
-                                            <option value=""></option>
-                                            <option value="">PA_20</option>
-                                            <option value="">PA_30</option>
-                                            <option value="">PA_36</option>
-                                            <option value="">PS_04</option>
-                                            <option value="">PS_05</option>
-                                            <option value="">PS_06</option>
-                                            <option value="">PS_07</option>
-                                            <option value="">PSS_01</option>
-                                            <option value="">PSecan_01</option>
-                                            <option value="">PSecan_02</option>
-                                            <option value="">PSecan_03</option>
-                                            <option value="">PSecan_04</option>
-                                            <option value="">PSecan_05</option>
-                                            <option value="">PSecan_06</option>
-                                            <option value="">PSecan_07</option>
-                                            <option value="">PSecan_08</option>
-                                            <option value="">PSecan_09</option>
-                                            <option value="">PSecan_10</option>
-                                            <option value="">RNP_01</option>
-                                            <option value="">RNP_02</option>
-                                            <option value="">RNP_03</option>
-                                            <option value="">RNP_04</option>
-                                            <option value="">RNP_05</option>
-                                            <option value="">RNP_06</option>
-                                            <option value="">RNP_07</option>
-                                            <option value="">PT_03</option>
-                                            <option value="">PT_04</option>
-                                        </select>                                            
-                                    </div>
-                                    <!-- FORMULARIO -->
-                                    <label for="val_explosivo-text-form-perforista" class="col-md-1 control-label">Perforista <span class="text-danger">*</span></label>
-                                    <div class="col-md-2">
-                                        <select class="form-control chosenPerforistaName" data-placeholder="Ingrese Nombre o Dni" id="val_explosivo-text-form-perforista" tabindex="2">
-                                            <option value=""></option>
-                                        </select>
-                                        <template id="template-opt-perforista">
-                                            <option id="0" value="" selected></option>
-                                            <option id="opt-perforista" value="">A</option>
-                                        </template>                                     
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="" class="col-md-12">R.U.C.:</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control" id="" placeholder="R.U.C.">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1442,7 +1534,7 @@
                                     <thead>
                                         <tr>
                                             <th style="width:20%" data-sort-initial="true" data-toggle="true">Código</th>
-                                            <th style="width:30%">Nombre del Material de Explosivo</th>
+                                            <th style="width:30%">Descripción</th>
                                             <th style="width:20%" data-hide="phone, tablet">Unid. Medida</th>
                                             <th data-hide="phone, tablet">Cantidad</th>
                                         </tr>
@@ -1456,107 +1548,6 @@
                                                 <input type="number" class="form-control" value="0" id="val_explosivo-text-form-emulnor_mil" name="">
                                             </td>
                                         </tr>
-                                        <tr id="tr-tbody-tareo">
-                                            <td>SSO 000631</td>
-                                            <td>Emulnor 3000</td>
-                                            <td>CAR</td>
-                                            <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-emulnor_tresmil" name="">
-                                            </td>                                                        
-                                        </tr>
-                                        <tr id="tr-tbody-tareo">
-                                            <td>SSO 000568</td>
-                                            <td>Dinamita Pulverulenta 65_7/8</td>
-                                            <td>CAR</td>
-                                            <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-valdin_pulv" name="">
-                                            </td>
-                                        </tr>
-                                        <tr id="tr-tbody-tareo">
-                                            <td>SSO 000632</td>
-                                            <td>Carmex 7</td>
-                                            <td>CAR</td>
-                                            <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-carmexsiete" name="">
-                                            </td>                                                        
-                                        </tr>
-                                        <tr id="tr-tbody-tareo">
-                                            <td>SSO 000633</td>
-                                            <td>Carmex 8</td>
-                                            <td>CAR</td>
-                                            <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-carmexocho" name="">
-                                            </td>                                                        
-                                        </tr>
-                                        <tr id="tr-tbody-tareo">
-                                            <td>SSO 000438</td>
-                                            <td>Mecha Rapida</td>
-                                            <td>MTS</td>
-                                            <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-mecha_rapida_zdiesocho" name="">
-                                            </td>
-                                        </tr>
-                                        <tr id="tr-tbody-tareo">
-                                            <td>SSO 000436</td>
-                                            <td>Mecha Lenta</td>
-                                            <td>MTS</td>
-                                            <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-mecha_lenta" name="">
-                                            </td>
-                                        </tr>
-                                        <tr id="tr-tbody-tareo">
-                                            <td>SSO 000454</td>
-                                            <td>Fulminantes</td>
-                                            <td>UND</td>
-                                            <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-fuminante_ocho" name="">
-                                            </td>
-                                        </tr>
-                                        <tr id="tr-tbody-tareo">
-                                            <td>SSO 000514</td>
-                                            <td>Conector para Mecha</td>
-                                            <td>UND</td>
-                                            <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-conecto_mecha" name="">
-                                            </td>
-                                        </tr>
-                                        <tr id="tr-tbody-tareo">
-                                            <td>SSO 000613</td>
-                                            <td>Block de Sugeción</td>
-                                            <td>UND</td>
-                                            <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-blSugecion" name="">
-                                            </td>
-                                        </tr>
-                                        <tr id="tr-tbody-tareo">
-                                            <td>MTC000077</td>
-                                            <td>Car. cortado 13 cm</td>
-                                            <td>UND</td>
-                                            <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-carcortado13" name="">
-                                            </td>
-                                        </tr>
-                                        <tr id="tr-tbody-tareo">
-                                            <td>SSO 000439</td>
-                                            <td>Dinamita Semigelatinosa de 65%</td>
-                                            <td>CAR</td>
-                                            <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-valdin_semi" name="">
-                                            </td>                                                        
-                                        </tr>
-                                        <!--
-                                        
-                                        
-                                        
-                                        <tr>
-                                            <td>SSO 000436</td>
-                                            <td>Mecha</td>
-                                            <td>MTS</td>
-                                            <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-mecha" name="">
-                                            </td>
-                                        </tr>
-                                    -->
                                     </tbody>
                                 </table>
                             </div>
@@ -1629,8 +1620,8 @@
     <!--Panel [ SAMPLE ]-->
     <script src="./../../../js/demo/ui-panels.js"></script>
 
-    <!--Date-MYSQL [ REQUIRED ]-->
-    <script src="./../../../js/valeExplosivos.js"></script>
+    <!--Date-MYSQL [ REQUIRED ]
+    <script src="./../../../js/valeExplosivos.js"></script>-->
 
     <!--Bootstrap Validator [ OPTIONAL ]-->
     <script src="./../../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
@@ -1656,299 +1647,6 @@
             $('#table-master thead tr').clone(true).addClass('filters').appendTo('#table-master thead');
             tableMaster = $('#table-master').DataTable
             ({
-                //* Activa el desplazamiento horizontal agregar class a tabla(nowrap)
-                scrollX: true,
-                //* Forzará la altura de la ventana gráfica de la tabla segun al tamaño indicado
-                //scrollY: 400,
-                //scrollCollapse: true,
-                //* Configuracion columna filtro
-                responsive: true,
-                orderCellsTop: true,
-                fixedHeader: true,
-                initComplete: function () {
-                var api = this.api();
-    
-                // For each column
-                api
-                    .columns()
-                    .eq(0)
-                    .each(function (colIdx) {
-                        // Set the header cell to contain the input element
-                        var cell = $('.filters th').eq(
-                            $(api.column(colIdx).header()).index()
-                        );
-                        var title = $(cell).text();
-                        $(cell).html('<input class="form-control" type="text" placeholder="Buscar ' + title + '" />');
-    
-                        // On every keypress in this input
-                        $(
-                            'input',
-                            $('.filters th').eq($(api.column(colIdx).header()).index())
-                        )
-                            .off('keyup change')
-                            .on('keyup change', function (e) {
-                                e.stopPropagation();
-    
-                                // Get the search value
-                                $(this).attr('title', $(this).val());
-                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
-    
-                                var cursorPosition = this.selectionStart;
-                                // Search the column for that value
-                                api
-                                    .column(colIdx)
-                                    .search(
-                                        this.value != ''
-                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                            : '',
-                                        this.value != '',
-                                        this.value == ''
-                                    )
-                                    .draw();
-    
-                                $(this)
-                                    .focus()[0]
-                                    .setSelectionRange(cursorPosition, cursorPosition);
-                            });
-                    });
-            },
-                /* fixedColumns: {
-                    right: 1,
-                }, */
-                order: [[ 1, "desc" ]],
-                columns: [
-                    {
-                        data: "valexplosivo_preimpresor",
-                        responsivePriority: 1,
-                        //width: "50% !important",
-                    },
-                    {
-                        data: "valexplosivo_fecha",
-                    },
-                    {
-                        data: "valexplosivo_codigoRegistro",
-                    },
-                    {
-                        data: "valexplosivo_nvale",
-                    },
-                    {
-                        data: "valexplosivo_turno",
-                    },
-                    {
-                        data: "labZona_nombre",
-                    },
-                    {
-                        data: "lab_ccostos",
-                    },
-                    {
-                        data: "labNombre_nombre",
-                    },
-                    {
-                        data: "lab_nivel",
-                    },
-                    {
-                        data: "valexplosivo_tipDisparo",
-                    },
-                    {
-                        data: "valexplosivo_tipEn",
-                    },
-                    {
-                        defaultContent: '<button type="button" class="btn-view btn btn-success btn-tableMaster-detalle"><i class="fa fa-eye"></i> <span class="hidden-xs hidden-sm">Detalle<span></button> <button type="button" class="name btn btn-primary btn-tableMaster-edit"><i class="fa fa-edit"></i> <span class="hidden-xs hidden-sm">Editar</span></button> <button type="button" class="position btn btn-danger btn-tableMaster-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>'
-                    }
-                ],
-                language: {
-                    "decimal": "",
-                    "emptyTable": "No hay registro de ",
-                    "info": "Mostrando _START_ a _END_ de _TOTAL_",
-                    "infoEmpty": "Mostrando 0 to 0 of 0 ",
-                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Mostrar _MENU_ ",
-                    "loadingRecords": "Cargando...",
-                    "processing": "Procesando...",
-                    "search": "Busqueda General :",
-                    "zeroRecords": "Sin resultados encontrados",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Ultimo",
-                        "next": "Siguiente",
-                        "previous": "Anterior"
-                    },
-                    "buttons": {
-                        "copy": "Copiar",
-                        "colvis": "Visibilidad",
-                        "collection": "Colección",
-                        "colvisRestore": "Restaurar visibilidad",
-                        "print": "Imprimir",
-                        "pageLength": {
-                            "-1": "Mostrar todas las filas",
-                            "_": "Mostrar %d filas",
-                        },
-                    }
-                },
-                rowReorder: {
-                    selector: 'td:nth-child(2)'
-                },
-                dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
-                buttons: [
-                    {
-                        text: '<i class="btn-label fa-solid fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>',
-                        action: function(e, dt, node, conf) {
-                            const form_request1 = {
-                                "accion": "getLast_record",
-                            }
-                            getLast_record(form_request1);
-                            // Funcion para enfocar input
-                            setTimeout(function() {
-                            // JQUERY
-                            // $('#val_explosivo-text-form-n_vale').focus();
-                            // JAVASCRIPT
-                            inputNVale.focus();
-                            }, 1000);
-                            //Capturo posible error compatibilidad con navegador
-                            /* try {
-                                nvalzfill = nvale, padStart(7, 0);
-                            } catch (e) {
-                                nvalzfill = zfill(nvale, 7);
-                                // Manejar Errores
-                                //console.error('Se encontro error : '+e);
-                                //console.error('Nombre : '+e.name);
-                                //console.error('Mensaje : '+e.message);
-                                } finally {
-                                    // Obtengo N° vale
-                                    inputNVale.value = nvalzfill;
-                                } */
-
-                            //Preparamos formato
-                            var selectCodZonaForm = {
-                                "accion": "getSelect_zonaNombre",
-                            }
-                            var selectCostLaborForm = {
-                                "accion": "getcolumnAll",
-                                "column": "lab_ccostos"
-                            }
-                            var selectPerforistaForm = {
-                                "accion": "getcolumnAll",
-                                "column": "col_nombres"
-                            }
-
-                            // Enviamos Formato Zona
-                            fetchDataZona(selectCodZonaForm);
-
-                            // Enviamos Formato Labor
-                            fetchDataLabor(selectCostLaborForm);
-
-                            // Enviamos Formato Perforista
-                            fetchDataPerforista(selectPerforistaForm);
-                            $("#modal-insert").modal("show");
-                        },
-                        className: 'btn btn-success btn-labeled', //Primary class for all buttons
-                        attr: {
-                            title: 'Agregar nuevo labor',
-                            id: 'btn-insert'
-                        }
-                    },
-                    {
-                        text: '<i class="btn-label fa fa-refresh"></i><span class="hidden-xs">Actualizar</span>',
-                        action: function(e, dt, node, conf) {
-                            let form_request1 = {
-                                "accion": "table",
-                            }
-                            fetchData(form_request1);
-                        },
-                        className: 'btn btn-info btn-labeled' //Primary class for all buttons
-                    },
-                    {
-                        extend: 'collection',
-                        text: '<i class="btn-label fa fa-download"></i><span class="hidden-xs"> Exportar</span>',
-                        className: 'btn-labeled',
-                        //* Botones
-                        buttons: [
-                            //* Boton exportar copiar
-                            {
-                                //* Indicar Acción
-                                extend: 'copy',
-                                //* Mensaje hove
-                                titleAttr: 'Copiar Tabla',
-                                //
-                                title: '',
-                                //* Clases agregados
-                                className: 'btn-labeled',
-                                //* Texto u Boton
-                                text: '<i class="btn-label fas fa-copy"></i> Copiar',
-                                //* Indicar que columns se usará
-                                exportOptions: {
-                                    columns: [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                                }
-                            },
-                            {
-                                extend: 'excel',
-                                text: '<i class="btn-label fa fa-file-excel-o"></i> Excel',
-                                titleAttr: 'Excel',
-                                title: '',
-                                className: 'btn-labeled',
-                                exportOptions: {
-                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                                }
-                            },
-                            {
-                                extend: 'csv',
-                                text: '<i class="btn-label fa fa-file-csv"></i> CSV',
-                                titleAttr: 'CSV',
-                                className: 'btn-labeled',
-                                exportOptions: {
-                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                                }
-                            },
-                            {
-                                extend: 'pdf',
-                                text: '<i class="btn-label fa fa-file-pdf-o"></i> PDF',
-                                titleAttr: 'PDF',
-                                className: 'btn-labeled',
-                                exportOptions: {
-                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                                }
-                            },
-                        ]
-                    },
-                    {
-                        text: '<i class="btn-label fa fa-file-excel-o"></i><span class="hidden-xs"> Excel</span>',
-                            className: 'btn btn-primary', //Primary class for all buttons
-                        tag: 'a',
-                        action: function(e, dt, node, config) {
-                            //This will send the page to the location specified
-                            window.location.href = './../../excelGenerator.php?table=view_vales_explosivo';
-                        },
-                        init: function(dt, node, config) {
-                            $(node).attr('href', './../../excelGenerator.php?table=view_vales_explosivo');
-                            $(node).attr('download', '');
-                            $(node).attr('title', 'Descargar Archivo');
-                        }
-                    },
-                    {
-                        text: '<i class="btn-label fa fa-upload"></i><span class="hidden-xs">Importar</span>',
-                        action: function(e, dt, node, conf) {
-                            $("#modal-import").modal("show");
-                        },
-                        className: 'btn btn-primary btn-labeled' //Primary class for all buttons
-                    },
-                    {
-                        extend: 'print',
-                        text: '<i class="btn-label fa fa-print"></i><span class="hidden-xs">print</span>',
-                        titleAttr: 'PDF',
-                        className: 'btn-labeled', //Primary class for all buttons
-                        exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                        }
-                    },
-                    {
-                        extend: 'colvis',
-                        text: '<i class="btn-label fa fa-eye"></i><span class="hidden-xs">Mostrar / Ocultar</span>',
-                        className: 'btn-labeled' //Primary class for all buttons
-                    },
-                    'refresh',
-                ], 
             });
         //* CONFIGURACIONES EXTERNOS
         });
@@ -1961,457 +1659,13 @@
         const fetchData = async (request) => {
             const body = new FormData();
             body.append("data", JSON.stringify(request));
-            const res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
+            const res = await fetch('./../../../controllers/controllerApis.php', {
                 method: "POST",
                 body
             });
             const data = await res.json()
             let rptSql = data['sql'];
-            paintTable(rptSql);
         }
-        const paintTable = async (rptSql) => {
-            // Actualiza la tabla
-            tableMaster.clear();
-            tableMaster.rows.add(rptSql).draw();
-        }
-        $('.chosenTurno').chosen();
-        // Setup - add a text input to each footer cell
-        // ARREGLAR RESPONSIVE
-        
-        let options = {
-            "sScrollX": "100%",
-            "sScrollXInner": "110%",
-            "bScrollCollapse": true,
-            "colReorder": true
-        };
-        
-        //* DETALLE REGISTRO
-        $('#table-master tbody').on('click', '.btn-tableMaster-detalle', function() {
-            $("#modal-detail").modal("show");
-            const data = tableMaster.row($(this).parents('tr')).data();
-            let form_request = {
-                "accion": "getRow",
-                "id": data['valexplosivo_codigoRegistro']
-            }
-            getRowView(form_request);
-        });
-        const getRowView = async (request) => {
-            const body = new FormData();
-            body.append("data", JSON.stringify(request));
-            const res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
-                method: "POST",
-                body
-            });
-            const data = await res.json();
-            rptSql = data['sql'];
-            console.log(rptSql);
-            paintForm_view(rptSql)
-        }
-        
-        const paintForm_view = (rptSql) => {
-            iptView_digitador.value = rptSql[0]['cbUsu_nombres']+' '+rptSql[0]['cbUsu_apePaterno']+' '+rptSql[0]['cbUsu_apeMaterno'];
-            iptView_preImpreso.value = rptSql[0]['valexplosivo_preimpresor'];
-            iptView_nVale.value = rptSql[0]['valexplosivo_nvale'];
-            iptView_zona.value = rptSql[0]['labZona_nombre'];
-            iptView_turno.value = rptSql[0]['valexplosivo_turno'];
-            iptView_fecha.value = rptSql[0]['valexplosivo_fecha'];
-            iptView_laborCodigo.value = rptSql[0]['lab_ccostos'];
-            iptView_laborNombre.value = rptSql[0]['labNombre_nombre'];
-            iptView_laborNivel.value = rptSql[0]['lab_nivel'];
-            document.querySelector('input[name=view-form-radio-tipo_disparo][value='+rptSql[0]['valexplosivo_tipDisparo']+']').checked = true;
-            document.querySelector('input[name=view-form-radio-tipo_en][value='+rptSql[0]['valexplosivo_tipEn']+']').checked = true;
-            iptView_barra.value = rptSql[0]['valexplosivo_barra'];
-            iptView_lgtMt.value = rptSql[0]['valexplosivo_lgt'];
-            iptView_nTaladror.value = rptSql[0]['valexplosivo_numTaladro'];
-            iptView_talVacio.value = rptSql[0]['valexplosivo_talVacio'];
-            iptView_piesPerf.value = rptSql[0]['valexplosivo_piePerf'];
-            iptView_piesReal.value = rptSql[0]['valexplosivo_pieReal'];
-            iptView_dinSemi_res.value = rptSql[0]['valexplosivo_dimSemigelatinosa_Result'];
-            iptView_dinPulv_res.value = rptSql[0]['valexplosivo_dimPulverulenta_Result'];
-            iptView_dinPulv_dinSemi_suma.value = rptSql[0]['valexplosivo_sumaSemiPulv'];
-            iptView_nMaquinas.value = rptSql[0]['valexplosivo_numMaquina'];
-            iptView_perforista.value = rptSql[0]['col_apePaterno']+' '+rptSql[0]['col_apeMaterno']+' '+rptSql[0]['col_nombres'];
-
-            iptView_emulnorMil.value = rptSql[0]['valexplosivo_emulmil'];
-            iptView_emulnorTresMil.value = rptSql[0]['valexplosivo_emultresmil'];
-            iptView_dinPulv.value = rptSql[0]['valexplosivo_dimPulverulenta'];
-            iptView_carmexSiete.value = rptSql[0]['valexplosivo_carmexsiete'];
-            iptView_carmexOcho.value = rptSql[0]['valexplosivo_carmexocho'];
-            iptView_mechaRapida.value = rptSql[0]['valexplosivo_mecRapida'];
-            iptView_mechaLenta.value = rptSql[0]['valexplosivo_mecLenta'];
-            iptView_Fulminante.value = rptSql[0]['valexplosivo_fulN'];
-            iptView_conectorMecha.value = rptSql[0]['valexplosivo_conMecha'];
-            iptView_blkSugecion.value = rptSql[0]['valexplosivo_BlockSugecion'];
-            iptView_carCortado.value = rptSql[0]['valexplosivo_carcortrece'];
-            iptView_dinSemi.value = rptSql[0]['valexplosivo_dimSemigelatinosa'];
-        }
-        //* EDITAR REGISTRO
-        $('#table-master tbody').on('click', '.btn-tableMaster-edit', function() {
-            $("#modal-edit").modal("show");
-            const data = tableMaster.row($(this).parents('tr')).data();
-            let formRequest = {
-                "accion": "getRow",
-                "id": data['valexplosivo_codigoRegistro']
-            }
-            getRowEdit(formRequest);
-        });
-        const getRowEdit = async (formRequest) => {
-            try {
-                //* DECLARAION DE VARIABLES *//
-                var body = new FormData();
-                let form_request;
-                let res;
-                let data;
-                let state;
-
-                //* PETICIONES *//
-                form_request = {
-                    "accion": "getDatalistAll_zonaNombre",
-                }
-                //* Primera petición DATALIST ZONA
-                body.append('data', JSON.stringify(form_request));
-                res = await fetch('./../../../controllers/controllerLaborList.php', {
-                    method: "POST",
-                    body
-                });
-                body.delete('data');
-                data = await res.json();
-                data = data['sql'];
-                state = await paintSelectEdit_laborZona_zonaNombre(data);
-                
-                //* Segunda Petición DATALIST LABOR
-                form_request = {
-                "accion": "getDatalistAll_ccosto",
-                }
-                body.append('data', JSON.stringify(form_request));
-                res = await fetch('./../../../controllers/controllerLaborList.php', {
-                    method: "POST",
-                    body
-                });
-                body.delete('data');
-                data = await res.json();
-                data = data['sql'];
-                state = await paintSelectEdit_labor_laborCCosto(data);
-                //* Tercera Petición DATALIST PERFORISTA
-                form_request = {
-                "accion": "getDatalistAll_nombres_perforista",
-                }
-                body.append('data', JSON.stringify(form_request));
-                res = await fetch('./../../../controllers/controllerColaboradorList.php', {
-                    method: "POST",
-                    body
-                });
-                body.delete('data');
-                data = await res.json();
-                data = data['sql'];
-                state = await paintSelectEdit_perforista_colaborador(data);
-                //* Cuarta Petición Seleccionar
-                body.append('data', JSON.stringify(formRequest));
-                res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
-                    method: "POST",
-                    body
-                });
-                body.delete('data');
-                data = await res.json();
-                data = data['sql']
-                painFrom_edit(data);
-                //paintSelectEdit_colaborador_nombres_perforista();
-            }
-            catch (e) {
-                console.error(e);
-            } finally {
-                console.log('Nosotras hacemos limpieza aqui');
-            }
-           
-        }
-        const paintSelectEdit_laborZona_zonaNombre = data => {
-            datalist_zonaNombre.innerHTML = '';
-            /* console.log('Pintando Zona');
-            console.log(typeof data);
-            console.log(data); */
-            data.forEach(item => {
-                templateDatalist_zonaNombre.querySelector('option').textContent = item.labZona_nombre;
-                templateDatalist_zonaNombre.querySelector('option').value = item.labZona_nombre;
-                templateDatalist_zonaNombre.querySelector('option').dataset.idZona = item.id_zona;
-                const clone = templateDatalist_zonaNombre.cloneNode(true)
-                fragment.appendChild(clone)
-            })
-            datalist_zonaNombre.appendChild(fragment);
-        }
-        const paintSelectEdit_labor_laborCCosto = data =>{
-            datalist_laborCCosto.innerHTML = '';
-            data.forEach(item => {
-                templateDatalist_laborCCosto.querySelector('option').textContent = item.lab_ccostos;
-                templateDatalist_laborCCosto.querySelector('option').value = item.lab_ccostos;
-                templateDatalist_laborCCosto.querySelector('option').dataset.idCCosto = item.id_labor;
-                const clone = templateDatalist_laborCCosto.cloneNode(true)
-                fragment.appendChild(clone)
-            })
-            datalist_laborCCosto.appendChild(fragment);
-        }
-        const paintSelectEdit_perforista_colaborador = data =>{
-            datalist_perforistaNombres.innerHTML = '';
-            data.forEach(item => {
-                templateDatalist_perforista_colaborador.querySelector('option').textContent = item.col_apePaterno+' '+item.col_apeMaterno+' '+item.col_nombres;
-                templateDatalist_perforista_colaborador.querySelector('option').value = item.col_apePaterno+' '+item.col_apeMaterno+' '+item.col_nombres;
-                templateDatalist_perforista_colaborador.querySelector('option').dataset.idPerforista = item.id_colaborador;
-                const clone = templateDatalist_perforista_colaborador.cloneNode(true)
-                fragment.appendChild(clone)
-            })
-            datalist_perforistaNombres.appendChild(fragment);
-        }
-        const painFrom_edit = (rptSql) => {
-            iptEdit_digitador.value = rptSql[0]['cbUsu_nombres']+' '+rptSql[0]['cbUsu_apePaterno']+' '+rptSql[0]['cbUsu_apeMaterno'];
-            iptEdit_preImpreso.value = rptSql[0]['valexplosivo_preimpresor'];
-            iptEdit_nVale.value = rptSql[0]['valexplosivo_nvale'];
-            iptEdit_zonaNombre.value = rptSql[0]['labZona_nombre'];
-            iptEdit_turno.value = rptSql[0]['valexplosivo_turno'];
-            iptEdit_fecha.value = rptSql[0]['valexplosivo_fecha'];
-            iptEdit_ccosto.value = rptSql[0]['lab_ccostos'];
-            iptEdit_laborNombre.value = rptSql[0]['labNombre_nombre'];
-            iptEdit_laborNivel.value = rptSql[0]['lab_nivel'];
-            document.querySelector('input[name=edit-form-radio-tipo_disparo][value='+rptSql[0]['valexplosivo_tipDisparo']+']').checked = true;
-            document.querySelector('input[name=edit-form-radio-tipo_en][value='+rptSql[0]['valexplosivo_tipEn']+']').checked = true;
-            iptEdit_barra.value = rptSql[0]['valexplosivo_barra'];
-            iptEdit_lgtMt.value = rptSql[0]['valexplosivo_lgt'];
-            iptEdit_nTaladro.value = rptSql[0]['valexplosivo_numTaladro'];
-            iptEdit_talVacio.value = rptSql[0]['valexplosivo_talVacio'];
-            iptEdit_piesPerf.value = rptSql[0]['valexplosivo_piePerf'];
-            iptEdit_piesReal.value = rptSql[0]['valexplosivo_pieReal'];
-            iptEdit_res_dinSemi.value = rptSql[0]['valexplosivo_dimSemigelatinosa_Result'];
-            iptEdit_res_dinPulv.value = rptSql[0]['valexplosivo_dimPulverulenta_Result'];
-            iptEdit_suma_dimPulv_dimSemi.value = rptSql[0]['valexplosivo_sumaSemiPulv'];
-            iptEdit_nMaquinas.value = rptSql[0]['valexplosivo_numMaquina'];
-            iptEdit_perforista.value = rptSql[0]['col_apePaterno']+' '+rptSql[0]['col_apeMaterno']+' '+rptSql[0]['col_nombres'];
-
-            iptEdit_emulnorMil.value = rptSql[0]['valexplosivo_emulmil'];
-            iptEdit_emulnorTresmil.value = rptSql[0]['valexplosivo_emultresmil'];
-            iptEdit_dinamitaPulverulenta.value = rptSql[0]['valexplosivo_dimPulverulenta'];
-            iptEdit_carmen7.value = rptSql[0]['valexplosivo_carmexsiete'];
-            iptEdit_carmen8.value = rptSql[0]['valexplosivo_carmexocho'];
-            iptEdit_mechaRapida.value = rptSql[0]['valexplosivo_mecRapida'];
-            iptEdit_mechaLenta.value = rptSql[0]['valexplosivo_mecLenta'];
-            iptEdit_fulminante.value = rptSql[0]['valexplosivo_fulN'];
-            iptEdit_conectorMecha.value = rptSql[0]['valexplosivo_conMecha'];
-            iptEdit_blockSugeccion.value = rptSql[0]['valexplosivo_BlockSugecion'];
-            iptEdit_carCortado13.value = rptSql[0]['valexplosivo_carcortrece'];
-            iptEdit_dinamitaSemigelatinosa.value = rptSql[0]['valexplosivo_dimSemigelatinosa'];
-        }
-        btnEdit_insert.addEventListener("click", (e) => {
-            console.log('Se insertara');
-            alertEdit.innerHTML = ''
-            val_preImpreso = iptEdit_preImpreso.value;
-            val_nVale = iptEdit_nVale.value
-            val_zonaNombre = iptEdit_zonaNombre.value;
-            val_zonaId = document.querySelector('#edit-dt-valesExplosivo-zonaNombre option[value="' + val_zonaNombre + '"]').dataset.idZona;
-            val_turno = iptEdit_turno.value;
-            val_fecha = iptEdit_fecha.value;
-            val_ccosto = iptEdit_ccosto.value;
-            val_laborId = document.querySelector('#edit-dt-valesExplosivo-laborCCosto option[value="' + val_ccosto + '"]').dataset.idCCosto;
-            val_tipoDisparo = document.querySelector('input[name="edit-form-radio-tipo_disparo"]:checked').value;
-            val_tipoEn = document.querySelector('input[name="edit-form-radio-tipo_en"]:checked').value;
-            val_barra = iptEdit_barra.value;
-            val_lgtMt = iptEdit_lgtMt.value;
-            val_nTaladro = iptEdit_nTaladro.value;
-            val_talVacio = iptEdit_talVacio.value;
-            val_piesPerf = iptEdit_piesPerf.value;
-            val_piesReal = iptEdit_piesReal.value;
-            val_res_dinSemi = iptEdit_res_dinSemi.value;
-            val_res_dinPulv = iptEdit_res_dinPulv.value;
-            val_suma_dimPulv_dimSemi = iptEdit_suma_dimPulv_dimSemi.value;
-            val_nMaquinas = iptEdit_nMaquinas.value;
-            val_perforista = iptEdit_perforista.value;
-            val_perforista_idColaborador = document.querySelector('#edit-dt-valesExplosivo-perforista option[value="' + val_perforista + '"]').dataset.idPerforista;
-            val_emulnorMil = iptEdit_emulnorMil.value;
-            val_emulnorTresmil = iptEdit_emulnorTresmil.value;
-            val_dinamitaPulverulenta = iptEdit_dinamitaPulverulenta.value;
-            val_carmen7 = iptEdit_carmen7.value;
-            val_carmen8 = iptEdit_carmen8.value;
-            val_mechaRapida = iptEdit_mechaRapida.value;
-            val_mechaLenta = iptEdit_mechaLenta.value;
-            val_fulminante = iptEdit_fulminante.value;
-            val_conectorMecha = iptEdit_conectorMecha.value;
-            val_blockSugeccion = iptEdit_blockSugeccion.value;
-            val_carCortado13 = iptEdit_carCortado13.value;
-            val_dinamitaSemigelatinosa = iptEdit_dinamitaSemigelatinosa.value;
-            let val_totalKilos_dinamitaEmulnorMil = calcular_KilosDinamita(val_emulnorMil, parseFloat('0.09615385'));
-            let val_totalKilos_dinamitaEmulnorTresmil = calcular_KilosDinamita(val_emulnorTresmil, parseFloat('0.09469697'));
-            let formList = {
-                'preImpreso': val_preImpreso,
-                'nVale': val_nVale,
-                'zonId': val_zonaId,
-                'zonaNombre': val_zonaNombre,
-                'turno': val_turno,
-                'fecha': val_fecha,
-                'idLabor': val_laborId,
-                'ccosto': val_ccosto,
-                'tipoDisparo': val_tipoDisparo,
-                'tipoEn': val_tipoEn,
-                'barra': val_barra,
-                'lgt': val_lgtMt,
-                'nTaladros': val_nTaladro,
-                'talVacio': val_talVacio,
-                'piesPerf': val_piesPerf,
-                'piesReal': val_piesReal,
-                'res_dinSemi': val_res_dinSemi,
-                'res_dinPulv': val_res_dinPulv,
-                'suma_dimPulv_dimSemi': val_suma_dimPulv_dimSemi,
-                'nMaquinas': val_nMaquinas,
-                'idColaborador_perforista': val_perforista_idColaborador,
-                'emulnorMil': val_emulnorMil,
-                'emulnorTresmil': val_emulnorTresmil,
-                'dinamitaPulverulenta': val_dinamitaPulverulenta,
-                'carmen7': val_carmen7,
-                'carmen8': val_carmen8,
-                'mechaRapida': val_mechaRapida,
-                'mechaLenta': val_mechaLenta,
-                'fulminante': val_fulminante,
-                'conectorMecha': val_conectorMecha,
-                'blockSugeccion': val_blockSugeccion,
-                'carCortado13': val_carCortado13,
-                'dinamitaSemigelatinosa': val_dinamitaSemigelatinosa,
-                'totalKilos_dinamitaEmulnorMil': val_totalKilos_dinamitaEmulnorMil,
-                'totalKilos_dinamitaEmulnorTresmil': val_totalKilos_dinamitaEmulnorTresmil
-            }
-            form_request = {
-                "accion": "edit",
-                'form':formList
-            }
-            console.log(formList);
-            requestEdit(form_request);
-        });
-
-        const requestEdit = async (form_request) => {
-            const body = new FormData();
-            body.append("data", JSON.stringify(form_request));
-            const returned = await fetch("./../../../controllers/controllerValeExplosivo.php", {
-                method: "POST",
-                body
-            });
-            const result = await returned.json(); //await JSON.parse(returned);
-            console.log(result);
-            afterRequestEdit(result)
-        }
-        const afterRequestEdit = (data) => {
-            alertInsert.innerHTML = '';
-            sqlRpt = data['sql'];
-            mainEvents();
-            if (sqlRpt['estado'] == 1) {
-                $.niftyNoty({
-                    type: 'success',
-                    container: '#alerts-Edit',
-                    html: '<strong>Bien hecho!</strong> ' + sqlRpt['mensaje'] + ', codigo generado : [' + sqlRpt['coperacion'] + ']',
-                    focus: false,
-                    timer: 8000
-                });
-                console.log('Si');
-            } else {
-                if (data['rptController']['estado'] == 0) {
-                    $.niftyNoty({
-                        type: 'danger',
-                        container: '#alerts-Edit',
-                        html: '<strong>Oh cielos!</strong> ' + data['rptController']['mensaje'],
-                        focus: false,
-                    });
-                } else {
-                    $.niftyNoty({
-                        type: 'danger',
-                        container: '#alerts-Edit',
-                        html: '<strong>Oh cielos!</strong> ' + sqlRpt['messageUser'],
-                        focus: false,
-                    });
-                }
-
-                console.log('No');
-            }
-            console.log(data);
-        };
-
-        //* ELIMINAR REGISTRO
-        $('#table-master tbody').on('click', '.btn-tableMaster-delet', function() {
-            mainEvents()
-            var data = tableMaster.row($(this).parents('tr')).data();
-            swal({
-                title: "Estas seguro?",
-                text: "Una vez eliminado, no podrá recuperarlo!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            }).then((willDelete) => {
-                if (willDelete) {
-                    let form_request = {
-                        "accion": "delete",
-                        "id": data['valexplosivo_codigoRegistro']
-                    }
-                    requestDelete(form_request);
-                    swal("¡La información ha sido eliminado!", {
-                        icon: "success",
-                    });
-                } else {
-                    swal("¡La información está a salvo!");
-                }
-            });
-        });
-        // Se envia Formulario
-        const requestDelete = async (form_request) => {
-            const body = new FormData();
-            body.append("data", JSON.stringify(form_request));
-            const returned = await fetch("./../../../controllers/controllerValeExplosivo.php", {
-                method: "POST",
-                body
-            });
-            const result = await returned.json(); //await JSON.parse(returned);
-
-            afterRequestInsert(result);
-        }
-        //* Obtenemos el valor siguiente
-        const getLast_record = async (request) => {
-            const body = new FormData();
-            body.append("data", JSON.stringify(request));
-            const res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
-                method: "POST",
-                body
-            });
-            const data = await res.json();
-            rptSql = data['sql'];
-            paintNVale(rptSql);
-        }
-
-        //*
-        const paintNVale = async (rptSql) => {
-            
-            nvalAnterior = rptSql[0]['valexplosivo_nvale'];
-            nvaleProx = parseInt(nvalAnterior)+parseInt(1);
-            try {
-                valZFill_nvalProx = zfill(nvaleProx, 6);
-                console.log(zfill(nvaleProx, 6)); //00324 
-            } catch (e) {
-                nvalzfill = zfill(nvale, 6);
-                // Manejar Errores
-                //console.error('Se encontro error : '+e);
-                //console.error('Nombre : '+e.name);
-                //console.error('Mensaje : '+e.message);
-            } finally {
-                // Obtengo N° vale
-                inputNVale.value = valZFill_nvalProx;
-            }
-        }
-        // Traer JSON para Tabla (ZONA)
-        const fetchEdit_Zona = async (json) => {
-            try {
-                
-            } catch (error) {
-                
-            }
-            const body = new FormData();
-            body.append("data", JSON.stringify(json));
-            const rpt = await fetch('./../../../controllers/controllerZonaList.php', {
-                method: "POST",
-                body
-            });
-            
-            const rptJson = await rpt.json(); //await JSON.parse(returned);
-        };
     </script>
 </body>
 </html>

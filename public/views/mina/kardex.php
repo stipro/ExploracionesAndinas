@@ -161,54 +161,496 @@
                                     <fieldset>
                                         <legend>
                                             <div class="panel-heading">
-					                            <h3 class="panel-title">VALES DE EXPLOSIVOS</h3>
+					                            <h3 class="panel-title">KARDEX</h3>
 					                        </div>
                                         </legend>
                                         <div class="table-responsive-md">
                                             <table class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" cellspacing="0" id="table-master">
+                                                <colgroup>
+                                                    <col class=""/>
+                                                    <col class=""/>
+                                                    <col class=""/>
+                                                    <col class="green" span="1" />
+                                                    <col class="orange" span="1"/>
+                                                    <col class="blue" span="1"/>
+                                                </colgroup>
                                                 <thead class="thead-dark">
                                                     <tr>
-                                                        <th width="20% !important">PreImpreso</th>
+                                                        <th>PreImpreso</th>
                                                         <th>Fecha</th>
                                                         <th>cód. Registro</th>
-                                                        <th>N. Vale</th>
-                                                        <th>Turno</th>                                                       
-                                                        <th>Zona</th>
-                                                        <th>C. Costos</th>
-                                                        <th>Nombre</th>
-                                                        <th>Nivel</th>
-                                                        <th>Tipo Disparo</th>
-                                                        <th>Disparo en</th>
-                                                        <th class="all">Operaciónes</th>
-                                                        <!-- <th data-sort-ignore="true" class="min-width"></th>
-                                                        <th data-sort-initial="true" data-toggle="true">Usuario</th>
-                                                        <th>Fecha</th>
-                                                        <th data-hide="phone, tablet">Zona</th>
-                                                        <th data-hide="phone, tablet">N° Vale</th>
-                                                        <th data-hide="phone, tablet">Turno</th>
-                                                        <th data-hide="phone, tablet">preImpreso</th>
-                                                        <th data-hide="phone, tablet">Labor</th>
-                                                        <th data-hide="phone, tablet">tip Disparo</th>
-                                                        <th data-hide="phone, tablet">Colaborador</th>
-                                                        <th data-hide="phone, tablet">TipEn</th>
-                                                        <th data-hide="phone, tablet">Barra</th>
-                                                        <th data-hide="phone, tablet">Lgt</th>
-                                                        <th data-hide="phone, tablet">n° Taladro</th>
-                                                        <th data-hide="phone, tablet">Taladro Vacio</th>
-                                                        <th data-hide="phone, tablet">Pie Perforado</th>
-                                                        <th data-hide="phone, tablet">n° Maquina</th>
-                                                        <th data-hide="phone, tablet">Din Semigelationsa 65</th>
-                                                        <th data-hide="phone, tablet">Din Semigelationsa Calculado</th>
-                                                        <th data-hide="phone, tablet">Din Pulverulenta 65</th>
-                                                        <th data-hide="phone, tablet">Din Pulverulenta 65 Calculado</th>
-                                                        <th data-hide="phone, tablet">Emulnor 1000</th>
-                                                        <th data-hide="phone, tablet">Emulsion Emulnor 3000 I"X7"</th> -->
+                                                        <th>Entrada</th>
+                                                        <th>Salida</th>
+                                                        <th>Saldos</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                <tr>
+                                                    <td>Tiger Nixon</td>
+                                                    <td>System Architect</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>61</td>
+                                                    <td>2011/04/25</td>
+                                                    <td>$3,120</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Garrett Winters</td>
+                                                    <td>Director</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>63</td>
+                                                    <td>2011/07/25</td>
+                                                    <td>$5,300</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ashton Cox</td>
+                                                    <td>Technical Author</td>
+                                                    <td>San Francisco</td>
+                                                    <td>66</td>
+                                                    <td>2009/01/12</td>
+                                                    <td>$4,800</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cedric Kelly</td>
+                                                    <td>Javascript Developer</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>22</td>
+                                                    <td>2012/03/29</td>
+                                                    <td>$3,600</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Jenna Elliott</td>
+                                                    <td>Financial Controller</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>33</td>
+                                                    <td>2008/11/28</td>
+                                                    <td>$5,300</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Brielle Williamson</td>
+                                                    <td>Integration Specialist</td>
+                                                    <td>New York</td>
+                                                    <td>61</td>
+                                                    <td>2012/12/02</td>
+                                                    <td>$4,525</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Herrod Chandler</td>
+                                                    <td>Sales Assistant</td>
+                                                    <td>San Francisco</td>
+                                                    <td>59</td>
+                                                    <td>2012/08/06</td>
+                                                    <td>$4,080</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Rhona Davidson</td>
+                                                    <td>Integration Specialist</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>55</td>
+                                                    <td>2010/10/14</td>
+                                                    <td>$6,730</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Colleen Hurst</td>
+                                                    <td>Javascript Developer</td>
+                                                    <td>San Francisco</td>
+                                                    <td>39</td>
+                                                    <td>2009/09/15</td>
+                                                    <td>$5,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sonya Frost</td>
+                                                    <td>Software Engineer</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>23</td>
+                                                    <td>2008/12/13</td>
+                                                    <td>$3,600</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Jena Gaines</td>
+                                                    <td>System Architect</td>
+                                                    <td>London</td>
+                                                    <td>30</td>
+                                                    <td>2008/12/19</td>
+                                                    <td>$5,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Quinn Flynn</td>
+                                                    <td>Financial Controller</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>22</td>
+                                                    <td>2013/03/03</td>
+                                                    <td>$4,200</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Charde Marshall</td>
+                                                    <td>Regional Director</td>
+                                                    <td>San Francisco</td>
+                                                    <td>36</td>
+                                                    <td>2008/10/16</td>
+                                                    <td>$5,300</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Haley Kennedy</td>
+                                                    <td>Senior Marketing Designer</td>
+                                                    <td>London</td>
+                                                    <td>43</td>
+                                                    <td>2012/12/18</td>
+                                                    <td>$4,800</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tatyana Fitzpatrick</td>
+                                                    <td>Regional Director</td>
+                                                    <td>London</td>
+                                                    <td>19</td>
+                                                    <td>2010/03/17</td>
+                                                    <td>$2,875</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Michael Silva</td>
+                                                    <td>Senior Marketing Designer</td>
+                                                    <td>London</td>
+                                                    <td>66</td>
+                                                    <td>2012/11/27</td>
+                                                    <td>$3,750</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Paul Byrd</td>
+                                                    <td>Javascript Developer</td>
+                                                    <td>New York</td>
+                                                    <td>64</td>
+                                                    <td>2010/06/09</td>
+                                                    <td>$5,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Gloria Little</td>
+                                                    <td>Systems Administrator</td>
+                                                    <td>New York</td>
+                                                    <td>59</td>
+                                                    <td>2009/04/10</td>
+                                                    <td>$3,120</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Bradley Greer</td>
+                                                    <td>Software Engineer</td>
+                                                    <td>London</td>
+                                                    <td>41</td>
+                                                    <td>2012/10/13</td>
+                                                    <td>$3,120</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Dai Rios</td>
+                                                    <td>System Architect</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>35</td>
+                                                    <td>2012/09/26</td>
+                                                    <td>$4,200</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Jenette Caldwell</td>
+                                                    <td>Financial Controller</td>
+                                                    <td>New York</td>
+                                                    <td>30</td>
+                                                    <td>2011/09/03</td>
+                                                    <td>$4,965</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Yuri Berry</td>
+                                                    <td>System Architect</td>
+                                                    <td>New York</td>
+                                                    <td>40</td>
+                                                    <td>2009/06/25</td>
+                                                    <td>$3,600</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Caesar Vance</td>
+                                                    <td>Technical Author</td>
+                                                    <td>New York</td>
+                                                    <td>21</td>
+                                                    <td>2011/12/12</td>
+                                                    <td>$4,965</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Doris Wilder</td>
+                                                    <td>Sales Assistant</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>23</td>
+                                                    <td>2010/09/20</td>
+                                                    <td>$4,965</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Angelica Ramos</td>
+                                                    <td>System Architect</td>
+                                                    <td>London</td>
+                                                    <td>36</td>
+                                                    <td>2009/10/09</td>
+                                                    <td>$2,875</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Gavin Joyce</td>
+                                                    <td>Developer</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>42</td>
+                                                    <td>2010/12/22</td>
+                                                    <td>$4,525</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Jennifer Chang</td>
+                                                    <td>Regional Director</td>
+                                                    <td>London</td>
+                                                    <td>28</td>
+                                                    <td>2010/11/14</td>
+                                                    <td>$4,080</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Brenden Wagner</td>
+                                                    <td>Software Engineer</td>
+                                                    <td>San Francisco</td>
+                                                    <td>18</td>
+                                                    <td>2011/06/07</td>
+                                                    <td>$3,750</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ebony Grimes</td>
+                                                    <td>Software Engineer</td>
+                                                    <td>San Francisco</td>
+                                                    <td>48</td>
+                                                    <td>2010/03/11</td>
+                                                    <td>$2,875</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Russell Chavez</td>
+                                                    <td>Director</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>20</td>
+                                                    <td>2011/08/14</td>
+                                                    <td>$3,600</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Michelle House</td>
+                                                    <td>Integration Specialist</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>37</td>
+                                                    <td>2011/06/02</td>
+                                                    <td>$3,750</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Suki Burks</td>
+                                                    <td>Developer</td>
+                                                    <td>London</td>
+                                                    <td>53</td>
+                                                    <td>2009/10/22</td>
+                                                    <td>$2,875</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Prescott Bartlett</td>
+                                                    <td>Technical Author</td>
+                                                    <td>London</td>
+                                                    <td>27</td>
+                                                    <td>2011/05/07</td>
+                                                    <td>$6,730</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Gavin Cortez</td>
+                                                    <td>Technical Author</td>
+                                                    <td>San Francisco</td>
+                                                    <td>22</td>
+                                                    <td>2008/10/26</td>
+                                                    <td>$6,730</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Martena Mccray</td>
+                                                    <td>Integration Specialist</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>46</td>
+                                                    <td>2011/03/09</td>
+                                                    <td>$4,080</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Unity Butler</td>
+                                                    <td>Senior Marketing Designer</td>
+                                                    <td>San Francisco</td>
+                                                    <td>47</td>
+                                                    <td>2009/12/09</td>
+                                                    <td>$3,750</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Howard Hatfield</td>
+                                                    <td>Financial Controller</td>
+                                                    <td>San Francisco</td>
+                                                    <td>51</td>
+                                                    <td>2008/12/16</td>
+                                                    <td>$4,080</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Hope Fuentes</td>
+                                                    <td>Financial Controller</td>
+                                                    <td>San Francisco</td>
+                                                    <td>41</td>
+                                                    <td>2010/02/12</td>
+                                                    <td>$4,200</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Vivian Harrell</td>
+                                                    <td>System Architect</td>
+                                                    <td>San Francisco</td>
+                                                    <td>62</td>
+                                                    <td>2009/02/14</td>
+                                                    <td>$4,965</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Timothy Mooney</td>
+                                                    <td>Financial Controller</td>
+                                                    <td>London</td>
+                                                    <td>37</td>
+                                                    <td>2008/12/11</td>
+                                                    <td>$4,200</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Jackson Bradshaw</td>
+                                                    <td>Director</td>
+                                                    <td>New York</td>
+                                                    <td>65</td>
+                                                    <td>2008/09/26</td>
+                                                    <td>$5,000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Miriam Weiss</td>
+                                                    <td>Support Engineer</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>64</td>
+                                                    <td>2011/02/03</td>
+                                                    <td>$4,965</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Bruno Nash</td>
+                                                    <td>Software Engineer</td>
+                                                    <td>London</td>
+                                                    <td>38</td>
+                                                    <td>2011/05/03</td>
+                                                    <td>$4,200</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Odessa Jackson</td>
+                                                    <td>Support Engineer</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>37</td>
+                                                    <td>2009/08/19</td>
+                                                    <td>$3,600</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Thor Walton</td>
+                                                    <td>Developer</td>
+                                                    <td>New York</td>
+                                                    <td>61</td>
+                                                    <td>2013/08/11</td>
+                                                    <td>$3,600</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Finn Camacho</td>
+                                                    <td>Support Engineer</td>
+                                                    <td>San Francisco</td>
+                                                    <td>47</td>
+                                                    <td>2009/07/07</td>
+                                                    <td>$4,800</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Elton Baldwin</td>
+                                                    <td>Data Coordinator</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>64</td>
+                                                    <td>2012/04/09</td>
+                                                    <td>$6,730</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Zenaida Frank</td>
+                                                    <td>Software Engineer</td>
+                                                    <td>New York</td>
+                                                    <td>63</td>
+                                                    <td>2010/01/04</td>
+                                                    <td>$4,800</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Zorita Serrano</td>
+                                                    <td>Software Engineer</td>
+                                                    <td>San Francisco</td>
+                                                    <td>56</td>
+                                                    <td>2012/06/01</td>
+                                                    <td>$5,300</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Jennifer Acosta</td>
+                                                    <td>Javascript Developer</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>43</td>
+                                                    <td>2013/02/01</td>
+                                                    <td>$2,875</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cara Stevens</td>
+                                                    <td>Sales Assistant</td>
+                                                    <td>New York</td>
+                                                    <td>46</td>
+                                                    <td>2011/12/06</td>
+                                                    <td>$4,800</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Hermione Butler</td>
+                                                    <td>Director</td>
+                                                    <td>London</td>
+                                                    <td>47</td>
+                                                    <td>2011/03/21</td>
+                                                    <td>$4,080</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Lael Greer</td>
+                                                    <td>Systems Administrator</td>
+                                                    <td>London</td>
+                                                    <td>21</td>
+                                                    <td>2009/02/27</td>
+                                                    <td>$3,120</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Jonas Alexander</td>
+                                                    <td>Developer</td>
+                                                    <td>San Francisco</td>
+                                                    <td>30</td>
+                                                    <td>2010/07/14</td>
+                                                    <td>$5,300</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Shad Decker</td>
+                                                    <td>Regional Director</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>51</td>
+                                                    <td>2008/11/13</td>
+                                                    <td>$5,300</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Michael Bruce</td>
+                                                    <td>Javascript Developer</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>29</td>
+                                                    <td>2011/06/27</td>
+                                                    <td>$4,080</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Donna Snider</td>
+                                                    <td>System Architect</td>
+                                                    <td>New York</td>
+                                                    <td>27</td>
+                                                    <td>2011/01/25</td>
+                                                    <td>$3,120</td>
+                                                </tr>
                                                 </tbody>
                                                 <tfoot>
-                                                    
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Position</th>
+                                                        <th>Office</th>
+                                                        <th>Age</th>
+                                                        <th>Start date</th>
+                                                        <th>Salary</th>
+                                                    </tr>
                                                 </tfoot>
                                             </table>
                                         </div>
@@ -1629,8 +2071,8 @@
     <!--Panel [ SAMPLE ]-->
     <script src="./../../../js/demo/ui-panels.js"></script>
 
-    <!--Date-MYSQL [ REQUIRED ]-->
-    <script src="./../../../js/valeExplosivos.js"></script>
+    <!--Date-MYSQL [ REQUIRED ]
+    <script src="./../../../js/kardex.js"></script>-->
 
     <!--Bootstrap Validator [ OPTIONAL ]-->
     <script src="./../../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
@@ -1641,777 +2083,17 @@
     <!--Form validation [ SAMPLE ]-->
     <script src="./../../../js/demo/form-validation.js"></script>
     <script>
-        
-        const alertEdit = document.getElementById('alerts-Edit');
-        const datalist_zonaNombre = document.getElementById('edit-dt-valesExplosivo-zonaNombre');
-        const datalist_laborCCosto = document.getElementById('edit-dt-valesExplosivo-laborCCosto');
-        const datalist_perforistaNombres = document.getElementById('edit-dt-valesExplosivo-perforista');
-        const templateDatalist_zonaNombre = document.getElementById('edit-tpt-zonaNombre').content;
-        const templateDatalist_laborCCosto = document.getElementById('edit-tpt-laborCCosto').content;
-        const templateDatalist_perforista_colaborador = document.getElementById('edit-tpt-perforista').content;
-        const fragment = document.createDocumentFragment()
-        var tableMaster;
         document.addEventListener('DOMContentLoaded', e => {
-            mainEvents();
-            $('#table-master thead tr').clone(true).addClass('filters').appendTo('#table-master thead');
-            tableMaster = $('#table-master').DataTable
-            ({
-                //* Activa el desplazamiento horizontal agregar class a tabla(nowrap)
-                scrollX: true,
-                //* Forzará la altura de la ventana gráfica de la tabla segun al tamaño indicado
-                //scrollY: 400,
-                //scrollCollapse: true,
-                //* Configuracion columna filtro
-                responsive: true,
-                orderCellsTop: true,
-                fixedHeader: true,
-                initComplete: function () {
-                var api = this.api();
-    
-                // For each column
-                api
-                    .columns()
-                    .eq(0)
-                    .each(function (colIdx) {
-                        // Set the header cell to contain the input element
-                        var cell = $('.filters th').eq(
-                            $(api.column(colIdx).header()).index()
-                        );
-                        var title = $(cell).text();
-                        $(cell).html('<input class="form-control" type="text" placeholder="Buscar ' + title + '" />');
-    
-                        // On every keypress in this input
-                        $(
-                            'input',
-                            $('.filters th').eq($(api.column(colIdx).header()).index())
-                        )
-                            .off('keyup change')
-                            .on('keyup change', function (e) {
-                                e.stopPropagation();
-    
-                                // Get the search value
-                                $(this).attr('title', $(this).val());
-                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
-    
-                                var cursorPosition = this.selectionStart;
-                                // Search the column for that value
-                                api
-                                    .column(colIdx)
-                                    .search(
-                                        this.value != ''
-                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                            : '',
-                                        this.value != '',
-                                        this.value == ''
-                                    )
-                                    .draw();
-    
-                                $(this)
-                                    .focus()[0]
-                                    .setSelectionRange(cursorPosition, cursorPosition);
-                            });
-                    });
-            },
-                /* fixedColumns: {
-                    right: 1,
-                }, */
-                order: [[ 1, "desc" ]],
-                columns: [
-                    {
-                        data: "valexplosivo_preimpresor",
-                        responsivePriority: 1,
-                        //width: "50% !important",
-                    },
-                    {
-                        data: "valexplosivo_fecha",
-                    },
-                    {
-                        data: "valexplosivo_codigoRegistro",
-                    },
-                    {
-                        data: "valexplosivo_nvale",
-                    },
-                    {
-                        data: "valexplosivo_turno",
-                    },
-                    {
-                        data: "labZona_nombre",
-                    },
-                    {
-                        data: "lab_ccostos",
-                    },
-                    {
-                        data: "labNombre_nombre",
-                    },
-                    {
-                        data: "lab_nivel",
-                    },
-                    {
-                        data: "valexplosivo_tipDisparo",
-                    },
-                    {
-                        data: "valexplosivo_tipEn",
-                    },
-                    {
-                        defaultContent: '<button type="button" class="btn-view btn btn-success btn-tableMaster-detalle"><i class="fa fa-eye"></i> <span class="hidden-xs hidden-sm">Detalle<span></button> <button type="button" class="name btn btn-primary btn-tableMaster-edit"><i class="fa fa-edit"></i> <span class="hidden-xs hidden-sm">Editar</span></button> <button type="button" class="position btn btn-danger btn-tableMaster-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>'
-                    }
-                ],
-                language: {
-                    "decimal": "",
-                    "emptyTable": "No hay registro de ",
-                    "info": "Mostrando _START_ a _END_ de _TOTAL_",
-                    "infoEmpty": "Mostrando 0 to 0 of 0 ",
-                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Mostrar _MENU_ ",
-                    "loadingRecords": "Cargando...",
-                    "processing": "Procesando...",
-                    "search": "Busqueda General :",
-                    "zeroRecords": "Sin resultados encontrados",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Ultimo",
-                        "next": "Siguiente",
-                        "previous": "Anterior"
-                    },
-                    "buttons": {
-                        "copy": "Copiar",
-                        "colvis": "Visibilidad",
-                        "collection": "Colección",
-                        "colvisRestore": "Restaurar visibilidad",
-                        "print": "Imprimir",
-                        "pageLength": {
-                            "-1": "Mostrar todas las filas",
-                            "_": "Mostrar %d filas",
-                        },
-                    }
-                },
-                rowReorder: {
-                    selector: 'td:nth-child(2)'
-                },
-                dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
-                buttons: [
-                    {
-                        text: '<i class="btn-label fa-solid fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>',
-                        action: function(e, dt, node, conf) {
-                            const form_request1 = {
-                                "accion": "getLast_record",
-                            }
-                            getLast_record(form_request1);
-                            // Funcion para enfocar input
-                            setTimeout(function() {
-                            // JQUERY
-                            // $('#val_explosivo-text-form-n_vale').focus();
-                            // JAVASCRIPT
-                            inputNVale.focus();
-                            }, 1000);
-                            //Capturo posible error compatibilidad con navegador
-                            /* try {
-                                nvalzfill = nvale, padStart(7, 0);
-                            } catch (e) {
-                                nvalzfill = zfill(nvale, 7);
-                                // Manejar Errores
-                                //console.error('Se encontro error : '+e);
-                                //console.error('Nombre : '+e.name);
-                                //console.error('Mensaje : '+e.message);
-                                } finally {
-                                    // Obtengo N° vale
-                                    inputNVale.value = nvalzfill;
-                                } */
-
-                            //Preparamos formato
-                            var selectCodZonaForm = {
-                                "accion": "getSelect_zonaNombre",
-                            }
-                            var selectCostLaborForm = {
-                                "accion": "getcolumnAll",
-                                "column": "lab_ccostos"
-                            }
-                            var selectPerforistaForm = {
-                                "accion": "getcolumnAll",
-                                "column": "col_nombres"
-                            }
-
-                            // Enviamos Formato Zona
-                            fetchDataZona(selectCodZonaForm);
-
-                            // Enviamos Formato Labor
-                            fetchDataLabor(selectCostLaborForm);
-
-                            // Enviamos Formato Perforista
-                            fetchDataPerforista(selectPerforistaForm);
-                            $("#modal-insert").modal("show");
-                        },
-                        className: 'btn btn-success btn-labeled', //Primary class for all buttons
-                        attr: {
-                            title: 'Agregar nuevo labor',
-                            id: 'btn-insert'
-                        }
-                    },
-                    {
-                        text: '<i class="btn-label fa fa-refresh"></i><span class="hidden-xs">Actualizar</span>',
-                        action: function(e, dt, node, conf) {
-                            let form_request1 = {
-                                "accion": "table",
-                            }
-                            fetchData(form_request1);
-                        },
-                        className: 'btn btn-info btn-labeled' //Primary class for all buttons
-                    },
-                    {
-                        extend: 'collection',
-                        text: '<i class="btn-label fa fa-download"></i><span class="hidden-xs"> Exportar</span>',
-                        className: 'btn-labeled',
-                        //* Botones
-                        buttons: [
-                            //* Boton exportar copiar
-                            {
-                                //* Indicar Acción
-                                extend: 'copy',
-                                //* Mensaje hove
-                                titleAttr: 'Copiar Tabla',
-                                //
-                                title: '',
-                                //* Clases agregados
-                                className: 'btn-labeled',
-                                //* Texto u Boton
-                                text: '<i class="btn-label fas fa-copy"></i> Copiar',
-                                //* Indicar que columns se usará
-                                exportOptions: {
-                                    columns: [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                                }
-                            },
-                            {
-                                extend: 'excel',
-                                text: '<i class="btn-label fa fa-file-excel-o"></i> Excel',
-                                titleAttr: 'Excel',
-                                title: '',
-                                className: 'btn-labeled',
-                                exportOptions: {
-                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                                }
-                            },
-                            {
-                                extend: 'csv',
-                                text: '<i class="btn-label fa fa-file-csv"></i> CSV',
-                                titleAttr: 'CSV',
-                                className: 'btn-labeled',
-                                exportOptions: {
-                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                                }
-                            },
-                            {
-                                extend: 'pdf',
-                                text: '<i class="btn-label fa fa-file-pdf-o"></i> PDF',
-                                titleAttr: 'PDF',
-                                className: 'btn-labeled',
-                                exportOptions: {
-                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                                }
-                            },
-                        ]
-                    },
-                    {
-                        text: '<i class="btn-label fa fa-file-excel-o"></i><span class="hidden-xs"> Excel</span>',
-                            className: 'btn btn-primary', //Primary class for all buttons
-                        tag: 'a',
-                        action: function(e, dt, node, config) {
-                            //This will send the page to the location specified
-                            window.location.href = './../../excelGenerator.php?table=view_vales_explosivo';
-                        },
-                        init: function(dt, node, config) {
-                            $(node).attr('href', './../../excelGenerator.php?table=view_vales_explosivo');
-                            $(node).attr('download', '');
-                            $(node).attr('title', 'Descargar Archivo');
-                        }
-                    },
-                    {
-                        text: '<i class="btn-label fa fa-upload"></i><span class="hidden-xs">Importar</span>',
-                        action: function(e, dt, node, conf) {
-                            $("#modal-import").modal("show");
-                        },
-                        className: 'btn btn-primary btn-labeled' //Primary class for all buttons
-                    },
-                    {
-                        extend: 'print',
-                        text: '<i class="btn-label fa fa-print"></i><span class="hidden-xs">print</span>',
-                        titleAttr: 'PDF',
-                        className: 'btn-labeled', //Primary class for all buttons
-                        exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                        }
-                    },
-                    {
-                        extend: 'colvis',
-                        text: '<i class="btn-label fa fa-eye"></i><span class="hidden-xs">Mostrar / Ocultar</span>',
-                        className: 'btn-labeled' //Primary class for all buttons
-                    },
-                    'refresh',
-                ], 
+            var table = $('#table-master').DataTable({
+            //Tip from this user kthorngren: absolute not working
+            rowCallback: function( row, data, index ) {
+                if ( data[3] == "22" ) {$(row).addClass('green');} 
+                else if ( data[3] == "61" ) {$(row).addClass('orange');}
+                else if ( data[3] == "30" ) {$(row).addClass('red');} 
+            }
             });
         //* CONFIGURACIONES EXTERNOS
         });
-        const mainEvents = () => {
-            let form_request1 = {
-                "accion": "table",
-            }
-            fetchData(form_request1);
-        }
-        const fetchData = async (request) => {
-            const body = new FormData();
-            body.append("data", JSON.stringify(request));
-            const res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
-                method: "POST",
-                body
-            });
-            const data = await res.json()
-            let rptSql = data['sql'];
-            paintTable(rptSql);
-        }
-        const paintTable = async (rptSql) => {
-            // Actualiza la tabla
-            tableMaster.clear();
-            tableMaster.rows.add(rptSql).draw();
-        }
-        $('.chosenTurno').chosen();
-        // Setup - add a text input to each footer cell
-        // ARREGLAR RESPONSIVE
-        
-        let options = {
-            "sScrollX": "100%",
-            "sScrollXInner": "110%",
-            "bScrollCollapse": true,
-            "colReorder": true
-        };
-        
-        //* DETALLE REGISTRO
-        $('#table-master tbody').on('click', '.btn-tableMaster-detalle', function() {
-            $("#modal-detail").modal("show");
-            const data = tableMaster.row($(this).parents('tr')).data();
-            let form_request = {
-                "accion": "getRow",
-                "id": data['valexplosivo_codigoRegistro']
-            }
-            getRowView(form_request);
-        });
-        const getRowView = async (request) => {
-            const body = new FormData();
-            body.append("data", JSON.stringify(request));
-            const res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
-                method: "POST",
-                body
-            });
-            const data = await res.json();
-            rptSql = data['sql'];
-            console.log(rptSql);
-            paintForm_view(rptSql)
-        }
-        
-        const paintForm_view = (rptSql) => {
-            iptView_digitador.value = rptSql[0]['cbUsu_nombres']+' '+rptSql[0]['cbUsu_apePaterno']+' '+rptSql[0]['cbUsu_apeMaterno'];
-            iptView_preImpreso.value = rptSql[0]['valexplosivo_preimpresor'];
-            iptView_nVale.value = rptSql[0]['valexplosivo_nvale'];
-            iptView_zona.value = rptSql[0]['labZona_nombre'];
-            iptView_turno.value = rptSql[0]['valexplosivo_turno'];
-            iptView_fecha.value = rptSql[0]['valexplosivo_fecha'];
-            iptView_laborCodigo.value = rptSql[0]['lab_ccostos'];
-            iptView_laborNombre.value = rptSql[0]['labNombre_nombre'];
-            iptView_laborNivel.value = rptSql[0]['lab_nivel'];
-            document.querySelector('input[name=view-form-radio-tipo_disparo][value='+rptSql[0]['valexplosivo_tipDisparo']+']').checked = true;
-            document.querySelector('input[name=view-form-radio-tipo_en][value='+rptSql[0]['valexplosivo_tipEn']+']').checked = true;
-            iptView_barra.value = rptSql[0]['valexplosivo_barra'];
-            iptView_lgtMt.value = rptSql[0]['valexplosivo_lgt'];
-            iptView_nTaladror.value = rptSql[0]['valexplosivo_numTaladro'];
-            iptView_talVacio.value = rptSql[0]['valexplosivo_talVacio'];
-            iptView_piesPerf.value = rptSql[0]['valexplosivo_piePerf'];
-            iptView_piesReal.value = rptSql[0]['valexplosivo_pieReal'];
-            iptView_dinSemi_res.value = rptSql[0]['valexplosivo_dimSemigelatinosa_Result'];
-            iptView_dinPulv_res.value = rptSql[0]['valexplosivo_dimPulverulenta_Result'];
-            iptView_dinPulv_dinSemi_suma.value = rptSql[0]['valexplosivo_sumaSemiPulv'];
-            iptView_nMaquinas.value = rptSql[0]['valexplosivo_numMaquina'];
-            iptView_perforista.value = rptSql[0]['col_apePaterno']+' '+rptSql[0]['col_apeMaterno']+' '+rptSql[0]['col_nombres'];
-
-            iptView_emulnorMil.value = rptSql[0]['valexplosivo_emulmil'];
-            iptView_emulnorTresMil.value = rptSql[0]['valexplosivo_emultresmil'];
-            iptView_dinPulv.value = rptSql[0]['valexplosivo_dimPulverulenta'];
-            iptView_carmexSiete.value = rptSql[0]['valexplosivo_carmexsiete'];
-            iptView_carmexOcho.value = rptSql[0]['valexplosivo_carmexocho'];
-            iptView_mechaRapida.value = rptSql[0]['valexplosivo_mecRapida'];
-            iptView_mechaLenta.value = rptSql[0]['valexplosivo_mecLenta'];
-            iptView_Fulminante.value = rptSql[0]['valexplosivo_fulN'];
-            iptView_conectorMecha.value = rptSql[0]['valexplosivo_conMecha'];
-            iptView_blkSugecion.value = rptSql[0]['valexplosivo_BlockSugecion'];
-            iptView_carCortado.value = rptSql[0]['valexplosivo_carcortrece'];
-            iptView_dinSemi.value = rptSql[0]['valexplosivo_dimSemigelatinosa'];
-        }
-        //* EDITAR REGISTRO
-        $('#table-master tbody').on('click', '.btn-tableMaster-edit', function() {
-            $("#modal-edit").modal("show");
-            const data = tableMaster.row($(this).parents('tr')).data();
-            let formRequest = {
-                "accion": "getRow",
-                "id": data['valexplosivo_codigoRegistro']
-            }
-            getRowEdit(formRequest);
-        });
-        const getRowEdit = async (formRequest) => {
-            try {
-                //* DECLARAION DE VARIABLES *//
-                var body = new FormData();
-                let form_request;
-                let res;
-                let data;
-                let state;
-
-                //* PETICIONES *//
-                form_request = {
-                    "accion": "getDatalistAll_zonaNombre",
-                }
-                //* Primera petición DATALIST ZONA
-                body.append('data', JSON.stringify(form_request));
-                res = await fetch('./../../../controllers/controllerLaborList.php', {
-                    method: "POST",
-                    body
-                });
-                body.delete('data');
-                data = await res.json();
-                data = data['sql'];
-                state = await paintSelectEdit_laborZona_zonaNombre(data);
-                
-                //* Segunda Petición DATALIST LABOR
-                form_request = {
-                "accion": "getDatalistAll_ccosto",
-                }
-                body.append('data', JSON.stringify(form_request));
-                res = await fetch('./../../../controllers/controllerLaborList.php', {
-                    method: "POST",
-                    body
-                });
-                body.delete('data');
-                data = await res.json();
-                data = data['sql'];
-                state = await paintSelectEdit_labor_laborCCosto(data);
-                //* Tercera Petición DATALIST PERFORISTA
-                form_request = {
-                "accion": "getDatalistAll_nombres_perforista",
-                }
-                body.append('data', JSON.stringify(form_request));
-                res = await fetch('./../../../controllers/controllerColaboradorList.php', {
-                    method: "POST",
-                    body
-                });
-                body.delete('data');
-                data = await res.json();
-                data = data['sql'];
-                state = await paintSelectEdit_perforista_colaborador(data);
-                //* Cuarta Petición Seleccionar
-                body.append('data', JSON.stringify(formRequest));
-                res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
-                    method: "POST",
-                    body
-                });
-                body.delete('data');
-                data = await res.json();
-                data = data['sql']
-                painFrom_edit(data);
-                //paintSelectEdit_colaborador_nombres_perforista();
-            }
-            catch (e) {
-                console.error(e);
-            } finally {
-                console.log('Nosotras hacemos limpieza aqui');
-            }
-           
-        }
-        const paintSelectEdit_laborZona_zonaNombre = data => {
-            datalist_zonaNombre.innerHTML = '';
-            /* console.log('Pintando Zona');
-            console.log(typeof data);
-            console.log(data); */
-            data.forEach(item => {
-                templateDatalist_zonaNombre.querySelector('option').textContent = item.labZona_nombre;
-                templateDatalist_zonaNombre.querySelector('option').value = item.labZona_nombre;
-                templateDatalist_zonaNombre.querySelector('option').dataset.idZona = item.id_zona;
-                const clone = templateDatalist_zonaNombre.cloneNode(true)
-                fragment.appendChild(clone)
-            })
-            datalist_zonaNombre.appendChild(fragment);
-        }
-        const paintSelectEdit_labor_laborCCosto = data =>{
-            datalist_laborCCosto.innerHTML = '';
-            data.forEach(item => {
-                templateDatalist_laborCCosto.querySelector('option').textContent = item.lab_ccostos;
-                templateDatalist_laborCCosto.querySelector('option').value = item.lab_ccostos;
-                templateDatalist_laborCCosto.querySelector('option').dataset.idCCosto = item.id_labor;
-                const clone = templateDatalist_laborCCosto.cloneNode(true)
-                fragment.appendChild(clone)
-            })
-            datalist_laborCCosto.appendChild(fragment);
-        }
-        const paintSelectEdit_perforista_colaborador = data =>{
-            datalist_perforistaNombres.innerHTML = '';
-            data.forEach(item => {
-                templateDatalist_perforista_colaborador.querySelector('option').textContent = item.col_apePaterno+' '+item.col_apeMaterno+' '+item.col_nombres;
-                templateDatalist_perforista_colaborador.querySelector('option').value = item.col_apePaterno+' '+item.col_apeMaterno+' '+item.col_nombres;
-                templateDatalist_perforista_colaborador.querySelector('option').dataset.idPerforista = item.id_colaborador;
-                const clone = templateDatalist_perforista_colaborador.cloneNode(true)
-                fragment.appendChild(clone)
-            })
-            datalist_perforistaNombres.appendChild(fragment);
-        }
-        const painFrom_edit = (rptSql) => {
-            iptEdit_digitador.value = rptSql[0]['cbUsu_nombres']+' '+rptSql[0]['cbUsu_apePaterno']+' '+rptSql[0]['cbUsu_apeMaterno'];
-            iptEdit_preImpreso.value = rptSql[0]['valexplosivo_preimpresor'];
-            iptEdit_nVale.value = rptSql[0]['valexplosivo_nvale'];
-            iptEdit_zonaNombre.value = rptSql[0]['labZona_nombre'];
-            iptEdit_turno.value = rptSql[0]['valexplosivo_turno'];
-            iptEdit_fecha.value = rptSql[0]['valexplosivo_fecha'];
-            iptEdit_ccosto.value = rptSql[0]['lab_ccostos'];
-            iptEdit_laborNombre.value = rptSql[0]['labNombre_nombre'];
-            iptEdit_laborNivel.value = rptSql[0]['lab_nivel'];
-            document.querySelector('input[name=edit-form-radio-tipo_disparo][value='+rptSql[0]['valexplosivo_tipDisparo']+']').checked = true;
-            document.querySelector('input[name=edit-form-radio-tipo_en][value='+rptSql[0]['valexplosivo_tipEn']+']').checked = true;
-            iptEdit_barra.value = rptSql[0]['valexplosivo_barra'];
-            iptEdit_lgtMt.value = rptSql[0]['valexplosivo_lgt'];
-            iptEdit_nTaladro.value = rptSql[0]['valexplosivo_numTaladro'];
-            iptEdit_talVacio.value = rptSql[0]['valexplosivo_talVacio'];
-            iptEdit_piesPerf.value = rptSql[0]['valexplosivo_piePerf'];
-            iptEdit_piesReal.value = rptSql[0]['valexplosivo_pieReal'];
-            iptEdit_res_dinSemi.value = rptSql[0]['valexplosivo_dimSemigelatinosa_Result'];
-            iptEdit_res_dinPulv.value = rptSql[0]['valexplosivo_dimPulverulenta_Result'];
-            iptEdit_suma_dimPulv_dimSemi.value = rptSql[0]['valexplosivo_sumaSemiPulv'];
-            iptEdit_nMaquinas.value = rptSql[0]['valexplosivo_numMaquina'];
-            iptEdit_perforista.value = rptSql[0]['col_apePaterno']+' '+rptSql[0]['col_apeMaterno']+' '+rptSql[0]['col_nombres'];
-
-            iptEdit_emulnorMil.value = rptSql[0]['valexplosivo_emulmil'];
-            iptEdit_emulnorTresmil.value = rptSql[0]['valexplosivo_emultresmil'];
-            iptEdit_dinamitaPulverulenta.value = rptSql[0]['valexplosivo_dimPulverulenta'];
-            iptEdit_carmen7.value = rptSql[0]['valexplosivo_carmexsiete'];
-            iptEdit_carmen8.value = rptSql[0]['valexplosivo_carmexocho'];
-            iptEdit_mechaRapida.value = rptSql[0]['valexplosivo_mecRapida'];
-            iptEdit_mechaLenta.value = rptSql[0]['valexplosivo_mecLenta'];
-            iptEdit_fulminante.value = rptSql[0]['valexplosivo_fulN'];
-            iptEdit_conectorMecha.value = rptSql[0]['valexplosivo_conMecha'];
-            iptEdit_blockSugeccion.value = rptSql[0]['valexplosivo_BlockSugecion'];
-            iptEdit_carCortado13.value = rptSql[0]['valexplosivo_carcortrece'];
-            iptEdit_dinamitaSemigelatinosa.value = rptSql[0]['valexplosivo_dimSemigelatinosa'];
-        }
-        btnEdit_insert.addEventListener("click", (e) => {
-            console.log('Se insertara');
-            alertEdit.innerHTML = ''
-            val_preImpreso = iptEdit_preImpreso.value;
-            val_nVale = iptEdit_nVale.value
-            val_zonaNombre = iptEdit_zonaNombre.value;
-            val_zonaId = document.querySelector('#edit-dt-valesExplosivo-zonaNombre option[value="' + val_zonaNombre + '"]').dataset.idZona;
-            val_turno = iptEdit_turno.value;
-            val_fecha = iptEdit_fecha.value;
-            val_ccosto = iptEdit_ccosto.value;
-            val_laborId = document.querySelector('#edit-dt-valesExplosivo-laborCCosto option[value="' + val_ccosto + '"]').dataset.idCCosto;
-            val_tipoDisparo = document.querySelector('input[name="edit-form-radio-tipo_disparo"]:checked').value;
-            val_tipoEn = document.querySelector('input[name="edit-form-radio-tipo_en"]:checked').value;
-            val_barra = iptEdit_barra.value;
-            val_lgtMt = iptEdit_lgtMt.value;
-            val_nTaladro = iptEdit_nTaladro.value;
-            val_talVacio = iptEdit_talVacio.value;
-            val_piesPerf = iptEdit_piesPerf.value;
-            val_piesReal = iptEdit_piesReal.value;
-            val_res_dinSemi = iptEdit_res_dinSemi.value;
-            val_res_dinPulv = iptEdit_res_dinPulv.value;
-            val_suma_dimPulv_dimSemi = iptEdit_suma_dimPulv_dimSemi.value;
-            val_nMaquinas = iptEdit_nMaquinas.value;
-            val_perforista = iptEdit_perforista.value;
-            val_perforista_idColaborador = document.querySelector('#edit-dt-valesExplosivo-perforista option[value="' + val_perforista + '"]').dataset.idPerforista;
-            val_emulnorMil = iptEdit_emulnorMil.value;
-            val_emulnorTresmil = iptEdit_emulnorTresmil.value;
-            val_dinamitaPulverulenta = iptEdit_dinamitaPulverulenta.value;
-            val_carmen7 = iptEdit_carmen7.value;
-            val_carmen8 = iptEdit_carmen8.value;
-            val_mechaRapida = iptEdit_mechaRapida.value;
-            val_mechaLenta = iptEdit_mechaLenta.value;
-            val_fulminante = iptEdit_fulminante.value;
-            val_conectorMecha = iptEdit_conectorMecha.value;
-            val_blockSugeccion = iptEdit_blockSugeccion.value;
-            val_carCortado13 = iptEdit_carCortado13.value;
-            val_dinamitaSemigelatinosa = iptEdit_dinamitaSemigelatinosa.value;
-            let val_totalKilos_dinamitaEmulnorMil = calcular_KilosDinamita(val_emulnorMil, parseFloat('0.09615385'));
-            let val_totalKilos_dinamitaEmulnorTresmil = calcular_KilosDinamita(val_emulnorTresmil, parseFloat('0.09469697'));
-            let formList = {
-                'preImpreso': val_preImpreso,
-                'nVale': val_nVale,
-                'zonId': val_zonaId,
-                'zonaNombre': val_zonaNombre,
-                'turno': val_turno,
-                'fecha': val_fecha,
-                'idLabor': val_laborId,
-                'ccosto': val_ccosto,
-                'tipoDisparo': val_tipoDisparo,
-                'tipoEn': val_tipoEn,
-                'barra': val_barra,
-                'lgt': val_lgtMt,
-                'nTaladros': val_nTaladro,
-                'talVacio': val_talVacio,
-                'piesPerf': val_piesPerf,
-                'piesReal': val_piesReal,
-                'res_dinSemi': val_res_dinSemi,
-                'res_dinPulv': val_res_dinPulv,
-                'suma_dimPulv_dimSemi': val_suma_dimPulv_dimSemi,
-                'nMaquinas': val_nMaquinas,
-                'idColaborador_perforista': val_perforista_idColaborador,
-                'emulnorMil': val_emulnorMil,
-                'emulnorTresmil': val_emulnorTresmil,
-                'dinamitaPulverulenta': val_dinamitaPulverulenta,
-                'carmen7': val_carmen7,
-                'carmen8': val_carmen8,
-                'mechaRapida': val_mechaRapida,
-                'mechaLenta': val_mechaLenta,
-                'fulminante': val_fulminante,
-                'conectorMecha': val_conectorMecha,
-                'blockSugeccion': val_blockSugeccion,
-                'carCortado13': val_carCortado13,
-                'dinamitaSemigelatinosa': val_dinamitaSemigelatinosa,
-                'totalKilos_dinamitaEmulnorMil': val_totalKilos_dinamitaEmulnorMil,
-                'totalKilos_dinamitaEmulnorTresmil': val_totalKilos_dinamitaEmulnorTresmil
-            }
-            form_request = {
-                "accion": "edit",
-                'form':formList
-            }
-            console.log(formList);
-            requestEdit(form_request);
-        });
-
-        const requestEdit = async (form_request) => {
-            const body = new FormData();
-            body.append("data", JSON.stringify(form_request));
-            const returned = await fetch("./../../../controllers/controllerValeExplosivo.php", {
-                method: "POST",
-                body
-            });
-            const result = await returned.json(); //await JSON.parse(returned);
-            console.log(result);
-            afterRequestEdit(result)
-        }
-        const afterRequestEdit = (data) => {
-            alertInsert.innerHTML = '';
-            sqlRpt = data['sql'];
-            mainEvents();
-            if (sqlRpt['estado'] == 1) {
-                $.niftyNoty({
-                    type: 'success',
-                    container: '#alerts-Edit',
-                    html: '<strong>Bien hecho!</strong> ' + sqlRpt['mensaje'] + ', codigo generado : [' + sqlRpt['coperacion'] + ']',
-                    focus: false,
-                    timer: 8000
-                });
-                console.log('Si');
-            } else {
-                if (data['rptController']['estado'] == 0) {
-                    $.niftyNoty({
-                        type: 'danger',
-                        container: '#alerts-Edit',
-                        html: '<strong>Oh cielos!</strong> ' + data['rptController']['mensaje'],
-                        focus: false,
-                    });
-                } else {
-                    $.niftyNoty({
-                        type: 'danger',
-                        container: '#alerts-Edit',
-                        html: '<strong>Oh cielos!</strong> ' + sqlRpt['messageUser'],
-                        focus: false,
-                    });
-                }
-
-                console.log('No');
-            }
-            console.log(data);
-        };
-
-        //* ELIMINAR REGISTRO
-        $('#table-master tbody').on('click', '.btn-tableMaster-delet', function() {
-            mainEvents()
-            var data = tableMaster.row($(this).parents('tr')).data();
-            swal({
-                title: "Estas seguro?",
-                text: "Una vez eliminado, no podrá recuperarlo!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            }).then((willDelete) => {
-                if (willDelete) {
-                    let form_request = {
-                        "accion": "delete",
-                        "id": data['valexplosivo_codigoRegistro']
-                    }
-                    requestDelete(form_request);
-                    swal("¡La información ha sido eliminado!", {
-                        icon: "success",
-                    });
-                } else {
-                    swal("¡La información está a salvo!");
-                }
-            });
-        });
-        // Se envia Formulario
-        const requestDelete = async (form_request) => {
-            const body = new FormData();
-            body.append("data", JSON.stringify(form_request));
-            const returned = await fetch("./../../../controllers/controllerValeExplosivo.php", {
-                method: "POST",
-                body
-            });
-            const result = await returned.json(); //await JSON.parse(returned);
-
-            afterRequestInsert(result);
-        }
-        //* Obtenemos el valor siguiente
-        const getLast_record = async (request) => {
-            const body = new FormData();
-            body.append("data", JSON.stringify(request));
-            const res = await fetch('./../../../controllers/controllerValeExplosivoList.php', {
-                method: "POST",
-                body
-            });
-            const data = await res.json();
-            rptSql = data['sql'];
-            paintNVale(rptSql);
-        }
-
-        //*
-        const paintNVale = async (rptSql) => {
-            
-            nvalAnterior = rptSql[0]['valexplosivo_nvale'];
-            nvaleProx = parseInt(nvalAnterior)+parseInt(1);
-            try {
-                valZFill_nvalProx = zfill(nvaleProx, 6);
-                console.log(zfill(nvaleProx, 6)); //00324 
-            } catch (e) {
-                nvalzfill = zfill(nvale, 6);
-                // Manejar Errores
-                //console.error('Se encontro error : '+e);
-                //console.error('Nombre : '+e.name);
-                //console.error('Mensaje : '+e.message);
-            } finally {
-                // Obtengo N° vale
-                inputNVale.value = valZFill_nvalProx;
-            }
-        }
-        // Traer JSON para Tabla (ZONA)
-        const fetchEdit_Zona = async (json) => {
-            try {
-                
-            } catch (error) {
-                
-            }
-            const body = new FormData();
-            body.append("data", JSON.stringify(json));
-            const rpt = await fetch('./../../../controllers/controllerZonaList.php', {
-                method: "POST",
-                body
-            });
-            
-            const rptJson = await rpt.json(); //await JSON.parse(returned);
-        };
     </script>
 </body>
 </html>
