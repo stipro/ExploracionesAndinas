@@ -36,9 +36,9 @@ class Conexion
             }
             else{
                 $HOST   = '127.0.0.1';
-                $DBNAME = 'explore_andina';
-                $USER   = 'root';
-                $PASS   = '';
+                $DBNAME = 'corpm4en_explore_andina';
+                $USER   = 'corpm4en';
+                $PASS   = 'temporal2022';
                 $con    = new PDO("mysql:host={$HOST}; dbname={$DBNAME}", $USER, $PASS);
                 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $con->exec('SET CHARACTER SET UTF8');
