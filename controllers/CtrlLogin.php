@@ -24,7 +24,7 @@ if($_POST){
         if(isset($user) && isset($password)){
 
             //Llamamos al modelo
-            require_once('./../models/'.$nameModel.'.php');
+            require_once('../models/'.$nameModel.'.php');
 
             //Instanciamos
             $tableManager = new login();
