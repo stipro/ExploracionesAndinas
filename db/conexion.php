@@ -20,7 +20,7 @@ class Conexion
                 $HOST   = '127.0.0.1';
                 $DBNAME = 'corpm4en_explore_andina';
                 $USER   = 'corpm4en';
-                $PASS   = 'temporal2022';
+                $PASS   = '#$ALDgfs165';
                 $con    = new PDO("mysql:host={$HOST}; dbname={$DBNAME}", $USER, $PASS);
                 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $con->exec('SET CHARACTER SET UTF8');
@@ -29,7 +29,7 @@ class Conexion
                 $HOST   = '127.0.0.1';
                 $DBNAME = 'corpm4en_explore_andina';
                 $USER   = 'corpm4en';
-                $PASS   = 'temporal2022';
+                $PASS   = '#$ALDgfs165';
                 $con    = new PDO("mysql:host={$HOST}; dbname={$DBNAME}", $USER, $PASS);
                 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $con->exec('SET CHARACTER SET UTF8');
@@ -38,7 +38,7 @@ class Conexion
                 $HOST   = '127.0.0.1';
                 $DBNAME = 'corpm4en_explore_andina';
                 $USER   = 'corpm4en';
-                $PASS   = 'temporal2022';
+                $PASS   = '#$ALDgfs165';
                 $con    = new PDO("mysql:host={$HOST}; dbname={$DBNAME}", $USER, $PASS);
                 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $con->exec('SET CHARACTER SET UTF8');
