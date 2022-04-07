@@ -48,7 +48,7 @@ class Conexion
         catch (PDOException $e)
         {
             $rptController.='No se pudo conectar a la BD: ' . $e->getMessage();
-            echo "No se pudo conectar a la BD: " . $e->getMessage();
+            //echo "No se pudo conectar a la BD: " . $e->getMessage();
         }
         finally {
         
