@@ -66,7 +66,7 @@ class Login extends Conexion
             if($sql_update->rowCount() > 0)
             {
             $count = $sql_update -> rowCount();
-/*             echo "<div class='content alert alert-primary' > 
+            /*echo "<div class='content alert alert-primary' > 
             Gracias: $count registro ha sido actualizado  </div>"; */
             }
             else{
