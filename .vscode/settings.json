@@ -13,5 +13,8 @@
             "database": "explore_andina",
             "name": "Local"
         }
-    ]
+    ],
+    "sftp.debug": true,
+    "sftp.downloadWhenOpenInRemoteExplorer": true,
+    "sftp.printDebugLog": true
 }

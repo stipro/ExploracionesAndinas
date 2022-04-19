@@ -1,5 +1,5 @@
 <?php
-header('Content-type: application/json; charset=utf-8');
+//header('Content-type: application/json; charset=utf-8');
 
 $curl = curl_init();
 
@@ -17,8 +17,9 @@ curl_setopt_array($curl, array(
 $response = curl_exec($curl);
 
 curl_close($curl);
+echo "Se";
 echo $response;
-//printf($response);
+var_dump($response);
 /* $curl = curl_init();
     curl_setopt_array($curl, array(
         CURLOPT_URL => "https://apiperu.dev/api/ruc/20508268051?api_token=0d53e5edb39733c8195ede1fe0625e595676eeea145c779c055a4aed70dd9ebb",
