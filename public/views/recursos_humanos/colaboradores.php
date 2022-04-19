@@ -946,22 +946,22 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Colaborador</label>
                                         <div class="col-md-4">
-                                            <input type="text" id="ipt-insert-nombreColaborador-usuario" class="form-control" name="nombre_colaborador" list="options-nombreColaborador-usuario" placeholder="Nombre" onkeypress="return soloLetras(event)">
+                                            <input type="text" id="ipt-insert-nombreColaborador" class="form-control" name="nombre_colaborador" list="options-nombreColaborador" placeholder="Nombre" onkeypress="return soloLetras(event)">
                                         </div>                                        
-                                        <datalist id="options-nombreColaborador-usuario">
+                                        <datalist id="options-nombreColaborador">
                                             <option value="No se pudo obtener Nombre">
                                         </datalist>
-                                        <template id="template-opts-nombreColaborador-usuario">
-                                            <option id="opt-nombreColaborador-usuario" value="">
+                                        <template id="template-opts-nombreColaborador">
+                                            <option id="opt-nombreColaborador" value="">
                                         </template>
                                         <div class="col-md-4">
-                                            <input type="number" id="ipt-insert-dniColaborador-usuario" class="form-control" name="dni_colaborador" list="options-dniColaborador-usuario" placeholder="DNI" pattern="[0-9]+" onkeypress="return valideKey(event);">
+                                            <input type="number" id="insert-ipt-colaboradorDni" class="form-control" name="dni_colaborador" list="options-dniColaborador" placeholder="DNI" pattern="[0-9]+" onkeypress="return valideKey(event);">
                                         </div>
-                                        <datalist id="options-dniColaborador-usuario">
+                                        <datalist id="options-dniColaborador">
                                             <option value="No se pudo obtener DNI">
                                         </datalist>
-										<template id="template-opts-dniColaborador-usuario">
-                                            <option id="opt-dniColaborador-usuario" value="">
+										<template id="template-opts-dniColaborador">
+                                            <option id="opt-dniColaborador" value="">
                                         </template>
                                     </div>
                                 </div>                                  
@@ -1200,6 +1200,39 @@
     <!--Form Component [ REQUIRED ]-->
     <script src=".\..\..\..\js\Colaboradores.js"></script>
 
+	<script>
+		function soloLetras(e) {
+			var key = e.keyCode || e.which,
+				tecla = String.fromCharCode(key).toLowerCase(),
+				letras = " áéíóúabcdefghijklmnñopqrstuvwxyz",
+				especiales = [8, 37, 39, 46],
+				tecla_especial = false;
+
+			for (var i in especiales) {
+				if (key == especiales[i]) {
+					tecla_especial = true;
+					break;
+				}
+			}
+
+			if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+				return false;
+			}
+		}
+		function valideKey(evt) {
+
+			// code is the decimal ASCII representation of the pressed key.
+			var code = (evt.which) ? evt.which : evt.keyCode;
+
+			if (code == 8) { // backspace.
+				return true;
+			} else if (code >= 48 && code <= 57) { // is a number.
+				return true;
+			} else { // other keys.
+				return false;
+			}
+		}
+	</script>
 
 </body>
 </html>

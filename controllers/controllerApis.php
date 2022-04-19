@@ -18,7 +18,7 @@ $response = curl_exec($curl);
 
 curl_close($curl);
 echo $response;
-//var_dump($response);
+//printf($response);
 /* $curl = curl_init();
     curl_setopt_array($curl, array(
         CURLOPT_URL => "https://apiperu.dev/api/ruc/20508268051?api_token=0d53e5edb39733c8195ede1fe0625e595676eeea145c779c055a4aed70dd9ebb",
