@@ -8,7 +8,10 @@ class Colaboradores extends Conexion
     {
         parent::__construct();
     }
-
+    public function getData_dni(){
+        $query = "SELECT clb.id_colaborador, clb.col_nombres, clb.col_apePaterno, clb.col_apeMaterno FROM colaboradores AS clb";
+        return $this->ConsultaSimple($query);
+    }
     // Obtiene Lista especifica
     public function getDatalistAll_nombres_perforista()
     {

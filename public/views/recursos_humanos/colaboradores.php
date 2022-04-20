@@ -945,23 +945,23 @@
                             <div class="row"> 
 								<div class="col-md-4">
 									<div class="form-group">
-					                    <label class="col-md-4 control-label">Ape.Paterno</label>
-					                    <div class="col-md-8">
+					                    <label for="insert-ipt-colaboradorApePaterno" class="col-md-5 control-label">Ape.Paterno <span class="text-danger">*</span></label>
+					                    <div class="col-md-7">
 					                        <input type="text" class="form-control" id="insert-ipt-colaboradorApePaterno" name="Ape_Paterno" placeholder="Ape.Paterno" onkeypress="return soloLetras(event)">
 					                    </div>
 					                </div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-					                    <label class="col-md-4 control-label">Ape.Materno</label>
-					                    <div class="col-md-8">
+					                    <label for="insert-ipt-colaboradorApeMaterno" class="col-md-5 control-label">Ape.Materno <span class="text-danger">*</span></label>
+					                    <div class="col-md-7">
 					                        <input type="text" class="form-control" id="insert-ipt-colaboradorApeMaterno" name="Ape_Materno" placeholder="Ape.Materno" onkeypress="return soloLetras(event)">
 					                    </div>
 					                </div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-					                    <label class="col-md-4 control-label">Nombres</label>
+					                    <label class="col-md-4 control-label">Nombres <span class="text-danger">*</span></label>
 					                    <div class="col-md-8">
 											<input type="text" class="form-control" id="insert-ipt-colaboradorNombres"  name="nombre_colaborador" list="options-nombreColaborador" placeholder="Nombres" onkeypress="return soloLetras(event)">
 					                    </div>
@@ -971,8 +971,8 @@
 							<div class="row"> 
 								<div class="col-md-4">
 									<div class="form-group">
-					                    <label for="slt-insert-colaboradorEstadoCivil" class="col-md-4 control-label">Estado Civil</label>
-					                    <div class="col-md-8">
+					                    <label for="slt-insert-colaboradorEstadoCivil" class="col-md-5 control-label">Estado Civil <span class="text-danger">*</span></label>
+					                    <div class="col-md-7">
 											<select class="form-control" id="slt-insert-colaboradorEstadoCivil" name="Estado Civil" placeholder="Estado Civil">
 												<option value="CASADO" selected>CASADO</option>
 												<option value="CONVIVIENTE" >CONVIVIENTE</option>
@@ -987,20 +987,20 @@
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-					                    <label for="slt-insert-colaboradorSexo" class="col-md-4 control-label">Sexo</label>
+					                    <label for="slt-insert-colaboradorSexo" class="col-md-4 control-label">Sexo <span class="text-danger">*</span></label>
 					                    <div class="col-md-8">
 											<select class="form-control" id="slt-insert-colaboradorSexo" name="Sexo" placeholder="Sexo">
 												<option value="FEMENINO">FEMENINO</option>
 												<option value="MASCULINO" >MASCULINO</option>
-												<option value="BINARIO">BINARIO</option>
-												<option value="SISGENERO">SISGENERO</option>
+												<!-- <option value="BINARIO">BINARIO</option>
+												<option value="SISGENERO">SISGENERO</option> -->
 											</select>
 					                    </div>
 					                </div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-					                    <label class="col-md-4 control-label">Fec.Nac</label>
+					                    <label class="col-md-4 control-label">Fec.Nac <span class="text-danger">*</span></label>
 					                    <div class="col-md-8">
 					                        <input type="date" class="form-control" id="ipt-insert-colaboradorNombres" name="Fec_Nac" placeholder="Fec.Nac">
 					                    </div>
@@ -1018,7 +1018,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-					                    <label for="slt-insert-colaboradorTipoDoc" class="col-md-4 control-label">Tipo Documento</label>
+					                    <label for="slt-insert-colaboradorTipoDoc" class="col-md-4 control-label">Tipo <span class="text-danger">*</span> Documento</label>
 					                    <div class="col-md-8">
 											<select class="form-control" id="slt-insert-colaboradorTipoDoc" name="Tipo_Documento" placeholder="Tipo Documento">
 												<option value="DOC. NACIONAL DE IDENTIDAD">DOC. NACIONAL DE IDENTIDAD</option>
@@ -1032,11 +1032,23 @@
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
+										<label class="col-md-4 control-label">Numero <span class="text-danger">*</span></label>
+										<div class="col-md-8">
+											<div class="input-group mar-btm">
+											<input type="text" id="insert-ipt-colaboradorDni" class="form-control" name="dni_colaborador" list="options-dniColaborador" placeholder="Numero" pattern="[0-9]+" onkeypress="return valideKey(event);">
+												<span class="input-group-btn">
+													<button class="btn btn-mint" type="button"><i class="fa fa-cloud"></i></button>
+												</span>
+											</div>
+										</div>
+									</div>
+									
+									<!-- <div class="form-group">
 					                    <label class="col-md-4 control-label">Numero</label>
 					                    <div class="col-md-8">
 										<input type="text" id="insert-ipt-colaboradorDni" class="form-control" name="dni_colaborador" list="options-dniColaborador" placeholder="Numero" pattern="[0-9]+" onkeypress="return valideKey(event);">
 					                    </div>
-					                </div>
+					                </div> -->
 								</div>                                  
                             </div>
                         </div>

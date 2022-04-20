@@ -1,19 +1,34 @@
-const iptSearchDni_insert = document.getElementById('insert-ipt-colaboradorDni');
+const ipt_SearchDni_insert = document.getElementById('insert-ipt-colaboradorDni');
 const ipt_colaboradorApePaterno = document.getElementById('insert-ipt-colaboradorApePaterno');
 const ipt_colaboradorApeMaterno = document.getElementById('insert-ipt-colaboradorApeMaterno');
 const ipt_colaboradoNombres = document.getElementById('insert-ipt-colaboradorNombres');
 
-iptSearchDni_insert.addEventListener("keydown", function (event) {
-    console.log('Presiono cualquier tecla');
-    if (event.key == "Enter") {
+ipt_SearchDni_insert.addEventListener("keyup", (event) => {
+    let val_dniColaborador = ipt_SearchDni_insert.value;
+    if (event.key == "Enter" && val_dniColaborador.length == 8) {
         // Almacenamos valor en variable
-        val_dniColaborador = iptSearchDni_insert.value;
+        val_dniColaborador = ipt_SearchDni_insert.value;
         // Ejecutamos funcion e enviamos variable
-        fetchData(val_dniColaborador)
+        let formApi = {
+            "accion": "get_dniNombres",
+            "data": val_dniColaborador
+        }
+        fetchData_apiDni(formApi);
+    }
+    if(event.key == "Enter"){
+        if(val_dniColaborador.length != 8){
+            $.niftyNoty({
+                type: 'danger',
+                container: '#alert-form-insert',
+                html: '<strong>Oh cielos!</strong> Nro DNI debe contener 8 digitos.',
+                focus: false,
+                timer: 2000
+            });
+        }
     }
 });
 // Funcion DNI ()
-const fetchData = async (data) => {
+const fetchData_apiDni = async (data) => {
     try {
         //beforeAccion()
         const body = new FormData();
@@ -23,29 +38,26 @@ const fetchData = async (data) => {
             body
         });
         const rpt = await res.json() //await JSON.parse(returned);
-        
-        console.log(typeof rpt)
-        console.log(rpt);
-        /* if(res){
-            afterAccion(rpt);
-        }
-        else{
-            console.log('Vacio');
-        } */
+        afterAccion(rpt);
     } catch (e) {
-        console.error('Ocurrio un problema con la API : '+ e);
+        $.niftyNoty({
+            type: 'danger',
+            container: '#alert-form-insert',
+            html: '<strong>Oh cielos!</strong> Ocurrio un problema con la API.',
+            focus: false,
+            timer: 2000
+        });
+        //console.error('Ocurrio un problema con la API : '+ e);
     }
 }
-
 const afterAccion = (data) => {
-    data
     if(data.error){
-        console.log('Hubo un error');
         $.niftyNoty({
             type: 'danger',
             container: '#alert-form-insert',
             html: '<strong>Oh cielos!</strong> ' + data.error,
             focus: false,
+            timer: 2000
         });
     }
     else{
@@ -54,3 +66,11 @@ const afterAccion = (data) => {
         ipt_colaboradoNombres.value = data.nombres;
     }
 }
+
+ipt_colaboradoNombres.addEventListener("keydown", (event) => {
+    // TAB detectado
+    if (event.keyCode == 9) {
+        // Código para la tecla TAB
+        console.log("Oprimiste la tecla TAB");
+    }
+});
