@@ -926,106 +926,252 @@
     <!--Default Bootstrap Modal-->
     <!--===================================================-->
     <div class="modal fade" id="insert-modal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
                 <!--Modal header-->
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-                    <h4 class="modal-title">Nuevo colabor</h4>
+                    <h4 class="modal-title">Nuevo Colaborador</h4>
                 </div>
 
                 <!--Modal body-->
                 <div class="modal-body">
                     <div id="alert-form-insert">
                     </div>
-                    <fieldset>
+					<fieldset>
+						<fieldset><p class="bord-btm pad-ver text-main text-bold">Datos Principal</p></fieldset>
                         <div class="row">
-                            <div class="form-horizontal">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="col-md-2 control-label">Colaborador</label>
-                                        <div class="col-md-4">
-                                            <input type="text" id="ipt-insert-nombreColaborador" class="form-control" name="nombre_colaborador" list="options-nombreColaborador" placeholder="Nombre" onkeypress="return soloLetras(event)">
-                                        </div>                                        
-                                        <datalist id="options-nombreColaborador">
-                                            <option value="No se pudo obtener Nombre">
-                                        </datalist>
-                                        <template id="template-opts-nombreColaborador">
-                                            <option id="opt-nombreColaborador" value="">
-                                        </template>
-                                        <div class="col-md-4">
-                                            <input type="number" id="insert-ipt-colaboradorDni" class="form-control" name="dni_colaborador" list="options-dniColaborador" placeholder="DNI" pattern="[0-9]+" onkeypress="return valideKey(event);">
-                                        </div>
-                                        <datalist id="options-dniColaborador">
-                                            <option value="No se pudo obtener DNI">
-                                        </datalist>
-										<template id="template-opts-dniColaborador">
-                                            <option id="opt-dniColaborador" value="">
-                                        </template>
-                                    </div>
-                                </div>                                  
-                            </div>
-                            <!-- Opcion 2 --
-                            <div class="form-horizontal">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="col-md-2 control-label">Colaborador</label>
-                                        <div class="col-md-9 input-group mar-btm">
-                                            <input type="text" id="ipt-search-colaborador" class="form-control" name="colaborador" list="insert-options-colaborador" placeholder="Colaborador">
-                                            <span class="input-group-btn">
-                                                <div class="btn-group dropdown" style="display: flex;">
-                                                    <button class="btn btn-default">DNI</button>
-                                                    <button class="btn btn-default dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
-                                                        <i class="dropdown-caret"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a>DNI</a></li>
-                                                        <li><a>Nombre</a></li>
-                                                    </ul>
-                                                </div>
-					                        </span>
-                                        </div>
-                                        <datalist id="insert-options-colaborador">
-                                            <option value="No se obtuvo Dato">
-                                        </datalist>
-                                        <template id="template-opts-colaborador">
-                                            <option id="opt-colaborador" value="">
-                                        </template>
-                                    </div>
-                                </div>                                  
-                            </div>-->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-					                    <label class="col-md-2 control-label">Usuario</label>
-					                    <div class="col-md-4">
-					                        <input type="text" class="form-control" id="ipt-insert-nombre-usuario" name="usuario" placeholder="Usuario">
-					                    </div>
-                                        <label class="col-md-2 control-label">Clave</label>
-					                    <div class="col-md-3">
-					                        <input type="password" class="form-control" id="ipt-insert-clave-usuario" name="clave" placeholder="Clave">
+                            <div class="row"> 
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label class="col-md-4 control-label">Ape.Paterno</label>
+					                    <div class="col-md-8">
+					                        <input type="text" class="form-control" id="insert-ipt-colaboradorApePaterno" name="Ape_Paterno" placeholder="Ape.Paterno" onkeypress="return soloLetras(event)">
 					                    </div>
 					                </div>
-                                </div>                                      
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-					                    <label class="col-md-2 control-label">Correo</label>
-					                    <div class="col-md-4">
-					                        <input type="text" class="form-control" id="ipt-insert-correo-usuario" name="firstName" placeholder="Correo">
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label class="col-md-4 control-label">Ape.Materno</label>
+					                    <div class="col-md-8">
+					                        <input type="text" class="form-control" id="insert-ipt-colaboradorApeMaterno" name="Ape_Materno" placeholder="Ape.Materno" onkeypress="return soloLetras(event)">
 					                    </div>
-                                        <label class="col-md-2 control-label text-bold">Estado</label>
-                                        <div class="col-md-3">
-					                        <!--Switchery : Checked-->
-                                            <!--===================================================-->
-                                            <input id="ipt-insert-estado-usuario" type="checkbox" checked="">
-                                            <!--===================================================-->
-					                    </div>   
 					                </div>
-                                </div>
-                                
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label class="col-md-4 control-label">Nombres</label>
+					                    <div class="col-md-8">
+											<input type="text" class="form-control" id="insert-ipt-colaboradorNombres"  name="nombre_colaborador" list="options-nombreColaborador" placeholder="Nombres" onkeypress="return soloLetras(event)">
+					                    </div>
+					                </div>
+								</div>                                  
+                            </div>
+							<div class="row"> 
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label for="slt-insert-colaboradorEstadoCivil" class="col-md-4 control-label">Estado Civil</label>
+					                    <div class="col-md-8">
+											<select class="form-control" id="slt-insert-colaboradorEstadoCivil" name="Estado Civil" placeholder="Estado Civil">
+												<option value="CASADO" selected>CASADO</option>
+												<option value="CONVIVIENTE" >CONVIVIENTE</option>
+												<option value="DIVORCIADO">DIVORCIADO</option>
+												<option value="SOLTERO">SOLTERO</option>
+												<option value="CONVIVIENTE" >CONVIVIENTE</option>
+												<option value="DIVORCIADO">DIVORCIADO</option>
+												<option value="VIUDO">VIUDO</option>
+											</select>
+					                    </div>
+					                </div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label for="slt-insert-colaboradorSexo" class="col-md-4 control-label">Sexo</label>
+					                    <div class="col-md-8">
+											<select class="form-control" id="slt-insert-colaboradorSexo" name="Sexo" placeholder="Sexo">
+												<option value="FEMENINO">FEMENINO</option>
+												<option value="MASCULINO" >MASCULINO</option>
+												<option value="BINARIO">BINARIO</option>
+												<option value="SISGENERO">SISGENERO</option>
+											</select>
+					                    </div>
+					                </div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label class="col-md-4 control-label">Fec.Nac</label>
+					                    <div class="col-md-8">
+					                        <input type="date" class="form-control" id="ipt-insert-colaboradorNombres" name="Fec_Nac" placeholder="Fec.Nac">
+					                    </div>
+					                </div>
+								</div>                                  
+                            </div>
+							<div class="row"> 
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label class="col-md-4 control-label">Tolerancia</label>
+					                    <div class="col-md-8">
+					                        <input type="text" class="form-control" id="ipt-insert-colaboradorApePaterno" name="Tolerancia" placeholder="Tolerancia">
+					                    </div>
+					                </div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label for="slt-insert-colaboradorTipoDoc" class="col-md-4 control-label">Tipo Documento</label>
+					                    <div class="col-md-8">
+											<select class="form-control" id="slt-insert-colaboradorTipoDoc" name="Tipo_Documento" placeholder="Tipo Documento">
+												<option value="DOC. NACIONAL DE IDENTIDAD">DOC. NACIONAL DE IDENTIDAD</option>
+												<option value="REG. UNICO DE CONTRIBUYENTES" >REG. UNICO DE CONTRIBUYENTES</option>
+												<option value="CARNET DE EXTRANJERÍA">CARNET DE EXTRANJERÍA</option>
+												<option value="PASAPORTE">PASAPORTE</option>
+												<option value="PARTIDA DE NACIMIENTO">PARTIDA DE NACIMIENTO</option>
+											</select>
+					                    </div>
+					                </div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label class="col-md-4 control-label">Numero</label>
+					                    <div class="col-md-8">
+										<input type="text" id="insert-ipt-colaboradorDni" class="form-control" name="dni_colaborador" list="options-dniColaborador" placeholder="Numero" pattern="[0-9]+" onkeypress="return valideKey(event);">
+					                    </div>
+					                </div>
+								</div>                                  
+                            </div>
+                        </div>
+                    </fieldset>
+					<fieldset>
+						<fieldset><p class="bord-btm pad-ver text-main text-bold">DIRECCION</p></fieldset>
+                        <div class="row">
+                            <div class="row"> 
+								<div class="col-md-4">
+									<div class="form-group">
+										<select class="form-control" id="slt-insert-colaboradorDireccion1" name="Direccion_1" >
+											<option value="AVENIDA">AVENIDA</option>
+											<option value="JIRON" >JIRON</option>
+											<option value="CALLE">CALLE</option>
+											<option value="PASAJE">PASAJE</option>
+											<option value="ALAMEDA">ALAMEDA</option>
+											<option value="MALECON">MALECON</option>
+											<option value="OVALO">OVALO</option>
+											<option value="PARQUE">PARQUE</option>
+											<option value="PLAZA">PLAZA</option>
+											<option value="CARRETERA">CARRETERA</option>
+											<option value="BLOCK">BLOCK</option>
+										</select>
+					                </div>
+								</div>
+								<div class="col-md-8">
+					                <input type="text" class="form-control" id="ipt-insert-colaboradorDireccion1" name="Direccion_1" placeholder="Dirección">
+					            </div>
+                            </div>
+							<div class="row"> 
+								<div class="col-md-4">
+									<div class="form-group">
+										<select class="form-control" id="slt-insert-colaboradorDireccion1" name="Direccion_1" >
+											<option value="URB. URBANIZACION">URB. URBANIZACION</option>
+											<option value="P.J. PUEBLO JOVEN" >P.J. PUEBLO JOVEN</option>
+											<option value="U.V. UNIDAD VECINAL">U.V. UNIDAD VECINAL</option>
+											<option value="A.H. ASENTA. HUMANO">A.H. ASENTA. HUMANO</option>
+											<option value="COO. COOPERATIVA">COO. COOPERATIVA</option>
+											<option value="RES. RESIDENCIAL">RES. RESIDENCIAL</option>
+											<option value="Z.I. ZONA INDUSTRIAL">Z.I. ZONA INDUSTRIAL</option>
+											<option value="GRU. GRUPO">GRU. GRUPO</option>
+											<option value="CAS. CASERIO">CAS. CASERIO</option>
+											<option value="FND. FUNDO">FND. FUNDO</option>
+											<option value="PUEBLO TRADICIONAL">PUEBLO TRADICIONAL</option>
+											<option value="-">-</option>
+										</select>
+					                </div>
+								</div>
+								<div class="col-md-8">
+					                <input type="text" class="form-control" id="ipt-insert-colaboradorDireccion1" name="Direccion_1" placeholder="Dirección">
+					            </div>
+                            </div>
+							<div class="row"> 
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label class="col-md-4 control-label">Departamento</label>
+					                    <div class="col-md-8">
+											<select class="form-control" id="slt-insert-colaboradorDepartamento" name="Departamento" placeholder="Departamento">
+												<option value="AMAZONAS">AMAZONAS</option>
+												<option value="ANCASH" >ANCASH</option>
+												<option value="APURIMAC">APURIMAC</option>
+												<option value="AREQUIPA">AREQUIPA</option>
+												<option value="AYACUCHO">AYACUCHO</option>
+											</select>
+					                    </div>
+					                </div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label class="col-md-4 control-label">Provincia</label>
+					                    <div class="col-md-8">
+					                        <input type="text" class="form-control" id="ipt-insert-colaboradorProvincia" name="Provincia" placeholder="Provincia">
+					                    </div>
+					                </div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label class="col-md-4 control-label">Distrito</label>
+					                    <div class="col-md-8">
+					                        <input type="text" class="form-control" id="ipt-insert-colaboradorDistrito" name="Distrito" placeholder="Distrito">
+					                    </div>
+					                </div>
+								</div>                                  
+                            </div>
+							<div class="row"> 
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label class="col-md-4 control-label">Estado Civil</label>
+					                    <div class="col-md-8">
+					                        <input type="text" class="form-control" id="ipt-insert-colaboradorApePaterno" name="Estado Civil" placeholder="Estado Civil">
+					                    </div>
+					                </div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label class="col-md-4 control-label">Sexo</label>
+					                    <div class="col-md-8">
+					                        <input type="text" class="form-control" id="ipt-insert-colaboradorApeMaterno" name="Sexo" placeholder="Sexo">
+					                    </div>
+					                </div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label class="col-md-4 control-label">Fec.Nac</label>
+					                    <div class="col-md-8">
+					                        <input type="text" class="form-control" id="ipt-insert-colaboradorNombres" name="Fec.Nac" placeholder="Fec.Nac">
+					                    </div>
+					                </div>
+								</div>                                  
+                            </div>
+							<div class="row"> 
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label class="col-md-4 control-label">Tolerancia</label>
+					                    <div class="col-md-8">
+					                        <input type="text" class="form-control" id="ipt-insert-colaboradorApePaterno" name="Tolerancia" placeholder="Tolerancia">
+					                    </div>
+					                </div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label class="col-md-4 control-label">Tipo Documento</label>
+					                    <div class="col-md-8">
+					                        <input type="text" class="form-control" id="ipt-insert-colaboradorApeMaterno" name="Tipo Documento" placeholder="Tipo Documento">
+					                    </div>
+					                </div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+					                    <label class="col-md-4 control-label">Numero</label>
+					                    <div class="col-md-8">
+										<input type="text" id="insert-ipt-colaboradorDni" class="form-control" name="dni_colaborador" list="options-dniColaborador" placeholder="Numero" pattern="[0-9]+" onkeypress="return valideKey(event);">
+					                    </div>
+					                </div>
+								</div>                                  
                             </div>
                         </div>
                     </fieldset>
