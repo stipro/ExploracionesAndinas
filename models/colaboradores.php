@@ -36,7 +36,8 @@ class Colaboradores extends Conexion
     {
         try 
         {
-            $query  = "INSERT INTO colaboradores VALUES (null, :dato1, :dato2, :dato3, :dato4, :dato5, :dato6, :dato7);";
+            $query = "INSERT INTO colaboradores (col_nombres, col_apePaterno, col_apeMaterno, col_tipoDocumento, col_dni, col_estadoCivil, col_genero, col_fechaNacimiento) 
+                            VALUES (:item1, :item2, :item3, :item4, :item5, :item6, :item7, :item8, :item9, :item10, :item11)";
             $result = $this->db->prepare($query);
             $result->execute(array(
             ':dato1' => $dato1,

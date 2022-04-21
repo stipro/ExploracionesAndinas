@@ -1000,9 +1000,9 @@
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-					                    <label class="col-md-4 control-label">Fec.Nac <span class="text-danger">*</span></label>
+					                    <label for="date-insert-colaborador-fechaNacimiento" class="col-md-4 control-label">Fec.Nac <span class="text-danger">*</span></label>
 					                    <div class="col-md-8">
-					                        <input type="date" class="form-control" id="ipt-insert-colaboradorNombres" name="Fec_Nac" placeholder="Fec.Nac">
+					                        <input type="date" class="form-control" id="ipt-insert-colaborador-fechaNacimiento" name="Fec_Nac" placeholder="Fec.Nac">
 					                    </div>
 					                </div>
 								</div>                                  
@@ -1053,140 +1053,276 @@
                             </div>
                         </div>
                     </fieldset>
-					<fieldset>
-						<fieldset><p class="bord-btm pad-ver text-main text-bold">DIRECCION</p></fieldset>
-                        <div class="row">
-                            <div class="row"> 
-								<div class="col-md-4">
-									<div class="form-group">
-										<select class="form-control" id="slt-insert-colaboradorDireccion1" name="Direccion_1" >
-											<option value="AVENIDA">AVENIDA</option>
-											<option value="JIRON" >JIRON</option>
-											<option value="CALLE">CALLE</option>
-											<option value="PASAJE">PASAJE</option>
-											<option value="ALAMEDA">ALAMEDA</option>
-											<option value="MALECON">MALECON</option>
-											<option value="OVALO">OVALO</option>
-											<option value="PARQUE">PARQUE</option>
-											<option value="PLAZA">PLAZA</option>
-											<option value="CARRETERA">CARRETERA</option>
-											<option value="BLOCK">BLOCK</option>
-										</select>
-					                </div>
+					<!--Default Tabs (Left Aligned)-->
+					<!--===================================================-->
+					<div class="tab-base">
+					
+					    <!--Nav Tabs-->
+					    <ul class="nav nav-tabs">
+					        <li class="active">
+					            <a data-toggle="tab" href="#demo-lft-tab-1">Datos Generales</a>
+					        </li>
+					        <li>
+					            <a data-toggle="tab" href="#demo-lft-tab-2">Datos Laborales</a>
+					        </li>
+					    </ul>
+					
+					    <!--Tabs Content-->
+					    <div class="tab-content">
+					        <div id="demo-lft-tab-1" class="tab-pane fade active in">
+					            <!--<p class="text-main text-semibold">First Tab Content</p>-->
+					            <fieldset>
+									<p class="bord-btm pad-ver text-main text-bold">DIRECCION</p>
+									<div class="row">
+										<div class="row"> 
+											<div class="col-md-4">
+												<div class="form-group">
+													<select class="form-control" id="slt-insert-colaboradorDireccion1" name="Direccion_1" >
+														<option value="AVENIDA">AVENIDA</option>
+														<option value="JIRON" >JIRON</option>
+														<option value="CALLE">CALLE</option>
+														<option value="PASAJE">PASAJE</option>
+														<option value="ALAMEDA">ALAMEDA</option>
+														<option value="MALECON">MALECON</option>
+														<option value="OVALO">OVALO</option>
+														<option value="PARQUE">PARQUE</option>
+														<option value="PLAZA">PLAZA</option>
+														<option value="CARRETERA">CARRETERA</option>
+														<option value="BLOCK">BLOCK</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-8">
+												<input type="text" class="form-control" id="ipt-insert-colaboradorDireccion1" name="Direccion_1" placeholder="Dirección">
+											</div>
+										</div>
+										<div class="row"> 
+											<div class="col-md-4">
+												<div class="form-group">
+													<select class="form-control" id="slt-insert-colaboradorDireccion1" name="Direccion_1" >
+														<option value="URB. URBANIZACION">URB. URBANIZACION</option>
+														<option value="P.J. PUEBLO JOVEN" >P.J. PUEBLO JOVEN</option>
+														<option value="U.V. UNIDAD VECINAL">U.V. UNIDAD VECINAL</option>
+														<option value="A.H. ASENTA. HUMANO">A.H. ASENTA. HUMANO</option>
+														<option value="COO. COOPERATIVA">COO. COOPERATIVA</option>
+														<option value="RES. RESIDENCIAL">RES. RESIDENCIAL</option>
+														<option value="Z.I. ZONA INDUSTRIAL">Z.I. ZONA INDUSTRIAL</option>
+														<option value="GRU. GRUPO">GRU. GRUPO</option>
+														<option value="CAS. CASERIO">CAS. CASERIO</option>
+														<option value="FND. FUNDO">FND. FUNDO</option>
+														<option value="PUEBLO TRADICIONAL">PUEBLO TRADICIONAL</option>
+														<option value="-">-</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-8">
+												<input type="text" class="form-control" id="ipt-insert-colaboradorDireccion1" name="Direccion_1" placeholder="Dirección">
+											</div>
+										</div>
+										<div class="row"> 
+											<div class="col-md-4">
+												<div class="form-group">
+													<label class="col-md-4 control-label">Departamento</label>
+													<div class="col-md-8">
+														<select class="form-control" id="slt-insert-colaboradorDepartamento" name="Departamento" placeholder="Departamento">
+															<option value="AMAZONAS">AMAZONAS</option>
+															<option value="ANCASH" >ANCASH</option>
+															<option value="APURIMAC">APURIMAC</option>
+															<option value="AREQUIPA">AREQUIPA</option>
+															<option value="AYACUCHO">AYACUCHO</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+													<label class="col-md-4 control-label">Provincia</label>
+													<div class="col-md-8">
+														<input type="text" class="form-control" id="ipt-insert-colaboradorProvincia" name="Provincia" placeholder="Provincia">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+													<label class="col-md-4 control-label">Distrito</label>
+													<div class="col-md-8">
+														<input type="text" class="form-control" id="ipt-insert-colaboradorDistrito" name="Distrito" placeholder="Distrito">
+													</div>
+												</div>
+											</div>                                  
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<p class="bord-btm pad-ver text-main text-bold"></p>
+									<div class="row"> 
+										<div class="col-md-4">
+											<div class="form-group">
+												<label class="col-md-4 control-label">Telefono</label>
+												<div class="col-md-8">
+													<input type="text" class="form-control" id="ipt-insert-colaboradorApePaterno" name="Telefono" placeholder="Telefono">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label class="col-md-4 control-label">Movil 1</label>
+												<div class="col-md-8">
+													<input type="text" class="form-control" id="ipt-insert-colaboradorApeMaterno" name="Movil 1" placeholder="Movil 1">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label class="col-md-4 control-label">Movil 2</label>
+												<div class="col-md-8">
+													<input type="text" class="form-control" id="ipt-insert-colaboradorNombres" name="Movil 2" placeholder="Movil 2">
+												</div>
+											</div>
+										</div>                                  
+									</div>
+									<div class="row"> 
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-md-4 control-label">Correo Personal</label>
+												<div class="col-md-8">
+													<input type="text" class="form-control" id="ipt-insert-colaboradorApePaterno" name="Correo Personal" placeholder="Correo Personal">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="col-md-4 control-label">Correo Corporativo</label>
+												<div class="col-md-8">
+													<input type="text" class="form-control" id="ipt-insert-colaboradorApeMaterno" name="Correo Corporativo" placeholder="Correo Corporativo">
+												</div>
+											</div>
+										</div>                               
+									</div>
+								</fieldset>
+					        </div>
+					        <div id="demo-lft-tab-2" class="tab-pane fade">
+								<div class="row">
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group">
+					                    		<label for="slt-insert-colaboradorSexo" class="col-md-4 control-label">Empresa</label>
+												<div class="col-md-8">
+													<select class="form-control" id="slt-insert-colaborador_empresa" name="Empresa" placeholder="Empresa">
+														<option value="EXPLORACIONES ANDINAS" selected>EXPLORACIONES ANDINAS</option>
+													</select>
+												</div>
+					                		</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group">
+					                    		<label for="slt-insert-colaboradorSexo" class="col-md-4 control-label">U. Minera</label>
+												<div class="col-md-8">
+													<select class="form-control" id="slt-insert-colaboradorud. Minera" name="ud. Minera" placeholder="ud. Minera">
+														<option value="-" selected>-</option>
+														<option value="ADMINISTRACION" >ADMINISTRACION</option>
+													</select>
+												</div>
+					                		</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label for="slt-insert-colaboradorSexo" class="col-md-4 control-label">Area</label>
+												<div class="col-md-8">
+													<select class="form-control" id="slt-insert-colaboradorArea" name="Area" placeholder="Area">
+														<option value="-" selected>-</option>
+														<option value="SISTEMAS">SISTEMAS</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label for="slt-insert-colaboradorSexo" class="col-md-4 control-label">Puesto</label>
+												<div class="col-md-8">
+													<select class="form-control" id="slt-insert-colaboradorPuesto" name="Puesto" placeholder="Puesto">
+														<option value="-" selected>-</option>
+														<option value="ASISTENTE DE SISTEMAS">ASISTENTE DE SISTEMAS</option>
+													</select>
+												</div>
+					                		</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group">
+												<label for="slt-insert-colaborador_regimenLaboral" class="col-md-4 control-label">R. Laboral</label>
+												<div class="col-md-8">
+													<select class="form-control" id="slt-insert-colaborador_regimenLaboral" name="Regimen_Laboral" placeholder="Regimen Laboral">
+														<option value="-" selected>-</option>
+														<option value="PLANILLA">PLANILLA</option>
+														<option value="RECIBO HONORARIOS" >RECIBO HONORARIOS</option>
+													</select>
+												</div>
+					                		</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label for="slt-insert-colaborador_fechaInicio" class="col-md-4 control-label">Fec.Inicio</label>
+												<div class="col-md-8">
+													<input type="date" class="form-control" id="ipt-insert-colaborador-fechaInicio" name="Fec_Inicio" placeholder="Fec.Inicio">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label for="slt-insert-colaborador_fechaFin" class="col-md-4 control-label">Fec.Fin</label>
+												<div class="col-md-8">
+													<input type="date" class="form-control" id="ipt-insert-colaborador-fechaFin" name="Fec_Fin" placeholder="Fec.Fin">
+												</div>
+					                		</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group">
+												<label for="slt-insert-colaboradorSexo" class="col-md-4 control-label">Estado</label>
+												<div class="col-md-8">
+													<select class="form-control" id="slt-insert-colaboradorEstado" name="Estado" placeholder="Estado">
+														<option value="-" selected>-</option>
+														<option value="INACTIVO">INACTIVO</option>
+														<option value="ACTIVO" >ACTIVO</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label for="slt-insert-colaboradorSexo" class="col-md-4 control-label">Motivo Renuncia</label>
+												<div class="col-md-8">
+													<select class="form-control" id="slt-insert-colaboradorMotivo Renuncia" name="Motivo Renuncia" placeholder="Motivo Renuncia">
+														<option value="-" selected>-</option>
+														<option value="RENUNCIA">RENUNCIA</option>
+														<option value="RENUNCIA POR INCENTIVOS" >RENUNCIA POR INCENTIVOS</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label for="slt-insert-colaboradorSexo" class="col-md-4 control-label">Centro de Costos</label>
+												<div class="col-md-8">
+													<select class="form-control" id="slt-insert-colaboradorCentro de Costos" name="Centro de Costos" placeholder="Centro de Costos">
+														<option value="-">-</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
-								<div class="col-md-8">
-					                <input type="text" class="form-control" id="ipt-insert-colaboradorDireccion1" name="Direccion_1" placeholder="Dirección">
-					            </div>
-                            </div>
-							<div class="row"> 
-								<div class="col-md-4">
-									<div class="form-group">
-										<select class="form-control" id="slt-insert-colaboradorDireccion1" name="Direccion_1" >
-											<option value="URB. URBANIZACION">URB. URBANIZACION</option>
-											<option value="P.J. PUEBLO JOVEN" >P.J. PUEBLO JOVEN</option>
-											<option value="U.V. UNIDAD VECINAL">U.V. UNIDAD VECINAL</option>
-											<option value="A.H. ASENTA. HUMANO">A.H. ASENTA. HUMANO</option>
-											<option value="COO. COOPERATIVA">COO. COOPERATIVA</option>
-											<option value="RES. RESIDENCIAL">RES. RESIDENCIAL</option>
-											<option value="Z.I. ZONA INDUSTRIAL">Z.I. ZONA INDUSTRIAL</option>
-											<option value="GRU. GRUPO">GRU. GRUPO</option>
-											<option value="CAS. CASERIO">CAS. CASERIO</option>
-											<option value="FND. FUNDO">FND. FUNDO</option>
-											<option value="PUEBLO TRADICIONAL">PUEBLO TRADICIONAL</option>
-											<option value="-">-</option>
-										</select>
-					                </div>
-								</div>
-								<div class="col-md-8">
-					                <input type="text" class="form-control" id="ipt-insert-colaboradorDireccion1" name="Direccion_1" placeholder="Dirección">
-					            </div>
-                            </div>
-							<div class="row"> 
-								<div class="col-md-4">
-									<div class="form-group">
-					                    <label class="col-md-4 control-label">Departamento</label>
-					                    <div class="col-md-8">
-											<select class="form-control" id="slt-insert-colaboradorDepartamento" name="Departamento" placeholder="Departamento">
-												<option value="AMAZONAS">AMAZONAS</option>
-												<option value="ANCASH" >ANCASH</option>
-												<option value="APURIMAC">APURIMAC</option>
-												<option value="AREQUIPA">AREQUIPA</option>
-												<option value="AYACUCHO">AYACUCHO</option>
-											</select>
-					                    </div>
-					                </div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-					                    <label class="col-md-4 control-label">Provincia</label>
-					                    <div class="col-md-8">
-					                        <input type="text" class="form-control" id="ipt-insert-colaboradorProvincia" name="Provincia" placeholder="Provincia">
-					                    </div>
-					                </div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-					                    <label class="col-md-4 control-label">Distrito</label>
-					                    <div class="col-md-8">
-					                        <input type="text" class="form-control" id="ipt-insert-colaboradorDistrito" name="Distrito" placeholder="Distrito">
-					                    </div>
-					                </div>
-								</div>                                  
-                            </div>
-							<div class="row"> 
-								<div class="col-md-4">
-									<div class="form-group">
-					                    <label class="col-md-4 control-label">Estado Civil</label>
-					                    <div class="col-md-8">
-					                        <input type="text" class="form-control" id="ipt-insert-colaboradorApePaterno" name="Estado Civil" placeholder="Estado Civil">
-					                    </div>
-					                </div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-					                    <label class="col-md-4 control-label">Sexo</label>
-					                    <div class="col-md-8">
-					                        <input type="text" class="form-control" id="ipt-insert-colaboradorApeMaterno" name="Sexo" placeholder="Sexo">
-					                    </div>
-					                </div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-					                    <label class="col-md-4 control-label">Fec.Nac</label>
-					                    <div class="col-md-8">
-					                        <input type="text" class="form-control" id="ipt-insert-colaboradorNombres" name="Fec.Nac" placeholder="Fec.Nac">
-					                    </div>
-					                </div>
-								</div>                                  
-                            </div>
-							<div class="row"> 
-								<div class="col-md-4">
-									<div class="form-group">
-					                    <label class="col-md-4 control-label">Tolerancia</label>
-					                    <div class="col-md-8">
-					                        <input type="text" class="form-control" id="ipt-insert-colaboradorApePaterno" name="Tolerancia" placeholder="Tolerancia">
-					                    </div>
-					                </div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-					                    <label class="col-md-4 control-label">Tipo Documento</label>
-					                    <div class="col-md-8">
-					                        <input type="text" class="form-control" id="ipt-insert-colaboradorApeMaterno" name="Tipo Documento" placeholder="Tipo Documento">
-					                    </div>
-					                </div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-					                    <label class="col-md-4 control-label">Numero</label>
-					                    <div class="col-md-8">
-										<input type="text" id="insert-ipt-colaboradorDni" class="form-control" name="dni_colaborador" list="options-dniColaborador" placeholder="Numero" pattern="[0-9]+" onkeypress="return valideKey(event);">
-					                    </div>
-					                </div>
-								</div>                                  
-                            </div>
-                        </div>
-                    </fieldset>
+					        </div>
+					    </div>
+					</div>
+					<!--===================================================-->
+					<!--End Default Tabs (Left Aligned)-->
+					
                 </div>
 
                 <!--Modal footer-->
