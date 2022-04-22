@@ -205,7 +205,18 @@ const requestInsert = async (form) => {
         body
     });
     const result = await returned.json(); //await JSON.parse(returned);
+    afterSendingInsert(result);
 }
+const afterSendingInsert = (data) => {
+    rptSql = data['sql'];
+    $.niftyNoty({
+        type: 'success',
+        container: '#alert-form-insert',
+        html: '<strong>¡Bien hecho!</strong> ' + rptSql['mensaje'],
+        focus: false,
+        timer: 2000
+    });
+};
 
 ipt_colaborador_dni_api.addEventListener("keyup", (event) => {
     let val_dniColaborador = ipt_colaborador_dni_api.value;
