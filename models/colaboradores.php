@@ -32,24 +32,61 @@ class Colaboradores extends Conexion
         $query = "SELECT * FROM colaboradores LIMIT {$empezarDesde}, {$filasPage}";
         return $this->ConsultaSimple($query);
     }
-    public function insert(string $dato1, int $dato2, string $dato3, string $dato4, string $dato5, string $dato6, string $dato7)
+    public function insert(string $dato1, string $dato2, string $dato3, string $dato4, int $dato5, string $dato6, string $dato7, string $dato8, int $dato9)
     {
         try 
         {
-            $query = "INSERT INTO colaboradores (col_nombres, col_apePaterno, col_apeMaterno, col_tipoDocumento, col_dni, col_estadoCivil, col_genero, col_fechaNacimiento) 
-                            VALUES (:item1, :item2, :item3, :item4, :item5, :item6, :item7, :item8, :item9, :item10, :item11)";
+            $query = "INSERT INTO colaboradores (col_apePaterno, col_apeMaterno, col_nombres, col_estadoCivil, col_genero, col_fechaNacimiento, col_tipoDocumento, col_dni, id_cargo) 
+                            VALUES (:item1, :item2, :item3, :item4, :item5, :item6, :item7, :item8, :item9)";
             $result = $this->db->prepare($query);
-            $result->execute(array(
-            ':dato1' => $dato1,
-            ':dato2' => $dato2,
-            ':dato3' => $dato3,
-            ':dato4' => $dato4,
-            ':dato5' => $dato5,
-            ':dato6' => $dato6,
-            ':dato7' => $dato7));
-            return 'Se registro correctamente.';
+            $result->bindParam(':item1', $dato1, PDO::PARAM_STR);
+            $result->bindParam(':item2', $dato2, PDO::PARAM_STR);
+            $result->bindParam(':item3', $dato3, PDO::PARAM_STR);
+            $result->bindParam(':item4', $dato4, PDO::PARAM_STR);
+            $result->bindParam(':item5', $dato5, PDO::PARAM_STR);
+            $result->bindParam(':item6', $dato6, PDO::PARAM_STR);
+            $result->bindParam(':item7', $dato7, PDO::PARAM_STR);
+            $result->bindParam(':item8', $dato8, PDO::PARAM_STR);
+            $result->bindParam(':item9', $dato9, PDO::PARAM_STR);
+            $sqlrpt = $result->execute();
+            $lastcolIdsql = $this->db->lastInsertId();
+            if($sqlrpt){
+                //$this->db->commit();
+                $rptSql = [
+                    "estado" => 1,
+                    "mensaje" => "Se registro correctamente Colaborador",
+                    "id" => $lastcolIdsql
+                ];
+            }
+            else{
+                echo "\nPDO::errorInfo():\n";
+                print_r($result->errorInfo());
+            }
+            return $rptSql;
+
         } catch (PDOException $e) {
-            return 'Se registro ERROR. Probablemente ingreso en Guardia mas de un texto, solo ingresar 1 Text, dni 8';
+            //$this->db->rollback();
+            
+            if($e->getCode() == 23000){
+                $messageUser = "Se duplico n° de Vale";
+            }
+            elseif($e->getCode() == '21S01'){
+                $messageUser = "Los parametros no coinciden";
+            }
+            else{
+                $messageUser = "";
+            }
+            $rptSql = [
+                "estado" => 0,
+                "messageDeveloper" => "Se encontro ERROR ".$e->getMessage(),
+                "messageUser" => $messageUser,
+                "codigo" => $e->getCode(),
+                "string" => $e->__toString(),
+            ];
+            return $rptSql;
+        }
+        finally {
+            //print_r($this->db->errorInfo());
         }
     }
     public function delete(int $id)

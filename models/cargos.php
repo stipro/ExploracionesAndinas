@@ -8,7 +8,12 @@ class Cargos extends Conexion
     {
         parent::__construct();
     }
-
+    //OBTIENE TODA LA TABLA
+    public function getSelect_cargo($where): array
+    {
+        $query = "SELECT cargo.cargo_nombre, cargo.id_cargo FROM cargos AS cargo WHERE id_area = '{$where}';";
+        return $this->ConsultaSimple($query);
+    }
     // Obtiene Lista especifica
     public function getSelect(string $table, string $column, string $idTable)
     {

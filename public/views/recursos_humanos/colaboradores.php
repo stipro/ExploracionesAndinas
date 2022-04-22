@@ -1002,7 +1002,7 @@
 									<div class="form-group">
 					                    <label for="date-insert-colaborador-fechaNacimiento" class="col-md-4 control-label">Fec.Nac <span class="text-danger">*</span></label>
 					                    <div class="col-md-8">
-					                        <input type="date" class="form-control" id="ipt-insert-colaborador-fechaNacimiento" name="Fec_Nac" placeholder="Fec.Nac">
+					                        <input type="date" class="form-control" id="date-insert-colaborador-fechaNacimiento" name="Fec_Nac" placeholder="Fec.Nac">
 					                    </div>
 					                </div>
 								</div>                                  
@@ -1218,34 +1218,40 @@
 									<div class="row">
 										<div class="col-md-4">
 											<div class="form-group">
-					                    		<label for="slt-insert-colaboradorSexo" class="col-md-4 control-label">U. Minera</label>
+					                    		<label for="slt-insert-colaborador-unidadMinera" class="col-md-4 control-label">U. Minera</label>
 												<div class="col-md-8">
-													<select class="form-control" id="slt-insert-colaboradorud. Minera" name="ud. Minera" placeholder="ud. Minera">
+													<select class="form-control" id="slt-insert-colaborador-unidadMinera" name="ud_Minera" placeholder="ud. Minera">
 														<option value="-" selected>-</option>
-														<option value="ADMINISTRACION" >ADMINISTRACION</option>
 													</select>
+													<template id="template-insert-colaborador-unidadMinera">
+														<option></option>
+													</template>
 												</div>
 					                		</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group">
-												<label for="slt-insert-colaboradorSexo" class="col-md-4 control-label">Area</label>
+												<label for="slt-insert-colaborador-area" class="col-md-4 control-label">Area</label>
 												<div class="col-md-8">
-													<select class="form-control" id="slt-insert-colaboradorArea" name="Area" placeholder="Area">
+													<select class="form-control" id="slt-insert-colaborador-area" name="area" placeholder="Area">
 														<option value="-" selected>-</option>
-														<option value="SISTEMAS">SISTEMAS</option>
 													</select>
+													<template id="template-insert-colaborador-area">
+														<option></option>
+													</template>
 												</div>
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group">
-												<label for="slt-insert-colaboradorSexo" class="col-md-4 control-label">Puesto</label>
+												<label for="slt-insert-colaborador-cargo" class="col-md-4 control-label">Cargo</label>
 												<div class="col-md-8">
-													<select class="form-control" id="slt-insert-colaboradorPuesto" name="Puesto" placeholder="Puesto">
-														<option value="-" selected>-</option>
-														<option value="ASISTENTE DE SISTEMAS">ASISTENTE DE SISTEMAS</option>
+													<select class="form-control" id="slt-insert-colaborador-cargo" name="cargo" placeholder="Cargo">
+														<option data-id-cargo="0" value="seleccione Area" selected>seleccione Area</option>
 													</select>
+													<template id="template-insert-colaborador-cargo">
+														<option></option>
+													</template>
 												</div>
 					                		</div>
 										</div>

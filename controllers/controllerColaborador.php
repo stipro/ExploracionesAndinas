@@ -9,7 +9,8 @@ if($_POST){
         $arrayForm = json_decode($_POST['data'],true);
         $accion = $arrayForm['accion'];
         switch ($accion) {
-            case "insertar":
+            case "insert":
+                $listInsert = $arrayForm['form'];
                 $dato1 = $listInsert['item1'];
                 $dato2 = $listInsert['item2'];
                 $dato3 = $listInsert['item3'];
@@ -17,7 +18,9 @@ if($_POST){
                 $dato5 = $listInsert['item5'];
                 $dato6 = $listInsert['item6'];
                 $dato7 = $listInsert['item7'];
-                $rptSql = $tableManager->insert($dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7);
+                $dato8 = $listInsert['item8'];
+                $dato9 = $listInsert['item9'];
+                $rptSql = $tableManager->insert($dato1, $dato2, $dato3, $dato4, intval($dato5), $dato6, $dato7, $dato8, intval($dato9));
                 break;
             case "editar":
                 $listUpdate = $arrayForm['list'];
