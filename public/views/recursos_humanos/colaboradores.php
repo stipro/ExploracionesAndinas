@@ -1498,7 +1498,7 @@
     
 
     <!--Form Component [ REQUIRED ]-->
-    <script src=".\..\..\..\js\Colaboradores.js"></script>
+    <script src=".\..\..\..\js\colaboradores.js"></script>
 
 	<script>
 		function soloLetras(e) {
