@@ -220,7 +220,7 @@ const afterSendingInsert = (data) => {
         $.niftyNoty({
             type: 'danger',
             container: '#alerts-form-insert',
-            html: '<strong>Oh cielos!</strong> ' + rptSql['sql']['mensaje'],
+            html: '<strong>Oh cielos!</strong> ' + rptSql['mensaje'],
             focus: false,
             timer: 2000
         });
