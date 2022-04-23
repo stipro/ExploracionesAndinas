@@ -68,7 +68,7 @@ class Colaboradores extends Conexion
             //$this->db->rollback();
             
             if($e->getCode() == 23000){
-                $messageUser = "Se duplico n° de Vale";
+                $messageUser = "DNI ya registrado, Colaborador ya registrado";
             }
             elseif($e->getCode() == '21S01'){
                 $messageUser = "Los parametros no coinciden";

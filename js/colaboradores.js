@@ -147,10 +147,11 @@ btnInsertar.addEventListener("click", (e) => {
     val_dni = val_dni ? val_dni : arrayError.push('DNI');
     var val_idCargo = select_colaborador_cargo.options[select_colaborador_cargo .selectedIndex].dataset.idCargo; /* Obtener el valor */
     val_idCargo = val_idCargo>0 ? val_idCargo : arrayError.push('CARGO');
+    console.log(arrayError.length);
     if(arrayError.length > 0){
         alerts(arrayError);
     }
-    if(val_apePaterno && val_apeMaterno && val_nombres && val_estadoCivil && val_genero && val_fechaNacimiento && val_tipoDoc && val_dni && val_idCargo){
+    else{
         var listInsert = {
             "item1": val_apePaterno,
             "item2": val_apeMaterno,
@@ -175,7 +176,7 @@ btnInsertar.addEventListener("click", (e) => {
 });
 // Alerta
 const alerts = data => {    
-    let notyFormt = '<strong>ERROR!</strong> <h4 class="alert-title">Falta :</h4>\
+    let notyFormt = '<strong>!Error!</strong> <h4 class="alert-title">Falta :</h4>\
     <!--Unordered List-->\
     <!--===================================================-->\
     <ul>';
@@ -215,17 +216,16 @@ const afterSendingInsert = (data) => {
             focus: false,
             timer: 2000
         });
-    }
-    else{
+    }else{
+        console.log('nell');
         $.niftyNoty({
             type: 'danger',
-            container: '#alerts-form-insert',
-            html: '<strong>Oh cielos!</strong> ' + rptSql['mensaje'],
+            container: '#alert-form-insert',
+            html: '<strong>!Error!</strong> ' + rptSql['messageUser'],
             focus: false,
             timer: 2000
         });
     }
-    
 };
 
 ipt_colaborador_dni_api.addEventListener("keyup", (event) => {
@@ -245,7 +245,7 @@ ipt_colaborador_dni_api.addEventListener("keyup", (event) => {
             $.niftyNoty({
                 type: 'danger',
                 container: '#alert-form-insert',
-                html: '<strong>Oh cielos!</strong> Nro DNI debe contener 8 digitos.',
+                html: '<strong>!Error!</strong> Nro DNI debe contener 8 digitos.',
                 focus: false,
                 timer: 2000
             });
@@ -268,7 +268,7 @@ const fetchData_apiDni = async (data) => {
         $.niftyNoty({
             type: 'danger',
             container: '#alert-form-insert',
-            html: '<strong>Oh cielos!</strong> Ocurrio un problema con la API.',
+            html: '<strong>!Error!</strong> Ocurrio un problema con la API.',
             focus: false,
             timer: 2000
         });
@@ -280,7 +280,7 @@ const afterAccion = (data) => {
         $.niftyNoty({
             type: 'danger',
             container: '#alert-form-insert',
-            html: '<strong>Oh cielos!</strong> ' + data.error,
+            html: '<strong>!Error!</strong> ' + data.error,
             focus: false,
             timer: 2000
         });
