@@ -8,6 +8,7 @@ if($_POST){
     $curl = curl_init();
     switch ($accion) {
         case 'get_dniNombres':
+            $dni = $arrayForm['data'];
             curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://api.apis.net.pe/v1/dni?numero='.$dni,
             CURLOPT_RETURNTRANSFER => true,

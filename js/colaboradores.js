@@ -148,8 +148,6 @@ btnInsertar.addEventListener("click", (e) => {
     var val_idCargo = select_colaborador_cargo.options[select_colaborador_cargo .selectedIndex].dataset.idCargo; /* Obtener el valor */
     val_idCargo = val_idCargo>0 ? val_idCargo : arrayError.push('CARGO');
     if(arrayError.length > 0){
-        console.log('Hay error');
-        console.log(arrayError);
         alerts(arrayError);
     }
     if(val_apePaterno && val_apeMaterno && val_nombres && val_estadoCivil && val_genero && val_fechaNacimiento && val_tipoDoc && val_dni && val_idCargo){
@@ -209,13 +207,25 @@ const requestInsert = async (form) => {
 }
 const afterSendingInsert = (data) => {
     rptSql = data['sql'];
-    $.niftyNoty({
-        type: 'success',
-        container: '#alert-form-insert',
-        html: '<strong>¡Bien hecho!</strong> ' + rptSql['mensaje'],
-        focus: false,
-        timer: 2000
-    });
+    if(rptSql['estado'] == 1){
+        $.niftyNoty({
+            type: 'success',
+            container: '#alert-form-insert',
+            html: '<strong>¡Bien hecho!</strong> ' + rptSql['mensaje'],
+            focus: false,
+            timer: 2000
+        });
+    }
+    else{
+        $.niftyNoty({
+            type: 'danger',
+            container: '#alerts-form-insert',
+            html: '<strong>Oh cielos!</strong> ' + rptSql['sql']['mensaje'],
+            focus: false,
+            timer: 2000
+        });
+    }
+    
 };
 
 ipt_colaborador_dni_api.addEventListener("keyup", (event) => {
