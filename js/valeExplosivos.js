@@ -436,14 +436,14 @@ const afterRequestInsert = (data) => {
             $.niftyNoty({
                 type: 'danger',
                 container: '#alert-form-insert',
-                html: '<strong>Oh cielos!</strong> ' + data['rptController']['mensaje'],
+                html: '<strong>!Error!</strong> ' + data['rptController']['mensaje'],
                 focus: false,
             });
         } else {
             $.niftyNoty({
                 type: 'danger',
                 container: '#alert-form-insert',
-                html: '<strong>Oh cielos!</strong> ' + sqlRpt['messageUser'],
+                html: '<strong>!Error!</strong> ' + sqlRpt['messageUser'],
                 focus: false,
             });
         }

@@ -162,6 +162,7 @@
                                         <legend>
                                             <div class="panel-heading">
 					                            <h3 class="panel-title">INGRESO</h3>
+                                                <button id="btn-Agregar" data-target="#modal-insert" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add icon-fw"></i>Agregar</button>
 					                        </div>
                                         </legend>
                                         <div class="table-responsive-md">
@@ -1210,28 +1211,30 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pci-cross pci-circle"></i></button>
                     <div class="row">
                         
-                        <h4 class="modal-title col-md-5">Ingreso de Documento</h4>
-                        <label for="val_explosivo-ipt-text-form-digitador" class="col-md-1 control-label">Digitador</label>
-                        <div class="col-md-1">
-                            <input type="text" placeholder="..." class="form-control" name="digitador" id="val_explosivo-ipt-text-form-digitador" data-id="<?php echo $_SESSION["id"]?>" value="<?php echo $_SESSION["name"]?>" disabled>
+                        <h4 class="modal-title col-md-4">Ingreso de Documento</h4>
+                        <div class="col-md-2">
+                            <label for="insert-ipt-docExplosivo-digitador" class="col-md-4 control-label">Digitador</label>
+                            <div class="col-md-8">
+                                <input type="text" placeholder="..." class="form-control" name="digitador" id="insert-ipt-docExplosivo-digitador" data-id="<?php echo $_SESSION["id"]?>" value="<?php echo $_SESSION["name"]?>" disabled>
+                            </div>
                         </div>
                         <div class="col-md-2">
                             <!-- FORMULARIO -->
                             <div class="form-group">
-                                <label for="val_explosivo-text-form-pre_impre" class="col-md-4 control-label">PreImpre</label>
+                                <label for="insert-ipt-docExplosivo-preImpre" class="col-md-4 control-label">PreImpre</label>
                                 <div class="col-md-8">
-                                    <input type="text" placeholder="PreImpre" class="form-control" id="val_explosivo-text-form-pre_impre" value="..." disabled>
+                                    <input type="text" placeholder="PreImpre" class="form-control" id="insert-ipt-docExplosivo-preImpre" value="..." disabled>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <!-- FORMULARIO -->
                             <div class="form-group">
-                                <label for="val_explosivo-text-form-n_vale" class="col-md-4 control-label">N° Documento
+                                <label for="insert-ipt-docExplosivo_numeroDoc" class="col-md-4 control-label">N° Doc.
                                     <span class="text-danger">*</span>
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="text" placeholder="Nª Vale" class="form-control" name="fullname" id="val_explosivo-text-form-n_vale" autofocus>
+                                    <input type="text" placeholder="Nª Documento" class="form-control" name="n_documento" id="insert-ipt-docExplosivo_numeroDoc" autofocus>
                                 </div>
                             </div>
                         </div>
@@ -1526,6 +1529,24 @@
                         <div class="col-md-12">
                             <p class="bord-btm pad-ver text-main text-bold">Materiales de Explosivos</p>
                             <div class="row">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label for="" class="col-md-12">Nombre Explosivo:</label>
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" id="" placeholder="Nombre Explosivo">
+                                            </div>                                        
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="" class="col-md-12">Código:</label>
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" id="" placeholder="Código">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <table id="demo-foo-addrow" class="table table-bordered table-hover toggle-circle" data-page-size="5">
                                     <colgroup>
                                         <col span="3">
@@ -1654,7 +1675,7 @@
             let form_request1 = {
                 "accion": "table",
             }
-            fetchData(form_request1);
+            //fetchData(form_request1);
         }
         const fetchData = async (request) => {
             const body = new FormData();

@@ -926,7 +926,7 @@
     <!--Default Bootstrap Modal-->
     <!--===================================================-->
     <div class="modal fade" id="insert-modal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div id="inserForm" class="modal-dialog modal-lg">
             <div class="modal-content">
 
                 <!--Modal header-->
