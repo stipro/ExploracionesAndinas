@@ -52,8 +52,6 @@
 
     <!--NiftyJS [ RECOMMENDED ]-->
     <script src="./../../../js/nifty.min.js"></script>
-
-    <script src="https://kit.fontawesome.com/aeb246fa89.js" crossorigin="anonymous"></script>
     
     <!--Base [ RECOMMENDED ]-->
     <script type="text/javascript" src="./../../../js/index.js"></script>

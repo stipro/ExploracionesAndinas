@@ -48,6 +48,7 @@
     <link href=".\..\..\..\plugins\pace\pace.min.css" rel="stylesheet">
     <script src=".\..\..\..\plugins\pace\pace.min.js"></script>
 
+    <link rel=".\..\..\..\plugins\icomoon\style.css" href="./icomoon/style.css">
 
     <!--Demo [ DEMONSTRATION ]-->
     <link href=".\..\..\..\css\demo\nifty-demo.min.css" rel="stylesheet">
