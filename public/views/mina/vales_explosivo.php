@@ -1669,23 +1669,18 @@
                 var api = this.api();
     
                 // For each column
-                api
-                    .columns()
-                    .eq(0)
-                    .each(function (colIdx) {
-                        // Set the header cell to contain the input element
-                        var cell = $('.filters th').eq(
-                            $(api.column(colIdx).header()).index()
-                        );
-                        var title = $(cell).text();
-                        $(cell).html('<input class="form-control" type="text" placeholder="Buscar ' + title + '" />');
+                api.columns().eq(0).each(function (colIdx) {
+                    // Set the header cell to contain the input element
+                    var cell = $('.filters th').eq(
+                        $(api.column(colIdx).header()).index()
+                    );
+                    var title = $(cell).text();
+                    $(cell).html('<input class="form-control" type="text" placeholder="Buscar ' + title + '" />');
     
                         // On every keypress in this input
-                        $(
-                            'input',
-                            $('.filters th').eq($(api.column(colIdx).header()).index())
-                        )
-                            .off('keyup change')
+                        $('input', $('.filters th').eq(
+                            $(api.column(colIdx).header()).index())
+                        ).off('keyup change')
                             .on('keyup change', function (e) {
                                 e.stopPropagation();
     
@@ -1710,7 +1705,7 @@
                                     .focus()[0]
                                     .setSelectionRange(cursorPosition, cursorPosition);
                             });
-                    });
+                });
             },
                 /* fixedColumns: {
                     right: 1,

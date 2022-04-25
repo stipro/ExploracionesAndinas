@@ -11,6 +11,10 @@ if($_POST){
         $arrayForm = json_decode($_POST['data'],true);
         $accion = $arrayForm['accion'];
         switch ($accion) {
+            case "table-master":
+                $rptSql = $tableManager->table_master();
+                
+                break;
             case "getcolumnAll":
                 $column = $arrayForm['column'];
                 $rptSql = $tableManager->getSelect($table, $column);

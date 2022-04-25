@@ -162,9 +162,41 @@
                                         <legend>
                                             <div class="panel-heading">
 					                            <h3 class="panel-title">INGRESO</h3>
-                                                <button id="btn-Agregar" data-target="#modal-insert" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add icon-fw"></i>Agregar</button>
 					                        </div>
                                         </legend>
+                                        <div class="row">
+											<div class="col-md-3">
+											</div>
+											<div class="col-sm-12 col-md-6 dt-buttons btn-group">
+                                                <button class="btn btn-default btn-success btn-labeled" id="btn-Agregar" data-target="#modal-insert" data-toggle="modal">
+                                                    <i class="btn-label fa-solid fa-plus"></i>
+                                                    <span class="hidden-xs hidden-sm">Agregar</span>
+                                                </button>
+												<button class="btn btn-default btn-info btn-labeled">
+													<i class="btn-label fa fa-refresh"></i>
+													<span class="hidden-xs">Actualizar</span>
+												</button>
+												<button class="btn btn-default btn-labeled">
+													<i class="btn-label fa fa-download"></i>
+													<span class="hidden-xs"> Exportar</span>
+												</button>
+												<button class="btn btn-primary btn-labeled">
+													<i class="btn-label fa fa-download"></i>
+													<span class="hidden-xs"> Importar</span>
+												</button>
+												<button class="btn btn-primary btn-labeled">
+													<i class="btn-label demo-pli-printer"></i>
+													<span class="hidden-xs"> Imprimir</span>
+												</button>
+												<button class="btn btn-primary btn-labeled">
+													<i class="btn-label fa fa-eye"></i>
+													<span class="hidden-xs"> Mostrar / Ocultar</span>
+												</button>
+											</div>
+											<div class="col-sm-12 col-md-3">											
+											</div>
+										</div>
+
                                         <div class="table-responsive-md">
                                             <table class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" cellspacing="0" id="table-master">
                                                 <thead class="thead-dark">

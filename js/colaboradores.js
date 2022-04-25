@@ -19,11 +19,122 @@ const template_colaborador_area = document.getElementById('template-insert-colab
 const template_colaborador_cargo = document.getElementById('template-insert-colaborador-cargo').content;
 const fragment = document.createDocumentFragment();
 
+var tableMaster;
 // Eventos
 // El evento DOMContentLoaded es disparado cuando el documento HTML ha sido completamente cargado y parseado
 document.addEventListener('DOMContentLoaded', e => {
-    
+    // Capturamos en una variable
+    tableMaster = $('#table-master').DataTable({
+        // Estado de input visual
+        // Busqueda
+        "searching": true,
+        // Paginación
+        "paging":   true,
+        // Paginación defecto
+        "pageLength": 10,
+        // Declaramos columnas
+        columns: [
+            {
+                data: "col_apePaterno",
+            },
+            {
+                data: "col_apeMaterno",
+            },
+            {
+                data: "col_nombres",
+            },
+            {
+                data: "col_ccostos",
+            },
+            {
+                data: "col_tipoDocumento",
+            },
+            {
+                data: "col_dni",
+            },
+            {
+                data: "col_guardia",
+            },
+            {
+                data: "col_fechaNacimiento",
+            },
+            {
+                defaultContent: '<button type="button" class="btn-view btn btn-success btn-tableMaster-detalle"><i class="fa fa-eye"></i> <span class="hidden-xs hidden-sm">Detalle<span></button> <button type="button" class="name btn btn-primary btn-tableMaster-edit"><i class="fa fa-edit"></i> <span class="hidden-xs hidden-sm">Editar</span></button> <button type="button" class="position btn btn-danger btn-tableMaster-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>'
+            }
+        ],
+        language: {
+            "decimal": "",
+            "emptyTable": "No hay registro de ",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_",
+            "infoEmpty": "Mostrando 0 to 0 of 0 ",
+            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ Datos",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Busqueda General :",
+            "zeroRecords": "Sin resultados encontrados",
+            "paginate": {
+                "first": "Primero",
+                "last": "Ultimo",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+            "buttons": {
+                "copy": "Copiar",
+                "colvis": "Visibilidad",
+                "collection": "Colección",
+                "colvisRestore": "Restaurar visibilidad",
+                "print": "Imprimir",
+                "pageLength": {
+                    "-1": "Mostrar todas las filas",
+                    "_": "Mostrar %d filas",
+                },
+            }
+        },
+    });
+    mainEvents();
 });
+$('#myInput').on( 'keyup', function () {
+    tableMaster.lengthMenu('5').draw();
+    tableMaster.search( this.value ).draw();
+} );
+const mainEvents = () => {
+    // Preparamos formulario
+    let form_request1 = {
+        // Se pone la accion
+        "accion": "table-master",
+    }
+    // Enviamos formulario
+    fetchData(form_request1);
+}
+
+// Hacemos la Peticion
+const fetchData = async (request) => {
+    // Se instancia el FORMDATA
+    const body = new FormData();
+    // Se agrega formulario en el FORMDATA
+    body.append("data", JSON.stringify(request));
+    //Se envia formulario al controllador y su previa configuracion
+    const returned = await fetch("./../../../controllers/controllerColaboradorList.php", {
+        method: "POST",
+        body
+    });
+    // Se convierte respuesta en json
+    const result = await returned.json(); //await JSON.parse(returned);
+    const rptSQL = result['sql'];
+    // Envia dato a pintar
+    paintTable(rptSQL);
+}
+
+// Se pinta la Tabla Principal
+const paintTable = async (rptSql) => {
+    // Limpia tabla
+    tableMaster.clear();
+    // Agregada datos a Tabla
+    tableMaster.rows.add(rptSql).draw();
+}
 
 btnAgregar.addEventListener("click", (e) => {
     let form_request1 = {

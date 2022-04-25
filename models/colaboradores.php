@@ -27,9 +27,9 @@ class Colaboradores extends Conexion
     }
 
     //OBTIENE TODA LA TABLA
-    public function getAll(int $empezarDesde, int $filasPage): array
+    public function table_master(): array
     {
-        $query = "SELECT * FROM colaboradores LIMIT {$empezarDesde}, {$filasPage}";
+        $query = "SELECT * FROM colaboradores";
         return $this->ConsultaSimple($query);
     }
     public function insert(string $dato1, string $dato2, string $dato3, string $dato4, int $dato5, string $dato6, string $dato7, string $dato8, int $dato9)
