@@ -17,6 +17,7 @@
         include_once('./../template/footer.php');
         include_once('./../template/aside.php');
         include_once('./../template/javascript.php');
+        include_once('./../tareo/labor/insert.php');
         $name_menu = '';
         for ($i=0; $i < count($parte); $i++) {
             $name_menu .= ucfirst($parte[$i]).' ';
@@ -1134,7 +1135,7 @@
 
     <!--Insertar Bootstrap Modal-->
     <!--===================================================-->
-    <div class="modal fade" id="modal-insert" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+    <div class="modal fade" id="modal-insert" role="dialog" aria-labelledby="demo-default-modal" aria-hidden="true" style="overflow-y: scroll;">
         <div id="inserForm"  class="modal-dialog modal-xl" style="margin: 1rem;">
             <div class="modal-content">
 
@@ -1240,7 +1241,7 @@
                                                 <select class="form-control chosenLabCodigo" data-placeholder="Elige un Codigo" id="val_explosivo-text-form-labor_codigo" tabindex="2">
                                                 </select>
                                                 <span class="input-group-btn">
-                                                    <button class="btn btn-success">
+                                                    <button class="btn btn-success" id="btn-insert-labor">
                                                         <i class="fa fa-plus"></i>
                                                     </button>
                                                 </span>
@@ -1582,8 +1583,11 @@
         </div>
     </div>
     <!--===================================================-->
-    <!--End Insertar Bootstrap Modal-->    
-    
+    <!--End Insertar Bootstrap Modal-->
+    <?php
+        echo $template_insert_labor;
+    ?>
+
       <!-- Modal-->
     <div class="modal fade" id="mi_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -1639,6 +1643,9 @@
 
     <!--Date-MYSQL [ REQUIRED ]-->
     <script src="./../../../js/valeExplosivos.js"></script>
+
+    <!--Date-MYSQL--Labor [ REQUIRED ]
+    <script src="./../../../js/labor.js"></script>-->
 
     <!--Bootstrap Validator [ OPTIONAL ]-->
     <script src="./../../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
@@ -2387,7 +2394,6 @@
             nvaleProx = parseInt(nvalAnterior)+parseInt(1);
             try {
                 valZFill_nvalProx = zfill(nvaleProx, 6);
-                console.log(zfill(nvaleProx, 6)); //00324 
             } catch (e) {
                 nvalzfill = zfill(nvale, 6);
                 // Manejar Errores

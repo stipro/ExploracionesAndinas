@@ -22,12 +22,14 @@ document.addEventListener('DOMContentLoaded', e => {
     const insert_labor_zonaName = document.getElementById("ipt-insert-labor-laborZona");
     const insert_labor_zoneLetra = document.getElementById("ipt-insert-letra-laborZonaLetra");
     const datalist_labor_laborZone = document.getElementById("datalist-insert-zonaLabor-zona");
+
     const insert_labor_unitMining = document.getElementById("ipt-insert-unitMining-nombre");
-    const datalist_labor_unitMining = document.getElementById("datalist-insert-labor-unitMining");
     const insert_labor_unitMiningAbrev = document.getElementById("ipt-insert-unitMining-abrev");
+    const datalist_labor_unitMining = document.getElementById("datalist-insert-labor-unitMining");
 
 
     const madd_labor = document.getElementById("add-labor");
+    const madd_laborNombre_etapa = document.getElementById('add-etapa');
     const madd_zona = document.getElementById("add-zona");
     // Nombre de Zona
     // Boones
@@ -50,7 +52,6 @@ document.addEventListener('DOMContentLoaded', e => {
     // ETAPA    
     // Botones
     const mbtnInsert_laborNameEtapa = document.getElementById("mbtn-insert-laborNameEtapa");
-    const mbtnNew_laborNameEtapa = document.getElementById("mbtn-insert-laborNameEtapa");
     const mbtnClose_laborNameEtapa = document.getElementById("mbtn-close-laborNameEtapa");
     // input
     const insert_laborNameEtapa_etapa = document.getElementById("input-insert-laborNombreEtapa-etapa");
@@ -173,7 +174,7 @@ document.addEventListener('DOMContentLoaded', e => {
                         "accion": "getUnidMinera",
                     }
                     getSelect_unitMining(form_tres);
-                    $("#modal-insert").modal("show");
+                    $("#modal-insert-labor").modal("show");
 
                 },
                 className: 'btn btn-success btn-labeled', //Primary class for all buttons
@@ -339,6 +340,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
     // Nombre labor
     madd_labor.addEventListener("click", () => {
+        $('#modal-laborName').modal('show');
         const form = {
             "accion": "getLaborNombre_etapa",
         }
@@ -720,10 +722,6 @@ for (var i = 0; i < inputs.length; i++) {
         }
     });
 }
-
-$(document).on('click', '#add-labor', function() {
-    $('#modal-laborName').modal('show');
-});
 
 $(document).on('click', '#add-etapa', function() {
     $('#modal-laborNameEtapa').modal('show');
