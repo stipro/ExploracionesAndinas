@@ -222,6 +222,11 @@ class Labores extends Conexion
         return $this->ConsultaSimple($query);
     
     }
+    // Todo datos en select
+    public function getAll_zona(){
+        $query = "SELECT lb_zn.id_zona, lb_zn.labZona_nombre, lb_zn.labZona_letra FROM lab_zonas AS lb_zn";
+        return $this->ConsultaSimple($query);
+    }
     public function getLaborZona_detalle($where)
     {
         $query = "SELECT lb.id_labor, lbnombre.labNombre_nombre, lbzonas.labZona_nombre FROM labores AS lb LEFT JOIN lab_nombres AS lbnombre ON lb.id_labNombre = lbnombre.id_labNombre LEFT JOIN lab_zonas AS lbzonas ON lb.id_zona = lbzonas.id_zona WHERE id_labor = {$where};";

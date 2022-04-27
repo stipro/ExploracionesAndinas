@@ -1236,14 +1236,22 @@
                                         <div class="col-md-8">
                                             <!-- Default choosen -->
                                             <!--===================================================-->
-                                            <select class="form-control chosenLabCodigo" data-placeholder="Elige un Codigo" id="val_explosivo-text-form-labor_codigo" tabindex="2">
-                                            </select>
+                                            <div class="input-group">
+                                                <select class="form-control chosenLabCodigo" data-placeholder="Elige un Codigo" id="val_explosivo-text-form-labor_codigo" tabindex="2">
+                                                </select>
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-success">
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
                                             <template id="template-opt-ccostos">
                                                 <option id="" value="" selected></option>
                                                 <option id="optccostos" value="" ></option>
                                             </template>
                                             <!--===================================================-->
                                         </div>
+                                        
                                     </div>
                                     <div class="form-group">
                                         <label for="val_explosivo-text-form-labor" class="col-md-4 control-label">Labor</label>

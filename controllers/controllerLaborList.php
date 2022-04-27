@@ -35,6 +35,9 @@ if($_POST){
                 //$where = $arrayForm['paramentWhere'];
                 $rptSql = $tableManager->getLaborZona($where);         
                 break;
+            case "getAll_zona":
+                $rptSql = $tableManager->getAll_zona();
+                break;
             case "getLaborNombre_etapa":
                 $rptSql = $tableManager->getLaborNombre_etapa();
                 break;

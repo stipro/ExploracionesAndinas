@@ -15,6 +15,12 @@ class Labores extends Conexion
         return $this->ConsultaSimple($query);
     }
 
+    // Todo datos en select
+    public function getAll_zona(){
+        $query = "SELECT lb_zn.id_zona, lb_zn.labZona_zona, lb_zn.labZona_letra FROM lab_zonas AS lb_zn";
+        return $this->ConsultaSimple($query);
+    }
+
     public function getSizeColumn(string $table)
     {
         $query = "SELECT COUNT(*) FROM {$table};";

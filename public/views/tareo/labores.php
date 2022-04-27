@@ -304,7 +304,7 @@
                                 <!-- FORMULARIO -->
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label for="ipt-insert-labor-ccosto" class="control-label">C. Costo</label>
+                                        <label for="ipt-insert-labor-ccosto" class="control-label">C. Costo <span class="text-danger">*</span></label>
                                         <input type="text" placeholder="C. Costo" class="form-control" id="ipt-insert-labor-ccosto">
                                     </div>
                                     <div class="col-md-4">
@@ -340,7 +340,7 @@
                                     <fieldset>
                                         <legend>Labor</legend>
                                         <div class="col-md-4">
-                                            <label for="ipt-insert-labor-laborName" class="control-label">Labor</label>
+                                            <label for="ipt-insert-labor-laborName" class="control-label">Labor <span class="text-danger">*</span></label>
                                             <div class="input-group-wrap">
                                                 <div class="input-group">
                                                     <input type="text" placeholder="Labor" class="form-control custom-select custom-select-md" id="ipt-insert-labor-laborName" list="datalist-insert-nombreLabor-nombre">
@@ -374,7 +374,7 @@
                                     <fieldset>
                                         <legend>Zona</legend>
                                         <div class="col-md-6">
-                                            <label for="ipt-insert-labor-laborZona" class="control-label">Zona</label>
+                                            <label for="ipt-insert-labor-laborZona" class="control-label">Zona <span class="text-danger">*</span></label>
                                             <div class="input-group-wrap">
                                                 <div class="input-group">
                                                     <input type="text" placeholder="Zona" class="form-control" id="ipt-insert-labor-laborZona" list="datalist-insert-zonaLabor-zona">
@@ -400,7 +400,7 @@
                                     <fieldset>
                                         <legend>Unidad Minera</legend>
                                         <div class="col-md-6">
-                                            <label for="ipt-insert-unitMining-nombre" class="control-label">Unid. Minera</label>
+                                            <label for="ipt-insert-unitMining-nombre" class="control-label">Unid. Minera <span class="text-danger">*</span></label>
                                             <div class="input-group-wrap">
                                                 <div class="input-group">
                                                     <input type="text" placeholder="Unid. Minera" class="form-control" id="ipt-insert-unitMining-nombre" list="datalist-insert-labor-unitMining">

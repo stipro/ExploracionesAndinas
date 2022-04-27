@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', e => {
     const insert_labor_nametipo = document.getElementById("ipt-insert-labor-laborNameTipo");
 
 
-    const insert_labor_zoneName = document.getElementById("ipt-insert-labor-laborZona");
+    const insert_labor_zonaName = document.getElementById("ipt-insert-labor-laborZona");
     const insert_labor_zoneLetra = document.getElementById("ipt-insert-letra-laborZonaLetra");
     const datalist_labor_laborZone = document.getElementById("datalist-insert-zonaLabor-zona");
     const insert_labor_unitMining = document.getElementById("ipt-insert-unitMining-nombre");
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', e => {
                     }
                     getSelect_workName(form_uno);
                     const form_dos = {
-                        "accion": "getLaborZona",
+                        "accion": "getAll_zona",
                     }
                     getSelect_workZone(form_dos);
                     const form_tres = {
@@ -333,6 +333,7 @@ document.addEventListener('DOMContentLoaded', e => {
             fragmentLabor_unitMining.appendChild(clone)
         })
         datalist_labor_unitMining.appendChild(fragmentLabor_unitMining);
+        document.getElementById('ipt-insert-unitMining-nombre').value = 'San Andres';
     }
 
 
@@ -352,7 +353,6 @@ document.addEventListener('DOMContentLoaded', e => {
         });
         const data = await res.json()
         let answerSql = data['sql'];
-        console.log(answerSql);
         paintSelectLaborNombre_etapa(answerSql)
     }
     const paintSelectLaborNombre_etapa = (answerSql) => {
@@ -369,7 +369,9 @@ document.addEventListener('DOMContentLoaded', e => {
         datalist_laborName_etapa.appendChild(fragmentLaborName);
     }
     mbtnInsert_labor.addEventListener("click", () => {
-        const val_labor_ccostoLabor = insert_labor_ccosto.value;
+        let arrayError = [];
+        let val_labor_ccostoLabor = insert_labor_ccosto.value;
+        val_labor_ccostoLabor ? val_labor_ccostoLabor = val_labor_ccostoLabor : arrayError.push("Centro de Costo");
         const val_labor_tipo = insert_labor_tipo.value;
         const val_labor_veta = insert_labor_veta.value;
         const val_labor_nivel = insert_labor_nivel.value;
@@ -377,30 +379,59 @@ document.addEventListener('DOMContentLoaded', e => {
         const val_labor_seccion = insert_labor_seccion.value;
         const val_labor_tipEq = insert_labor_tipEq.value;
         const val_labor_tipRocca = insert_labor_tipRocca.value;
-        const val_labor_laborName_id = document.querySelector('#datalist-insert-nombreLabor-nombre option[value="' + insert_labor_laborName.value + '"]').dataset.id;
-        const val_labor_laborZone_id = document.querySelector('#datalist-insert-zonaLabor-zona option[value="' + insert_labor_zoneName.value + '"]').dataset.id;
-        const val_labor_unitMining_id = document.querySelector('#datalist-insert-labor-unitMining option[value="' + insert_labor_unitMining.value + '"]').dataset.id;
-
-        const data = {
-            "ccosto_labor": val_labor_ccostoLabor,
-            "tipo_labor": val_labor_tipo,
-            "veta_labor": val_labor_veta,
-            "nivel_labor": val_labor_nivel,
-            "mexplotacion_labor": val_labor_mexplotacion,
-            "seccion_labor": val_labor_seccion,
-            "tipoEq_labor": val_labor_tipEq,
-            "tipRocca_labor": val_labor_tipRocca,
-            "id_laborName": val_labor_laborName_id,
-            "id_laborZone": val_labor_laborZone_id,
-            "id_laborUnitMining": val_labor_unitMining_id
+        // Nombre Labor
+        const val_labor_laborName = insert_labor_laborName.value;
+        val_labor_laborName ? val_labor_laborName_id  = document.querySelector('#datalist-insert-nombreLabor-nombre option[value="' + val_labor_laborName + '"]').dataset.id : arrayError.push("Labor Nombre");
+        // Zona Labor
+        const val_labor_zonaName = insert_labor_zonaName.value;
+        val_labor_zonaName ? val_labor_laborZone_id = document.querySelector('#datalist-insert-zonaLabor-zona option[value="' + val_labor_zonaName + '"]').dataset.id : arrayError.push("Zona");
+        // Unidad Minera
+        const val_labor_unidadMinera = insert_labor_unitMining.value;
+        val_labor_unidadMinera ? val_labor_unitMining_id = document.querySelector('#datalist-insert-labor-unitMining option[value="' + val_labor_unidadMinera + '"]').dataset.id : arrayError.push("Unidad Minera");
+        if(arrayError.length > 0){
+            alerts(arrayError);
         }
-        const form = {
-            "accion": "insert-labor",
-            "datos": data
+        else{
+            const data = {
+                "ccosto_labor": val_labor_ccostoLabor,
+                "tipo_labor": val_labor_tipo,
+                "veta_labor": val_labor_veta,
+                "nivel_labor": val_labor_nivel,
+                "mexplotacion_labor": val_labor_mexplotacion,
+                "seccion_labor": val_labor_seccion,
+                "tipoEq_labor": val_labor_tipEq,
+                "tipRocca_labor": val_labor_tipRocca,
+                "id_laborName": val_labor_laborName_id,
+                "id_laborZone": val_labor_laborZone_id,
+                "id_laborUnitMining": val_labor_unitMining_id
+            }
+            const form = {
+                "accion": "insert-labor",
+                "datos": data
+            }
+            insertForm_labor(form);
         }
-        console.log(form);
-        insertForm_labor(form);
     })
+    // Alerta
+    const alerts = data => {    
+        let notyFormt = '<strong>!Error!</strong> <h4 class="alert-title">Falta :</h4>\
+        <!--Unordered List-->\
+        <!--===================================================-->\
+        <ul>';
+        data.forEach(item => {
+            notyFormt += '<li>' + item + '</li>';
+        }) 
+        notyFormt += '</ul>\
+        <!--===================================================-->',
+        $.niftyNoty({
+            type: 'danger',
+            container: '#alerts-insert-labor',
+            html: notyFormt,
+            focus: false,
+            timer: 2000,
+            closeBtn: true
+        });
+    }
     // Nombre de labor
     mbtnInsert_laborName.addEventListener("click", () => {
         const val_nombreLabor = insert_laborName_labor.value;
