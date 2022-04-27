@@ -1803,7 +1803,7 @@
                 dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
                 buttons: [
                     {
-                        text: '<i class="btn-label fa-solid fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>',
+                        text: '<i class="btn-label fa fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>',
                         action: function(e, dt, node, conf) {
                             const form_request1 = {
                                 "accion": "getLast_record",

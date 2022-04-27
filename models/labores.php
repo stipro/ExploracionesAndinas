@@ -54,7 +54,7 @@ class Labores extends Conexion
         } catch (PDOException $e) {
             
             if($e->getCode() == 23000){
-                $messageUser = "Se duplico n° de Vale";
+                $messageUser = "Se duplico Centro de costos";
             }
             elseif ($e->getCode() == 22001) {
                 $messageUser = "Tamaño excedido";
@@ -100,7 +100,7 @@ class Labores extends Conexion
         } catch (PDOException $e) {
             
             if($e->getCode() == 23000){
-                $messageUser = "Se duplico n° de Vale";
+                $messageUser = "Se duplico Centro de costos";
             }
             elseif ($e->getCode() == 22001) {
                 $messageUser = "Tamaño excedido";
