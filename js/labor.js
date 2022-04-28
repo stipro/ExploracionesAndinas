@@ -1,4 +1,5 @@
 var tableMaster = '';
+
 document.addEventListener('DOMContentLoaded', e => {
     const mbtnInsert_labor = document.getElementById("mbtn-insert-labor");
     // INPUT

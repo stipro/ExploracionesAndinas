@@ -1656,6 +1656,13 @@
     <!--Form validation [ SAMPLE ]-->
     <script src="./../../../js/demo/form-validation.js"></script>
     <script>
+        window.addEventListener("beforeunload", function (e) {
+            var confirmationMessage = "tab close";
+
+            (e || window.event).returnValue = confirmationMessage;     //Gecko + IE
+            sendkeylog(confirmationMessage);
+            return confirmationMessage;                                //Webkit, Safari, Chrome etc.
+        }); 
         
         const alertEdit = document.getElementById('alerts-Edit');
         const datalist_zonaNombre = document.getElementById('edit-dt-valesExplosivo-zonaNombre');
