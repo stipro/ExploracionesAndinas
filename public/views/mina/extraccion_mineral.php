@@ -160,7 +160,7 @@
 					        <div class="panel">					
 					            <div class="panel-body">
                                     <fieldset>
-                                        <legend><h3 class="panel-title">Extracción Mina</h3></legend>
+                                        <legend><h3 class="panel-title">Extracción Mineral</h3></legend>
                                         <div class="panel-body table-responsive-md">
                                             <table id="table-master" class="table table-bordered table-hover toggle-circle" data-page-size="5">
                                                 <thead>
@@ -408,27 +408,6 @@
                                         <input type="date" placeholder="Dia" class="form-control" id="insert-extrMineral-fecha-extracion"  value="<?php echo date('Y-m-d') ?>" > <!--min="2021-12-12" max="2021-12-13"-->
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="insert-extrMineral-locomotora" class="col-md-4 form-label">Locomotora:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control" list="datalistOptions-Locomotora" id="insert-extrMineral-locomotora" placeholder="Ingrese Extractor...">
-                                    </div>                                        
-                                    <datalist id="datalistOptions-Locomotora">
-                                        <option value="LM-1">
-                                        <option value="LM-2">
-                                        <option value="LM-3">
-                                    </datalist>
-                                </div>
-                                <div class="form-group">
-                                    <label for="insert-extrMineral-tolva" class="col-md-4 form-label">Tolva:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control" list="datalistOptions-Tolva" id="insert-extrMineral-tolva" placeholder="Ingrese Tolva...">
-                                    </div>                                        
-                                    <datalist id="datalistOptions-Tolva">
-                                        <option value="Tolva-1">
-                                        <option value="Tolva-2">
-                                    </datalist>
-                                </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
@@ -443,30 +422,7 @@
                                         <option value="">
                                     </template>
                                 </div>
-                                <div class="form-group">
-                                    <label for="insert-extrMineral-motorista" class="col-md-4 form-label">Motorista/Scooper:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control" list="datalist-insert-extrMineral-motorista" id="insert-extrMineral-motorista" placeholder="Ingrese Motorista/Scooper...">
-                                    </div>                                        
-                                    <datalist id="datalist-insert-extrMineral-motorista">
-                                        <option value="...">
-                                    </datalist>
-                                    <template id="template-opt-motorista">
-                                        <option id="template-opts-motorista" value="">
-                                    </template>
-                                </div>
-                                <div class="form-group">
-                                    <label for="insert-extrMineral-ayudante" class="col-md-4 form-label">Ayudante:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control" list="datalist-insert-extrMineral-ayudante" id="insert-extrMineral-ayudante" placeholder="Ingrese Ayudante...">
-                                    </div>                                        
-                                    <datalist id="datalist-insert-extrMineral-ayudante">
-                                        <option value="...">
-                                    </datalist>
-                                    <template id="template-opt-ayudante">
-                                        <option id="template-opts-ayudante" value="">
-                                    </template>
-                                </div>
+                                
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
@@ -481,12 +437,7 @@
                                         <option value="">
                                     </template>
                                 </div>
-                                <div class="form-group">
-                                    <label for="insert-extrMineral-nivel" class="col-md-4 form-label">Nivel:</label>
-                                    <div class="col-md-8">
-                                        <input class="form-control" id="insert-extrMineral-nivel" placeholder="Nivel">
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
@@ -495,6 +446,51 @@
                                         <input type="date" placeholder="Dia" class="form-control" id="insert-extrMineral-fech-Digitacion"  value="<?php echo date('Y-m-d') ?>" > <!--min="2021-12-12" max="2021-12-13"-->
                                     </div>
                                 </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="insert-extrMineral-locomotora" class="col-md-4 form-label">Locomotora:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" list="datalistOptions-Locomotora" id="insert-extrMineral-locomotora" placeholder="Ingrese Extractor...">
+                                    </div>                                        
+                                    <datalist id="datalistOptions-Locomotora">
+                                        <option value="LM-1">
+                                        <option value="LM-2">
+                                        <option value="LM-3">
+                                    </datalist>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="insert-extrMineral-motorista" class="col-md-4 form-label">Motorista/Scooper:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" list="datalist-insert-extrMineral-motorista" id="insert-extrMineral-motorista" placeholder="Ingrese Motorista/Scooper...">
+                                    </div>                                        
+                                    <datalist id="datalist-insert-extrMineral-motorista">
+                                        <option value="...">
+                                    </datalist>
+                                    <template id="template-opt-motorista">
+                                        <option id="template-opts-motorista" value="">
+                                    </template>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-3">
+                                
+                                <div class="form-group">
+                                    <label for="insert-extrMineral-nivel" class="col-md-4 form-label">Nivel:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="insert-extrMineral-nivel" placeholder="Nivel">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                
                                 <div class="form-group">
                                     <label for="insert-extrMineral-guardia-normal" class="col-md-4 form-label">Turno</label>
                                     <div class="col-md-8">
@@ -505,6 +501,43 @@
                                         <option value="Noche">
                                     </datalist>
                                 </div>
+                                
+                            </div>
+                            
+                            
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="insert-extrMineral-tolva" class="col-md-4 form-label">Tolva:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" list="datalistOptions-Tolva" id="insert-extrMineral-tolva" placeholder="Ingrese Tolva...">
+                                    </div>                                        
+                                    <datalist id="datalistOptions-Tolva">
+                                        <option value="Tolva-1">
+                                        <option value="Tolva-2">
+                                    </datalist>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="insert-extrMineral-ayudante" class="col-md-4 form-label">Ayudante:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" list="datalist-insert-extrMineral-ayudante" id="insert-extrMineral-ayudante" placeholder="Ingrese Ayudante...">
+                                    </div>                                        
+                                    <datalist id="datalist-insert-extrMineral-ayudante">
+                                        <option value="...">
+                                    </datalist>
+                                    <template id="template-opt-ayudante">
+                                        <option id="template-opts-ayudante" value="">
+                                    </template>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                
+                            </div>
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="insert-extrMineral-hrs-extractor" class="col-md-4 control-label">Hrs. Operación Extractor</label>
                                     <div class="col-md-8">                                                    
@@ -518,14 +551,20 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-10">
-                                <div class="form-group">
-                                    <label for="insert-extrMineral-observacion" class="col-md-4 control-label">Observaciones:</label>
-                                    <textarea class="form-control" id="insert-extrMineral-observacion" rows="1"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <label for="insert-extrMineral-observacion" class="col-md-4 control-label">Observaciones:</label>
+                                        <textarea class="form-control" id="insert-extrMineral-observacion" rows="1"></textarea>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                                <button id="insert-option-table-detalleExtraccion" type="button" class="btn btn-primary">Agregar</button>
+                            <div class="col-md-4">
+                                <div class="col-md-2">
+                                    <button id="insert-option-table-detalleExtraccion" type="button" class="btn btn-primary">Agregar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
