@@ -328,51 +328,78 @@ $("#insert-extrMineral-codigo").change(function() {
     iptinsertDescripcion.value = $('select[id=insert-extrMineral-codigo]').val();
 });
 btnAdd_DetalleExtraccion.addEventListener("click", () => {
+    let arrayError = [];
     console.log('Agregando');
     valFechaExtraccion = iptinsertFechaExtraccion.value;
     valLocomotora = iptinsertLocomotora.value;
     valTolva = iptinsertTolva.value;
     valUniEmpresa = iptinsertUniEmpresa.value;
-    const val_idMinera = document.querySelector('#datalist-insert-extrMineral-unidMineral option[value="' + valUniEmpresa + '"]').dataset.idUnidadMinera;
+    valUniEmpresa ? val_idMinera = document.querySelector('#datalist-insert-extrMineral-unidMineral option[value="' + valUniEmpresa + '"]').dataset.idUnidadMinera : arrayError.push("Unidad Minera");
     valMotorista = iptinsertMotorista.value;
-    const val_idMotorista = document.querySelector('#datalist-insert-extrMineral-motorista option[value="' + valMotorista + '"]').dataset.idColaboradorMotorista;
+    valMotorista ? val_idMotorista = document.querySelector('#datalist-insert-extrMineral-motorista option[value="' + valMotorista + '"]').dataset.idColaboradorMotorista : arrayError.push("Motorista");
     valAyudante = iptinsertAyudante.value;
-    const val_idAyudante = document.querySelector('#datalist-insert-extrMineral-ayudante option[value="' + valAyudante + '"]').dataset.idColaboradorAyudante;
+    valAyudante ? val_idAyudante = document.querySelector('#datalist-insert-extrMineral-ayudante option[value="' + valAyudante + '"]').dataset.idColaboradorAyudante : arrayError.push("Ayudante");
     valZona = iptinsertZona.value;
-    const val_idZona = document.querySelector('#datalist-insert-extrMineral-zona option[value="' + valZona + '"]').dataset.idZona;
+    valZona ? val_idZona = document.querySelector('#datalist-insert-extrMineral-zona option[value="' + valZona + '"]').dataset.idZona : arrayError.push("Zona");
     valNivel = iptinsertNivel.value;
     valDigitacion = iptinsertDigitacion.value;
     valHrs = iptInsert_extraccionMineral_hrs.value;
     valTurno = iptInsert_extraccionMineral_guardia.value;
     valCodigo = selectInsert_codigo.options[selectInsert_codigo.selectedIndex].text;
     valcCosto = iptInsert_extraccionMineral_cCosto.value;
-    const val_idLabor = document.querySelector('#datalist-insert-extrMineral-cCostos option[value="' + valcCosto + '"]').dataset.idCosto;
+    valcCosto ? val_idLabor = document.querySelector('#datalist-insert-extrMineral-cCostos option[value="' + valcCosto + '"]').dataset.idCosto : arrayError.push("Centro de Costo");
     valLabor = iptInsert_extraccionMinera_laborNombre.value;
     valCantidad = iptInsert_extraccionMinera_cantidad.value;
-    tbl_detalleExtraccion.row.add([
-        val_idMinera,
-        valUniEmpresa,
-        val_idMotorista,
-        valMotorista,
-        val_idAyudante,
-        valAyudante,
-        valLocomotora,
-        valTolva,
-        valCodigo,
-        val_idLabor,
-        valcCosto,
-        valLabor,
-        val_idZona,
-        valZona,
-        valNivel,
-        null,
-        valDigitacion,
-        valHrs,
-        valTurno,
-        valCantidad,
-        '<button class="btn btn-danger removeRow"><i class="fa fa-trash-o" aria-hidden="true"></i></button>'
-    ]).draw(false);
+    if(arrayError.length > 0){
+        alerts(arrayError);
+    }
+    else{   
+        tbl_detalleExtraccion.row.add([
+            val_idMinera,
+            valUniEmpresa,
+            val_idMotorista,
+            valMotorista,
+            val_idAyudante,
+            valAyudante,
+            valLocomotora,
+            valTolva,
+            valCodigo,
+            val_idLabor,
+            valcCosto,
+            valLabor,
+            val_idZona,
+            valZona,
+            valNivel,
+            null,
+            valDigitacion,
+            valHrs,
+            valTurno,
+            valCantidad,
+            '<button class="btn btn-danger removeRow"><i class="fa fa-trash-o" aria-hidden="true"></i></button>'
+        ]).draw(false);
+    }
 });
+
+// Alerta
+const alerts = data => {    
+    let notyFormt = '<strong>!Error!</strong> <h4 class="alert-title">Falta :</h4>\
+    <!--Unordered List-->\
+    <!--===================================================-->\
+    <ul>';
+    data.forEach(item => {
+        notyFormt += '<li>' + item + '</li>';
+    }) 
+    notyFormt += '</ul>\
+    <!--===================================================-->',
+    $.niftyNoty({
+        type: 'danger',
+        container: '#alert-form-insert',
+        html: notyFormt,
+        focus: false,
+        timer: 2000,
+        closeBtn: true
+    });
+}
 
 iptinsertLocomotora.addEventListener('keyup', function(e) {
     valExtractor = iptinsertLocomotora.value;
