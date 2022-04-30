@@ -32,7 +32,7 @@ if($_POST){
                 $rptSql = $tableManager->getUnidMinera();
                 break;
             case "getLaborZona":
-                //$where = $arrayForm['paramentWhere'];
+                $where = $arrayForm['paramentWhere'];
                 $rptSql = $tableManager->getLaborZona($where);         
                 break;
             case "getAll_zona":
