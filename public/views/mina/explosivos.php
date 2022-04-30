@@ -47,7 +47,7 @@
 
     <?php echo $template_header_css; ?>
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" /> -->
 
     <!--Icono Importar [ OPTIONAL ]-->
     <link href=".\..\..\..\css\icons.css" rel="stylesheet">
@@ -84,11 +84,11 @@
     
     <!--Font Awesome [ OPTIONAL ]-->
     <link href=".\..\..\..\plugins\font-awesome\css\font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/fixedheader/3.2.1/css/fixedHeader.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/fixedheader/3.2.1/css/fixedHeader.dataTables.min.css" rel="stylesheet"> -->
     <style>
     thead input {
         width: 100%;
@@ -296,7 +296,7 @@
                             <div class="row"> 
 								<div class="col-md-4">
 									<div class="form-group">
-					                    <label for="insert-ipt-explosivo-codigo" class="col-md-5 control-label">Cod. Explosivo <span class="text-danger">*</span></label>
+					                    <label for="insert-ipt-explosivo-codigo" class="col-md-5 control-label">Cod.<br> Explosivo<span class="text-danger">*</span></label>
 					                    <div class="col-md-7">
 					                        <input type="text" class="form-control" id="insert-ipt-explosivo-codigo" name="Ape_Paterno" placeholder="Codigo Explosivo" onkeypress="return soloLetras(event)">
 					                    </div>
@@ -304,7 +304,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-					                    <label for="insert-ipt-explosivo-nombre" class="col-md-5 control-label">Nombre Explosivo <span class="text-danger">*</span></label>
+					                    <label for="insert-ipt-explosivo-nombre" class="col-md-5 control-label">Nombre <br>Explosivo<span class="text-danger">*</span></label>
 					                    <div class="col-md-7">
 					                        <input type="text" class="form-control" id="insert-ipt-explosivo-nombre" name="Ape_Materno" placeholder="Nombre Explosivo" onkeypress="return soloLetras(event)">
 					                    </div>
@@ -312,7 +312,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-					                    <label for="insert-ipt-explosivo-unidadMedida" class="col-md-4 control-label">Uni.Medida <span class="text-danger">*</span></label>
+					                    <label for="insert-ipt-explosivo-unidadMedida" class="col-md-4 control-label">Uni. <br>Medida<span class="text-danger">*</span></label>
 					                    <div class="col-md-8">
 											<input type="text" class="form-control" id="insert-ipt-explosivo-unidadMedida"  name="nombre_colaborador" list="options-nombreColaborador" placeholder="Unidad Medida" onkeypress="return soloLetras(event)">
 					                    </div>
@@ -346,9 +346,9 @@
     <?php echo $template_javascript; ?>
 
     <!-- Data table plugin-->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
     <!--Icons [ SAMPLE ]-->
-    <script src=".\..\..\..\js\demo\icons.js"></script>
+    <!-- <script src=".\..\..\..\js\demo\icons.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
@@ -358,7 +358,7 @@
     <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
-    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/fixedheader/3.2.1/js/dataTables.fixedHeader.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/fixedheader/3.2.1/js/dataTables.fixedHeader.min.js"></script> -->
 
     <!--NiftyJS [ RECOMMENDED ]-->
     <script src="./../../../js/nifty.min.js"></script>
