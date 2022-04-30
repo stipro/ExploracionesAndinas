@@ -19,12 +19,12 @@ const template_colaborador_area = document.getElementById('template-insert-colab
 const template_colaborador_cargo = document.getElementById('template-insert-colaborador-cargo').content;
 const fragment = document.createDocumentFragment();
 
-var tableMaster;
+var tableMaster_colaboradores;
 // Eventos
 // El evento DOMContentLoaded es disparado cuando el documento HTML ha sido completamente cargado y parseado
 document.addEventListener('DOMContentLoaded', e => {
     // Capturamos en una variable
-    tableMaster = $('#table-master').DataTable({
+    tableMaster_colaboradores = $('#table-master').DataTable({
         // Estado de input visual
         // Busqueda
         "searching": true,
@@ -97,8 +97,8 @@ document.addEventListener('DOMContentLoaded', e => {
     mainEvents();
 });
 $('#myInput').on( 'keyup', function () {
-    tableMaster.lengthMenu('5').draw();
-    tableMaster.search( this.value ).draw();
+    tableMaster_colaboradores.lengthMenu('5').draw();
+    tableMaster_colaboradores.search( this.value ).draw();
 } );
 const mainEvents = () => {
     // Preparamos formulario
@@ -131,9 +131,9 @@ const fetchData = async (request) => {
 // Se pinta la Tabla Principal
 const paintTable = async (rptSql) => {
     // Limpia tabla
-    tableMaster.clear();
+    tableMaster_colaboradores.clear();
     // Agregada datos a Tabla
-    tableMaster.rows.add(rptSql).draw();
+    tableMaster_colaboradores.rows.add(rptSql).draw();
 }
 
 btnAgregar.addEventListener("click", (e) => {
