@@ -358,8 +358,14 @@
                                         <div class="form-group">
                                             <label for="insert-ipt-consumoMadera-madera" class="col-md-5 control-label">Madera<span class="text-danger">*</span></label>
                                             <div class="col-md-7">
-                                                <input type="text" class="form-control" id="insert-ipt-consumoMadera-madera"  name="fecha" placeholder="Madera">
+                                                <input list="insert-dtl-consumoMadera-madera" type="text" class="form-control" id="insert-ipt-consumoMadera-madera"  name="fecha" placeholder="Madera">
+                                                <datalist id="insert-dtl-consumoMadera-madera">
+                                                    <option value="--no cargo--">--no cargo--</option>
+                                                </datalist>
                                             </div>
+                                            <template id="template-consumoMadera-madera">
+                                                <option id="template-opt-consumoMadera-madera">
+                                            </template>
                                         </div>
                                     </div>
 
@@ -386,7 +392,7 @@
                                                     <th width="2% !important" scope="col">n°</th>
                                                     <th width="8% !important" scope="col">C. Costos</th>
                                                     <th width="10% !important" scope="col">Labor</th>
-                                                    <th width="10% !important" scope="col">Madera</th>
+                                                    <th width="20% !important" scope="col">Madera</th>
                                                     <th width="10% !important" scope="col">Cantidad</th>
                                                     <th width="15% !important" scope="col">Acciónes</th>
                                                 </tr>

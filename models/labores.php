@@ -207,6 +207,12 @@ class Labores extends Conexion
         }
     }
     // Obtiene Lista especifica
+    public function getLabor_ccosto(string $id)
+    {
+        $query = "SELECT lb_nb.labNombre_nombre FROM labores AS lb RIGHT JOIN lab_nombres AS lb_nb ON lb.id_labNombre = lb_nb.id_labNombre WHERE lb.id_labor = {$id};";
+        return $this->ConsultaSimple($query);
+    }
+    // Obtiene Lista especifica
     public function getSelect(string $table, string $column, string $idTable)
     {
         $query = "SELECT {$idTable}, {$column}, id_labNombre FROM {$table} ORDER BY {$column} ASC ;";

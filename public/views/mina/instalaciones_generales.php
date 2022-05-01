@@ -228,7 +228,7 @@
 					            <div class="panel-body">
                                     <div class="table-responsive-md">
                                         <fieldset>
-                                            <legend>REPORTE CONSUMO DE MADERA</legend>
+                                            <legend>Instalaciónes Generales</legend>
                                             <table class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" cellspacing="0" id="table-master">
                                                 <thead>
                                                     <tr>
@@ -303,7 +303,7 @@
                 <!--Modal header-->
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-                    <h4 class="modal-title col-md-7">Registro Reporte Consumo Madera</h4>
+                    <h4 class="modal-title col-md-7">Registro Instalaciónes Generales</h4>
                 </div>
                 <!--Modal body-->
                 <div class="modal-body">

@@ -13,6 +13,10 @@ if($_POST){
         // ACCION
         $accion = $arrayForm['accion'];
         switch ($accion) {
+            case "getLabor_ccosto":
+                $id = $arrayForm['paramentWhere'];
+                $rptSql = $tableManager->getLabor_ccosto($id);
+                break;
             case "getDatalistAll_zonaNombre":
                 $rptSql = $tableManager->getDatalistAll_zonaNombre();
                 break;

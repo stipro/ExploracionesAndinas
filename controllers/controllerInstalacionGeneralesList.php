@@ -1,25 +1,26 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 header('Content-type: application/json; charset=utf-8');
-$rptSql=''; 
+$rptSql='';
 // Si no se ha enviado nada por el POST y se intenta acceder al archivo se retornará a la página de inicio
 if($_POST){
+    $table = 'consumo_madera';
     $rptController = 'Se recibio datos';
-    // Nombre del Modelo //
-    $table = 'madera';
-    $idTable = 'id_madera';
     try {
-        // Requiero modelo //
         require_once '../models/'.$table.'.php';
-        $tableManager = new Madera();
+        $tableManager = new ConsumoMadera();
         $arrayForm = json_decode($_POST['data'],true);
-        // ACCION
         $accion = $arrayForm['accion'];
         switch ($accion) {
-            case "table-master":
-                $rptSql = $tableManager->read();
+            case "table_master":
+                $rptSql = $tableManager->table_master();
                 break;
-            case "dtl-madera-all":
-                $rptSql = $tableManager->read();
+            case "search":
+                $term = $accion['term'];
+                $type = $accion['type'];
+                
+                break;
+            case "table":
                 break;
         }
 
@@ -32,6 +33,6 @@ else{
 }
 $rptjsonControlller = array(
     "sql" => $rptSql,
-    "rptController" => $rptController,
+    "rptController" => $rptController
 );
 echo json_encode($rptjsonControlller);
