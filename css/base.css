@@ -9,10 +9,14 @@
 /* #inserForm {
     width: 1540px !important;
 } */
-.modal-xl {
+
+.modal-lg {
     width: 60% !important;
-    max-width:1200px;
 }
+.modal-xl {
+    width: 80% !important;
+}
+
 .modal.show .modal-dialog{
     transform: none;
 }

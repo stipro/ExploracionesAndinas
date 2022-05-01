@@ -23,7 +23,8 @@ if($_POST){
                 $term = $accion['term'];
                 $type = $accion['type'];
                 break;
-            case "table":
+            case "dtl-colaboradores-all":
+                $rptSql = $tableManager->getColaborador_all();
                 break;
             case "getDatalistAll_nombres_perforista":
                 $rptSql = $tableManager->getDatalistAll_nombres_perforista();

@@ -179,7 +179,7 @@
 											<div class="col-md-3">
 											</div>
 											<div class="col-sm-12 col-md-6 dt-buttons btn-group">
-												<button class="btn btn-default btn-success btn-labeled" id="btn-Agregar" data-target="#insert-modal" data-toggle="modal">
+												<button class="btn btn-default btn-success btn-labeled" id="btn-Agregar" data-target="#insert-modal-consumoMadera" data-toggle="modal">
 													<i class="btn-label fa-solid fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>
 												</button>
 												<button class="btn btn-default btn-info btn-labeled">
@@ -276,145 +276,136 @@
 
     <!--Insert Bootstrap Modal-->
     <!--===================================================-->
-    <div class="modal fade" id="insert-modal" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-        <div id="inserForm-consumoMadera_diario" class="modal-dialog modal-lg" style="margin: 1rem;">
+    <div class="modal fade" id="insert-modal-consumoMadera" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+        <div id="inserForm-consumoMadera_diario" class="modal-dialog modal-xl" style="margin: 1rem;">
             <div class="modal-content">
-
                 <!--Modal header-->
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-                    <h4 class="modal-title col-md-8">Consumo de Madera diario</h4>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="rep-consumoMadera" class="col-md-5 control-label">N°<br> Reporte<span class="text-danger">*</span> </label>
-                            <div class="col-md-7">
-                                <input type="text" name="" id="rep-consumoMadera" class="form-control" placeholder="N° Reporte" value="000000">
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-
+                    <h4 class="modal-title col-md-7">Consumo de Madera diario</h4>
+                </div>
                 <!--Modal body-->
                 <div class="modal-body">
-                    <div id="alerts-form-insert">
+                    <div id="alert-form-insert">
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                        <fieldset>
-                            <fieldset><p class="bord-btm pad-ver text-main text-bold">Datos Principal</p></fieldset>
+                            <legend><p class="text-main">Datos Principal</p></legend>
                             <div class="row">
-                                <div class="row"> 
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="insert-slt-consumoMadera-turno" class="col-md-5 control-label">Turno<span class="text-danger">*</span></label>
-                                            <div class="col-md-7">
-                                                <select name="turnos" id="insert-slt-consumoMadera-turno" class="form-control">
-                                                    <option value="Dia">Dia</option>
-                                                    <option value="Noche">Noche</option>
-                                                </select>
-                                            </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="insert-slt-consumoMadera-turno" class="col-md-5 control-label">Turno<span class="text-danger">*</span></label>
+                                        <div class="col-md-7">
+                                            <select name="turnos" id="insert-slt-consumoMadera-turno" class="form-control">
+                                                <option value="Dia">Dia</option>
+                                                <option value="Noche">Noche</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="insert-ipt-consumoMadera-guardia" class="col-md-5 control-label">Jefe de <br> Guardia<span class="text-danger">*</span></label>
-                                            <div class="col-md-7">
-                                                <input type="text" class="form-control" id="insert-ipt-consumoMadera-guardia" name="jefeGuarda" placeholder="Jefe de Guardia" onkeypress="return soloLetras(event)">
-                                            </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="insert-ipt-consumoMadera-jefeGuardia" class="col-md-5 control-label">Jefe de <br> Guardia<span class="text-danger">*</span></label>
+                                        <div class="col-md-7">
+                                            <input list="insert-dtl-consumoMadera-jefeGuardia" type="text" class="form-control" id="insert-ipt-consumoMadera-jefeGuardia" name="jefe_guarda" placeholder="Jefe de Guardia">
+                                            <datalist id="insert-dtl-consumoMadera-jefeGuardia">
+                                                <option value="--no cargo--">--no cargo--</option>
+                                            </datalist>
+                                        </div>
+                                        <template id="template-consumoMadera-jefeGuardia">
+                                            <option id="template-opt-consumoMadera-jefeGuardia">
+                                        </template>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="insert-ipt-consumoMadera-fecha" class="col-md-4 control-label">Fecha<span class="text-danger">*</span></label>
+                                        <div class="col-md-8">
+                                            <input type="date" class="form-control" id="insert-ipt-consumoMadera-fecha"  name="fecha" placeholder="Fecha" value="<?php echo date('Y-m-d') ?>">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="insert-ipt-explosivo-unidadMedida" class="col-md-4 control-label">Fecha<span class="text-danger">*</span></label>
-                                            <div class="col-md-8">
-                                                <input type="date" class="form-control" id="insert-ipt-explosivo-unidadMedida"  name="fecha" placeholder="Fecha" value="<?php echo date('Y-m-d') ?>">
-                                            </div>
-                                        </div>
-                                    </div>                                  
                                 </div>
                             </div>
-                        </fieldset>
-                        <fieldset>
-                            <fieldset><p class="bord-btm pad-ver text-main text-bold">Detalle</p></fieldset>
+                            <legend><p class="text-main">Detalle</p></legend>
                             <div class="row">
-                                <div class="row">
-
+                                
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="insert-ipt-consumoMadera-guardia" class="col-md-5 control-label">Centro <br> Costos<span class="text-danger">*</span></label>
-                                            <div class="col-md-7">
-                                                <input type="text" class="form-control" id="insert-ipt-consumoMadera-guardia" name="jefeGuarda" placeholder="Centro Costos" onkeypress="return soloLetras(event)">
+                                            <label for="insert-ipt-consumoMadera-centroCostos" class="col-md-4 control-label">Centro <br> Costos<span class="text-danger">*</span></label>
+                                            <div class="col-md-5">
+                                                <input list="insert-dtl-consumoMadera-centroCostos" type="text" class="form-control" id="insert-ipt-consumoMadera-centroCostos" name="centro_costos" placeholder="Centro Costos">
+                                                <datalist id="insert-dtl-consumoMadera-centroCostos">
+                                                    <option value="--no cargo--">--no cargo--</option>
+                                                </datalist>
                                             </div>
+                                            <template id="template-consumoMadera-centroCostos">
+                                                <option id="template-opt-consumoMadera-centroCostos">
+                                            </template>
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="insert-slt-consumoMadera-turno" class="col-md-5 control-label">Labor<span class="text-danger">*</span></label>
+                                            <label for="insert-ipt-consumoMadera-labor" class="col-md-5 control-label">Labor<span class="text-danger">*</span></label>
                                             <div class="col-md-7">
-                                                <input type="text" class="form-control" id="insert-ipt-explosivo-unidadMedida"  name="fecha" placeholder="Labor" disabled>
+                                                <input type="text" class="form-control" id="insert-ipt-consumoMadera-labor"  name="fecha" placeholder="Labor" disabled>
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="insert-ipt-explosivo-unidadMedida" class="col-md-5 control-label">Madera<span class="text-danger">*</span></label>
+                                            <label for="insert-ipt-consumoMadera-madera" class="col-md-5 control-label">Madera<span class="text-danger">*</span></label>
                                             <div class="col-md-7">
-                                                <input type="text" class="form-control" id="insert-ipt-explosivo-unidadMedida"  name="fecha" placeholder="Madera">
+                                                <input type="text" class="form-control" id="insert-ipt-consumoMadera-madera"  name="fecha" placeholder="Madera">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="insert-ipt-explosivo-unidadMedida" class="col-md-5 control-label">Cantidad<span class="text-danger">*</span></label>
-                                            <div class="col-md-7">
-                                                <input type="text" class="form-control" id="insert-ipt-explosivo-unidadMedida"  name="fecha" placeholder="Madera">
+                                            <label for="insert-ipt-consumoMadera-cantidad" class="col-md-6 control-label">Cantidad<span class="text-danger">*</span></label>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="insert-ipt-consumoMadera-cantidad"  name="fecha" placeholder="Cantidad">
                                             </div>
                                         </div>
                                     </div>
 
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="table-responsive-md">
-                                            <fieldset>
-                                                <legend></legend>
-                                                <table class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" cellspacing="0" id="table-master-consumoMadera">
-                                                    <thead class="thead-dark">
-                                                        <tr>
-                                                            <th width="2% !important">n°</th>
-                                                            <th width="10% !important">Centro Costos</th>
-                                                            <th width="68% !important">Labor</th>
-                                                            <th width="10% !important">Madera</th>
-                                                            <th width="10% !important">Cantidad</th>
-                                                            <th class="15% !important">Operaciónes</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    </tbody>
-                                                    <tfoot>
-                                                                    
-                                                    </tfoot>
-                                                </table>
-                                            </fieldset>
-                                            
-                                        </div>
+                                    <div class="col-md-1">
+                                        <button id="mbtn-agregarDetalle" class="btn btn-success">Agregar</button>
+                                    </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive-md">
+                                        <table id="list-insert-consumoMadera-detalle" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" cellspacing="0">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th width="2% !important" scope="col">n°</th>
+                                                    <th width="8% !important" scope="col">C. Costos</th>
+                                                    <th width="10% !important" scope="col">Labor</th>
+                                                    <th width="10% !important" scope="col">Madera</th>
+                                                    <th width="10% !important" scope="col">Cantidad</th>
+                                                    <th width="15% !important" scope="col">Acciónes</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
-                        </fieldset>
                         </div>
-                        
                     </div>
-					
                 </div>
                 <!--Modal footer-->
                 <div class="modal-footer">
-					<button id="mbtn-new" class="btn btn-primary">Nuevo</button>
-                    <button id="mbtm-close" data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
-                    <button id="mbtn-insert-explosivo" class="btn btn-success">Registrar</button>
+                    <button class="btn btn-primary" id="mbtn-new">Nuevo</button>
+                    <button class="btn btn-default" id="mbtn-close" data-dismiss="modal" type="button">Cerrar</button>
+                    <button class="btn btn-success" id="mbtn-insert" >Registrar</button>
                 </div>
             </div>
         </div>

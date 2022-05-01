@@ -51,8 +51,8 @@ if($_POST){
                 $columnWhere = $arrayForm['columnWhere'];
                 $rptSql = $tableManager->getSelectWhere($table, $column, $parament, $idTable, $columnWhere);
                 break;
-            case "getcolumns":
-
+            case "dtl-ccosto-labor":
+                $rptSql = $tableManager->getColumn_cCostos();
                 break;
             case "getcolumnsWhere":
                 $columns = $arrayForm['columns'];

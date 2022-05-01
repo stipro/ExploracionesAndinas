@@ -257,6 +257,10 @@ class Labores extends Conexion
         $query = "SELECT lb.id_labor, lb.lab_ccostos FROM labores AS lb WHERE lb.id_labor;";
         return $this->ConsultaSimple($query);
     }
+    public function getColumn_cCostos(){
+        $query = "SELECT lb.id_labor, lb.lab_ccostos FROM labores AS lb;";
+        return $this->ConsultaSimple($query);
+    }
     public function getUnidMinera(){
         $query = "SELECT ud_me.id_unidadMinera, ud_me.nombre_unidadMinera, ud_me.abrev_unidadMinera FROM unidad_mineras AS ud_me;";
         return $this->ConsultaSimple($query);
