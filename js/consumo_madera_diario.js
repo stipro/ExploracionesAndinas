@@ -8,6 +8,8 @@ const dtl_consumoMadera_jefeGuardia = document.getElementById('insert-dtl-consum
 const tpe_consumoMadera_jefeGuardia = document.getElementById('template-consumoMadera-jefeGuardia').content;
 
 const ipt_consumoMader_fecha = document.getElementById('insert-ipt-consumoMadera-fecha');
+const ipt_consumoMader_nvale = document.getElementById('insert-slt-consumoMadera-nvale');
+
 
 
 //Centro de Costos
@@ -39,18 +41,23 @@ document.addEventListener('DOMContentLoaded', e => {
             }
         ]
     });
+    table_consumoMadera_detalle.columns(1).visible(false);
+    table_consumoMadera_detalle.columns(4).visible(false);
 });
 
 /** Eventos */
 mbtn_create_consumoMadera_diario.addEventListener("click", (e) => {
     let listDetalles = [];
     let array_noti_error = [];
-    var val_turno = slt_consumoMadera_turno.options[slt_consumoMadera_turno.selectedIndex].value;
-    val_jefeGuardia = iptAdd_jefeGuardia.value;
+    let val_turno = slt_consumoMadera_turno.options[slt_consumoMadera_turno.selectedIndex].value;
+    let val_jefeGuardia = iptAdd_jefeGuardia.value;
     val_jefeGuardia ? val_jefeGuardia = val_jefeGuardia : array_noti_error.push("JEFE DE GUARDIA");
+    val_jefeGuardia ? val_idColaborador = document.querySelector("#insert-dtl-consumoMadera-jefeGuardia"  + " option[value='" +  val_jefeGuardia + "']").dataset.idJefeGuardia : array_noti_error.push("JEFE DE GUARDIA , ID");
     val_fecha = ipt_consumoMader_fecha.value;
     val_fecha ? val_fecha = val_fecha : array_noti_error.push("FECHA");
-    var form_detalle = table_consumoMadera_detalle.rows().data();
+    val_nvale = ipt_consumoMader_nvale.value;
+    val_nvale ? val_nvale = val_nvale : array_noti_error.push("N° VALE");
+    let form_detalle = table_consumoMadera_detalle.rows().data();
     form_detalle.length > 0 ? form_detalle = form_detalle : array_noti_error.push("DETALLE");
     if(array_noti_error.length == 1){
         $.niftyNoty({
@@ -76,19 +83,15 @@ mbtn_create_consumoMadera_diario.addEventListener("click", (e) => {
             var n = f[i].length;
             listDetalles.push({
                 id_labor: f[i][1],
-                ccostos: f[i][2],
-                nom_labor: f[i][2],
-                nom_zona: f[i][4],
-                id_instalacionMina: f[i][5],
-                nom_instalacion: f[i][6],
-                uni_medida: f[i][7],
-                cantidad: f[i][8],
+                id_madera: f[i][4],
+                cantidad: f[i][6],
             });
         }
         let listInsert = {
-            "item1": val_turno,
-            "item2": val_jefeGuardia,
-            "item3": val_fecha,
+            "turno": val_turno,
+            "jefeGuardia": val_idColaborador,
+            "fecha": val_fecha,
+            "nvale": val_nvale,
             "detalles": listDetalles
         }
         let form_insert = {
@@ -101,7 +104,7 @@ mbtn_create_consumoMadera_diario.addEventListener("click", (e) => {
 const recordForm = async (listInsert) => {
     const body = new FormData();
     body.append("data", JSON.stringify(listInsert));
-    const res = await fetch('./../../../controllers/controllerInstalacionGenerales.php', {
+    const res = await fetch('./../../../controllers/controllerConsumoMadera.php', {
         method: "POST",
         body
     });
@@ -109,17 +112,34 @@ const recordForm = async (listInsert) => {
     rptSql = data['sql'];
     notificationBackend(rptSql)
 }
+const notificationBackend = (rptSql) => {
+    if (rptSql) {
+        if (rptSql['estado'] == 1) {
+            $.niftyNoty({
+                type: 'success',
+                container: '#alerts-form-insert',
+                html: '<strong>¡Bien hecho!</strong> ' + rptSql['mensaje'],
+                focus: false,
+                timer: 5000
+            });
+        }
+    }
+}
 mbtn_agregarDetalle.addEventListener("click", (e) => {
     let array_noti_error = [];
-    
-    val_cCostos = iptAdd_cCostos.value;
+    let val_idLabor;
+    let val_idMadera
+    let val_cCostos = iptAdd_cCostos.value;
     val_cCostos ? val_cCostos = val_cCostos : array_noti_error.push("CENTRO DE COSTOS");
-    val_laborNombre = ipt_consumoMadera_labor_nombre.value;
+    val_cCostos ? val_idLabor = document.querySelector("#insert-dtl-consumoMadera-centroCostos"  + " option[value='" +  val_cCostos + "']").dataset.idLabor : array_noti_error.push("CENTRO DE COSTOS");
+    let val_laborNombre = ipt_consumoMadera_labor_nombre.value;
     val_cCostos ? val_cCostos = val_cCostos : array_noti_error.push("CENTRO DE COSTOS");
-    val_madera = iptAdd_madera.value;
+    let val_madera = iptAdd_madera.value;
     val_madera ? val_madera = val_madera : array_noti_error.push("MADERA");
-    val_cantidad = ipt_consumoMadera_cantidad.value;
+    val_madera ? val_idMadera = document.querySelector("#insert-dtl-consumoMadera-madera"  + " option[value='" +  (val_madera) + "']").dataset.idMadera : array_noti_error.push("MADERA");
+    let val_cantidad = ipt_consumoMadera_cantidad.value;
     val_cantidad ? val_cantidad = val_cantidad : array_noti_error.push("CANTIDAD");
+
     if(array_noti_error.length == 1){
         $.niftyNoty({
             type: 'danger',
@@ -141,8 +161,10 @@ mbtn_agregarDetalle.addEventListener("click", (e) => {
     else{
         table_consumoMadera_detalle.row.add([
             counter,
+            val_idLabor,
             val_cCostos,
             val_laborNombre,
+            val_idMadera,
             val_madera,
             val_cantidad,
             '<button class="btn btn-danger removeRow">Eliminar</button>'
@@ -293,7 +315,6 @@ iptAdd_cCostos.addEventListener("input", (e) => {
         // expected output: ReferenceError: nonExistentFunction is not defined
         // Note - error messages will vary depending on browser
     }
-    
 });
 
 const getDataLabor = async (rptSql) => {
@@ -328,7 +349,7 @@ const alerts = data => {
     <!--===================================================-->',
     $.niftyNoty({
         type: data.tipo,
-        container: '#alert-form-insert',
+        container: '#alerts-form-insert',
         html: notyFormt,
         focus: false,
         timer: 2000,

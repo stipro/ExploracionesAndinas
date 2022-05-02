@@ -9,13 +9,17 @@ class ConsumoMadera extends Conexion
         parent::__construct();
     }
 
-    public function insert(string $data1, string $data2)
+    public function create(string $dato1, string $dato2, string $dato3, string $dato4)
     {
         try 
         {
-            $query  = "INSERT INTO consumo_madera VALUES (null, :consumoMader_fecha, :consumoMader_nVale);";
+            $query  = "INSERT INTO consumo_madera (consumoMadera_turno, colaborador_id_jefeGuardia, consumoMadera_fecha, consumoMadera_nvale) VALUES (:item1, :item2, :item3, :item4)";
             $result = $this->db->prepare($query);
-            $sqlrpt = $result->execute(array(':consumoMader_fecha' => $data1,':consumoMader_nVale' => $data2));
+            $result->bindParam(':item1', $dato1, PDO::PARAM_STR);
+            $result->bindParam(':item2', $dato2, PDO::PARAM_STR);
+            $result->bindParam(':item3', $dato3, PDO::PARAM_STR);
+            $result->bindParam(':item4', $dato4, PDO::PARAM_STR);
+            $sqlrpt = $result->execute();
             $lastcolIdsql = $this->db->lastInsertId();
             if($sqlrpt){
                 $rptSql = [
@@ -28,26 +32,48 @@ class ConsumoMadera extends Conexion
                 echo "\nPDO::errorInfo():\n";
                 print_r($result->errorInfo());
             }
-            return $rptSql;
+            
+
         } catch (PDOException $e) {
-            return 'Se registro ERROR '. $e->getMessage();
+            //$this->db->rollback();
+            
+            if($e->getCode() == 23000){
+                $messageUser = "De duplico dato";
+            }
+            elseif($e->getCode() == '21S01'){
+                $messageUser = "Los parametros no coinciden";
+            }
+            else{
+                $messageUser = "";
+            }
+            $rptSql = [
+                "estado" => 0,
+                "messageDeveloper" => "Se encontro ERROR ".$e->getMessage(),
+                "messageUser" => $messageUser,
+                "codigo" => $e->getCode(),
+                "string" => $e->__toString(),
+            ];
+        }
+        finally {
+            return $rptSql;
+            //print_r($this->db->errorInfo());
         }
     }
-    public function insertDetails($data3_detalles, $id){
+    public function createDetails($id, $detalles){
         
         try 
         {
-            $query = "INSERT INTO consumo_madera_detalle (consumoMadera_detalle_idLabor, consumoMadera_detalle_idInstalacionesMina, consumoMadera_cantidad, consumoMadera_id) VALUES (
+            $query = "INSERT INTO consumo_madera_detalle (consumoMaderaDetalle_cantidad, consumoMadera_id, labor_id, madera_id) VALUES (
                 :item1,
                 :item2,
                 :item3,
                 :item4)";
             $insertValue = $this->db->prepare($query);
-            foreach ($data3_detalles as $clave) {
-                $insertValue->bindValue(':item1', $clave['id_labor'], PDO::PARAM_STR);
-                $insertValue->bindValue(':item2', $clave['id_instalacionMina'], PDO::PARAM_STR);
-                $insertValue->bindValue(':item3', $clave['cantidad'], PDO::PARAM_STR);
-                $insertValue->bindValue(':item4', $id, PDO::PARAM_STR);
+            foreach ($detalles as $clave) {
+                $insertValue->bindValue(':item1', $clave['cantidad'], PDO::PARAM_STR);
+                $insertValue->bindValue(':item2', $id, PDO::PARAM_STR);
+                $insertValue->bindValue(':item3', $clave['id_labor'], PDO::PARAM_STR);
+                $insertValue->bindValue(':item4', $clave['id_madera'], PDO::PARAM_STR);
                 $sqlrpt = $insertValue->execute();
                 $lastcolIdsql = $this->db->lastInsertId();
             }
@@ -86,7 +112,7 @@ class ConsumoMadera extends Conexion
             return 'Ocurrio un ERROR al eliminar';
         }
     }
-    public function edit(int $datoidLabor, string $datoZona, string $datoCCosto, int $datoNivel, string $datoLabor)
+    public function update(int $datoidLabor, string $datoZona, string $datoCCosto, int $datoNivel, string $datoLabor)
     {
         //error_reporting(0);
         try {

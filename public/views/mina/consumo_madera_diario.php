@@ -286,13 +286,13 @@
                 </div>
                 <!--Modal body-->
                 <div class="modal-body">
-                    <div id="alert-form-insert">
+                    <div id="alerts-form-insert">
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <legend><p class="text-main">Datos Principal</p></legend>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="insert-slt-consumoMadera-turno" class="col-md-5 control-label">Turno<span class="text-danger">*</span></label>
                                         <div class="col-md-7">
@@ -303,7 +303,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="insert-ipt-consumoMadera-jefeGuardia" class="col-md-5 control-label">Jefe de <br> Guardia<span class="text-danger">*</span></label>
                                         <div class="col-md-7">
@@ -318,11 +318,20 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="insert-ipt-consumoMadera-fecha" class="col-md-4 control-label">Fecha<span class="text-danger">*</span></label>
                                         <div class="col-md-8">
                                             <input type="date" class="form-control" id="insert-ipt-consumoMadera-fecha"  name="fecha" placeholder="Fecha" value="<?php echo date('Y-m-d') ?>">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="insert-slt-consumoMadera-nvale" class="col-md-5 control-label">N° <br> Vale<span class="text-danger">*</span></label>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" id="insert-slt-consumoMadera-nvale"  name="consumoMadera_nvale" placeholder="N° Vale" value="000000">
                                         </div>
                                     </div>
                                 </div>
@@ -390,8 +399,10 @@
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th width="2% !important" scope="col">n°</th>
+                                                    <th scope="col">idLabor</th>
                                                     <th width="8% !important" scope="col">C. Costos</th>
                                                     <th width="10% !important" scope="col">Labor</th>
+                                                    <th scope="col">idMadera</th>
                                                     <th width="20% !important" scope="col">Madera</th>
                                                     <th width="10% !important" scope="col">Cantidad</th>
                                                     <th width="15% !important" scope="col">Acciónes</th>
