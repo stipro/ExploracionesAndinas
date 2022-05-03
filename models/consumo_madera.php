@@ -97,7 +97,7 @@ class ConsumoMadera extends Conexion
     }
     public function table_master()
     {
-        $query = "SELECT conMad.id_consumoMadera, conMad.consumoMader_fecha, conMad.consumoMader_nVale FROM consumo_madera AS conMad;";
+        $query = "SELECT c_m.id_consumoMadera, c_m.consumoMadera_fecha, c_m.consumoMadera_nVale, c_m.consumoMadera_turno, CONCAT(col.col_apePaterno, ' ', col.col_apeMaterno, '. ', col.col_nombres) AS consumoMadera_jefeGuardia  FROM consumo_madera AS c_m LEFT JOIN colaboradores AS col ON c_m.colaborador_id_jefeGuardia = col.id_colaborador;";
         return $this->ConsultaSimple($query);
     }
     public function delete(int $id)

@@ -179,7 +179,7 @@
 											<div class="col-md-3">
 											</div>
 											<div class="col-sm-12 col-md-6 dt-buttons btn-group">
-												<button class="btn btn-default btn-success btn-labeled" id="btn-Agregar" data-target="#insert-modal-consumoMadera" data-toggle="modal">
+												<button class="btn btn-default btn-success btn-labeled" id="btn-agregar-consumoMadera" data-target="#insert-modal-consumoMadera" data-toggle="modal">
 													<i class="btn-label fa-solid fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>
 												</button>
 												<button class="btn btn-default btn-info btn-labeled">
@@ -208,13 +208,14 @@
 										</div>
 										
                                         <div class="table-responsive-md">
-                                            <table class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" cellspacing="0" id="">
+                                            <table class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" cellspacing="0" id="tableMaster_consumoMadera">
                                                 <thead class="thead-dark">
                                                     <tr>
-                                                        <th width="2% !important">n°</th>
-                                                        <th width="10% !important">Codigo</th>
-                                                        <th width="68% !important">Descripción</th>
-                                                        <th width="10% !important">unidad Medida</th>
+                                                        <th width="2% !important">N°</th>
+                                                        <th width="10% !important">Fecha</th>
+                                                        <th width="10% !important">N° Consumo Madera</th>
+                                                        <th width="10% !important">Turno</th>
+                                                        <th class="28% !important">Jefe de Guardia</th>
                                                         <th class="15% !important">Operaciónes</th>
                                                     </tr>
                                                 </thead>
@@ -420,9 +421,9 @@
                 </div>
                 <!--Modal footer-->
                 <div class="modal-footer">
-                    <button class="btn btn-primary" id="mbtn-new">Nuevo</button>
-                    <button class="btn btn-default" id="mbtn-close" data-dismiss="modal" type="button">Cerrar</button>
-                    <button class="btn btn-success" id="mbtn-insert" >Registrar</button>
+                    <button class="btn btn-primary" id="mbtn-new-consumoMadera">Nuevo</button>
+                    <button class="btn btn-default" id="mbtn-close-consumoMadera" data-dismiss="modal" type="button">Cerrar</button>
+                    <button class="btn btn-success" id="mbtn-insert-consumoMadera">Registrar</button>
                 </div>
             </div>
         </div>

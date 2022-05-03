@@ -18,9 +18,6 @@ if($_POST){
             case "search":
                 $term = $accion['term'];
                 $type = $accion['type'];
-                
-                break;
-            case "table":
                 break;
         }
 

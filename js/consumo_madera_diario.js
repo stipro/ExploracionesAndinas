@@ -1,4 +1,7 @@
-const mbtn_create_consumoMadera_diario = document.getElementById('mbtn-insert');
+const btn_create_consumoMadera_diario = document.getElementById('btn-agregar-consumoMadera');
+const mbtn_madera_consumoMadera_diario = document.getElementById('mbtn-new-consumoMadera');
+const mbtn_close_consumoMadera_diario = document.getElementById('mbtn-close-consumoMadera');
+const mbtn_create_consumoMadera_diario = document.getElementById('mbtn-insert-consumoMadera');
 const mbtn_agregarDetalle = document.getElementById('mbtn-agregarDetalle');
 const slt_consumoMadera_turno = document.getElementById('insert-slt-consumoMadera-turno');
 
@@ -7,8 +10,8 @@ const iptAdd_jefeGuardia = document.getElementById('insert-ipt-consumoMadera-jef
 const dtl_consumoMadera_jefeGuardia = document.getElementById('insert-dtl-consumoMadera-jefeGuardia');
 const tpe_consumoMadera_jefeGuardia = document.getElementById('template-consumoMadera-jefeGuardia').content;
 
-const ipt_consumoMader_fecha = document.getElementById('insert-ipt-consumoMadera-fecha');
-const ipt_consumoMader_nvale = document.getElementById('insert-slt-consumoMadera-nvale');
+const ipt_consumoMadera_fecha = document.getElementById('insert-ipt-consumoMadera-fecha');
+const ipt_consumoMadera_nvale = document.getElementById('insert-slt-consumoMadera-nvale');
 
 
 
@@ -31,6 +34,31 @@ const fragment = document.createDocumentFragment();
 var counter = 1;
 document.addEventListener('DOMContentLoaded', e => {
     mainEvents_consumoMadera();
+    table_consumoMadera = $('#tableMaster_consumoMadera').DataTable
+    ({
+        columns: [
+            {
+                data: "id_consumoMadera",
+                responsivePriority: 1,
+                //width: "50% !important",
+            },
+            {
+                data: "consumoMadera_fecha",
+            },
+            {
+                data: "consumoMadera_nVale",
+            },
+            {
+                data: "consumoMadera_turno",
+            },
+            {
+                data: 'consumoMadera_jefeGuardia',
+            },
+            {
+                defaultContent: '<button type="button" class="btn-view btn btn-success btn-tableMaster-detalle"><i class="fa fa-eye"></i> <span class="hidden-xs hidden-sm">Detalle<span></button> <button type="button" class="name btn btn-primary btn-tableMaster-edit"><i class="fa fa-edit"></i> <span class="hidden-xs hidden-sm">Editar</span></button> <button type="button" class="position btn btn-danger btn-tableMaster-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>'
+            }
+        ],
+    });
     table_consumoMadera_detalle = $('#list-insert-consumoMadera-detalle').DataTable
     ({
         columnDefs: [
@@ -46,6 +74,30 @@ document.addEventListener('DOMContentLoaded', e => {
 });
 
 /** Eventos */
+
+btn_create_consumoMadera_diario.addEventListener("click", (e) => {
+    // Preparamos formulario
+    let form_request1 = {
+        // Se pone la accion
+        "accion": "dtl-colaboradores-all",
+    }
+    // Enviamos formulario
+    fetchData_colaboradores(form_request1);
+    // Preparamos formulario
+    let form_request2 = {
+        // Se pone la accion
+        "accion": "dtl-ccosto-labor",
+    }
+    // Enviamos formulario
+    fetchData_ccosto_labor(form_request2);
+    // Preparamos formulario
+    let form_request3 = {
+        // Se pone la accion
+        "accion": "dtl-madera-all",
+    }
+    // Enviamos formulario
+    fetchData_madera_all(form_request3);   
+});
 mbtn_create_consumoMadera_diario.addEventListener("click", (e) => {
     let listDetalles = [];
     let array_noti_error = [];
@@ -53,9 +105,9 @@ mbtn_create_consumoMadera_diario.addEventListener("click", (e) => {
     let val_jefeGuardia = iptAdd_jefeGuardia.value;
     val_jefeGuardia ? val_jefeGuardia = val_jefeGuardia : array_noti_error.push("JEFE DE GUARDIA");
     val_jefeGuardia ? val_idColaborador = document.querySelector("#insert-dtl-consumoMadera-jefeGuardia"  + " option[value='" +  val_jefeGuardia + "']").dataset.idJefeGuardia : array_noti_error.push("JEFE DE GUARDIA , ID");
-    val_fecha = ipt_consumoMader_fecha.value;
+    val_fecha = ipt_consumoMadera_fecha.value;
     val_fecha ? val_fecha = val_fecha : array_noti_error.push("FECHA");
-    val_nvale = ipt_consumoMader_nvale.value;
+    val_nvale = ipt_consumoMadera_nvale.value;
     val_nvale ? val_nvale = val_nvale : array_noti_error.push("N° VALE");
     let form_detalle = table_consumoMadera_detalle.rows().data();
     form_detalle.length > 0 ? form_detalle = form_detalle : array_noti_error.push("DETALLE");
@@ -114,14 +166,28 @@ const recordForm = async (listInsert) => {
 }
 const notificationBackend = (rptSql) => {
     if (rptSql) {
-        if (rptSql['estado'] == 1) {
+        if (rptSql['sql1']['estado'] == 1) {
             $.niftyNoty({
                 type: 'success',
                 container: '#alerts-form-insert',
-                html: '<strong>¡Bien hecho!</strong> ' + rptSql['mensaje'],
+                html: '<strong>¡Bien hecho!</strong> ' + rptSql['sql1']['mensaje'],
                 focus: false,
                 timer: 5000
             });
+        }
+        if (rptSql['sql2']['estado'] == 1) {
+            $.niftyNoty({
+                type: 'success',
+                container: '#alerts-form-insert',
+                html: '<strong>¡Bien hecho!</strong> ' + rptSql['sql2']['mensaje'],
+                focus: false,
+                timer: 5000
+            });
+        }
+        if( rptSql['sql1']['estado'] == 1 | rptSql['sql2']['estado'] == 1){
+            reset_formcreate_consumoMadera();
+            table_consumoMadera_detalle.clear().draw();;
+            mainEvents_consumoMadera();
         }
     }
 }
@@ -179,28 +245,34 @@ $('#list-insert-consumoMadera-detalle').on('click', '.removeRow', function() {
 });
 
 const mainEvents_consumoMadera = () => {
-    // Preparamos formulario
-    let form_request1 = {
-        // Se pone la accion
-        "accion": "dtl-colaboradores-all",
+    let formList = {
+        "accion": "table_master",
     }
-    // Enviamos formulario
-    fetchData_colaboradores(form_request1);
-    // Preparamos formulario
-    let form_request2 = {
-        // Se pone la accion
-        "accion": "dtl-ccosto-labor",
-    }
-    // Enviamos formulario
-    fetchData_ccosto_labor(form_request2);
-    // Preparamos formulario
-    let form_request3 = {
-        // Se pone la accion
-        "accion": "dtl-madera-all",
-    }
-    // Enviamos formulario
-    fetchData_madera_all(form_request3);   
+    fetchTable_consumoMadera(formList);   
 }
+// Hacemos la Peticion
+const fetchTable_consumoMadera = async (request) => {
+    // Se instancia el FORMDATA
+    const body = new FormData();
+    // Se agrega formulario en el FORMDATA
+    body.append("data", JSON.stringify(request));
+    //Se envia formulario al controllador y su previa configuracion
+    const returned = await fetch("./../../../controllers/controllerConsumoMaderaList.php", {
+        method: "POST",
+        body
+    });
+    // Se convierte respuesta en json
+    const result = await returned.json(); //await JSON.parse(returned);
+    const rptSQL = result['sql'];
+    // Envia dato a pintar
+    pintarTable_consumoMadera(rptSQL);
+}
+
+// Se pinta DataList
+const pintarTable_consumoMadera = data => {
+    table_consumoMadera.clear();
+    table_consumoMadera.rows.add(data).draw();
+};
 
 // Hacemos la Peticion
 const fetchData_colaboradores = async (request) => {
@@ -355,4 +427,13 @@ const alerts = data => {
         timer: 2000,
         closeBtn: true
     });
+}
+
+const reset_formcreate_consumoMadera = () => {
+    iptAdd_jefeGuardia.value = '';
+    ipt_consumoMadera_fecha.value = '';
+    ipt_consumoMadera_nvale.value = '';
+    iptAdd_cCostos.value = '';
+    iptAdd_madera.value = '';
+    ipt_consumoMadera_cantidad.value = '';
 }
