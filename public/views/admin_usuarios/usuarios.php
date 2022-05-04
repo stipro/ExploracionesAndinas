@@ -43,12 +43,6 @@
 
     <?php echo $template_header_css; ?>
 
-    <!--Switchery [ OPTIONAL ]-->
-    <link href=".\..\..\..\plugins\switchery\switchery.min.css" rel="stylesheet">
-
-    <!--Bootstrap Validator [ OPTIONAL ]-->
-    <link href=".\..\..\..\plugins\bootstrap-validator\bootstrapValidator.min.css" rel="stylesheet">
-
 
     <!--Nifty Stylesheet [ REQUIRED ]
     <link href="..\css\usuario.css" rel="stylesheet">-->
@@ -1027,6 +1021,19 @@
                                 </div>
                                 
                             </div>
+
+							<div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+					                    <label class="col-md-2 control-label">Tipo Usuario</label>
+					                    <div class="col-md-4">
+					                        <input type="text" class="form-control" id="ipt-insert-correo-usuario" name="tipo_usuario" placeholder="Tipo Usuario">
+					                    </div>
+					                </div>
+                                </div>
+                                
+                            </div>
+
                         </div>
                     </fieldset>
                 </div>
@@ -1177,25 +1184,6 @@
     <!--=================================================-->
 
     <?php echo $template_javascript; ?>
-
-    <!--Switchery [ OPTIONAL ]-->
-    <script src=".\..\..\..\plugins\switchery\switchery.min.js"></script>
-
-    <!--Bootstrap Validator [ OPTIONAL ]-->
-    <script src=".\..\..\..\plugins\bootstrap-validator\bootstrapValidator.min.js"></script>
-
-    <!--Chosen [ OPTIONAL ]-->
-    <script src=".\..\..\..\plugins\chosen\chosen.jquery.min.js"></script>
-
-    <!--Select2 [ OPTIONAL ]-->
-    <script src=".\..\..\..\plugins\select2\js\select2.min.js"></script>
-
-    <!--Form Component [ SAMPLE ]-->
-    <script src=".\..\..\..\js\demo\form-component.js"></script>
-
-
-
-    
 
     <!--Form Component [ REQUIRED ]-->
     <script src=".\..\..\..\js\usuario.js"></script>
