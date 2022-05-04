@@ -766,14 +766,15 @@
                                 <div class="form-group">
                                     <div class="col-md-2">
                                     </div>
-                                    <label for="insert-operacionMina-Manual" class="col-md-4 control-label">Manual</label>                                 
+                                    
+                                    <div class="col-md-4"></div>                                 
                                     <div class="col-md-2">
-					                    <label class="control-label">Carros Extraídos</label>
+					                    <label class="control-label">Manual</label>
+                                        <!-- <label class="control-label">Carros Extraídos</label> -->
 					                    <input type="text" placeholder="cantidad" class="form-control" id="insert-operacionMina-Manual">
                                     </div>
                                     <label for="" class="col-md-2 control-label"></label>
-                                    <div class="col-md-2">
-                                    </div>
+                                    <label for="insert-operacionMina-Manual" class="col-md-2 control-label">Carros Extraídos</label>
                                 </div>
                             </div>
                             <div class="col-md-12">
