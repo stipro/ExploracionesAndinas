@@ -46,44 +46,6 @@
     <!--=================================================-->
 
     <?php echo $template_header_css; ?>
-
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" /> -->
-
-    <!--Icono Importar [ OPTIONAL ]-->
-    <link href=".\..\..\..\css\icons.css" rel="stylesheet">
-
-    <!--Bootstrap Select [ OPTIONAL ]-->
-    <link href=".\..\..\..\plugins\bootstrap-select\bootstrap-select.min.css" rel="stylesheet">
-
-    <!--Chosen [ OPTIONAL ]-->
-    <link href=".\..\..\..\plugins\chosen\chosen.min.css" rel="stylesheet">
-
-    <!--noUiSlider [ OPTIONAL ]-->
-    <link href=".\..\..\..\plugins\noUiSlider\nouislider.min.css" rel="stylesheet">
-
-    <!--Select2 [ OPTIONAL ]-->
-    <link href=".\..\..\..\plugins\select2\css\select2.min.css" rel="stylesheet">
-
-    <!--Demo [ DEMONSTRATION ]-->
-    <link href=".\..\..\..\css\demo\nifty-demo.min.css" rel="stylesheet">
-
-    <!--Themify Icons [ OPTIONAL ]-->
-    <link href=".\..\..\..\plugins\themify-icons\themify-icons.min.css" rel="stylesheet">
-
-    <!--FooTable [ OPTIONAL ]
-    <link href=".\..\..\..\plugins\fooTable\css\footable.core.css" rel="stylesheet">-->
-
-    <!--Ion Icons [ OPTIONAL ]-->
-    <link href=".\..\..\..\plugins\ionicons\css\ionicons.min.css" rel="stylesheet">
-
-    <!--Chosen [ OPTIONAL ]-->
-    <link href=".\..\..\..\plugins\chosen\chosen.min.css" rel="stylesheet">
-
-    <!--Nifty Stylesheet [ REQUIRED ]-->
-    <link href=".\..\..\..\css\operacionMina.css" rel="stylesheet">
-    
-    <!--Font Awesome [ OPTIONAL ]-->
-    <link href=".\..\..\..\plugins\font-awesome\css\font-awesome.min.css" rel="stylesheet">
     <!-- <link href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
@@ -177,31 +139,12 @@
                                         </legend>
 										<div class="row">
 											<div class="col-md-3">
+                                                <button class="btn btn-default btn-success btn-labeled" id="btn-agregar-consumoMadera" data-target="#insert-modal-consumoMadera" data-toggle="modal">
+													<i class="btn-label fa-solid fa fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>
+												</button>
 											</div>
 											<div class="col-sm-12 col-md-6 dt-buttons btn-group">
-												<button class="btn btn-default btn-success btn-labeled" id="btn-agregar-consumoMadera" data-target="#insert-modal-consumoMadera" data-toggle="modal">
-													<i class="btn-label fa-solid fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>
-												</button>
-												<button class="btn btn-default btn-info btn-labeled">
-													<i class="btn-label fa fa-refresh"></i>
-													<span class="hidden-xs">Actualizar</span>
-												</button>
-												<button class="btn btn-default btn-labeled">
-													<i class="btn-label fa fa-download"></i>
-													<span class="hidden-xs"> Exportar</span>
-												</button>
-												<button class="btn btn-primary btn-labeled">
-													<i class="btn-label fa fa-download"></i>
-													<span class="hidden-xs"> Importar</span>
-												</button>
-												<button class="btn btn-primary btn-labeled">
-													<i class="btn-label demo-pli-printer"></i>
-													<span class="hidden-xs"> Imprimir</span>
-												</button>
-												<button class="btn btn-primary btn-labeled">
-													<i class="btn-label fa fa-eye"></i>
-													<span class="hidden-xs"> Mostrar / Ocultar</span>
-												</button>
+												
 											</div>
 											<div class="col-sm-12 col-md-3">											
 											</div>
@@ -340,10 +283,10 @@
                             <legend><p class="text-main">Detalle</p></legend>
                             <div class="row">
                                 
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="insert-ipt-consumoMadera-centroCostos" class="col-md-4 control-label">Centro <br> Costos<span class="text-danger">*</span></label>
-                                            <div class="col-md-5">
+                                            <label for="insert-ipt-consumoMadera-centroCostos" class="col-md-5 control-label">Centro <br> Costos<span class="text-danger">*</span></label>
+                                            <div class="col-md-7">
                                                 <input list="insert-dtl-consumoMadera-centroCostos" type="text" class="form-control" id="insert-ipt-consumoMadera-centroCostos" name="centro_costos" placeholder="Centro Costos">
                                                 <datalist id="insert-dtl-consumoMadera-centroCostos">
                                                     <option value="--no cargo--">--no cargo--</option>
@@ -357,14 +300,20 @@
 
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="insert-ipt-consumoMadera-labor" class="col-md-5 control-label">Labor<span class="text-danger">*</span></label>
+                                            <label for="insert-ipt-consumoMadera-laborNombre" class="col-md-5 control-label">Labor<span class="text-danger">*</span></label>
                                             <div class="col-md-7">
-                                                <input type="text" class="form-control" id="insert-ipt-consumoMadera-labor"  name="fecha" placeholder="Labor" disabled>
+                                                <input list="insert-dtl-consumoMadera-laborNombre" type="text" class="form-control" id="insert-ipt-consumoMadera-laborNombre"  name="fecha" placeholder="Labor">
+                                                <datalist id="insert-dtl-consumoMadera-laborNombre">
+                                                    <option value="--no cargo--">--no cargo--</option>
+                                                </datalist>
                                             </div>
+                                            <template id="template-consumoMadera-laborNombre">
+                                                <option id="template-opt-consumoMadera-laborNombre">
+                                            </template>
                                         </div>
                                     </div>
                                     
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="insert-ipt-consumoMadera-madera" class="col-md-5 control-label">Madera<span class="text-danger">*</span></label>
                                             <div class="col-md-7">
@@ -441,9 +390,6 @@
     <!--=================================================-->
 
     <?php echo $template_javascript; ?>
-
-    <!--NiftyJS [ RECOMMENDED ]-->
-    <script src="./../../../js/nifty.min.js"></script>
 
     <!-- Date-MYSQL [ REQUIRED ] -->
     <script src="./../../../js/consumo_madera_diario.js"></script>

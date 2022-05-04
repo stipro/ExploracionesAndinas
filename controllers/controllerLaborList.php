@@ -17,6 +17,10 @@ if($_POST){
                 $id = $arrayForm['paramentWhere'];
                 $rptSql = $tableManager->getLabor_ccosto($id);
                 break;
+            case "getCCostos_lbNm_nombre":
+                $id = $arrayForm['paramentWhere'];
+                $rptSql = $tableManager->getCcostos_nombre_laborNombre($id);
+                break;
             case "getDatalistAll_zonaNombre":
                 $rptSql = $tableManager->getDatalistAll_zonaNombre();
                 break;
@@ -57,6 +61,9 @@ if($_POST){
                 break;
             case "dtl-ccosto-labor":
                 $rptSql = $tableManager->getColumn_cCostos();
+                break;
+            case "dtl-nombre-labor":
+                $rptSql = $tableManager->getColumn_laborNombre_nombre();
                 break;
             case "getcolumnsWhere":
                 $columns = $arrayForm['columns'];

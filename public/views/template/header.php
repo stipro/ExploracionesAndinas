@@ -10,8 +10,8 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="./../../../img/favicon.ico">
 
-    <!--Open Sans Font [ OPTIONAL ]-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css">
+    <!--Open Sans Font [ OPTIONAL ]
+    <link href=".\..\..\..\css\font.css" rel="stylesheet" type="text/css">-->
 
     <!--Stylesheet [ REQUIRED - REQUERIDO ]-->
     <link href=".\..\..\..\css\base.css" rel="stylesheet">
@@ -56,8 +56,11 @@
     <!--Ion Icons [ OPTIONAL ]-->
     <link href=".\..\..\..\plugins\ionicons\css\ionicons.min.css" rel="stylesheet">
 
-    <!--Font Awesome [ OPTIONAL ]
-    <link href=".\..\..\..\plugins\font-awesome\css\font-awesome.min.css" rel="stylesheet">-->
+    <!--Icono Importar [ OPTIONAL ]-->
+    <link href=".\..\..\..\css\icons.css" rel="stylesheet">
+
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href=".\..\..\..\plugins\font-awesome\css\font-awesome.min.css" rel="stylesheet">
 
     <!--Themify Icons [ OPTIONAL ]-->
     <link href=".\..\..\..\plugins\themify-icons\themify-icons.min.css" rel="stylesheet">

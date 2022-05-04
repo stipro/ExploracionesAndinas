@@ -163,6 +163,49 @@ class Labores extends Conexion
             return $rptSql;
         }
     }
+    public function insert_labor_zona($items){
+        try {
+            $query = "INSERT INTO lab_zonas (labZona_nombre, labZona_letra) 
+                            VALUES (:item1,:item2)";
+            $insertValue = $this->db->prepare($query);
+            $insertValue->bindParam(':item1', $items['laborZone_zona'], PDO::PARAM_STR);
+            $insertValue->bindParam(':item2', $items['laborZone_letra'], PDO::PARAM_STR);
+            $sqlrpt = $insertValue->execute();
+            $lastcolIdsql = $this->db->lastInsertId();
+            if($sqlrpt){
+                $rptSql = [
+                    "estado" => 1,
+                    "mensaje" => "Se registro correctamente",
+                    "id" => $lastcolIdsql
+                ];
+            }
+            return $rptSql;
+                
+        } catch (PDOException $e) {
+            
+            if($e->getCode() == 23000){
+                $messageUser = "Se duplico Dato";
+            }
+            elseif ($e->getCode() == 22001) {
+                $messageUser = "Tamaño excedido";
+            }
+            elseif ($e->getCode() == 'HY000') {
+                $messageUser = "Tipo de valor incorrecto";
+            }
+            else{
+                $messageUser = "";
+            }
+            $rptSql = [
+                "estado" => 0,
+                "messageDeveloper" => "Se encontro ERROR ".$e->getMessage(),
+                "mensaje" => $messageUser,
+                "messageUser" => $messageUser,
+                "codigo" => $e->getCode(),
+                "string" => $e->__toString(),
+            ];
+            return $rptSql;
+        }
+    }
     public function insert_selectdos($items){
         try {
             $query = "INSERT INTO unidad_mineras (nombre_unidad_mineras, abrev_unidad_mineras) 
@@ -213,13 +256,19 @@ class Labores extends Conexion
         return $this->ConsultaSimple($query);
     }
     // Obtiene Lista especifica
+    public function getCcostos_nombre_laborNombre(string $id)
+    {
+        $query = "SELECT * FROM labores AS lb WHERE lb.id_labNombre = {$id};";
+        return $this->ConsultaSimple($query);
+    }
+    // Obtiene Lista especifica
     public function getSelect(string $table, string $column, string $idTable)
     {
         $query = "SELECT {$idTable}, {$column}, id_labNombre FROM {$table} ORDER BY {$column} ASC ;";
         return $this->ConsultaSimple($query);
     }
     public function getLaborNombre(){
-        $query = "SELECT lb_nb.id_labNombre, lb_nb.labNombre_nombre, lb_nb_ep.nombre_etapa, lb_nb.labNombre_prefijo, lb_nb.labNombre_tipo FROM lab_nombres AS lb_nb LEFT JOIN lab_nomb_etapas AS lb_nb_ep ON lb_nb.id_labNombre = lb_nb_ep.id_etapa;";
+        $query = "SELECT lb_nb.id_labNombre, lb_nb.labNombre_nombre, lb_nb_ep.nombre_etapa, lb_nb.labNombre_prefijo, lb_nb.labNombre_tipo FROM lab_nombres AS lb_nb LEFT JOIN lab_nomb_etapas AS lb_nb_ep ON lb_nb.labNombEtapas_id = lb_nb_ep.id_etapa;";
         return $this->ConsultaSimple($query);
     }
     public function getLaborZona($where)
@@ -265,6 +314,10 @@ class Labores extends Conexion
     }
     public function getColumn_cCostos(){
         $query = "SELECT lb.id_labor, lb.lab_ccostos FROM labores AS lb;";
+        return $this->ConsultaSimple($query);
+    }
+    public function getColumn_laborNombre_nombre(){
+        $query = "SELECT lb_nm.id_labNombre, lb_nm.labNombre_nombre FROM lab_nombres AS lb_nm;";
         return $this->ConsultaSimple($query);
     }
     public function getUnidMinera(){

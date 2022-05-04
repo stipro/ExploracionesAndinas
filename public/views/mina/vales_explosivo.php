@@ -79,12 +79,6 @@
     <!--Nifty Stylesheet [ REQUIRED ]-->
     <link href="./../../../css/valeExplosivos.css" rel="stylesheet">
 
-    <!--Font Awesome [ OPTIONAL ]-->
-    <link href="./../../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-
-    <!--Bootstrap Validator [ OPTIONAL ]-->
-    <link href="./../../../plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet">
-
     <!--=================================================
 
     REQUIRED

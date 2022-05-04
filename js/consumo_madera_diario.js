@@ -20,7 +20,10 @@ const iptAdd_cCostos = document.getElementById('insert-ipt-consumoMadera-centroC
 const dtl_consumoMadera_cCostos = document.getElementById('insert-dtl-consumoMadera-centroCostos');
 const tpe_consumoMadera_cCostos = document.getElementById('template-consumoMadera-centroCostos').content;
 
-const ipt_consumoMadera_labor_nombre = document.getElementById('insert-ipt-consumoMadera-labor');
+const ipt_consumoMadera_labor_nombre = document.getElementById('insert-ipt-consumoMadera-laborNombre');
+const dtl_consumoMadera_labor_nombre = document.getElementById('insert-dtl-consumoMadera-laborNombre');
+const tpe_consumoMadera_labor_nombre = document.getElementById('template-consumoMadera-laborNombre').content;
+
 
 
 const iptAdd_madera = document.getElementById('insert-ipt-consumoMadera-madera');
@@ -36,11 +39,14 @@ document.addEventListener('DOMContentLoaded', e => {
     mainEvents_consumoMadera();
     table_consumoMadera = $('#tableMaster_consumoMadera').DataTable
     ({
+        
+        // Ordena desc Columna 1
+        order: [[ 1, "desc" ]],
+        // Declaramos columnas
         columns: [
             {
                 data: "id_consumoMadera",
                 responsivePriority: 1,
-                //width: "50% !important",
             },
             {
                 data: "consumoMadera_fecha",
@@ -58,6 +64,137 @@ document.addEventListener('DOMContentLoaded', e => {
                 defaultContent: '<button type="button" class="btn-view btn btn-success btn-tableMaster-detalle"><i class="fa fa-eye"></i> <span class="hidden-xs hidden-sm">Detalle<span></button> <button type="button" class="name btn btn-primary btn-tableMaster-edit"><i class="fa fa-edit"></i> <span class="hidden-xs hidden-sm">Editar</span></button> <button type="button" class="position btn btn-danger btn-tableMaster-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>'
             }
         ],
+        language: {
+            "decimal": "",
+            "emptyTable": "No hay registro de ",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_",
+            "infoEmpty": "Mostrando 0 to 0 of 0 ",
+            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ ",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Busqueda General :",
+            "zeroRecords": "Sin resultados encontrados",
+            "paginate": {
+                "first": "Primero",
+                "last": "Ultimo",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+            "buttons": {
+                "copy": "Copiar",
+                "colvis": "Visibilidad",
+                "collection": "Colección",
+                "colvisRestore": "Restaurar visibilidad",
+                "print": "Imprimir",
+                "pageLength": {
+                    "-1": "Mostrar todas las filas",
+                    "_": "Mostrar %d filas",
+                },
+            }
+        },
+        dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+        buttons: [
+            {
+                text: '<i class="btn-label fa fa-refresh"></i><span class="hidden-xs">Actualizar</span>',
+                action: function(e, dt, node, conf) {
+
+                },
+                className: 'btn btn-info btn-labeled' //Primary class for all buttons
+            },
+            {
+                extend: 'collection',
+                text: '<i class="btn-label fa fa-download"></i><span class="hidden-xs"> Exportar</span>',
+                className: 'btn-labeled',
+                //* Botones
+                buttons: [
+                    //* Boton exportar copiar
+                    {
+                        //* Indicar Acción
+                        extend: 'copy',
+                        //* Mensaje hove
+                        titleAttr: 'Copiar Tabla',
+                        //
+                        title: '',
+                        //* Clases agregados
+                        className: 'btn-labeled',
+                        //* Texto u Boton
+                        text: '<i class="btn-label fa fa-copy"></i> Copiar',
+                        //* Indicar que columns se usará
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        text: '<i class="btn-label fa fa-file-excel-o"></i> Excel',
+                        titleAttr: 'Excel',
+                        title: '',
+                        className: 'btn-labeled',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'csv',
+                        text: '<i class="btn-label fa fa-file-excel-o"></i> CSV',
+                        titleAttr: 'CSV',
+                        className: 'btn-labeled',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        text: '<i class="btn-label fa fa-file-pdf-o"></i> PDF',
+                        titleAttr: 'PDF',
+                        className: 'btn-labeled',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                ]
+            },
+            {
+                text: '<i class="btn-label fa fa-file-excel-o"></i><span class="hidden-xs"> Excel</span>',
+                    className: 'btn btn-primary', //Primary class for all buttons
+                tag: 'a',
+                action: function(e, dt, node, config) {
+                    //This will send the page to the location specified
+                    window.location.href = './../../excelGenerator.php?table=view_vales_explosivo';
+                },
+                init: function(dt, node, config) {
+                    $(node).attr('href', './../../excelGenerator.php?table=view_vales_explosivo');
+                    $(node).attr('download', '');
+                    $(node).attr('title', 'Descargar Archivo');
+                }
+            },
+            {
+                text: '<i class="btn-label fa fa-upload"></i><span class="hidden-xs">Importar</span>',
+                action: function(e, dt, node, conf) {
+                    $("#modal-import").modal("show");
+                },
+                className: 'btn btn-primary btn-labeled' //Primary class for all buttons
+            },
+            {
+                extend: 'print',
+                text: '<i class="btn-label fa fa-print"></i><span class="hidden-xs">Imprimir</span>',
+                titleAttr: 'PDF',
+                className: 'btn-labeled', //Primary class for all buttons
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4]
+                }
+            },
+            {
+                extend: 'colvis',
+                text: '<i class="btn-label fa fa-eye"></i><span class="hidden-xs">Mostrar / Ocultar</span>',
+                className: 'btn-labeled' //Primary class for all buttons
+            },
+            'refresh',
+        ], 
+        
     });
     table_consumoMadera_detalle = $('#list-insert-consumoMadera-detalle').DataTable
     ({
@@ -90,6 +227,13 @@ btn_create_consumoMadera_diario.addEventListener("click", (e) => {
     }
     // Enviamos formulario
     fetchData_ccosto_labor(form_request2);
+    // Preparamos formulario
+    let form_request2_1 = {
+        // Se pone la accion
+        "accion": "dtl-nombre-labor",
+    }
+    // Enviamos formulario
+    fetchData_nombre_labor(form_request2_1);
     // Preparamos formulario
     let form_request3 = {
         // Se pone la accion
@@ -337,6 +481,37 @@ const paintDtl_ccostos_Labor = data => {
 };
 
 // Hacemos la Peticion
+const fetchData_nombre_labor = async (request) => {
+    // Se instancia el FORMDATA
+    const body = new FormData();
+    // Se agrega formulario en el FORMDATA
+    body.append("data", JSON.stringify(request));
+    //Se envia formulario al controllador y su previa configuracion
+    const returned = await fetch("./../../../controllers/controllerLaborList.php", {
+        method: "POST",
+        body
+    });
+    // Se convierte respuesta en json
+    const result = await returned.json(); //await JSON.parse(returned);
+    const rptSQL = result['sql'];
+    // Envia dato a pintar
+    paintDtl_nombre_Labor(rptSQL);
+}
+
+// Se pinta DataList
+const paintDtl_nombre_Labor = data => {
+    dtl_consumoMadera_labor_nombre.innerHTML = '';
+    data.forEach(item => {
+        tpe_consumoMadera_labor_nombre.querySelector('option').textContent = item.labNombre_nombre;
+        tpe_consumoMadera_labor_nombre.querySelector('option').value = item.labNombre_nombre;
+        tpe_consumoMadera_labor_nombre.querySelector('option').dataset.idLaborNombre = item.id_labNombre;
+        const clone = tpe_consumoMadera_labor_nombre.cloneNode(true);
+        fragment.appendChild(clone)
+    });
+    dtl_consumoMadera_labor_nombre.appendChild(fragment);
+}
+
+// Hacemos la Peticion
 const fetchData_madera_all = async (request) => {
     // Se instancia el FORMDATA
     const body = new FormData();
@@ -403,6 +578,51 @@ const getDataLabor = async (rptSql) => {
 
 const pintarAsociadosLabor = (rptSql) => {
     ipt_consumoMadera_labor_nombre.value = rptSql[0].labNombre_nombre;
+}
+
+ipt_consumoMadera_labor_nombre.addEventListener("input", (e) => {
+    try {
+        let val_nombre_laborNombre = ipt_consumoMadera_labor_nombre.value;
+        console.log(val_nombre_laborNombre);
+        if(val_nombre_laborNombre){
+            let val_id_laborNombre = document.querySelector("#insert-dtl-consumoMadera-laborNombre"  + " option[value='" +  val_nombre_laborNombre + "']").dataset.idLaborNombre;
+            console.log(val_id_laborNombre);
+            console.log('Weyy el if');
+            if (val_id_laborNombre) {
+                
+                let selectForm1 = {
+                    "accion": "getCCostos_lbNm_nombre",
+                    "paramentWhere": val_id_laborNombre,
+                }
+                getCCostos_laborNombre_nombre(selectForm1)
+                console.log('Se envio');
+            } else {
+                iptAdd_cCostos.value = '';
+            }
+        }
+        
+    } catch (error) {
+        iptAdd_cCostos.value = '';
+        //console.error(error);
+        // expected output: ReferenceError: nonExistentFunction is not defined
+        // Note - error messages will vary depending on browser
+    }
+});
+
+const getCCostos_laborNombre_nombre = async (rptSql) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(rptSql));
+    const res = await fetch('./../../../controllers/controllerLaborList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    rptSql = data['sql'];
+    pintarCCosto_nombreLabor_nombre(rptSql);
+}
+
+const pintarCCosto_nombreLabor_nombre = (rptSql) => {
+    iptAdd_cCostos.value = rptSql[0].lab_ccostos;
 }
 
 // Alerta

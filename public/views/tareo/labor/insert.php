@@ -59,7 +59,7 @@ $template_insert_labor = '
                                                 <div class="input-group">
                                                     <input type="text" placeholder="Labor" class="form-control custom-select custom-select-md" id="ipt-insert-labor-laborName" list="datalist-insert-nombreLabor-nombre">
                                                     <span class="input-group-btn">
-                                                        <button class="btn btn-success btn-labeled" type="button" id="add-labor"><i class="btn-label fa-solid fa-plus"></i>Agregar</button>
+                                                        <button class="btn btn-success btn-labeled" type="button" id="add-labor-name"><i class="btn-label fa-solid fa-plus"></i>Agregar</button>
                                                     </span>
                                                     <datalist id="datalist-insert-nombreLabor-nombre">
                                                         <option value="Nose ejecuto">
@@ -191,14 +191,10 @@ $template_insert_labor = '
                                             </button>
                                         </span>
                                         <datalist id="datalist-insert-laborName-etapa">
-                                            <!-- <select name="input-insert-laborName-etapa"> -->
                                                 <option value="No se ejecuto"></option>
-                                            <!-- </select> -->
                                         </datalist>
                                         <template id="template-datalist-insert-laborName-etapa">
-                                            <!-- <select name="input-insert-laborName-etapa"> -->
                                                 <option value=""></option>
-                                            <!-- </select> -->
                                         </template>
                                     </div>
                                 </div>

@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', e => {
     const insert_labor_namePrefijo = document.getElementById("ipt-insert-labor-laborNamePrefijo");
     const insert_labor_nametipo = document.getElementById("ipt-insert-labor-laborNameTipo");
 
-
+    // Zona
     const insert_labor_zonaName = document.getElementById("ipt-insert-labor-laborZona");
     const insert_labor_zoneLetra = document.getElementById("ipt-insert-letra-laborZonaLetra");
     const datalist_labor_laborZone = document.getElementById("datalist-insert-zonaLabor-zona");
@@ -29,11 +29,13 @@ document.addEventListener('DOMContentLoaded', e => {
     const datalist_labor_unitMining = document.getElementById("datalist-insert-labor-unitMining");
 
 
-    const madd_labor = document.getElementById("add-labor");
+    const madd_labor_name = document.getElementById("add-labor-name");
     const madd_laborNombre_etapa = document.getElementById('add-etapa');
     const madd_zona = document.getElementById("add-zona");
     // Nombre de Zona
     // Boones
+    const mbtnNew_laborZone = document.getElementById("mbtn-new-laborZone");
+    const mbtnClose_laborZone = document.getElementById("mbtn-close-laborZone");
     const mbtnInsert_laborZone = document.getElementById("mbtn-insert-laborZone");
     // input
     const insert_laborZone_zona = document.getElementById("input-insert-laborNombreZone-zona");
@@ -340,7 +342,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
 
     // Nombre labor
-    madd_labor.addEventListener("click", () => {
+    madd_labor_name.addEventListener("click", () => {
         $('#modal-laborName').modal('show');
         const form = {
             "accion": "getLaborNombre_etapa",
@@ -435,22 +437,38 @@ document.addEventListener('DOMContentLoaded', e => {
             closeBtn: true
         });
     }
+    mbtnClose_laborName.addEventListener("click", () => {
+        const form_uno = {
+            "accion": "getLaborNombre",
+        }
+        getSelect_workName(form_uno);
+        reset_formcreate_labor_nombre();
+    });
+    mbtnNew_laborName.addEventListener("click", () => {
+        const form_uno = {
+            "accion": "getLaborNombre",
+        }
+        getSelect_workName(form_uno);
+    });
     // Nombre de labor
     mbtnInsert_laborName.addEventListener("click", () => {
-        const val_nombreLabor = insert_laborName_labor.value;
-        const val_etapaLabor = insert_laborName_etapa.value;
-        const val_idLaborName = insert_laborName_etapa.dataset.id;
-        const val_prefijoLabor = insert_laborName_prefijo.value;
-        const val_tipoLabor = insert_laborName_tipo.value;
-        const data = {
+        let array_noti_error = [];
+        let val_nombreLabor = insert_laborName_labor.value;
+        let val_etapaLabor = insert_laborName_etapa.value;
+        val_etapaLabor ? val_etapaLabor = val_etapaLabor : array_noti_error.push("Selecciona Etapa");
+        val_etapaLabor ? val_id_etapa = document.querySelector("#datalist-insert-laborName-etapa"  + " option[value='" +  val_etapaLabor + "']").dataset.id : array_noti_error.push("No se encontro ID");
+        //const val_idLaborName_etapa = insert_laborName_etapa.dataset.id;
+        let val_prefijoLabor = insert_laborName_prefijo.value;
+        let val_tipoLabor = insert_laborName_tipo.value;
+        let data = {
             "nombreLabor": val_nombreLabor,
             "etapaLabor": val_etapaLabor,
-            "id_laborName": val_idLaborName,
+            "id_laborName_etapa": val_id_etapa,
             "prefijoLabor": val_prefijoLabor,
             "tipoLabor": val_tipoLabor,
         }
         console.log(data);
-        const form = {
+        let form = {
             "accion": "insert-laborName",
             "datos": data
         }
@@ -489,7 +507,18 @@ document.addEventListener('DOMContentLoaded', e => {
         }
         getSelect_workName_etapa(form)
     });
-
+    mbtnNew_laborZone.addEventListener("click", () => {
+        const form_dos = {
+            "accion": "getAll_zona",
+        }
+        getSelect_workZone(form_dos);
+    });
+    mbtnClose_laborZone.addEventListener("click", () => {
+        const form_dos = {
+            "accion": "getAll_zona",
+        }
+        getSelect_workZone(form_dos);
+    });
     mbtnInsert_laborZone.addEventListener("click", () => {
         val_laborZone_zona = insert_laborZone_zona.value;
         val_laborZone_letra = insert_laborZone_letra.value;
@@ -546,7 +575,7 @@ document.addEventListener('DOMContentLoaded', e => {
     });
 
     document.querySelector('#ipt-insert-labor-laborName').addEventListener('input', (e) => {
-        console.log('#' + e.target.getAttribute('list') + ' option[value="' + e.target.value + '"]')
+        console.log('#' + e.target.getAttribute('list') + ' option[value="' + e.target.value + '"]');
         //Object.assign(e.target.dataset, document.querySelector('#' + e.target.getAttribute('list') + ' option[value="' + e.target.value + '"]').dataset);
         if (document.querySelector('#' + e.target.getAttribute('list') + ' option[value="' + e.target.value + '"]') !== null) {
             insert_labor_nameEtapa.value = document.querySelector('#' + e.target.getAttribute('list') + ' option[value="' + e.target.value + '"]').dataset.etapa;
@@ -577,11 +606,32 @@ document.addEventListener('DOMContentLoaded', e => {
 
 });
 
-function resetForm() {
-    insert_nombreLabor.value = '';
-    insert_etapaLabor.value = '';
-    insert_prefijoLabor.value = '';
-    insert_tipoLabor.value = '';
+function reset_formcreate_labor() {
+    insert_labor_ccosto.value = '';
+    insert_labor_laborName.value = '';
+    insert_labor_zonaName.value = '';
+    insert_labor_unitMining.value = '';
+}
+
+function reset_formcreate_labor_nombre() {
+    insert_laborName_labor.value = '';
+    insert_laborName_etapa.value = '';
+    insert_laborName_prefijo.value = '';
+    insert_laborName_tipo.value = '';
+}
+
+function reset_formcreate_labor_nombre_etapa() {
+    insert_laborNameEtapa_etapa.value = '';
+}
+
+function reset_formcreate_labor_zona() {
+    insert_laborZone_zona.value = '';
+    insert_laborZone_letra.value = '';
+}
+
+function reset_formcreate_labor_unidadMinera() {
+    insert_unidMinera_nombre.value = '';
+    insert_unidMinera_abrev.value = '';
 }
 
 const mainEvents = () => {

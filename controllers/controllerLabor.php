@@ -16,7 +16,7 @@ if($_POST){
             case "insert-laborName":
                 //$items = $arrayForm['datos'];   
                 $datonombreLabor = ( !empty( $arrayForm['datos']['nombreLabor'] ) ? ( $arrayForm['datos']['nombreLabor'] ) : false );
-                $datoid_laborName = ( !empty( $arrayForm['datos']['id_laborName'] ) ? ( $arrayForm['datos']['id_laborName'] ) : false );
+                $datoid_laborName = ( !empty( $arrayForm['datos']['id_laborName_etapa'] ) ? ( $arrayForm['datos']['id_laborName_etapa'] ) : false );
                 $datoprefijoLabor = ( !empty( $arrayForm['datos']['prefijoLabor'] ) ? ( $arrayForm['datos']['prefijoLabor'] ) : false );
                 $datotipoLabor = ( !empty( $arrayForm['datos']['tipoLabor'] ) ? ( $arrayForm['datos']['tipoLabor'] ) : false );
                 if($datonombreLabor && $datoid_laborName && $datoprefijoLabor && $datotipoLabor){
@@ -59,7 +59,7 @@ if($_POST){
                     }
                 }
                 if(!$rptSqlGeneral){
-                    $rptSql = $labor->insert_selectdos($items);
+                    $rptSql = $labor->insert_labor_zona($items);
                 }
                 break;
             case "insert-unidMinera":
