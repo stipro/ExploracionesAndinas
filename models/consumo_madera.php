@@ -108,11 +108,25 @@ class ConsumoMadera extends Conexion
             $query  = "DELETE FROM consumo_madera WHERE id_consumoMadera=:id;";
             $result = $this->db->prepare($query);
             $result->execute(array(':id' => $id));
-            return 'Se elimino correctamente.';
+            return 'Se elimino correctamente consumo madera.';
         } catch (PDOException $e) {
             return 'Ocurrio un ERROR al eliminar';
         }
     }
+
+    public function deleteDetails(int $id)
+    {
+        //error_reporting(0);
+        try {
+            $query  = "DELETE FROM consumo_madera_detalle WHERE consumoMadera_id=:id;";
+            $result = $this->db->prepare($query);
+            $result->execute(array(':id' => $id));
+            return 'Se elimino correctamente detalle de consumo madera.';
+        } catch (PDOException $e) {
+            return 'Ocurrio un ERROR al eliminar';
+        }
+    }
+
     public function update(int $datoidLabor, string $datoZona, string $datoCCosto, int $datoNivel, string $datoLabor)
     {
         //error_reporting(0);

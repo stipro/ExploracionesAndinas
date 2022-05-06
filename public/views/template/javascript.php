@@ -55,9 +55,9 @@
     
     <!--Base [ RECOMMENDED ]-->
     <script type="text/javascript" src="./../../../js/index.js"></script>
-
-
-
+    
+    <!--Aleta-->
+    <script src="./../../../js/sweetalert.min.js"></script>
 
     <!--=================================================-->
     

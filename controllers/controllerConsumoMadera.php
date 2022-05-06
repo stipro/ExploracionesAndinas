@@ -36,9 +36,14 @@ if($_POST){
                 $datoLabor = $laborList['labor'];
                 $rptSql = $tableManager->update($datoidLabor, $datoZona, $datoCCosto, $datoNivel, $datoLabor);
                 break;
-            case "eliminar":
-                $idEliminar = $arrayForm['datos'];
+            case "delete":
+                $idEliminar = $arrayForm['id'];
                 $rptSql = $tableManager->delete($idEliminar);
+                $rptSql2 = $tableManager->deleteDetails($idEliminar);
+                $rptSqlGeneral = array(
+                    "sql1" => $rptSql,
+                    "sql2" => $rptSql2,
+                );
                 break;
         }
     } catch (Exception $e) {

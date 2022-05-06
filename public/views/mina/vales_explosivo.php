@@ -1608,8 +1608,6 @@
     <!--=================================================-->
 
     <?php echo $template_javascript;?>
-    <!--Aleta-->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!--Icons [ SAMPLE ]-->
     <script src="./../../../js/demo/icons.js"></script>
@@ -2372,8 +2370,6 @@
                 body
             });
             const result = await returned.json(); //await JSON.parse(returned);
-
-            afterRequestInsert(result);
         }
         //* Obtenemos el valor siguiente
         const getLast_record = async (request) => {

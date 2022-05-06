@@ -661,3 +661,40 @@ const reset_formcreate_consumoMadera = () => {
     iptAdd_madera.value = '';
     ipt_consumoMadera_cantidad.value = '';
 }
+
+//* ELIMINAR REGISTRO
+$('#tableMaster_consumoMadera tbody').on('click', '.btn-tableMaster-delet', function() {
+    mainEvents_consumoMadera()
+    var data = table_consumoMadera.row($(this).parents('tr')).data();
+    swal({
+        title: "Estas seguro?",
+        text: "Una vez eliminado, no podrá recuperarlo!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    }).then((willDelete) => {
+        if (willDelete) {
+            let form_request = {
+                "accion": "delete",
+                "id": data['id_consumoMadera']
+            }
+            requestDelete(form_request);
+            swal("¡La información ha sido eliminado!", {
+                icon: "success",
+            });
+        } else {
+            swal("¡La información está a salvo!");
+        }
+    });
+});
+
+// Se envia Formulario
+const requestDelete = async (form_request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(form_request));
+    const returned = await fetch("./../../../controllers/controllerConsumoMadera.php", {
+        method: "POST",
+        body
+    });
+    const result = await returned.json(); //await JSON.parse(returned);
+}
