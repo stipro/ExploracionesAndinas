@@ -14,13 +14,14 @@ if($_POST){
             case "insert":
                 $laborList = $arrayForm['form'];
                 $data1 = $laborList['turno'];
-                $data2 = $laborList['jefeGuardia'];
-                $data3 = $laborList['fecha'];
-                $data4 = $laborList['nvale'];
-                $data5_detalles = $laborList['detalles'];
-                $rptSql = $tableManager->create($data1, $data2, $data3, $data4);
+                $data2 = $laborList['guardia'];
+                $data3 = $laborList['jefeGuardia'];
+                $data4 = $laborList['fecha'];
+                $data5 = $laborList['nvale'];
+                $data6_detalles = $laborList['detalles'];
+                $rptSql = $tableManager->create($data1, $data2, $data3, $data4, $data5);
                 $idPrincipal = $rptSql['id'];
-                $rptSql2 = $tableManager->createDetails($idPrincipal, $data5_detalles);
+                $rptSql2 = $tableManager->createDetails($idPrincipal, $data6_detalles);
                 $rptSqlGeneral = array(
                     "sql1" => $rptSql,
                     "sql2" => $rptSql2,

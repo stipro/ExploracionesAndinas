@@ -5,6 +5,8 @@ const mbtn_create_consumoMadera_diario = document.getElementById('mbtn-insert-co
 const mbtn_agregarDetalle = document.getElementById('mbtn-agregarDetalle');
 const slt_consumoMadera_turno = document.getElementById('insert-slt-consumoMadera-turno');
 
+const slt_consumoMadera_guardia = document.getElementById('insert-slt-consumoMadera-guardia');
+
 // Jefe de Guardia
 const iptAdd_jefeGuardia = document.getElementById('insert-ipt-consumoMadera-jefeGuardia');
 const dtl_consumoMadera_jefeGuardia = document.getElementById('insert-dtl-consumoMadera-jefeGuardia');
@@ -246,6 +248,7 @@ mbtn_create_consumoMadera_diario.addEventListener("click", (e) => {
     let listDetalles = [];
     let array_noti_error = [];
     let val_turno = slt_consumoMadera_turno.options[slt_consumoMadera_turno.selectedIndex].value;
+    let val_guardia = slt_consumoMadera_guardia.options[slt_consumoMadera_guardia.selectedIndex].value;
     let val_jefeGuardia = iptAdd_jefeGuardia.value;
     val_jefeGuardia ? val_jefeGuardia = val_jefeGuardia : array_noti_error.push("JEFE DE GUARDIA");
     val_jefeGuardia ? val_idColaborador = document.querySelector("#insert-dtl-consumoMadera-jefeGuardia"  + " option[value='" +  val_jefeGuardia + "']").dataset.idJefeGuardia : array_noti_error.push("JEFE DE GUARDIA , ID");
@@ -285,6 +288,7 @@ mbtn_create_consumoMadera_diario.addEventListener("click", (e) => {
         }
         let listInsert = {
             "turno": val_turno,
+            "guardia": val_guardia,
             "jefeGuardia": val_idColaborador,
             "fecha": val_fecha,
             "nvale": val_nvale,

@@ -236,47 +236,61 @@
                         <div class="col-md-12">
                             <legend><p class="text-main">Datos Principal</p></legend>
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="insert-slt-consumoMadera-turno" class="col-md-5 control-label">Turno<span class="text-danger">*</span></label>
-                                        <div class="col-md-7">
+                                        <label for="insert-slt-consumoMadera-turno" class="control-label">Turno<span class="text-danger">*</span></label>
+                                        <!-- <div class="col-md-7"> -->
                                             <select name="turnos" id="insert-slt-consumoMadera-turno" class="form-control">
                                                 <option value="Dia">Dia</option>
                                                 <option value="Noche">Noche</option>
                                             </select>
-                                        </div>
+                                        <!-- </div> -->
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+
+                                <div class="col-md-1">
                                     <div class="form-group">
-                                        <label for="insert-ipt-consumoMadera-jefeGuardia" class="col-md-5 control-label">Jefe de <br> Guardia<span class="text-danger">*</span></label>
-                                        <div class="col-md-7">
+                                        <label for="insert-slt-consumoMadera-guardia" class="control-label">Guardia<span class="text-danger">*</span></label>
+                                        <!-- <div class="col-md-7"> -->
+                                            <select name="turnos" id="insert-slt-consumoMadera-guardia" class="form-control">
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="B">C</option>
+                                            </select>
+                                        <!-- </div> -->
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="insert-ipt-consumoMadera-jefeGuardia" class="control-label">Jefe de Guardia<span class="text-danger">*</span></label>
+                                        <!-- <div class="col-md-7"> -->
                                             <input list="insert-dtl-consumoMadera-jefeGuardia" type="text" class="form-control" id="insert-ipt-consumoMadera-jefeGuardia" name="jefe_guarda" placeholder="Jefe de Guardia">
                                             <datalist id="insert-dtl-consumoMadera-jefeGuardia">
                                                 <option value="--no cargo--">--no cargo--</option>
                                             </datalist>
-                                        </div>
+                                        <!-- </div> -->
                                         <template id="template-consumoMadera-jefeGuardia">
                                             <option id="template-opt-consumoMadera-jefeGuardia">
                                         </template>
                                     </div>
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="insert-ipt-consumoMadera-fecha" class="col-md-4 control-label">Fecha<span class="text-danger">*</span></label>
-                                        <div class="col-md-8">
+                                        <label for="insert-ipt-consumoMadera-fecha" class="control-label">Fecha<span class="text-danger">*</span></label>
+                                        <!-- <div class="col-md-8"> -->
                                             <input type="date" class="form-control" id="insert-ipt-consumoMadera-fecha"  name="fecha" placeholder="Fecha" value="<?php echo date('Y-m-d') ?>">
-                                        </div>
+                                        <!-- </div> -->
                                     </div>
                                 </div>
 
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="insert-slt-consumoMadera-nvale" class="col-md-5 control-label">N° <br> Vale<span class="text-danger">*</span></label>
-                                        <div class="col-md-7">
+                                        <label for="insert-slt-consumoMadera-nvale" class="control-label">N° Vale<span class="text-danger">*</span></label>
+                                        <!-- <div class="col-md-7"> -->
                                             <input type="text" class="form-control" id="insert-slt-consumoMadera-nvale"  name="consumoMadera_nvale" placeholder="N° Vale" value="000000">
-                                        </div>
+                                        <!-- </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -285,13 +299,13 @@
                                 
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="insert-ipt-consumoMadera-centroCostos" class="col-md-5 control-label">Centro <br> Costos<span class="text-danger">*</span></label>
-                                            <div class="col-md-7">
+                                            <label for="insert-ipt-consumoMadera-centroCostos" class="control-label">C. Costos<span class="text-danger">*</span></label>
+                                            <!-- <div class="col-md-7"> -->
                                                 <input list="insert-dtl-consumoMadera-centroCostos" type="text" class="form-control" id="insert-ipt-consumoMadera-centroCostos" name="centro_costos" placeholder="Centro Costos">
                                                 <datalist id="insert-dtl-consumoMadera-centroCostos">
                                                     <option value="--no cargo--">--no cargo--</option>
                                                 </datalist>
-                                            </div>
+                                            <!-- </div> -->
                                             <template id="template-consumoMadera-centroCostos">
                                                 <option id="template-opt-consumoMadera-centroCostos">
                                             </template>
@@ -300,13 +314,13 @@
 
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="insert-ipt-consumoMadera-laborNombre" class="col-md-5 control-label">Labor<span class="text-danger">*</span></label>
-                                            <div class="col-md-7">
+                                            <label for="insert-ipt-consumoMadera-laborNombre" class="control-label">Labor<span class="text-danger">*</span></label>
+                                            <!-- <div class="col-md-7"> -->
                                                 <input list="insert-dtl-consumoMadera-laborNombre" type="text" class="form-control" id="insert-ipt-consumoMadera-laborNombre"  name="fecha" placeholder="Labor">
                                                 <datalist id="insert-dtl-consumoMadera-laborNombre">
                                                     <option value="--no cargo--">--no cargo--</option>
                                                 </datalist>
-                                            </div>
+                                            <!-- </div> -->
                                             <template id="template-consumoMadera-laborNombre">
                                                 <option id="template-opt-consumoMadera-laborNombre">
                                             </template>
@@ -315,13 +329,13 @@
                                     
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="insert-ipt-consumoMadera-madera" class="col-md-5 control-label">Madera<span class="text-danger">*</span></label>
-                                            <div class="col-md-7">
+                                            <label for="insert-ipt-consumoMadera-madera" class="control-label">Madera<span class="text-danger">*</span></label>
+                                            <!-- <div class="col-md-7"> -->
                                                 <input list="insert-dtl-consumoMadera-madera" type="text" class="form-control" id="insert-ipt-consumoMadera-madera"  name="fecha" placeholder="Madera">
                                                 <datalist id="insert-dtl-consumoMadera-madera">
                                                     <option value="--no cargo--">--no cargo--</option>
                                                 </datalist>
-                                            </div>
+                                            <!-- </div> -->
                                             <template id="template-consumoMadera-madera">
                                                 <option id="template-opt-consumoMadera-madera">
                                             </template>
@@ -330,10 +344,10 @@
 
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="insert-ipt-consumoMadera-cantidad" class="col-md-6 control-label">Cantidad<span class="text-danger">*</span></label>
-                                            <div class="col-md-6">
+                                            <label for="insert-ipt-consumoMadera-cantidad" class="control-label">Cantidad<span class="text-danger">*</span></label>
+                                            <!-- <div class="col-md-6"> -->
                                                 <input type="text" class="form-control" id="insert-ipt-consumoMadera-cantidad"  name="fecha" placeholder="Cantidad">
-                                            </div>
+                                            <!-- </div> -->
                                         </div>
                                     </div>
 
