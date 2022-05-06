@@ -8,7 +8,7 @@ class Login extends Conexion
     {
         parent::__construct();
     }
-    public function validarDatos(string $user, string $password)
+    public function validarDatos(string $user)
     {
         try {
             //Declaramos Variables
@@ -17,7 +17,7 @@ class Login extends Conexion
             $validador = FALSE;
 
             // Consulta
-            $sql = "SELECT colaboradores.col_nombres, colaboradores.col_ccostos, usuarios.id_usuario, usuarios.nombre_usuario, usuarios.clave_usuario, usuarios.estado_usuario FROM colaboradores RIGHT JOIN usuarios ON usuarios.id_colaborador = colaboradores.id_colaborador WHERE nombre_usuario = '{$user}' AND clave_usuario = '{$password}'";
+            $sql = "SELECT colaboradores.col_nombres, colaboradores.col_ccostos, usuarios.id_usuario, usuarios.nombre_usuario, usuarios.clave_usuario, usuarios.estado_usuario, usuarios.session_usuario, usuarios.usuario_token  FROM colaboradores RIGHT JOIN usuarios ON usuarios.colaborador_id = colaboradores.id_colaborador WHERE nombre_usuario = '{$user}'";
 
             // Resultado
             $resultado = $this->ConsultaSimple($sql);
@@ -38,7 +38,7 @@ class Login extends Conexion
             $validador = FALSE;
 
             // Consulta
-            $sql = "SELECT colaboradores.col_nombres, colaboradores.col_ccostos, usuarios.id_usuario, usuarios.nombre_usuario, usuarios.clave_usuario, usuarios.estado_usuario, usuarios.session_usuario, usuarios.token  FROM colaboradores RIGHT JOIN usuarios ON usuarios.id_colaborador = colaboradores.id_colaborador WHERE nombre_usuario = '{$user}' AND clave_usuario = '{$password}'";
+            $sql = "SELECT colaboradores.col_nombres, colaboradores.col_ccostos, usuarios.id_usuario, usuarios.nombre_usuario, usuarios.clave_usuario, usuarios.estado_usuario, usuarios.session_usuario, usuarios.usuario_token  FROM colaboradores RIGHT JOIN usuarios ON usuarios.colaborador_id = colaboradores.id_colaborador WHERE nombre_usuario = '{$user}'";
 
             // Resultado
             $resultado = $this->ConsultaSimple($sql);

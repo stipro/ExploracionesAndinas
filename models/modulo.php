@@ -2,38 +2,13 @@
 //declare (strict_types = 1);
 require_once '../db/conexion.php';
 
-class Explosivo extends Conexion
+class Modulo extends Conexion
 {
     public function __construct()
     {
         parent::__construct();
     }
-    public function getData_dni(){
-        $query = "SELECT clb.id_colaborador, clb.col_nombres, clb.col_apePaterno, clb.col_apeMaterno FROM colaboradores AS clb";
-        return $this->ConsultaSimple($query);
-    }
-    // Obtiene Lista especifica
-    public function getDatalistAll_nombres_perforista()
-    {
-        $query = "SELECT clb.id_colaborador, clb.col_nombres, clb.col_apePaterno, clb.col_apeMaterno FROM colaboradores AS clb";
-        return $this->ConsultaSimple($query);
-    }
 
-    // Obtiene Lista especifica
-    public function getSelect(string $table, string $column)
-    {
-        $query = "SELECT {$column}, col_apePaterno, col_apeMaterno, col_nombres, id_colaborador, id_cargo FROM {$table}";
-        return $this->ConsultaSimple($query);
-    }
-
-    //OBTIENE TODA LA TABLA
-    public function table_master(): array
-    {
-        $query = "SELECT expl.id_explosivo, expl.explosivo_codigo, expl.explosivo_descripcion, expl.explosivo_unidadMedida FROM explosivos AS expl";
-        return $this->ConsultaSimple($query);
-    }
-
-    
     public function insert(string $dato1, string $dato2, string $dato3)
     {
         try 
@@ -87,9 +62,9 @@ class Explosivo extends Conexion
     }
 
     // READ
-    public function readRow($id): array
+    public function table_master(): array
     {
-        $query = "SELECT expl.id_explosivo, expl.explosivo_codigo, expl.explosivo_descripcion, expl.explosivo_unidadMedida FROM explosivos AS expl WHERE {$id};";
+        $query = "SELECT expl.id_explosivo, expl.explosivo_codigo, expl.explosivo_descripcion, expl.explosivo_unidadMedida FROM explosivos AS expl";
         return $this->ConsultaSimple($query);
     }
 
@@ -200,4 +175,3 @@ class Explosivo extends Conexion
         return $html;
     }
 }
-?>

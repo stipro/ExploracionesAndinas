@@ -112,7 +112,7 @@
 					    <!---------------------------------->
 					    <div class="row pad-btm">
 					        <div class="col-sm-6 toolbar-left">
-					            <button id="btn-Agregar" data-target="#insert-modal" data-toggle="modal" class="btn btn-purple">Agregar</button>
+					            <button id="btn-crearUsuario" data-target="#insert-modal" data-toggle="modal" class="btn btn-purple">Agregar</button>
 					            <button class="btn btn-default"><i class="demo-pli-printer"></i></button>
 					        </div>
 					        <div class="col-sm-6 toolbar-right text-right">
@@ -931,7 +931,7 @@
 
                 <!--Modal body-->
                 <div class="modal-body">
-                    <div id="alert-form-insert">
+                    <div id="alerts-form-insert">
                     </div>
                     <fieldset>
                         <div class="row">
@@ -940,18 +940,18 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Colaborador</label>
                                         <div class="col-md-4">
-                                            <input type="text" id="ipt-insert-nombreColaborador-usuario" class="form-control" name="nombre_colaborador" list="options-nombreColaborador-usuario" placeholder="Nombre" onkeypress="return soloLetras(event)">
+                                            <input list="insert-dtl-usuario-colaboradorNombre" type="text" id="ipt-insert-nombreColaborador-usuario" class="form-control" name="nombre_colaborador" list="options-nombreColaborador-usuario" placeholder="Nombre" onkeypress="return soloLetras(event)">
                                         </div>                                        
-                                        <datalist id="options-nombreColaborador-usuario">
+                                        <datalist id="insert-dtl-usuario-colaboradorNombre">
                                             <option value="No se pudo obtener Nombre">
                                         </datalist>
                                         <template id="template-opts-nombreColaborador-usuario">
                                             <option id="opt-nombreColaborador-usuario" value="">
                                         </template>
                                         <div class="col-md-4">
-                                            <input type="number" id="ipt-insert-dniColaborador-usuario" class="form-control" name="dni_colaborador" list="options-dniColaborador-usuario" placeholder="DNI" pattern="[0-9]+" onkeypress="return valideKey(event);">
+                                            <input list="insert-dtl-usuario-colaboradorDni"  type="number" id="ipt-insert-dniColaborador-usuario" class="form-control" name="dni_colaborador" placeholder="DNI" pattern="[0-9]+" onkeypress="return valideKey(event);">
                                         </div>
-                                        <datalist id="options-dniColaborador-usuario">
+                                        <datalist id="insert-dtl-usuario-colaboradorDni">
                                             <option value="No se pudo obtener DNI">
                                         </datalist>
 										<template id="template-opts-dniColaborador-usuario">
@@ -960,35 +960,6 @@
                                     </div>
                                 </div>                                  
                             </div>
-                            <!-- Opcion 2 --
-                            <div class="form-horizontal">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="col-md-2 control-label">Colaborador</label>
-                                        <div class="col-md-9 input-group mar-btm">
-                                            <input type="text" id="ipt-search-colaborador" class="form-control" name="colaborador" list="insert-options-colaborador" placeholder="Colaborador">
-                                            <span class="input-group-btn">
-                                                <div class="btn-group dropdown" style="display: flex;">
-                                                    <button class="btn btn-default">DNI</button>
-                                                    <button class="btn btn-default dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
-                                                        <i class="dropdown-caret"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a>DNI</a></li>
-                                                        <li><a>Nombre</a></li>
-                                                    </ul>
-                                                </div>
-					                        </span>
-                                        </div>
-                                        <datalist id="insert-options-colaborador">
-                                            <option value="No se obtuvo Dato">
-                                        </datalist>
-                                        <template id="template-opts-colaborador">
-                                            <option id="opt-colaborador" value="">
-                                        </template>
-                                    </div>
-                                </div>                                  
-                            </div>-->
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -1008,7 +979,7 @@
                                     <div class="form-group">
 					                    <label class="col-md-2 control-label">Correo</label>
 					                    <div class="col-md-4">
-					                        <input type="text" class="form-control" id="ipt-insert-correo-usuario" name="firstName" placeholder="Correo">
+					                        <input type="text" class="form-control" id="ipt-insert-correo-usuario" name="correo" placeholder="Correo">
 					                    </div>
                                         <label class="col-md-2 control-label text-bold">Estado</label>
                                         <div class="col-md-3">
@@ -1027,22 +998,24 @@
                                     <div class="form-group">
 					                    <label class="col-md-2 control-label">Tipo Usuario</label>
 					                    <div class="col-md-4">
-					                        <input type="text" class="form-control" id="ipt-insert-correo-usuario" name="tipo_usuario" placeholder="Tipo Usuario">
+											<select class="form-control" id="ipt-insert-tipo-usuario" name="tipo_usuario" placeholder="Tipo Usuario">
+												<option selected>Simple Mortal</option>
+												<option value="1">Admin</option>
+											</select>
 					                    </div>
 					                </div>
                                 </div>
-                                
                             </div>
-
                         </div>
                     </fieldset>
                 </div>
 
                 <!--Modal footer-->
                 <div class="modal-footer">
-					<button id="mbtn-new" class="btn btn-primary">Nuevo</button>
-                    <button data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
-                    <button id="mbtn-insert" class="btn btn-success">Registrar</button>
+					<button id="mbtn-new-usuario" class="btn btn-primary">Nuevo</button>
+					<button id="mbtn-search-usuario" class="btn btn-info">Buscar</button>
+                    <button id="mbtn-close-usuario" data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
+                    <button id="mbtn-insert-usuario" class="btn btn-success">Registrar</button>
                 </div>
             </div>
         </div>

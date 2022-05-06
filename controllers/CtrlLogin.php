@@ -30,13 +30,10 @@ if($_POST){
             $tableManager = new login();
 
             // Enviamos datos
-            $result = $tableManager->validarDatos($user, $password);
-
-            // Obtenemos la cantidad del resultado
-            $cantidadResultado = count($result);
-            
-            // Validamos Login
-            if($cantidadResultado){
+            $result = $tableManager->validarDatos($user);
+            if (password_verify($password, $result[0]['clave_usuario']))
+            {
+                /* The password is correct. */
                 //session_start();
                 $rptController = 'Se encontro Usuario';
                 $sqlrpt_Estado = $tableManager->validarEstado($user, $password);
@@ -44,7 +41,7 @@ if($_POST){
                 $sqlId_User = $sqlrpt_Estado[0]['id_usuario'];
                 $sqlEstado_User = $sqlrpt_Estado[0]['estado_usuario'];
                 $sqlSession_User = $sqlrpt_Estado[0]['session_usuario'];
-                $sqlToken_User = $sqlrpt_Estado[0]['token'];
+                $sqlToken_User = $sqlrpt_Estado[0]['usuario_token'];
                 $tokenGenerado = '';
 
                 if ($sqlEstado_User == 0) {

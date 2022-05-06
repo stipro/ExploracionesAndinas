@@ -24,9 +24,24 @@ class Colaboradores extends Conexion
     }
 
     // Obtiene Lista especifica
-    public function getSelect(string $table, string $column)
+    public function getSelec_dni_fullname(): array
     {
-        $query = "SELECT {$column}, col_apePaterno, col_apeMaterno, col_nombres, id_colaborador, id_cargo FROM {$table}";
+
+        $query = "SELECT col.id_colaborador, CONCAT(col.col_apePaterno,' ' , col.col_apeMaterno,' ', col.col_nombres) AS fullName , col.col_dni FROM colaboradores AS col;";
+        return $this->ConsultaSimple($query);
+    }
+
+    public function getDni_colaboradorNombre($where): array
+    {
+
+        $query = "SELECT col.col_dni FROM colaboradores AS col WHERE id_colaborador = {$where};";
+        return $this->ConsultaSimple($query);
+    }   
+
+    public function getNombre_colaboradorDni($where): array
+    {
+
+        $query = "SELECT CONCAT(col.col_apePaterno,' ' , col.col_apeMaterno,' ', col.col_nombres) AS fullName FROM colaboradores AS col WHERE id_colaborador = {$where};";
         return $this->ConsultaSimple($query);
     }
 

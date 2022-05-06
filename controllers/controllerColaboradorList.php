@@ -15,9 +15,16 @@ if($_POST){
                 $rptSql = $tableManager->table_master();
                 
                 break;
-            case "getcolumnAll":
-                $column = $arrayForm['column'];
-                $rptSql = $tableManager->getSelect($table, $column);
+            case "getSelec_dni_fullname":
+                $rptSql = $tableManager->getSelec_dni_fullname();
+                break;
+            case "getDni_colaboradorNombre":
+                $where = $arrayForm['where'];
+                $rptSql = $tableManager->getDni_colaboradorNombre($where);
+                break;
+            case "getNombre_colaboradorDni":
+                $where = $arrayForm['where'];
+                $rptSql = $tableManager->getNombre_colaboradorDni($where);
                 break;
             case "search":
                 $term = $accion['term'];

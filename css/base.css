@@ -9,7 +9,9 @@
 /* #inserForm {
     width: 1540px !important;
 } */
-
+.btn-dualLisbox{
+    margin: 0.5rem;
+}
 .modal-lg {
     width: 60% !important;
 }

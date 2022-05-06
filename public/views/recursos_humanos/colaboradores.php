@@ -649,6 +649,7 @@
                 <!--Modal footer-->
                 <div class="modal-footer">
 					<button id="mbtn-new" class="btn btn-primary">Nuevo</button>
+					<button id="mbtn-search" class="btn btn-info">Buscar</button>
                     <button data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
                     <button id="mbtn-insert" class="btn btn-success">Registrar</button>
                 </div>
