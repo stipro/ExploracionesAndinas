@@ -461,9 +461,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback">
-                                        <label for="formselectTurno" class="col-lg-3 control-label">Turno</label>
-                                        <div class="col-lg-7">
-                                            <select class="form-select" aria-label="Default select" id="formselectTurno" tabindex="2">
+                                        <label for="formselectTurno" class="col-xs-12 col-lg-3 control-label">Turno</label>
+                                        <div class="col-xs-12 col-md-7">
+                                            <select name="turnos" id="insert-slt-tareo-turno" class="form-control">
                                                 <option value="Dia">Dia</option>
                                                 <option value="Noche">Noche</option>
                                                 <option value="Descanso">Descanso</option>
@@ -473,8 +473,8 @@
                                     <div class="form-group has-feedback">
                                         <label for="formselectGuardia" class="col-lg-3 control-label">Guardia</label>
                                         <div class="col-lg-7">
-                                            <select data-placeholder="Choose a Country..." id="formselectGuardia" tabindex="2">
-                                                <option value="A">A</option>
+                                            <select name="turnos" id="insert-slt-tareo-guardia" class="form-control">
+                                            <option value="A">A</option>
                                                 <option value="B">B</option>
                                                 <option value="C">C</option>
                                             </select>
@@ -495,19 +495,27 @@
                                 <p class="bord-btm pad-ver text-main text-bold">CCostos</p>
                                 <fieldset>
                                     <div class="form-group has-feedback">
-                                        <label for="formselectTextCodZona" class="col-lg-3 control-label">Cod Zona</label>
-                                        <select data-placeholder="" id="formselectTextCodZona" tabindex="2">
-                                        </select>
-                                        <template id="template-opt-zona">
-                                            <option id="optzona" value="">A</option>
+                                        <label for="insert-ipt-tareo-codZona" class="col-lg-3 control-label">Cod Zona</label>
+                                        <div class="col-md-7">
+                                            <input list="insert-dtl-tareo-codZona" type="text" class="form-control" id="insert-ipt-tareo-codZona" name="cod_zona" placeholder="Cod. Zona">
+                                            <datalist id="insert-dtl-tareo-codZona">
+                                                <option value="--no cargo--">--no cargo--</option>
+                                            </datalist>
+                                        </div>
+                                        <template id="template-tareo-codZona">
+                                            <option id="template-opt-tareo-codZona">
                                         </template>
                                     </div>
                                     <div class="form-group has-feedback">
-                                        <label for="formselectTextCCostos" class="col-lg-3 control-label">C Costos</label>
-                                        <select data-placeholder="CCostos" id="formselectTextCCostos" tabindex="2">
-                                        </select>
-                                        <template id="template-opt-ccostos">
-                                            <option id="optccostos" value=""></option>
+                                        <label for="insert-ipt-tareo-cenCostos" class="col-lg-3 control-label">C Costos</label>
+                                        <div class="col-md-7">
+                                            <input list="insert-dtl-tareo-cenCostos" type="text" class="form-control" id="insert-ipt-tareo-cenCostos" name="cod_zona" placeholder="Cod. Zona">
+                                            <datalist id="insert-dtl-tareo-cenCostos">
+                                                <option value="--no cargo--">--no cargo--</option>
+                                            </datalist>
+                                        </div>
+                                        <template id="template-tareo-cenCostos">
+                                            <option id="template-opt-tareo-cenCostos">
                                         </template>
                                     </div>
                                     <div class="form-group has-feedback">
