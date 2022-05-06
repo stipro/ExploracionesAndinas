@@ -163,10 +163,10 @@ document.addEventListener('DOMContentLoaded', e => {
                 tag: 'a',
                 action: function(e, dt, node, config) {
                     //This will send the page to the location specified
-                    window.location.href = './../../excelGenerator.php?table=view_vales_explosivo';
+                    window.location.href = './../../excelGenerator.php?table=reporte_consumo_madera';
                 },
                 init: function(dt, node, config) {
-                    $(node).attr('href', './../../excelGenerator.php?table=view_vales_explosivo');
+                    $(node).attr('href', './../../excelGenerator.php?table=reporte_consumo_madera');
                     $(node).attr('download', '');
                     $(node).attr('title', 'Descargar Archivo');
                 }
