@@ -101,6 +101,20 @@ class ConsumoMadera extends Conexion
         $query = "SELECT c_m.id_consumoMadera, c_m.consumoMadera_fecha, c_m.consumoMadera_nVale, c_m.consumoMadera_turno, CONCAT(col.col_apePaterno, ' ', col.col_apeMaterno, '. ', col.col_nombres) AS consumoMadera_jefeGuardia  FROM consumo_madera AS c_m LEFT JOIN colaboradores AS col ON c_m.colaborador_id_jefeGuardia = col.id_colaborador;";
         return $this->ConsultaSimple($query);
     }
+    public function getRow($parament)
+    {
+        $query = "SELECT cm.consumoMadera_turno, cm.consumoMadera_guardia, CONCAT(col.col_apePaterno,' ',col.col_apeMaterno,' ',col.col_nombres) AS jefe_guardia,
+        cm.consumoMadera_fecha, cm.consumoMadera_nvale, lb.lab_ccostos, lb_nm.labNombre_nombre, cm_dt.consumoMaderaDetalle_cantidad, 
+        CONCAT(md.madera_tipo, md.madera_codigo, md.madera_dimension) AS 'maderas'
+        FROM consumo_madera AS cm 
+        LEFT JOIN colaboradores AS col ON cm.colaborador_id_jefeGuardia = col.id_colaborador 
+        LEFT JOIN consumo_madera_detalle AS cm_dt ON cm.id_consumoMadera = cm_dt.consumoMadera_id
+        LEFT JOIN labores AS lb ON cm_dt.labor_id = lb.id_labor 
+        LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre
+        LEFT JOIN maderas AS md ON cm_dt.madera_id = md.id_madera
+        WHERE cm.id_consumoMadera = {$parament};";
+        return $this->ConsultaSimple($query);
+    }
     public function delete(int $id)
     {
         //error_reporting(0);

@@ -15,8 +15,6 @@ const tpe_consumoMadera_jefeGuardia = document.getElementById('template-consumoM
 const ipt_consumoMadera_fecha = document.getElementById('insert-ipt-consumoMadera-fecha');
 const ipt_consumoMadera_nvale = document.getElementById('insert-slt-consumoMadera-nvale');
 
-
-
 //Centro de Costos
 const iptAdd_cCostos = document.getElementById('insert-ipt-consumoMadera-centroCostos');
 const dtl_consumoMadera_cCostos = document.getElementById('insert-dtl-consumoMadera-centroCostos');
@@ -37,7 +35,16 @@ const ipt_consumoMadera_cantidad = document.getElementById('insert-ipt-consumoMa
 var table_consumoMadera_detalle
 const fragment = document.createDocumentFragment();
 var counter = 1;
+
+const slt_view_consumoMadera_turno = document.getElementById('view-slt-consumoMadera-turno');
+const slt_view_consumoMadera_guardia = document.getElementById('view-slt-consumoMadera-guardia');
+const ipt_view_consumoMadera_jefeGuardia = document.getElementById('view-ipt-consumoMadera-jefeGuardia');
+const ipt_view_consumoMadera_fecha = document.getElementById('view-ipt-consumoMadera-fecha');
+const slt_view_consumoMadera_nvale = document.getElementById('view-slt-consumoMadera-nvale');
+const ipt_view_consumoMadera_detalle = document.getElementById('list-view-consumoMadera-detalle');
+
 document.addEventListener('DOMContentLoaded', e => {
+    var counter = 1;
     mainEvents_consumoMadera();
     table_consumoMadera = $('#tableMaster_consumoMadera').DataTable
     ({
@@ -63,7 +70,7 @@ document.addEventListener('DOMContentLoaded', e => {
                 data: 'consumoMadera_jefeGuardia',
             },
             {
-                defaultContent: '<button type="button" class="btn-view btn btn-success btn-tableMaster-detalle"><i class="fa fa-eye"></i> <span class="hidden-xs hidden-sm">Detalle<span></button> <button type="button" class="name btn btn-primary btn-tableMaster-edit"><i class="fa fa-edit"></i> <span class="hidden-xs hidden-sm">Editar</span></button> <button type="button" class="position btn btn-danger btn-tableMaster-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>'
+                defaultContent: '<button type="button" class="btn-view btn btn-success btn-tbM-consumoMadera-detalle"><i class="fa fa-eye"></i> <span class="hidden-xs hidden-sm">Detalle<span></button> <button type="button" class="name btn btn-primary btn-tbM-consumoMadera-edit"><i class="fa fa-edit"></i> <span class="hidden-xs hidden-sm">Editar</span></button> <button type="button" class="position btn btn-danger btn-tbM-consumoMadera-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>'
             }
         ],
         language: {
@@ -210,6 +217,27 @@ document.addEventListener('DOMContentLoaded', e => {
     });
     table_consumoMadera_detalle.columns(1).visible(false);
     table_consumoMadera_detalle.columns(4).visible(false);
+
+    // View
+    table_consumoMadera_detalle_view = $('#list-view-consumoMadera-detalle').DataTable({
+        columns: [
+            {
+                data: "lab_ccostos",
+            },
+            {
+                data: "labNombre_nombre",
+            },
+            {
+                data: "maderas",
+            },
+            {
+                data: 'consumoMaderaDetalle_cantidad',
+            },
+            {
+                defaultContent: '<button type="button" class="btn-view btn btn-success btn-tbM-consumoMadera-detalle"><i class="fa fa-eye"></i> <span class="hidden-xs hidden-sm">Detalle<span></button> <button type="button" class="name btn btn-primary btn-tbM-consumoMadera-edit"><i class="fa fa-edit"></i> <span class="hidden-xs hidden-sm">Editar</span></button> <button type="button" class="position btn btn-danger btn-tbM-consumoMadera-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>'
+            }
+        ],
+    });
 });
 
 /** Eventos */
@@ -662,8 +690,67 @@ const reset_formcreate_consumoMadera = () => {
     ipt_consumoMadera_cantidad.value = '';
 }
 
+//* DETALLE REGISTRO
+$('#tableMaster_consumoMadera tbody').on('click', '.btn-tbM-consumoMadera-detalle', function() {
+    $("#consumoMadera-lg-modal-read").modal("show");
+    let data = table_consumoMadera.row($(this).parents('tr')).data();
+    let form_request = {
+        "accion": "getRow",
+        "id": data['id_consumoMadera']
+    }
+    getRowView(form_request);
+});
+
+const getRowView = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    const res = await fetch('./../../../controllers/controllerConsumoMaderaList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json();
+    rptSql = data['sql'];
+    console.log(rptSql);
+    paintForm_view(rptSql)
+}
+
+const paintForm_view = (rptSql) => {
+    if(rptSql){
+        slt_view_consumoMadera_turno.value = rptSql[0]['consumoMadera_turno'];
+        slt_view_consumoMadera_guardia.value = rptSql[0]['consumoMadera_guardia'];
+        ipt_view_consumoMadera_jefeGuardia.value = rptSql[0]['jefe_guardia'];
+        ipt_view_consumoMadera_fecha.value = rptSql[0]['consumoMadera_fecha'];
+        slt_view_consumoMadera_nvale.value = rptSql[0]['consumoMadera_nvale'];
+
+        table_consumoMadera_detalle_view.clear();
+        table_consumoMadera_detalle_view.rows.add(rptSql).draw();
+    }
+    else{
+        slt_view_consumoMadera_turno.value = '-';
+        slt_view_consumoMadera_guardia.value = '-';
+        ipt_view_consumoMadera_jefeGuardia.value = '-';
+        ipt_view_consumoMadera_fecha.value = '-';
+        slt_view_consumoMadera_nvale.value = '-';
+    }
+    
+}
+
+//* EDITAR REGISTRO
+$('#tableMaster_consumoMadera tbody').on('click', '.btn-tbM-consumoMadera-edit', function() {
+    $("#consumoMadera-lg-modal-update").modal("show");
+    const data = table_consumoMadera.row($(this).parents('tr')).data();
+    console.log(data);
+    let formRequest = {
+        "accion": "getRow",
+        "id": data['id_consumoMadera']
+    }
+    getRow(formRequest);
+});
+
+
+
 //* ELIMINAR REGISTRO
-$('#tableMaster_consumoMadera tbody').on('click', '.btn-tableMaster-delet', function() {
+$('#tableMaster_consumoMadera tbody').on('click', '.btn-tbM-consumoMadera-delet', function() {
     mainEvents_consumoMadera()
     var data = table_consumoMadera.row($(this).parents('tr')).data();
     swal({

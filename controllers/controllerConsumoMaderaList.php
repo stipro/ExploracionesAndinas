@@ -15,6 +15,10 @@ if($_POST){
             case "table_master":
                 $rptSql = $tableManager->table_master();
                 break;
+            case "getRow":
+                $parament = $arrayForm['id'];
+                $rptSql = $tableManager->getRow($parament);
+                break;
             case "search":
                 $term = $accion['term'];
                 $type = $accion['type'];
