@@ -84,7 +84,6 @@ $template_read_consumoMadera = '
                                                 <th width="10% !important" scope="col">Labor</th>
                                                 <th width="20% !important" scope="col">Madera</th>
                                                 <th width="10% !important" scope="col">Cantidad</th>
-                                                <th width="15% !important" scope="col">Acciónes</th>
                                             </tr>
                                         </thead>
                                         <tbody>
