@@ -253,6 +253,14 @@ class ValeExplosivos extends Conexion
             //print_r($this->db->errorInfo());
         }
     }
+
+    //OBTIENE TODA LA TABLA
+    public function createDetalle(): array
+    {
+        //$query = "SELECT * FROM tareos LIMIT {$empezarDesde}, {$filasPage}";
+        $query = "SELECT vl_xp.valexplosivo_preimpresor, vl_xp.valexplosivo_fecha, vl_xp.valexplosivo_codigoRegistro, vl_xp.valexplosivo_nvale, vl_xp.valexplosivo_turno, lb_zn.labZona_nombre, lb.lab_ccostos, lb_nm.labNombre_nombre, lb.lab_nivel, vl_xp.valexplosivo_tipDisparo, vl_xp.valexplosivo_tipEn FROM tvalexplosivos AS vl_xp LEFT JOIN lab_zonas AS lb_zn ON vl_xp.id_zona = lb_zn.id_zona LEFT JOIN labores AS lb ON vl_xp.id_labor = lb.id_labor LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre;";
+        return $this->ConsultaSimple($query);
+    }
     
     public function edit($formRequest)
     {

@@ -118,6 +118,7 @@ if($_POST){
                                 "estado" => 1,
                                 "mensaje" => "No hay variables vacios",
                             ];
+                        $rptSql = $table->createDetalle();
                     }
                     else{
                         $rptController = [
