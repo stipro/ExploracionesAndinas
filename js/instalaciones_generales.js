@@ -12,7 +12,7 @@ const btnNuevo = document.getElementById("mbtn-new");
 const iptreg_reportConsumoMadera_fecha = document.getElementById('input-fecha-insert');
 const iptreg_reportConsumoMadera_nreporte = document.getElementById('input-nreporte-insert');
 //
-const iptreg_reportConsumoMadera_ccosto = document.getElementById('input-ccosto-insert');
+const iptreg_instalacionGenerales_ccosto = document.getElementById('input-ccosto-insert');
 const iptreg_reportConsumoMadera_labor = document.getElementById('input-labor-insert');
 const iptreg_reportConsumoMadera_zona = document.getElementById('input-zona-insert');
 //
@@ -27,41 +27,17 @@ const table_details = document.getElementById('table-details-insert');
 // Datalist
 const datalist_ccostos = document.getElementById('insert-options-ccostos');
 const datalist_instalaciones = document.getElementById('nombre-instalaciones-options');
+
+const btn_create_instalacionesGenerales = document.getElementById('btn-agregar-instalacionesGenerales');
+
+
 var counter = 1;
 
 let listInsert = {}
 
 document.addEventListener('DOMContentLoaded', e => {
-    mainEvents();
-});
-
-function mainEvents() {
-    $('#table-master').DataTable().clear().destroy();
-    let form_request1 = {
-        "accion": "table_master",
-    }
-    fetchData(form_request1);
-}
-const fetchData = async (request) => {
-    const body = new FormData();
-    body.append("data", JSON.stringify(request));
-    const res = await fetch('./../../../controllers/controllerConsumoMaderaList.php', {
-        method: "POST",
-        body
-    });
-    const data = await res.json()
-    let rptSql = data['sql'];
-    console.log(rptSql);
-    paintTable(rptSql)
-}
-
-const paintTable = async (rptSql) => {
-    /* let form_request1 = {
-        "accion": "table_master",
-    }
-    const body = new FormData();
-    body.append("data", JSON.stringify(form_request1)); */
-    var tableMaster = $('#table-master').DataTable({
+    mainEvents_instalacionesGenerales();
+    table_instalacionesGenerales = $('#table-master-instalacionesGenerales').DataTable({
         /* ajax: {
             url: "./../../../controllers/controllerConsumoMaderaList.php",
             dataSrc: 'sql',
@@ -73,12 +49,15 @@ const paintTable = async (rptSql) => {
         "initComplete": function(settings, json) {
             console.log(json);
         }, */
-        data: rptSql,
-        columns: [{
-                data: "consumoMader_nVale"
+        columns: [
+            {
+                data: "id_instalacionesGenerales",
             },
             {
-                data: "consumoMader_fecha",
+                data: "instalacionesGenerales_nVale"
+            },
+            {
+                data: "instalacionesGenerales_fecha",
                 defaultContent: 'raaaa',
             },
             {
@@ -120,23 +99,7 @@ const paintTable = async (rptSql) => {
         dom: "<'row'<'col-md-4'l><'col-md-4'B><'col-md-4'f>>" +
             "<'row'<'col-md-12'tr>>" +
             "<'row'<'col-md-5'i><'col-md-7'p>>",
-        buttons: [{
-                text: '<i class="demo-pli-add icon-fw" ></i> Agregar',
-                action: function(e, dt, node, conf) {
-                    $("#demo-lg-modal").modal("show");
-                    var select1 = {
-                        "accion": "getCcosto",
-                        "column": "lab_ccostos"
-                    }
-                    var select2 = {
-                        "accion": "getcolumnAll",
-                        "column": "instalacionesMina_nombre"
-                    }
-                    fetchSelect_labor(select1);
-                    fetchSelect_instalacionMina(select2);
-                },
-                className: 'btn btn-primary' //Primary class for all buttons
-            },
+        buttons: [
             {
                 extend: 'collection',
                 text: '<i class="fa fa-download"></i> Exportar',
@@ -174,11 +137,53 @@ const paintTable = async (rptSql) => {
             }
         ],
     });
+});
+
+function mainEvents_instalacionesGenerales() {
+    $('#table-master').DataTable().clear().destroy();
+    let form_request1 = {
+        "accion": "table_master",
+    }
+    fetchData(form_request1);
 }
+const fetchData = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    const res = await fetch('./../../../controllers/controllerInstalacionGeneralesList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    let rptSql = data['sql'];
+    paintTable(rptSql)
+}
+
+const paintTable = async (rptSql) => {
+    table_instalacionesGenerales.clear();
+    table_instalacionesGenerales.rows.add(rptSql).draw();
+    /* let form_request1 = {
+        "accion": "table_master",
+    }
+    const body = new FormData();
+    body.append("data", JSON.stringify(form_request1)); */
+    
+}
+btn_create_instalacionesGenerales.addEventListener("click", (e) => {
+    var select1 = {
+        "accion": "getCcosto",
+        "column": "lab_ccostos"
+    }
+    var select2 = {
+        "accion": "getcolumnAll",
+        "column": "instalacionesMina_nombre"
+    }
+    fetchSelect_labor(select1);
+    fetchSelect_instalacionMina(select2);
+});
 // JAVASCRIPT VANILLA
 // Boton registrar
 btnInsertar.addEventListener("click", (e) => {
-    mainEvents();
+
     var listDetalles = [];
     const valfecha = iptreg_reportConsumoMadera_fecha.value;
     const valNReporte = iptreg_reportConsumoMadera_nreporte.value;
@@ -214,7 +219,7 @@ btnInsertar.addEventListener("click", (e) => {
 const recordForm = async (listInsert) => {
     const body = new FormData();
     body.append("data", JSON.stringify(listInsert));
-    const res = await fetch('./../../../controllers/controllerConsumoMadera.php', {
+    const res = await fetch('./../../../controllers/controllerInstalacionGenerales.php', {
         method: "POST",
         body
     });
@@ -227,11 +232,25 @@ const notificationBackend = (rptSql) => {
         if (rptSql['sql1']['estado'] == 1) {
             $.niftyNoty({
                 type: 'success',
-                container: '#alert-form-insert',
+                container: '#alerts-form-insert',
                 html: '<strong>¡Bien hecho!</strong> ' + rptSql['sql1']['mensaje'],
                 focus: false,
                 timer: 5000
             });
+        }
+        if (rptSql['sql2']['estado'] == 1) {
+            $.niftyNoty({
+                type: 'success',
+                container: '#alerts-form-insert',
+                html: '<strong>¡Bien hecho!</strong> ' + rptSql['sql2']['mensaje'],
+                focus: false,
+                timer: 5000
+            });
+        }
+        if( rptSql['sql1']['estado'] == 1 | rptSql['sql2']['estado'] == 1){
+            resetFormulario();
+            tableDetails.clear().draw();
+            mainEvents_instalacionesGenerales();
         }
     }
 }
@@ -258,7 +277,6 @@ $(document).ready(function(e) {
         console.log();
         ("Evento onclick ejecutado!");
     }
-    console.log("cargo el Dom!");
 
     tableDetails = $('#table-details-insert').DataTable({
         // Traduccion
@@ -325,7 +343,7 @@ $(document).ready(function(e) {
     // Boton Agregar Fila
     $("#btn-add-table-insert").on('click', function(e) {
         const valIdLabor = iptreg_reportConsumoMadera_labor.dataset.idLabor;
-        const valCCosto = iptreg_reportConsumoMadera_ccosto.value;
+        const valCCosto = iptreg_instalacionGenerales_ccosto.value;
         const valNLabor = iptreg_reportConsumoMadera_labor.value;
         const valZona = iptreg_reportConsumoMadera_zona.value;
         const valIdInstalacion = iptreg_reportConsumoMadera_undmedida.dataset.idInstalacionmina;
@@ -402,7 +420,7 @@ $(document).ready(function(e) {
     });
 });
 const resetFormulario = () => {
-    iptreg_reportConsumoMadera_ccosto.value = '';
+    iptreg_instalacionGenerales_ccosto.value = '';
     iptreg_reportConsumoMadera_labor.value = '';
     iptreg_reportConsumoMadera_zona.value = '';
     iptreg_reportConsumoMadera_undmedida.value = '';
@@ -411,7 +429,6 @@ const resetFormulario = () => {
 }
 // Ejecuta despues de DOM y Imagenes o iframes cargado por completo
 $(window).on("load", function(e) {
-    console.log("cargo el Dom y recursos");
 });
 const fetchSelect_labor = async (request) => {
     const body = new FormData();
@@ -465,7 +482,8 @@ const selectInstalacion = (rptSql) => {
     datalist_instalaciones.appendChild(fragmentInstalacion);
 }
 
-$("#input-ccosto-insert").on('input', function() {
+iptreg_instalacionGenerales_ccosto.addEventListener("input", (e) => {
+    console.log('Se modifico');
     var val = $('#input-ccosto-insert').val();
     var validccosto = $('#insert-options-ccostos').find('option[value="' + val + '"]').data('id-labor');
     if (validccosto) {

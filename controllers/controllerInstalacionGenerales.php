@@ -3,11 +3,11 @@ $rptSqlGeneral = '';
 $rptSql = '';
 $rptSql2 = '';
 if($_POST){
-    $table = 'consumo_madera';
+    $table = 'instalaciones_generales';
     $rptController = 'Se recibio datos';
     try {
         require_once '../models/'.$table.'.php';
-        $tableManager = new ConsumoMadera();
+        $tableManager = new instalacionGenerales();
         $arrayForm = json_decode($_POST['data'],true);
         $accion = $arrayForm['accion'];
         switch ($accion) {

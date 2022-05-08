@@ -4,11 +4,11 @@ header('Content-type: application/json; charset=utf-8');
 $rptSql='';
 // Si no se ha enviado nada por el POST y se intenta acceder al archivo se retornará a la página de inicio
 if($_POST){
-    $table = 'consumo_madera';
+    $table = 'instalaciones_generales';
     $rptController = 'Se recibio datos';
     try {
         require_once '../models/'.$table.'.php';
-        $tableManager = new ConsumoMadera();
+        $tableManager = new instalacionGenerales();
         $arrayForm = json_decode($_POST['data'],true);
         $accion = $arrayForm['accion'];
         switch ($accion) {
@@ -18,9 +18,6 @@ if($_POST){
             case "search":
                 $term = $accion['term'];
                 $type = $accion['type'];
-                
-                break;
-            case "table":
                 break;
         }
 
