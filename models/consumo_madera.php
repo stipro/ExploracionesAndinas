@@ -115,6 +115,22 @@ class ConsumoMadera extends Conexion
         WHERE cm.id_consumoMadera = {$parament};";
         return $this->ConsultaSimple($query);
     }
+
+    public function getRowUpdate($parament)
+    {
+        $query = "SELECT cm.id_consumoMadera, cm.consumoMadera_turno, cm.consumoMadera_guardia, CONCAT(col.col_apePaterno,' ',col.col_apeMaterno,' ',col.col_nombres) AS jefe_guardia,
+        cm.consumoMadera_fecha, cm.consumoMadera_nvale, lb.lab_ccostos, lb_nm.labNombre_nombre, cm_dt.consumoMaderaDetalle_cantidad,
+        lb.id_labor, md.id_madera, CONCAT(md.madera_tipo, md.madera_codigo, md.madera_dimension) AS 'maderas'
+        FROM consumo_madera AS cm 
+        LEFT JOIN colaboradores AS col ON cm.colaborador_id_jefeGuardia = col.id_colaborador 
+        LEFT JOIN consumo_madera_detalle AS cm_dt ON cm.id_consumoMadera = cm_dt.consumoMadera_id
+        LEFT JOIN labores AS lb ON cm_dt.labor_id = lb.id_labor 
+        LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre
+        LEFT JOIN maderas AS md ON cm_dt.madera_id = md.id_madera
+        WHERE cm.id_consumoMadera = {$parament};";
+        return $this->ConsultaSimple($query);
+    }
+
     public function delete(int $id)
     {
         //error_reporting(0);
@@ -141,22 +157,93 @@ class ConsumoMadera extends Conexion
         }
     }
 
-    public function update(int $datoidLabor, string $datoZona, string $datoCCosto, int $datoNivel, string $datoLabor)
+    public function update(int $datoId, string $data1, string $data2, string $data3, string $data4, string $data5)
     {
         //error_reporting(0);
         try {
-            $query  = "UPDATE labores SET lab_ccostos=:datoCCosto, lab_labor=:datoLabor, lab_nivel=:datoNivel, lab_zona=:datoZona WHERE id_labor=:datoidLabor;";
-            $result = $this->db->prepare($query);
-            $result->execute(array(':datoidLabor' => $datoidLabor, ':datoZona' => $datoZona, ':datoCCosto' => $datoCCosto, ':datoNivel' => $datoNivel, ':datoLabor' => $datoLabor));
-            if ($result->rowCount()) {
-                return 'Se edito correctamente.';
-            } else {
-                return 'IGUAL';
+            $query  = "UPDATE consumo_madera SET consumoMadera_turno=:item1, consumoMadera_guardia=:item2, colaborador_id_jefeGuardia=:item3, consumoMadera_fecha=:item4, consumoMadera_nvale=:item5 WHERE id_consumoMadera=:datoId;";
+            $insertValue = $this->db->prepare($query);
+            $insertValue->bindParam(':item1', $data1, PDO::PARAM_STR);
+            $insertValue->bindParam(':item2', $data2, PDO::PARAM_STR);
+            $insertValue->bindParam(':item3', $data3, PDO::PARAM_STR);
+            $insertValue->bindParam(':item4', $data4, PDO::PARAM_STR);
+            $insertValue->bindParam(':item5', $data5, PDO::PARAM_STR);
+            $insertValue->bindParam(':datoId', $datoId, PDO::PARAM_STR);
+            $sqlrpt = $insertValue->execute();
+            if($sqlrpt){
+                //$this->db->commit();
+                $rptSql = [
+                    "estado" => 1,
+                    "mensaje" => "Se actulizo correctamente",
+                    "coperacion" => '...',
+                ];
             }
+            else{
+                echo "\nPDO::errorInfo():\n";
+                //print_r($result->errorInfo());
+            }
+            return $rptSql;
         } catch (PDOException $e) {
-            return 'ERROR';
+            if($e->getCode() == 23000){
+                $messageUser = "Se duplico n° de Vale";
+            }
+            elseif($e->getCode() == 42000){
+                $messageUser = "La sintaxis esta mal";
+            }
+            else{
+                $messageUser = "";
+            }
+            $rptSql = [
+                "estado" => 0,
+                "messageDeveloper" => "Se encontro ERROR ".$e->getMessage(),
+                "messageUser" => $messageUser,
+                "codigo" => $e->getCode(),
+                "string" => $e->__toString(),
+            ];
+            return $rptSql;
         }
+        finally {
+            //print_r($this->db->errorInfo());
+        }
+    }
 
+    public function updateDetails(int $datoId, array $detalles)
+    {
+        $this->deleteDetails($datoId);
+        //error_reporting(0);
+        try 
+        {
+            $query = "INSERT INTO consumo_madera_detalle (consumoMaderaDetalle_cantidad, consumoMadera_id, labor_id, madera_id) VALUES (
+                :item1,
+                :item2,
+                :item3,
+                :item4)";
+            $insertValue = $this->db->prepare($query);
+            foreach ($detalles as $clave) {
+                $insertValue->bindValue(':item1', $clave['cantidad'], PDO::PARAM_STR);
+                $insertValue->bindValue(':item2', $datoId, PDO::PARAM_STR);
+                $insertValue->bindValue(':item3', $clave['id_labor'], PDO::PARAM_STR);
+                $insertValue->bindValue(':item4', $clave['id_madera'], PDO::PARAM_STR);
+                $sqlrpt = $insertValue->execute();
+                $lastcolIdsql = $this->db->lastInsertId();
+            }
+            if($sqlrpt){
+                //$this->db->commit();
+                $rptSql = [
+                    "estado" => 1,
+                    "mensaje" => "Se actualizo correctamente detalle de consumo madera",
+                ];
+            }
+            else{
+                echo "\nPDO::errorInfo():\n";
+                print_r($insertValue->errorInfo());
+            }
+            return $rptSql;
+            
+        }
+        catch (PDOException $e) {
+            return 'Se registro ERROR '. $e->getMessage();
+        }
     }
 
     public function getSearch(string $table, string $termiCol, string $termino): array

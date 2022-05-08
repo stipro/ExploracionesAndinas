@@ -19,6 +19,10 @@ if($_POST){
                 $parament = $arrayForm['id'];
                 $rptSql = $tableManager->getRow($parament);
                 break;
+            case "getRowUpdate":
+                $parament = $arrayForm['id'];
+                $rptSql = $tableManager->getRowUpdate($parament);
+                break;
             case "search":
                 $term = $accion['term'];
                 $type = $accion['type'];

@@ -27,14 +27,21 @@ if($_POST){
                     "sql2" => $rptSql2,
                 );
                 break;
-            case "editar":
-                $laborList = $arrayForm['datos'];
-                $datoidLabor = $laborList['id'];
-                $datoZona = $laborList['zona'];
-                $datoCCosto = $laborList['ccosto'];
-                $datoNivel = $laborList['nivel'];
-                $datoLabor = $laborList['labor'];
-                $rptSql = $tableManager->update($datoidLabor, $datoZona, $datoCCosto, $datoNivel, $datoLabor);
+            case "edit":
+                $laborList = $arrayForm['form'];
+                $datoId = $laborList['id'];
+                $data1 = $laborList['turno'];
+                $data2 = $laborList['guardia'];
+                $data3 = $laborList['jefeGuardia'];
+                $data4 = $laborList['fecha'];
+                $data5 = $laborList['nvale'];
+                $data6_detalles = $laborList['detalles'];
+                $rptSql = $tableManager->update($datoId, $data1, $data2, $data3, $data4, $data5);
+                $rptSql2 = $tableManager->updateDetails($datoId, $data6_detalles);
+                $rptSqlGeneral = array(
+                    "sql1" => $rptSql,
+                    "sql2" => $rptSql2,
+                );
                 break;
             case "delete":
                 $idEliminar = $arrayForm['id'];

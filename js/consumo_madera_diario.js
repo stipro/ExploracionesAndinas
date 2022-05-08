@@ -43,8 +43,39 @@ const ipt_view_consumoMadera_fecha = document.getElementById('view-ipt-consumoMa
 const slt_view_consumoMadera_nvale = document.getElementById('view-slt-consumoMadera-nvale');
 const ipt_view_consumoMadera_detalle = document.getElementById('list-view-consumoMadera-detalle');
 
+
+// Principal UPDATE
+const mbtn_create_consumoMadera_update = document.getElementById('mbtn-insert-consumoMadera-update');
+
+const slt_update_consumoMadera_turno = document.getElementById('update-slt-consumoMadera-turno');
+const slt_update_consumoMadera_guardia = document.getElementById('update-slt-consumoMadera-guardia');
+const ipt_update_consumoMadera_jefeGuardia = document.getElementById('update-ipt-consumoMadera-jefeGuardia');
+const dtl_update_consumoMadera_jefeGuardia = document.getElementById('update-dtl-consumoMadera-jefeGuardia');
+const tpe_update_consumoMadera_jefeGuardia = document.getElementById('update-template-consumoMadera-jefeGuardia').content;
+
+
+const ipt_update_consumoMadera_fecha = document.getElementById('update-ipt-consumoMadera-fecha');
+const ipt_update_consumoMadera_nvale = document.getElementById('update-ipt-consumoMadera-nvale');
+
+
+// Detalle UPDATE
+const ipt_update_consumoMadera_centroCostos = document.getElementById('update-ipt-consumoMadera-centroCostos');
+const dtl_update_consumoMadera_centroCostos = document.getElementById('update-dtl-consumoMadera-centroCostos');
+const tpe_update_consumoMadera_centroCostos = document.getElementById('template-consumoMadera-centroCostos').content;
+
+const ipt_update_consumoMadera_laborNombre = document.getElementById('update-ipt-consumoMadera-laborNombre');
+const dtl_update_consumoMadera_laborNombre = document.getElementById('update-dtl-consumoMadera-laborNombre');
+const tpe_update_consumoMadera_laborNombre = document.getElementById('template-consumoMadera-laborNombre').content;
+
+const ipt_update_consumoMadera_madera = document.getElementById('update-ipt-consumoMadera-madera');
+const dtl_update_consumoMadera_madera = document.getElementById('update-dtl-consumoMadera-madera');
+const tpe_update_consumoMadera_madera = document.getElementById('template-consumoMadera-madera').content;
+
+const mbtn_agregarDetalle_update = document.getElementById('mbtn-agregarDetalle');
+
+
+
 document.addEventListener('DOMContentLoaded', e => {
-    var counter = 1;
     mainEvents_consumoMadera();
     table_consumoMadera = $('#tableMaster_consumoMadera').DataTable
     ({
@@ -109,7 +140,7 @@ document.addEventListener('DOMContentLoaded', e => {
             {
                 text: '<i class="btn-label fa fa-refresh"></i><span class="hidden-xs">Actualizar</span>',
                 action: function(e, dt, node, conf) {
-
+                    mainEvents_consumoMadera();
                 },
                 className: 'btn btn-info btn-labeled' //Primary class for all buttons
             },
@@ -235,6 +266,35 @@ document.addEventListener('DOMContentLoaded', e => {
             }
         ],
     });
+
+    // Update
+    table_consumoMadera_detalle_update = $('#list-update-consumoMadera-detalle').DataTable({
+        columns: [
+            {
+                data: "id_labor",
+            },
+            {
+                data: "lab_ccostos",
+            },
+            {
+                data: "labNombre_nombre",
+            },
+            {
+                data: "id_madera",
+            },            
+            {
+                data: "maderas",
+            },
+            {
+                data: 'consumoMaderaDetalle_cantidad',
+            },
+            {
+                defaultContent: '<button type="button" class="position btn btn-danger btn-tbM-update-consumoMadera-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>'
+            }
+        ],
+    });
+    table_consumoMadera_detalle_update.columns(0).visible(false);
+    table_consumoMadera_detalle_update.columns(3).visible(false);
 });
 
 /** Eventos */
@@ -293,18 +353,19 @@ mbtn_create_consumoMadera_diario.addEventListener("click", (e) => {
         });
     }
     else if(array_noti_error.length > 1){
-        var paramentNoti = {
+        let paramentNoti = {
             'tipo': 'danger',
             'text': '!Error!',
             'descripcion': 'Falta :',
-            'list': array_noti_error
+            'list': array_noti_error,
+            'modal': 'alerts-form-update'
         }
         alerts(paramentNoti);
     }
     else{
-        var f = form_detalle;
-        for (var i = 0; f.length > i; i++) {
-            var n = f[i].length;
+        let f = form_detalle;
+        for (let i = 0; f.length > i; i++) {
+            let n = f[i].length;
             listDetalles.push({
                 id_labor: f[i][1],
                 id_madera: f[i][4],
@@ -438,11 +499,11 @@ const fetchTable_consumoMadera = async (request) => {
     const result = await returned.json(); //await JSON.parse(returned);
     const rptSQL = result['sql'];
     // Envia dato a pintar
-    pintarTable_consumoMadera(rptSQL);
+    paintTable_consumoMadera(rptSQL);
 }
 
 // Se pinta DataList
-const pintarTable_consumoMadera = data => {
+const paintTable_consumoMadera = data => {
     table_consumoMadera.clear();
     table_consumoMadera.rows.add(data).draw();
 };
@@ -670,7 +731,7 @@ const alerts = data => {
     <!--===================================================-->',
     $.niftyNoty({
         type: data.tipo,
-        container: '#alerts-form-insert',
+        container: '#'+data.modal,
         html: notyFormt,
         focus: false,
         timer: 2000,
@@ -734,17 +795,388 @@ const paintForm_view = (rptSql) => {
 
 //* EDITAR REGISTRO
 $('#tableMaster_consumoMadera tbody').on('click', '.btn-tbM-consumoMadera-edit', function() {
+
+    //ALMACENANDO INFORMACION DE DATALIST UPDATE
+
+    // Preparamos formulario
+    let form_request2 = {
+        // Se pone la accion
+        "accion": "dtl-ccosto-labor",
+    }
+    // Enviamos formulario
+    fetchData_update_ccosto_labor(form_request2);
+    // Preparamos formulario
+    let form_request2_1 = {
+        // Se pone la accion
+        "accion": "dtl-nombre-labor",
+    }
+    // Enviamos formulario
+    fetchData_update_nombre_labor(form_request2_1);
+    let form_request3 = {
+        // Se pone la accion
+        "accion": "dtl-madera-all",
+    }
+    fetchTable_update_consumoMadera(form_request3);   
+    // Preparamos formulario
+    let form_request1 = {
+        // Se pone la accion
+        "accion": "dtl-colaboradores-all",
+    }
+    // Enviamos formulario
+    fetchData_consumoMadera_colaboradores_update(form_request1);
     $("#consumoMadera-lg-modal-update").modal("show");
     const data = table_consumoMadera.row($(this).parents('tr')).data();
-    console.log(data);
     let formRequest = {
-        "accion": "getRow",
+        "accion": "getRowUpdate",
         "id": data['id_consumoMadera']
     }
-    getRow(formRequest);
+    getRowUpdate(formRequest);
 });
 
+const fetchData_consumoMadera_colaboradores_update = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json();
+    rptSql = data['sql'];
+    paintDtl_colaborador_formUpdate(rptSql);
+}
 
+const paintDtl_colaborador_formUpdate = (rptSql) => {
+    dtl_update_consumoMadera_jefeGuardia.innerHTML = '';
+    rptSql.forEach(item => {
+        tpe_update_consumoMadera_jefeGuardia.querySelector('option').textContent = item.col_apePaterno + ' ' + item.col_apeMaterno + ' ' + item.col_nombres;
+        tpe_update_consumoMadera_jefeGuardia.querySelector('option').value = item.col_apePaterno + ' ' + item.col_apeMaterno + ' ' + item.col_nombres;
+        tpe_update_consumoMadera_jefeGuardia.querySelector('option').dataset.idJefeGuardia = item.id_colaborador;
+
+        const clone = tpe_update_consumoMadera_jefeGuardia.cloneNode(true);
+        fragment.appendChild(clone)
+    });
+    dtl_update_consumoMadera_jefeGuardia.appendChild(fragment);
+}
+
+const getRowUpdate = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    const res = await fetch('./../../../controllers/controllerConsumoMaderaList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json();
+    rptSql = data['sql'];
+    paintForm_update(rptSql)
+}
+
+const paintForm_update = (rptSql) => {
+    if(rptSql){
+        slt_update_consumoMadera_turno.value = rptSql[0]['consumoMadera_turno'];
+        slt_update_consumoMadera_guardia.value = rptSql[0]['consumoMadera_guardia'];
+        ipt_update_consumoMadera_jefeGuardia.value = rptSql[0]['jefe_guardia'];
+        ipt_update_consumoMadera_fecha.value = rptSql[0]['consumoMadera_fecha'];
+        ipt_update_consumoMadera_nvale.value = rptSql[0]['consumoMadera_nvale'];
+        ipt_update_consumoMadera_nvale.dataset.idConsumoMadera = rptSql[0]['id_consumoMadera'];
+
+        table_consumoMadera_detalle_update.clear();
+        table_consumoMadera_detalle_update.rows.add(rptSql).draw();
+    }
+    else{
+        slt_update_consumoMadera_turno.value = '-';
+        slt_update_consumoMadera_guardia.value = '-';
+        ipt_update_consumoMadera_jefeGuardia.value = '-';
+        ipt_update_consumoMadera_fecha.value = '-';
+        ipt_update_consumoMadera_nvale.value = '-';
+    }
+    
+}
+
+
+//* ELIMINAR REGISTRO
+$('#list-update-consumoMadera-detalle tbody').on('click', '.btn-tbM-update-consumoMadera-delet', function() {
+    table_consumoMadera_detalle_update.row($(this).parents('tr')).remove().draw();
+});
+
+mbtn_create_consumoMadera_update.addEventListener("click", (e) => {
+    mainEvents_consumoMadera();
+    let listDetalles = [];
+    let array_noti_error = [];
+    let val_id_consumoMadera = ipt_update_consumoMadera_nvale.dataset.idConsumoMadera;
+    let val_turno = slt_update_consumoMadera_turno.value
+    let val_guardia = slt_update_consumoMadera_guardia.value
+    let val_fecha = ipt_update_consumoMadera_fecha.value
+    let val_nvale = ipt_update_consumoMadera_nvale.value
+
+    let val_jefeGuardia = ipt_update_consumoMadera_jefeGuardia.value
+    val_jefeGuardia ? val_jefeGuardia = val_jefeGuardia : array_noti_error.push("JEFE DE GUARDIA");
+    val_jefeGuardia ? val_idColaborador = document.querySelector("#update-dtl-consumoMadera-jefeGuardia"  + " option[value='" +  val_jefeGuardia + "']").dataset.idJefeGuardia : array_noti_error.push("JEFE DE GUARDIA , ID");
+
+    let form_detalle_update = table_consumoMadera_detalle_update.rows().data();
+    console.log(form_detalle_update);
+    form_detalle_update.length > 0 ? form_detalle_update = form_detalle_update : array_noti_error.push("DETALLE");
+
+    if(array_noti_error.length == 1){
+        $.niftyNoty({
+            type: 'danger',
+            container: '#alerts-form-update',
+            html: '<strong>!Error!</strong> ' + array_noti_error[0],
+            focus: false,
+            timer: 2000
+        });
+    }
+    else if(array_noti_error.length > 1){
+        let paramentNoti = {
+            'tipo': 'danger',
+            'text': '!Error!',
+            'descripcion': 'Falta :',
+            'list': array_noti_error,
+            'modal': 'alerts-form-update'
+        }
+        alerts(paramentNoti);
+    }
+    else{
+        let f = form_detalle_update;
+        for (let i = 0; f.length > i; i++) {
+            let n = f[i].length;
+            listDetalles.push({
+                id_labor: f[i]['id_labor'],
+                id_madera: f[i]['id_madera'],
+                cantidad: f[i]['consumoMaderaDetalle_cantidad'],
+            });
+        }
+        let listInsert = {
+            "id": val_id_consumoMadera,
+            "turno": val_turno,
+            "guardia": val_guardia,
+            "jefeGuardia": val_idColaborador,
+            "fecha": val_fecha,
+            "nvale": val_nvale,
+            "detalles": listDetalles
+        }
+        let form_insert = {
+            "accion": "edit",
+            "form": listInsert
+        }
+        console.log(form_insert);
+        updateForm(form_insert);
+    }
+});
+
+const updateForm = async (listInsert) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(listInsert));
+    const res = await fetch('./../../../controllers/controllerConsumoMadera.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    rptSql = data['sql'];
+    notificationBackend_update(rptSql)
+}
+
+const notificationBackend_update = (rptSql) => {
+    if (rptSql) {
+        if (rptSql['sql1']['estado'] == 1) {
+            $.niftyNoty({
+                type: 'success',
+                container: '#alerts-form-update',
+                html: '<strong>¡Bien hecho!</strong> ' + rptSql['sql1']['mensaje'],
+                focus: false,
+                timer: 5000
+            });
+        }
+        if (rptSql['sql2']['estado'] == 1) {
+            $.niftyNoty({
+                type: 'success',
+                container: '#alerts-form-update',
+                html: '<strong>¡Bien hecho!</strong> ' + rptSql['sql2']['mensaje'],
+                focus: false,
+                timer: 5000
+            });
+        }
+        if( rptSql['sql1']['estado'] == 1 | rptSql['sql2']['estado'] == 1){
+            reset_formcreate_consumoMadera();
+            table_consumoMadera_detalle.clear().draw();;
+            mainEvents_consumoMadera();
+        }
+    }
+}
+
+// Hacemos la Peticion
+const fetchData_update_ccosto_labor = async (request) => {
+    // Se instancia el FORMDATA
+    const body = new FormData();
+    // Se agrega formulario en el FORMDATA
+    body.append("data", JSON.stringify(request));
+    //Se envia formulario al controllador y su previa configuracion
+    const returned = await fetch("./../../../controllers/controllerLaborList.php", {
+        method: "POST",
+        body
+    });
+    // Se convierte respuesta en json
+    const result = await returned.json(); //await JSON.parse(returned);
+    const rptSQL = result['sql'];
+    // Envia dato a pintar
+    paintDtl_cCostos_update(rptSQL);
+}
+
+// Hacemos la Peticion
+const fetchData_update_nombre_labor = async (request) => {
+    // Se instancia el FORMDATA
+    const body = new FormData();
+    // Se agrega formulario en el FORMDATA
+    body.append("data", JSON.stringify(request));
+    //Se envia formulario al controllador y su previa configuracion
+    const returned = await fetch("./../../../controllers/controllerLaborList.php", {
+        method: "POST",
+        body
+    });
+    // Se convierte respuesta en json
+    const result = await returned.json(); //await JSON.parse(returned);
+    const rptSQL = result['sql'];
+    // Envia dato a pintar
+    paintDtl_laborNombre_update(rptSQL);
+}
+
+// Hacemos la Peticion
+const fetchTable_update_consumoMadera = async (request) => {
+    // Se instancia el FORMDATA
+    const body = new FormData();
+    // Se agrega formulario en el FORMDATA
+    body.append("data", JSON.stringify(request));
+    //Se envia formulario al controllador y su previa configuracion
+    const returned = await fetch("./../../../controllers/controllerMaderaList.php", {
+        method: "POST",
+        body
+    });
+    // Se convierte respuesta en json
+    const result = await returned.json(); //await JSON.parse(returned);
+    const rptSQL = result['sql'];
+    // Envia dato a pintar
+    paintDtl_madera_update(rptSQL);
+}
+
+// Se pinta DataList CENTRO COSTOS --- UPDATE
+const paintDtl_cCostos_update = data => {
+    dtl_update_consumoMadera_centroCostos.innerHTML = '';
+    data.forEach(item => {
+        tpe_update_consumoMadera_centroCostos.querySelector('option').textContent = item.lab_ccostos;
+        tpe_update_consumoMadera_centroCostos.querySelector('option').value = item.lab_ccostos;
+        tpe_update_consumoMadera_centroCostos.querySelector('option').dataset.idJefeGuardia = item.id_labor;
+        const clone = tpe_update_consumoMadera_centroCostos.cloneNode(true);
+        fragment.appendChild(clone)
+    });
+    dtl_update_consumoMadera_centroCostos.appendChild(fragment);
+};
+
+// Se pinta DataList NOMBRE DE LABOR --- UPDATE
+const paintDtl_laborNombre_update = data => {
+    dtl_update_consumoMadera_laborNombre.innerHTML = '';
+    data.forEach(item => {
+        tpe_update_consumoMadera_laborNombre.querySelector('option').textContent = item.labNombre_nombre;
+        tpe_update_consumoMadera_laborNombre.querySelector('option').value = item.labNombre_nombre;
+        tpe_update_consumoMadera_laborNombre.querySelector('option').dataset.idJefeGuardia = item.id_labor;
+        const clone = tpe_update_consumoMadera_laborNombre.cloneNode(true);
+        fragment.appendChild(clone)
+    });
+    dtl_update_consumoMadera_laborNombre.appendChild(fragment);
+};
+
+// Se pinta DataList MADERA --- UPDATE
+const paintDtl_madera_update = data => {
+
+    dtl_update_consumoMadera_madera.innerHTML = '';
+    data.forEach(item => {
+        tpe_update_consumoMadera_madera.querySelector('option').textContent = item.madera_tipo + ' ' + item.madera_codigo + ' ' + item.madera_dimension;
+        tpe_update_consumoMadera_madera.querySelector('option').value = item.madera_tipo + ' ' + item.madera_codigo + ' ' + item.madera_dimension;
+        tpe_update_consumoMadera_madera.querySelector('option').dataset.idMadera = item.id_madera;
+        
+        const clone = tpe_update_consumoMadera_madera.cloneNode(true);
+        fragment.appendChild(clone)
+    });
+    dtl_update_consumoMadera_madera.appendChild(fragment);
+};
+
+// DETECCION DE INPUT
+// CENTRO DE COSTOS
+ipt_update_consumoMadera_centroCostos.addEventListener("input", (e) => {
+    try {
+        let val_cCostos = ipt_update_consumoMadera_centroCostos.value;
+        console.log(val_cCostos);
+        let val_id = document.querySelector("#update-dtl-consumoMadera-centroCostos"  + " option[value='" +  (val_cCostos ? val_cCostos = val_cCostos : val_cCostos = 0) + "']").dataset.idLabor;
+        console.log(val_id);
+        if (val_id) {
+            let selectForm1 = {
+                "accion": "getLabor_ccosto",
+                "paramentWhere": val_id,
+            }
+            getLaborNombre_update_labor_ccostos(selectForm1);
+        } else {
+            ipt_update_consumoMadera_laborNombre.value = '';
+        }
+    } catch (error) {
+        ipt_update_consumoMadera_laborNombre.value = '';
+        //console.error(error);
+        // expected output: ReferenceError: nonExistentFunction is not defined
+        // Note - error messages will vary depending on browser
+    }
+});
+
+// NOMBRE DE LABOR
+ipt_update_consumoMadera_laborNombre.addEventListener("input", (e) => {
+    try {
+        let val_cCostos = ipt_update_consumoMadera_centroCostos.value;
+        let val_id = document.querySelector("#update-dtl-consumoMadera-centroCostos"  + " option[value='" +  (val_cCostos ? val_cCostos = val_cCostos : val_cCostos = 0) + "']").dataset.idLabor;
+        if (val_id) {
+            
+            let selectForm1 = {
+                "accion": "getCCostos_lbNm_nombre",
+                "paramentWhere": val_id,
+            }
+            getCCostos_update_laborNombre_nombre(selectForm1);
+        } else {
+            ipt_update_consumoMadera_centroCostos.value = '';
+        }
+    } catch (error) {
+        ipt_update_consumoMadera_centroCostos.value = '';
+        //console.error(error);
+        // expected output: ReferenceError: nonExistentFunction is not defined
+        // Note - error messages will vary depending on browser
+    }
+});
+
+const getLaborNombre_update_labor_ccostos = async (rptSql) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(rptSql));
+    const res = await fetch('./../../../controllers/controllerLaborList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    rptSql = data['sql'];
+    pintarAsociados_update_laborNombre(rptSql);
+}
+
+const pintarAsociados_update_laborNombre = (rptSql) => {
+    ipt_update_consumoMadera_laborNombre.value = rptSql[0].labNombre_nombre;
+}
+
+const getCCostos_update_laborNombre_nombre = async (rptSql) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(rptSql));
+    const res = await fetch('./../../../controllers/controllerLaborList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    rptSql = data['sql'];
+    pintarAsociados_update_cCostos(rptSql);
+}
+
+const pintarAsociados_update_cCostos = (rptSql) => {
+    ipt_update_consumoMadera_centroCostos.value = rptSql[0].labNombre_nombre;
+}
 
 //* ELIMINAR REGISTRO
 $('#tableMaster_consumoMadera tbody').on('click', '.btn-tbM-consumoMadera-delet', function() {

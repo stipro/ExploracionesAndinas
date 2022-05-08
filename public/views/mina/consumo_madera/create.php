@@ -36,7 +36,7 @@ $template_create_consumoMadera = '
                                     <select name="turnos" id="insert-slt-consumoMadera-guardia" class="form-control">
                                         <option value="A">A</option>
                                         <option value="B">B</option>
-                                        <option value="B">C</option>
+                                        <option value="C">C</option>
                                     </select>
                                 </div>
                             </div>
