@@ -1,5 +1,5 @@
 const btn_create_consumoMadera_diario = document.getElementById('btn-agregar-consumoMadera');
-const mbtn_madera_consumoMadera_diario = document.getElementById('mbtn-new-consumoMadera');
+const mbtn_new_consumoMadera_diario = document.getElementById('mbtn-new-consumoMadera');
 const mbtn_close_consumoMadera_diario = document.getElementById('mbtn-close-consumoMadera');
 const mbtn_create_consumoMadera_diario = document.getElementById('mbtn-insert-consumoMadera');
 const mbtn_agregarDetalle = document.getElementById('mbtn-agregarDetalle');
@@ -71,7 +71,7 @@ const ipt_update_consumoMadera_madera = document.getElementById('update-ipt-cons
 const dtl_update_consumoMadera_madera = document.getElementById('update-dtl-consumoMadera-madera');
 const tpe_update_consumoMadera_madera = document.getElementById('template-consumoMadera-madera').content;
 
-const mbtn_agregarDetalle_update = document.getElementById('mbtn-agregarDetalle');
+const mbtn_agregarDetalle_update = document.getElementById('mbtn-update-agregarDetalle');
 
 
 

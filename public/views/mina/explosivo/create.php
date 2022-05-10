@@ -1,4 +1,6 @@
 <?php
+/* Insertar Bootstrap Modal */
+/* =================================================== */
 $template_create_labor = '
     <!--Insert Bootstrap Modal-->
     <!--===================================================-->

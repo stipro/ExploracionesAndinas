@@ -80,3 +80,24 @@
         max-width:1200px;
     }
 }
+
+/* 320px Celular VGA*/
+@media screen and (max-width: 20rem)
+{
+
+}
+/* 321px y 640px CELULARES HD*/
+@media only screen and (min-width: 20.0625rem) and (max-width: 40rem)
+{
+
+}
+/*  641px y 1024px CELULARES FULL HD*/
+@media only screen and (min-width: 40.0625rem) and (max-width: 64rem)
+{
+
+}
+/* 1025px a mas */
+@media only screen and (min-width: 64.0625rem)
+{
+
+}

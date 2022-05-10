@@ -132,7 +132,7 @@ $template_update_consumoMadera = '
                                 </div>
 
                                 <div class="col-md-1">
-                                    <button id="mbtn-agregarDetalle" class="btn btn-success">Agregar</button>
+                                    <button id="mbtn-update-agregarDetalle" class="btn btn-success">Agregar</button>
                                 </div>
 
                         </div>
