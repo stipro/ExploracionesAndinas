@@ -337,7 +337,7 @@
                                             <!-- Radio Buttons -->
                                             <div class="radio">
                                                 <input class="magic-radio" type="radio" value="1 Perforacion" name="radio-tipo_disparo" id="opcion-tipo_disparo1" checked="">
-                                                <label for="opcion-tipo_disparo1">1 Perforacion</label>
+                                                <label for="opcion-tipo_disparo1">1 Perforación</label>
                                             </div>
                                             <div class="radio">
                                                 <input class="magic-radio" type="radio" value="2 Voladura" name="radio-tipo_disparo" id="opcion-tipo_disparo2">
@@ -353,7 +353,7 @@
                                             </div>
                                             <div class="radio">
                                                 <input class="magic-radio" type="radio" value="5 Servicio" name="radio-tipo_disparo" id="opcion-tipo_disparo5" >
-                                                <label for="opcion-tipo_disparo4">5 Servicio</label>
+                                                <label for="opcion-tipo_disparo4">5 Servicios</label>
                                             </div>
                                             <div class="radio">
                                                 <input class="magic-radio" type="radio" value="6 Acarreo" name="radio-tipo_disparo" id="opcion-tipo_disparo6" >
