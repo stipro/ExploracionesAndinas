@@ -336,20 +336,32 @@
                                         <div class="col-md-8">
                                             <!-- Radio Buttons -->
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="1 smtr" name="radio-tipo_disparo" id="opcion-tipo_disparo1" checked="">
-                                                <label for="opcion-tipo_disparo1">1 Smtr</label>
+                                                <input class="magic-radio" type="radio" value="1 Perforacion" name="radio-tipo_disparo" id="opcion-tipo_disparo1" checked="">
+                                                <label for="opcion-tipo_disparo1">1 Perforacion</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="2 Stto" name="radio-tipo_disparo" id="opcion-tipo_disparo2">
-                                                <label for="opcion-tipo_disparo2">2 Stto</label>
+                                                <input class="magic-radio" type="radio" value="2 Voladura" name="radio-tipo_disparo" id="opcion-tipo_disparo2">
+                                                <label for="opcion-tipo_disparo2">2 Voladura</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="3 Serv." name="radio-tipo_disparo" id="opcion-tipo_disparo3" >
-                                                <label for="opcion-tipo_disparo3">3 Serv.</label>
+                                                <input class="magic-radio" type="radio" value="3 Limpieza" name="radio-tipo_disparo" id="opcion-tipo_disparo3" >
+                                                <label for="opcion-tipo_disparo3">3 Limpieza</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="4 Rhb" name="radio-tipo_disparo" id="opcion-tipo_disparo4" >
-                                                <label for="opcion-tipo_disparo4">4 Rhb</label>
+                                                <input class="magic-radio" type="radio" value="4 Sostenimiento" name="radio-tipo_disparo" id="opcion-tipo_disparo4" >
+                                                <label for="opcion-tipo_disparo4">4 Sostenimiento</label>
+                                            </div>
+                                            <div class="radio">
+                                                <input class="magic-radio" type="radio" value="5 Servicio" name="radio-tipo_disparo" id="opcion-tipo_disparo5" >
+                                                <label for="opcion-tipo_disparo4">5 Servicio</label>
+                                            </div>
+                                            <div class="radio">
+                                                <input class="magic-radio" type="radio" value="6 Acarreo" name="radio-tipo_disparo" id="opcion-tipo_disparo6" >
+                                                <label for="opcion-tipo_disparo4">6 Acarreo</label>
+                                            </div>
+                                            <div class="radio">
+                                                <input class="magic-radio" type="radio" value="7 Relleno" name="radio-tipo_disparo" id="opcion-tipo_disparo7" >
+                                                <label for="opcion-tipo_disparo4">7 Relleno</label>
                                             </div>
                             
                                         </div>

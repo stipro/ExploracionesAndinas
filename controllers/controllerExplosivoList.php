@@ -17,6 +17,14 @@ if($_POST){
             case 'readRow':
                 $rptSql = $tableManager->readRow($id);
                 break;
+            case 'getColumn_codigo':
+                $column = 'explosivo_codigo';
+                $rptSql = $tableManager->getColumn($column);
+                break;
+            case 'getColumns_codigo':
+                $parament = $arrayForm['paramentWhere'];
+                $rptSql = $tableManager->getColumns($parament);
+                break;
             case 'dtl-getNombre-getCodigo_explosivo';
                 $rptSql = $tableManager->get_NombreCodigo();
                 break;

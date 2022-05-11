@@ -93,6 +93,17 @@ class Explosivo extends Conexion
         return $this->ConsultaSimple($query);
     }
 
+    public function getColumn($column): array
+    {
+        $query = "SELECT expl.id_explosivo, expl.{$column} FROM explosivos AS expl";
+        return $this->ConsultaSimple($query);
+    }
+    public function getColumns($parament)
+    {
+        $query = "SELECT expl.explosivo_codigo, expl.explosivo_descripcion, expl.explosivo_unidadMedida FROM explosivos AS expl WHERE expl.id_explosivo = {$parament};";
+        return $this->ConsultaSimple($query);
+    }
+
     public function getColumnWhere($column, $where): array
     {
         $query = "SELECT ex.{$column}, ex.explosivo_unidadMedida FROM explosivos AS ex WHERE ex.id_explosivo= {$where};";
