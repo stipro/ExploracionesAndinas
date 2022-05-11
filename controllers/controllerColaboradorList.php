@@ -13,6 +13,8 @@ if($_POST){
         switch ($accion) {
             case "table-master":
                 $rptSql = $tableManager->table_master();
+            case "col_dni":
+                $rptSql = $tableManager->getSelec_dni_fullname();
                 
                 break;
             case "getSelec_dni_fullname":

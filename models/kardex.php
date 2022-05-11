@@ -8,7 +8,7 @@ class kardexGeneral extends Conexion
     {
         parent::__construct();
     }
-    public function explosivos()
+    public function explosivos(int $idExplosivo)
     {
         try 
         {
@@ -33,7 +33,7 @@ T.Entrada, T.Salida, T.saldo, T.saldo
 				  LEFT JOIN tvalexplosivos AS vlES ON ek.valeExplosivo_id = vlES.id_valexplosivo
 				  LEFT JOIN explosivos AS e ON ek.explosivo_id = e.id_explosivo
 		        ORDER BY ek.explosivo_id, ek.kardex_fechaRegistro
-        ) T;";
+        ) T WHERE T.explosivo_id = {$idExplosivo};";
             return $this->ConsultaSimple($query);
         }
         catch (PDOException $e) {

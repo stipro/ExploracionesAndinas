@@ -9,10 +9,50 @@ const ipt_explosivosKardex_nombreExplosivo = document.getElementById('ipt-explos
 const cst_ipt_explosivosKardex_periodo = document.getElementById('cst-ipt-explosivosKardex-Periodo');
 
 
-$('input[name="dates"]').daterangepicker();
+
 document.addEventListener('DOMContentLoaded', e => {
-    
     mainEvents_kardexExplosivos();
+    $('#cst-ipt-explosivosKardex-Periodo').daterangepicker({
+
+        "locale": {
+            "format": "MM/DD/YYYY",
+            "separator": " - ",
+            "applyLabel": "Guardar",
+            "cancelLabel": "Cancelar",
+            "fromLabel": "From",
+            "toLabel": "To",
+            "customRangeLabel": "Custom",
+            "daysOfWeek": [
+                "Do",
+                "Lu",
+                "Ma",
+                "Mi",
+                "Ju",
+                "Vi",
+                "Sa"
+            ],
+            "monthNames": [
+                "Enero",
+                "Febrero",
+                "Marzo",
+                "Abril",
+                "Mayo",
+                "Junio",
+                "Julio",
+                "Agosto",
+                "Septiembre",
+                "Octubre",
+                "Noviembre",
+                "Diciembre"
+            ],
+            "firstDay": 1
+        },
+        "startDate": "05/05/2022",
+        "endDate": "05/11/2022",
+        "opens": "left"
+    }, function(start, end, label) {
+      console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+    });
     tbeM_kardexExplosivo = $('#table-master-kardexExplosivo').DataTable({
         columns: [
             {

@@ -388,9 +388,9 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="insert-operacionMina-codLabor" class="col-md-4 control-label">cod. Labor</label>
+                                        <label for="insert-operacionMina-codLabor" class="col-md-4 control-label">Centro Costos</label>
                                         <div class="col-md-8">
-                                            <input class="form-control"  list="insert-options-codLabor" type="text" placeholder="Cod. Labor" id="insert-operacionMina-codLabor">
+                                            <input class="form-control"  list="insert-options-codLabor" type="text" placeholder="Centro Costos" id="insert-operacionMina-codLabor">
                                         </div>
                                         <datalist id="insert-options-codLabor">
                                             <option data-value="42">Seleccione codigo Zona</option>
@@ -755,7 +755,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="insert-operacionMina-resuelto" class="col-md-4 control-label">Resuelto</label>
+                                        <label for="insert-operacionMina-resuelto" class="col-md-4 control-label">Resuelto de disparo</label>
                                         <div class="col-md-8">
                                             <input class="form-control" list="insert-options-resuelto" id="insert-operacionMina-resuelto" placeholder="Eliga opción...">
                                             <datalist id="insert-options-resuelto">
@@ -773,15 +773,19 @@
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <p class="bord-btm pad-ver text-main text-bold">Limpieza (Horas)</p>
+                            <p class="bord-btm pad-ver text-main text-bold">Equipos de Limpieza (Horas)</p>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="col-md-2">
                                     </div>
-                                    
-                                    <div class="col-md-4"></div>                                 
+                                    <div class="col-md-4">
+                                        <div class="col-md-12">
+                                            -
+                                        </div>
+                                        <label for="" class="col-md-2 control-label">Manual</label>
+                                    </div>                                 
                                     <div class="col-md-2">
-					                    <label class="control-label">Manual</label>
+					                    <label class="control-label">Horas Trabajadas</label>
                                         <!-- <label class="control-label">Carros Extraídos</label> -->
 					                    <input type="text" placeholder="cantidad" class="form-control" id="insert-operacionMina-Manual">
                                     </div>

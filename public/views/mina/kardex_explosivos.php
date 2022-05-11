@@ -49,7 +49,6 @@
     <?php echo $template_header_css; ?>
     
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
     <!--=================================================
 
     REQUIRED
@@ -131,10 +130,10 @@
 					                        </div>
                                         </legend>
                                         <div class="row">
-                                            <div class="col-md-4 col-sm-4">
+                                            <div class="col-md-8 col-sm-8">
                                                 <div class="form-group">
-                                                    <label for="slt-explosivosKardex-Almacen" class="col-sm-3 col-md-4control-label">Almacen</label>
-                                                    <div class="col-sm-9 col-md-8">
+                                                    <label for="slt-explosivosKardex-Almacen" class="col-sm-1 col-md-1 control-label">Almacen</label>
+                                                    <div class="col-sm-2 col-md-2">
                                                         <select name="almacen" id="slt-explosivosKardex-Almacen" class="form-control">
                                                             <option value="1">Almacen Principal</option>
                                                         </select>
@@ -147,31 +146,32 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4 col-sm-4">
+                                            <div class="col-md-8 col-sm-8">
                                                 <div class="form-group">
-                                                    <label for="ipt-explosivosKardex-explosivoCodigo" class="col-sm-3 col-md-3 control-label">Explosivo:</label>
-                                                    <div class="col-sm-5 col-md-4">
+                                                    <label for="ipt-explosivosKardex-explosivoCodigo" class="col-sm-1 col-md-1 control-label">Explosivo:</label>
+                                                    <div class="col-sm-2 col-md-2">
                                                         <input list="dtl-explosivosKardex-explosivoCodigo" type="text" class="form-control input-sm" id="ipt-explosivosKardex-explosivoCodigo" placeholder="Codígo">
                                                         <datalist id="dtl-explosivosKardex-explosivoCodigo">
                                                             <option value="--no cargo--">--no cargo--</option>
                                                         </datalist>
                                                     </div>
-                                                    <div class="col-sm-4 col-md-4">
+                                                    <div class="col-sm-1 col-md-1">
                                                         <input type="text" class="form-control input-sm" id="ipt-explosivosKardex-unidaMedida" placeholder="Unidad Medida" disabled>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-4">
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12 col-md-12">
+                                                                <input type="text" class="form-control input-sm" id="ipt-explosivosKardex-nombre" placeholder="Nombre Explosivo" disabled>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <template id="tpt-explosivosKardex-explosivoCodigo">
                                                     <option id="" value=""></option>
                                                 </template>
                                             </div>
-                                            <div class="col-md-4 col-sm-4">
-                                                <div class="form-group">
-                                                    <div class="col-sm-12 col-md-12">
-                                                        <input type="text" class="form-control input-sm" id="ipt-explosivosKardex-nombre" placeholder="Nombre Explosivo" disabled>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-4">
+                                            
+                                            <div class="col-md-3 col-sm-3">
                                                 <div class="form-group">
                                                     <label for="cst-ipt-explosivosKardex-Periodo" class="col-sm-4 control-label">Periodo:</label>
                                                     <div class="col-sm-8 input-group mar-btm">
@@ -186,6 +186,15 @@
                                                                 <i class="fa fa-mail-forward"></i>
                                                             </button>
                                                         </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1 col-sm-1">
+                                                <div class="form-group">
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <button class="btn btn-mint">
+                                                            Buscar
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -278,7 +287,7 @@
 
     <?php echo $template_javascript;?>
     <script>
-        document.addEventListener('DOMContentLoaded', e => {
+        /* document.addEventListener('DOMContentLoaded', e => {
             var table = $('#table-master').DataTable({
             //Tip from this user kthorngren: absolute not working
             rowCallback: function( row, data, index ) {
@@ -288,10 +297,12 @@
             }
             });
         //* CONFIGURACIONES EXTERNOS
-        });
+        }); */
     </script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="./../../../plugins/date-range-picker/moment.min.js"></script>
+    <script src="./../../../plugins/date-range-picker/daterangepicker.js"></script>
+    <!-- Date Range [ REQUIRED - REQUERIDO ]-->
+    <link href="./../../../plugins/date-range-picker/daterangepicker.css" rel="stylesheet">
     <!-- [ REQUIRED ]-->
     <script src="./../../../js/kardex_explosivos.js"></script>
 </body>
