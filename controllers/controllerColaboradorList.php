@@ -11,6 +11,12 @@ if($_POST){
         $arrayForm = json_decode($_POST['data'],true);
         $accion = $arrayForm['accion'];
         switch ($accion) {
+            // No se envia parametro por que esta concatenado
+            case 'getColumn_fullname':
+                $column = 'explosivo_codigo';
+                $rptSql = $tableManager->getColumn();
+                break;
+            // FIN
             case "table-master":
                 $rptSql = $tableManager->table_master();
             case "col_dni":

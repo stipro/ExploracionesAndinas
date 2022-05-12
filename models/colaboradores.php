@@ -8,6 +8,13 @@ class Colaboradores extends Conexion
     {
         parent::__construct();
     }
+
+    public function getColumn()
+    {
+        $query = "SELECT cols.id_colaborador, CONCAT(cols.col_apePaterno, ' ', cols.col_apeMaterno, ' ', cols.col_nombres) AS FullName FROM colaboradores AS cols;";
+        return $this->ConsultaSimple($query);
+    }
+    
     public function getColaborador_all(){
         $query = "SELECT clb.id_colaborador, clb.col_nombres, clb.col_apePaterno, clb.col_apeMaterno FROM colaboradores AS clb";
         return $this->ConsultaSimple($query);

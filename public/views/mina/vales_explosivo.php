@@ -159,6 +159,18 @@
 					                            <h3 class="panel-title">VALES DE EXPLOSIVOS</h3>
 					                        </div>
                                         </legend>
+                                        <div class="row">
+											<div class="col-md-3">
+                                                <button data-target="#valeExplosivo-lg-modal-create" data-toggle="modal" class="btn btn-success btn-labeled" id="btn-agregar-valeExplosivo">
+                                                    <i class="btn-label fa-solid fa fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>
+                                                </button>
+											</div>
+											<div class="col-sm-12 col-md-6 dt-buttons btn-group">
+												
+											</div>
+											<div class="col-sm-12 col-md-3">											
+											</div>
+										</div>
                                         <div class="table-responsive-md">
                                             <table class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" cellspacing="0" id="table-master">
                                                 <thead class="thead-dark">
@@ -1129,7 +1141,7 @@
 
     <!--Insertar Bootstrap Modal-->
     <!--===================================================-->
-    <div class="modal fade" id="modal-insert" role="dialog" aria-labelledby="demo-default-modal" aria-hidden="true" style="overflow-y: scroll;">
+    <div class="modal fade" id="valeExplosivo-lg-modal-create" role="dialog" aria-labelledby="demo-default-modal" aria-hidden="true" style="overflow-y: scroll;">
         <div id="inserForm"  class="modal-dialog modal-xl" style="margin: 1rem;">
             <div class="modal-content">
 
@@ -1456,7 +1468,7 @@
                                             <td>Emulnor 1000</td>
                                             <td>CAR</td>
                                             <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-emulnor_mil" name="">
+                                                <input data-id-explosivo='1' type="number" class="form-control" value="0" id="val_explosivo-text-form-emulnor_mil" name="">
                                             </td>
                                         </tr>
                                         <tr id="tr-tbody-tareo">
@@ -1464,7 +1476,7 @@
                                             <td>Emulnor 3000</td>
                                             <td>CAR</td>
                                             <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-emulnor_tresmil" name="">
+                                                <input data-id-explosivo='2' type="number" class="form-control" value="0" id="val_explosivo-text-form-emulnor_tresmil" name="">
                                             </td>                                                        
                                         </tr>
                                         <tr id="tr-tbody-tareo">
@@ -1472,7 +1484,7 @@
                                             <td>Dinamita Pulverulenta 65_7/8</td>
                                             <td>CAR</td>
                                             <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-valdin_pulv" name="">
+                                                <input data-id-explosivo='3' type="number" class="form-control" value="0" id="val_explosivo-text-form-valdin_pulv" name="">
                                             </td>
                                         </tr>
                                         <tr id="tr-tbody-tareo">
@@ -1480,7 +1492,7 @@
                                             <td>Carmex 7</td>
                                             <td>CAR</td>
                                             <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-carmexsiete" name="">
+                                                <input data-id-explosivo='4' type="number" class="form-control" value="0" id="val_explosivo-text-form-carmexsiete" name="">
                                             </td>                                                        
                                         </tr>
                                         <tr id="tr-tbody-tareo">
@@ -1488,7 +1500,7 @@
                                             <td>Carmex 8</td>
                                             <td>CAR</td>
                                             <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-carmexocho" name="">
+                                                <input data-id-explosivo='5' type="number" class="form-control" value="0" id="val_explosivo-text-form-carmexocho" name="">
                                             </td>                                                        
                                         </tr>
                                         <tr id="tr-tbody-tareo">
@@ -1496,7 +1508,7 @@
                                             <td>Mecha Rapida</td>
                                             <td>MTS</td>
                                             <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-mecha_rapida_zdiesocho" name="">
+                                                <input data-id-explosivo='6' type="number" class="form-control" value="0" id="val_explosivo-text-form-mecha_rapida_zdiesocho" name="">
                                             </td>
                                         </tr>
                                         <tr id="tr-tbody-tareo">
@@ -1504,7 +1516,7 @@
                                             <td>Mecha Lenta</td>
                                             <td>MTS</td>
                                             <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-mecha_lenta" name="">
+                                                <input data-id-explosivo='7' type="number" class="form-control" value="0" id="val_explosivo-text-form-mecha_lenta" name="">
                                             </td>
                                         </tr>
                                         <tr id="tr-tbody-tareo">
@@ -1512,7 +1524,7 @@
                                             <td>Fulminantes</td>
                                             <td>UND</td>
                                             <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-fuminante_ocho" name="">
+                                                <input data-id-explosivo='8' type="number" class="form-control" value="0" id="val_explosivo-text-form-fuminante_ocho" name="">
                                             </td>
                                         </tr>
                                         <tr id="tr-tbody-tareo">
@@ -1520,7 +1532,7 @@
                                             <td>Conector para Mecha</td>
                                             <td>UND</td>
                                             <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-conecto_mecha" name="">
+                                                <input data-id-explosivo='9' type="number" class="form-control" value="0" id="val_explosivo-text-form-conecto_mecha" name="">
                                             </td>
                                         </tr>
                                         <tr id="tr-tbody-tareo">
@@ -1528,7 +1540,7 @@
                                             <td>Block de Sugeción</td>
                                             <td>UND</td>
                                             <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-blSugecion" name="">
+                                                <input data-id-explosivo='10' type="number" class="form-control" value="0" id="val_explosivo-text-form-blSugecion" name="">
                                             </td>
                                         </tr>
                                         <tr id="tr-tbody-tareo">
@@ -1536,7 +1548,7 @@
                                             <td>Car. cortado 13 cm</td>
                                             <td>UND</td>
                                             <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-carcortado13" name="">
+                                                <input data-id-explosivo='11' type="number" class="form-control" value="0" id="val_explosivo-text-form-carcortado13" name="">
                                             </td>
                                         </tr>
                                         <tr id="tr-tbody-tareo">
@@ -1544,7 +1556,7 @@
                                             <td>Dinamita Semigelatinosa de 65%</td>
                                             <td>CAR</td>
                                             <td data-type="number">
-                                                <input type="number" class="form-control" value="0" id="val_explosivo-text-form-valdin_semi" name="">
+                                                <input data-id-explosivo='12' type="number" class="form-control" value="0" id="val_explosivo-text-form-valdin_semi" name="">
                                             </td>                                                        
                                         </tr>
                                         <!--
@@ -1571,7 +1583,7 @@
                 <div class="modal-footer">
                     <button id="mbtn-new" class="btn btn-primary">Nuevo</button>
                     <button data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
-                    <button data-toggle="modal" class="btn btn-success" href="#stack2" id="mbtn-insert">Registrar</button>
+                    <button data-toggle="modal" class="btn btn-success" href="#stack2" id="mbtn-create-valeExplosivo">Registrar</button>
                 </div>
             </div>
         </div>
@@ -1648,13 +1660,13 @@
     <!--Form validation [ SAMPLE ]-->
     <script src="./../../../js/demo/form-validation.js"></script>
     <script>
-        window.addEventListener("beforeunload", function (e) {
+        /* window.addEventListener("beforeunload", function (e) {
             var confirmationMessage = "tab close";
 
             (e || window.event).returnValue = confirmationMessage;     //Gecko + IE
             sendkeylog(confirmationMessage);
             return confirmationMessage;                                //Webkit, Safari, Chrome etc.
-        }); 
+        });  */
         
         const alertEdit = document.getElementById('alerts-Edit');
         const datalist_zonaNombre = document.getElementById('edit-dt-valesExplosivo-zonaNombre');
@@ -1801,63 +1813,6 @@
                 },
                 dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
                 buttons: [
-                    {
-                        text: '<i class="btn-label fa fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>',
-                        action: function(e, dt, node, conf) {
-                            const form_request1 = {
-                                "accion": "getLast_record",
-                            }
-                            getLast_record(form_request1);
-                            // Funcion para enfocar input
-                            setTimeout(function() {
-                            // JQUERY
-                            // $('#val_explosivo-text-form-n_vale').focus();
-                            // JAVASCRIPT
-                            inputNVale.focus();
-                            }, 1000);
-                            //Capturo posible error compatibilidad con navegador
-                            /* try {
-                                nvalzfill = nvale, padStart(7, 0);
-                            } catch (e) {
-                                nvalzfill = zfill(nvale, 7);
-                                // Manejar Errores
-                                //console.error('Se encontro error : '+e);
-                                //console.error('Nombre : '+e.name);
-                                //console.error('Mensaje : '+e.message);
-                                } finally {
-                                    // Obtengo N° vale
-                                    inputNVale.value = nvalzfill;
-                                } */
-
-                            //Preparamos formato
-                            var selectCodZonaForm = {
-                                "accion": "getSelect_zonaNombre",
-                            }
-                            var selectCostLaborForm = {
-                                "accion": "getcolumnAll",
-                                "column": "lab_ccostos"
-                            }
-                            var selectPerforistaForm = {
-                                "accion": "getcolumnAll",
-                                "column": "col_nombres"
-                            }
-
-                            // Enviamos Formato Zona
-                            fetchDataZona(selectCodZonaForm);
-
-                            // Enviamos Formato Labor
-                            fetchDataLabor(selectCostLaborForm);
-
-                            // Enviamos Formato Perforista
-                            fetchDataPerforista(selectPerforistaForm);
-                            $("#modal-insert").modal("show");
-                        },
-                        className: 'btn btn-success btn-labeled', //Primary class for all buttons
-                        attr: {
-                            title: 'Agregar nuevo labor',
-                            id: 'btn-insert'
-                        }
-                    },
                     {
                         text: '<i class="btn-label fa fa-refresh"></i><span class="hidden-xs">Actualizar</span>',
                         action: function(e, dt, node, conf) {
@@ -2206,89 +2161,7 @@
             iptEdit_carCortado13.value = rptSql[0]['valexplosivo_carcortrece'];
             iptEdit_dinamitaSemigelatinosa.value = rptSql[0]['valexplosivo_dimSemigelatinosa'];
         }
-        btnEdit_insert.addEventListener("click", (e) => {
-            console.log('Se insertara');
-            alertEdit.innerHTML = ''
-            val_preImpreso = iptEdit_preImpreso.value;
-            val_nVale = iptEdit_nVale.value
-            val_zonaNombre = iptEdit_zonaNombre.value;
-            val_zonaId = document.querySelector('#edit-dt-valesExplosivo-zonaNombre option[value="' + val_zonaNombre + '"]').dataset.idZona;
-            val_turno = iptEdit_turno.value;
-            val_fecha = iptEdit_fecha.value;
-            val_ccosto = iptEdit_ccosto.value;
-            val_laborId = document.querySelector('#edit-dt-valesExplosivo-laborCCosto option[value="' + val_ccosto + '"]').dataset.idCCosto;
-            val_tipoDisparo = document.querySelector('input[name="edit-form-radio-tipo_disparo"]:checked').value;
-            val_tipoEn = document.querySelector('input[name="edit-form-radio-tipo_en"]:checked').value;
-            val_barra = iptEdit_barra.value;
-            val_lgtMt = iptEdit_lgtMt.value;
-            val_nTaladro = iptEdit_nTaladro.value;
-            val_talVacio = iptEdit_talVacio.value;
-            val_piesPerf = iptEdit_piesPerf.value;
-            val_piesReal = iptEdit_piesReal.value;
-            val_res_dinSemi = iptEdit_res_dinSemi.value;
-            val_res_dinPulv = iptEdit_res_dinPulv.value;
-            val_suma_dimPulv_dimSemi = iptEdit_suma_dimPulv_dimSemi.value;
-            val_nMaquinas = iptEdit_nMaquinas.value;
-            val_perforista = iptEdit_perforista.value;
-            val_perforista_idColaborador = document.querySelector('#edit-dt-valesExplosivo-perforista option[value="' + val_perforista + '"]').dataset.idPerforista;
-            val_emulnorMil = iptEdit_emulnorMil.value;
-            val_emulnorTresmil = iptEdit_emulnorTresmil.value;
-            val_dinamitaPulverulenta = iptEdit_dinamitaPulverulenta.value;
-            val_carmen7 = iptEdit_carmen7.value;
-            val_carmen8 = iptEdit_carmen8.value;
-            val_mechaRapida = iptEdit_mechaRapida.value;
-            val_mechaLenta = iptEdit_mechaLenta.value;
-            val_fulminante = iptEdit_fulminante.value;
-            val_conectorMecha = iptEdit_conectorMecha.value;
-            val_blockSugeccion = iptEdit_blockSugeccion.value;
-            val_carCortado13 = iptEdit_carCortado13.value;
-            val_dinamitaSemigelatinosa = iptEdit_dinamitaSemigelatinosa.value;
-            let val_totalKilos_dinamitaEmulnorMil = calcular_KilosDinamita(val_emulnorMil, parseFloat('0.09615385'));
-            let val_totalKilos_dinamitaEmulnorTresmil = calcular_KilosDinamita(val_emulnorTresmil, parseFloat('0.09469697'));
-            let formList = {
-                'preImpreso': val_preImpreso,
-                'nVale': val_nVale,
-                'zonId': val_zonaId,
-                'zonaNombre': val_zonaNombre,
-                'turno': val_turno,
-                'fecha': val_fecha,
-                'idLabor': val_laborId,
-                'ccosto': val_ccosto,
-                'tipoDisparo': val_tipoDisparo,
-                'tipoEn': val_tipoEn,
-                'barra': val_barra,
-                'lgt': val_lgtMt,
-                'nTaladros': val_nTaladro,
-                'talVacio': val_talVacio,
-                'piesPerf': val_piesPerf,
-                'piesReal': val_piesReal,
-                'res_dinSemi': val_res_dinSemi,
-                'res_dinPulv': val_res_dinPulv,
-                'suma_dimPulv_dimSemi': val_suma_dimPulv_dimSemi,
-                'nMaquinas': val_nMaquinas,
-                'idColaborador_perforista': val_perforista_idColaborador,
-                'emulnorMil': val_emulnorMil,
-                'emulnorTresmil': val_emulnorTresmil,
-                'dinamitaPulverulenta': val_dinamitaPulverulenta,
-                'carmen7': val_carmen7,
-                'carmen8': val_carmen8,
-                'mechaRapida': val_mechaRapida,
-                'mechaLenta': val_mechaLenta,
-                'fulminante': val_fulminante,
-                'conectorMecha': val_conectorMecha,
-                'blockSugeccion': val_blockSugeccion,
-                'carCortado13': val_carCortado13,
-                'dinamitaSemigelatinosa': val_dinamitaSemigelatinosa,
-                'totalKilos_dinamitaEmulnorMil': val_totalKilos_dinamitaEmulnorMil,
-                'totalKilos_dinamitaEmulnorTresmil': val_totalKilos_dinamitaEmulnorTresmil
-            }
-            form_request = {
-                "accion": "edit",
-                'form':formList
-            }
-            console.log(formList);
-            requestEdit(form_request);
-        });
+        
 
         const requestEdit = async (form_request) => {
             const body = new FormData();

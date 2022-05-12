@@ -12,16 +12,17 @@ class kardexGeneral extends Conexion
     {
         try 
         {
+
             $this->db->setAttribute(pdo::ATTR_EMULATE_PREPARES, 0);
             $query = "
-            SELECT T.valexplosivo_nvale, T.kardex_fechaRegistro, T.explosivo_codigo, T.explosivo_descripcion, T.kardex_tipo, T.kardex_cantidad,
-T.Entrada, T.Salida, T.saldo, T.saldo
-   FROM (
-      SELECT ek.valeExplosivo_id, valexplosivo_nvale, ek.kardex_tipo, kardex_fechaRegistro, explosivo_id, 
-		e.explosivo_codigo, e.explosivo_descripcion, e.explosivo_unidadMedida,
-		kardex_cantidad, (SELECT @total:=0),
-		@entrada := IF(ek.kardex_tipo = 'entrada',(ek.kardex_cantidad),(0)) AS Entrada,
-		@salida := IF(ek.kardex_tipo = 'salida',(ek.kardex_cantidad),(0)) AS Salida,
+            SELECT T.vale_id, T.kardex_fechaRegistro, T.kardex_nvale, T.explosivo_codigo, T.explosivo_descripcion, T.kardex_tipo, T.kardex_cantidad,
+            T.Entrada, T.Salida, T.saldo
+            FROM (
+            SELECT ek.vale_id, ek.kardex_nvale, valexplosivo_nvale, ek.kardex_tipo, kardex_fechaRegistro, explosivo_id, 
+		    e.explosivo_codigo, e.explosivo_descripcion, e.explosivo_unidadMedida,
+		    kardex_cantidad, (SELECT @total:=0),
+		    @entrada := IF(ek.kardex_tipo = 'entrada',(ek.kardex_cantidad),(0)) AS Entrada,
+		    @salida := IF(ek.kardex_tipo = 'salida',(ek.kardex_cantidad),(0)) AS Salida,
 		        CASE 
 		            WHEN (@explosivo = '' OR @explosivo = ek.explosivo_id) AND ek.kardex_tipo = 'entrada' THEN @saldo:= @saldo + ek.kardex_cantidad
 		            WHEN (@explosivo = '' OR @explosivo = ek.explosivo_id) AND ek.kardex_tipo = 'salida' THEN @saldo:= @saldo - ek.kardex_cantidad
@@ -30,10 +31,10 @@ T.Entrada, T.Salida, T.saldo, T.saldo
 		        END AS Saldo,
 		        @explosivo:= ek.explosivo_id
 		        FROM (SELECT (SELECT @saldo:=0), (SELECT @explosivo:=0), tk.* FROM tvalexplosivos_kardex AS tk) AS ek 
-				  LEFT JOIN tvalexplosivos AS vlES ON ek.valeExplosivo_id = vlES.id_valexplosivo
+				  LEFT JOIN tvalexplosivos AS vlES ON ek.vale_id = vlES.id_valexplosivo
 				  LEFT JOIN explosivos AS e ON ek.explosivo_id = e.id_explosivo
-		        ORDER BY ek.explosivo_id, ek.kardex_fechaRegistro
-        ) T WHERE T.explosivo_id = {$idExplosivo};";
+		        ORDER BY ek.explosivo_id, ek.kardex_fechaRegistro, ek.kardex_nvale
+        ) T WHERE T.explosivo_id =  {$idExplosivo} AND T.kardex_fechaRegistro  BETWEEN '2022-01-02' AND '2022-01-04'";
             return $this->ConsultaSimple($query);
         }
         catch (PDOException $e) {

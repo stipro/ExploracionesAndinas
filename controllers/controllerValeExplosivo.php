@@ -2,6 +2,7 @@
 header('Content-type: application/json; charset=utf-8');
 // Verifico si se recibio Informacion
 if($_POST){
+    $rptSqlGeneral='';
     $nametable = 'tvalexplosivos';
     $rptSql= '';
     $rptController = 'Se recibio datos';
@@ -22,6 +23,22 @@ if($_POST){
         switch ($accion) {
             case "insertar":
                 $formRequest = $arrayForm['list'];
+                //var_dump($formRequest);
+                $detail = $formRequest['detail'];
+                foreach ($detail as &$valor) {
+                    $valor['id'] = 1 ? $datoemulMil = $valor['cantidad'] : $datoemulMil = 0;
+                    $valor['id'] = 2 ? $datoemulTresmil = $valor['cantidad'] : $datoemulTresmil = 0;
+                    $valor['id'] = 3 ? $datoDinaPulv = $valor['cantidad'] : $datoDinaPulv = 0;
+                    $valor['id'] = 4 ? $datCarmexsiete = $valor['cantidad'] : $datCarmexsiete = 0;
+                    $valor['id'] = 5 ? $datCarmexocho = $valor['cantidad'] : $datCarmexocho = 0;
+                    $valor['id'] = 6 ? $datomechaRapida = $valor['cantidad'] : $datomechaRapida = 0;
+                    $valor['id'] = 7 ? $datomechaLenta = $valor['cantidad'] : $datomechaLenta = 0;
+                    $valor['id'] = 8 ? $datofulmOcho = $valor['cantidad'] : $datofulmOcho = 0;
+                    $valor['id'] = 9 ? $datoconecMecha = $valor['cantidad'] : $datoconecMecha = 0;
+                    $valor['id'] = 10 ? $datoBlockSegacion = $valor['cantidad'] : $datoBlockSegacion = 0;
+                    $valor['id'] = 11 ? $datoCarCortrece = $valor['cantidad'] : $datoCarCortrece = 0;
+                    $valor['id'] = 12 ? $datoDinaSemi = $valor['cantidad'] : $datoDinaSemi = 0;
+                }
                 $idDigitador = $formRequest['id_digitador'];
                 $datoRegistro = $formRequest['fechRegistro'];
                 if (array_key_exists('id_zona', $formRequest)) {
@@ -59,21 +76,9 @@ if($_POST){
                 $datopiePerf = $formRequest['pies_perf'];
                 $datopieReal = $formRequest['pies_real'];
                 $datonnMaquinas = $formRequest['n_maquinas'];
-                $datoemulMil = $formRequest['emulno_mil'];
-                $datoemulTresmil = $formRequest['emulno_tresmil'];
-                $datoDinaSemi = $formRequest['me_dina_semi'];
                 $datocalDinaSemi = $formRequest['cal_dina_semi'];
-                $datoDinaPulv = $formRequest['me_dina_pulv'];
                 $datocalDinaPulv = $formRequest['cal_dina_pulv'];
                 $datosumSemiPulv = $formRequest['suma_pulv_sumi'];
-                $datCarmexsiete = $formRequest['me_carmen_siete'];
-                $datCarmexocho = $formRequest['me_carmen_ocho'];
-                $datomechaRapida = $formRequest['me_mecha_rapida'];
-                $datomechaLenta = $formRequest['me_mecha_lenta'];
-                $datofulmOcho = $formRequest['me_fulminante_ocho'];
-                $datoconecMecha = $formRequest['me_conector_mecha'];
-                $datoBlockSegacion = $formRequest['me_BlockSegecion'];
-                $datoCarCortrece = $formRequest['me_Carcortadotrece'];
                 $datoDEmulnorMil = $formRequest['totalKilos_DEmulnorMil'];
                 $datoDEmulnorTresmil = $formRequest['totalKilos_DEmulnorTresmil'];
                 if (!empty($idDigitador) && !empty($datoRegistro) && !empty($idZona) && !empty($datonVale) && !empty($idLabor)) 
@@ -114,11 +119,17 @@ if($_POST){
                             $datoDEmulnorMil,
                             $datoDEmulnorTresmil);
                             $rptSql;
-                            $rptController = [
-                                "estado" => 1,
-                                "mensaje" => "No hay variables vacios",
-                            ];
-                        $rptSql = $table->createDetalle();
+                        $rptController = [
+                            "estado" => 1,
+                            "mensaje" => "No hay variables vacios",
+                        ];
+                        $id = $rptSql['id'];
+                        var_dump($id);
+                        $rptSql2 = $table->createDetalle($id, $detail);
+                        $rptSqlGeneral = array(
+                            "sql1" => $rptSql,
+                            "sql2" => $rptSql2
+                        );
                     }
                     else{
                         $rptController = [
@@ -139,6 +150,7 @@ if($_POST){
                 break;
         }
     } catch (Exception $e) {
+        echo 'Excepción capturada: ',  $e->getMessage(), "\n";
         $rptController = [
             "estado" => 0,
             "mensaje" => "Se encontro un error",
@@ -150,7 +162,7 @@ else{
     $rptController = 'no Se recibio datos';
 }
 $rptjsonControlller = array(
-    "sql" => $rptSql,
+    "sql" => $rptSqlGeneral,
     "rptController" => $rptController
 );
 echo json_encode($rptjsonControlller);

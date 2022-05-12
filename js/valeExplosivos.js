@@ -10,11 +10,14 @@ var endTour = 3;
 // FILAS A VISUALIZAR
 var rowstoDisplay = 5;
 
+const btnCreate_valeExplosivo = document.getElementById("btn-agregar-valeExplosivo");
+
+const mbtnCreate_valeExplosivo = document.getElementById("mbtn-create-valeExplosivo");
 const alertInsert = document.getElementById("alert-form-insert");
 
 //* DECLARACIÓNES BOTONES
 /* const btnAgregar = document.getElementById("btn-Agregar"); */
-const btnInsertar = document.getElementById("mbtn-insert");
+
 const btnEdit_insert = document.getElementById("mbtnEdit-edit");
 
 const btnNuevo = document.getElementById("mbtn-new");
@@ -91,7 +94,7 @@ var inputFormMechaRapida = document.getElementById('val_explosivo-text-form-mech
 // Mecha Lenta
 var inputFormMechaLenta = document.getElementById('val_explosivo-text-form-mecha_lenta');
 // Fulminantes
-var inputFormFulminante_ocho = document.getElementById('val_explosivo-text-form-fuminante_ocho');
+var inputFormFulminante = document.getElementById('val_explosivo-text-form-fuminante_ocho');
 // Conector para Mecha
 var inputFormConector_Mecha = document.getElementById('val_explosivo-text-form-conecto_mecha');
 // Block de Sugeción
@@ -185,11 +188,36 @@ const iptEdit_perforista = document.getElementById('edit-valesExplosivo-perforis
 // Eventos
 // El evento DOMContentLoaded es disparado cuando el documento HTML ha sido completamente cargado y parseado
 document.addEventListener('DOMContentLoaded', e => {
-    /* var formId = {
-        "accion": "idTable",
-        "column": "id_valexplosivo"
+
+});
+
+btnCreate_valeExplosivo.addEventListener("click", (e) => {
+    const form_request1 = {
+        "accion": "getLast_record",
     }
-    fetchData(formId) */
+    getLast_record(form_request1);
+    // Enfocar el input indicado
+    inputNVale.focus();
+    // Preparamos formato
+    var selectCodZonaForm = {
+        "accion": "getSelect_zonaNombre",
+    }
+    var selectCostLaborForm = {
+        "accion": "getcolumnAll",
+        "column": "lab_ccostos"
+    }
+    var selectPerforistaForm = {
+        "accion": "getColumn_fullname",
+    }
+
+    // Enviamos Formato Zona
+    fetchDataZona(selectCodZonaForm);
+
+    // Enviamos Formato Labor
+    fetchDataLabor(selectCostLaborForm);
+
+    // Enviamos Formato Perforista
+    fetchDataPerforista(selectPerforistaForm);
 });
 
 /* // Traer productos
@@ -238,7 +266,7 @@ btnNuevo.addEventListener("click", (e) => {
     inputFormCarmexocho.value = "0";
     inputFormMechaRapida.value = "0";
     inputFormMechaLenta.value = "0";
-    inputFormFulminante_ocho.value = "0";
+    inputFormFulminante.value = "0";
     inputFormConector_Mecha.value = "0";
     inputFormBlockSegecion.value = "0";
     inputFormCarcortado13.value = "0";
@@ -250,37 +278,35 @@ $('.chosenLabNombre').chosen();
 $('.chosenNMaquina').chosen();
 
 // Boton de Insertar Dato
-btnInsertar.addEventListener("click", () => {
-    // ZONA
-    zonaSelect = selectZona.options[selectZona.selectedIndex];
-    valselectZona = zonaSelect.value;
-    valIdZona = zonaSelect.getAttribute('data-id-zona');
-    console.log(valIdZona);
-
-    valselectTurno = selectTurno.value;
-
+mbtnCreate_valeExplosivo.addEventListener("click", () => {
+    let listInsert = new Object();
+    let detail = [];
     //Generamos PreImpreso
     diaRegistro = new Date();
     idNumeracion = 1;
-    
-
     // Obteniendo Dato
-    valDigitador = inputDigitador.dataset.id;
-
+    // Digitador
+    let val_digitador = inputDigitador.dataset.id;
+    // Numero de Vale
+    let val_nNVale = inputNVale.value;
+    // Zona
+    zonaSelect = selectZona.options[selectZona.selectedIndex];
+    valselectZona = zonaSelect.value;
+    let val_zonaId = zonaSelect.getAttribute('data-id-zona');
+    // Turno
+    valselectTurno = selectTurno.value;
+    // Fecha de vale Explosivo
     valdateRegistro = dateRegistro.value;
+    // Centro de Costos
+    var costLaborSelect = selectCostLabor.options[selectCostLabor.selectedIndex];
+    valselectCostLabor = costLaborSelect.textContent;
+    validLabor = costLaborSelect.dataset.idLabor;
 
-    valinputNVale = inputNVale.value;
 
     codigoValeExplosivo = 'VE' + diaRegistro.getDate() + valselectTurno.charAt(0).toUpperCase() + valselectZona.charAt(0).toUpperCase();
     inputPreImpre.value = codigoValeExplosivo;
 
     valinputPreImpre = inputPreImpre.value;
-
-    // Codigo Labor
-    var costLaborSelect = selectCostLabor.options[selectCostLabor.selectedIndex];
-    valselectCostLabor = costLaborSelect.textContent;
-    validLabor = costLaborSelect.dataset.idLabor;
-
 
     // Nombre Labor
     nombLaborSelect = selectNombLabor.options[selectNombLabor.selectedIndex] ? selectNombLabor.options[selectNombLabor.selectedIndex] : "0"
@@ -292,10 +318,7 @@ btnInsertar.addEventListener("click", () => {
     // Tipo de Disparo
     valradioTipo_dis = document.querySelector('input[name="form-radio-tipo_disparo"]:checked').value
 
-    // Perforista
-    perforistaSelect = selectPerforista.options[selectPerforista.selectedIndex];
-    valselectPerforista = perforistaSelect.value;
-    valIdPerforista = perforistaSelect.getAttribute('data-id-perforista');
+
 
     // Tipo en
     valradioTipo_en = document.querySelector('input[name="form-radio-tipo_en"]:checked').value
@@ -311,44 +334,82 @@ btnInsertar.addEventListener("click", () => {
     valinputFormTVacio = inputFormTVacio.value;
 
     // Resultado
+    // Pies Perforados
     valinputFormPPerf = inputFormPPerf.value;
+    // Pies Reales
     valinputFormPReal = inputFormPReal.value;
-
+    // Resultado
+    // Calculo Dinamita Semigelationsa
+    valdinSemiResult = inputFormCalDimResultSemigelatinosa.value;
+    // Calculo Dinamita Pulvurulenta
+    valdinPulvResult = inputFormCalDimResultPulverulenta.value;
+    // Suma de Calculo
+    valSunaSemi_Pulv = inputFormSumaPulSemi.value;
+    // N° Maquina
     selectNMaquinasSelect = selectNMaquinas.options[selectNMaquinas.selectedIndex];
     valselectNMaquinas = selectNMaquinasSelect.textContent;
-
-    valdinSemiResult = inputFormCalDimResultSemigelatinosa.value;
-    valdinPulvResult = inputFormCalDimResultPulverulenta.value;
-
-    valdinSemi = inputFormCalDimValorSemigelatinosa.value;
-    valdinPulv = inputFormCalDimValorPulverulenta.value;
-
-    Carmexsiete = inputFormCarmexsiete.value;
-    Carmexocho = inputFormCarmexocho.value;
-
-    valSunaSemi_Pulv = inputFormSumaPulSemi.value;
+    // Perforista
+    perforistaSelect = selectPerforista.options[selectPerforista.selectedIndex];
+    valselectPerforista = perforistaSelect.textContent;
+    valIdPerforista = perforistaSelect.getAttribute('data-id-perforista');
+    // Materiales Explosivos
     // Obtenemos valor Emulnor de 1000 y 3000
-    valEmulnormil = inputFormEmulnormil.value;
-    valEmulnostresmil = inputFormEmulnostresmil.value;
-    const totalKilos_dinamitaEmulnorMil = calcular_KilosDinamita(valEmulnormil, parseFloat('0.09615385'));
-    const totalKilos_dinamitaEmulnorTresmil = calcular_KilosDinamita(valEmulnostresmil, parseFloat('0.09469697'));
-
-    valMechaRapida = inputFormMechaRapida.value;
-    valMechaLenta = inputFormMechaLenta.value;
-
-    //valMecha = inputFormMecha.value;
-
-    valFulminante_ocho = inputFormFulminante_ocho.value;
-
-    valConector_Mecha = inputFormConector_Mecha.value;
-    valBlockSegecion = inputFormBlockSegecion.value;
-    valCarcortado13 = inputFormCarcortado13.value;
-    // Preparando Datos
-    var listInsert = {
-        "id_digitador": valDigitador,
+    let dtSet_Emulnormil = inputFormEmulnormil.dataset.idExplosivo;
+    let valEmulnormil = inputFormEmulnormil.value;
+    valEmulnormil>0 ? detail.push({'id': dtSet_Emulnormil, 'cantidad': valEmulnormil}):'';
+    // Emulnor 3000
+    let dtSet_Emultresmil = inputFormEmulnostresmil.dataset.idExplosivo;
+    let val_emulTresmil = inputFormEmulnostresmil.value;
+    val_emulTresmil>0 ? detail.push({'id': dtSet_Emultresmil, 'cantidad': val_emulTresmil}):'';
+    // Calculos
+    let totalKilos_dinamitaEmulnorMil = calcular_KilosDinamita(valEmulnormil, parseFloat('0.09615385'));
+    let totalKilos_dinamitaEmulnorTresmil = calcular_KilosDinamita(val_emulTresmil, parseFloat('0.09469697'));
+    // Fin Calculo
+    // Dinamita Pulverulenta 65 7/8
+    let dtSet_dinamitaPulvurulenta = inputFormCalDimValorPulverulenta.dataset.idExplosivo;
+    let val_dinamitaPulvurulenta = inputFormCalDimValorPulverulenta.value;
+    val_dinamitaPulvurulenta>0 ? detail.push({'id': dtSet_dinamitaPulvurulenta, 'cantidad': val_dinamitaPulvurulenta}):'';
+    // Carmex 7
+    let dtSet_carmexSiete = inputFormCarmexsiete.dataset.idExplosivo;
+    let val_carmexSiete = inputFormCarmexsiete.value;
+    val_carmexSiete>0 ? detail.push({'id': dtSet_carmexSiete, 'cantidad': val_carmexSiete}):'';
+    // Carmex 8
+    let dtSet_carmexOcho = inputFormCarmexocho.dataset.idExplosivo;
+    let val_carmexOcho = inputFormCarmexocho.value;
+    val_carmexOcho>0 ? detail.push({'id': dtSet_carmexOcho, 'cantidad': val_carmexOcho}):'';
+    // Mecha Rapida
+    let dtSet_mechaRapida = inputFormMechaRapida.dataset.idExplosivo;
+    let val_mechaRapida = inputFormMechaRapida.value;
+    val_mechaRapida>0 ? detail.push({'id': dtSet_mechaRapida, 'cantidad': val_mechaRapida}):'';
+    // Mecha Lenta
+    let dtSet_mechaLenta = inputFormMechaLenta.dataset.idExplosivo;
+    let val_mechaLenta = inputFormMechaLenta.value;
+    val_mechaLenta>0 ? detail.push({'id': dtSet_mechaLenta, 'cantidad': val_mechaLenta}):'';
+    // Fulminantes
+    let dtSet_fulminante = inputFormFulminante.dataset.idExplosivo;
+    let val_fulminante = inputFormFulminante.value;
+    val_fulminante>0 ? detail.push({'id': dtSet_fulminante, 'cantidad': val_fulminante}):'';
+    // Conector para Mecha
+    let dtSet_conectorMecha = inputFormConector_Mecha.dataset.idExplosivo;
+    let val_conectorMecha = inputFormConector_Mecha.value;
+    val_conectorMecha>0 ? detail.push({'id': dtSet_conectorMecha, 'cantidad': val_conectorMecha}):'';
+    // Block de Sugeción
+    let dtSet_blockSegecion = inputFormBlockSegecion.dataset.idExplosivo;
+    let val_blockSegecion = inputFormBlockSegecion.value;
+    val_blockSegecion>0 ? detail.push({'id': dtSet_blockSegecion, 'cantidad': val_blockSegecion}):'';
+    // Carrizo cortado de 13cm
+    let dtSet_carcortado13 = inputFormCarcortado13.dataset.idExplosivo;
+    let val_carcortado13 = inputFormCarcortado13.value;
+    val_carcortado13>0 ? detail.push({'id': dtSet_carcortado13, 'cantidad': val_carcortado13}):'';
+    // Dinamita Semigelatinosa de 65%
+    let dtSet_dinamitaSemigelatinosa = inputFormCalDimValorSemigelatinosa.dataset.idExplosivo;
+    let val_dinamitaSemigelatinosa = inputFormCalDimValorSemigelatinosa.value;
+    val_dinamitaSemigelatinosa>0 ? detail.push({'id': dtSet_dinamitaSemigelatinosa, 'cantidad': val_dinamitaSemigelatinosa}):'';
+    listInsert = ({
+        "id_digitador": val_digitador,
+        "n_vale": val_nNVale,
         "fechRegistro": valdateRegistro,
-        "id_zona": valIdZona,
-        "n_vale": valinputNVale,
+        "id_zona": val_zonaId,
         "turno": valselectTurno,
         "pre_impreso": valinputPreImpre,
         "id_labor": validLabor,
@@ -362,26 +423,15 @@ btnInsertar.addEventListener("click", () => {
         "pies_perf": valinputFormPPerf,
         "pies_real": valinputFormPReal,
         "n_maquinas": valselectNMaquinas,
-        "emulno_mil": valEmulnormil,
-        "emulno_tresmil": valEmulnostresmil,
-        "me_dina_semi": valdinSemi,
         "cal_dina_semi": valdinSemiResult,
-        "me_dina_pulv": valdinPulv,
         "cal_dina_pulv": valdinPulvResult,
         "suma_pulv_sumi": valSunaSemi_Pulv,
-        "me_carmen_siete": Carmexsiete,
-        "me_carmen_ocho": Carmexocho,
-        "me_mecha_rapida": valMechaRapida,
-        "me_mecha_lenta": valMechaLenta,
-        "me_fulminante_ocho": valFulminante_ocho,
-        "me_conector_mecha": valConector_Mecha,
-        "me_BlockSegecion": valBlockSegecion,
-        "me_Carcortadotrece": valCarcortado13,
         "totalKilos_DEmulnorMil": totalKilos_dinamitaEmulnorMil,
-        "totalKilos_DEmulnorTresmil": totalKilos_dinamitaEmulnorTresmil
-    };
-    requestInsert(listInsert);
+        "totalKilos_DEmulnorTresmil": totalKilos_dinamitaEmulnorTresmil,
+    });
+    listInsert.detail = detail;
     console.log(listInsert);
+    requestInsert(listInsert);
 });
 
 // Se envia Formulario
@@ -391,7 +441,6 @@ const requestInsert = async (form) => {
         "accion": 'insertar',
         "list": form
     };
-    console.log(data);
     body.append("data", JSON.stringify(data));
     const returned = await fetch("./../../../controllers/controllerValeExplosivo.php", {
         method: "POST",
@@ -415,26 +464,6 @@ const afterRequestInsert = (data) => {
             focus: false,
             timer: 8000
         });
-        /*
-    selectFormBarra.value = "0"
-    inputFormLgt_mt.value = "0"
-    inputFormNTaladro.value = "0"
-    inputFormTVacio.value = "0"
-    inputFormPPerf.value = "0"
-    inputFormPReal.value = "0"
-    inputFormCalDimResultSemigelatinosa.value = "0"
-    inputFormCalDimResultPulverulenta.value = "0"
-    inputFormSumaPulSemi.value = "0"
-    inputNivelLabor.value = "0"
-    inputFormCalDimValorSemigelatinosa.value = "0"
-    inputFormCalDimValorPulverulenta
-    inputFormEmulnormil.value = "0"
-    inputFormEmulnostresmil.value = "0"
-    inputFormMechaRapida.value = "0"
-    inputFormMecha.value = "0"
-    inputFormFulminante_ocho.value = "0"
-    inputFormConector_Mecha.value = "0"*/
-        console.log('Si');
     } else {
         if (data['rptController']['estado'] == 0) {
             $.niftyNoty({
@@ -451,10 +480,7 @@ const afterRequestInsert = (data) => {
                 focus: false,
             });
         }
-
-        console.log('No');
     }
-    console.log(data);
 };
 
 // Aumento de numeros
@@ -477,66 +503,6 @@ function zfill(number, width) {
         }
     }
 }
-/**
- * console.log(zfill(324, 2)); //324
- * console.log(zfill(324, 3)); //324
- * console.log(zfill(324, 4)); //0324
- * console.log(zfill(324, 5)); //00324 
- * console.log(zfill(324, 10)); //0000000324
- * console.log(zfill(-324, 5)); //324
- */
-// Fin Aumento de numeros
-
-// Funcion Boton Agregar
-/* btnAgregar.addEventListener("click", () => {
-    console.log('numero de vale es : ' + idRegistro);
-    // Funcion para enfocar input
-    setTimeout(function() {
-        // $('#val_explosivo-text-form-n_vale').focus();
-        inputNVale.focus();
-    }, 1000);
-    //$('#val_explosivo-text-form-n_vale').focus();
-    //Declaramos variables
-    nvale = '9000';
-
-    //Capturo posible error compatibilidad con navegador
-    try {
-        nvalzfill = nvale, padStart(7, 0);
-    } catch (e) {
-        nvalzfill = zfill(nvale, 7);
-        // Manejar Errores
-        //console.error('Se encontro error : '+e);
-        //console.error('Nombre : '+e.name);
-        //console.error('Mensaje : '+e.message);
-        //
-    } finally {
-        // Obtengo N° vale
-        inputNVale.value = nvalzfill;
-    }
-
-    //Preparamos formato
-    var selectCodZonaForm = {
-        "accion": "select",
-    }
-    var selectCostLaborForm = {
-        "accion": "getcolumnAll",
-        "column": "lab_ccostos"
-    }
-    var selectPerforistaForm = {
-        "accion": "getcolumnAll",
-        "column": "col_nombres"
-    }
-
-    // Enviamos Formato Zona
-    fetchDataZona(selectCodZonaForm);
-
-    // Enviamos Formato Labor
-    fetchDataLabor(selectCostLaborForm);
-
-    // Enviamos Formato Perforista
-    fetchDataPerforista(selectPerforistaForm);
-
-}); */
 
 // Traer JSON para Tabla (ZONA)
 const fetchDataZona = async (json) => {
@@ -580,14 +546,12 @@ const fetchDataLabor = async (json) => {
         body
     });
     const rptJson = await rpt.json(); //await JSON.parse(returned);
-    console.log(rptJson);
     paintSelectLabor(rptJson);
 };
 
 //Pintando Seleccion Codigo Labor
 const paintSelectLabor = (data) => {
     let arraySelect = data['sql'];
-    console.log(arraySelect);
     selectCostLabor.innerHTML = '';
     const templateSelectCostoLabor = document.querySelector("#template-opt-ccostos").content;
     const fragment = document.createDocumentFragment();
@@ -595,8 +559,6 @@ const paintSelectLabor = (data) => {
         objidLabNombre = valor['id_labNombre'];
         objidLabor = valor['id_labor'];
         objcodigoccostos = valor['lab_ccostos'];
-        //objNombrelabor_explosivos = valor['labExplosivos_nombre'];
-        //console.log(objNombre);
         templateSelectCostoLabor.querySelector("#optccostos").dataset.idLaborNombre = objidLabNombre;
         templateSelectCostoLabor.querySelector("#optccostos").dataset.idLabor = objidLabor;
         templateSelectCostoLabor.querySelector("#optccostos").textContent = objcodigoccostos;
@@ -615,7 +577,6 @@ $('#val_explosivo-text-form-labor_codigo').change(function() {
     //Obteniendo Valor Seleccionado
     codLaborSelect = selectCostLabor.options[selectCostLabor.selectedIndex];
     //idLaborNombre = codLaborSelect.dataset.idLaborNombre;
-    console.log(codLaborSelect);
     lab_ccostos = codLaborSelect.textContent;
     var selectNombreLaborForm = {
         "accion": "getcolumnWhere",
@@ -654,21 +615,17 @@ const paintselectnomLabor = (data) => {
     //selectTipoLabor.innerHTML = '';
 
     if (document.getElementById('val_explosivo_text_form_labor_chosen')) {
-        console.log('Si existe');
         /*
         var chilLaborNombre = document.getElementById('val_explosivo_text_form_labor_chosen');
         var contLaborNombre = document.getElementById('contChosenLaborNombre');
         contLaborNombre.removeChild(chilLaborNombre);*/
     } else {
-        console.log('No existe')
     }
 
     const templateSelectLabNombre = document.querySelector("#template-opt-labor_nombre").content;
     //const templateSelectLabTipo = document.querySelector("#template-opt-labor_tipo").content;
 
     const fragment = document.createDocumentFragment();
-    //const fragmentSelectLabTipo = document.createDocumentFragment();
-    console.log(arraySelect);
     inputNivelLabor.value = arraySelect[0]['lab_nivel'];
     arraySelect.forEach(function(valor, indice, array) {
 
@@ -704,8 +661,6 @@ const paintselectnomLabor = (data) => {
 // FIN CODIGO LABOR
 //Detectando Seleccion Nombre Labor
 $('#val_explosivo_text_form_labor_chosen a span').change(function() {
-    //Obteniendo Valor Seleccionado
-    console.log('Se hizo un cambio');
 });
 // CODIGO LABOR
 const fetchDataPerforista = async (json) => {
@@ -717,8 +672,8 @@ const fetchDataPerforista = async (json) => {
         body
     });
     const rptJson = await rpt.json(); //await JSON.parse(returned);
-    console.log(rptJson);
-    paintSelectPerforista(rptJson);
+    const rptSQL = rptJson['sql'];
+    paintSelectPerforista(rptSQL);
 };
 
 //Pintando Seleccion Codigo Labor
@@ -728,16 +683,12 @@ const paintSelectPerforista = (data) => {
     selectPerforista.innerHTML = '';
     const templateSelectPerforista = document.querySelector("#template-opt-perforista").content;
     const fragment = document.createDocumentFragment();
-    arraySelect.forEach(function(valor, indice, array) {
-        objId = valor['id_colaborador'];
-        objNombres = valor['col_nombres'];
-        objapePaterno = valor['col_apePaterno'];
-        obapeMaterno = valor['col_apeMaterno'];
-        templateSelectPerforista.querySelector("#opt-perforista").dataset.idPerforista = objId;
-        templateSelectPerforista.querySelector("#opt-perforista").textContent = objapePaterno + " " + obapeMaterno + " " + objNombres;
+    data.forEach(item => {
+        templateSelectPerforista.querySelector("#opt-perforista").dataset.idPerforista = item.id_colaborador;
+        templateSelectPerforista.querySelector("#opt-perforista").textContent = item.FullName;
         const clone = templateSelectPerforista.cloneNode(true);
         fragment.appendChild(clone)
-    });
+    })
     selectPerforista.appendChild(fragment);
     $('.chosenPerforistaName').trigger("chosen:updated");
 
@@ -750,7 +701,6 @@ $('.chosen-search-input').keydown('change', function(e){
 
 // Escucha Input Perforista
 selectPerforista.addEventListener('keyup', function(e) {
-    console.log('Enter en seleccion');
     var keycode = e.keyCode || e.width;
     // Valida Enter
     if (keycode == 13) {
@@ -771,8 +721,6 @@ function formPerforista() {
     // Codigo Labor
     costPerforistaSelect = selectPerforista.options[selectPerforista.selectedIndex];
     valselectPerforista = costPerforistaSelect.value;
-    //valPerforista = inputPerforista.value;
-    console.log(valselectPerforista);
     // Valida vacio
     if (valPerforista.length == 0) {
         $.niftyNoty({
@@ -787,7 +735,6 @@ function formPerforista() {
         if (!isNaN(valPerforista)) {
             // Valida DNI
             rptDni = validarDNI(valPerforista);
-            console.log('Dni : ' + rptDni);
             if (rptDni) {
                 // Preparamos formato
                 var busquedaPerforista = {
@@ -1186,10 +1133,10 @@ const datalist_laborName_etapa = document.getElementById("datalist-insert-laborN
 
 //Modulo Labor
 const btnAgregar_labor = document.getElementById('btn-insert-labor')
-// Modulo Nombre Labor
+/* // Modulo Nombre Labor
 const madd_labor_nombre = document.getElementById("add-labor");
 // Modulo Etapa
-const madd_labor_nombre_etapa = document.getElementById("add-etapa");
+const madd_labor_nombre_etapa = document.getElementById("add-etapa"); */
 // Botones Inferiores
 const mbtnInsert_laborNameEtapa = document.getElementById("mbtn-insert-laborNameEtapa");
 const mbtnClose_laborNameEtapa = document.getElementById("mbtn-close-laborNameEtapa");
@@ -1211,7 +1158,7 @@ btnAgregar_labor.addEventListener("click", (e) => {
         "accion": "getUnidMinera",
     }
     getSelect_unitMining(form_tres);
-    $("#modal-insert-labor").modal("show");
+    //$("#modal-insert-labor").modal("show");
 });
 
 const getSelect_workName = async (request) => {
@@ -1333,14 +1280,14 @@ insert_labor_unitMining.addEventListener('input', (e) => {
     }
 });
 
-// MODAL NOMBRE LABOR
+/* // MODAL NOMBRE LABOR
 madd_labor_nombre.addEventListener("click", (e) => {
     $('#modal-laborName').modal('show');
     const form = {
         "accion": "getLaborNombre_etapa",
     }
     getSelect_workName_etapa(form)
-})
+}) */
 const getSelect_workName_etapa = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
@@ -1365,9 +1312,9 @@ const paintSelectLaborNombre_etapa = (answerSql) => {
     })
     datalist_laborName_etapa.appendChild(fragmentLaborName);
 }
-madd_labor_nombre_etapa.addEventListener("click", (e) => {
+/* madd_labor_nombre_etapa.addEventListener("click", (e) => {
     $('#modal-laborNameEtapa').modal('show');
-})
+}) */
 
 // Etapa de labor
 mbtnInsert_laborNameEtapa.addEventListener("click", () => {

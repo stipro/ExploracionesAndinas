@@ -13,7 +13,7 @@ if($_POST){
         $accion = $arrayForm['accion'];
         switch ($accion) {
             case "tbeM_kardexExplosivos":
-                $paramentWhere = '1';
+                $paramentWhere = $arrayForm['paramentsWhere'];
                 $rptSql = $tableManager->explosivos($paramentWhere);
                 break;
         }

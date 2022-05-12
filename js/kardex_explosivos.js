@@ -51,7 +51,21 @@ document.addEventListener('DOMContentLoaded', e => {
         "endDate": "05/11/2022",
         "opens": "left"
     }, function(start, end, label) {
-      console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+        try {
+            console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+            let val_explosivo = ipt_explosivosKardex_explosivo.value;
+            let val_id = dtl_explosivosKardex_explosivo.querySelector("option[value='" +  val_explosivo + "']").dataset.idExplosivo;
+            if (val_id) {
+                let formList = {
+                    "accion": "tbeM_kardexExplosivos",
+                    "paramentsWhere": val_id
+                }
+                fetchTable_kardexExplosivos(formList); 
+            }
+        }
+        catch (error) {
+
+        }
     });
     tbeM_kardexExplosivo = $('#table-master-kardexExplosivo').DataTable({
         columns: [
@@ -84,10 +98,7 @@ document.addEventListener('DOMContentLoaded', e => {
 });
 
 const mainEvents_kardexExplosivos = () => {
-    let formList = {
-        "accion": "tbeM_kardexExplosivos",
-    }
-    fetchTable_kardexExplosivos(formList);   
+      
 }
 // Hacemos la Peticion
 const fetchTable_kardexExplosivos = async (request) => {
@@ -157,13 +168,21 @@ ipt_explosivosKardex_explosivo.addEventListener("input", (e) => {
                 "paramentWhere": val_id,
             }
             getColumns_explosivoCodigo(selectForm1);
+
+            let formList = {
+                "accion": "tbeM_kardexExplosivos",
+                "paramentsWhere": val_id
+            }
+            fetchTable_kardexExplosivos(formList); 
         } else {
             ipt_explosivosKardex_unidadMedida.value = '';
             ipt_explosivosKardex_nombreExplosivo.value = '';
+            tbeM_kardexExplosivo.clear();
         }
     } catch (error) {
         ipt_explosivosKardex_unidadMedida.value = '';
         ipt_explosivosKardex_nombreExplosivo.value = '';
+        tbeM_kardexExplosivo.clear();
     }
 });
 

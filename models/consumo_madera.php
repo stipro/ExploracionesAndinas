@@ -83,6 +83,7 @@ class ConsumoMadera extends Conexion
                 $rptSql = [
                     "estado" => 1,
                     "mensaje" => "Se registro correctamente detalle de consumo madera",
+                    "id" => $lastcolIdsql
                 ];
             }
             else{
