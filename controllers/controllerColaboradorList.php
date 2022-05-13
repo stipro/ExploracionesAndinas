@@ -19,6 +19,7 @@ if($_POST){
             // FIN
             case "table-master":
                 $rptSql = $tableManager->table_master();
+                break;
             case "col_dni":
                 $rptSql = $tableManager->getSelec_dni_fullname();
                 

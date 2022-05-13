@@ -140,7 +140,7 @@
 											</div>
 											<div class="col-sm-12 col-md-6 dt-buttons btn-group">
 												<button class="btn btn-default btn-success btn-labeled" id="btn-Agregar" data-target="#insert-modal" data-toggle="modal">
-													<i class="btn-label fa-solid fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>
+													<i class="btn-label fa fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>
 												</button>
 												<button class="btn btn-default btn-info btn-labeled">
 													<i class="btn-label fa fa-refresh"></i>

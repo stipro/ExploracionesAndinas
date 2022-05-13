@@ -53,7 +53,7 @@ class Colaboradores extends Conexion
     }
 
     //OBTIENE TODA LA TABLA
-    public function table_master(): array
+    public function table_master()
     {
         $query = "SELECT * FROM colaboradores";
         return $this->ConsultaSimple($query);
