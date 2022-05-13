@@ -222,7 +222,7 @@ tableMaster = $('#table-operacion-mina').DataTable({
     responsive: true,
     dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
     buttons: [{
-            text: '<i class="btn-label fa-solid icon-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>',
+            text: '<i class="btn-label fa fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>',
             action: function(e, dt, node, conf) {
                 var selectFoorm_codZona = {
                     "accion": "getcolumnAll",
@@ -230,8 +230,7 @@ tableMaster = $('#table-operacion-mina').DataTable({
                 }
                 fetchCodzona(selectFoorm_codZona);
                 var selectFoorm_colaborador = {
-                    "accion": "getcolumnAll",
-                    "column": "col_dni"
+                    "accion": "col_dni",
                 }
                 fetchColaborador(selectFoorm_colaborador);
                 var selectForm_instalacionMina = {
@@ -393,7 +392,7 @@ btnInsert.addEventListener("click", () => {
     valNivel = iptinsertNivel.value;
     // Tareas
     var datalistMaestro = $('#insert-operacionaMina-dni-maestro').val();
-    var validMaestro = $('#insert-options-dni-maestro').find('option[value="' + datalistMaestro + '"]').data('id-colaborador');
+    let validMaestro = datalistinsert_optiondniMaestro.querySelector("option[value='" +  datalistMaestro + "']").dataset.idColaborador;
 
     var datalistAyudante = $('#insert-operacionaMina-dni-ayudante').val();
     var validAyudante = $('#insert-options-dni-ayudante').find('option[value="' + datalistAyudante + '"]').data('id-colaborador');
@@ -575,26 +574,33 @@ $("#insert-operacionMina-codLabor").on('input', function() {
 
 // Tareas
 // Dni colabores (Maestro)
-$("#insert-operacionaMina-dni-maestro").on('input', function() {
-    var val = $('#insert-operacionaMina-dni-maestro').val();
-    var validColaborador = $('#insert-options-dni-maestro').find('option[value="' + val + '"]').data('id-colaborador'); //
-    if (validColaborador) {
-        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
-        iptinsert_nameMaestro.value = rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_nombres;
-        var idCargo = rptsearch.id_cargo;
-        if (idCargo) {
+iptinsert_dniMaestro.addEventListener("input", (e) => {
+    try {
+        let valDni = iptinsert_dniMaestro.value;
+        //let idColaborador = datalistinsert_optiondniMaestro.querySelector('option[value="' + valDni +'"]').dataset.idColaborador;
+        let idColaborador = datalistinsert_optiondniMaestro.querySelector("option[value='" + valDni +"']").dataset.idColaborador;
+        console.log(idColaborador);
+        if(idColaborador){
             var selectFormCargo = {
                 "accion": "getcolumnWhere",
                 "column": "cargo_nombre",
-                "parament": idCargo,
+                "parament": idColaborador,
                 "columnWhere": "id_cargo",
             }
             fetchCargoMaestro(selectFormCargo);
-        } else {
-            ipt_cargoMaestro.value = "no Registra";
+        }
+        else{
+            iptinsert_nameMaestro.value = '';
+            ipt_cargoMaestro.value = '';
         }
     }
+    catch (error) {
+        console.error(error.message);
+        iptinsert_nameMaestro.value = '';
+        ipt_cargoMaestro.value = '';
+    }
 });
+
 
 // Nonbres colabores (Maestro)
 $("#insert-operacionaMina-name-maestro").on('input', function() {
@@ -976,7 +982,7 @@ const paintDni_Nombres = (data) => {
         // Maestro
         templateSelectDniMaestro.querySelector('#template-opts-dni-maestro').value = item.col_dni;
         templateSelectDniMaestro.querySelector('#template-opts-dni-maestro').dataset.idColaborador = item.id_colaborador;
-        templateSelectNameMaestro.querySelector('#template-opts-name-maestro').value = item.col_apePaterno + " " + item.col_apeMaterno + " " + item.col_nombres;
+        templateSelectNameMaestro.querySelector('#template-opts-name-maestro').value = item.fullName;
         templateSelectNameMaestro.querySelector('#template-opts-name-maestro').dataset.idColaborador = item.id_colaborador;
         const cloneDniMaestro = templateSelectDniMaestro.cloneNode(true);
         const cloneNameMaestro = templateSelectNameMaestro.cloneNode(true);
@@ -986,7 +992,7 @@ const paintDni_Nombres = (data) => {
         // Ayudante
         templateSelectDniAyudante.querySelector('#template-opts-dni-ayudante').value = item.col_dni;
         templateSelectDniAyudante.querySelector('#template-opts-dni-ayudante').dataset.idColaborador = item.id_colaborador;
-        templateSelectNameAyudante.querySelector('#template-opts-name-ayudante').value = item.col_apePaterno + " " + item.col_apeMaterno + " " + item.col_nombres;
+        templateSelectNameAyudante.querySelector('#template-opts-name-ayudante').value = item.fullName;
         templateSelectNameAyudante.querySelector('#template-opts-name-ayudante').dataset.idColaborador = item.id_colaborador;
         const cloneDniAyudante = templateSelectDniAyudante.cloneNode(true);
         const cloneNameAyudante = templateSelectNameAyudante.cloneNode(true);
@@ -996,7 +1002,7 @@ const paintDni_Nombres = (data) => {
         // Tercer Persona
         templateSelectDniTercerPersona.querySelector('#template-opts-dni-tercer-hombre').value = item.col_dni;
         templateSelectDniTercerPersona.querySelector('#template-opts-dni-tercer-hombre').dataset.idColaborador = item.id_colaborador;
-        templateSelectNameTercerPersona.querySelector('#template-opts-name-tercer-hombre').value = item.col_apePaterno + " " + item.col_apeMaterno + " " + item.col_nombres;
+        templateSelectNameTercerPersona.querySelector('#template-opts-name-tercer-hombre').value = item.fullName;
         templateSelectNameTercerPersona.querySelector('#template-opts-name-tercer-hombre').dataset.idColaborador = item.id_colaborador;
         const cloneDniTercerPersona = templateSelectDniTercerPersona.cloneNode(true);
         const cloneNameTercerPersona = templateSelectNameTercerPersona.cloneNode(true);
@@ -1006,7 +1012,7 @@ const paintDni_Nombres = (data) => {
         // Cuarta Persona
         templateSelectDniCuartaPersona.querySelector('#template-opts-dni-cuarto-hombre').value = item.col_dni;
         templateSelectDniCuartaPersona.querySelector('#template-opts-dni-cuarto-hombre').dataset.idColaborador = item.id_colaborador;
-        templateSelectNameCuartaPersona.querySelector('#template-opts-name-cuarto-hombre').value = item.col_apePaterno + " " + item.col_apeMaterno + " " + item.col_nombres;
+        templateSelectNameCuartaPersona.querySelector('#template-opts-name-cuarto-hombre').value = item.fullName;
         templateSelectNameCuartaPersona.querySelector('#template-opts-name-cuarto-hombre').dataset.idColaborador = item.id_colaborador;
         const cloneDniCuartaPersona = templateSelectDniCuartaPersona.cloneNode(true);
         const cloneNameCuartaPersona = templateSelectNameCuartaPersona.cloneNode(true);
@@ -1117,8 +1123,6 @@ const fetchInstalaciones = async (request) => {
         body
     });
     const data = await res.json();
-    console.log("Instalaciones");
-    console.log(data);
     objectarrayInstalacion = data['sql']
     datalistinsert_optionsInstalaciones.innerHTML = "";
     const template_optsInstalaciones = document.querySelector("#template-opts-name-instalaciones").content;

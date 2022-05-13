@@ -31,9 +31,8 @@ class Colaboradores extends Conexion
     }
 
     // Obtiene Lista especifica
-    public function getSelec_dni_fullname(): array
+    public function getSelec_dni_fullname()
     {
-
         $query = "SELECT col.id_colaborador, CONCAT(col.col_apePaterno,' ' , col.col_apeMaterno,' ', col.col_nombres) AS fullName , col.col_dni FROM colaboradores AS col;";
         return $this->ConsultaSimple($query);
     }

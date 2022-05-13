@@ -22,7 +22,6 @@ if($_POST){
                 break;
             case "col_dni":
                 $rptSql = $tableManager->getSelec_dni_fullname();
-                
                 break;
             case "getSelec_dni_fullname":
                 $rptSql = $tableManager->getSelec_dni_fullname();
@@ -48,6 +47,7 @@ if($_POST){
         }
 
     } catch (Exception $e) {
+        echo 'Excepción capturada: ',  $e->getMessage(), "\n";
         //throw $th;
     }
 }
