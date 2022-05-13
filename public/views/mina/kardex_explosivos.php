@@ -180,7 +180,7 @@
                                                                 <i class="fa fa-mail-reply"></i>
                                                             </button>
                                                         </span>
-                                                        <input type="text" class="form-control input-sm" id="cst-ipt-explosivosKardex-Periodo" placeholder="Mes" name="daterange" value="01/01/2018 - 01/15/2018">
+                                                        <input type="text" class="form-control input-sm" id="cst-ipt-explosivosKardex-Periodo" placeholder="Mes" name="daterange" value="">
                                                         <span class="input-group-btn">
                                                             <button class="btn btn-mint btn-sm" type="button">
                                                                 <i class="fa fa-mail-forward"></i>

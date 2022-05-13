@@ -14,7 +14,8 @@ if($_POST){
         switch ($accion) {
             case "tbeM_kardexExplosivos":
                 $paramentWhere = $arrayForm['paramentsWhere'];
-                $rptSql = $tableManager->explosivos($paramentWhere);
+                $whereDate = array_key_exists('date', $arrayForm) ? $arrayForm['date'] : False;
+                $rptSql = $tableManager->explosivos($paramentWhere, $whereDate);
                 break;
         }
 

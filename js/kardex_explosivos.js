@@ -8,7 +8,8 @@ const ipt_explosivosKardex_unidadMedida = document.getElementById('ipt-explosivo
 const ipt_explosivosKardex_nombreExplosivo = document.getElementById('ipt-explosivosKardex-nombre');
 const cst_ipt_explosivosKardex_periodo = document.getElementById('cst-ipt-explosivosKardex-Periodo');
 
-
+var startDate;
+var endDate;
 
 document.addEventListener('DOMContentLoaded', e => {
     mainEvents_kardexExplosivos();
@@ -48,17 +49,26 @@ document.addEventListener('DOMContentLoaded', e => {
             "firstDay": 1
         },
         "startDate": "05/05/2022",
-        "endDate": "05/11/2022",
+        "endDate": "05/15/2022",
         "opens": "left"
     }, function(start, end, label) {
         try {
-            console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
             let val_explosivo = ipt_explosivosKardex_explosivo.value;
+            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label);
+            //Set the initial state of the picker label
+            $('#cst-ipt-explosivosKardex-Periodo span').html(moment().subtract('days', 29).format('D MMMM YYYY') + ' - ' + moment().format('D MMMM YYYY'));
+            
             let val_id = dtl_explosivosKardex_explosivo.querySelector("option[value='" +  val_explosivo + "']").dataset.idExplosivo;
+            startDate = start.format('YYYY-MM-DD');
+            endDate = end.format('YYYY-MM-DD');   
             if (val_id) {
                 let formList = {
                     "accion": "tbeM_kardexExplosivos",
-                    "paramentsWhere": val_id
+                    "paramentsWhere": val_id,
+                    "date":{
+                        "start": startDate,
+                        "end": endDate
+                    }
                 }
                 fetchTable_kardexExplosivos(formList); 
             }
@@ -70,7 +80,7 @@ document.addEventListener('DOMContentLoaded', e => {
     tbeM_kardexExplosivo = $('#table-master-kardexExplosivo').DataTable({
         columns: [
             {
-                data: "valexplosivo_nvale",
+                data: "kardex_nvale",
                 responsivePriority: 1,
             },
             {
@@ -171,18 +181,23 @@ ipt_explosivosKardex_explosivo.addEventListener("input", (e) => {
 
             let formList = {
                 "accion": "tbeM_kardexExplosivos",
-                "paramentsWhere": val_id
+                "paramentsWhere": val_id,
+                "date":{
+                    "start": startDate,
+                    "end": endDate
+                }
             }
+            
             fetchTable_kardexExplosivos(formList); 
         } else {
             ipt_explosivosKardex_unidadMedida.value = '';
             ipt_explosivosKardex_nombreExplosivo.value = '';
-            tbeM_kardexExplosivo.clear();
+            tbeM_kardexExplosivo.clear().draw();
         }
     } catch (error) {
         ipt_explosivosKardex_unidadMedida.value = '';
         ipt_explosivosKardex_nombreExplosivo.value = '';
-        tbeM_kardexExplosivo.clear();
+        tbeM_kardexExplosivo.clear().draw();
     }
 });
 

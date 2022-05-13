@@ -1,5 +1,8 @@
 <?php
 //declare (strict_types = 1);
+
+use PhpOffice\PhpSpreadsheet\Calculation\Logical\Boolean;
+
 require_once '../db/conexion.php';
 
 class kardexGeneral extends Conexion
@@ -8,14 +11,13 @@ class kardexGeneral extends Conexion
     {
         parent::__construct();
     }
-    public function explosivos(int $idExplosivo)
+    public function explosivos(int $idExplosivo, $whereDate)
     {
         try 
         {
 
             $this->db->setAttribute(pdo::ATTR_EMULATE_PREPARES, 0);
-            $query = "
-            SELECT T.vale_id, T.kardex_fechaRegistro, T.kardex_nvale, T.explosivo_codigo, T.explosivo_descripcion, T.kardex_tipo, T.kardex_cantidad,
+            $query = "SELECT T.vale_id, T.kardex_fechaRegistro, T.kardex_nvale, T.explosivo_codigo, T.explosivo_descripcion, T.kardex_tipo, T.kardex_cantidad,
             T.Entrada, T.Salida, T.saldo
             FROM (
             SELECT ek.vale_id, ek.kardex_nvale, valexplosivo_nvale, ek.kardex_tipo, kardex_fechaRegistro, explosivo_id, 
@@ -34,7 +36,11 @@ class kardexGeneral extends Conexion
 				  LEFT JOIN tvalexplosivos AS vlES ON ek.vale_id = vlES.id_valexplosivo
 				  LEFT JOIN explosivos AS e ON ek.explosivo_id = e.id_explosivo
 		        ORDER BY ek.explosivo_id, ek.kardex_fechaRegistro, ek.kardex_nvale
-        ) T WHERE T.explosivo_id =  {$idExplosivo} AND T.kardex_fechaRegistro  BETWEEN '2022-01-02' AND '2022-01-04'";
+            ) T WHERE T.explosivo_id =  {$idExplosivo}";
+            // AND T.kardex_fechaRegistro  BETWEEN '2022-01-02' AND '2022-01-04'
+            $queryWhereDate = " AND T.kardex_fechaRegistro  BETWEEN '{$whereDate['start']}' AND '{$whereDate['end']}'";
+            $query = $whereDate ? $query.$queryWhereDate : $query;
+
             return $this->ConsultaSimple($query);
         }
         catch (PDOException $e) {
