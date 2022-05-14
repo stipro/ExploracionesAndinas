@@ -21,6 +21,7 @@
         include_once('./../template/aside.php');
         include_once('./../template/javascript.php');
         include_once('./operacion_mina/create.php');
+        include_once('./operacion_mina/read.php');
         $name_menu = '';
         for ($i=0; $i < count($parte); $i++) {
             $name_menu .= ucfirst($parte[$i]).' ';
@@ -290,52 +291,17 @@
     <!-- END OF CONTAINER -->
 
 
-    <!--Insertar Bootstrap Modal-->
+    <!--Crear Bootstrap Modal-->
     <!--===================================================-->
     <?php echo $template_create_operacionMina; ?>
     <!--===================================================-->
-    <!--End Default Bootstrap Modal-->
+    <!--End Crear Bootstrap Modal-->
 
-    <!--Modal Importacion-->
+    <!--Leer Bootstrap Modal-->
     <!--===================================================-->
-    <div class="modal fade" id="modal-import" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!--Modal header-->
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-                    <h4 class="modal-title">Importación Archivo</h4>
-                </div>
-
-
-                <!--Modal body-->
-                <div class="modal-body">
-                    <!--Icono Excel-->
-                    <label id="contenerdor-ico" class="btn-import">
-                        <img class="ico-exce" src="./../../../svg/excel2.svg" alt="Icono Excel">
-                            <!--<span class="exc-letra">Importar Archivo</span>-->
-                            <!--<input type="file" id="excelfile" value="image1" name="excelfile" multiple="multiple"/>-->
-                            <form id="" class="fsubiarchivo" action="herramientas/php/cargar_archivo.php" method="post" enctype="multipart/form-data">
-                                <div>
-                                    <input type="file" id="excelfile" value="image1" name="excelfile" multiple="multiple"/>
-                                </div>                                    
-                                <button id="btn-subir-archivo" class="btn btn-confirmar" type="submit">Cargar Fichero</button>
-                            </form>  
-                    </label>
-                </div>
-
-
-                <!--Modal footer-->
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-                    <button class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php echo $template_read_operacionMina; ?>
     <!--===================================================-->
-    <!--End Bootstrap Modal without Animation-->
+    <!--End Leer Bootstrap Modal-->
     
     
     <!--JAVASCRIPT-->

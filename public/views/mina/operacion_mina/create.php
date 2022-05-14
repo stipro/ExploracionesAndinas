@@ -8,7 +8,7 @@ $template_create_operacionMina = '
                 <!--Modal header-->
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-                    <h4 class="modal-title">Registro Operación Mina</h4>
+                    <h4 class="modal-title">[ CREAR ] Operación Mina</h4>
                 </div>
                 <!--Modal body-->
                 <div class="modal-body">
@@ -22,7 +22,7 @@ $template_create_operacionMina = '
                                     <div class="form-group">
                                         <label for="insert-operacionMina-registro" class="col-md-4 control-label">Fecha</label>
                                         <div class="col-md-8">                                                    
-                                            <input type="date" placeholder="Dia" class="form-control" id="insert-operacionMina-registro"  value="<?php echo $dateServer ?>" min="<?php echo $mindate ?>" max="<?php echo $dateServer ?>"> <!--min="2021-12-12" max="2021-12-13"-->
+                                            <input type="date" placeholder="Dia" class="form-control" id="insert-operacionMina-registro"  value="' . $dateServer . '" min="' . $mindate . '" max="' .  $dateServer . '"> <!--min="2021-12-12" max="2021-12-13"-->
                                         </div>
                                     </div>
                                     <div class="form-group">

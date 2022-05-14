@@ -80,6 +80,9 @@ const iptinsertWinche = document.getElementById("insert-operacionMina-winche");
 const iptinsertcantidadWinche = document.getElementById("insert-operacionMina-cantidadWinche");
 const iptinsertdesmont = document.getElementById("insert-operacionMina-Desmon");
 
+
+const mbtn_read_operacionMina_close = document.getElementById("mbtn-read-operacionMina-close");
+
 document.addEventListener('DOMContentLoaded', e => {
     mainEvents();
 });
@@ -183,7 +186,7 @@ tableMaster = $('#table-operacion-mina').DataTable({
             data: "operacionMina_desmonCantidad",
         },
         {
-            defaultContent: '<button type="button" class="btn-view btn btn-success btn-tableMaster-detalle"><i class="fa fa-eye"></i> Detalle</button> <button type="button" class="name btn btn-primary btn-tableMaster-edit"><i class="fa fa-edit"></i> Editar</button> <button type="button" class="position btn btn-danger btn-tableMaster-delet"><i class="fa fa-trash-o"></i> Eliminar</button>'
+            defaultContent: '<button type="button" class="btn-view btn btn-success btn-view btn btn-success btn-tbM-operacionMina-detalle"><i class="fa fa-eye"></i> Detalle</button> <button type="button" class="name btn btn-primary btn-tableMaster-edit"><i class="fa fa-edit"></i> Editar</button> <button type="button" class="position btn btn-danger btn-tableMaster-delet"><i class="fa fa-trash-o"></i> Eliminar</button>'
         }
     ],
     fixedHeader: true,
@@ -308,10 +311,10 @@ tableMaster = $('#table-operacion-mina').DataTable({
     ],
 });
 
-$('#table-operacion-mina tbody').on('click', '.btn-tableMaster-detalle', function() {
+$('#table-operacion-mina tbody').on('click', '.btn-tbM-operacionMina-detalle', function() {
+    $("#operacionMina-lg-modal-read").modal("show");
     const data = tableMaster.row($(this).parents('tr')).data();
-    alert("El id: " + data['id_operacionMina']);
-
+    console.log("El id: " + data['id_operacionMina']);
 });
 
 $('#table-operacion-mina tbody').on('click', '.btn-tableMaster-edit', function() {
