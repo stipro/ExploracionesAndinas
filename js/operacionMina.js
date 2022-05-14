@@ -1,6 +1,8 @@
 var arraySelectColaboradores;
 var indice;
 
+const btn_agregar_operacionMina = document.getElementById("btn-agregar-operacionMina");
+
 const alertInsert = document.getElementById("alert-form-insert");
 var objectarrayInstalacion;
 // Declarando variables
@@ -221,32 +223,7 @@ tableMaster = $('#table-operacion-mina').DataTable({
     },
     responsive: true,
     dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
-    buttons: [{
-            text: '<i class="btn-label fa fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>',
-            action: function(e, dt, node, conf) {
-                var selectFoorm_codZona = {
-                    "accion": "getcolumnAll",
-                    "column": "labZona_letra"
-                }
-                fetchCodzona(selectFoorm_codZona);
-                var selectFoorm_colaborador = {
-                    "accion": "col_dni",
-                }
-                fetchColaborador(selectFoorm_colaborador);
-                var selectForm_instalacionMina = {
-                    "accion": "getcolumnAll",
-                    "column": "instalacionesMIna_nombre"
-                }
-                fetchInstalaciones(selectForm_instalacionMina);
-                $("#modal-insert").modal("show");
-
-            },
-            className: 'btn btn-success btn-labeled', //Primary class for all buttons
-            attr: {
-                title: 'Agregar nuevo labor',
-                id: 'btn-insert'
-            }
-        },
+    buttons: [
         {
             text: '<i class="btn-label fa fa-refresh"></i><span class="hidden-xs">Actualizar</span>',
             action: function(e, dt, node, conf) {
@@ -375,12 +352,26 @@ $('#table-operacion-mina tbody').on('click', '.btn-tableMaster-delet', function(
 btnNew.addEventListener("click", () => {
     resetFormulario();
 });
+//  Boton Agregar
+btn_agregar_operacionMina.addEventListener('click', () => {
+    var selectFoorm_codZona = {
+        "accion": "getcolumnAll",
+        "column": "labZona_letra"
+    }
+    fetchCodzona(selectFoorm_codZona);
+    var selectFoorm_colaborador = {
+        "accion": "col_dni",
+    }
+    fetchColaborador(selectFoorm_colaborador);
+    var selectForm_instalacionMina = {
+        "accion": "getcolumnAll",
+        "column": "instalacionesMIna_nombre"
+    }
+    fetchInstalaciones(selectForm_instalacionMina);
+})
 
 btnInsert.addEventListener("click", () => {
     valArray_Instalaciones = getValue_Table();
-    console.log('Instalacion');
-    console.log(valArray_Instalaciones);
-    console.log(typeof valArray_Instalaciones);
     valRegistro = iptinsertRegistro.value;
     valTurno = iptinsertTurno.value;
     valGuardia = iptinsertGuardia.value;
@@ -573,21 +564,17 @@ $("#insert-operacionMina-codLabor").on('input', function() {
 });
 
 // Tareas
-// Dni colabores (Maestro)
+// DNI (Maestro)
 iptinsert_dniMaestro.addEventListener("input", (e) => {
     try {
         let valDni = iptinsert_dniMaestro.value;
-        //let idColaborador = datalistinsert_optiondniMaestro.querySelector('option[value="' + valDni +'"]').dataset.idColaborador;
         let idColaborador = datalistinsert_optiondniMaestro.querySelector("option[value='" + valDni +"']").dataset.idColaborador;
-        console.log(idColaborador);
         if(idColaborador){
             var selectFormCargo = {
-                "accion": "getcolumnWhere",
-                "column": "cargo_nombre",
+                "accion": "getPerforista",
                 "parament": idColaborador,
-                "columnWhere": "id_cargo",
             }
-            fetchCargoMaestro(selectFormCargo);
+            fetchNombreCargo_Maestro(selectFormCargo);
         }
         else{
             iptinsert_nameMaestro.value = '';
@@ -595,254 +582,356 @@ iptinsert_dniMaestro.addEventListener("input", (e) => {
         }
     }
     catch (error) {
-        console.error(error.message);
+        //console.error(error.message);
         iptinsert_nameMaestro.value = '';
         ipt_cargoMaestro.value = '';
     }
 });
 
-
-// Nonbres colabores (Maestro)
-$("#insert-operacionaMina-name-maestro").on('input', function() {
-    var val = $('#insert-operacionaMina-name-maestro').val();
-    var validColaborador = $('#insert-options-name-maestro').find('option[value="' + val + '"]').data('id-colaborador'); //option template
-    if (validColaborador) {
-        //var rptsearch = searchColaborador(validColaborador);
-        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
-        iptinsert_dniMaestro.value = rptsearch.col_dni;
-        var idCargo = rptsearch.id_cargo;
-        if (idCargo) {
-            var selectFormCargo = {
-                "accion": "getcolumnWhere",
-                "column": "cargo_nombre",
-                "parament": idCargo,
-                "columnWhere": "id_cargo",
-            }
-            fetchCargoMaestro(selectFormCargo);
-        } else {
-            ipt_cargoMaestro.value = "no Registra";
-        }
-    }
-});
-
-//Traer Cargo Maestros ()
-const fetchCargoMaestro = async (request) => {
+//Traer Nombres y cargos Maestros
+const fetchNombreCargo_Maestro = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
     //Enviamos solicitud
-    const res = await fetch('./../../../controllers/controllerCargoList.php', {
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
         method: "POST",
         body
     });
     const data = await res.json();
-    paintCargoMaestro(data);
+    paint_NombresCargo(data);
     return data;
     //Enviamos a pintar
 }
 
-// Pintar Cargo
-const paintCargoMaestro = (data) => {
+// Pintar Nombre y Cargo Maestros
+const paint_NombresCargo = (data) => {
     // Guardamos en variable
     arraySelect = data['sql'];
     ipt_cargoMaestro.value = arraySelect[0].cargo_nombre;
+    iptinsert_nameMaestro.value = arraySelect[0].fullName;
 }
 
-// Dni colabores (Ayudante)
-$("#insert-operacionaMina-dni-ayudante").on('input', function() {
-    var val = $('#insert-operacionaMina-dni-ayudante').val();
-    var validColaborador = $('#insert-options-dni-ayudante').find('option[value="' + val + '"]').data('id-colaborador'); //
-    if (validColaborador) {
-        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
-        iptinsert_nameAyudante.value = rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_nombres;
-        var idCargo = rptsearch.id_cargo;
-        if (idCargo) {
+// Nonbres (Maestro)
+iptinsert_nameMaestro.addEventListener("input", (e) => {
+    try {
+        let valName = iptinsert_nameMaestro.value;
+        let idColaborador = datalistinsert_optionnameMaestro.querySelector("option[value='" + valName +"']").dataset.idColaborador;
+        if(idColaborador){
             var selectFormCargo = {
-                "accion": "getcolumnWhere",
-                "column": "cargo_nombre",
-                "parament": idCargo,
-                "columnWhere": "id_cargo",
+                "accion": "getPerforista",
+                "parament": idColaborador,
             }
-            fetchCargoAyudante(selectFormCargo);
-        } else {
-            ipt_cargoAyudante.value = "no Registra";
+            fetchDniCargo_Maestro(selectFormCargo);
+        }
+        else{
+            iptinsert_dniMaestro.value = '';
+            ipt_cargoMaestro.value = '';
         }
     }
-});
-
-// Nonbres colabores (Ayudante)
-$("#insert-operacionaMina-name-ayudante").on('input', function() {
-    var val = $('#insert-operacionaMina-name-ayudante').val();
-    var validColaborador = $('#insert-options-name-ayudante').find('option[value="' + val + '"]').data('id-colaborador');
-    if (validColaborador) {
-        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
-        iptinsert_dniAyudante.value = rptsearch.col_dni;
-        var idCargo = rptsearch.id_cargo;
-        if (idCargo) {
-            var selectFormCargo = {
-                "accion": "getcolumnWhere",
-                "column": "cargo_nombre",
-                "parament": idCargo,
-                "columnWhere": "id_cargo",
-            }
-            fetchCargoAyudante(selectFormCargo);
-        } else {
-            ipt_cargoAyudante.value = "no Registra";
-        }
+    catch (error) {
+        //console.error(error.message);
+        iptinsert_dniMaestro.value = '';
+        ipt_cargoMaestro.value = '';
     }
-});
+})
 
-//Traer Cargo Maestros ()
-const fetchCargoAyudante = async (request) => {
+//Traer Dni y Cargo Maestros ()
+const fetchDniCargo_Maestro = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
     //Enviamos solicitud
-    const res = await fetch('./../../../controllers/controllerCargoList.php', {
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
         method: "POST",
         body
     });
     const data = await res.json();
-    paintCargoAyudante(data);
+    paint_DniCargo(data);
     return data;
     //Enviamos a pintar
 }
 
-// Pintar Cargo
-const paintCargoAyudante = (data) => {
+// Pintar Dni y Cargo
+const paint_DniCargo = (data) => {
     // Guardamos en variable
     arraySelect = data['sql'];
+    iptinsert_dniMaestro.value = arraySelect[0].fullName;
+    ipt_cargoMaestro.value = arraySelect[0].cargo_nombre;
+}
+
+// DNI AYUDANTE
+iptinsert_dniAyudante.addEventListener("input", (e) => {
+    try {
+        let valDni = iptinsert_dniAyudante.value;
+        let idColaborador = datalistinsert_optiondniAyudante.querySelector("option[value='" + valDni +"']").dataset.idColaborador;
+        if(idColaborador){
+            let selectForm = {
+                "accion": "getPerforista",
+                "parament": idColaborador,
+            }
+            fetchNombresCargo_Ayudante(selectForm);
+        }
+        else{
+            iptinsert_nameAyudante.value = '';
+            ipt_cargoAyudante.value = '';
+        }
+    } catch (error) {
+        //console.error(error.message);
+        iptinsert_nameAyudante.value = '';
+        ipt_cargoAyudante.value = '';
+    }
+});
+
+//Traer Nombres y Cargo Ayudante
+const fetchNombresCargo_Ayudante = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json();
+    paint_NombresCargo_Ayudante(data);
+    return data;
+    //Enviamos a pintar
+}
+
+// Pintar Nombres y Cargo Ayudante
+const paint_NombresCargo_Ayudante = (data) => {
+    // Guardamos en variable
+    arraySelect = data['sql'];
+    iptinsert_nameAyudante.value = arraySelect[0].fullName;
     ipt_cargoAyudante.value = arraySelect[0].cargo_nombre;
 }
 
-// Dni colabores (Tercer Persona)
-$("#insert-operacionaMina-dni-tercer-hombre").on('input', function() {
-    var val = $('#insert-operacionaMina-dni-tercer-hombre').val();
-    var validColaborador = $('#insert-options-dni-tercer-hombre').find('option[value="' + val + '"]').data('id-colaborador'); //
-    if (validColaborador) {
-        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
-        iptinsert_nameTercerpersona.value = rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_nombres;
-        var idCargo = rptsearch.id_cargo;
-        if (idCargo) {
-            var selectFormCargo = {
-                "accion": "getcolumnWhere",
-                "column": "cargo_nombre",
-                "parament": idCargo,
-                "columnWhere": "id_cargo",
+// NOMBRE AYUDANTE
+iptinsert_nameAyudante.addEventListener("input", (e) => {
+    try {
+        let valName = iptinsert_nameAyudante.value;
+        let idColaborador = datalistinsert_optionnameAyudante.querySelector("option[value='" + valName +"']").dataset.idColaborador;
+        if(idColaborador){
+            let selectForm = {
+                "accion": "getPerforista",
+                "parament": idColaborador,
             }
-            fetchCargoTercerPersona(selectFormCargo);
-        } else {
-            ipt_cargoTercerPersona.value = "no Registra";
+            fetchDniCargo_Ayudante(selectForm);
         }
+        else{
+            iptinsert_dniAyudante.value = '';
+            ipt_cargoAyudante.value = '';
+        }
+        
+    } catch (error) {
+        //console.error(error.message);
+        iptinsert_dniAyudante.value = '';
+        ipt_cargoAyudante.value = '';
     }
 });
 
-// Nonbres colabores (Tercer Persona)
-$("#insert-operacionaMina-name-tercer-hombre").on('input', function() {
-    var val = $('#insert-operacionaMina-name-tercer-hombre').val();
-    var validColaborador = $('#insert-options-name-tercer-hombre').find('option[value="' + val + '"]').data('id-colaborador');
-    if (validColaborador) {
-        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
-        iptinsert_dniTercerpersona.value = rptsearch.col_dni;
-        var idCargo = rptsearch.id_cargo;
-        if (idCargo) {
-            var selectFormCargo = {
-                "accion": "getcolumnWhere",
-                "column": "cargo_nombre",
-                "parament": idCargo,
-                "columnWhere": "id_cargo",
-            }
-            fetchCargoTercerPersona(selectFormCargo);
-        } else {
-            ipt_cargoTercerPersona.value = "no Registra";
-        }
-    }
-});
-
-//Traer Cargo Maestros ()
-const fetchCargoTercerPersona = async (request) => {
+//Traer dni y Cargo Ayudante
+const fetchDniCargo_Ayudante = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
     //Enviamos solicitud
-    const res = await fetch('./../../../controllers/controllerCargoList.php', {
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
         method: "POST",
         body
     });
     const data = await res.json();
-    paintCargoTercerPersona(data);
+    paint_DniCargo_Ayudante(data);
     return data;
     //Enviamos a pintar
 }
 
-// Pintar Cargo
-const paintCargoTercerPersona = (data) => {
+// Pintar Dni y Cargo Ayudante
+const paint_DniCargo_Ayudante = (data) => {
     // Guardamos en variable
     arraySelect = data['sql'];
+    iptinsert_dniAyudante.value = arraySelect[0].col_dni;
+    ipt_cargoAyudante.value = arraySelect[0].cargo_nombre;
+}
+// DNI TERCERA PERSONA
+iptinsert_dniTercerpersona.addEventListener("input", (e) => {
+    try {
+        let valDni = iptinsert_dniTercerpersona.value;
+        let idColaborador = datalistinsert_optiondniTercerPersona.querySelector("option[value='" + valDni +"']").dataset.idColaborador;
+        if(idColaborador){
+            let selectForm = {
+                "accion": "getPerforista",
+                "parament": idColaborador,
+            }
+            fetchNombresCargo_tercerPersona(selectForm);
+        }
+        else{
+            iptinsert_nameTercerpersona.value = '';
+            ipt_cargoTercerPersona.value = '';
+        }
+        
+    } catch (error) {
+        //console.error(error.message);
+        iptinsert_nameTercerpersona.value = '';
+        ipt_cargoTercerPersona.value = ';'
+    }
+});
+
+//Traer Nombres y Cargo Ayudante
+const fetchNombresCargo_tercerPersona = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json();
+    paint_NombresCargo_tercerPersona(data);
+    return data;
+    //Enviamos a pintar
+}
+
+// Pintar Nombres y Cargo TERCERA PERSONA
+const paint_NombresCargo_tercerPersona = (data) => {
+    // Guardamos en variable
+    arraySelect = data['sql'];
+    iptinsert_nameTercerpersona.value = arraySelect[0].fullName;
     ipt_cargoTercerPersona.value = arraySelect[0].cargo_nombre;
 }
 
-
-// Dni colabores (Cuarto Persona)
-$("#insert-operacionaMina-dni-cuarto-hombre").on('input', function() {
-    var val = $('#insert-operacionaMina-dni-cuarto-hombre').val();
-    var validColaborador = $('#insert-options-dni-cuarto-hombre').find('option[value="' + val + '"]').data('id-colaborador'); //
-    if (validColaborador) {
-        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
-        iptinsert_nameCuartopersona.value = rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_apeMaterno + " " + rptsearch.col_nombres;
-        var idCargo = rptsearch.id_cargo;
-        if (idCargo) {
-            var selectFormCargo = {
-                "accion": "getcolumnWhere",
-                "column": "cargo_nombre",
-                "parament": idCargo,
-                "columnWhere": "id_cargo",
+// NOMBRES TERCERA PERSONA
+iptinsert_nameTercerpersona.addEventListener("input", (e) => {
+    try {
+        let valName = iptinsert_nameTercerpersona.value;
+        let idColaborador = datalistinsert_optionnameTercerPersona.querySelector("option[value='" + valName +"']").dataset.idColaborador;
+        if (idColaborador) {
+            let selectForm = {
+                "accion": "getPerforista",
+                "parament": idColaborador,
             }
-            fetchCargoCuartaPersona(selectFormCargo);
-        } else {
-            ipt_cargoCuartaPersona.value = "no Registra";
+            fetchDniCargo_tercerPersona(selectForm);
         }
+        else{
+            iptinsert_dniTercerpersona.value = '';
+            ipt_cargoTercerPersona.value = '';
+        }
+        
+    } catch (error) {
+        //console.error(error.message);
+        iptinsert_dniTercerpersona.value = '';
+        ipt_cargoTercerPersona.value = '';
     }
 });
 
-// Nonbres colabores (Cuarto Persona)
-$("#insert-operacionaMina-name-cuarto-hombre").on('input', function() {
-    var val = $('#insert-operacionaMina-name-cuarto-hombre').val();
-    var validColaborador = $('#insert-options-name-cuarto-hombre').find('option[value="' + val + '"]').data('id-colaborador');
-    if (validColaborador) {
-        var rptsearch = arraySelectColaboradores.find(item => item.id_colaborador == validColaborador);
-        iptinsert_dniCuartopersona.value = rptsearch.col_dni;
-        var idCargo = rptsearch.id_cargo;
-        if (idCargo) {
-            var selectFormCargo = {
-                "accion": "getcolumnWhere",
-                "column": "cargo_nombre",
-                "parament": idCargo,
-                "columnWhere": "id_cargo",
-            }
-            fetchCargoCuartaPersona(selectFormCargo);
-        } else {
-            ipt_cargoCuartaPersona.value = "no Registra";
-        }
-    }
-});
-
-//Traer Cargo Maestros ()
-const fetchCargoCuartaPersona = async (request) => {
+//Traer Nombres y Cargo TERCER PERSONA
+const fetchDniCargo_tercerPersona = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
     //Enviamos solicitud
-    const res = await fetch('./../../../controllers/controllerCargoList.php', {
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
         method: "POST",
         body
     });
     const data = await res.json();
-    paintCargoCuartaPersona(data);
+    paint_DniCargo_tercerPersona(data);
     return data;
     //Enviamos a pintar
 }
 
-// Pintar Cargo
-const paintCargoCuartaPersona = (data) => {
+// Pintar Nombres y Cargo TERCER PERSOBA
+const paint_DniCargo_tercerPersona = (data) => {
     // Guardamos en variable
     arraySelect = data['sql'];
+    iptinsert_dniTercerpersona.value = arraySelect[0].col_dni;
+    ipt_cargoTercerPersona.value = arraySelect[0].cargo_nombre;
+}
+
+// DNI CUARTA PERSONA
+iptinsert_dniCuartopersona.addEventListener("input", (e) => {
+    try {
+        let valDni = iptinsert_dniCuartopersona.value;
+        let idColaborador = datalistinsert_optiondniCuartaPersona.querySelector("option[value='" + valDni +"']").dataset.idColaborador;
+        if (idColaborador) {
+            let selectForm = {
+                "accion": "getPerforista",
+                "parament": idColaborador,
+            }
+            fetchNombresCargo_cuartaPersona(selectForm);
+        }
+        else{
+            iptinsert_nameCuartopersona.value =' ';
+            ipt_cargoCuartaPersona.value = '';
+        }
+    } catch (error) {
+        //console.error(error.message);
+        iptinsert_nameCuartopersona.value = '';
+        ipt_cargoCuartaPersona.value = '';
+    }
+});
+
+//Traer Nombres y Cargo CUARTA PERSONA
+const fetchNombresCargo_cuartaPersona = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json();
+    paint_NombresCargo_cuartaPersona(data);
+    return data;
+    //Enviamos a pintar
+}
+
+// Pintar Nombres y Cargo CUARTO PERSONA
+const paint_NombresCargo_cuartaPersona = (data) => {
+    // Guardamos en variable
+    arraySelect = data['sql'];
+    iptinsert_nameCuartopersona.value = arraySelect[0].fullName;
+    ipt_cargoCuartaPersona.value = arraySelect[0].cargo_nombre;
+}
+
+// NOMBRE CUARTO HOMBRE
+iptinsert_nameCuartopersona.addEventListener("input", (e) => {
+    try {
+        let valName = iptinsert_nameCuartopersona.value;
+        console.log(valName);
+        let idColaborador = datalistinsert_optionnameCuartaPersona.querySelector("option[value='" + valName +"']").dataset.idColaborador;
+        console.log(idColaborador);
+        if (idColaborador) {
+            let selectForm = {
+                "accion": "getPerforista",
+                "parament": idColaborador,
+            }
+            fetchDniCargo_cuartaPersona(selectForm);
+        } else {
+            iptinsert_dniCuartopersona.value = '';
+            ipt_cargoCuartaPersona.value = '';
+        }
+    } catch (error) {
+        iptinsert_dniCuartopersona.value = '';
+        ipt_cargoCuartaPersona.value = '';
+    }
+});
+//Traer Nombres y Cargo CUARTA PERSONA
+const fetchDniCargo_cuartaPersona = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json();
+    paint_DniCargo_cuartaPersona(data);
+    return data;
+    //Enviamos a pintar
+}
+
+// Pintar Nombres y Cargo CUARTO PERSONA
+const paint_DniCargo_cuartaPersona = (data) => {
+    // Guardamos en variable
+    arraySelect = data['sql'];
+    iptinsert_dniCuartopersona.value = arraySelect[0].col_dni;
     ipt_cargoCuartaPersona.value = arraySelect[0].cargo_nombre;
 }
 

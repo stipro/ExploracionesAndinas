@@ -137,31 +137,12 @@
                                         </legend>
 										<div class="row">
 											<div class="col-md-3">
-											</div>
-											<div class="col-sm-12 col-md-6 dt-buttons btn-group">
-												<button class="btn btn-default btn-success btn-labeled" id="btn-Agregar" data-target="#insert-modal" data-toggle="modal">
+											<button class="btn btn-default btn-success btn-labeled" id="btn-Agregar" data-target="#insert-modal" data-toggle="modal">
 													<i class="btn-label fa fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>
 												</button>
-												<button class="btn btn-default btn-info btn-labeled">
-													<i class="btn-label fa fa-refresh"></i>
-													<span class="hidden-xs">Actualizar</span>
-												</button>
-												<button class="btn btn-default btn-labeled">
-													<i class="btn-label fa fa-download"></i>
-													<span class="hidden-xs"> Exportar</span>
-												</button>
-												<button class="btn btn-primary btn-labeled">
-													<i class="btn-label fa fa-download"></i>
-													<span class="hidden-xs"> Importar</span>
-												</button>
-												<button class="btn btn-primary btn-labeled">
-													<i class="btn-label demo-pli-printer"></i>
-													<span class="hidden-xs"> Imprimir</span>
-												</button>
-												<button class="btn btn-primary btn-labeled">
-													<i class="btn-label fa fa-eye"></i>
-													<span class="hidden-xs"> Mostrar / Ocultar</span>
-												</button>
+											</div>
+											<div class="col-sm-12 col-md-6 dt-buttons btn-group">
+												
 											</div>
 											<div class="col-sm-12 col-md-3">											
 											</div>

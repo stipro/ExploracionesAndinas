@@ -20,6 +20,14 @@ if($_POST){
             case "table-master":
                 $rptSql = $tableManager->table_master();
                 break;
+            case "getPerforista":
+                $whereId = $arrayForm['parament'];
+                $column1 = 'col_apePaterno';
+                $column2 = 'col_apePaterno';
+                $column3 = 'col_nombres';
+                $column4 = 'col_dni';
+                $rptSql = $tableManager->perforista($whereId, $column1, $column2, $column3, $column4);
+                break;
             case "col_dni":
                 $rptSql = $tableManager->getSelec_dni_fullname();
                 break;

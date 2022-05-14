@@ -57,6 +57,12 @@ class Colaboradores extends Conexion
         $query = "SELECT * FROM colaboradores";
         return $this->ConsultaSimple($query);
     }
+    //OBTIENE TODA LA TABLA
+    public function perforista($whereId, $column1, $column2, $column3, $column4)
+    {
+        $query = "SELECT clb.id_colaborador, CONCAT(clb.{$column1},' ' , clb.{$column2},' ', clb.{$column3}) AS fullName , clb.{$column4}, cg.cargo_nombre FROM colaboradores AS clb LEFT JOIN cargos AS cg ON clb.id_cargo = cg.id_cargo WHERE id_colaborador = {$whereId};";
+        return $this->ConsultaSimple($query);
+    }
     public function insert(string $dato1, string $dato2, string $dato3, string $dato4, int $dato5, string $dato6, string $dato7, string $dato8, int $dato9)
     {
         try 

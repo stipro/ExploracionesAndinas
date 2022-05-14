@@ -62,6 +62,108 @@ document.addEventListener('DOMContentLoaded', e => {
                 defaultContent: '<button type="button" class="btn-view btn btn-success btn-tableMaster-detalle"><i class="fa fa-eye"></i> <span class="hidden-xs hidden-sm">Detalle<span></button> <button type="button" class="name btn btn-primary btn-tableMaster-edit"><i class="fa fa-edit"></i> <span class="hidden-xs hidden-sm">Editar</span></button> <button type="button" class="position btn btn-danger btn-tableMaster-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>'
             }
         ],
+        dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+                buttons: [
+                    {
+                        text: '<i class="btn-label fa fa-refresh"></i><span class="hidden-xs">Actualizar</span>',
+                        action: function(e, dt, node, conf) {
+                            let form_request1 = {
+                                "accion": "table",
+                            }
+                            fetchData(form_request1);
+                        },
+                        className: 'btn btn-info btn-labeled' //Primary class for all buttons
+                    },
+                    {
+                        extend: 'collection',
+                        text: '<i class="btn-label fa fa-download"></i><span class="hidden-xs"> Exportar</span>',
+                        className: 'btn-labeled',
+                        //* Botones
+                        buttons: [
+                            //* Boton exportar copiar
+                            {
+                                //* Indicar Acción
+                                extend: 'copy',
+                                //* Mensaje hove
+                                titleAttr: 'Copiar Tabla',
+                                //
+                                title: '',
+                                //* Clases agregados
+                                className: 'btn-labeled',
+                                //* Texto u Boton
+                                text: '<i class="btn-label fas fa-copy"></i> Copiar',
+                                //* Indicar que columns se usará
+                                exportOptions: {
+                                    columns: [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                                }
+                            },
+                            {
+                                extend: 'excel',
+                                text: '<i class="btn-label fa fa-file-excel-o"></i> Excel',
+                                titleAttr: 'Excel',
+                                title: '',
+                                className: 'btn-labeled',
+                                exportOptions: {
+                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                                }
+                            },
+                            {
+                                extend: 'csv',
+                                text: '<i class="btn-label fa fa-file-csv"></i> CSV',
+                                titleAttr: 'CSV',
+                                className: 'btn-labeled',
+                                exportOptions: {
+                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                                }
+                            },
+                            {
+                                extend: 'pdf',
+                                text: '<i class="btn-label fa fa-file-pdf-o"></i> PDF',
+                                titleAttr: 'PDF',
+                                className: 'btn-labeled',
+                                exportOptions: {
+                                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                                }
+                            },
+                        ]
+                    },
+                    {
+                        text: '<i class="btn-label fa fa-file-excel-o"></i><span class="hidden-xs"> Excel</span>',
+                            className: 'btn btn-primary', //Primary class for all buttons
+                        tag: 'a',
+                        action: function(e, dt, node, config) {
+                            //This will send the page to the location specified
+                            window.location.href = './../../excelGenerator.php?table=colaboradores';
+                        },
+                        init: function(dt, node, config) {
+                            $(node).attr('href', './../../excelGenerator.php?table=colaboradores');
+                            $(node).attr('download', '');
+                            $(node).attr('title', 'Descargar Archivo');
+                        }
+                    },
+                    {
+                        text: '<i class="btn-label fa fa-upload"></i><span class="hidden-xs">Importar</span>',
+                        action: function(e, dt, node, conf) {
+                            $("#modal-import").modal("show");
+                        },
+                        className: 'btn btn-primary btn-labeled' //Primary class for all buttons
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="btn-label fa fa-print"></i><span class="hidden-xs">print</span>',
+                        titleAttr: 'PDF',
+                        className: 'btn-labeled', //Primary class for all buttons
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                        }
+                    },
+                    {
+                        extend: 'colvis',
+                        text: '<i class="btn-label fa fa-eye"></i><span class="hidden-xs">Mostrar / Ocultar</span>',
+                        className: 'btn-labeled' //Primary class for all buttons
+                    },
+                    'refresh',
+                ], 
         language: {
             "decimal": "",
             "emptyTable": "No hay registro de ",
