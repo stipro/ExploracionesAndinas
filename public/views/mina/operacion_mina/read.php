@@ -66,7 +66,7 @@ $template_read_operacionMina = '
                                                 <label for="opcion-tipo_disparo4">4 Sostenimiento</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="5 Servicio" name="read-form-radio-tipo_disparo" id="opcion-tipo_disparo5" disabled>
+                                                <input class="magic-radio" type="radio" value="5 Servicios" name="read-form-radio-tipo_disparo" id="opcion-tipo_disparo5" disabled>
                                                 <label for="opcion-tipo_disparo4">5 Servicios</label>
                                             </div>
                                             <div class="radio">

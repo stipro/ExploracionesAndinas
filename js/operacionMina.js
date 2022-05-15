@@ -80,6 +80,52 @@ const iptinsertWinche = document.getElementById("insert-operacionMina-winche");
 const iptinsertcantidadWinche = document.getElementById("insert-operacionMina-cantidadWinche");
 const iptinsertdesmont = document.getElementById("insert-operacionMina-Desmon");
 
+const dt_operacionMina_zonaLetra = document.getElementById("update-options-codzona");
+const dt_operacionMina_laborCcosto = document.getElementById("update-options-codLabor");
+
+
+const update_operacionMina_regitro = document.getElementById("update-operacionMina-registro");
+const update_operacionMina_turno = document.getElementById("update-operacionaMina-turno");
+const update_operacionMina_guardia = document.getElementById("update-operacionMina-guardia");
+const update_operacionMina_nvale = document.getElementById("update-operacionMina-nvale");
+const update_operacionMina_codZona = document.getElementById("update-operacionMina-codzona");
+const update_operacionMina_codLabor = document.getElementById("update-operacionMina-codLabor");
+const update_operacionMina_zona = document.getElementById("update-operacionMina-zona");
+const update_operacionMina_labor = document.getElementById("update-operacionMina-labor");
+const update_operacionMina_nivel = document.getElementById("update-operacionMina-nivel");
+
+const update_operacionMina_dni_maestro = document.getElementById("update-operacionaMina-dni-maestro");
+const update_operacionMina_name_maestro = document.getElementById("update-operacionaMina-name-maestro");
+const update_operacionMina_cargo_maestro = document.getElementById("update-operacionaMina-cargo-maestro");
+const update_operacionMina_dni_ayudante = document.getElementById("update-operacionaMina-dni-ayudante");
+const update_operacionMina_name_ayudante = document.getElementById("update-operacionaMina-name-ayudante");
+const update_operacionMina_cargo_ayudante = document.getElementById("update-operacionaMina-cargo-ayudante");
+const update_operacionMina_dni_tercer_hombre = document.getElementById("update-operacionaMina-dni-tercer-hombre");
+const update_operacionMina_name_tercer_hombre = document.getElementById("update-operacionaMina-name-tercer-hombre");
+const update_operacionMina_cargo_tercer_hombre = document.getElementById("update-operacionaMina-cargo-tercer-hombre");
+const update_operacionMina_dni_cuarto_hombre = document.getElementById("update-operacionaMina-dni-cuarto-hombre");
+const update_operacionMina_name_cuarto_hombre = document.getElementById("update-operacionaMina-name-cuarto-hombre");
+const update_operacionMina_cargo_cuarto_hombre = document.getElementById("update-operacionaMina-cargo-cuarto-hombre");
+
+const update_operacionMina_l = document.getElementById("update-operacionMina-l");
+const update_operacionMina_lpv = document.getElementById("update-operacionMina-lpv");
+const update_operacionMina_stto = document.getElementById("update-operacionMina-stto");
+const update_operacionMina_Serv = document.getElementById("update-operacionMina-Serv");
+const update_operacionMina_comentario = document.getElementById("update-operacionMina-comentario");
+
+const update_operacionMina_tipo_avance = document.getElementById("update-operacionMina-tipo-avance");
+const update_operacionMina_mt = document.getElementById("update-operacionMina-mt");
+const update_operacionMina_mt3 = document.getElementById("update-operacionMina-mt3");
+const update_operacionMina_int_disparo = document.getElementById("update-operacionMina-int-disparo");
+const update_operacionMina_resuelto = document.getElementById("update-operacionMina-resuelto");
+
+const update_operacionMina_Manual = document.getElementById("update-operacionMina-Manual");
+const update_operacionMina_pala = document.getElementById("update-operacionMina-pala");
+const update_operacionMina_cantidadPala = document.getElementById("update-operMina-cantidadPala");
+const update_operacionMina_mineral = document.getElementById("update-operMina-mineral");
+const update_operacionMina_winche = document.getElementById("update-operacionMina-winche");
+const update_operacionMina_cantidadWinche = document.getElementById("update-operacionMina-cantidadWinche");
+const update_operacionMina_Desmon = document.getElementById("update-operacionMina-Desmon");
 
 const mbtn_read_operacionMina_close = document.getElementById("mbtn-read-operacionMina-close");
 const read_operacionMina_registro = document.getElementById("read-operacionMina-registro");
@@ -357,10 +403,11 @@ var tableMaster = $('#table-operacion-mina').DataTable({
 
 var read_mtbl_operInsltaciones = $('#read-mtbl-operInstalaciones').DataTable();
 
-
+var update_mtbl_operInsltaciones = $('#update-mtbl-operInstalaciones').DataTable();
 
 $('#table-operacion-mina tbody').on('click', '.btn-tbM-operacionMina-edit', function() {
     $("#operacionMina-lg-modal-update").modal("show");
+    // Cargar Dato Formulario
     let data = tableMaster.row($(this).parents('tr')).data();
     let idOperacionnMina = data['id_operacionMina'];
     let form = {
@@ -368,6 +415,23 @@ $('#table-operacion-mina tbody').on('click', '.btn-tbM-operacionMina-edit', func
         "whereParament": idOperacionnMina
     }
     fetchRow_update_operacionMina(form);
+    // Cargar dato para actualizar
+    let selectFoorm_codZona = {
+        "accion": "getcolumnAll",
+        "column": "labZona_letra"
+    }
+    fetchCodzona_update(selectFoorm_codZona);
+/*     let selectFoorm_colaborador = {
+        "accion": "col_dni",
+    }
+    fetchColaborador_update(selectFoorm_colaborador);
+    let selectForm_instalacionMina = {
+        "accion": "getcolumnAll",
+        "column": "instalacionesMIna_nombre"
+    }
+    fetchInstalaciones_update(selectForm_instalacionMina); */
+    //
+
 });
 const fetchRow_update_operacionMina = async (form) => {
     const body = new FormData();
@@ -384,10 +448,230 @@ const paintForm_update = (data) => {
         // Guardamos en variable
         arraySelect = data['sql'];
         console.log(arraySelect);
+        update_operacionMina_regitro.value = arraySelect[0].operacionMina_registro;
+        update_operacionMina_turno.value = arraySelect[0].operacionMina_turno;
+        update_operacionMina_guardia.value = arraySelect[0].operacionMina_guardia;
+        update_operacionMina_nvale.value = arraySelect[0].operacionMina_nVale;
+        console.log(arraySelect[0].operacionMina_nVale);
+        document.querySelector('input[name=update-form-radio-tipo_disparo][value="'+ arraySelect[0].operacionMina_actividad + '"]').checked = true;
+        update_operacionMina_codZona.value = arraySelect[0].labZona_letra;
+        update_operacionMina_codLabor.value = arraySelect[0].lab_ccostos;
+        update_operacionMina_zona.value = arraySelect[0].labZona_nombre;
+        update_operacionMina_labor.value = arraySelect[0].labNombre_nombre;
+        update_operacionMina_nivel.value = arraySelect[0].lab_nivel;
+        arraySelect.forEach(item => {
+            if(item.operacionTareas_nombre == 'Maestro'){
+                update_operacionMina_dni_maestro.value = item.col_dni;
+                update_operacionMina_name_maestro.value = item.fullName;
+                update_operacionMina_cargo_maestro.value = item.cargo_nombre;
+            }
+            else if (item.operacionTareas_nombre == 'Ayudante'){
+                update_operacionMina_dni_ayudante.value = item.col_dni;
+                update_operacionMina_name_ayudante.value = item.fullName;
+                update_operacionMina_cargo_ayudante.value = item.cargo_nombre;
+            }
+            else if(item.operacionTareas_nombre == 'TercerHombre'){
+                update_operacionMina_dni_tercer_hombre.value = item.col_dni;
+                update_operacionMina_name_tercer_hombre.value = item.fullName;
+                update_operacionMina_cargo_tercer_hombre.value = item.cargo_nombre;
+            }
+            else if(item.operacionTareas_nombre == 'CuartoHombre'){
+                update_operacionMina_dni_cuarto_hombre.value = item.col_dni;
+                update_operacionMina_name_cuarto_hombre.value = item.fullName;
+                update_operacionMina_cargo_cuarto_hombre.value = item.cargo_nombre;
+            }
+            else{
+    
+            }
+        });
+        let counter = 1;
+        let rpt_idInstalacion = 0;
+        update_mtbl_operInsltaciones.clear();
+        arraySelect.forEach(item => {
+            if(item.id_instalacionMina > rpt_idInstalacion){
+                rpt_idInstalacion = item.id_instalacionMina
+                update_mtbl_operInsltaciones.row.add( [
+                    counter,
+                    item.instalacionesMina_nombre,
+                    item.operacionInstalacion_cantidad,
+                    item.instalacionMina_medida,
+                    '<button class="btn btn-danger update_removeRow">Eliminar</button>',
+                ] ).draw();
+                counter++;
+            }
+        });
+        update_operacionMina_l.value = arraySelect[0].operacionMina_l;
+        update_operacionMina_lpv.value = arraySelect[0].operacionMina_lpv;
+        update_operacionMina_stto.value = arraySelect[0].operacionMina_stto;
+        update_operacionMina_Serv.value = arraySelect[0].operacionMina_serv;
+        update_operacionMina_comentario.value = arraySelect[0].operacionMina_comentario;
+        update_operacionMina_tipo_avance.value = arraySelect[0].operacionMina_tipAvance;
+        update_operacionMina_mt.value = arraySelect[0].operacionMina_avanceMt;
+        update_operacionMina_mt3.value = arraySelect[0].operacionMina_avanceMt3;
+        update_operacionMina_int_disparo.value = arraySelect[0].operacionMina_intDisparo;
+        update_operacionMina_resuelto.value = arraySelect[0].operacionMina_Resuelto;
+        update_operacionMina_Manual.value = arraySelect[0].operacionMina_manualCantidad;
+        update_operacionMina_pala.value = arraySelect[0].operacionMina_palaNombre;
+        update_operacionMina_cantidadPala.value = arraySelect[0].operacionMina_palaCantidad;
+        update_operacionMina_mineral.value = arraySelect[0].operacionMina_mineralCantidad;
+        update_operacionMina_winche.value = arraySelect[0].operacionMina_wincheNombre;
+        update_operacionMina_cantidadWinche.value = arraySelect[0].operacionMina_wincheCantidad;
+        update_operacionMina_Desmon.value = arraySelect[0].operacionMina_desmonCantidad;
+
     } catch (error) {
         console.error(error.message);        
     }
 };
+$('#update-mtbl-operInstalaciones').on('click', '.update_removeRow', function() {
+    update_mtbl_operInsltaciones.row($(this).parents('tr')).remove().draw();
+});
+
+
+//Traer codigo zona ()
+const fetchCodzona_update = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../../../controllers/controllerLaborZoneList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    //Enviamos a pintar
+    paintZonas_update(data)
+}
+// Pintar zona datalist
+const paintZonas_update = (data) => {
+    // Guardamos en variable
+    arraySelect = data['sql'];
+    dt_operacionMina_zonaLetra.innerHTML = '';
+    const templateSelect = document.querySelector("#template-opt-cod_zona").content;
+    const fragment = document.createDocumentFragment();
+    arraySelect.forEach(item => {
+        templateSelect.querySelector('#opt-codzona').value = item.labZona_letra;
+        templateSelect.querySelector('#opt-codzona').dataset.idCodzona = item.id_zona;
+        const clone = templateSelect.cloneNode(true);
+        fragment.appendChild(clone)
+    })
+    dt_operacionMina_zonaLetra.appendChild(fragment);
+}
+
+update_operacionMina_codZona.addEventListener("input", (e) => {
+    try {
+        let val_zonaLetra = update_operacionMina_codZona.value;
+        let idCodzona = dt_operacionMina_zonaLetra.querySelector("option[value='" + val_zonaLetra +"']").dataset.idCodzona;
+        if(idCodzona){
+            console.log('Se envia0');
+            var selectForm_codLabor = {
+                "accion": "getcolumnWhere",
+                "column": "lab_ccostos",
+                "parament": idCodzona,
+                "columnWhere": "id_zona",
+            }
+            fetchCodlabor_update(selectForm_codLabor);
+        }
+        else{
+            dt_operacionMina_laborCcosto.innerHTML = '';
+            update_operacionMina_codLabor.value = '';
+            update_operacionMina_zona.value = '';
+            update_operacionMina_labor.value = '';
+            update_operacionMina_nivel.value = '';
+        }
+    }
+    catch (error) {
+        //console.error(error.message);
+        dt_operacionMina_laborCcosto.innerHTML = '';
+        update_operacionMina_codLabor.value = '';
+        update_operacionMina_zona.value = '';
+        update_operacionMina_labor.value = '';
+        update_operacionMina_nivel.value = '';
+    }
+
+});
+
+//Traer codigo Labor ()
+const fetchCodlabor_update = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    const res = await fetch('./../../../controllers/controllerLaborList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    paintCodLabor_update(data)
+}
+
+// Pintar Coigo Labor datalist
+const paintCodLabor_update = (data) => {
+    // Guardamos en variable
+    arraySelect = data['sql'];
+    dt_operacionMina_laborCcosto.innerHTML = '';
+    const templateSelect = document.querySelector("#template-opt-codLabor").content;
+    const fragment = document.createDocumentFragment();
+    arraySelect.forEach(item => {
+        templateSelect.querySelector('#opt-codLabor').value = item.lab_ccostos;
+        templateSelect.querySelector('#opt-codLabor').dataset.idCodlabor = item.id_labor;
+        const clone = templateSelect.cloneNode(true);
+        fragment.appendChild(clone)
+    });
+    dt_operacionMina_laborCcosto.appendChild(fragment);
+}
+
+update_operacionMina_codLabor.addEventListener("input", (e) => {
+    try {
+        let val_laborCcostos = update_operacionMina_codLabor.value;
+        console.log(val_laborCcostos);
+        let val_idcodlabor = dt_operacionMina_laborCcosto.querySelector("option[value='" + val_laborCcostos +"']").dataset.idCodlabor;
+        console.log(val_idcodlabor);
+        if (val_idcodlabor) {
+            let selectForm = {
+                "accion": "getcolumnsWhere",
+                "columns": [
+                    "nombre", "labNombre_nombre", "nivel"
+                ],
+                "parament": val_idcodlabor,
+                "columnWhere": "id_labor",
+            }
+            console.log(selectForm);
+            fetchzonalabornivel_update(selectForm)
+        }
+        else{
+            update_operacionMina_zona.value = '';
+            update_operacionMina_labor.value = '';
+            update_operacionMina_nivel.value = '';
+        }
+    } catch (error) {
+        //console.error(error.message);
+        update_operacionMina_zona.value = '';
+        update_operacionMina_labor.value = '';
+        update_operacionMina_nivel.value = '';
+    }
+});
+
+//Traer codigo zona ()
+const fetchzonalabornivel_update = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../../../controllers/controllerLaborList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    //Enviamos a pintar
+    paintZonaLaborNivel_update(data)
+}
+
+const paintZonaLaborNivel_update = (data) => {
+    arraySelect = data['sql'];
+    arraySelect.forEach(item => {
+        update_operacionMina_zona.value = item.labZona_nombre;
+        update_operacionMina_labor.value = item.labNombre_nombre;
+        if(item.lab_nivel){
+            update_operacionMina_nivel.value = item.lab_nivel; 
+        }
+    });
+}
 
 $('#table-operacion-mina tbody').on('click', '.btn-tbM-operacionMina-read', function() {
     $("#operacionMina-lg-modal-read").modal("show");
@@ -416,12 +700,14 @@ const paintForm_read = (data) => {
     try {
         // Guardamos en variable
         arraySelect = data['sql'];
+        console.log(arraySelect);
         read_operacionMina_registro.value = arraySelect[0].operacionMina_registro;
         read_operacionMina_turno.value = arraySelect[0].operacionMina_turno;
         read_operacionMina_guardia.value = arraySelect[0].operacionMina_guardia;
         read_operacionMina_nvale.value = arraySelect[0].operacionMina_nVale;
         //document.querySelector('input[name=read-form-radio-tipo_disparo][value="'+arraySelect[0].operacionMina_actividad+'"]').checked = true;
-        document.querySelector('input[name=read-form-radio-tipo_disparo][value="1 Perforacion"]').checked = true;
+       /*  document.querySelector('input[name=update-form-radio-tipo_disparo][value="'+ arraySelect[0].operacionMina_actividad + '"]').checked = true; */
+        document.querySelector('input[name=read-form-radio-tipo_disparo][value="' + arraySelect[0].operacionMina_actividad + '"]').checked = true;
         read_operacionMina_codZona.value = arraySelect[0].labZona_letra;
         read_operacionMina_codLabor.value = arraySelect[0].lab_ccostos;
         read_operacionMina_zona.value = arraySelect[0].labZona_nombre;
@@ -467,7 +753,6 @@ const paintForm_read = (data) => {
                 ] ).draw();
                 counter++;
             }
-            
         });
         read_operacionaMina_l.value = arraySelect[0].operacionMina_l;
         read_operacionaMina_lpv.value = arraySelect[0].operacionMina_lpv;
@@ -486,8 +771,8 @@ const paintForm_read = (data) => {
         read_operacionaMina_palaCantidad.value = arraySelect[0].operacionMina_palaCantidad;
         read_operacionaMina_mineral.value = arraySelect[0].operacionMina_mineralCantidad;
         read_operacionaMina_winche.value = arraySelect[0].operacionMina_wincheNombre;
-        read_operacionaMina_wincheCantidad.value = arraySelect[0].operacionMina_wincheCantidad
-        read_operacionaMina_desmonte.value = arraySelect[0].operacionMina_desmonCantidad
+        read_operacionaMina_wincheCantidad.value = arraySelect[0].operacionMina_wincheCantidad;
+        read_operacionaMina_desmonte.value = arraySelect[0].operacionMina_desmonCantidad;
     } catch (error) {
         console.error(error.message);
     }
@@ -527,16 +812,16 @@ btnNew.addEventListener("click", () => {
 });
 //  Boton Agregar
 btn_agregar_operacionMina.addEventListener('click', () => {
-    var selectFoorm_codZona = {
+    let selectFoorm_codZona = {
         "accion": "getcolumnAll",
         "column": "labZona_letra"
     }
     fetchCodzona(selectFoorm_codZona);
-    var selectFoorm_colaborador = {
+    let selectFoorm_colaborador = {
         "accion": "col_dni",
     }
     fetchColaborador(selectFoorm_colaborador);
-    var selectForm_instalacionMina = {
+    let selectForm_instalacionMina = {
         "accion": "getcolumnAll",
         "column": "instalacionesMIna_nombre"
     }
@@ -705,9 +990,9 @@ iptinsertCZona.addEventListener('keyup', function(e) {
 // Detectores de cambio de input
 // Codigo Zona
 $("#insert-operacionMina-codzona").on('input', function() {
-    var val = $('#insert-operacionMina-codzona').val();
-    var validcodzona = $('#insert-options-codzona').find('option[value="' + val + '"]').data('id-codzona');
-    var selectForm_codLabor = {
+    let val = $('#insert-operacionMina-codzona').val();
+    let validcodzona = $('#insert-options-codzona').find('option[value="' + val + '"]').data('id-codzona');
+    let selectForm_codLabor = {
         "accion": "getcolumnWhere",
         "column": "lab_ccostos",
         "parament": validcodzona,
@@ -721,9 +1006,9 @@ $("#insert-operacionMina-codzona").on('input', function() {
 
 // Codigo Labor
 $("#insert-operacionMina-codLabor").on('input', function() {
-    var val = $('#insert-operacionMina-codLabor').val();
-    var validcodlabor = $('#insert-options-codLabor').find('option[value="' + val + '"]').data('id-codlabor');
-    var selectForm = {
+    let val = $('#insert-operacionMina-codLabor').val();
+    let validcodlabor = $('#insert-options-codLabor').find('option[value="' + val + '"]').data('id-codlabor');
+    let selectForm = {
         "accion": "getcolumnsWhere",
         "columns": [
             "nombre", "labNombre_nombre", "nivel"

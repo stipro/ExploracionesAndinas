@@ -59,31 +59,31 @@ $template_update_operacionMina = '
                                         <div class="col-md-8">
                                             <!-- Radio Buttons -->
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="1 Perforacion" name="radio-tipo_disparo" id="opcion-tipo_disparo1" checked="">
+                                                <input class="magic-radio" type="radio" value="1 Perforacion" name="update-form-radio-tipo_disparo" id="opcion-tipo_disparo1" checked="">
                                                 <label for="opcion-tipo_disparo1">1 Perforación</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="2 Voladura" name="radio-tipo_disparo" id="opcion-tipo_disparo2">
+                                                <input class="magic-radio" type="radio" value="2 Voladura" name="update-form-radio-tipo_disparo" id="opcion-tipo_disparo2">
                                                 <label for="opcion-tipo_disparo2">2 Voladura</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="3 Limpieza" name="radio-tipo_disparo" id="opcion-tipo_disparo3" >
+                                                <input class="magic-radio" type="radio" value="3 Limpieza" name="update-form-radio-tipo_disparo" id="opcion-tipo_disparo3" >
                                                 <label for="opcion-tipo_disparo3">3 Limpieza</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="4 Sostenimiento" name="radio-tipo_disparo" id="opcion-tipo_disparo4" >
+                                                <input class="magic-radio" type="radio" value="4 Sostenimiento" name="update-form-radio-tipo_disparo" id="opcion-tipo_disparo4" >
                                                 <label for="opcion-tipo_disparo4">4 Sostenimiento</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="5 Servicio" name="radio-tipo_disparo" id="opcion-tipo_disparo5" >
+                                                <input class="magic-radio" type="radio" value="5 Servicios" name="update-form-radio-tipo_disparo" id="opcion-tipo_disparo5" >
                                                 <label for="opcion-tipo_disparo4">5 Servicios</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="6 Acarreo" name="radio-tipo_disparo" id="opcion-tipo_disparo6" >
+                                                <input class="magic-radio" type="radio" value="6 Acarreo" name="update-form-radio-tipo_disparo" id="opcion-tipo_disparo6" >
                                                 <label for="opcion-tipo_disparo4">6 Acarreo</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="7 Relleno" name="radio-tipo_disparo" id="opcion-tipo_disparo7" >
+                                                <input class="magic-radio" type="radio" value="7 Relleno" name="update-form-radio-tipo_disparo" id="opcion-tipo_disparo7" >
                                                 <label for="opcion-tipo_disparo4">7 Relleno</label>
                                             </div>
                             
@@ -103,10 +103,10 @@ $template_update_operacionMina = '
                                         </div>
                                         <datalist id="update-options-codzona">
                                             <option value="No se obtuvo Dato">
-                                        </datalist>
+                                        </datalist><!-- 
                                         <template id="template-opt-cod_zona">
                                             <option id="opt-codzona" value="">
-                                        </template>
+                                        </template> -->
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -364,9 +364,9 @@ $template_update_operacionMina = '
                                 </div>
                                 <div id="update-lft-tab-2" class="tab-pane fade">
                                     <div class="row">
-                                        <div id="myTabDiv" class="table-responsive-lg col-md-6">
+                                        <div class="table-responsive-lg col-md-6">
                                             <!-- Table -->
-                                            <table name="mytab" id="mytab1" class="table table-md table-hover table-instalaciones">
+                                            <table name="update-mtbl-operInstalaciones" id="update-mtbl-operInstalaciones" class="table table-md table-hover table-instalaciones">
                                                 <thead>
                                                     <tr class="ui-widget-header ">
                                                         <th class="indice" scope="col">#</th>
@@ -376,7 +376,7 @@ $template_update_operacionMina = '
                                                         <th scope="col">Acciones</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="instalacion-body">
+                                                <tbody>
                                                 </tbody>
                                             </table>
                                             <template id="template-td-instalaciones">
@@ -586,9 +586,8 @@ $template_update_operacionMina = '
                 </div>
                 <!--Modal footer-->
                 <div class="modal-footer">
-                    <button id="mbtn-new" class="btn btn-primary">Nuevo</button>
                     <button data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
-                    <button id="mbtn-update" class="btn btn-success">Registrar</button>
+                    <button id="mbtn-operacionMina-update" class="btn btn-success">Registrar</button>
                 </div>
             </div>
         </div>
