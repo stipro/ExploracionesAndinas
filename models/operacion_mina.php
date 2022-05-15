@@ -41,6 +41,47 @@ class operacionMina extends Conexion
         $query = "SELECT oper_mine.id_operacionMina, oper_mine.operacionMina_registro, oper_mine.operacionMina_turno, oper_mine.operacionMina_guardia, oper_mine.operacionMina_nVale, oper_mine.operacionMina_actividad, oper_mine.operacionMina_l, oper_mine.operacionMina_lpv, oper_mine.operacionMina_stto, oper_mine.operacionMina_serv, oper_mine.operacionMina_comentario, oper_mine.operacionMina_tipAvance, oper_mine.operacionMina_avanceMt, oper_mine.operacionMina_avanceMt3, oper_mine.operacionMina_intDisparo, oper_mine.operacionMina_Resuelto, oper_mine.operacionMina_manualCantidad, oper_mine.operacionMina_palaNombre, oper_mine.operacionMina_palaCantidad, oper_mine.operacionMina_wincheNombre, oper_mine.operacionMina_wincheCantidad, oper_mine.operacionMina_mineralCantidad, oper_mine.operacionMina_desmonCantidad FROM operacion_mina AS oper_mine";
         return $this->ConsultaSimple($query);
     }
+    public function getRow($parament_id)
+    {
+        $query = "SELECT op_mn.operacionMina_registro, op_mn.operacionMina_turno, op_mn.operacionMina_guardia, op_mn.operacionMina_nVale, op_mn.operacionMina_actividad,
+        lb_zn.labZona_letra, lb.lab_ccostos, lb_zn.labZona_nombre, lb_nm.labNombre_nombre, clb.col_dni,CONCAT(clb.col_apePaterno, ' ', clb.col_apeMaterno,' ', clb.col_nombres) AS fullName,cg.cargo_nombre, op_t.operacionTareas_nombre,
+        op_mn.operacionMina_l, op_mn.operacionMina_lpv, op_mn.operacionMina_stto, op_mn.operacionMina_serv, op_mn.operacionMina_comentario,
+        op_mn.operacionMina_tipAvance, op_mn.operacionMina_avanceMt, op_mn.operacionMina_avanceMt3, op_mn.operacionMina_intDisparo, op_mn.operacionMina_Resuelto,
+        op_mn.operacionMina_manualCantidad, op_mn.operacionMina_palaNombre, op_mn.operacionMina_palaCantidad, op_mn.operacionMina_mineralCantidad, op_mn.operacionMina_wincheNombre, op_mn.operacionMina_wincheCantidad, op_mn.operacionMina_desmonCantidad,
+        itl_mn.id_instalacionMina, itl_mn.instalacionesMina_nombre, op_itl.operacionInstalacion_cantidad, itl_mn.instalacionMina_medida
+                FROM operacion_mina AS op_mn 
+                LEFT JOIN labores AS lb ON op_mn.id_labor = lb.id_labor
+                LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre
+                LEFT JOIN lab_zonas AS lb_zn ON lb.id_zona = lb_zn.id_zona
+                  LEFT JOIN oper_tareas AS op_t ON op_mn.id_operacionMina = op_t.id_operacionMina
+                  LEFT JOIN colaboradores AS clb ON op_t.id_colaborador = clb.id_colaborador
+                  LEFT JOIN cargos AS cg ON clb.id_cargo = cg.id_cargo
+                  LEFT JOIN oper_instalaciones AS op_itl ON op_mn.id_operacionMina = op_itl.id_operacionMina
+                  LEFT JOIN instalaciones_mina AS itl_mn ON op_itl.id_instalacionMina = itl_mn.id_instalacionMina
+                  WHERE op_mn.id_operacionMina = {$parament_id} ORDER BY op_mn.id_operacionMina, op_t.id_operacionTareas, itl_mn.id_instalacionMina ASC";
+        return $this->ConsultaSimple($query);
+    }
+    public function getRow_update($parament_id)
+    {
+        $query = "SELECT op_mn.id_operacionMina, op_mn.operacionMina_registro, op_mn.operacionMina_turno, op_mn.operacionMina_guardia, op_mn.operacionMina_nVale, op_mn.operacionMina_actividad,
+        lb_zn.id_zona AS id_zona_letra, lb_zn.labZona_letra, lb.id_labor, lb.lab_ccostos, lb_zn.id_zona, lb_zn.labZona_nombre, lb_nm.id_labNombre, lb_nm.labNombre_nombre,
+        op_t.id_operacionTareas, clb.col_dni, clb.id_colaborador, CONCAT(clb.col_apePaterno, ' ', clb.col_apeMaterno,' ', clb.col_nombres) AS fullName, cg.id_cargo, cg.cargo_nombre, op_t.operacionTareas_nombre,
+        op_mn.operacionMina_l, op_mn.operacionMina_lpv, op_mn.operacionMina_stto, op_mn.operacionMina_serv, op_mn.operacionMina_comentario,
+        op_mn.operacionMina_tipAvance, op_mn.operacionMina_avanceMt, op_mn.operacionMina_avanceMt3, op_mn.operacionMina_intDisparo, op_mn.operacionMina_Resuelto,
+        op_mn.operacionMina_manualCantidad, op_mn.operacionMina_palaNombre, op_mn.operacionMina_palaCantidad, op_mn.operacionMina_mineralCantidad, op_mn.operacionMina_wincheNombre, op_mn.operacionMina_wincheCantidad, op_mn.operacionMina_desmonCantidad,
+        itl_mn.id_instalacionMina, itl_mn.instalacionesMina_nombre, op_itl.operacionInstalacion_cantidad, itl_mn.instalacionMina_medida
+                FROM operacion_mina AS op_mn 
+                LEFT JOIN labores AS lb ON op_mn.id_labor = lb.id_labor
+                LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre
+                LEFT JOIN lab_zonas AS lb_zn ON lb.id_zona = lb_zn.id_zona
+                  LEFT JOIN oper_tareas AS op_t ON op_t.id_operacionMina = op_mn.id_operacionMina
+                  LEFT JOIN colaboradores AS clb ON op_t.id_colaborador = clb.id_colaborador
+                  LEFT JOIN cargos AS cg ON clb.id_cargo = cg.id_cargo
+                  LEFT JOIN oper_instalaciones AS op_itl ON op_mn.id_operacionMina = op_itl.id_operacionMina
+                  LEFT JOIN instalaciones_mina AS itl_mn ON op_itl.id_instalacionMina = itl_mn.id_instalacionMina
+                  WHERE op_mn.id_operacionMina = {$parament_id} ORDER BY op_mn.id_operacionMina, op_t.id_operacionTareas, itl_mn.id_instalacionMina ASC";
+        return $this->ConsultaSimple($query);
+    }
     public function getRecord($parament_id)
     {
         $query = "SELECT op_mn.operacionMina_registro, op_mn.operacionMina_turno, op_mn.operacionMina_guardia, op_mn.operacionMina_nVale FROM operacion_mina AS op_mn WHERE op_mn.id_operacionMina='{$parament_id}'";

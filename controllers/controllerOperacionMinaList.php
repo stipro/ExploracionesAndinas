@@ -13,6 +13,14 @@ if($_POST){
         // ACCION
         $accion = $arrayForm['accion'];
         switch ($accion) {
+            case "getRow":
+                $parament_id = $arrayForm['whereParament'];
+                $rptSql = $tableManager->getRow($parament_id);
+                break;
+            case "getRow_update":
+                $parament_id = $arrayForm['whereParament'];
+                $rptSql = $tableManager->getRow_update($parament_id);
+                break;
             case "record":
                 $parament_id = $arrayForm['id'];
                 $rptSql = $tableManager->getRecord($parament_id);

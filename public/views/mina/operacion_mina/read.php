@@ -22,25 +22,25 @@ $template_read_operacionMina = '
                                     <div class="form-group">
                                         <label for="read-operacionMina-registro" class="col-md-4 control-label">Fecha</label>
                                         <div class="col-md-8">                                                    
-                                            <input type="date" placeholder="Dia" class="form-control" id="read-operacionMina-registro"  value=""> <!--min="2021-12-12" max="2021-12-13"-->
+                                            <input type="date" placeholder="Dia" class="form-control" id="read-operacionMina-registro"  value="" disabled> <!--min="2021-12-12" max="2021-12-13"-->
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="read-operacionaMina-turno" class="col-md-4 control-label">Turno</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="read-options-turno" id="read-operacionaMina-turno" placeholder="Ingrese Turno...">
+                                            <input class="form-control" list="read-options-turno" id="read-operacionaMina-turno" placeholder="Turno" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="read-operacionMina-guardia" class="col-md-4 control-label">Guardia</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="read-options-guardia" id="read-operacionMina-guardia" placeholder="Ingrese Guardia...">
+                                            <input class="form-control" list="read-options-guardia" id="read-operacionMina-guardia" placeholder="Guardia" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="read-operacionMina-nvale" class="col-md-4 control-label">N° Vale</label>
                                         <div class="col-md-8">                                                    
-                                            <input type="texto" placeholder="n° vale" class="form-control" id="read-operacionMina-nvale">
+                                            <input type="texto" placeholder="n° vale" class="form-control" id="read-operacionMina-nvale" placeholder="N° Vale" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -50,31 +50,31 @@ $template_read_operacionMina = '
                                         <div class="col-md-8">
                                             <!-- Radio Buttons -->
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="1 Perforacion" name="radio-tipo_disparo" id="opcion-tipo_disparo1" checked="">
+                                                <input class="magic-radio" type="radio" value="1 Perforacion" name="read-form-radio-tipo_disparo" id="opcion-tipo_disparo1" disabled>
                                                 <label for="opcion-tipo_disparo1">1 Perforación</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="2 Voladura" name="radio-tipo_disparo" id="opcion-tipo_disparo2">
+                                                <input class="magic-radio" type="radio" value="2 Voladura" name="read-form-radio-tipo_disparo" id="opcion-tipo_disparo2" disabled>
                                                 <label for="opcion-tipo_disparo2">2 Voladura</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="3 Limpieza" name="radio-tipo_disparo" id="opcion-tipo_disparo3" >
+                                                <input class="magic-radio" type="radio" value="3 Limpieza" name="read-form-radio-tipo_disparo" id="opcion-tipo_disparo3" disabled>
                                                 <label for="opcion-tipo_disparo3">3 Limpieza</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="4 Sostenimiento" name="radio-tipo_disparo" id="opcion-tipo_disparo4" >
+                                                <input class="magic-radio" type="radio" value="4 Sostenimiento" name="read-form-radio-tipo_disparo" id="opcion-tipo_disparo4" disabled>
                                                 <label for="opcion-tipo_disparo4">4 Sostenimiento</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="5 Servicio" name="radio-tipo_disparo" id="opcion-tipo_disparo5" >
+                                                <input class="magic-radio" type="radio" value="5 Servicio" name="read-form-radio-tipo_disparo" id="opcion-tipo_disparo5" disabled>
                                                 <label for="opcion-tipo_disparo4">5 Servicios</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="6 Acarreo" name="radio-tipo_disparo" id="opcion-tipo_disparo6" >
+                                                <input class="magic-radio" type="radio" value="6 Acarreo" name="read-form-radio-tipo_disparo" id="opcion-tipo_disparo6" disabled>
                                                 <label for="opcion-tipo_disparo4">6 Acarreo</label>
                                             </div>
                                             <div class="radio">
-                                                <input class="magic-radio" type="radio" value="7 Relleno" name="radio-tipo_disparo" id="opcion-tipo_disparo7" >
+                                                <input class="magic-radio" type="radio" value="7 Relleno" name="read-form-radio-tipo_disparo" id="opcion-tipo_disparo7" disabled>
                                                 <label for="opcion-tipo_disparo4">7 Relleno</label>
                                             </div>
                             
@@ -90,7 +90,7 @@ $template_read_operacionMina = '
                                     <div class="form-group">
                                         <label for="read-operacionMina-codzona" class="col-md-4 control-label">cod. Zona</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="read-options-codzona" id="read-operacionMina-codzona" placeholder="seleccióne Zona...">
+                                            <input class="form-control" list="read-options-codzona" id="read-operacionMina-codzona" placeholder="Zona" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@ $template_read_operacionMina = '
                                     <div class="form-group">
                                         <label for="read-operacionMina-codLabor" class="col-md-4 control-label">Centro Costos</label>
                                         <div class="col-md-8">
-                                            <input class="form-control"  list="read-options-codLabor" type="text" placeholder="Centro Costos" id="read-operacionMina-codLabor">
+                                            <input class="form-control"  list="read-options-codLabor" type="text" placeholder="Centro Costos" id="read-operacionMina-codLabor" disabled>
                                         </div>
                                     </div>
                                 </div>                                
@@ -114,7 +114,7 @@ $template_read_operacionMina = '
                                     <div class="form-group">
                                         <label for="" class="col-md-4 control-label">Labor</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="read-options-labor" id="read-operacionMina-labor" placeholder="seleccióne Labor..." disabled>
+                                            <input class="form-control" list="read-options-labor" id="read-operacionMina-labor" placeholder="Labor" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -154,10 +154,10 @@ $template_read_operacionMina = '
                                         <div class="form-group form-tarea">
                                             <label for="" class="col-md-3 form-tarea control-label">Maestro</label>
                                             <div class="col-md-2">
-                                                <input class="form-control" list="read-options-dni-maestro" id="read-operacionaMina-dni-maestro" placeholder="Ingrese Dni...">
+                                                <input class="form-control" list="read-options-dni-maestro" id="read-operacionaMina-dni-maestro" placeholder="DNI">
                                             </div>
                                             <div class="col-md-4">
-                                                <input class="form-control" list="read-options-name-maestro" id="read-operacionaMina-name-maestro" placeholder="Ingrese Nombre...">
+                                                <input class="form-control" list="read-options-name-maestro" id="read-operacionaMina-name-maestro" placeholder="Nombres">
                                             </div>
                                             <div class="col-md-3">
                                                 <input class="form-control" type="text" id="read-operacionaMina-cargo-maestro" value="..." disabled>
@@ -168,10 +168,10 @@ $template_read_operacionMina = '
                                         <div class="form-group form-tarea">
                                             <label for="" class="col-md-3 form-tarea control-label">Ayudante</label>
                                             <div class="col-md-2">
-                                                <input class="form-control" list="read-options-dni-ayudante" id="read-operacionaMina-dni-ayudante" placeholder="Ingrese Dni...">
+                                                <input class="form-control" list="read-options-dni-ayudante" id="read-operacionaMina-dni-ayudante" placeholder="DNI">
                                             </div>
                                             <div class="col-md-4">
-                                                <input class="form-control" list="read-options-name-ayudante" id="read-operacionaMina-name-ayudante" placeholder="Ingrese Nombre...">
+                                                <input class="form-control" list="read-options-name-ayudante" id="read-operacionaMina-name-ayudante" placeholder="Nombres">
                                             </div>
                                             <div class="col-md-3">
                                                 <input class="form-control" type="text" name="" id="read-operacionaMina-cargo-ayudante" value="..." disabled>
@@ -182,10 +182,10 @@ $template_read_operacionMina = '
                                         <div class="form-group form-tarea">
                                             <label for="" class="col-md-3 form-tarea control-label">3er Hombre</label>
                                             <div class="col-md-2">
-                                                <input class="form-control" list="read-options-dni-tercer-hombre" id="read-operacionaMina-dni-tercer-hombre" placeholder="Ingrese Dni...">
+                                                <input class="form-control" list="read-options-dni-tercer-hombre" id="read-operacionaMina-dni-tercer-hombre" placeholder="DNI">
                                             </div>
                                             <div class="col-md-4">
-                                                <input class="form-control" list="read-options-name-tercer-hombre" id="read-operacionaMina-name-tercer-hombre" placeholder="Ingrese Nombre...">
+                                                <input class="form-control" list="read-options-name-tercer-hombre" id="read-operacionaMina-name-tercer-hombre" placeholder="Nombres">
                                             </div>
                                             <div class="col-md-3">
                                                 <input class="form-control" type="text" name="" id="read-operacionaMina-cargo-tercer-hombre" value="..." disabled>
@@ -196,10 +196,10 @@ $template_read_operacionMina = '
                                         <div class="form-group form-tarea">
                                             <label for="" class="col-md-3 form-tarea control-label">4to Hombre</label>
                                             <div class="col-md-2">
-                                                <input class="form-control" list="read-options-dni-cuarto-hombre" id="read-operacionaMina-dni-cuarto-hombre" placeholder="Ingrese Dni...">
+                                                <input class="form-control" list="read-options-dni-cuarto-hombre" id="read-operacionaMina-dni-cuarto-hombre" placeholder="DNI">
                                             </div>
                                             <div class="col-md-4">
-                                                <input class="form-control" list="read-options-name-cuarto-hombre" id="read-operacionaMina-name-cuarto-hombre" placeholder="Ingrese Nombre...">
+                                                <input class="form-control" list="read-options-name-cuarto-hombre" id="read-operacionaMina-name-cuarto-hombre" placeholder="Nombres">
                                             </div>
                                             <div class="col-md-3">
                                                 <input class="form-control" type="text" name="" id="read-operacionaMina-cargo-cuarto-hombre" value="..." disabled>
@@ -261,57 +261,21 @@ $template_read_operacionMina = '
                                 </div>
                                 <div id="read-lft-tab-2" class="tab-pane fade">
                                     <div class="row">
-                                        <div id="myTabDiv" class="table-responsive-lg col-md-6">
+                                        <div class="table-responsive-lg col-md-12">
                                             <!-- Table -->
-                                            <table name="mytab" id="mytab1" class="table table-md table-hover table-instalaciones">
+                                            <table name="read-mtbl-operInstalaciones" id="read-mtbl-operInstalaciones" class="table table-md table-hover table-instalaciones">
                                                 <thead>
                                                     <tr class="ui-widget-header ">
                                                         <th class="indice" scope="col">#</th>
                                                         <th scope="col" data-sort-initial="true" data-toggle="true">Nombre</th>
                                                         <th scope="col">Cantidad</th>
                                                         <th scope="col">Medida</th>
-                                                        <th scope="col">Acciones</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="instalacion-body">
                                                 </tbody>
                                             </table>
-                                            <template id="template-td-instalaciones">
-                                                <tr>
-                                                    <th id="indice" class="indice" scope="row"></th>
-                                                    <td id="template-tds-name-instalaciones">val 22</td>
-                                                    <td id="template-tds-cantidad-instalaciones">val 23</td>
-                                                    <td id="template-tds-unidad-instalaciones">val 23</td>
-                                                    <td>
-                                                        <button  class="borrar btn btn-danger btn-xs btn-delete" value="Delete">
-                                                            <i class="demo-pli-cross"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </template>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p class="bord-btm pad-ver text-main text-bold">Instalaciónes</p>
-                                            <div class="form-group">
-                                                <label for="nombre-instalaciones-table" class="col-md-2 control-label">Nombre</label>
-                                                <div class="col-md-6">
-                                                    <input class="form-control" list="nombre-instalaciones-options" id="nombre-instalaciones-table" placeholder="Seleccion opcion..">
-                                                </div>
-                                                <datalist id="nombre-instalaciones-options">
-                                                    <option value="Aun no carga">
-                                                </datalist>
-                                                <template id="template-opts-name-instalaciones">
-                                                    <option id="template-opt-name-instalaciones" value="">
-                                                </template>
-                                                <label for="cantidad-instalaciones-table" class="col-md-1 control-label">Cantidad</label>
-                                                <div class="col-md-3">
-                                                    <input class="form-control" id="cantidad-instalaciones-table" placeholder="Ingrese Cantidad...">
-                                                </div>
-                                            </div>
-                                            <button id="read-option-table" type="button" class="btn btn-primary">Agregar</button>
-                                            <!-- Fin Table 
-                                            <button type="button" class="btn btn-primary btn-get-all">Obtener Todo</button>-->
-                                        </div>                                        
+                                        </div>                                      
                                     </div>
                                 </div>
                             </div>
@@ -349,7 +313,7 @@ $template_read_operacionMina = '
                                     <div class="form-group">
                                         <label for="read-operacionMina-int-disparo" class="col-md-4 control-label">Int. Disparo</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="read-options-int-disparo" id="read-operacionMina-int-disparo" placeholder=Int. Disparo">
+                                            <input class="form-control" list="read-options-int-disparo" id="read-operacionMina-int-disparo" placeholder="Int. Disparo">
                                         </div>
                                     </div>
                                 </div>

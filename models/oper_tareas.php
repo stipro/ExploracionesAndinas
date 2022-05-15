@@ -51,12 +51,14 @@ class operTareas extends Conexion
                 :item3)";
             $insertValue = $this->db->prepare($query);
             foreach ($formRequest2 as $clave) {
-                $insertValue->bindValue(':item1', $idPrincipal, PDO::PARAM_STR);
-                $insertValue->bindValue(':item2', $clave['id'], PDO::PARAM_STR);
-                $insertValue->bindValue(':item3', $clave['nombre'], PDO::PARAM_STR);
-                $sqlrpt = $insertValue->execute();
-                $lastcolIdsql = $this->db->lastInsertId();
+                if(array_key_exists('id', $clave)){
+                    $insertValue->bindValue(':item1', $idPrincipal, PDO::PARAM_STR);
+                    $insertValue->bindValue(':item2', $clave['id'], PDO::PARAM_STR);
+                    $insertValue->bindValue(':item3', $clave['nombre'], PDO::PARAM_STR);
+                    $sqlrpt = $insertValue->execute();
+                }
             }
+            $lastcolIdsql = $this->db->lastInsertId();
             if($sqlrpt){
                 //$this->db->commit();
                 $rptSql = [

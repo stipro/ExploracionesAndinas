@@ -1,6 +1,8 @@
 <?php
 header('Content-type: application/json; charset=utf-8');
-
+$rptSql = '';
+$rptSql2 = '';
+$rptSql3 = '';
 // Verifico si se recibio Informacion
 if($_POST){
     $table = 'operacion_mina';
@@ -77,10 +79,8 @@ if($_POST){
                 // Resultado operacion Mina
                 if (!empty($idPrincipal) && !empty($formRequest2)) 
                 {
-                    if(array_key_exists('id', $formRequest2)){
-                        // Enviando parametros Insert
-                        $rptSql2 = $tableManager2->insert($idPrincipal, $formRequest2);
-                    }                    
+                    // Enviando parametros Insert
+                    $rptSql2 = $tableManager2->insert($idPrincipal, $formRequest2);
                 } 
                 else 
                 {
@@ -101,7 +101,12 @@ if($_POST){
                 else 
                 {
                     $rptSql3 = 'VACIO';
-                }             
+                }
+                $rptSqlGeneral = array(
+                    "sql1" => $rptSql,
+                    "sql2" => $rptSql2,
+                    "sql3" => $rptSql3,
+                );             
                 break;
             case "edit":
                 $formRequest = $arrayForm['datos'];
@@ -125,7 +130,7 @@ else{
     $rptController = 'no Se recibio datos';
 }
 $rptjsonControlller = array(
-    "sql" => $rptSql,
+    "sql" => $rptSqlGeneral,
     "rptController" => $rptController
 );
 echo json_encode($rptjsonControlller);

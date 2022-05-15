@@ -22,6 +22,7 @@
         include_once('./../template/javascript.php');
         include_once('./operacion_mina/create.php');
         include_once('./operacion_mina/read.php');
+        include_once('./operacion_mina/update.php');
         $name_menu = '';
         for ($i=0; $i < count($parte); $i++) {
             $name_menu .= ucfirst($parte[$i]).' ';
@@ -302,6 +303,12 @@
     <?php echo $template_read_operacionMina; ?>
     <!--===================================================-->
     <!--End Leer Bootstrap Modal-->
+
+    <!--Actualizar Bootstrap Modal-->
+    <!--===================================================-->
+    <?php echo $template_update_operacionMina; ?>
+    <!--===================================================-->
+    <!--End Actualizar Bootstrap Modal-->
     
     
     <!--JAVASCRIPT-->
