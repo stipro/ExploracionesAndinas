@@ -78,7 +78,7 @@ class extraccionMineral extends Conexion
             $rptSql = '';
             $lastcolIdsql = '';
             $query = "INSERT INTO extraccion_mineral (
-            fechaRegistro_extraccionMineral,
+            fechaDigitacion_extraccionMineral,
             fechaExtraccion_extraccionMineral,
             horasExtraccion_extraccionMineral,
             locomotora_extraccionMineral,

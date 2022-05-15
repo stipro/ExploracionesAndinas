@@ -411,7 +411,7 @@ $template_update_operacionMina = '
                                                     <input class="form-control" id="cantidad-instalaciones-table" placeholder="Ingrese Cantidad...">
                                                 </div>
                                             </div>
-                                            <button id="update-option-table" type="button" class="btn btn-primary">Agregar</button>
+                                            <button id="update-btnM-add-table" type="button" class="btn btn-primary">Agregar</button>
                                             <!-- Fin Table 
                                             <button type="button" class="btn btn-primary btn-get-all">Obtener Todo</button>-->
                                         </div>                                        

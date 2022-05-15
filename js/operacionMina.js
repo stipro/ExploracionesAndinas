@@ -95,16 +95,31 @@ const update_operacionMina_labor = document.getElementById("update-operacionMina
 const update_operacionMina_nivel = document.getElementById("update-operacionMina-nivel");
 
 const update_operacionMina_dni_maestro = document.getElementById("update-operacionaMina-dni-maestro");
+const dt_update_operacionMina_dni_maestro = document.getElementById("update-options-dni-maestro");
+
 const update_operacionMina_name_maestro = document.getElementById("update-operacionaMina-name-maestro");
+const dt_update_operacionMina_name_maestro = document.getElementById("update-options-name-maestro");
 const update_operacionMina_cargo_maestro = document.getElementById("update-operacionaMina-cargo-maestro");
+
 const update_operacionMina_dni_ayudante = document.getElementById("update-operacionaMina-dni-ayudante");
+const dt_update_operacionMina_dni_ayudante = document.getElementById("update-options-dni-ayudante");
+
 const update_operacionMina_name_ayudante = document.getElementById("update-operacionaMina-name-ayudante");
+const dt_update_operacionMina_name_ayudante = document.getElementById("update-options-name-ayudante");
 const update_operacionMina_cargo_ayudante = document.getElementById("update-operacionaMina-cargo-ayudante");
+
 const update_operacionMina_dni_tercer_hombre = document.getElementById("update-operacionaMina-dni-tercer-hombre");
+const dt_update_operacionMina_dni_tercer_hombre = document.getElementById("update-options-dni-tercer-hombre");
+
 const update_operacionMina_name_tercer_hombre = document.getElementById("update-operacionaMina-name-tercer-hombre");
+const dt_update_operacionMina_name_tercer_hombre = document.getElementById("update-options-name-tercer-hombre");
 const update_operacionMina_cargo_tercer_hombre = document.getElementById("update-operacionaMina-cargo-tercer-hombre");
+
 const update_operacionMina_dni_cuarto_hombre = document.getElementById("update-operacionaMina-dni-cuarto-hombre");
+const dt_update_operacionMina_dni_cuarto_hombre = document.getElementById("update-options-dni-cuarto-hombre");
+
 const update_operacionMina_name_cuarto_hombre = document.getElementById("update-operacionaMina-name-cuarto-hombre");
+const dt_update_operacionMina_name_cuarto_hombre = document.getElementById("update-options-name-cuarto-hombre");
 const update_operacionMina_cargo_cuarto_hombre = document.getElementById("update-operacionaMina-cargo-cuarto-hombre");
 
 const update_operacionMina_l = document.getElementById("update-operacionMina-l");
@@ -126,6 +141,8 @@ const update_operacionMina_mineral = document.getElementById("update-operMina-mi
 const update_operacionMina_winche = document.getElementById("update-operacionMina-winche");
 const update_operacionMina_cantidadWinche = document.getElementById("update-operacionMina-cantidadWinche");
 const update_operacionMina_Desmon = document.getElementById("update-operacionMina-Desmon");
+
+const update_mBtnAdd_tblInstalaciones = document.getElementById("update-btnM-add-table");
 
 const mbtn_read_operacionMina_close = document.getElementById("mbtn-read-operacionMina-close");
 const read_operacionMina_registro = document.getElementById("read-operacionMina-registro");
@@ -421,18 +438,152 @@ $('#table-operacion-mina tbody').on('click', '.btn-tbM-operacionMina-edit', func
         "column": "labZona_letra"
     }
     fetchCodzona_update(selectFoorm_codZona);
-/*     let selectFoorm_colaborador = {
+     let selectFoorm_colaborador = {
         "accion": "col_dni",
     }
     fetchColaborador_update(selectFoorm_colaborador);
+    
     let selectForm_instalacionMina = {
         "accion": "getcolumnAll",
         "column": "instalacionesMIna_nombre"
     }
-    fetchInstalaciones_update(selectForm_instalacionMina); */
+    fetchInstalaciones_update(selectForm_instalacionMina);
     //
 
 });
+//Traer Instalaciones
+const fetchInstalaciones_update = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../../../controllers/controllerInstalacionMinaList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json();
+    objectarrayInstalacion = data['sql']
+    datalistinsert_optionsInstalaciones.innerHTML = "";
+    const template_optsInstalaciones = document.querySelector("#template-opts-name-instalaciones").content;
+    const fragment_optsInstalaciones = document.createDocumentFragment();
+
+    objectarrayInstalacion.forEach(item => {
+        template_optsInstalaciones.querySelector('#template-opt-name-instalaciones').value = item.instalacionesMIna_nombre;
+        template_optsInstalaciones.querySelector('#template-opt-name-instalaciones').dataset.idInstalacionmina = item.id_instalacionMina;
+        template_optsInstalaciones.querySelector('#template-opt-name-instalaciones').dataset.medidaInstalacionmina = item.instalacionMina_medida;
+        const clone_optsInstalaciones = template_optsInstalaciones.cloneNode(true);
+        fragment_optsInstalaciones.appendChild(clone_optsInstalaciones);
+    });
+
+    datalistinsert_optionsInstalaciones.appendChild(fragment_optsInstalaciones);
+}
+
+//Traer Colaborador ()
+const fetchColaborador_update = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    //Enviamos a pintar
+    paintDni_Nombres_update(data)
+}
+
+const paintDni_Nombres_update = (data) => {
+    arraySelectColaboradores = data['sql'];
+    //iptinsert_dniMaestro
+    
+    dt_update_operacionMina_dni_maestro.innerHTML = '';
+    const templateSelectDniMaestro = document.querySelector("#template-opt-dni-maestro").content;
+    const fragmentdniMaestro = document.createDocumentFragment();
+
+    dt_update_operacionMina_name_maestro.innerHTML = '';
+    const templateSelectNameMaestro = document.querySelector("#template-opt-name-maestro").content;
+    const fragmentnameMaestro = document.createDocumentFragment();
+
+    dt_update_operacionMina_dni_ayudante.innerHTML = '';
+    const templateSelectDniAyudante = document.querySelector("#template-opt-dni-ayudante").content;
+    const fragmentdniAyudante = document.createDocumentFragment();
+
+    dt_update_operacionMina_name_ayudante.innerHTML = '';
+    const templateSelectNameAyudante = document.querySelector("#template-opt-name-ayudante").content;
+    const fragmentnameAyudante = document.createDocumentFragment();
+
+    dt_update_operacionMina_dni_tercer_hombre.innerHTML = '';
+    const templateSelectDniTercerPersona = document.querySelector("#template-opt-dni-tercer-hombre").content;
+    const fragmentdniTercerPersona = document.createDocumentFragment();
+
+    dt_update_operacionMina_name_tercer_hombre.innerHTML = '';
+    const templateSelectNameTercerPersona = document.querySelector("#template-opt-name-tercer-hombre").content;
+    const fragmentnameTercerPersona = document.createDocumentFragment();
+
+    dt_update_operacionMina_dni_cuarto_hombre.innerHTML = '';
+    const templateSelectDniCuartaPersona = document.querySelector("#template-opt-dni-cuarto-hombre").content;
+    const fragmentdniCuartaPersona = document.createDocumentFragment();
+
+    dt_update_operacionMina_name_cuarto_hombre.innerHTML = '';
+    const templateSelectNameCuartaPersona = document.querySelector("#template-opt-name-cuarto-hombre").content;
+    const fragmentnameCuartaPersona = document.createDocumentFragment();
+    arraySelectColaboradores.forEach(item => {
+        // Maestro
+        templateSelectDniMaestro.querySelector('#template-opts-dni-maestro').value = item.col_dni;
+        templateSelectDniMaestro.querySelector('#template-opts-dni-maestro').dataset.idColaborador = item.id_colaborador;
+        templateSelectNameMaestro.querySelector('#template-opts-name-maestro').value = item.fullName;
+        templateSelectNameMaestro.querySelector('#template-opts-name-maestro').dataset.idColaborador = item.id_colaborador;
+        const cloneDniMaestro = templateSelectDniMaestro.cloneNode(true);
+        const cloneNameMaestro = templateSelectNameMaestro.cloneNode(true);
+        fragmentdniMaestro.appendChild(cloneDniMaestro);
+        fragmentnameMaestro.appendChild(cloneNameMaestro);
+
+        // Ayudante
+        templateSelectDniAyudante.querySelector('#template-opts-dni-ayudante').value = item.col_dni;
+        templateSelectDniAyudante.querySelector('#template-opts-dni-ayudante').dataset.idColaborador = item.id_colaborador;
+        templateSelectNameAyudante.querySelector('#template-opts-name-ayudante').value = item.fullName;
+        templateSelectNameAyudante.querySelector('#template-opts-name-ayudante').dataset.idColaborador = item.id_colaborador;
+        const cloneDniAyudante = templateSelectDniAyudante.cloneNode(true);
+        const cloneNameAyudante = templateSelectNameAyudante.cloneNode(true);
+        fragmentdniAyudante.appendChild(cloneDniAyudante);
+        fragmentnameAyudante.appendChild(cloneNameAyudante);
+
+        // Tercer Persona
+        templateSelectDniTercerPersona.querySelector('#template-opts-dni-tercer-hombre').value = item.col_dni;
+        templateSelectDniTercerPersona.querySelector('#template-opts-dni-tercer-hombre').dataset.idColaborador = item.id_colaborador;
+        templateSelectNameTercerPersona.querySelector('#template-opts-name-tercer-hombre').value = item.fullName;
+        templateSelectNameTercerPersona.querySelector('#template-opts-name-tercer-hombre').dataset.idColaborador = item.id_colaborador;
+        const cloneDniTercerPersona = templateSelectDniTercerPersona.cloneNode(true);
+        const cloneNameTercerPersona = templateSelectNameTercerPersona.cloneNode(true);
+        fragmentdniTercerPersona.appendChild(cloneDniTercerPersona);
+        fragmentnameTercerPersona.appendChild(cloneNameTercerPersona);
+
+        // Cuarta Persona
+        templateSelectDniCuartaPersona.querySelector('#template-opts-dni-cuarto-hombre').value = item.col_dni;
+        templateSelectDniCuartaPersona.querySelector('#template-opts-dni-cuarto-hombre').dataset.idColaborador = item.id_colaborador;
+        templateSelectNameCuartaPersona.querySelector('#template-opts-name-cuarto-hombre').value = item.fullName;
+        templateSelectNameCuartaPersona.querySelector('#template-opts-name-cuarto-hombre').dataset.idColaborador = item.id_colaborador;
+        const cloneDniCuartaPersona = templateSelectDniCuartaPersona.cloneNode(true);
+        const cloneNameCuartaPersona = templateSelectNameCuartaPersona.cloneNode(true);
+        fragmentdniCuartaPersona.appendChild(cloneDniCuartaPersona);
+        fragmentnameCuartaPersona.appendChild(cloneNameCuartaPersona);
+    });
+    //Maestro
+    dt_update_operacionMina_dni_maestro.appendChild(fragmentdniMaestro);
+    dt_update_operacionMina_name_maestro.appendChild(fragmentnameMaestro);
+
+    // Ayudante
+    dt_update_operacionMina_dni_ayudante.appendChild(fragmentdniAyudante);
+    dt_update_operacionMina_name_ayudante.appendChild(fragmentnameAyudante);
+
+    // Tercer Persona
+    dt_update_operacionMina_dni_tercer_hombre.appendChild(fragmentdniTercerPersona);
+    dt_update_operacionMina_name_tercer_hombre.appendChild(fragmentnameTercerPersona);
+
+    // Cuarta Persona
+    dt_update_operacionMina_dni_cuarto_hombre.appendChild(fragmentdniCuartaPersona);
+    dt_update_operacionMina_name_cuarto_hombre.appendChild(fragmentnameCuartaPersona);
+}
+
 const fetchRow_update_operacionMina = async (form) => {
     const body = new FormData();
     body.append("data", JSON.stringify(form));

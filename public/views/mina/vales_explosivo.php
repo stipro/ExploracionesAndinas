@@ -1882,10 +1882,10 @@
                         tag: 'a',
                         action: function(e, dt, node, config) {
                             //This will send the page to the location specified
-                            window.location.href = './../../excelGenerator.php?table=view_vales_explosivo';
+                            window.location.href = './../../excelGenerator.php?table=view_vale_explosivo_dev2';
                         },
                         init: function(dt, node, config) {
-                            $(node).attr('href', './../../excelGenerator.php?table=view_vales_explosivo');
+                            $(node).attr('href', './../../excelGenerator.php?table=view_vale_explosivo_dev2');
                             $(node).attr('download', '');
                             $(node).attr('title', 'Descargar Archivo');
                         }
