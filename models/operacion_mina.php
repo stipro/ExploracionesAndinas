@@ -215,6 +215,30 @@ class operacionMina extends Conexion
             return 'Ocurrio un ERROR al eliminar a'. $e->getMessage();
         }
     }
+    public function delete_instalaciones(int $id)
+    {
+        //error_reporting(0);
+        try {
+            $query  = "DELETE FROM oper_instalaciones WHERE id_operacionInstalacion=:id;";
+            $result = $this->db->prepare($query);
+            $result->execute(array(':id' => $id));
+            return 'Se elimino correctamente Instalaciones.';
+        } catch (PDOException $e) {
+            return 'Ocurrio un ERROR al eliminar a'. $e->getMessage();
+        }
+    }
+    public function delete_tareas(int $id)
+    {
+        //error_reporting(0);
+        try {
+            $query  = "DELETE FROM oper_tareas WHERE id_operacionTareas=:id;";
+            $result = $this->db->prepare($query);
+            $result->execute(array(':id' => $id));
+            return 'Se elimino correctamente Tareas.';
+        } catch (PDOException $e) {
+            return 'Ocurrio un ERROR al eliminar a'. $e->getMessage();
+        }
+    }
     public function edit(int $datoid, string $codigo, string $nombre, string $cargo, string $dia, string $turno, int  $ht, int $htseradi, string $ccostos, string $labor, int $nivel, int $he, int  $heseradi, int  $ccostoshe, string $zona, string $guardia, string  $actividad, string $area)
     {
         //error_reporting(0);

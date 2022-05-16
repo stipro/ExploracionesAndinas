@@ -370,6 +370,7 @@ $template_update_operacionMina = '
                                                 <thead>
                                                     <tr class="ui-widget-header ">
                                                         <th class="indice" scope="col">#</th>
+                                                        <th scope="col">id_instalacionMina</th>
                                                         <th scope="col" data-sort-initial="true" data-toggle="true">Nombre</th>
                                                         <th scope="col">Cantidad</th>
                                                         <th scope="col">Medida</th>
@@ -398,9 +399,9 @@ $template_update_operacionMina = '
                                             <div class="form-group">
                                                 <label for="nombre-instalaciones-table" class="col-md-2 control-label">Nombre</label>
                                                 <div class="col-md-6">
-                                                    <input class="form-control" list="nombre-instalaciones-options" id="nombre-instalaciones-table" placeholder="Seleccion opcion..">
+                                                    <input class="form-control" list="dt-update-nombre-instalaciones-options" id="update-nombre-instalaciones-table" placeholder="Seleccion opcion..">
                                                 </div>
-                                                <datalist id="nombre-instalaciones-options">
+                                                <datalist id="dt-update-nombre-instalaciones-options">
                                                     <option value="Aun no carga">
                                                 </datalist>
                                                 <template id="template-opts-name-instalaciones">
@@ -408,7 +409,7 @@ $template_update_operacionMina = '
                                                 </template>
                                                 <label for="cantidad-instalaciones-table" class="col-md-1 control-label">Cantidad</label>
                                                 <div class="col-md-3">
-                                                    <input class="form-control" id="cantidad-instalaciones-table" placeholder="Ingrese Cantidad...">
+                                                    <input class="form-control" id="update-mIptAddT-itlCantidad" placeholder="Ingrese Cantidad...">
                                                 </div>
                                             </div>
                                             <button id="update-btnM-add-table" type="button" class="btn btn-primary">Agregar</button>
@@ -587,7 +588,7 @@ $template_update_operacionMina = '
                 <!--Modal footer-->
                 <div class="modal-footer">
                     <button data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
-                    <button id="mbtn-operacionMina-update" class="btn btn-success">Registrar</button>
+                    <button id="mbtn-update-operacionMina-insert" class="btn btn-success">Actualizar</button>
                 </div>
             </div>
         </div>

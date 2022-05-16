@@ -120,6 +120,13 @@ if($_POST){
             case "delet":
                 $idEliminar = $arrayForm['id'];
                 $rptSql = $tableManager->delete($idEliminar);
+                $rptSql2 = $tableManager->delete_instalaciones($idEliminar);
+                $rptSql3 = $tableManager->delete_tareas($idEliminar);
+                $rptSqlGeneral = array(
+                    "sql1" => $rptSql,
+                    "sql2" => $rptSql2,
+                    "sql3" => $rptSql3,
+                );
                 break;
         }
     } catch (Exception $e) {

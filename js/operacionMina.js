@@ -1,6 +1,6 @@
 var arraySelectColaboradores;
 var indice;
-
+var counter = 1;
 const btn_agregar_operacionMina = document.getElementById("btn-agregar-operacionMina");
 
 const alertInsert = document.getElementById("alert-form-insert");
@@ -122,6 +122,12 @@ const update_operacionMina_name_cuarto_hombre = document.getElementById("update-
 const dt_update_operacionMina_name_cuarto_hombre = document.getElementById("update-options-name-cuarto-hombre");
 const update_operacionMina_cargo_cuarto_hombre = document.getElementById("update-operacionaMina-cargo-cuarto-hombre");
 
+const dt_update_operacionMina_instalacionesMina_addTable = document.getElementById("dt-update-nombre-instalaciones-options");
+const update_operacionMina_instalacionesMina_addTable = document.getElementById("update-nombre-instalaciones-table");
+
+const update_mIptAddT_itlCantidad = document.getElementById("update-mIptAddT-itlCantidad");
+const update_mBtnAdd_tblInstalaciones = document.getElementById("update-btnM-add-table");
+
 const update_operacionMina_l = document.getElementById("update-operacionMina-l");
 const update_operacionMina_lpv = document.getElementById("update-operacionMina-lpv");
 const update_operacionMina_stto = document.getElementById("update-operacionMina-stto");
@@ -142,7 +148,9 @@ const update_operacionMina_winche = document.getElementById("update-operacionMin
 const update_operacionMina_cantidadWinche = document.getElementById("update-operacionMina-cantidadWinche");
 const update_operacionMina_Desmon = document.getElementById("update-operacionMina-Desmon");
 
-const update_mBtnAdd_tblInstalaciones = document.getElementById("update-btnM-add-table");
+const update_operacionMina_mbtnInsert = document.getElementById("mbtn-update-operacionMina-insert");
+
+
 
 const mbtn_read_operacionMina_close = document.getElementById("mbtn-read-operacionMina-close");
 const read_operacionMina_registro = document.getElementById("read-operacionMina-registro");
@@ -292,7 +300,7 @@ var tableMaster = $('#table-operacion-mina').DataTable({
             data: "operacionMina_desmonCantidad",
         },
         {
-            defaultContent: '<button type="button" class="btn-view btn btn-success btn-view btn btn-success btn-tbM-operacionMina-read"><i class="fa fa-eye"></i> Detalle</button> <button type="button" class="name btn btn-primary btn-tbM-operacionMina-edit"><i class="fa fa-edit"></i> Editar</button> <button type="button" class="position btn btn-danger btn-tableMaster-delet"><i class="fa fa-trash-o"></i> Eliminar</button>'
+            defaultContent: '<button type="button" class="btn-view btn btn-success btn-view btn btn-success btn-tbM-operacionMina-read"><i class="fa fa-eye"></i> Detalle</button> <button type="button" class="name btn btn-primary btn-tbM-operacionMina-edit"><i class="fa fa-edit"></i> Editar</button> <button type="button" class="position btn btn-danger btn-tbM-operacionMina-delet"><i class="fa fa-trash-o"></i> Eliminar</button>'
         }
     ],
     fixedHeader: true,
@@ -421,8 +429,10 @@ var tableMaster = $('#table-operacion-mina').DataTable({
 var read_mtbl_operInsltaciones = $('#read-mtbl-operInstalaciones').DataTable();
 
 var update_mtbl_operInsltaciones = $('#update-mtbl-operInstalaciones').DataTable();
+update_mtbl_operInsltaciones.columns(1).visible(false);
 
 $('#table-operacion-mina tbody').on('click', '.btn-tbM-operacionMina-edit', function() {
+
     $("#operacionMina-lg-modal-update").modal("show");
     // Cargar Dato Formulario
     let data = tableMaster.row($(this).parents('tr')).data();
@@ -448,7 +458,374 @@ $('#table-operacion-mina tbody').on('click', '.btn-tbM-operacionMina-edit', func
         "column": "instalacionesMIna_nombre"
     }
     fetchInstalaciones_update(selectForm_instalacionMina);
-    //
+});
+update_operacionMina_mbtnInsert.addEventListener("click", () => {
+    let val_registro = update_operacionMina_regitro.value;
+    let val_turno = update_operacionMina_turno.value;
+    let val_guardia = update_operacionMina_guardia.value;
+    let val_nvale = update_operacionMina_nvale.value;
+    let val_radioTipo_dis = document.querySelector('input[name="update-form-radio-tipo_disparo"]:checked').value;
+
+    let val_zonaLetra = update_operacionMina_codZona.value;
+    let val_idLbZona = dt_operacionMina_zonaLetra.querySelector("option[value='" + val_zonaLetra +"']").dataset.idCodzona;
+    let val_laborCcostos = update_operacionMina_codLabor.value;
+    console.log(val_laborCcostos);
+    let val_idLabor = dt_operacionMina_laborCcosto.querySelector("option[value='" + val_laborCcostos +"']").dataset.idCodlabor;
+
+    let val_maestro_dni = update_operacionMina_dni_maestro.value;
+    let val_idMaestro = dt_update_operacionMina_dni_maestro.querySelector("option[value='" + val_maestro_dni +"']").dataset.idColaborador;
+
+    let val_ayudante_dni = update_operacionMina_dni_ayudante.value;
+    let val_idAyudante = dt_update_operacionMina_dni_ayudante.querySelector("option[value='" + val_ayudante_dni +"']").dataset.idColaborador;
+
+    let val_tercerHombre_dni = update_operacionMina_dni_tercer_hombre.value;
+    let val_idTercerHombre = dt_update_operacionMina_dni_tercer_hombre.querySelector("option[value='" + val_tercerHombre_dni +"']").dataset.idColaborador;
+
+    let val_cuartoHombre_dni = update_operacionMina_dni_cuarto_hombre.value;
+    let val_idCuartoHombre = dt_update_operacionMina_dni_cuarto_hombre.querySelector("option[value='" + val_cuartoHombre_dni +"']").dataset.idColaborador;
+
+    let listDetalles;
+    let list_opMina_instalaciones = update_mtbl_operInsltaciones.rows().data();
+    let f = list_opMina_instalaciones;
+        for (let i = 0; f.length > i; i++) {
+            let n = f[i].length;
+            listDetalles.push({
+                id_labor: f[i]['id_instalacionMina'],
+                cantidad: f[i]['val_itlCantidad'],
+            });
+        }
+
+    let val_l = update_operacionMina_l.value;
+    let val_lpv = update_operacionMina_lpv.value;
+    let val_stto = update_operacionMina_stto
+    let val_serv = update_operacionMina_Serv.value;
+    let val_comentario = update_operacionMina_comentario.value;
+    let val_tipAvance = update_operacionMina_tipo_avance.value;
+    let val_mt = update_operacionMina_mt.value;
+    let val_mt3 = update_operacionMina_mt3.value;
+    let val_intDisparo = update_operacionMina_int_disparo.value;
+    let val_resuelto = update_operacionMina_resuelto.value;
+    let val_manual = update_operacionMina_Manual.value;
+    let val_pala = update_operacionMina_pala.value;
+    let val_palaCantidad = update_operacionMina_cantidadPala.value;
+    let val_mineral = update_operacionMina_mineral.value;
+    let val_winche = update_operacionMina_winche.value;
+    let val_wincheCantidad = update_operacionMina_cantidadWinche.value;
+    let val_desmon = update_operacionMina_Desmon.value;
+    
+    dt_update_operacionMina_name_cuarto_hombre
+
+    let valInsert = {
+        "datos_registro": val_registro,
+        "datos_turno": val_turno,
+        "datos_guardia": valGuardia,
+        "datos_nvale": val_nvale,
+        "datos_actividad": val_radioTipo_dis,
+        "id_labZona": val_idLbZona,
+        "id_Labor": val_idLabor,
+        "tareas": {
+            1: {
+                "id": val_idMaestro,
+                "nombre": "Maestro",
+            },
+            2: {
+                "id": val_idAyudante,
+                "nombre": "Ayudante",
+            },
+            3: {
+                "id": val_idTercerHombre,
+                "nombre": "TercerHombre",
+            },
+            4: {
+                "id": val_idCuartoHombre,
+                "nombre": "CuartoHombre",
+            }
+        },
+        "list_instalaciones": listDetalles,
+        "tareas_l": val_l,
+        "tareas_lpv": val_lpv,
+        "tareas_stto": val_stto,
+        "tareas_serv": val_serv,
+        "tareas_comentario": val_comentario,
+        "avanActual_tipAvance": val_tipAvance,
+        "avanActual_mt": val_mt,
+        "avanActual_mt3": val_mt3,
+        "avanActual_intDisparo": val_intDisparo,
+        "avanActual_resuelto": val_resuelto,
+        "limpieza_manual": val_manual,
+        "limpieza_pala": val_pala,
+        "limpieza_cantidadPala": val_palaCantidad,
+        "limpieza_mineral": val_mineral,
+        "limpieza_winche": val_winche,
+        "limpieza_cantidadWinche": val_wincheCantidad,
+        "limpieza_desmont": val_desmon
+    }
+    console.log('Se esta enviando datos de operacion Mina');
+    console.log(valInsert);
+    var form_insert = {
+        "accion": "insert",
+        "list": valInsert
+    }
+    requestUpdate_insert(form_insert);
+});
+// MAESTRO
+update_operacionMina_dni_maestro.addEventListener("input", (e) => {
+    try {
+        let val_colaborador = update_operacionMina_dni_maestro.value;
+        let id_colaborador = dt_update_operacionMina_dni_maestro.querySelector(" option[value='" +  val_colaborador + "']").dataset.idColaborador;
+        if(id_colaborador){
+            let formTareas = {
+                "accion": "getPerforista",
+                "parament": id_colaborador,
+            }
+            fetchNombreCargo_update_Maestro(formTareas);
+        }
+    } catch (error) {
+        console.error(error.message);
+        update_operacionMina_name_maestro.value = '';
+        update_operacionMina_cargo_maestro.value = '';
+    }
+});
+
+//Traer Dni y Cargo Maestros ()
+const fetchNombreCargo_update_Maestro = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json();
+    paint_update_NombreCargo_maestro(data);
+    return data;
+    //Enviamos a pintar
+}
+
+// Pintar Nombre y Cargo Maestros
+const paint_update_NombreCargo_maestro = (data) => {
+    // Guardamos en variable
+    arraySelect = data['sql'];
+    update_operacionMina_name_maestro.value = arraySelect[0].fullName;
+    update_operacionMina_cargo_maestro.value = arraySelect[0].cargo_nombre;
+}
+
+update_operacionMina_name_maestro.addEventListener("input", (e) => {
+    try {
+        let val_colaborador = update_operacionMina_name_maestro.value;
+        let id_colaborador = dt_update_operacionMina_name_maestro.querySelector(" option[value='" +  val_colaborador + "']").dataset.idColaborador;
+        if(id_colaborador){
+            let formTareas = {
+                "accion": "getPerforista",
+                "parament": id_colaborador,
+            }
+            fetchDniCargo_update_Maestro(formTareas);
+        }
+    } catch (error) {
+        console.error(error.message);
+        update_operacionMina_dni_maestro.value = '';
+        update_operacionMina_cargo_maestro.value = '';
+    }
+});
+//Traer Dni y Cargo Maestros ()
+const fetchDniCargo_update_Maestro = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json();
+    paint_update_DniCargo_maestro(data);
+    return data;
+    //Enviamos a pintar
+}
+
+// Pintar Nombre y Cargo Maestros
+const paint_update_DniCargo_maestro = (data) => {
+    // Guardamos en variable
+    arraySelect = data['sql'];
+    update_operacionMina_dni_maestro.value = arraySelect[0].col_dni;
+    update_operacionMina_cargo_maestro.value = arraySelect[0].cargo_nombre;
+}
+// AYUDANTE
+update_operacionMina_dni_ayudante.addEventListener("input", (e) => {
+    try {
+        let val_colaborador = update_operacionMina_dni_ayudante.value;
+        let id_colaborador = dt_update_operacionMina_dni_ayudante.querySelector(" option[value='" +  val_colaborador + "']").dataset.idColaborador;
+        if(id_colaborador){
+            let formTareas = {
+                "accion": "getPerforista",
+                "parament": id_colaborador,
+            }
+            fetchNombresCargo_update_Ayudante(formTareas);
+        }
+    } catch (error) {
+        console.error(error.message);
+        update_operacionMina_name_ayudante.value = '';
+        update_operacionMina_cargo_ayudante.value = '';
+    }
+});
+//Traer Dni y Cargo Ayudante ()
+const fetchNombresCargo_update_Ayudante = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json();
+    paint_update_NombresCargo_ayudante(data);
+    return data;
+    //Enviamos a pintar
+}
+
+// Pintar Nombre y Cargo Ayudante
+const paint_update_NombresCargo_ayudante = (data) => {
+    // Guardamos en variable
+    arraySelect = data['sql'];
+    update_operacionMina_name_ayudante.value = arraySelect[0].fullName;
+    update_operacionMina_cargo_ayudante.value = arraySelect[0].cargo_nombre;
+}
+update_operacionMina_name_ayudante.addEventListener("input", (e) => {
+    try {
+        let val_colaborador = update_operacionMina_name_ayudante.value;
+        let id_colaborador = dt_update_operacionMina_name_ayudante.querySelector(" option[value='" +  val_colaborador + "']").dataset.idColaborador;
+        if(id_colaborador){
+            let formTareas = {
+                "accion": "getPerforista",
+                "parament": id_colaborador,
+            }
+            fetchDniCargo_update_Ayudante(formTareas);
+        }
+    } catch (error) {
+        console.error(error.message);
+        update_operacionMina_dni_ayudante.value = '';
+        update_operacionMina_cargo_ayudante.value = '';
+    }
+});
+//Traer Dni y Cargo Ayudante ()
+const fetchDniCargo_update_Ayudante = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json();
+    paint_update_DniCargo_ayudante(data);
+    return data;
+    //Enviamos a pintar
+}
+
+// Pintar Nombre y Cargo Ayudante
+const paint_update_DniCargo_ayudante = (data) => {
+    // Guardamos en variable
+    arraySelect = data['sql'];
+    update_operacionMina_dni_ayudante.value = arraySelect[0].col_dni;
+    update_operacionMina_cargo_ayudante.value = arraySelect[0].cargo_nombre;
+}
+// TERCER HOMBRE
+update_operacionMina_dni_tercer_hombre.addEventListener("input", (e) => {
+    try {
+        let val_colaborador = update_operacionMina_dni_tercer_hombre.value;
+        let id_colaborador = dt_update_operacionMina_dni_tercer_hombre.querySelector(" option[value='" +  val_colaborador + "']").dataset.idColaborador;
+        if(id_colaborador){
+            let formTareas = {
+                "accion": "getPerforista",
+                "parament": id_colaborador,
+            }
+            fetchNombreCargo_update_TercerHombre(formTareas);
+        }
+    } catch (error) {
+        console.error(error.message);
+        update_operacionMina_name_tercer_hombre.value = '';
+        update_operacionMina_cargo_tercer_hombre.value = '';
+    }
+
+});
+//Traer Dni y Cargo Ayudante ()
+const fetchNombreCargo_update_TercerHombre = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json();
+    paint_update_NombresCargo_tercerHombre(data);
+    return data;
+    //Enviamos a pintar
+}
+
+// Pintar Nombre y Cargo Ayudante
+const paint_update_NombresCargo_tercerHombre = (data) => {
+    // Guardamos en variable
+    arraySelect = data['sql'];
+    update_operacionMina_name_tercer_hombre.value = arraySelect[0].fullName;
+    update_operacionMina_cargo_tercer_hombre.value = arraySelect[0].cargo_nombre;
+}
+update_operacionMina_name_tercer_hombre.addEventListener("input", (e) => {
+    try {
+        let val_colaborador = update_operacionMina_name_tercer_hombre.value;
+        let id_colaborador = dt_update_operacionMina_name_tercer_hombre.querySelector(" option[value='" +  val_colaborador + "']").dataset.idColaborador;
+    } catch (error) {
+        console.error(error.message);
+        update_operacionMina_dni_tercer_hombre.value = '';
+        update_operacionMina_cargo_tercer_hombre.value = '';
+    }
+});
+// CUARTO HOMBRE
+update_operacionMina_dni_cuarto_hombre.addEventListener("input", (e) => {
+    try {
+        let val_colaborador = update_operacionMina_dni_cuarto_hombre.value;
+        let id_colaborador = dt_update_operacionMina_dni_cuarto_hombre.querySelector(" option[value='" +  val_colaborador + "']").dataset.idColaborador;
+    } catch (error) {
+        console.error(error.message);
+        update_operacionMina_name_cuarto_hombre.value = '';
+        update_operacionMina_cargo_cuarto_hombre.value = '';
+    }
+});
+update_operacionMina_name_cuarto_hombre.addEventListener("input", (e) => {
+    try {
+        let val_colaborador = update_operacionMina_name_cuarto_hombre.value;
+        let id_colaborador = dt_update_operacionMina_name_cuarto_hombre.querySelector(" option[value='" +  val_colaborador + "']").dataset.idColaborador;
+    } catch (error) {
+        console.error(error.message);
+        update_operacionMina_dni_cuarto_hombre.value = '';
+        update_operacionMina_cargo_cuarto_hombre.value = '';
+    }
+});
+// AGREGAR INSTALACIONES
+update_mBtnAdd_tblInstalaciones.addEventListener("click", () => {
+    try {
+        let val_InstalacionesMina = update_operacionMina_instalacionesMina_addTable.value;
+        console.log("Nombre : " + val_InstalacionesMina);
+        let id_instalacionMina = dt_update_operacionMina_instalacionesMina_addTable.querySelector("option[value='" + val_InstalacionesMina +"']").dataset.idInstalacionmina;
+        let val_itlMina_medida = dt_update_operacionMina_instalacionesMina_addTable.querySelector("option[value='" + val_InstalacionesMina +"']").dataset.medidaInstalacionmina;
+        let val_itlCantidad = update_mIptAddT_itlCantidad.value;
+        console.log("id " + id_instalacionMina + " Medida " + val_itlMina_medida);
+        console.log("cantidad: " + val_itlCantidad);
+        if (id_instalacionMina && val_itlMina_medida) {
+            update_mtbl_operInsltaciones.row.add( [
+                counter,
+                id_instalacionMina,
+                val_InstalacionesMina,
+                val_itlCantidad,
+                val_itlMina_medida,
+                '<button class="btn btn-danger update_removeRow">Eliminar</button>',
+            ] ).draw();
+            counter++;
+        } else {
+            
+        }
+    } catch (error) {
+        console.error(error.message); 
+    }
 
 });
 //Traer Instalaciones
@@ -462,7 +839,7 @@ const fetchInstalaciones_update = async (request) => {
     });
     const data = await res.json();
     objectarrayInstalacion = data['sql']
-    datalistinsert_optionsInstalaciones.innerHTML = "";
+    dt_update_operacionMina_instalacionesMina_addTable.innerHTML = "";
     const template_optsInstalaciones = document.querySelector("#template-opts-name-instalaciones").content;
     const fragment_optsInstalaciones = document.createDocumentFragment();
 
@@ -474,7 +851,7 @@ const fetchInstalaciones_update = async (request) => {
         fragment_optsInstalaciones.appendChild(clone_optsInstalaciones);
     });
 
-    datalistinsert_optionsInstalaciones.appendChild(fragment_optsInstalaciones);
+    dt_update_operacionMina_instalacionesMina_addTable.appendChild(fragment_optsInstalaciones);
 }
 
 //Traer Colaborador ()
@@ -643,6 +1020,7 @@ const paintForm_update = (data) => {
                 rpt_idInstalacion = item.id_instalacionMina
                 update_mtbl_operInsltaciones.row.add( [
                     counter,
+                    item.id_instalacionMina,
                     item.instalacionesMina_nombre,
                     item.operacionInstalacion_cantidad,
                     item.instalacionMina_medida,
@@ -930,7 +1308,7 @@ const paintForm_read = (data) => {
 
 }
 
-$('#table-operacion-mina tbody').on('click', '.btn-tableMaster-delet', function() {
+$('#table-operacion-mina tbody').on('click', '.btn-tbM-operacionMina-delet', function() {
     var data = tableMaster.row($(this).parents('tr')).data();
     swal({
         title: "Estas seguro?",
@@ -944,7 +1322,7 @@ $('#table-operacion-mina tbody').on('click', '.btn-tableMaster-delet', function(
                 "accion": "delet",
                 "id": data['id_operacionMina']
             }
-            request(form_request);
+            //requestDelete(form_request);
             swal("¡La información ha sido eliminado!", {
                 icon: "success",
             });
@@ -953,6 +1331,18 @@ $('#table-operacion-mina tbody').on('click', '.btn-tableMaster-delet', function(
         }
     });
 });
+
+const requestDelete = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    const res = await fetch('./../../../controllers/controllerOperacionMina.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    let rptSql = data['sql'];
+    console.log(rptSql);
+}
 /**
  * 
  * *BOTON NUEVO
@@ -1207,9 +1597,9 @@ const fetchNombreCargo_Maestro = async (request) => {
         body
     });
     const data = await res.json();
+    //Enviamos a pintar
     paint_NombresCargo(data);
     return data;
-    //Enviamos a pintar
 }
 
 // Pintar Nombre y Cargo Maestros
@@ -2024,17 +2414,6 @@ function inputCharacters_codZona(event) {
     }
 }
 
-const request = async (request) => {
-    const body = new FormData();
-    body.append("data", JSON.stringify(request));
-    const res = await fetch('./../../../controllers/controllerOperacionMina.php', {
-        method: "POST",
-        body
-    });
-    const data = await res.json()
-    let rptSql = data['sql'];
-    console.log(rptSql);
-}
 
 const iptedit_registro = document.getElementById("edit-operacionMina-registro");
 const iptedit_turno = document.getElementById("edit-operacionaMina-turno");
