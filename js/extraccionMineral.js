@@ -34,7 +34,7 @@ const iptInsert_extraccionMinera_laborNombre = document.getElementById("insert-e
 
 const iptInsert_extraccionMinera_cantidad = document.getElementById("insert-extrMineral-cantidad");
 
-
+var tblMaster_extraccionMineral;
 
 const fragment = document.createDocumentFragment()
 var tbl_detalleExtraccion;
@@ -43,8 +43,38 @@ cont = 0;
 // Eventos
 // El evento DOMContentLoaded es disparado cuando el documento HTML ha sido completamente cargado y parseado
 document.addEventListener('DOMContentLoaded', e => {
-
+    mainEvents_extraccionMineral();
 });
+const mainEvents_extraccionMineral = () => {
+    let formList = {
+        "accion": "table_master",
+    }
+    fetchTM_extraccionMineral(formList);   
+}
+// Hacemos la Peticion
+const fetchTM_extraccionMineral = async (request) => {
+    // Se instancia el FORMDATA
+    const body = new FormData();
+    // Se agrega formulario en el FORMDATA
+    body.append("data", JSON.stringify(request));
+    //Se envia formulario al controllador y su previa configuracion
+    const returned = await fetch("./../../../controllers/controllerExtraccionMinera_list.php", {
+        method: "POST",
+        body
+    });
+    // Se convierte respuesta en json
+    const result = await returned.json(); //await JSON.parse(returned);
+    const rptSQL = result['sql'];
+    // Envia dato a pintar
+    paintTable_extraccionMineral(rptSQL);
+}
+
+// Se pinta DataList
+const paintTable_extraccionMineral = data => {
+    tblMaster_extraccionMineral.clear();
+    tblMaster_extraccionMineral.rows.add(data).draw();
+};
+
 // JAVASCRIPT VANILLA
 // Boton registrar
 btnInsertar.addEventListener("click", (e) => {
@@ -144,10 +174,52 @@ var idiomaEs = {
     }
 };
 $(document).ready(function() {
-    $('#table-master').DataTable({
+    tblMaster_extraccionMineral = $('#tblMaster-extraccionMineral').DataTable({
         language: idiomaEs,
-        scrollY: "200px",
+        scrollY: "100%",
         scrollCollapse: true,
+        columns: [
+            {
+                data: "id_extraccionMineral",
+                responsivePriority: 1,
+            },
+            {
+                data: "fechaExtraccion_extraccionMineral",
+            },
+            {
+                data: "nombre_unidadMinera",
+            },
+            {
+                data: "labZona_nombre",
+            },
+            {
+                data: 'fechaDigitacion_extraccionMineral',
+            },
+            {
+                data: 'locomotora_extraccionMineral',
+            },
+            {
+                data: 'fullName_motorista',
+            },
+            {
+                data: 'nivel_extraccionMineral',
+            },
+            {
+                data: 'turno_extraccionMineral',
+            },
+            {
+                data: 'tolva_extraccionMineral',
+            },
+            {
+                data: 'fullName_ayudante',
+            },
+            {
+                data: 'horasExtraccion_extraccionMineral',
+            },
+            {
+                defaultContent: '<button type="button" class="btn-view btn btn-success btn-tbM-consumoMadera-detalle"><i class="fa fa-eye"></i> <span class="hidden-xs hidden-sm">Detalle<span></button> <button type="button" class="name btn btn-primary btn-tbM-consumoMadera-edit"><i class="fa fa-edit"></i> <span class="hidden-xs hidden-sm">Editar</span></button> <button type="button" class="position btn btn-danger btn-tbM-consumoMadera-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>'
+            }
+        ],
         dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
         buttons: [{
                 text: '<i class="btn-label fa-solid fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>',

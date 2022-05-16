@@ -160,23 +160,48 @@
 					        <div class="panel">					
 					            <div class="panel-body">
                                     <fieldset>
-                                        <legend><h3 class="panel-title">Extracción Mineral</h3></legend>
-                                        <div class="panel-body table-responsive-md">
-                                            <table id="table-master" class="table table-bordered table-hover toggle-circle" data-page-size="5">
+                                        <legend>
+                                            <div class="panel-heading">
+					                            <h3 class="panel-title">EXTRACCIÓN MINERAL </h3>
+					                        </div>
+                                        </legend>
+                                        <div class="row">
+											<div class="col-md-3">
+                                                <button data-target="#consumoMadera-lg-modal-create" data-toggle="modal" class="btn btn-success btn-labeled" id="btn-agregar-consumoMadera">
+                                                    <i class="btn-label fa-solid fa fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>
+                                                </button>
+											</div>
+											<div class="col-sm-12 col-md-6 dt-buttons btn-group">
+												
+											</div>
+											<div class="col-sm-12 col-md-3">											
+											</div>
+										</div>
+                                        <div class="table-responsive">
+                                            <table id="tblMaster-extraccionMineral" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        <th data-sort-ignore="true" class="min-width"></th>
-                                                        <th data-sort-initial="true" data-toggle="true">Fecha Extracción</th>
-                                                        <th>Unid. Empresa</th>
-                                                        <th data-hide="phone, tablet">Zona</th>
-                                                        <th data-hide="phone, tablet">Extractor</th>
+                                                        <th>id_extraccionMineral</th>
+                                                        <th>fechaExtraccion</th>
+                                                        <th>Unidad Minera</th>
+                                                        <th>Zona</th>
+                                                        <th>F. Extracción</th>
+                                                        <th>Locomotora</th>
+                                                        <th>Motorista</th>
+                                                        <th>Nivel</th>
+                                                        <th>Turno</th>
+                                                        <th>Tolva</th>
+                                                        <th>Ayudante</th>
+                                                        <th>Horas</th>
+                                                        <th>Operaciónes</th>
                                                     </tr>
                                                 </thead>
-                                                <tfoot>
-                                                </tfoot>
-                                                <tbody id="tbody-tareo">
+                                                <tbody>
                                                 </tbody>
-                                        </table>
+                                                <tfoot>
+                                                    
+                                                </tfoot>
+                                            </table>
                                         </div>
                                     </fieldset>
                                     <div class="panel-body table-responsive">

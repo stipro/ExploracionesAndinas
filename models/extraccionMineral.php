@@ -41,6 +41,19 @@ class extraccionMineral extends Conexion
         $query = "SELECT oper_mine.id_operacionMina, oper_mine.operacionMina_registro, oper_mine.operacionMina_turno, oper_mine.operacionMina_guardia, oper_mine.operacionMina_nVale, oper_mine.operacionMina_actividad, oper_mine.operacionMina_l, oper_mine.operacionMina_lpv, oper_mine.operacionMina_stto, oper_mine.operacionMina_serv, oper_mine.operacionMina_comentario, oper_mine.operacionMina_tipAvance, oper_mine.operacionMina_avanceMt, oper_mine.operacionMina_avanceMt3, oper_mine.operacionMina_intDisparo, oper_mine.operacionMina_Resuelto, oper_mine.operacionMina_manualCantidad, oper_mine.operacionMina_palaNombre, oper_mine.operacionMina_palaCantidad, oper_mine.operacionMina_wincheNombre, oper_mine.operacionMina_wincheCantidad, oper_mine.operacionMina_mineralCantidad, oper_mine.operacionMina_desmonCantidad FROM operacion_mina AS oper_mine;";
         return $this->ConsultaSimple($query);
     }
+    public function tabla_master()
+    {
+        $query = "SELECT em.id_extraccionMineral, em.fechaExtraccion_extraccionMineral, em.unidadMineral_id, ud_mn.nombre_unidadMinera,
+        lb_zn.id_zona, lb_zn.labZona_nombre, em.fechaDigitacion_extraccionMineral, em.locomotora_extraccionMineral, 
+        em.motorista_id, CONCAT(clb.col_apePaterno,' ', clb.col_apeMaterno, ' ',clb.col_nombres) AS fullName_motorista, em.nivel_extraccionMineral, em.turno_extraccionMineral, em.tolva_extraccionMineral,
+        em.ayudante_id, CONCAT(clb_ay.col_apePaterno, ' ',clb_ay.col_apeMaterno, ' ',clb_ay.col_nombres) AS fullName_ayudante, em.horasExtraccion_extraccionMineral
+        FROM extraccion_mineral AS em
+        LEFT JOIN unidad_mineras AS ud_mn ON em.unidadMineral_id = ud_mn.id_unidadMinera
+        LEFT JOIN lab_zonas AS lb_zn ON em.zona_id = lb_zn.id_zona
+        LEFT JOIN colaboradores AS clb ON em.motorista_id = clb.id_colaborador
+        LEFT JOIN colaboradores AS clb_ay ON em.ayudante_id = clb_ay.id_colaborador;";
+        return $this->ConsultaSimple($query);
+    }
     public function getSelect_unidadMinera(): array
     {
         $query = "SELECT und_mn.nombre_unidadMinera, und_mn.id_unidadMinera FROM unidad_mineras AS und_mn;";

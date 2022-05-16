@@ -15,6 +15,9 @@ if($_POST){
         // ACCION
         $accion = $arrayForm['accion'];
         switch ($accion) {
+            case "table_master":
+                $rptSql = $tableManager->tabla_master();
+                break;
             case "getSelect_unidadMinera":
                 $rptSql = $tableManager->getSelect_unidadMinera();
                 break;
