@@ -9,13 +9,13 @@ class instalacionGenerales extends Conexion
         parent::__construct();
     }
 
-    public function insert(string $data1, string $data2)
+    public function insert(string $data1, string $data2, string $data3)
     {
         try 
         {
-            $query  = "INSERT INTO instalaciones_generales VALUES (null, :instalacionesGenerales_fecha, :instalacionesGenerales_nVale);";
+            $query  = "INSERT INTO instalaciones_generales VALUES (null, :unidadMinera_id, :instalacionesGenerales_fecha, :instalacionesGenerales_nVale);";
             $result = $this->db->prepare($query);
-            $sqlrpt = $result->execute(array(':instalacionesGenerales_fecha' => $data1,':instalacionesGenerales_nVale' => $data2));
+            $sqlrpt = $result->execute(array(':unidadMinera_id' => $data1, ':instalacionesGenerales_fecha' => $data2,':instalacionesGenerales_nVale' => $data3));
             $lastcolIdsql = $this->db->lastInsertId();
             if($sqlrpt){
                 $rptSql = [

@@ -13,15 +13,26 @@ if($_POST){
         switch ($accion) {
             case "insert":
                 $laborList = $arrayForm['form'];
-                $data1 = $laborList['Fecha'];
-                $data2 = $laborList['NReporte'];
-                $data2 = ltrim($data2, "0");
+                $data1 = $laborList['unidadMinera'];
+                $data2 = $laborList['Fecha'];
+                $data3 = $laborList['NReporte'];
+                $data3 = ltrim($data3, "0");
                 $data3_detalles = $laborList['detalles'];
-                $rptSql = $tableManager->insert($data1, intval($data2));
-                if($rptSql){
-                    $id = $rptSql['id'];
-                    $rptSql2 = $tableManager->insertDetails($data3_detalles, intval($id),);
+                $rptSql = $tableManager->insert($data1, $data2, intval($data3));
+                if (sizeof($data3_detalles) > 0) {
+                    if($rptSql){
+                        $id = $rptSql['id'];
+                        $rptSql2 = $tableManager->insertDetails($data3_detalles, intval($id),);
+                    }
                 }
+                else{
+                    $rptSql2 = [
+                        "estado" => 0,
+                        "mensaje" => "No hay detalle Instalación Generales",
+                    ];
+                }
+                
+
                 $rptSqlGeneral = array(
                     "sql1" => $rptSql,
                     "sql2" => $rptSql2

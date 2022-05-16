@@ -18,6 +18,17 @@ $template_create_instalacionesGenerales = '
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="form-group">
+                                        <label for="insert-slt-instalacionesGenerales_unidadMinera" class="control-label">Unidad Minera</label>
+                                        <select id="insert-slt-instalacionesGenerales_unidadMinera" class="form-control">
+                                            <option></option>
+                                        </select> 
+                                        <template id="tpt-instalacionesGenerales-unidadMinera">
+                                            <option></option>
+                                        </template>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
                                         <label for="input-fecha-insert" class="control-label">Fecha</label>
                                         <input type="date" placeholder="Fecha" class="form-control" id="input-fecha-insert"  value="' . date('Y-m-d'). '" > <!--min="2021-12-12" max="2021-12-13"-->
                                     </div>

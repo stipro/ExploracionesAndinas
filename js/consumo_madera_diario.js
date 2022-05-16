@@ -74,6 +74,9 @@ const tpe_update_consumoMadera_madera = document.getElementById('template-consum
 const mbtn_agregarDetalle_update = document.getElementById('mbtn-update-agregarDetalle');
 
 
+const slt_create_consumoMadera_unidadMinero = document.getElementById('insert-slt-consumoMadera-unidadMinera');
+const tpt_create_consumoMadera_unidadMinera = document.getElementById('tpt-consumoMadera-unidadMinera').content;
+
 
 document.addEventListener('DOMContentLoaded', e => {
     mainEvents_consumoMadera();
@@ -300,6 +303,11 @@ document.addEventListener('DOMContentLoaded', e => {
 /** Eventos */
 
 btn_create_consumoMadera_diario.addEventListener("click", (e) => {
+    var select1 = {
+        "accion": "getcolumnAll",
+        "column": "nombre_unidadMinera"
+    }
+    fetch_unidadMinera_create(select1);
     // Preparamos formulario
     let form_request1 = {
         // Se pone la accion
@@ -332,6 +340,9 @@ btn_create_consumoMadera_diario.addEventListener("click", (e) => {
 mbtn_create_consumoMadera_diario.addEventListener("click", (e) => {
     let listDetalles = [];
     let array_noti_error = [];
+    slt_create_consumoMadera_unidadMinero
+    let val_unidadMInera = slt_create_consumoMadera_unidadMinero.value;
+    let id_unidadMinera = slt_create_consumoMadera_unidadMinero.querySelector("option[value='" + val_unidadMInera + "']").dataset.idUnidadMinera;
     let val_turno = slt_consumoMadera_turno.options[slt_consumoMadera_turno.selectedIndex].value;
     let val_guardia = slt_consumoMadera_guardia.options[slt_consumoMadera_guardia.selectedIndex].value;
     let val_jefeGuardia = iptAdd_jefeGuardia.value;
@@ -346,7 +357,7 @@ mbtn_create_consumoMadera_diario.addEventListener("click", (e) => {
     if(array_noti_error.length == 1){
         $.niftyNoty({
             type: 'danger',
-            container: '#alert-form-insert',
+            container: '#alerts-form-insert',
             html: '<strong>!Error!</strong> ' + array_noti_error[0],
             focus: false,
             timer: 2000
@@ -358,7 +369,7 @@ mbtn_create_consumoMadera_diario.addEventListener("click", (e) => {
             'text': '!Error!',
             'descripcion': 'Falta :',
             'list': array_noti_error,
-            'modal': 'alerts-form-update'
+            'modal': 'alerts-form-insert'
         }
         alerts(paramentNoti);
     }
@@ -373,6 +384,7 @@ mbtn_create_consumoMadera_diario.addEventListener("click", (e) => {
             });
         }
         let listInsert = {
+            "unidadMinera": id_unidadMinera,
             "turno": val_turno,
             "guardia": val_guardia,
             "jefeGuardia": val_idColaborador,
@@ -506,6 +518,34 @@ const fetchTable_consumoMadera = async (request) => {
 const paintTable_consumoMadera = data => {
     table_consumoMadera.clear();
     table_consumoMadera.rows.add(data).draw();
+};
+
+// Traer JSON para Tabla (UNIDAD MIBERA)
+const fetch_unidadMinera_create = async (json) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(json));
+    const rpt = await fetch('./../../../controllers/controllerUnidadMineraList.php', {
+        method: "POST",
+        body
+    });
+    
+    const rptJson = await rpt.json(); //await JSON.parse(returned);
+    console.log(rptJson);
+    paintSlt_unidadMinera_create(rptJson);
+};
+
+const paintSlt_unidadMinera_create = (data) => {
+    tpt_create_consumoMadera_unidadMinera
+    objectarrayInstalacion = data['sql'];
+    slt_create_consumoMadera_unidadMinero.innerHTML = '';
+    objectarrayInstalacion.forEach(item => {
+        tpt_create_consumoMadera_unidadMinera.querySelector('option').textContent = item.nombre_unidadMinera;
+        tpt_create_consumoMadera_unidadMinera.querySelector('option').value = item.nombre_unidadMinera;
+        tpt_create_consumoMadera_unidadMinera.querySelector('option').dataset.idUnidadMinera = item.id_unidadMinera;
+        const clone = tpt_create_consumoMadera_unidadMinera.cloneNode(true);
+        fragment.appendChild(clone);
+    });
+    slt_create_consumoMadera_unidadMinero.appendChild(fragment);
 };
 
 // Hacemos la Peticion

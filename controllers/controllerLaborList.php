@@ -53,6 +53,10 @@ if($_POST){
                 $column = $arrayForm['column'];
                 $rptSql = $tableManager->getSelect($table, $column, $idTable);
                 break;
+            case "getcolumn2":
+                $column = $arrayForm['column'];
+                $rptSql = $tableManager->getColumn($column);
+                break;
             case "getcolumnWhere":
                 $column = $arrayForm['column'];
                 $parament = $arrayForm['parament'];

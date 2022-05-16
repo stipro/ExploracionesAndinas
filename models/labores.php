@@ -267,6 +267,11 @@ class Labores extends Conexion
         $query = "SELECT {$idTable}, {$column}, id_labNombre FROM {$table} ORDER BY {$column} ASC ;";
         return $this->ConsultaSimple($query);
     }
+    public function getColumn(string $column)
+    {
+        $query = "SELECT lb.id_labor, lb.{$column} FROM labores AS lb ORDER BY {$column} ASC ;";
+        return $this->ConsultaSimple($query);
+    }
     public function getLaborNombre(){
         $query = "SELECT lb_nb.id_labNombre, lb_nb.labNombre_nombre, lb_nb_ep.nombre_etapa, lb_nb.labNombre_prefijo, lb_nb.labNombre_tipo FROM lab_nombres AS lb_nb LEFT JOIN lab_nomb_etapas AS lb_nb_ep ON lb_nb.labNombEtapas_id = lb_nb_ep.id_etapa;";
         return $this->ConsultaSimple($query);

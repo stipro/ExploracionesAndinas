@@ -20,6 +20,20 @@ $template_create_consumoMadera = '
                         <div class="row">
                             <div class="col-md-2">
                                 <div class="form-group">
+                                    <label for="insert-slt-consumoMadera-unidadMinera" class="control-label">Unidad Minera<span class="text-danger">*</span></label>
+                                    <!-- <div class="col-md-7"> -->
+                                        <select name="unidadMinera" id="insert-slt-consumoMadera-unidadMinera" class="form-control">
+                                            <option></option>
+                                        </select>
+                                        <template id="tpt-consumoMadera-unidadMinera">
+                                            <option></option>
+                                        </template>
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
                                     <label for="insert-slt-consumoMadera-turno" class="control-label">Turno<span class="text-danger">*</span></label>
                                     <!-- <div class="col-md-7"> -->
                                         <select name="turnos" id="insert-slt-consumoMadera-turno" class="form-control">
@@ -41,7 +55,7 @@ $template_create_consumoMadera = '
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="insert-ipt-consumoMadera-jefeGuardia" class="control-label">Jefe de Guardia<span class="text-danger">*</span></label>
                                     <!-- <div class="col-md-7"> -->
@@ -65,7 +79,7 @@ $template_create_consumoMadera = '
                                 </div>
                             </div>
 
-                            <div class="col-xs-6 col-md-3">
+                            <div class="col-xs-6 col-md-2">
                                 <div class="form-group">
                                     <label for="insert-slt-consumoMadera-nvale" class="control-label">N° Vale<span class="text-danger">*</span></label>
                                     <!-- <div class="col-md-7"> -->

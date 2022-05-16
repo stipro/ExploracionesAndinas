@@ -30,6 +30,10 @@ const datalist_instalaciones = document.getElementById('nombre-instalaciones-opt
 
 const btn_create_instalacionesGenerales = document.getElementById('btn-agregar-instalacionesGenerales');
 
+const createStl_itlGenerales_unidadMinera = document.getElementById('insert-slt-instalacionesGenerales_unidadMinera');
+const tpt_itlGenerales_unidadMinera = document.getElementById('tpt-instalacionesGenerales-unidadMinera').content;
+
+const fragment = document.createDocumentFragment()
 
 var counter = 1;
 
@@ -170,21 +174,29 @@ const paintTable = async (rptSql) => {
 }
 btn_create_instalacionesGenerales.addEventListener("click", (e) => {
     var select1 = {
+        "accion": "getcolumnAll",
+        "column": "nombre_unidadMinera"
+    }
+    var select2 = {
         "accion": "getCcosto",
         "column": "lab_ccostos"
     }
-    var select2 = {
+    var select3 = {
         "accion": "getcolumnAll",
         "column": "instalacionesMina_nombre"
     }
-    fetchSelect_labor(select1);
-    fetchSelect_instalacionMina(select2);
+    fetch_unidadMinera_create(select1);
+    fetchSelect_labor(select2);
+    fetchSelect_instalacionMina(select3);
 });
 // JAVASCRIPT VANILLA
 // Boton registrar
 btnInsertar.addEventListener("click", (e) => {
 
     var listDetalles = [];
+    createStl_itlGenerales_unidadMinera
+    let val_unidadMInera = createStl_itlGenerales_unidadMinera.value;
+    let id_unidadMinera = createStl_itlGenerales_unidadMinera.querySelector("option[value='" + val_unidadMInera + "']").dataset.idUnidadMinera;
     const valfecha = iptreg_reportConsumoMadera_fecha.value;
     const valNReporte = iptreg_reportConsumoMadera_nreporte.value;
     var form_data = tableDetails.rows().data();
@@ -204,6 +216,7 @@ btnInsertar.addEventListener("click", (e) => {
         });
     }
     listInsert = {
+        "unidadMinera": id_unidadMinera,
         "Fecha": valfecha,
         "NReporte": valNReporte,
         "detalles": listDetalles
@@ -241,6 +254,15 @@ const notificationBackend = (rptSql) => {
         if (rptSql['sql2']['estado'] == 1) {
             $.niftyNoty({
                 type: 'success',
+                container: '#alerts-form-insert',
+                html: '<strong>¡Bien hecho!</strong> ' + rptSql['sql2']['mensaje'],
+                focus: false,
+                timer: 5000
+            });
+        }
+        if (rptSql['sql2']['estado'] == 0) {
+            $.niftyNoty({
+                type: 'danger',
                 container: '#alerts-form-insert',
                 html: '<strong>¡Bien hecho!</strong> ' + rptSql['sql2']['mensaje'],
                 focus: false,
@@ -430,6 +452,33 @@ const resetFormulario = () => {
 // Ejecuta despues de DOM y Imagenes o iframes cargado por completo
 $(window).on("load", function(e) {
 });
+// Traer JSON para Tabla (UNIDAD MIBERA)
+const fetch_unidadMinera_create = async (json) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(json));
+    const rpt = await fetch('./../../../controllers/controllerUnidadMineraList.php', {
+        method: "POST",
+        body
+    });
+    
+    const rptJson = await rpt.json(); //await JSON.parse(returned);
+    console.log(rptJson);
+    paintSlt_unidadMinera_create(rptJson);
+};
+
+const paintSlt_unidadMinera_create = (data) => {
+    objectarrayInstalacion = data['sql'];
+    createStl_itlGenerales_unidadMinera.innerHTML = '';
+    objectarrayInstalacion.forEach(item => {
+        tpt_itlGenerales_unidadMinera.querySelector('option').textContent = item.nombre_unidadMinera;
+        tpt_itlGenerales_unidadMinera.querySelector('option').value = item.nombre_unidadMinera;
+        tpt_itlGenerales_unidadMinera.querySelector('option').dataset.idUnidadMinera = item.id_unidadMinera;
+        const clone = tpt_itlGenerales_unidadMinera.cloneNode(true);
+        fragment.appendChild(clone);
+    });
+    createStl_itlGenerales_unidadMinera.appendChild(fragment);
+};
+
 const fetchSelect_labor = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
