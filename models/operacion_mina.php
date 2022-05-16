@@ -87,11 +87,12 @@ class operacionMina extends Conexion
         $query = "SELECT op_mn.operacionMina_registro, op_mn.operacionMina_turno, op_mn.operacionMina_guardia, op_mn.operacionMina_nVale FROM operacion_mina AS op_mn WHERE op_mn.id_operacionMina='{$parament_id}'";
         return $this->ConsultaSimple($query);
     }
-    public function insert($dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7, $dato8, $dato9, $dato10, $dato11, $dato12, $dato13, $dato14, $dato15, $dato16, $dato17, $dato18, $dato19, $dato20, $dato21, $dato22, $dato23)
+    public function insert($dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7, $dato8, $dato9, $dato10, $dato11, $dato12, $dato13, $dato14, $dato15, $dato16, $dato17, $dato18, $dato19, $dato20, $dato21, $dato22, $dato23, $dato24)
     {
         try 
         {
             $query = "INSERT INTO operacion_mina (
+            unidadMinera_id,
             operacionMina_registro, 
             operacionMina_turno, 
             operacionMina_guardia, 
@@ -138,7 +139,8 @@ class operacionMina extends Conexion
             :item20,
             :item21,
             :item22,
-            :item23)";
+            :item23,
+            :item24)";
             $insertValue = $this->db->prepare($query);
             $insertValue->bindParam(':item1', $dato1, PDO::PARAM_STR);
             $insertValue->bindParam(':item2', $dato2, PDO::PARAM_STR);
@@ -163,6 +165,7 @@ class operacionMina extends Conexion
             $insertValue->bindParam(':item21', $dato21, PDO::PARAM_STR);
             $insertValue->bindParam(':item22', $dato22, PDO::PARAM_STR);
             $insertValue->bindParam(':item23', $dato23, PDO::PARAM_STR);
+            $insertValue->bindParam(':item24', $dato24, PDO::PARAM_STR);
             $sqlrpt = $insertValue->execute();
             $lastcolIdsql = $this->db->lastInsertId();
             if($sqlrpt){
@@ -170,7 +173,8 @@ class operacionMina extends Conexion
                 $rptSql = [
                     "estado" => 1,
                     "mensaje" => "Se registro correctamente Operacion Mina",
-                    "id" => $lastcolIdsql
+                    "id" => $lastcolIdsql,
+                    "coperacion" => '',
                 ];
             }
             else{

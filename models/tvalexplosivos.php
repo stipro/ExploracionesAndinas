@@ -58,6 +58,7 @@ class ValeExplosivos extends Conexion
         return $this->ConsultaSimple($query);
     }
     public function insert(
+        $id_unidadMinera,
         $idDigitador,
         $datoRegistro,
         $idZona,
@@ -106,7 +107,7 @@ class ValeExplosivos extends Conexion
             $converdatoRegistro = date($datoRegistro.' H:i:s');
             /* Iniciar una transacción, desactivando 'autocommit' */
             //$this->db->beginTransaction();
-            $query = "INSERT INTO tvalexplosivos (id_valexplosivo, valexplosivo_codigoRegistro, id_usuario,
+            $query = "INSERT INTO tvalexplosivos (id_valexplosivo, unidadMinera_id, valexplosivo_codigoRegistro, id_usuario,
             valexplosivo_preimpresor,
             valexplosivo_nvale,
             id_zona,
@@ -142,6 +143,7 @@ class ValeExplosivos extends Conexion
             valexplosivo_totalKiloEmul3000
             )
             VALUES (:id_valexplosivo, 
+            :unidadMinera_id,
             :valexplosivo_codigoRegistro,
             :id_usuario,
             :valexplosivo_preimpresor,  
@@ -179,6 +181,7 @@ class ValeExplosivos extends Conexion
             :valexplosivo_totalKiloEmul3000);";
             $insertValue = $this->db->prepare($query);
             $insertValue->bindParam(':id_valexplosivo', $id, PDO::PARAM_INT);
+            $insertValue->bindParam(':unidadMinera_id', $id_unidadMinera, PDO::PARAM_INT);
             $insertValue->bindParam(':valexplosivo_codigoRegistro', $codRegistro, PDO::PARAM_STR);
             $insertValue->bindParam(':id_usuario', $idDigitador, PDO::PARAM_INT);
             $insertValue->bindParam(':valexplosivo_preimpresor', $preImpreso_final, PDO::PARAM_STR);

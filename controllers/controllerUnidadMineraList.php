@@ -31,6 +31,10 @@ if($_POST){
                 $parament_id = $arrayForm['datos']['id'];
                 $rptSql = $tableManager->getIpt_laborName($parament_id);
                 break;
+            case "getcolumnAll":
+                $column = $arrayForm['column'];
+                $rptSql = $tableManager->getColumnAll($column);
+                break;
             case "getcolumnWhere":
                 $column = $arrayForm['column'];
                 $parament = $arrayForm['parament'];

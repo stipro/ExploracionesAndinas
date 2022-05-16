@@ -27,32 +27,33 @@ if($_POST){
                 
                 $formRequest = $arrayForm['list'];
                 //var_dump($formRequest);
-                $dato1 = $formRequest['datos_registro'];
-                $dato2 = $formRequest['datos_turno'];
-                $dato3 = $formRequest['datos_guardia'];
-                $dato4 = $formRequest['datos_nvale'];
-                $dato5 = $formRequest['datos_actividad'];
-                $dato6 = array_key_exists('id_Labor', $formRequest) ? $formRequest['id_Labor'] : '';
-                $dato7 = $formRequest['tareas_l'] ? $formRequest['tareas_l'] : number_format('0.00');
-                $dato8 = $formRequest['tareas_lpv'] ? $formRequest['tareas_lpv'] : number_format('0.00');
-                $dato9 = $formRequest['tareas_stto'] ? $formRequest['tareas_stto'] : number_format('0.00');
-                $dato10 = $formRequest['tareas_serv'] ? $formRequest['tareas_serv'] : number_format('0.00');
-                $dato11 = $formRequest['tareas_comentario'];
-                $dato12 = $formRequest['avanActual_tipAvance'];
-                $dato13 = $formRequest['avanActual_mt'] ? $formRequest['avanActual_mt'] : 0;
-                $dato14 = $formRequest['avanActual_mt3'] ? $formRequest['avanActual_mt3'] : 0;
-                $dato15 = $formRequest['avanActual_intDisparo'];
-                $dato16 = $formRequest['avanActual_resuelto'];
-                $dato17 = $formRequest['limpieza_manual'] ? $formRequest['limpieza_manual'] : 0;
-                $dato18 = $formRequest['limpieza_pala'];
-                $dato19 = $formRequest['limpieza_cantidadPala'] ? $formRequest['limpieza_cantidadPala'] : 0;
-                $dato20 = $formRequest['limpieza_winche'];
-                $dato21 = $formRequest['limpieza_cantidadWinche'] ? $formRequest['limpieza_cantidadWinche'] : 0;
-                $dato22 = $formRequest['limpieza_mineral'] ? $formRequest['limpieza_mineral'] : 0;
-                $dato23 = $formRequest['limpieza_desmont']? $formRequest['limpieza_desmont'] : 0;
+                $dato1 = $formRequest['unidadMinera'];
+                $dato2 = $formRequest['datos_registro'];
+                $dato3 = $formRequest['datos_turno'];
+                $dato4 = $formRequest['datos_guardia'];
+                $dato5 = $formRequest['datos_nvale'];
+                $dato6 = $formRequest['datos_actividad'];
+                $dato7 = array_key_exists('id_Labor', $formRequest) ? $formRequest['id_Labor'] : '';
+                $dato8 = $formRequest['tareas_l'] ? $formRequest['tareas_l'] : number_format('0.00');
+                $dato9 = $formRequest['tareas_lpv'] ? $formRequest['tareas_lpv'] : number_format('0.00');
+                $dato10 = $formRequest['tareas_stto'] ? $formRequest['tareas_stto'] : number_format('0.00');
+                $dato11 = $formRequest['tareas_serv'] ? $formRequest['tareas_serv'] : number_format('0.00');
+                $dato12 = $formRequest['tareas_comentario'];
+                $dato13 = $formRequest['avanActual_tipAvance'];
+                $dato14 = $formRequest['avanActual_mt'] ? $formRequest['avanActual_mt'] : 0;
+                $dato15 = $formRequest['avanActual_mt3'] ? $formRequest['avanActual_mt3'] : 0;
+                $dato16 = $formRequest['avanActual_intDisparo'];
+                $dato17 = $formRequest['avanActual_resuelto'];
+                $dato18 = $formRequest['limpieza_manual'] ? $formRequest['limpieza_manual'] : 0;
+                $dato19 = $formRequest['limpieza_pala'];
+                $dato20 = $formRequest['limpieza_cantidadPala'] ? $formRequest['limpieza_cantidadPala'] : 0;
+                $dato21 = $formRequest['limpieza_winche'];
+                $dato22 = $formRequest['limpieza_cantidadWinche'] ? $formRequest['limpieza_cantidadWinche'] : 0;
+                $dato23 = $formRequest['limpieza_mineral'] ? $formRequest['limpieza_mineral'] : 0;
+                $dato24 = $formRequest['limpieza_desmont']? $formRequest['limpieza_desmont'] : 0;
                 if (!empty($dato1) && !empty($dato2) && !empty($dato3) && !empty($dato5) && !empty($dato6)) 
                     {
-                        $rptSql = $tableManager->insert($dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7, $dato8, $dato9, $dato10, $dato11, $dato12, $dato13, $dato14, $dato15, $dato16, $dato17, $dato18, $dato19, $dato20, $dato21, $dato22, $dato23);
+                        $rptSql = $tableManager->insert($dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7, $dato8, $dato9, $dato10, $dato11, $dato12, $dato13, $dato14, $dato15, $dato16, $dato17, $dato18, $dato19, $dato20, $dato21, $dato22, $dato23, $dato24);
                         $rptController = [
                             "estado" => 1,
                             "mensaje" => "No hay variables vacios",
@@ -77,10 +78,20 @@ if($_POST){
                 // Id Operacion Mina
                 
                 // Resultado operacion Mina
+                //var_dump($formRequest2);
+                
                 if (!empty($idPrincipal) && !empty($formRequest2)) 
                 {
-                    // Enviando parametros Insert
-                    $rptSql2 = $tableManager2->insert($idPrincipal, $formRequest2);
+                    if(array_key_exists('id', $formRequest2[1])){
+                        // Enviando parametros Insert
+                        $rptSql2 = $tableManager2->insert($idPrincipal, $formRequest2);
+                    }
+                    else{
+                        $rptSql2 = [
+                            "estado" => 0,
+                            "mensaje" => "No hay datos en Tareas",
+                        ];
+                    }
                 } 
                 else 
                 {
@@ -100,7 +111,10 @@ if($_POST){
                 } 
                 else 
                 {
-                    $rptSql3 = 'VACIO';
+                    $rptSql3 = [
+                        "estado" => 0,
+                        "mensaje" => "No hay datos en Instalaciones",
+                    ];
                 }
                 $rptSqlGeneral = array(
                     "sql1" => $rptSql,

@@ -20,13 +20,26 @@ $template_create_operacionMina = '
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="insert-operacionMina-registro" class="col-md-4 control-label">Fecha</label>
+                                        <label for="insert-slt-operacionMina_unidadMinera" class="control-label col-sm-4 col-md-4">Unidad Minera</label>
+                                        <div class="col-sm-8 col-md-8">
+                                            <select id="insert-slt-operacionMina_unidadMinera" class="form-control">
+                                                <option>small</option>
+                                                <option>medium</option>
+                                                <option>large</option>
+                                            </select> 
+                                        </div>
+                                        <template id="tpt-unidadMinera">
+                                            <option></option>
+                                        </template>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="insert-operacionMina-registro" class="control-label col-md-4 ">Fecha</label>
                                         <div class="col-md-8">                                                    
                                             <input type="date" placeholder="Dia" class="form-control" id="insert-operacionMina-registro"  value="' . $dateServer . '" min="' . $mindate . '" max="' .  $dateServer . '"> <!--min="2021-12-12" max="2021-12-13"-->
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="insert-operacionaMina-turno" class="col-md-4 control-label">Turno</label>
+                                        <label for="insert-operacionaMina-turno" class="control-label col-md-4">Turno</label>
                                         <div class="col-md-8">
                                             <input class="form-control" list="insert-options-turno" id="insert-operacionaMina-turno" placeholder="Ingrese Turno...">
                                         </div>
@@ -36,7 +49,7 @@ $template_create_operacionMina = '
                                         </datalist>
                                     </div>
                                     <div class="form-group">
-                                        <label for="insert-operacionMina-guardia" class="col-md-4 control-label">Guardia</label>
+                                        <label for="insert-operacionMina-guardia" class="control-label col-md-4">Guardia</label>
                                         <div class="col-md-8">
                                             <input class="form-control" list="insert-options-guardia" id="insert-operacionMina-guardia" placeholder="Ingrese Guardia...">
                                         </div>
@@ -47,7 +60,7 @@ $template_create_operacionMina = '
                                         </datalist>
                                     </div>
                                     <div class="form-group">
-                                        <label for="insert-operacionMina-nvale" class="col-md-4 control-label">N° Vale</label>
+                                        <label for="insert-operacionMina-nvale" class="control-label col-md-4">N° Vale</label>
                                         <div class="col-md-8">                                                    
                                             <input type="texto" placeholder="n° vale" class="form-control" id="insert-operacionMina-nvale">
                                         </div>
@@ -588,7 +601,7 @@ $template_create_operacionMina = '
                 <div class="modal-footer">
                     <button id="mbtn-new" class="btn btn-primary">Nuevo</button>
                     <button data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
-                    <button id="mbtn-insert" class="btn btn-success">Registrar</button>
+                    <button id="mbtnCreate-operacionMina-insert" class="btn btn-success">Registrar</button>
                 </div>
             </div>
         </div>

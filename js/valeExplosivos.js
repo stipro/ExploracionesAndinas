@@ -22,6 +22,11 @@ const btnEdit_insert = document.getElementById("mbtnEdit-edit");
 
 const btnNuevo = document.getElementById("mbtn-new");
 // Dclaramos Formularios
+const createStl_valeExplosivo_unidadMinera = document.getElementById('create-slt-valeExplosivo-unidadMinera');
+const tpt_valesExplosivo_unidadMinera = document.getElementById('tpt-valeExplosivo-unidadMinera').content;
+//const fragment = document.createDocumentFragment()
+
+
 // Codigo vale o numero de Impreso
 var inputPreImpre = document.getElementById('val_explosivo-text-form-pre_impre');
 // Información General del Vale
@@ -210,6 +215,13 @@ btnCreate_valeExplosivo.addEventListener("click", (e) => {
         "accion": "getColumn_fullname",
     }
 
+    let selectForm_unidadMinera = {
+        "accion": "getcolumnAll",
+        "column": "nombre_unidadMinera"
+    }
+
+    fetch_unidadMinera(selectForm_unidadMinera);
+
     // Enviamos Formato Zona
     fetchDataZona(selectCodZonaForm);
 
@@ -289,6 +301,9 @@ mbtnCreate_valeExplosivo.addEventListener("click", () => {
     let val_digitador = inputDigitador.dataset.id;
     // Numero de Vale
     let val_nNVale = inputNVale.value;
+    // Unidad Minera
+    let val_unidadMInera = createStl_valeExplosivo_unidadMinera.value;
+    let id_unidadMinera = createStl_valeExplosivo_unidadMinera.querySelector("option[value='" + val_unidadMInera + "']").dataset.idUnidadMinera;
     // Zona
     zonaSelect = selectZona.options[selectZona.selectedIndex];
     valselectZona = zonaSelect.value;
@@ -406,6 +421,7 @@ mbtnCreate_valeExplosivo.addEventListener("click", () => {
     let val_dinamitaSemigelatinosa = inputFormCalDimValorSemigelatinosa.value;
     val_dinamitaSemigelatinosa>0 ? detail.push({'id': dtSet_dinamitaSemigelatinosa, 'cantidad': val_dinamitaSemigelatinosa}):'';
     listInsert = ({
+        "unidadMinera": id_unidadMinera,
         "id_digitador": val_digitador,
         "n_vale": val_nNVale,
         "fechRegistro": valdateRegistro,
@@ -454,7 +470,8 @@ const requestInsert = async (form) => {
 // 
 const afterRequestInsert = (data) => {
     alertInsert.innerHTML = '';
-    sqlRpt = data['sql'];
+    sqlRpt = data['sql']['sql1'];
+    sqlRpt2 = data['sql']['sql2'];
     mainEvents();
     if (sqlRpt['estado'] == 1) {
         $.niftyNoty({
@@ -481,6 +498,24 @@ const afterRequestInsert = (data) => {
             });
         }
     }
+    if(sqlRpt2['estado'] == 1){
+        $.niftyNoty({
+            type: 'success',
+            container: '#alert-form-insert',
+            html: '<strong>Bien hecho!</strong> ' + sqlRpt2['mensaje'],
+            focus: false,
+            timer: 8000
+        });
+    }
+    else{
+        $.niftyNoty({
+            type: 'danger',
+            container: '#alert-form-insert',
+            html: '<strong>!Error!</strong> ' + sqlRpt2['mensaje'],
+            focus: false,
+        });
+    }
+
 };
 
 // Aumento de numeros
@@ -503,6 +538,32 @@ function zfill(number, width) {
         }
     }
 }
+// Traer JSON para Tabla (UNIDAD MIBERA)
+const fetch_unidadMinera = async (json) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(json));
+    const rpt = await fetch('./../../../controllers/controllerUnidadMineraList.php', {
+        method: "POST",
+        body
+    });
+    
+    const rptJson = await rpt.json(); //await JSON.parse(returned);
+    console.log(rptJson);
+    paintSlt_unidadMinera(rptJson);
+};
+
+const paintSlt_unidadMinera = (data) => {
+    objectarrayInstalacion = data['sql'];
+    createStl_valeExplosivo_unidadMinera.innerHTML = '';
+    objectarrayInstalacion.forEach(item => {
+        tpt_valesExplosivo_unidadMinera.querySelector('option').textContent = item.nombre_unidadMinera;
+        tpt_valesExplosivo_unidadMinera.querySelector('option').value = item.nombre_unidadMinera;
+        tpt_valesExplosivo_unidadMinera.querySelector('option').dataset.idUnidadMinera = item.id_unidadMinera;
+        const clone = tpt_valesExplosivo_unidadMinera.cloneNode(true);
+        fragment.appendChild(clone);
+    });
+    createStl_valeExplosivo_unidadMinera.appendChild(fragment);
+};
 
 // Traer JSON para Tabla (ZONA)
 const fetchDataZona = async (json) => {
@@ -514,10 +575,10 @@ const fetchDataZona = async (json) => {
     });
     
     const rptJson = await rpt.json(); //await JSON.parse(returned);
-    paintSelectZona(rptJson);
+    paintSlt_zona(rptJson);
 };
 
-const paintSelectZona = (data) => {
+const paintSlt_zona = (data) => {
     arraySelect = data['sql'];
     selectZona.innerHTML = '';
     const templateSelectZona = document.querySelector("#template-opt-zona").content;

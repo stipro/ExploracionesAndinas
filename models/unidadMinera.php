@@ -65,6 +65,10 @@ class unidadMinera extends Conexion
         $query = "SELECT lb_nm.labNombre_nombre, lb.id_labor FROM labores AS lb LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre WHERE lb.id_labor = '{$parament_id}'";
         return $this->ConsultaSimple($query);
     }
+    public function getColumnAll($column){
+        $query = "SELECT ud_mn.id_unidadMinera, ud_mn.{$column} FROM unidad_mineras AS ud_mn";
+        return $this->ConsultaSimple($query);
+    }
     public function getRecord($parament_id)
     {
         $query = "SELECT op_mn.operacionMina_registro, op_mn.operacionMina_turno, op_mn.operacionMina_guardia, op_mn.operacionMina_nVale FROM operacion_mina AS op_mn WHERE op_mn.id_operacionMina = '{$parament_id}'";

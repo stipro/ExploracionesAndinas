@@ -6,6 +6,18 @@ if($_POST){
     $nametable = 'tvalexplosivos';
     $rptSql= '';
     $rptController = 'Se recibio datos';
+    $datoemulMil = 0;
+    $datoemulTresmil = 0;
+    $datoDinaPulv = 0;
+    $datCarmexsiete = 0;
+    $datCarmexocho = 0;
+    $datomechaRapida = 0;
+    $datomechaLenta = 0;
+    $datofulmOcho = 0;
+    $datoconecMecha = 0;
+    $datoBlockSegacion = 0;
+    $datoCarCortrece = 0;
+    $datoDinaSemi = 0;
     try{
         // Requiero Modelo ()
         require_once '../models/'.$nametable.'.php';
@@ -22,23 +34,8 @@ if($_POST){
         // Verfico que accion hacer
         switch ($accion) {
             case "insertar":
-                $formRequest = $arrayForm['list'];
-                //var_dump($formRequest);
-                $detail = $formRequest['detail'];
-                foreach ($detail as &$valor) {
-                    $valor['id'] = 1 ? $datoemulMil = $valor['cantidad'] : $datoemulMil = 0;
-                    $valor['id'] = 2 ? $datoemulTresmil = $valor['cantidad'] : $datoemulTresmil = 0;
-                    $valor['id'] = 3 ? $datoDinaPulv = $valor['cantidad'] : $datoDinaPulv = 0;
-                    $valor['id'] = 4 ? $datCarmexsiete = $valor['cantidad'] : $datCarmexsiete = 0;
-                    $valor['id'] = 5 ? $datCarmexocho = $valor['cantidad'] : $datCarmexocho = 0;
-                    $valor['id'] = 6 ? $datomechaRapida = $valor['cantidad'] : $datomechaRapida = 0;
-                    $valor['id'] = 7 ? $datomechaLenta = $valor['cantidad'] : $datomechaLenta = 0;
-                    $valor['id'] = 8 ? $datofulmOcho = $valor['cantidad'] : $datofulmOcho = 0;
-                    $valor['id'] = 9 ? $datoconecMecha = $valor['cantidad'] : $datoconecMecha = 0;
-                    $valor['id'] = 10 ? $datoBlockSegacion = $valor['cantidad'] : $datoBlockSegacion = 0;
-                    $valor['id'] = 11 ? $datoCarCortrece = $valor['cantidad'] : $datoCarCortrece = 0;
-                    $valor['id'] = 12 ? $datoDinaSemi = $valor['cantidad'] : $datoDinaSemi = 0;
-                }
+                $formRequest = $arrayForm['list'];                
+                $id_unidadMinera = $formRequest['unidadMinera'];
                 $idDigitador = $formRequest['id_digitador'];
                 $datoRegistro = $formRequest['fechRegistro'];
                 if (array_key_exists('id_zona', $formRequest)) {
@@ -81,9 +78,12 @@ if($_POST){
                 $datosumSemiPulv = $formRequest['suma_pulv_sumi'];
                 $datoDEmulnorMil = $formRequest['totalKilos_DEmulnorMil'];
                 $datoDEmulnorTresmil = $formRequest['totalKilos_DEmulnorTresmil'];
+
+                
                 if (!empty($idDigitador) && !empty($datoRegistro) && !empty($idZona) && !empty($datonVale) && !empty($idLabor)) 
                     {
                         $rptSql = $table->insert(
+                            $id_unidadMinera,
                             $idDigitador, 
                             $datoRegistro,
                             $idZona,
@@ -124,8 +124,31 @@ if($_POST){
                             "mensaje" => "No hay variables vacios",
                         ];
                         $id = $rptSql['id'];
-                        var_dump($id);
-                        $rptSql2 = $table->createDetalle($id, $detail);
+                        $detail = $formRequest['detail'];
+                        if(sizeof($detail) > 0){
+                            foreach ($detail as &$valor) {
+                                $valor['id'] = 1 ? $datoemulMil = $valor['cantidad'] : $datoemulMil = 0;
+                                $valor['id'] = 2 ? $datoemulTresmil = $valor['cantidad'] : $datoemulTresmil = 0;
+                                $valor['id'] = 3 ? $datoDinaPulv = $valor['cantidad'] : $datoDinaPulv = 0;
+                                $valor['id'] = 4 ? $datCarmexsiete = $valor['cantidad'] : $datCarmexsiete = 0;
+                                $valor['id'] = 5 ? $datCarmexocho = $valor['cantidad'] : $datCarmexocho = 0;
+                                $valor['id'] = 6 ? $datomechaRapida = $valor['cantidad'] : $datomechaRapida = 0;
+                                $valor['id'] = 7 ? $datomechaLenta = $valor['cantidad'] : $datomechaLenta = 0;
+                                $valor['id'] = 8 ? $datofulmOcho = $valor['cantidad'] : $datofulmOcho = 0;
+                                $valor['id'] = 9 ? $datoconecMecha = $valor['cantidad'] : $datoconecMecha = 0;
+                                $valor['id'] = 10 ? $datoBlockSegacion = $valor['cantidad'] : $datoBlockSegacion = 0;
+                                $valor['id'] = 11 ? $datoCarCortrece = $valor['cantidad'] : $datoCarCortrece = 0;
+                                $valor['id'] = 12 ? $datoDinaSemi = $valor['cantidad'] : $datoDinaSemi = 0;
+                            }
+                            $rptSql2 = $table->createDetalle($id, $detail);
+                        }else{
+                            $rptSql2 = [
+                                "estado" => 0,
+                                "mensaje" => "No hay detalle que registrar",
+                            ];
+                            $rptSql2 = 0;
+                        }
+                        
                         $rptSqlGeneral = array(
                             "sql1" => $rptSql,
                             "sql2" => $rptSql2

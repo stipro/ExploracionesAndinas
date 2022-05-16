@@ -1190,6 +1190,24 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label for="create-slt-valeExplosivo-unidadMinera" class="col-md-4 control-label label-sm">Unidad <span class="text-danger">*</span> Minera</label>
+                                        <div class="col-md-8">
+                                            <!-- Default choosen -->
+                                            <!--===================================================-->
+                                            <select class="form-control" data-placeholder="Elija Unidad Minera ..." id="create-slt-valeExplosivo-unidadMinera" tabindex="2">
+                                                <option value="#">Hubo un Error ! </option>
+                                            </select>
+                                            <template id="tpt-valeExplosivo-unidadMinera">
+                                                <option></option>
+                                            </template>
+                                            <!--===================================================-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         <label for="val_explosivo-text-form-zona" class="col-md-4 control-label">Zona <span class="text-danger">*</span></label>
                                         <div class="col-md-8">
                                             <!-- Default choosen -->

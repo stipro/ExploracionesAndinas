@@ -9,7 +9,7 @@ var objectarrayInstalacion;
 const btnIncrementar = document.getElementById("btn-increase");
 const btndisminuir = document.getElementById("btn-decline");
 const btnAgregar = document.getElementById("btn-Agregar");
-const btnInsert = document.getElementById("mbtn-insert");
+const btnInsert = document.getElementById("mbtnCreate-operacionMina-insert");
 const btnNew = document.getElementById("mbtn-new");
 const btnInsertTable = document.getElementById("insert-option-table");
 const iptinsertTable_name = document.getElementById("nombre-instalaciones-table");
@@ -21,6 +21,10 @@ const iptinsertGuardia = document.getElementById("insert-operacionMina-guardia")
 const iptinsertNVale = document.getElementById("insert-operacionMina-nvale");
 
 // Seccion Centro de CCostos
+const insertSlt_operacionMina_unidadMinera = document.getElementById('insert-slt-operacionMina_unidadMinera')
+const tpt_operacionMina_unidadMinera = document.getElementById('tpt-unidadMinera').content
+const fragment = document.createDocumentFragment()
+
 const iptinsertCodZona = document.getElementById("insert-operacionMina-codzona");
 const dtlistOptionCodZona = document.getElementById("insert-options-codzona");
 const iptinsertCodLabor = document.getElementById("insert-operacionMina-codLabor");
@@ -1367,10 +1371,19 @@ btn_agregar_operacionMina.addEventListener('click', () => {
         "column": "instalacionesMIna_nombre"
     }
     fetchInstalaciones(selectForm_instalacionMina);
+    let selectForm_unidadMinera = {
+        "accion": "getcolumnAll",
+        "column": "nombre_unidadMinera"
+    }
+    fetch_unidadMinera(selectForm_unidadMinera);
 })
 
 btnInsert.addEventListener("click", () => {
     valArray_Instalaciones = getValue_Table();
+    let val_unidadMinera = insertSlt_operacionMina_unidadMinera.value;
+    let id_unidadMinera = insertSlt_operacionMina_unidadMinera.querySelector("option[value='" + val_unidadMinera + "']").dataset.idUnidadMinera;
+    console.log(val_unidadMinera);
+    console.log(id_unidadMinera);
     valRegistro = iptinsertRegistro.value;
     valTurno = iptinsertTurno.value;
     valGuardia = iptinsertGuardia.value;
@@ -1415,6 +1428,7 @@ btnInsert.addEventListener("click", () => {
     valdesmont = iptinsertdesmont.value;
 
     valInsert = {
+        "unidadMinera": id_unidadMinera,
         "datos_registro": valRegistro,
         "datos_turno": valTurno,
         "datos_guardia": valGuardia,
@@ -1465,7 +1479,6 @@ btnInsert.addEventListener("click", () => {
         "list": valInsert
     }
     requestInsert(form_insert);
-
 });
 
 
@@ -1485,7 +1498,8 @@ const afterRequestInsert = (data) => {
     alertInsert.innerHTML = '';
     console.log(data);
 
-    sqlRpt = data['sql']
+    sqlRpt = data['sql']['sql1'];
+    sqlRpt2 = data['sql']['sql2'];
     if (sqlRpt['estado'] == 1) {
         $.niftyNoty({
             type: 'success',
@@ -1513,6 +1527,23 @@ const afterRequestInsert = (data) => {
         }
 
         console.log('No');
+    }
+    if(sqlRpt2['estado'] == 1){
+        $.niftyNoty({
+            type: 'success',
+            container: '#alert-form-insert',
+            html: '<strong>Bien hecho!</strong> ' + sqlRpt2['mensaje'],
+            focus: false,
+            timer: 8000
+        });
+    }
+    else{
+        $.niftyNoty({
+            type: 'danger',
+            container: '#alert-form-insert',
+            html: '<strong>!Error!</strong> ' + sqlRpt2['mensaje'],
+            focus: false,
+        });
     }
 };
 /*
@@ -2236,6 +2267,29 @@ const enumeracion_Table = () => {
     for (var i = 0, len = rows.length; i < len; i++) {
         rows[i].children[0][text] = i + ': ' + rows[i].children[0][text];
     }
+}
+
+//Traer Instalaciones
+const fetch_unidadMinera = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../../../controllers/controllerUnidadMineraList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json();
+    objectarrayInstalacion = data['sql']
+    console.log(objectarrayInstalacion);
+    insertSlt_operacionMina_unidadMinera.innerHTML = "";
+    objectarrayInstalacion.forEach(item => {
+        tpt_operacionMina_unidadMinera.querySelector('option').textContent = item.nombre_unidadMinera;
+        tpt_operacionMina_unidadMinera.querySelector('option').value = item.nombre_unidadMinera;
+        tpt_operacionMina_unidadMinera.querySelector('option').dataset.idUnidadMinera = item.id_unidadMinera;
+        const clone = tpt_operacionMina_unidadMinera.cloneNode(true);
+        fragment.appendChild(clone)
+    });
+    insertSlt_operacionMina_unidadMinera.appendChild(fragment);
 }
 
 $("#insert-operacionMina-cuadro").on('input', function() {

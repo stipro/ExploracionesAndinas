@@ -43,8 +43,10 @@ class operTareas extends Conexion
     }
     public function insert($idPrincipal, $formRequest2)
     {
+        $sqlrpt='';
         try 
         {
+            
             $query = "INSERT INTO oper_tareas (id_operacionMina, id_colaborador, operacionTareas_nombre) VALUES (
                 :item1,
                 :item2,
