@@ -58,6 +58,14 @@ class Colaboradores extends Conexion
         return $this->ConsultaSimple($query);
     }
     //OBTIENE TODA LA TABLA
+    public function getNameCargoArea_dni($paramentWhere)
+    {
+        $query = "SELECT clb.id_colaborador, CONCAT(clb.col_apePaterno, ' ', clb.col_apeMaterno, ' ', clb.col_nombres) AS fullName, cg.cargo_nombre, ae.area_nombre FROM colaboradores AS clb
+        LEFT JOIN cargos AS cg ON clb.id_cargo = cg.id_cargo
+        LEFT JOIN areas AS ae ON cg.id_area = ae.id_area WHERE col_dni = {$paramentWhere}";
+        return $this->ConsultaSimple($query);
+    }
+    //OBTIENE TODA LA TABLA
     public function perforista($whereId, $column1, $column2, $column3, $column4)
     {
         $query = "SELECT clb.id_colaborador, CONCAT(clb.{$column1},' ' , clb.{$column2},' ', clb.{$column3}) AS fullName , clb.{$column4}, cg.cargo_nombre FROM colaboradores AS clb LEFT JOIN cargos AS cg ON clb.id_cargo = cg.id_cargo WHERE id_colaborador = {$whereId};";

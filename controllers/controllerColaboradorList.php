@@ -20,6 +20,11 @@ if($_POST){
             case "table-master":
                 $rptSql = $tableManager->table_master();
                 break;
+                // Tareo
+            case "getNameCargoArea_dni":
+                $paramentWhere = $arrayForm['paramentWhere'];
+                $rptSql = $tableManager->getNameCargoArea_dni($paramentWhere);
+                break;
             case "getPerforista":
                 $whereId = $arrayForm['parament'];
                 $column1 = 'col_apePaterno';
