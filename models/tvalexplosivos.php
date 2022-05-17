@@ -18,7 +18,7 @@ class ValeExplosivos extends Conexion
     }
     public function getRow($parament)
     {
-        $query = "SELECT *, cb_usuarios.col_nombres AS cbUsu_nombres, cb_usuarios.col_apePaterno AS cbUsu_apePaterno, cb_usuarios.col_apeMaterno AS cbUsu_apeMaterno, vl_xp.valexplosivo_preimpresor, vl_xp.valexplosivo_nvale  FROM tvalexplosivos AS vl_xp LEFT JOIN usuarios AS uao ON vl_xp.id_usuario = uao.id_usuario  LEFT JOIN colaboradores AS cb_usuarios ON uao.id_colaborador = cb_usuarios.id_colaborador LEFT JOIN lab_zonas AS lb_zn ON vl_xp.id_zona = lb_zn.id_zona LEFT JOIN labores AS lb ON vl_xp.id_labor = lb.id_labor LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre LEFT JOIN colaboradores AS cb ON vl_xp.id_colaborador = cb.id_colaborador WHERE vl_xp.valexplosivo_codigoRegistro = {$parament}";
+        $query = "SELECT *, cb_usuarios.col_nombres AS cbUsu_nombres, cb_usuarios.col_apePaterno AS cbUsu_apePaterno, cb_usuarios.col_apeMaterno AS cbUsu_apeMaterno, vl_xp.valexplosivo_preimpresor, vl_xp.valexplosivo_nvale  FROM tvalexplosivos AS vl_xp LEFT JOIN usuarios AS uao ON vl_xp.id_usuario = uao.id_usuario  LEFT JOIN colaboradores AS cb_usuarios ON uao.colaborador_id = cb_usuarios.id_colaborador LEFT JOIN lab_zonas AS lb_zn ON vl_xp.id_zona = lb_zn.id_zona LEFT JOIN labores AS lb ON vl_xp.id_labor = lb.id_labor LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre LEFT JOIN colaboradores AS cb ON vl_xp.id_colaborador = cb.id_colaborador WHERE vl_xp.valexplosivo_codigoRegistro = {$parament}";
         return $this->ConsultaSimple($query);
     }
     public function getSelectNormal(string $table, array $columns):array
