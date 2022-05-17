@@ -23,8 +23,8 @@ const create_dtl_tareo_codZona = document.getElementById('dtl-create-insert-dtl-
 const tpt_tareo_codZona = document.getElementById('tpt-tareo-codZona').content;
 
 const create_ipt_tareo_centCostos = document.getElementById('create-ipt-tareo-centCostos');
-const create_dtl_tareo_codZona = document.getElementById('dtl-create-insert-dtl-tareo-cenCostos');
-const tpt_tareo_codZona = document.getElementById('tpt-tareo-cenCostos').content;
+const create_dtl_tareo_centCostos = document.getElementById('dtl-create-insert-dtl-tareo-cenCostos');
+const tpt_tareo_centCostos = document.getElementById('tpt-tareo-cenCostos').content;
 
 const create_ipt_tareo_zona = document.getElementById('create-ipt-tareo-zona');
 const create_ipt_tareo_labor = document.getElementById('create-ipt-tareo-labor');
@@ -35,6 +35,8 @@ const create_ipt_tareo_htSeAd = document.getElementById('create-ipt-tareo-htSeAd
 const create_ipt_tareo_heSeAd = document.getElementById('create-ipt-tareo-heSeAd');
 const create_ipt_tareo_ccSeAd = document.getElementById('create-ipt-tareo-ccSeAd');
 const create_ipt_tareo_ccHe = document.getElementById('create-ipt-tareo-ccHe');
+
+const fragment = document.createDocumentFragment()
 
 document.addEventListener('DOMContentLoaded', e => {
     mainEvents();
@@ -243,14 +245,9 @@ create_tareo_agregar.addEventListener("click", (e) => {
     fetchDni_tareo_create(form1);
     let form2 = {
         "accion": "getcolumnAll",
-        "column": "labZona_nombre"
+        "column": "labZona_letra"
     }
     fetchZonas_tareo_create(form2);
-    let form3 = {
-        "accion": "getcolumnAll",
-        "column": "lab_ccostos"
-    }
-    fetchCCosto_tareo_create(form3);
 });
 
 const fetchDni_tareo_create = async (rptSql) => {
@@ -274,7 +271,7 @@ const paintDtl_Dni = (rptSql) => {
         const clone = tpt_tareo_dni.cloneNode(true);
         fragment.appendChild(clone);
     });
-    create_dtl_tareo_dni.appendChild();
+    create_dtl_tareo_dni.appendChild(fragment);
 }
 
 const fetchZonas_tareo_create = async (rptSql) => {
@@ -292,14 +289,40 @@ const fetchZonas_tareo_create = async (rptSql) => {
 const paintDtl_Zona = (rptSql) => {
     create_dtl_tareo_codZona.innerHTML = '';
     rptSql.forEach(item => {
-        tpt_tareo_codZona.querySelector('option').textContent = item.col_dni;
-        tpt_tareo_codZona.querySelector('option').value = item.col_dni;
-        tpt_tareo_codZona.querySelector('option').dataset.idColaborador = item.id_colaborador;
+        tpt_tareo_codZona.querySelector('option').textContent = item.labZona_letra;
+        tpt_tareo_codZona.querySelector('option').value = item.labZona_letra;
+        tpt_tareo_codZona.querySelector('option').dataset.idLabZona = item.id_zona;
         const clone = tpt_tareo_codZona.cloneNode(true);
         fragment.appendChild(clone);
     });
-    create_dtl_tareo_codZona.appendChild();
+    create_dtl_tareo_codZona.appendChild(fragment);
 }
+
+create_ipt_tareo_codZona.addEventListener("input", (e) => {
+    try {
+        let val_codZona = create_ipt_tareo_codZona.value;
+        let val_idLaboZona = document.querySelector("#insert-dtl-consumoMadera-laborNombre"  + " option[value='" +  val_codZona + "']").dataset.idLabZona;
+        if(val_idLaboZona){
+            let form3 = {
+                "accion": "getcolumnAll",
+                "column": "lab_ccostos"
+            }
+            fetchCCosto_tareo_create(form3);
+        }
+        else{
+            create_ipt_tareo_centCostos.value = '';
+            create_ipt_tareo_zona.value = '';
+            create_ipt_tareo_labor.value = '';
+            create_ipt_tareo_nivel.value = '';
+        }
+
+    } catch (error) {
+        create_ipt_tareo_centCostos.value = '';
+        create_ipt_tareo_zona.value = '';
+        create_ipt_tareo_labor.value = '';
+        create_ipt_tareo_nivel.value = '';
+    }
+});
 
 const fetchCCosto_tareo_create = async (rptSql) => {
     const body = new FormData();

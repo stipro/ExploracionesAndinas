@@ -22,9 +22,9 @@ class LaboresName extends Conexion
         return $this->ConsultaSimple($query);
     }
     // Obtiene Lista especifica
-    public function getColumnAll()
+    public function getColumnAll($column)
     {
-        $query = "SELECT lb_zn.id_zona, lb_zn.labZona_nombre FROM lab_zonas AS lb_zn;";
+        $query = "SELECT lb_zn.id_zona, lb_zn.{$column} FROM lab_zonas AS lb_zn;";
         return $this->ConsultaSimple($query);
     }
     // Obtiene Lista especifica
