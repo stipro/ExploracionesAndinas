@@ -20,6 +20,10 @@ if($_POST){
             case "table-master":
                 $rptSql = $tableManager->table_master();
                 break;
+            case "getcolumnAll":
+                $column = $arrayForm['column'];
+                $rptSql = $tableManager->getColumnAll($column);
+                break;
                 // Tareo
             case "getNameCargoArea_dni":
                 $paramentWhere = $arrayForm['paramentWhere'];

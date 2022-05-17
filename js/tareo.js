@@ -6,6 +6,9 @@ const create_tareo_mbtnClose = document.getElementById('create-tareo-mbtnClose')
 // Personal
 const create_ipt_tareo_nTarjeta = document.getElementById('create-ipt-tareo-nTarjeta');
 const create_ipt_tareo_dni = document.getElementById('create-ipt-tareo-dni');
+const create_dtl_tareo_dni = document.getElementById('dtl-create-insert-dtl-tareo-dni');
+const tpt_tareo_dni = document.getElementById('tpt-tareo-dni').content;
+
 const create_ipt_tareo_nombre = document.getElementById('create-ipt-tareo-nombre');
 const create_ipt_tareo_cargo = document.getElementById('create-ipt-tareo-cargo');
 const create_ipt_tareo_area = document.getElementById('create-ipt-tareo-area');
@@ -235,14 +238,17 @@ const pintarIpts_colaboradores = (rptSql) => {
 create_tareo_agregar.addEventListener("click", (e) => {
     let form1 = {
         "accion": "getcolumnAll",
+        "column": "col_dni"
     }
     fetchDni_tareo_create(form1);
     let form2 = {
         "accion": "getcolumnAll",
+        "column": "labZona_nombre"
     }
     fetchZonas_tareo_create(form2);
     let form3 = {
         "accion": "getcolumnAll",
+        "column": "lab_ccostos"
     }
     fetchCCosto_tareo_create(form3);
 });
@@ -260,12 +266,21 @@ const fetchDni_tareo_create = async (rptSql) => {
 };
 
 const paintDtl_Dni = (rptSql) => {
+    create_dtl_tareo_dni.innerHTML = '';
+    rptSql.forEach(item => {
+        tpt_tareo_dni.querySelector('option').textContent = item.col_dni;
+        tpt_tareo_dni.querySelector('option').value = item.col_dni;
+        tpt_tareo_dni.querySelector('option').dataset.idColaborador = item.id_colaborador;
+        const clone = tpt_tareo_dni.cloneNode(true);
+        fragment.appendChild(clone);
+    });
+    create_dtl_tareo_dni.appendChild();
 }
 
 const fetchZonas_tareo_create = async (rptSql) => {
     const body = new FormData();
     body.append("data", JSON.stringify(rptSql));
-    const res = await fetch('./../../../controllers/controllerColaboradorList.php', {
+    const res = await fetch('./../../../controllers/controllerZonaList.php', {
         method: "POST",
         body
     });
@@ -275,6 +290,15 @@ const fetchZonas_tareo_create = async (rptSql) => {
 };
 
 const paintDtl_Zona = (rptSql) => {
+    create_dtl_tareo_codZona.innerHTML = '';
+    rptSql.forEach(item => {
+        tpt_tareo_codZona.querySelector('option').textContent = item.col_dni;
+        tpt_tareo_codZona.querySelector('option').value = item.col_dni;
+        tpt_tareo_codZona.querySelector('option').dataset.idColaborador = item.id_colaborador;
+        const clone = tpt_tareo_codZona.cloneNode(true);
+        fragment.appendChild(clone);
+    });
+    create_dtl_tareo_codZona.appendChild();
 }
 
 const fetchCCosto_tareo_create = async (rptSql) => {
@@ -290,4 +314,5 @@ const fetchCCosto_tareo_create = async (rptSql) => {
 };
 
 const paintDtl_CenCosto = (rptSql) => {
+    
 }

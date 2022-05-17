@@ -1406,13 +1406,19 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="col-md-2">
-                                        <input class="form-control" type="number" name="" value="0" id="val_explosivo-text-form-resdin_semi" disabled>
+                                        <div class="form-group">
+                                            <label for="val_explosivo-input-form-tEmulnor" class="col-md-1 control-label input-sm">Total Emulnor</label>
+                                            <input class="form-control input-sm" type="number" name="" value="0" id="val_explosivo-input-form-tEmulnor" disabled>
+                                            <!---->
+                                        </div>
                                     </div>
                                     <div class="col-md-2">
-                                        <input class="form-control" type="number" name="" value="0" id="val_explosivo-text-form-resdin_pulv" disabled>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input class="form-control" type="number" name="" value="0" id="suma-dimPulv-dimSemi" disabled>
+                                        <div class="form-group">
+                                            <input class="form-control hidden" type="number" name="" value="0" id="val_explosivo-text-form-resdin_semi" disabled>
+                                            <input class="form-control hidden" type="number" name="" value="0" id="val_explosivo-text-form-resdin_pulv" disabled>
+                                            <label for="suma-dimPulv-dimSemi" class="col-md-1 control-label input-sm">Total Explosivos</label>
+                                            <input class="form-control input-sm" type="number" name="" value="0" id="suma-dimPulv-dimSemi" disabled>
+                                        </div>
                                     </div>
                                     <!-- FORMULARIO -->
                                     <label for="val_explosivo-text-form-nmaquinas" class="col-md-1 control-label">N° Maquina</label>

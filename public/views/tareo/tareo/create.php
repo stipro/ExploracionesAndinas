@@ -32,8 +32,14 @@ $template_create_tareo = '
                             <div class="form-group">
                                 <label for="create-ipt-tareo-dni" class="col-sm-3 control-label">DNI</label>
                                 <div class="col-sm-6">
-                                    <input type="number" placeholder="DNI" class="form-control" id="create-ipt-tareo-dni">
+                                    <input list="dtl-create-insert-dtl-tareo-dni" type="number" placeholder="DNI" class="form-control" id="create-ipt-tareo-dni">
+                                    <datalist id="dtl-create-insert-dtl-tareo-dni">
+                                        <option value="--no cargo--">--no cargo--</option>
+                                    </datalist>
                                 </div>
+                                <template id="tpt-tareo-dni">
+                                    <option></option>
+                                </template>
                             </div>
                             <!-- FORMULARIO -->
                             <div class="form-group">

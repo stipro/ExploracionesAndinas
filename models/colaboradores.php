@@ -58,6 +58,12 @@ class Colaboradores extends Conexion
         return $this->ConsultaSimple($query);
     }
     //OBTIENE TODA LA TABLA
+    public function getcolumnAll($column)
+    {
+        $query = "SELECT clb.id_colaborador, clb.{$column}  FROM colaboradores AS clb";
+        return $this->ConsultaSimple($query);
+    }
+    //OBTIENE TODA LA TABLA
     public function getNameCargoArea_dni($paramentWhere)
     {
         $query = "SELECT clb.id_colaborador, CONCAT(clb.col_apePaterno, ' ', clb.col_apeMaterno, ' ', clb.col_nombres) AS fullName, cg.cargo_nombre, ae.area_nombre FROM colaboradores AS clb

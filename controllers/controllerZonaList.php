@@ -18,6 +18,10 @@ if($_POST){
             case "getSelect_zonaNombre":
                 $rptSql = $tableManager->getSelect_zonaNombre();
                 break;
+            case "getcolumnAll":
+                $column = $arrayForm['column'];
+                $rptSql = $tableManager->getColumnAll($column);
+                break;
         }
 
     } catch (Exception $e) {

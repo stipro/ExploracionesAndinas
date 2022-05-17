@@ -62,8 +62,6 @@ var inputFormCalDimResultSemigelatinosa = document.getElementById('val_explosivo
 var inputFormCalDimResultPulverulenta = document.getElementById('val_explosivo-text-form-resdin_pulv');
 // Suma de Semigelatinosa con Pulverulenta
 var inputFormSumaPulSemi = document.getElementById('suma-dimPulv-dimSemi');
-
-var iptTkEmulnor = document.getElementById('val_explosivo-input-form-tEmulnor');
 // Registro de Perforadoras
 // Barras
 var selectFormBarra = document.getElementById('val_explosivo-input-form-barra');
@@ -984,32 +982,6 @@ $(document).ready(function() {
         sumaMaterialExplosivo();
     });
 });
-
-$(document).ready(function() {
-    $("#val_explosivo-text-form-emulnor_mil").keyup(function(event) {
-        let valEmulnormil = inputFormEmulnormil.value;
-        let val_emulTresmil = inputFormEmulnostresmil.value;
-        let totalKilos_dinamitaEmulnorMil = calcular_KilosDinamita(valEmulnormil, parseFloat('0.09615385'));
-        let totalKilos_dinamitaEmulnorTresmil = calcular_KilosDinamita(val_emulTresmil, parseFloat('0.09469697'));
-        let totalKilosEmulnor = totalKilos_dinamitaEmulnorMil + totalKilos_dinamitaEmulnorTresmil;
-        iptTkEmulnor.value = totalKilosEmulnor;
-        console.log('Se detecto teclado');
-        sumaMaterialExplosivo();
-    });
-});
-
-$(document).ready(function() {
-    $("#val_explosivo-text-form-emulnor_tresmil").keyup(function(event) {
-        let valEmulnormil = inputFormEmulnormil.value;
-        let val_emulTresmil = inputFormEmulnostresmil.value;
-        let totalKilos_dinamitaEmulnorMil = calcular_KilosDinamita(valEmulnormil, parseFloat('0.09615385'));
-        let totalKilos_dinamitaEmulnorTresmil = calcular_KilosDinamita(val_emulTresmil, parseFloat('0.09469697'));
-        let totalKilosEmulnor = totalKilos_dinamitaEmulnorMil + totalKilos_dinamitaEmulnorTresmil;
-        iptTkEmulnor.value = totalKilosEmulnor;
-        console.log('Se detecto teclado');
-        sumaMaterialExplosivo();
-    });
-});
 //* DETECCION DE INPUT
 //* Input Dinamita Pulverulenta
 iptEdit_barra.addEventListener('input', (e) => {
@@ -1147,8 +1119,8 @@ const calcular_dinamitas = async (valDinamita, multiplicador) => {
     return resultFixed;
 }
 const sumaMaterialExplosivo = () => {
-    caldimSemigelatinosa65(0.0791139240506329);
-    caldimPulverulenta65(0.0801282051282051);
+    caldimSemigelatinosa65(0.07911392);
+    caldimPulverulenta65(0.08012821);
     //Resultado
     console.log();
     valresultSumaDimSemiPul = parseFloat(resulOperDimSemigelatinosa) + parseFloat(resulOperDimvalorDimPulverulenta);
