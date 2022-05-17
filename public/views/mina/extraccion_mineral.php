@@ -167,7 +167,7 @@
                                         </legend>
                                         <div class="row">
 											<div class="col-md-3">
-                                                <button data-target="#consumoMadera-lg-modal-create" data-toggle="modal" class="btn btn-success btn-labeled" id="btn-agregar-consumoMadera">
+                                                <button data-target="#extraccionMineral-lg-modal-create" data-toggle="modal" class="btn btn-success btn-labeled" id="btn-agregar-extraccionMineral">
                                                     <i class="btn-label fa-solid fa fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>
                                                 </button>
 											</div>
@@ -412,7 +412,7 @@
     <!--Insertar Bootstrap Modal-->
     <!--===================================================-->
     <div class="modal fade" id="modal-insert" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-        <div id="inserForm"  class="modal-dialog modal-xl" style="margin: 1rem;">
+        <div class="modal-dialog modal-xl" style="margin: 1rem;">
             <div class="modal-content">
                 <!--Modal header-->
                 <div class="modal-header">                    

@@ -330,6 +330,7 @@ $(document).ready(function() {
 
         ],
     });
+    tblMaster_extraccionMineral.columns(0).visible(false);
     tbl_detalleExtraccion = $('#detalleExtraccion').DataTable({
         language: idiomaEs,
         /* scrollY:       "200px",
