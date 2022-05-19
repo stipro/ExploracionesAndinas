@@ -1,13 +1,13 @@
 <?php
-$template_insert_labor = '
-    <!--Insertar Bootstrap Modal Principal-->
-    <!--===================================================-->
+/* Insertar Bootstrap Modal Principal */
+/* =================================================== */
+$template_create_labor = '
     <div class="modal fade" id="modal-insert-labor" role="dialog" style="overflow-y: scroll;"> 
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
-                    <h4 class="modal-title">Nuevo Registro</h4>
+                    <h4 class="modal-title">[Crear] Labor</h4>
                 </div> 
                 <form class="form-horizontal" role="form" id="form-crear">
                     <div class="modal-body">

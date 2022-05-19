@@ -17,12 +17,11 @@
         include_once('./../template/footer.php');
         include_once('./../template/aside.php');
         include_once('./../template/javascript.php');
-        include_once('./../tareo/labor/insert.php');
+        //include_once('./../tareo/labor/insert.php');
         $name_menu = '';
         for ($i=0; $i < count($parte); $i++) {
             $name_menu .= ucfirst($parte[$i]).' ';
         }
-
     }
 ?>
 <!DOCTYPE html>

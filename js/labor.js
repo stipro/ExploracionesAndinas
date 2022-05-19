@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', e => {
                 data: "nombre_unidadMinera",
             },
             {
-                defaultContent: '<button type="button" class="btn-view btn btn-success"><i class="fa fa-eye"></i> Detalle</button> <button type="button" class="name btn btn-primary"><i class="fa fa-edit"></i> Editar</button> <button type="button" class="position btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>'
+                defaultContent: '<button type="button" class="btn btn-success btn-labor-view" data-target="#labor-lg-modal-read" data-toggle="modal"><i class="fa fa-eye"></i> Detalle</button> <button type="button" class="btn btn-primary" data-target="#labor-lg-modal-update" data-toggle="modal"><i class="fa fa-edit"></i> Editar</button> <button type="button" class="btn btn-danger btn-labor-delete"><i class="fa fa-trash-o"></i> Eliminar</button>'
             }
         ],
         fixedHeader: true,
