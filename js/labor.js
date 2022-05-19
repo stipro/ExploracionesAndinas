@@ -1,67 +1,69 @@
 var tableMaster = '';
+const mbtnNew_labor = document.getElementById("mbtn-new-labor");
+const mbtnInsert_labor = document.getElementById("mbtn-insert-labor");
 
+// INPUT
+const insert_labor_ccosto = document.getElementById("ipt-insert-labor-ccosto");
+const insert_labor_tipo = document.getElementById("ipt-insert-labor-tipo");
+const insert_labor_veta = document.getElementById("ipt-insert-labor-veta");
+const insert_labor_nivel = document.getElementById("ipt-insert-labor-nivel");
+const insert_labor_mexplotacion = document.getElementById("ipt-insert-labor-mexplotacion");
+const insert_labor_seccion = document.getElementById("ipt-insert-labor-seccion");
+const insert_labor_tipEq = document.getElementById("ipt-insert-labor-tipEq");
+const insert_labor_tipRocca = document.getElementById("ipt-insert-labor-tipRocca");
+// DataLists y inputs
+const insert_labor_laborName = document.getElementById("ipt-insert-labor-laborName");
+const datalist_labor_laborName = document.getElementById("datalist-insert-nombreLabor-nombre");
+
+const insert_labor_nameEtapa = document.getElementById("ipt-insert-labor-laborNameEtapa");
+const insert_labor_namePrefijo = document.getElementById("ipt-insert-labor-laborNamePrefijo");
+const insert_labor_nametipo = document.getElementById("ipt-insert-labor-laborNameTipo");
+
+// Zona
+const insert_labor_zonaName = document.getElementById("ipt-insert-labor-laborZona");
+const insert_labor_zoneLetra = document.getElementById("ipt-insert-letra-laborZonaLetra");
+const datalist_labor_laborZone = document.getElementById("datalist-insert-zonaLabor-zona");
+
+const insert_labor_unitMining = document.getElementById("ipt-insert-unitMining-nombre");
+const insert_labor_unitMiningAbrev = document.getElementById("ipt-insert-unitMining-abrev");
+const datalist_labor_unitMining = document.getElementById("datalist-insert-labor-unitMining");
+
+
+const madd_labor_name = document.getElementById("add-labor-name");
+const madd_laborNombre_etapa = document.getElementById('add-etapa');
+const madd_zona = document.getElementById("add-zona");
+// Nombre de Zona
+// Boones
+const mbtnNew_laborZone = document.getElementById("mbtn-new-laborZone");
+const mbtnClose_laborZone = document.getElementById("mbtn-close-laborZone");
+const mbtnInsert_laborZone = document.getElementById("mbtn-insert-laborZone");
+// input
+const insert_laborZone_zona = document.getElementById("input-insert-laborNombreZone-zona");
+const insert_laborZone_letra = document.getElementById("input-insert-laborNombreZone-letra");
+// Nombre de Labor
+// Botones
+const mbtnInsert_laborName = document.getElementById("mbtn-insert-laborName");
+const mbtnNew_laborName = document.getElementById("mbtn-new-laborName");
+const mbtnClose_laborName = document.getElementById("mbtn-close-laborName");
+// input
+const insert_laborName_labor = document.getElementById("input-insert-laborName-labor");
+const insert_laborName_etapa = document.getElementById("input-insert-laborName-etapa");
+const datalist_laborName_etapa = document.getElementById("datalist-insert-laborName-etapa");
+
+const insert_laborName_prefijo = document.getElementById("input-insert-laborName-prefijo");
+const insert_laborName_tipo = document.getElementById("input-insert-laborName-tipo");
+// ETAPA    
+// Botones
+const mbtnInsert_laborNameEtapa = document.getElementById("mbtn-insert-laborNameEtapa");
+const mbtnClose_laborNameEtapa = document.getElementById("mbtn-close-laborNameEtapa");
+// input
+const insert_laborNameEtapa_etapa = document.getElementById("input-insert-laborNombreEtapa-etapa");
+// Unidad Minera
+const mbtnInsert_unidMinera = document.getElementById("mbtn-insert-unidMinera");
+const insert_unidMinera_nombre = document.getElementById("input-insert-unidMinera-nombre");
+const insert_unidMinera_abrev = document.getElementById("input-insert-unidMinera-abrev");
 document.addEventListener('DOMContentLoaded', e => {
-    const mbtnInsert_labor = document.getElementById("mbtn-insert-labor");
-    // INPUT
-    const insert_labor_ccosto = document.getElementById("ipt-insert-labor-ccosto");
-    const insert_labor_tipo = document.getElementById("ipt-insert-labor-tipo");
-    const insert_labor_veta = document.getElementById("ipt-insert-labor-veta");
-    const insert_labor_nivel = document.getElementById("ipt-insert-labor-nivel");
-    const insert_labor_mexplotacion = document.getElementById("ipt-insert-labor-mexplotacion");
-    const insert_labor_seccion = document.getElementById("ipt-insert-labor-seccion");
-    const insert_labor_tipEq = document.getElementById("ipt-insert-labor-tipEq");
-    const insert_labor_tipRocca = document.getElementById("ipt-insert-labor-tipRocca");
-    // DataLists y inputs
-    const insert_labor_laborName = document.getElementById("ipt-insert-labor-laborName");
-    const datalist_labor_laborName = document.getElementById("datalist-insert-nombreLabor-nombre");
 
-    const insert_labor_nameEtapa = document.getElementById("ipt-insert-labor-laborNameEtapa");
-    const insert_labor_namePrefijo = document.getElementById("ipt-insert-labor-laborNamePrefijo");
-    const insert_labor_nametipo = document.getElementById("ipt-insert-labor-laborNameTipo");
-
-    // Zona
-    const insert_labor_zonaName = document.getElementById("ipt-insert-labor-laborZona");
-    const insert_labor_zoneLetra = document.getElementById("ipt-insert-letra-laborZonaLetra");
-    const datalist_labor_laborZone = document.getElementById("datalist-insert-zonaLabor-zona");
-
-    const insert_labor_unitMining = document.getElementById("ipt-insert-unitMining-nombre");
-    const insert_labor_unitMiningAbrev = document.getElementById("ipt-insert-unitMining-abrev");
-    const datalist_labor_unitMining = document.getElementById("datalist-insert-labor-unitMining");
-
-
-    const madd_labor_name = document.getElementById("add-labor-name");
-    const madd_laborNombre_etapa = document.getElementById('add-etapa');
-    const madd_zona = document.getElementById("add-zona");
-    // Nombre de Zona
-    // Boones
-    const mbtnNew_laborZone = document.getElementById("mbtn-new-laborZone");
-    const mbtnClose_laborZone = document.getElementById("mbtn-close-laborZone");
-    const mbtnInsert_laborZone = document.getElementById("mbtn-insert-laborZone");
-    // input
-    const insert_laborZone_zona = document.getElementById("input-insert-laborNombreZone-zona");
-    const insert_laborZone_letra = document.getElementById("input-insert-laborNombreZone-letra");
-    // Nombre de Labor
-    // Botones
-    const mbtnInsert_laborName = document.getElementById("mbtn-insert-laborName");
-    const mbtnNew_laborName = document.getElementById("mbtn-new-laborName");
-    const mbtnClose_laborName = document.getElementById("mbtn-close-laborName");
-    // input
-    const insert_laborName_labor = document.getElementById("input-insert-laborName-labor");
-    const insert_laborName_etapa = document.getElementById("input-insert-laborName-etapa");
-    const datalist_laborName_etapa = document.getElementById("datalist-insert-laborName-etapa");
-
-    const insert_laborName_prefijo = document.getElementById("input-insert-laborName-prefijo");
-    const insert_laborName_tipo = document.getElementById("input-insert-laborName-tipo");
-    // ETAPA    
-    // Botones
-    const mbtnInsert_laborNameEtapa = document.getElementById("mbtn-insert-laborNameEtapa");
-    const mbtnClose_laborNameEtapa = document.getElementById("mbtn-close-laborNameEtapa");
-    // input
-    const insert_laborNameEtapa_etapa = document.getElementById("input-insert-laborNombreEtapa-etapa");
-    // Unidad Minera
-    const mbtnInsert_unidMinera = document.getElementById("mbtn-insert-unidMinera");
-    const insert_unidMinera_nombre = document.getElementById("input-insert-unidMinera-nombre");
-    const insert_unidMinera_abrev = document.getElementById("input-insert-unidMinera-abrev");
 
     mainEvents();
     tableMaster = $('#table-labores').DataTable({
@@ -608,6 +610,13 @@ document.addEventListener('DOMContentLoaded', e => {
 
 function reset_formcreate_labor() {
     insert_labor_ccosto.value = '';
+    insert_labor_tipo.value = '';
+    insert_labor_veta.value = '';
+    insert_labor_nivel.value = '';
+    insert_labor_mexplotacion.value = '';
+    insert_labor_seccion.value = '';
+    insert_labor_tipEq
+    insert_labor_tipRocca
     insert_labor_laborName.value = '';
     insert_labor_zonaName.value = '';
     insert_labor_unitMining.value = '';
@@ -784,3 +793,11 @@ $(document).on('click', '#add-zona', function() {
 $(document).on('click', '#add-sede', function() {
     $('#modal-UnidMinera').modal('show');
 });
+
+mbtnNew_labor.addEventListener("click", () => {
+    reset_formcreate_labor();
+    reset_formcreate_labor_nombre();
+    reset_formcreate_labor_nombre_etapa();
+    reset_formcreate_labor_zona();
+    reset_formcreate_labor_unidadMinera();
+})

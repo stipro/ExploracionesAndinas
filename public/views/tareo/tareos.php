@@ -164,50 +164,33 @@
 											</div>
 										</div>
                                         <div class="table-responsive-md"> <!-- class  table-hover display-->
-                                            <table class="table display nowrap table-striped table-bordered dt-responsive" style="width:100%" id="table-master">
+                                            <table class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" id="table-master">
                                                 <thead class="thead-dark">
                                                     <tr>
-                                                        <th>Código</th>
-                                                        <th>Apellidos y Nombres</th>
+                                                        <th>id_tareo</th>
+                                                        <th>N° Tarjeta</th>
+                                                        <th>DNI</th>
+                                                        <th>Nombres Completos</th>
                                                         <th>Cargo</th>
+                                                        <th>Area</th>
                                                         <th>Dia</th>
                                                         <th>Turno</th>
-                                                        <th>Ht</th>
-                                                        <th>Ht Sev_Ad</th>
-                                                        <th>**Ccostos</th>
+                                                        <th>Guardia</th>
+                                                        <th>Actividad</th>
+                                                        <th>C° Costos</th>
+                                                        <th>Zona</th>
                                                         <th>Labor</th>
                                                         <th>Nivel</th>
                                                         <th>He</th>
-                                                        <th>He Ser Ad</th>
-                                                        <th>C. Costos He</th>
-                                                        <th>V.B</th>
-                                                        <th>Guardia</th>
-                                                        <th>Cod_Actividad</th>
-                                                        <th>Área</th>
+                                                        <th>Ht Serv Ad</th>
+                                                        <th>He Serv Ad</th>
+                                                        <th>CC Serv Ad</th>
+                                                        <th>C° Costo He</th>
+                                                        <th>Cod. Actividad</th>
                                                         <th>Acción</th>
                                                     </tr>
                                                 </thead>
                                                 <tfoot>
-                                                    <tr>
-                                                        <th>Código</th>
-                                                        <th>Apellidos y Nombres</th>
-                                                        <th>Cargo</th>
-                                                        <th>Dia</th>
-                                                        <th>Turno</th>
-                                                        <th>Ht</th>
-                                                        <th>Ht Sev_Ad</th>
-                                                        <th>**Ccostos</th>
-                                                        <th>Labor</th>
-                                                        <th>Nivel</th>
-                                                        <th>He</th>
-                                                        <th>He Ser Ad</th>
-                                                        <th>C. Costos He</th>
-                                                        <th>V.B</th>
-                                                        <th>Guardia</th>
-                                                        <th>Cod_Actividad</th>
-                                                        <th>Área</th>
-                                                        <th>Acción</th>
-                                                    </tr>
                                                 </tfoot>
                                                 <tbody>
                                                 </tbody>

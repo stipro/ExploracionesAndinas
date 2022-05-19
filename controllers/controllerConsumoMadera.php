@@ -37,8 +37,9 @@ if($_POST){
                 $data4 = $laborList['fecha'];
                 $data5 = $laborList['nvale'];
                 $data6_detalles = $laborList['detalles'];
-                $rptSql = $tableManager->update($datoId, $data1, $data2, $data3, $data4, $data5);
                 $rptSql2 = $tableManager->updateDetails($datoId, $data6_detalles);
+                $rptSql = $tableManager->update($datoId, $data1, $data2, $data3, $data4, $data5);
+                
                 $rptSqlGeneral = array(
                     "sql1" => $rptSql,
                     "sql2" => $rptSql2,
@@ -46,8 +47,8 @@ if($_POST){
                 break;
             case "delete":
                 $idEliminar = $arrayForm['id'];
-                $rptSql = $tableManager->delete($idEliminar);
                 $rptSql2 = $tableManager->deleteDetails($idEliminar);
+                $rptSql = $tableManager->delete($idEliminar);                
                 $rptSqlGeneral = array(
                     "sql1" => $rptSql,
                     "sql2" => $rptSql2,

@@ -45,7 +45,7 @@ const ipt_view_consumoMadera_detalle = document.getElementById('list-view-consum
 
 
 // Principal UPDATE
-const mbtn_create_consumoMadera_update = document.getElementById('mbtn-insert-consumoMadera-update');
+const mbtn_insert_consumoMadera_update = document.getElementById('mbtn-insert-consumoMadera-update');
 
 const slt_update_consumoMadera_turno = document.getElementById('update-slt-consumoMadera-turno');
 const slt_update_consumoMadera_guardia = document.getElementById('update-slt-consumoMadera-guardia');
@@ -70,6 +70,9 @@ const tpe_update_consumoMadera_laborNombre = document.getElementById('template-c
 const ipt_update_consumoMadera_madera = document.getElementById('update-ipt-consumoMadera-madera');
 const dtl_update_consumoMadera_madera = document.getElementById('update-dtl-consumoMadera-madera');
 const tpe_update_consumoMadera_madera = document.getElementById('template-consumoMadera-madera').content;
+
+const ipt_update_consumoMadera_cantidad = document.getElementById('update-ipt-consumoMadera-cantidad');
+
 
 const mbtn_agregarDetalle_update = document.getElementById('mbtn-update-agregarDetalle');
 
@@ -272,7 +275,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
     // Update
     table_consumoMadera_detalle_update = $('#list-update-consumoMadera-detalle').DataTable({
-        columns: [
+        /* columns: [
             {
                 data: "id_labor",
             },
@@ -294,7 +297,7 @@ document.addEventListener('DOMContentLoaded', e => {
             {
                 defaultContent: '<button type="button" class="position btn btn-danger btn-tbM-update-consumoMadera-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>'
             }
-        ],
+        ], */
     });
     table_consumoMadera_detalle_update.columns(0).visible(false);
     table_consumoMadera_detalle_update.columns(3).visible(false);
@@ -662,8 +665,8 @@ const fetchData_madera_all = async (request) => {
 const paintDtl_madera = data => {
     dtl_consumoMadera_madera.innerHTML = '';
     data.forEach(item => {
-        tpe_consumoMadera_madera.querySelector('option').textContent = item.madera_tipo + ' ' + item.madera_codigo + ' ' + item.madera_dimension;
-        tpe_consumoMadera_madera.querySelector('option').value = item.madera_tipo + ' ' + item.madera_codigo + ' ' + item.madera_dimension;
+        tpe_consumoMadera_madera.querySelector('option').textContent = item.madera_codigo  + ' ' + item.madera_tipo + ' ' + item.madera_dimension;
+        tpe_consumoMadera_madera.querySelector('option').value = item.madera_codigo  + ' ' + item.madera_tipo + ' ' + item.madera_dimension;
         tpe_consumoMadera_madera.querySelector('option').dataset.idMadera = item.id_madera;
         
         const clone = tpe_consumoMadera_madera.cloneNode(true);
@@ -918,9 +921,19 @@ const paintForm_update = (rptSql) => {
         ipt_update_consumoMadera_fecha.value = rptSql[0]['consumoMadera_fecha'];
         ipt_update_consumoMadera_nvale.value = rptSql[0]['consumoMadera_nvale'];
         ipt_update_consumoMadera_nvale.dataset.idConsumoMadera = rptSql[0]['id_consumoMadera'];
-
         table_consumoMadera_detalle_update.clear();
-        table_consumoMadera_detalle_update.rows.add(rptSql).draw();
+        rptSql.forEach(item => {
+            table_consumoMadera_detalle_update.row.add( [
+                item.id_labor,
+                item.lab_ccostos,
+                item.labNombre_nombre,
+                item.id_madera,
+                item.maderas,
+                item.consumoMaderaDetalle_cantidad,
+                '<button type="button" class="position btn btn-danger btn-tbM-update-consumoMadera-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>',
+            ] ).draw();
+        });
+        //table_consumoMadera_detalle_update.rows.add(rptSql).draw();
     }
     else{
         slt_update_consumoMadera_turno.value = '-';
@@ -938,8 +951,8 @@ $('#list-update-consumoMadera-detalle tbody').on('click', '.btn-tbM-update-consu
     table_consumoMadera_detalle_update.row($(this).parents('tr')).remove().draw();
 });
 
-mbtn_create_consumoMadera_update.addEventListener("click", (e) => {
-    mainEvents_consumoMadera();
+mbtn_insert_consumoMadera_update.addEventListener("click", (e) => {
+    //mainEvents_consumoMadera();
     let listDetalles = [];
     let array_noti_error = [];
     let val_id_consumoMadera = ipt_update_consumoMadera_nvale.dataset.idConsumoMadera;
@@ -980,9 +993,9 @@ mbtn_create_consumoMadera_update.addEventListener("click", (e) => {
         for (let i = 0; f.length > i; i++) {
             let n = f[i].length;
             listDetalles.push({
-                id_labor: f[i]['id_labor'],
-                id_madera: f[i]['id_madera'],
-                cantidad: f[i]['consumoMaderaDetalle_cantidad'],
+                id_labor: f[i]['0'],
+                id_madera: f[i]['3'],
+                cantidad: f[i]['5'],
             });
         }
         let listInsert = {
@@ -1103,7 +1116,7 @@ const paintDtl_cCostos_update = data => {
     data.forEach(item => {
         tpe_update_consumoMadera_centroCostos.querySelector('option').textContent = item.lab_ccostos;
         tpe_update_consumoMadera_centroCostos.querySelector('option').value = item.lab_ccostos;
-        tpe_update_consumoMadera_centroCostos.querySelector('option').dataset.idJefeGuardia = item.id_labor;
+        tpe_update_consumoMadera_centroCostos.querySelector('option').dataset.idLabor = item.id_labor;
         const clone = tpe_update_consumoMadera_centroCostos.cloneNode(true);
         fragment.appendChild(clone)
     });
@@ -1116,7 +1129,7 @@ const paintDtl_laborNombre_update = data => {
     data.forEach(item => {
         tpe_update_consumoMadera_laborNombre.querySelector('option').textContent = item.labNombre_nombre;
         tpe_update_consumoMadera_laborNombre.querySelector('option').value = item.labNombre_nombre;
-        tpe_update_consumoMadera_laborNombre.querySelector('option').dataset.idJefeGuardia = item.id_labor;
+        tpe_update_consumoMadera_laborNombre.querySelector('option').dataset.idLabor = item.id_labor;
         const clone = tpe_update_consumoMadera_laborNombre.cloneNode(true);
         fragment.appendChild(clone)
     });
@@ -1128,8 +1141,8 @@ const paintDtl_madera_update = data => {
 
     dtl_update_consumoMadera_madera.innerHTML = '';
     data.forEach(item => {
-        tpe_update_consumoMadera_madera.querySelector('option').textContent = item.madera_tipo + ' ' + item.madera_codigo + ' ' + item.madera_dimension;
-        tpe_update_consumoMadera_madera.querySelector('option').value = item.madera_tipo + ' ' + item.madera_codigo + ' ' + item.madera_dimension;
+        tpe_update_consumoMadera_madera.querySelector('option').textContent = item.madera_codigo + ' ' + item.madera_tipo + ' ' + item.madera_dimension;
+        tpe_update_consumoMadera_madera.querySelector('option').value = item.madera_codigo + ' ' + item.madera_tipo + ' ' + item.madera_dimension;
         tpe_update_consumoMadera_madera.querySelector('option').dataset.idMadera = item.id_madera;
         
         const clone = tpe_update_consumoMadera_madera.cloneNode(true);
@@ -1229,11 +1242,13 @@ $('#tableMaster_consumoMadera tbody').on('click', '.btn-tbM-consumoMadera-delet'
         buttons: true,
         dangerMode: true,
     }).then((willDelete) => {
+        mainEvents_consumoMadera();
         if (willDelete) {
             let form_request = {
                 "accion": "delete",
                 "id": data['id_consumoMadera']
             }
+            console.log(form_request);
             requestDelete(form_request);
             swal("¡La información ha sido eliminado!", {
                 icon: "success",
@@ -1254,3 +1269,28 @@ const requestDelete = async (form_request) => {
     });
     const result = await returned.json(); //await JSON.parse(returned);
 }
+
+mbtn_agregarDetalle_update.addEventListener("click", (e) => {
+    try {
+        let val_cCostos = ipt_update_consumoMadera_centroCostos.value;
+        let val_lbNombre = ipt_update_consumoMadera_laborNombre.value;
+        let val_idLabor = dtl_update_consumoMadera_centroCostos.querySelector("option[value='" +  val_cCostos + "']").dataset.idLabor;
+
+        let val_madera = ipt_update_consumoMadera_madera.value;
+        let val_idMadera = dtl_update_consumoMadera_madera.querySelector("option[value='" +  val_madera + "']").dataset.idMadera;
+        let val_cantidad = ipt_update_consumoMadera_cantidad.value;
+        
+        table_consumoMadera_detalle_update.row.add( [
+            val_idLabor,
+            val_cCostos,
+            val_lbNombre,
+            val_idMadera,
+            val_madera,
+            val_cantidad,
+            '<button type="button" class="position btn btn-danger btn-tbM-update-consumoMadera-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>',
+        ] ).draw();
+        
+    } catch (error) {
+        
+    }
+});

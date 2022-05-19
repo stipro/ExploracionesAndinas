@@ -1,4 +1,5 @@
 <?php
+header('Content-type: application/json; charset=utf-8');
 if($_POST){
     $table = 'tareos';
     $rptSql='';
@@ -9,27 +10,22 @@ if($_POST){
         $arrayForm = json_decode($_POST['data'],true);
         $accion = $arrayForm['accion'];
         switch ($accion) {
-            case "insertar":
+            case "insert":
                 $listInsert = $arrayForm['list'];
-                $tarjeta = $listInsert['item1'];
-                $idColaborador = $listInsert['idColaborador'];
-                $dia = $listInsert['item5'];
-                $turno = $listInsert['item6'];
-                $guardia = $listInsert['item7'];
-                $nActividad = $listInsert['item8'];
-                $idLabor = $listInsert['idLabor'];
-                $codZona = $listInsert['item9'];
-                $idZona = $listInsert['idZona'];
-                $Actividad = $listInsert['item14'];
-                $porciones = explode(" ", $Actividad);
-                $cod_actividad = $porciones[0]; // porción1
-                $HE = $listInsert['item15'];
-                $HTSer_Ad = $listInsert['item16'];
-                $HESer_Ad = $listInsert['item17'];
-                $HT = $listInsert['ht'];
-                $CCSer_Ad = $listInsert['item18'];
-                $CCostosHe = $listInsert['item19'];
-                $rptSql = $tableManager->insert($idColaborador, $dia, $turno, $HT, $guardia, $idLabor, $Actividad, $cod_actividad, floatval($HE), floatval($HTSer_Ad), floatval($HESer_Ad), floatval($CCSer_Ad), floatval($CCostosHe));
+                $nTarjeta = $listInsert['item1'];
+                $idColaborador = $listInsert['item2'];
+                $dia = $listInsert['item3'];
+                $turno = $listInsert['item4'];
+                $guardia = $listInsert['item5'];
+                $nActividad = $listInsert['item6'];
+                $idLabor = $listInsert['item7'];
+                $he = $listInsert['item8'];
+                $htSeAd = $listInsert['item9'];
+                $heSeAd = $listInsert['item10'];
+                $ccSeAd = $listInsert['item11'];
+                $ccHe = $listInsert['item12'];
+                $actTipo = $listInsert['item13'];
+                $rptSql = $tableManager->insert($nTarjeta, $idColaborador, $dia, $turno, $guardia, $nActividad, $idLabor, floatval($he), floatval($htSeAd), floatval($heSeAd), floatval($ccSeAd), floatval($ccHe), $actTipo);
                 break;
             case "editar":
                 $listUpdate = $arrayForm['list'];

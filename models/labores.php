@@ -250,6 +250,21 @@ class Labores extends Conexion
         }
     }
     // Obtiene Lista especifica
+    public function getZonaLaborNivel($whereParament)
+    {
+        $query = "SELECT lb_zn.labZona_nombre, lb_nm.labNombre_nombre, lb.lab_nivel FROM labores AS lb 
+        LEFT JOIN lab_zonas AS lb_zn ON lb.id_zona = lb_zn.id_zona
+        LEFT JOIN lab_nombres AS lb_nm ON lb.id_labNombre = lb_nm.id_labNombre WHERE lb.id_labor = '{$whereParament}';";
+        return $this->ConsultaSimple($query);
+    }
+    // Obtiene Lista especifica
+    public function getColumnAll_where($column, $where, $whereParament)
+    {
+        $query = "SELECT lb.id_labor, lb.{$column} FROM labores AS lb
+        LEFT JOIN lab_zonas AS lb_zn ON lb.id_zona = lb_zn.id_zona WHERE lb_zn.{$where} = '{$whereParament}';";
+        return $this->ConsultaSimple($query);
+    }
+    // Obtiene Lista especifica
     public function getLabor_ccosto(string $id)
     {
         $query = "SELECT lb_nb.labNombre_nombre FROM labores AS lb RIGHT JOIN lab_nombres AS lb_nb ON lb.id_labNombre = lb_nb.id_labNombre WHERE lb.id_labor = {$id};";

@@ -13,6 +13,16 @@ if($_POST){
         // ACCION
         $accion = $arrayForm['accion'];
         switch ($accion) {
+            case "getZonaLaborNivel":
+                $whereParament = $arrayForm['whereParament'];
+                $rptSql = $tableManager->getZonaLaborNivel($whereParament);
+                break;
+            case "getcolumnAllWhere":
+                $column = $arrayForm['column'];
+                $where = $arrayForm['where'];
+                $whereParament = $arrayForm['whereParament'];
+                $rptSql = $tableManager->getColumnAll_where($column, $where, $whereParament);
+                break;
             case "getLabor_ccosto":
                 $id = $arrayForm['paramentWhere'];
                 $rptSql = $tableManager->getLabor_ccosto($id);

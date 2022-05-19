@@ -107,7 +107,7 @@ class ConsumoMadera extends Conexion
     {
         $query = "SELECT cm.consumoMadera_turno, cm.consumoMadera_guardia, CONCAT(col.col_apePaterno,' ',col.col_apeMaterno,' ',col.col_nombres) AS jefe_guardia,
         cm.consumoMadera_fecha, cm.consumoMadera_nvale, lb.lab_ccostos, lb_nm.labNombre_nombre, cm_dt.consumoMaderaDetalle_cantidad, 
-        CONCAT(md.madera_tipo, md.madera_codigo, md.madera_dimension) AS 'maderas'
+        CONCAT(md.madera_codigo, ' ', md.madera_tipo, ' ', md.madera_dimension) AS 'maderas'
         FROM consumo_madera AS cm 
         LEFT JOIN colaboradores AS col ON cm.colaborador_id_jefeGuardia = col.id_colaborador 
         LEFT JOIN consumo_madera_detalle AS cm_dt ON cm.id_consumoMadera = cm_dt.consumoMadera_id
@@ -122,7 +122,7 @@ class ConsumoMadera extends Conexion
     {
         $query = "SELECT cm.id_consumoMadera, cm.consumoMadera_turno, cm.consumoMadera_guardia, CONCAT(col.col_apePaterno,' ',col.col_apeMaterno,' ',col.col_nombres) AS jefe_guardia,
         cm.consumoMadera_fecha, cm.consumoMadera_nvale, lb.lab_ccostos, lb_nm.labNombre_nombre, cm_dt.consumoMaderaDetalle_cantidad,
-        lb.id_labor, md.id_madera, CONCAT(md.madera_tipo, md.madera_codigo, md.madera_dimension) AS 'maderas'
+        lb.id_labor, md.id_madera, CONCAT(md.madera_codigo, ' ', md.madera_tipo, ' ', md.madera_dimension) AS 'maderas'
         FROM consumo_madera AS cm 
         LEFT JOIN colaboradores AS col ON cm.colaborador_id_jefeGuardia = col.id_colaborador 
         LEFT JOIN consumo_madera_detalle AS cm_dt ON cm.id_consumoMadera = cm_dt.consumoMadera_id
@@ -240,11 +240,31 @@ class ConsumoMadera extends Conexion
                 echo "\nPDO::errorInfo():\n";
                 print_r($insertValue->errorInfo());
             }
-            return $rptSql;
+            //return $rptSql;
             
         }
         catch (PDOException $e) {
-            return 'Se registro ERROR '. $e->getMessage();
+            //return 'Se registro ERROR '. $e->getMessage();
+            if($e->getCode() == 23000){
+                $messageUser = "De duplico dato";
+            }
+            elseif($e->getCode() == '21S01'){
+                $messageUser = "Los parametros no coinciden";
+            }
+            else{
+                $messageUser = "";
+            }
+            $rptSql = [
+                "estado" => 0,
+                "messageDeveloper" => "Se encontro ERROR ".$e->getMessage(),
+                "messageUser" => $messageUser,
+                "codigo" => $e->getCode(),
+                "string" => $e->__toString(),
+            ];
+        }
+        finally {
+            return $rptSql;
+            //print_r($this->db->errorInfo());
         }
     }
 

@@ -13,6 +13,9 @@ if($_POST){
         // ACCION
         $accion = $arrayForm['accion'];
         switch ($accion) {
+            case "getTbl-master":
+                $rptSql = $tableManager->tbl_master(); 
+                break;
             case "getLaborNombre":
                 //$rptSql = $tableManager->getLaborNombre();
                 break;
