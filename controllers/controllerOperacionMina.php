@@ -51,7 +51,7 @@ if($_POST){
                 $dato22 = $formRequest['limpieza_cantidadWinche'] ? $formRequest['limpieza_cantidadWinche'] : 0;
                 $dato23 = $formRequest['limpieza_mineral'] ? $formRequest['limpieza_mineral'] : 0;
                 $dato24 = $formRequest['limpieza_desmont']? $formRequest['limpieza_desmont'] : 0;
-                if (!empty($dato1) && !empty($dato2) && !empty($dato3) && !empty($dato5) && !empty($dato6)) 
+                if (!empty($dato1) && !empty($dato2) && !empty($dato3) && !empty($dato6)) 
                     {
                         $rptSql = $tableManager->insert($dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7, $dato8, $dato9, $dato10, $dato11, $dato12, $dato13, $dato14, $dato15, $dato16, $dato17, $dato18, $dato19, $dato20, $dato21, $dato22, $dato23, $dato24);
                         $rptController = [
