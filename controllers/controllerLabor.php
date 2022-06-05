@@ -88,9 +88,15 @@ if($_POST){
                 $datoLabor = $laborList['labor'];
                 $rptSql = $labor->edit($datoidLabor, $datoZona, $datoCCosto, $datoNivel, $datoLabor);
                 break;
-            case "eliminar":
-                $idEliminar = $arrayForm['datos'];
-                $rptSql = $labor->delete($idEliminar);
+            case "delete":
+
+/*                 $idEliminar = $arrayForm['id'];
+                $rptSql2 = $tableManager->deleteDetails($idEliminar);
+                $rptSql = $tableManager->delete($idEliminar);
+                $rptSqlGeneral = array(
+                    "sql1" => $rptSql,
+                    "sql2" => $rptSql2,
+                ); */
                 break;
         }
     } catch (Exception $e) {

@@ -62,17 +62,20 @@ const insert_laborNameEtapa_etapa = document.getElementById("input-insert-laborN
 const mbtnInsert_unidMinera = document.getElementById("mbtn-insert-unidMinera");
 const insert_unidMinera_nombre = document.getElementById("input-insert-unidMinera-nombre");
 const insert_unidMinera_abrev = document.getElementById("input-insert-unidMinera-abrev");
+
 document.addEventListener('DOMContentLoaded', e => {
 
-
     mainEvents();
-    tableMaster = $('#table-labores').DataTable({
+    tableMaster = $('#tblMaster-labores').DataTable({
         scrollX: true,
         scrollCollapse: true,
         fixedColumns: {
             right: 1,
         },
         columns: [{
+                data: "id_labor"
+            },
+            {
                 data: "lab_ccostos"
             },
             {
@@ -192,7 +195,7 @@ document.addEventListener('DOMContentLoaded', e => {
                 text: '<i class="btn-label fa fa-refresh"></i><span class="hidden-xs hidden-sm">Actualizar</span>',
                 action: function(e, dt, node, conf) {
                     let form_request1 = {
-                        "accion": "table",
+                        "accion": "getTable",
                     }
                     fetchData(form_request1);
                 },
@@ -257,6 +260,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
         ],
     });
+    tableMaster.columns(0).visible(false);
     const getSelect_workName = async (request) => {
         const body = new FormData();
         body.append("data", JSON.stringify(request));
@@ -801,3 +805,43 @@ mbtnNew_labor.addEventListener("click", () => {
     reset_formcreate_labor_zona();
     reset_formcreate_labor_unidadMinera();
 })
+
+
+//* ELIMINAR REGISTRO
+$('#tblMaster-labores tbody').on('click', '.btn-labor-delete', function() {
+    console.log('Se hizo cambio');
+    var data = tableMaster.row($(this).parents('tr')).data();
+
+    swal({
+        title: "Estas seguro?",
+        text: "Una vez eliminado, no podrá recuperarlo!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    }).then((willDelete) => {
+        if (willDelete) {
+            let form_request = {
+                "accion": "delete",
+                "id": data['id_labor']
+            }
+            console.log(form_request);
+            requestDelete_labor(form_request);
+            swal("¡La información ha sido eliminado!", {
+                icon: "success",
+            });
+        } else {
+            swal("¡La información está a salvo!");
+        }
+    });
+});
+
+// Se envia Formulario
+const requestDelete_labor = async (form_request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(form_request));
+    const returned = await fetch("./../../../controllers/controllerLabor.php", {
+        method: "POST",
+        body
+    });
+    const result = await returned.json(); //await JSON.parse(returned);
+}

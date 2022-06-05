@@ -35,7 +35,7 @@ $template_create_operacionMina = '
                                     <div class="form-group">
                                         <label for="insert-operacionMina-registro" class="control-label col-md-4 ">Fecha</label>
                                         <div class="col-md-8">                                                    
-                                            <input type="date" placeholder="Dia" class="form-control" id="insert-operacionMina-registro"  value="' . $dateServer . '" min="' . $mindate . '" max="' .  $dateServer . '"> <!--min="2021-12-12" max="2021-12-13"-->
+                                            <input type="date" placeholder="Dia" class="form-control" id="insert-operacionMina-registro"  value="' . $dateServer . '" > <!--min="2021-12-12" max="2021-12-13"-->
                                         </div>
                                     </div>
                                     <div class="form-group">

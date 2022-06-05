@@ -159,9 +159,10 @@
                                             <fieldset>
                                                 <legend><h3 class="panel-title">Labores</h3></legend>
                                                 <div class="table-responsive-md"> <!-- class  table-hover display-->
-                                                    <table class="table display nowrap table-striped table-bordered dt-responsive" style="width:100%" id="table-labores">
+                                                    <table class="table display nowrap table-striped table-bordered dt-responsive" style="width:100%" id="tblMaster-labores">
                                                         <thead class="thead-dark">
                                                             <tr>
+                                                                <th>id_labor</th>
                                                                 <th>C. Costos</th>
                                                                 <th>Labor</th>
                                                                 <th>Etapa L.</th>
@@ -182,6 +183,7 @@
                                                         </thead>
                                                         <tfoot>
                                                             <tr>
+                                                                <th>id_labor</th>
                                                                 <th>C. Costos</th>
                                                                 <th>Labor</th>
                                                                 <th>Etapa L.</th>

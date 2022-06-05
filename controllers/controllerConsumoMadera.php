@@ -48,7 +48,7 @@ if($_POST){
             case "delete":
                 $idEliminar = $arrayForm['id'];
                 $rptSql2 = $tableManager->deleteDetails($idEliminar);
-                $rptSql = $tableManager->delete($idEliminar);                
+                $rptSql = $tableManager->delete($idEliminar);
                 $rptSqlGeneral = array(
                     "sql1" => $rptSql,
                     "sql2" => $rptSql2,
