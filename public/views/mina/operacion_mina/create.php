@@ -108,7 +108,7 @@ $template_create_operacionMina = '
                         <div class="col-md-4">
                             <p class="bord-btm pad-ver text-main text-bold">Centro de Costos</p>
                             <div class="row">
-                                <div class="col-md-12">
+                                <!-- <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="insert-operacionMina-codzona" class="col-md-4 control-label">cod. Zona</label>
                                         <div class="col-md-8">
@@ -121,7 +121,7 @@ $template_create_operacionMina = '
                                             <option id="opt-codzona" value="">
                                         </template>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="insert-operacionMina-codLabor" class="col-md-4 control-label">Centro Costos</label>

@@ -1358,19 +1358,22 @@ btnNew.addEventListener("click", () => {
 //  Boton Agregar
 btn_agregar_operacionMina.addEventListener('click', () => {
     let selectFoorm_codZona = {
-        "accion": "getcolumnAll",
+        "accion": "getCcosto",
         "column": "labZona_letra"
     }
-    fetchCodzona(selectFoorm_codZona);
+    fetchCodzona_create(selectFoorm_codZona);
+
     let selectFoorm_colaborador = {
         "accion": "col_dni",
     }
     fetchColaborador(selectFoorm_colaborador);
+
     let selectForm_instalacionMina = {
         "accion": "getcolumnAll",
         "column": "instalacionesMIna_nombre"
     }
     fetchInstalaciones(selectForm_instalacionMina);
+
     let selectForm_unidadMinera = {
         "accion": "getcolumnAll",
         "column": "nombre_unidadMinera"
@@ -1969,33 +1972,19 @@ const paint_DniCargo_cuartaPersona = (data) => {
 
 
 //Traer codigo zona ()
-const fetchCodzona = async (request) => {
+const fetchCodzona_create = async (request) => {
+    console.log('lolll');
     const body = new FormData();
     body.append("data", JSON.stringify(request));
     //Enviamos solicitud
-    const res = await fetch('./../../../controllers/controllerLaborZoneList.php', {
+    const res = await fetch('./../../../controllers/controllerLaborList.php', {
         method: "POST",
         body
     });
     const data = await res.json()
+    console.log(data);
     //Enviamos a pintar
-    paintZonas(data)
-}
-
-// Pintar zona datalist
-const paintZonas = (data) => {
-    // Guardamos en variable
-    arraySelect = data['sql'];
-    dtlistOptionCodZona.innerHTML = '';
-    const templateSelect = document.querySelector("#template-opt-cod_zona").content;
-    const fragment = document.createDocumentFragment();
-    arraySelect.forEach(item => {
-        templateSelect.querySelector('#opt-codzona').value = item.labZona_letra;
-        templateSelect.querySelector('#opt-codzona').dataset.idCodzona = item.id_zona;
-        const clone = templateSelect.cloneNode(true);
-        fragment.appendChild(clone)
-    })
-    dtlistOptionCodZona.appendChild(fragment);
+    paintCodLabor_insert(data)
 }
 
 //Traer codigo Labor ()
@@ -2039,7 +2028,7 @@ const fetchColaborador = async (request) => {
 }
 
 // Pintar Coigo Labor datalist
-const paintCodLabor = (data) => {
+const paintCodLabor_insert = (data) => {
     // Guardamos en variable
     arraySelect = data['sql'];
     dtlistOptionscodlabor.innerHTML = '';
@@ -2280,7 +2269,6 @@ const fetch_unidadMinera = async (request) => {
     });
     const data = await res.json();
     objectarrayInstalacion = data['sql']
-    console.log(objectarrayInstalacion);
     insertSlt_operacionMina_unidadMinera.innerHTML = "";
     objectarrayInstalacion.forEach(item => {
         tpt_operacionMina_unidadMinera.querySelector('option').textContent = item.nombre_unidadMinera;
@@ -2430,7 +2418,6 @@ document.getElementById('insert-operacionaMina-turno').addEventListener('keydown
 document.getElementById('insert-operacionMina-guardia').addEventListener('keydown', inputCharacters_guardia);
 document.getElementById('insert-operacionMina-nvale').addEventListener('keydown', inputCharacters_nvale);
 document.getElementById('opcion-tipo_disparo1').addEventListener('keydown', inputCharacters_tipDisparo);
-document.getElementById('insert-operacionMina-codzona').addEventListener('keydown', inputCharacters_codZona);
 
 function inputCharacters_registro(event) {
     if (event.keyCode == 13) {
