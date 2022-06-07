@@ -1430,6 +1430,8 @@ btnInsert.addEventListener("click", () => {
     valcantidadwinche = iptinsertcantidadWinche.value;
     valdesmont = iptinsertdesmont.value;
 
+    console.log(validLabor);
+
     valInsert = {
         "unidadMinera": id_unidadMinera,
         "datos_registro": valRegistro,
@@ -2371,7 +2373,6 @@ const resetFormulario = () => {
     iptinsertGuardia.value = '';
     iptinsertNVale.value = '';
     // Centro de Costos
-    iptinsertCodZona.value = '';
     iptinsertCodLabor.value = '';
     iptinsertZona.value = '';
     iptinsertLabor.value = '';
