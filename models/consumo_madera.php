@@ -9,15 +9,17 @@ class ConsumoMadera extends Conexion
         parent::__construct();
     }
 
-    public function create(string $dato1, string $dato2, string $dato3, string $dato4, string $dato5, string $dato6)
+    public function create($turno_id, $guardia_id, string $dato1, string $dato2, string $dato3, string $dato4, string $dato5, string $dato6)
     {
         try 
         {
-            $query  = "INSERT INTO consumo_madera (unidadMinera_id, consumoMadera_turno, consumoMadera_guardia, colaborador_id_jefeGuardia, consumoMadera_fecha, consumoMadera_nvale) VALUES (:item1, :item2, :item3, :item4, :item5, :item6)";
+            $query  = "INSERT INTO consumo_madera (unidadMinera_id, consumoMadera_turno, turno_id, consumoMadera_guardia, guardia_id, colaborador_id_jefeGuardia, consumoMadera_fecha, consumoMadera_nvale) VALUES (:item1, :item2, :turno_id, :item3, :guardia_id, :item4, :item5, :item6)";
             $result = $this->db->prepare($query);
             $result->bindParam(':item1', $dato1, PDO::PARAM_STR);
             $result->bindParam(':item2', $dato2, PDO::PARAM_STR);
+            $result->bindParam(':turno_id', $turno_id, PDO::PARAM_STR);
             $result->bindParam(':item3', $dato3, PDO::PARAM_STR);
+            $result->bindParam(':guardia_id', $guardia_id, PDO::PARAM_STR);
             $result->bindParam(':item4', $dato4, PDO::PARAM_STR);
             $result->bindParam(':item5', $dato5, PDO::PARAM_STR);
             $result->bindParam(':item6', $dato6, PDO::PARAM_STR);

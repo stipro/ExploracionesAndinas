@@ -37,8 +37,8 @@ $template_create_consumoMadera = '
                                     <label for="insert-slt-consumoMadera-turno" class="control-label">Turno<span class="text-danger">*</span></label>
                                     <!-- <div class="col-md-7"> -->
                                         <select name="turnos" id="insert-slt-consumoMadera-turno" class="form-control">
-                                            <option value="Dia">Dia</option>
-                                            <option value="Noche">Noche</option>
+                                            <option data-id-turno="1" value="Dia">Dia</option>
+                                            <option data-id-turno="2" value="Noche">Noche</option>
                                         </select>
                                     <!-- </div> -->
                                 </div>
@@ -48,9 +48,9 @@ $template_create_consumoMadera = '
                                 <div class="form-group">
                                     <label for="insert-slt-consumoMadera-guardia" class="control-label">Guardia<span class="text-danger">*</span></label>
                                     <select name="turnos" id="insert-slt-consumoMadera-guardia" class="form-control">
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
+                                        <option data-id-guardia="1" value="A">A</option>
+                                        <option data-id-guardia="2" value="B">B</option>
+                                        <option data-id-guardia="3" value="C">C</option>
                                     </select>
                                 </div>
                             </div>

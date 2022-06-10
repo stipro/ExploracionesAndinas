@@ -15,12 +15,14 @@ if($_POST){
                 $laborList = $arrayForm['form'];
                 $data1 = $laborList['unidadMinera'];
                 $data2 = $laborList['turno'];
+                $turno_id = $laborList['turno_id'];
                 $data3 = $laborList['guardia'];
+                $guardia_id = $laborList['guardia_id'];
                 $data4 = $laborList['jefeGuardia'];
                 $data5 = $laborList['fecha'];
                 $data6 = $laborList['nvale'];
                 $data6_detalles = $laborList['detalles'];
-                $rptSql = $tableManager->create($data1, $data2, $data3, $data4, $data5, $data6);
+                $rptSql = $tableManager->create($turno_id, $guardia_id, $data1, $data2, $data3, $data4, $data5, $data6);
                 $idPrincipal = $rptSql['id'];
                 $rptSql2 = $tableManager->createDetails($idPrincipal, $data6_detalles);
                 $rptSqlGeneral = array(

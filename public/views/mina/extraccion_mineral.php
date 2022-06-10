@@ -519,11 +519,11 @@
                                 <div class="form-group">
                                     <label for="insert-extrMineral-guardia-normal" class="col-md-4 form-label">Turno</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" list="datalist-insert-extrMineral-guardia" id="insert-extrMineral-guardia-normal" placeholder="Ingrese Guardia...">
+                                        <input class="form-control" list="datalist-insert-extrMineral-guardia" id="insert-extrMineral-guardia-normal" placeholder="Ingrese Turno...">
                                     </div>                                        
                                     <datalist id="datalist-insert-extrMineral-guardia">
-                                        <option value="Dia">
-                                        <option value="Noche">
+                                        <option data-id-turno="1" value="Dia">
+                                        <option data-id-turno="2" value="Noche">
                                     </datalist>
                                 </div>
                                 

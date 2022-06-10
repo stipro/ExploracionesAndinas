@@ -347,7 +347,9 @@ mbtn_create_consumoMadera_diario.addEventListener("click", (e) => {
     let val_unidadMInera = slt_create_consumoMadera_unidadMinero.value;
     let id_unidadMinera = slt_create_consumoMadera_unidadMinero.querySelector("option[value='" + val_unidadMInera + "']").dataset.idUnidadMinera;
     let val_turno = slt_consumoMadera_turno.options[slt_consumoMadera_turno.selectedIndex].value;
+    let valId_turno = slt_consumoMadera_turno.options[slt_consumoMadera_turno.selectedIndex].dataset.idTurno;
     let val_guardia = slt_consumoMadera_guardia.options[slt_consumoMadera_guardia.selectedIndex].value;
+    let valId_guardia = slt_consumoMadera_guardia.options[slt_consumoMadera_guardia.selectedIndex].dataset.idGuardia;
     let val_jefeGuardia = iptAdd_jefeGuardia.value;
     val_jefeGuardia ? val_jefeGuardia = val_jefeGuardia : array_noti_error.push("JEFE DE GUARDIA");
     val_jefeGuardia ? val_idColaborador = document.querySelector("#insert-dtl-consumoMadera-jefeGuardia"  + " option[value='" +  val_jefeGuardia + "']").dataset.idJefeGuardia : array_noti_error.push("JEFE DE GUARDIA , ID");
@@ -389,7 +391,9 @@ mbtn_create_consumoMadera_diario.addEventListener("click", (e) => {
         let listInsert = {
             "unidadMinera": id_unidadMinera,
             "turno": val_turno,
+            "turno_id": valId_turno,
             "guardia": val_guardia,
+            "guardia_id": valId_guardia,
             "jefeGuardia": val_idColaborador,
             "fecha": val_fecha,
             "nvale": val_nvale,

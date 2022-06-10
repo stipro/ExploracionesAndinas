@@ -104,7 +104,8 @@ btnInsertar.addEventListener("click", (e) => {
             'fech_extraccion': f[i][16],
             'hora': f[i][17],
             'turno': f[i][18],
-            'cant_carros': f[i][19],
+            'turno_id': f[i][19],
+            'cant_carros': f[i][20],
         });
     }
     listInsert = {
@@ -418,6 +419,7 @@ btnAdd_DetalleExtraccion.addEventListener("click", () => {
     valDigitacion = iptinsertDigitacion.value;
     valHrs = iptInsert_extraccionMineral_hrs.value;
     valTurno = iptInsert_extraccionMineral_guardia.value;
+    valTurno ? valId_turno = document.querySelector('#datalist-insert-extrMineral-guardia option[value="' + valTurno + '"]').dataset.idTurno : arrayError.push("Turno");
     valCodigo = selectInsert_codigo.options[selectInsert_codigo.selectedIndex].text;
     valcCosto = iptInsert_extraccionMineral_cCosto.value;
     valcCosto ? val_idLabor = document.querySelector('#datalist-insert-extrMineral-cCostos option[value="' + valcCosto + '"]').dataset.idCosto : arrayError.push("Centro de Costo");
@@ -447,6 +449,7 @@ btnAdd_DetalleExtraccion.addEventListener("click", () => {
             valDigitacion,
             valHrs,
             valTurno,
+            valId_turno,
             valCantidad,
             '<button class="btn btn-danger removeRow"><i class="fa fa-trash-o" aria-hidden="true"></i></button>'
         ]).draw(false);
