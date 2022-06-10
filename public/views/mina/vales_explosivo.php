@@ -1230,11 +1230,13 @@
                                         <div class="col-md-8">
                                             <!-- Default choosen -->
                                             <!--===================================================-->
-                                            <select class="form-control chosenTurno" data-placeholder="Elija un Turno ..." id="val_explosivo-text-form-turno" tabindex="2">
-                                                <option value="0" selected></option>
-                                                <option value="Dia">Dia</option>
-                                                <option value="Noche">Noche</option>
-                                            </select>
+                                            <input class="form-control" list="insert-dtl-turno" id="val_explosivo-text-form-turno" placeholder="Ingrese Turno...">
+                                            <datalist id="insert-dtl-turno">
+                                                <option>--Ocurrio un Error--</option>
+                                            </datalist>
+                                            <template id="insert-tpt-turno">
+                                                <option></option>
+                                            </template>
                                             <!--===================================================-->
                                         </div>
                                     </div>

@@ -38,6 +38,7 @@ var inputDigitador = document.getElementById('val_explosivo-ipt-text-form-digita
 var selectZona = document.getElementById('val_explosivo-text-form-zona');
 // Turno
 var selectTurno = document.getElementById('val_explosivo-text-form-turno');
+const insert_dtl_turno = document.getElementById("insert-dtl-turno");
 // Fecha de registro
 var dateRegistro = document.getElementById('val_explosivo-text-form-fecha');
 // Detalle del Vale
@@ -199,6 +200,12 @@ document.addEventListener('DOMContentLoaded', e => {
 });
 
 btnCreate_valeExplosivo.addEventListener("click", (e) => {
+
+    let selectForm_turno = {
+        "accion": "getSelect"
+    }
+    fetchTurno_create(selectForm_turno);
+
     const form_request1 = {
         "accion": "getLast_record",
     }
@@ -233,6 +240,37 @@ btnCreate_valeExplosivo.addEventListener("click", (e) => {
     // Enviamos Formato Perforista
     fetchDataPerforista(selectPerforistaForm);
 });
+
+//Traer SELECT TURNO ()
+const fetchTurno_create = async (request) => {
+    const body = new FormData();
+    body.append("data", JSON.stringify(request));
+    //Enviamos solicitud
+    const res = await fetch('./../../../controllers/controllerTurnoList.php', {
+        method: "POST",
+        body
+    });
+    const data = await res.json()
+    //Enviamos a pintar
+    paintTurno_create(data)
+}
+
+// Pintar TURNO datalist
+const paintTurno_create = (data) => {
+    // Guardamos en variable
+    arraySelect = data['sql'];
+    insert_dtl_turno.innerHTML = '';
+    const tpt_turno = document.querySelector("#insert-tpt-turno").content;
+    const fragment = document.createDocumentFragment();
+    arraySelect.forEach(item => {
+        tpt_turno.querySelector('option').value = item.nombre_turno;
+        tpt_turno.querySelector('option').textContent = item.nombre_turno;
+        tpt_turno.querySelector('option').dataset.idTurno = item.id_turno;
+        const clone = tpt_turno.cloneNode(true);
+        fragment.appendChild(clone)
+    });
+    insert_dtl_turno.appendChild(fragment);
+}
 
 /* // Traer productos
 const fetchData = async (json) => {
@@ -311,7 +349,8 @@ mbtnCreate_valeExplosivo.addEventListener("click", () => {
     valselectZona = zonaSelect.value;
     let val_zonaId = zonaSelect.getAttribute('data-id-zona');
     // Turno
-    valselectTurno = selectTurno.value;
+    let valselectTurno = selectTurno.value;
+    let valId_turno = insert_dtl_turno.querySelector("option[value='" + valselectTurno + "']").dataset.idTurno;
     // Fecha de vale Explosivo
     valdateRegistro = dateRegistro.value;
     // Centro de Costos
@@ -429,6 +468,7 @@ mbtnCreate_valeExplosivo.addEventListener("click", () => {
         "fechRegistro": valdateRegistro,
         "id_zona": val_zonaId,
         "turno": valselectTurno,
+        "turno_id": valId_turno,
         "pre_impreso": valinputPreImpre,
         "id_labor": validLabor,
         "tip_disparo": valradioTipo_dis,
@@ -550,7 +590,6 @@ const fetch_unidadMinera = async (json) => {
     });
     
     const rptJson = await rpt.json(); //await JSON.parse(returned);
-    console.log(rptJson);
     paintSlt_unidadMinera(rptJson);
 };
 
@@ -1200,18 +1239,18 @@ const calcular_KilosDinamita = (pesototal, peso) => {
 }
 // MODULO LABOR
 // Nombre Labor
-const insert_labor_laborName = document.getElementById("ipt-insert-labor-laborName");
+/* const insert_labor_laborName = document.getElementById("ipt-insert-labor-laborName"); */
 const datalist_labor_laborName = document.getElementById("datalist-insert-nombreLabor-nombre");
 // Automatico
 const insert_labor_nameEtapa = document.getElementById("ipt-insert-labor-laborNameEtapa");
 const insert_labor_namePrefijo = document.getElementById("ipt-insert-labor-laborNamePrefijo");
 const insert_labor_nametipo = document.getElementById("ipt-insert-labor-laborNameTipo");
 
-const insert_labor_zonaName = document.getElementById("ipt-insert-labor-laborZona");
+/* const insert_labor_zonaName = document.getElementById("ipt-insert-labor-laborZona"); */
 const insert_labor_zoneLetra = document.getElementById("ipt-insert-letra-laborZonaLetra");
 const datalist_labor_laborZone = document.getElementById("datalist-insert-zonaLabor-zona");
 
-const insert_labor_unitMining = document.getElementById("ipt-insert-unitMining-nombre");
+/* const insert_labor_unitMining = document.getElementById("ipt-insert-unitMining-nombre"); */
 const insert_labor_unitMiningAbrev = document.getElementById("ipt-insert-unitMining-abrev");
 const datalist_labor_unitMining = document.getElementById("datalist-insert-labor-unitMining");
 
@@ -1227,12 +1266,12 @@ const madd_labor_nombre = document.getElementById("add-labor");
 // Modulo Etapa
 const madd_labor_nombre_etapa = document.getElementById("add-etapa"); */
 // Botones Inferiores
-const mbtnInsert_laborNameEtapa = document.getElementById("mbtn-insert-laborNameEtapa");
+/* const mbtnInsert_laborNameEtapa = document.getElementById("mbtn-insert-laborNameEtapa"); */
 const mbtnClose_laborNameEtapa = document.getElementById("mbtn-close-laborNameEtapa");
 // Modulo Zona
-const madd_labor_zona = document.getElementById("add-zona");
+/* const madd_labor_zona = document.getElementById("add-zona");
 // Modulo Sede
-const madd_labor_sede = document.getElementById("add-sede");
+const madd_labor_sede = document.getElementById("add-sede"); */
 
 btnAgregar_labor.addEventListener("click", (e) => {
     const form_uno = {
@@ -1338,7 +1377,7 @@ const paintSelect_unitMining = (answerSql) => {
     insert_labor_unitMining.value = 'San Andres';
 }
 
-insert_labor_laborName.addEventListener('input', (e) => {
+/* insert_labor_laborName.addEventListener('input', (e) => {
     console.log('#' + e.target.getAttribute('list') + ' option[value="' + e.target.value + '"]')
     //Object.assign(e.target.dataset, document.querySelector('#' + e.target.getAttribute('list') + ' option[value="' + e.target.value + '"]').dataset);
     if (document.querySelector('#' + e.target.getAttribute('list') + ' option[value="' + e.target.value + '"]') !== null) {
@@ -1350,24 +1389,24 @@ insert_labor_laborName.addEventListener('input', (e) => {
         insert_labor_namePrefijo.value = 'No existe';
         insert_labor_nametipo.value = 'No existe';
     }
-});
+}); */
 
-insert_labor_zonaName.addEventListener('input', (e) => {
+/* insert_labor_zonaName.addEventListener('input', (e) => {
     if (document.querySelector('#' + e.target.getAttribute('list') + ' option[value="' + e.target.value + '"]') !== null) {
         insert_labor_zoneLetra.value = document.querySelector('#' + e.target.getAttribute('list') + ' option[value="' + e.target.value + '"]').dataset.letra;
     } else {
         insert_labor_zoneLetra.value = 'No existe';
     }
 
-});
-
+}); */
+/* 
 insert_labor_unitMining.addEventListener('input', (e) => {
     if (document.querySelector('#' + e.target.getAttribute('list') + ' option[value="' + e.target.value + '"]') !== null) {
         insert_labor_unitMiningAbrev.value = document.querySelector('#' + e.target.getAttribute('list') + ' option[value="' + e.target.value + '"]').dataset.abrev;
     } else {
         insert_labor_unitMiningAbrev.value = 'No existe';
     }
-});
+}); */
 
 /* // MODAL NOMBRE LABOR
 madd_labor_nombre.addEventListener("click", (e) => {
@@ -1406,7 +1445,7 @@ const paintSelectLaborNombre_etapa = (answerSql) => {
 }) */
 
 // Etapa de labor
-mbtnInsert_laborNameEtapa.addEventListener("click", () => {
+/* mbtnInsert_laborNameEtapa.addEventListener("click", () => {
     val_laborNameEtapa_etapa = insert_laborNameEtapa_etapa.value;
     if (val_laborNameEtapa_etapa) {
         console.log('Se obtuvo : ' + val_laborNameEtapa_etapa);
@@ -1430,11 +1469,11 @@ mbtnInsert_laborNameEtapa.addEventListener("click", () => {
         console.log('No se obtuvo valor');
         modal_notifications(rptBackend);
     }
-});
+}); */
 
-madd_labor_zona.addEventListener("click", (e) => {
+/* madd_labor_zona.addEventListener("click", (e) => {
 
 })
 madd_labor_sede.addEventListener("click", (e) => {
 
-})
+}) */

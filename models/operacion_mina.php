@@ -87,15 +87,17 @@ class operacionMina extends Conexion
         $query = "SELECT op_mn.operacionMina_registro, op_mn.operacionMina_turno, op_mn.operacionMina_guardia, op_mn.operacionMina_nVale FROM operacion_mina AS op_mn WHERE op_mn.id_operacionMina='{$parament_id}'";
         return $this->ConsultaSimple($query);
     }
-    public function insert($dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7, $dato8, $dato9, $dato10, $dato11, $dato12, $dato13, $dato14, $dato15, $dato16, $dato17, $dato18, $dato19, $dato20, $dato21, $dato22, $dato23, $dato24)
+    public function insert($turno_id, $guardia_id, $dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7, $dato8, $dato9, $dato10, $dato11, $dato12, $dato13, $dato14, $dato15, $dato16, $dato17, $dato18, $dato19, $dato20, $dato21, $dato22, $dato23, $dato24)
     {
         try 
         {
             $query = "INSERT INTO operacion_mina (
             unidadMinera_id,
             operacionMina_registro, 
-            operacionMina_turno, 
-            operacionMina_guardia, 
+            operacionMina_turno,
+            turno_id,
+            operacionMina_guardia,
+            guardia_id, 
             operacionMina_nVale, 
             operacionMina_actividad, 
             id_labor, 
@@ -120,7 +122,9 @@ class operacionMina extends Conexion
             :item1,
             :item2,
             :item3,
+            :turno_id,
             :item4,
+            :guardia_id,
             :item5,
             :item6,
             :item7,
@@ -145,7 +149,9 @@ class operacionMina extends Conexion
             $insertValue->bindParam(':item1', $dato1, PDO::PARAM_STR);
             $insertValue->bindParam(':item2', $dato2, PDO::PARAM_STR);
             $insertValue->bindParam(':item3', $dato3, PDO::PARAM_STR);
+            $insertValue->bindParam(':turno_id', $turno_id, PDO::PARAM_STR);
             $insertValue->bindParam(':item4', $dato4, PDO::PARAM_STR);
+            $insertValue->bindParam(':guardia_id', $guardia_id, PDO::PARAM_STR);
             $insertValue->bindParam(':item5', $dato5, PDO::PARAM_STR);
             $insertValue->bindParam(':item6', $dato6, PDO::PARAM_STR);
             $insertValue->bindParam(':item7', $dato7, PDO::PARAM_STR);

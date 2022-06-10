@@ -30,7 +30,9 @@ if($_POST){
                 $dato1 = $formRequest['unidadMinera'];
                 $dato2 = $formRequest['datos_registro'];
                 $dato3 = $formRequest['datos_turno'];
+                $turno_id = $formRequest['turno_id'];
                 $dato4 = $formRequest['datos_guardia'];
+                $guardia_id = $formRequest['guardia_id'];
                 $dato5 = $formRequest['datos_nvale'];
                 $dato6 = $formRequest['datos_actividad'];
                 $dato7 = array_key_exists('id_Labor', $formRequest) ? $formRequest['id_Labor'] : '';
@@ -53,7 +55,7 @@ if($_POST){
                 $dato24 = $formRequest['limpieza_desmont']? $formRequest['limpieza_desmont'] : 0;
                 if (!empty($dato1) && !empty($dato2) && !empty($dato3) && !empty($dato6)) 
                     {
-                        $rptSql = $tableManager->insert($dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7, $dato8, $dato9, $dato10, $dato11, $dato12, $dato13, $dato14, $dato15, $dato16, $dato17, $dato18, $dato19, $dato20, $dato21, $dato22, $dato23, $dato24);
+                        $rptSql = $tableManager->insert($turno_id, $guardia_id, $dato1, $dato2, $dato3, $dato4, $dato5, $dato6, $dato7, $dato8, $dato9, $dato10, $dato11, $dato12, $dato13, $dato14, $dato15, $dato16, $dato17, $dato18, $dato19, $dato20, $dato21, $dato22, $dato23, $dato24);
                         $rptController = [
                             "estado" => 1,
                             "mensaje" => "No hay variables vacios",

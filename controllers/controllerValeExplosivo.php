@@ -46,6 +46,7 @@ if($_POST){
                 }
                 $datonVale = $formRequest['n_vale'];
                 $datoTurno = $formRequest['turno'];
+                $turno_id = $formRequest['turno_id'];
                 $datopreImpreso = $formRequest['pre_impreso'];
 
                 //$idLabor = array_key_exists('id_labor', $formRequest) ? $formRequest['id_labor'] : '';
@@ -89,6 +90,7 @@ if($_POST){
                             $idZona,
                             $datonVale,
                             $datoTurno,
+                            $turno_id,
                             $datopreImpreso,
                             $idLabor,
                             $datoTipDisparo,
@@ -123,35 +125,36 @@ if($_POST){
                             "estado" => 1,
                             "mensaje" => "No hay variables vacios",
                         ];
-                        $id = $rptSql['id'];
-                        $detail = $formRequest['detail'];
-                        if(sizeof($detail) > 0){
-                            foreach ($detail as &$valor) {
-                                $valor['id'] = 1 ? $datoemulMil = $valor['cantidad'] : $datoemulMil = 0;
-                                $valor['id'] = 2 ? $datoemulTresmil = $valor['cantidad'] : $datoemulTresmil = 0;
-                                $valor['id'] = 3 ? $datoDinaPulv = $valor['cantidad'] : $datoDinaPulv = 0;
-                                $valor['id'] = 4 ? $datCarmexsiete = $valor['cantidad'] : $datCarmexsiete = 0;
-                                $valor['id'] = 5 ? $datCarmexocho = $valor['cantidad'] : $datCarmexocho = 0;
-                                $valor['id'] = 6 ? $datomechaRapida = $valor['cantidad'] : $datomechaRapida = 0;
-                                $valor['id'] = 7 ? $datomechaLenta = $valor['cantidad'] : $datomechaLenta = 0;
-                                $valor['id'] = 8 ? $datofulmOcho = $valor['cantidad'] : $datofulmOcho = 0;
-                                $valor['id'] = 9 ? $datoconecMecha = $valor['cantidad'] : $datoconecMecha = 0;
-                                $valor['id'] = 10 ? $datoBlockSegacion = $valor['cantidad'] : $datoBlockSegacion = 0;
-                                $valor['id'] = 11 ? $datoCarCortrece = $valor['cantidad'] : $datoCarCortrece = 0;
-                                $valor['id'] = 12 ? $datoDinaSemi = $valor['cantidad'] : $datoDinaSemi = 0;
+                        if($rptSql['estado'] == 1){
+                            $id = $rptSql['id'];
+                            $detail = $formRequest['detail'];
+                            if(sizeof($detail) > 0){
+                                foreach ($detail as &$valor) {
+                                    $valor['id'] = 1 ? $datoemulMil = $valor['cantidad'] : $datoemulMil = 0;
+                                    $valor['id'] = 2 ? $datoemulTresmil = $valor['cantidad'] : $datoemulTresmil = 0;
+                                    $valor['id'] = 3 ? $datoDinaPulv = $valor['cantidad'] : $datoDinaPulv = 0;
+                                    $valor['id'] = 4 ? $datCarmexsiete = $valor['cantidad'] : $datCarmexsiete = 0;
+                                    $valor['id'] = 5 ? $datCarmexocho = $valor['cantidad'] : $datCarmexocho = 0;
+                                    $valor['id'] = 6 ? $datomechaRapida = $valor['cantidad'] : $datomechaRapida = 0;
+                                    $valor['id'] = 7 ? $datomechaLenta = $valor['cantidad'] : $datomechaLenta = 0;
+                                    $valor['id'] = 8 ? $datofulmOcho = $valor['cantidad'] : $datofulmOcho = 0;
+                                    $valor['id'] = 9 ? $datoconecMecha = $valor['cantidad'] : $datoconecMecha = 0;
+                                    $valor['id'] = 10 ? $datoBlockSegacion = $valor['cantidad'] : $datoBlockSegacion = 0;
+                                    $valor['id'] = 11 ? $datoCarCortrece = $valor['cantidad'] : $datoCarCortrece = 0;
+                                    $valor['id'] = 12 ? $datoDinaSemi = $valor['cantidad'] : $datoDinaSemi = 0;
+                                }
+                                $rptSql2 = $table->createDetalle($id, $detail);
+                            }else{
+                                $rptSql2 = [
+                                    "estado" => 0,
+                                    "mensaje" => "No hay detalle que registrar",
+                                ];
+                                $rptSql2 = 0;
                             }
-                            $rptSql2 = $table->createDetalle($id, $detail);
-                        }else{
-                            $rptSql2 = [
-                                "estado" => 0,
-                                "mensaje" => "No hay detalle que registrar",
-                            ];
-                            $rptSql2 = 0;
                         }
-                        
                         $rptSqlGeneral = array(
                             "sql1" => $rptSql,
-                            "sql2" => $rptSql2
+                            /* "sql2" => $rptSql2 */
                         );
                     }
                     else{

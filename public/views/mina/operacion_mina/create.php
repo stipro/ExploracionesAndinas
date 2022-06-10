@@ -23,9 +23,7 @@ $template_create_operacionMina = '
                                         <label for="insert-slt-operacionMina_unidadMinera" class="control-label col-sm-4 col-md-4">Unidad Minera</label>
                                         <div class="col-sm-8 col-md-8">
                                             <select id="insert-slt-operacionMina_unidadMinera" class="form-control">
-                                                <option>small</option>
-                                                <option>medium</option>
-                                                <option>large</option>
+                                                <option>--Ocurrio un Error--</option>
                                             </select> 
                                         </div>
                                         <template id="tpt-unidadMinera">
@@ -41,23 +39,26 @@ $template_create_operacionMina = '
                                     <div class="form-group">
                                         <label for="insert-operacionaMina-turno" class="control-label col-md-4">Turno</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="insert-options-turno" id="insert-operacionaMina-turno" placeholder="Ingrese Turno...">
+                                            <input class="form-control" list="insert-dtl-turno" id="insert-operacionaMina-turno" placeholder="Ingrese Turno...">
+                                            <datalist id="insert-dtl-turno">
+                                                <option>--Ocurrio un Error--</option>
+                                            </datalist>
                                         </div>
-                                        <datalist id="insert-options-turno">
-                                            <option value="Dia">
-                                            <option value="Noche">
-                                        </datalist>
+                                        <template id="insert-tpt-turno">
+                                            <option></option>
+                                        </template>
                                     </div>
                                     <div class="form-group">
                                         <label for="insert-operacionMina-guardia" class="control-label col-md-4">Guardia</label>
                                         <div class="col-md-8">
-                                            <input class="form-control" list="insert-options-guardia" id="insert-operacionMina-guardia" placeholder="Ingrese Guardia...">
+                                            <input class="form-control" list="insert-dtl-guardia" id="insert-operacionMina-guardia" placeholder="Ingrese Guardia...">
+                                            <datalist id="insert-dtl-guardia">
+                                                <option value="">Ocurrio un Error</option>
+                                            </datalist>
                                         </div>
-                                        <datalist id="insert-options-guardia">
-                                            <option value="A">
-                                            <option value="B">
-                                            <option value="C">
-                                        </datalist>
+                                        <template id="insert-tpt-guardia">
+                                            <option></option>
+                                        </template>                                        
                                     </div>
                                     <div class="form-group">
                                         <label for="insert-operacionMina-nvale" class="control-label col-md-4">N° Vale</label>
@@ -607,4 +608,3 @@ $template_create_operacionMina = '
         </div>
     </div>
 ';
-?>
