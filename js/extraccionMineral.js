@@ -298,10 +298,10 @@ $(document).ready(function() {
                 tag: 'a',
                 action: function(e, dt, node, config) {
                     //This will send the page to the location specified
-                    window.location.href = './../../excelGenerator.php?table=view_vales_extraccionMineral';
+                    window.location.href = './../../excelGenerator.php?table=view_extraccionmineral_dev';
                 },
                 init: function(dt, node, config) {
-                    $(node).attr('href', './../../excelGenerator.php?table=view_vales_extraccionMineral');
+                    $(node).attr('href', './../../excelGenerator.php?table=view_extraccionmineral_dev');
                     $(node).attr('download', '');
                     $(node).attr('title', 'Descargar Archivo');
                 }
