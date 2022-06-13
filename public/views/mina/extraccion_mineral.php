@@ -166,7 +166,7 @@ if (!isset($_SESSION["username"])) {
                                                 <h3 class="panel-title">EXTRACCIÓN MINERAL </h3>
                                             </div>
                                         </legend>
-                                        <div class="row">
+                                        <!-- <div class="row">
                                             <div class="col-md-3">
                                                 <button data-target="#extraccionMineral-lg-modal-create" data-toggle="modal" class="btn btn-success btn-labeled" id="btn-agregar-extraccionMineral">
                                                     <i class="btn-label fa-solid fa fa-plus"></i><span class="hidden-xs hidden-sm">Agregar</span>
@@ -177,7 +177,7 @@ if (!isset($_SESSION["username"])) {
                                             </div>
                                             <div class="col-sm-12 col-md-3">
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="table-responsive">
                                             <table id="tblMaster-extraccionMineral" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                                                 <thead>
