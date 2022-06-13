@@ -39,6 +39,9 @@ var selectZona = document.getElementById('val_explosivo-text-form-zona');
 // Turno
 var selectTurno = document.getElementById('val_explosivo-text-form-turno');
 const insert_dtl_turno = document.getElementById("insert-dtl-turno");
+// Guardia
+var selectGuardia = document.getElementById('val_explosivo-text-form-guardia');
+const insert_dtl_guardia = document.getElementById("insert-dtl-guardia");
 // Fecha de registro
 var dateRegistro = document.getElementById('val_explosivo-text-form-fecha');
 // Detalle del Vale
@@ -351,6 +354,11 @@ mbtnCreate_valeExplosivo.addEventListener("click", () => {
     // Turno
     let valselectTurno = selectTurno.value;
     let valId_turno = insert_dtl_turno.querySelector("option[value='" + valselectTurno + "']").dataset.idTurno;
+    
+    
+    // Guardia
+    let valselectGuardia = selectGuardia.value;
+    let valId_guardia = insert_dtl_guardia.querySelector("option[value='" + valselectGuardia + "']").dataset.idGuardia;
     // Fecha de vale Explosivo
     valdateRegistro = dateRegistro.value;
     // Centro de Costos
@@ -469,6 +477,7 @@ mbtnCreate_valeExplosivo.addEventListener("click", () => {
         "id_zona": val_zonaId,
         "turno": valselectTurno,
         "turno_id": valId_turno,
+        "guardia_id": valId_guardia,
         "pre_impreso": valinputPreImpre,
         "id_labor": validLabor,
         "tip_disparo": valradioTipo_dis,

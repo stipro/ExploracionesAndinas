@@ -170,7 +170,6 @@
                                                                 <th>Tipo L.</th>
                                                                 <th>Zona</th>
                                                                 <th>Letra Z</th>
-                                                                <th>Tipo</th>
                                                                 <th>Veta</th>
                                                                 <th>Nivel</th>
                                                                 <th>M. Explotacion</th>
@@ -191,7 +190,6 @@
                                                                 <th>Tipo L.</th>
                                                                 <th>Zona</th>
                                                                 <th>Letra Z</th>
-                                                                <th>Tipo</th>
                                                                 <th>Veta</th>
                                                                 <th>Nivel</th>
                                                                 <th>M. Explotacion</th>

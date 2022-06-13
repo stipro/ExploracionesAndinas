@@ -47,6 +47,7 @@ if($_POST){
                 $datonVale = $formRequest['n_vale'];
                 $datoTurno = $formRequest['turno'];
                 $turno_id = $formRequest['turno_id'];
+                $guardia_id = $formRequest['guardia_id'];
                 $datopreImpreso = $formRequest['pre_impreso'];
 
                 //$idLabor = array_key_exists('id_labor', $formRequest) ? $formRequest['id_labor'] : '';
@@ -91,6 +92,7 @@ if($_POST){
                             $datonVale,
                             $datoTurno,
                             $turno_id,
+                            $guardia_id,
                             $datopreImpreso,
                             $idLabor,
                             $datoTipDisparo,

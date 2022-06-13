@@ -1243,6 +1243,24 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="val_explosivo-text-form-guardia" class="col-md-4 control-label">Guardia <span class="text-danger">*</span></label>
+                                        <div class="col-md-8">
+                                            <!-- Default choosen -->
+                                            <!--===================================================-->
+                                            <input class="form-control" list="insert-dtl-guardia" id="val_explosivo-text-form-guardia" placeholder="Ingrese Guardia...">
+                                            <datalist id="insert-dtl-guardia">
+                                                <option data-id-guardia="1" value="A">A</option>
+                                                <option data-id-guardia="2" value="B">B</option>
+                                                <option data-id-guardia="3" value="C">C</option>
+                                            </datalist>
+                                            <!--===================================================-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="val_explosivo-text-form-fecha" class="col-md-4 control-label">Fecha <span class="text-danger">*</span></label>

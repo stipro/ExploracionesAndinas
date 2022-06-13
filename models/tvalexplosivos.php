@@ -65,6 +65,7 @@ class ValeExplosivos extends Conexion
         $datonVale,
         $datoTurno,
         $turno_id,
+        $guardia_id,
         $datopreImpreso,
         $idLabor,
         $datoTipDisparo,
@@ -114,6 +115,7 @@ class ValeExplosivos extends Conexion
             id_zona,
             valexplosivo_turno,
             turno_id,
+            guardia_id,
             valexplosivo_fecha,
             id_labor,
             valexplosivo_tipDisparo,
@@ -153,6 +155,7 @@ class ValeExplosivos extends Conexion
             :id_zona, 
             :valexplosivo_turno,
             :turno_id,
+            :guardia_id,
             :valexplosivo_fecha, 
             :id_labor, 
             :valexplosivo_tipDisparo, 
@@ -193,6 +196,7 @@ class ValeExplosivos extends Conexion
             $insertValue->bindParam(':valexplosivo_fecha', $converdatoRegistro, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_turno', $datoTurno, PDO::PARAM_STR);
             $insertValue->bindParam(':turno_id', $turno_id, PDO::PARAM_STR);
+            $insertValue->bindParam(':guardia_id', $guardia_id, PDO::PARAM_STR);
             $insertValue->bindParam(':id_labor', $idLabor, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_tipDisparo', $datoTipDisparo, PDO::PARAM_STR);
             $insertValue->bindParam(':valexplosivo_tipEn', $datotipEn, PDO::PARAM_STR);

@@ -17,13 +17,9 @@ $template_create_labor = '
                             <div class="panel-body">
                                 <!-- FORMULARIO -->
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-8">
                                         <label for="ipt-insert-labor-ccosto" class="control-label">C. Costo <span class="text-danger">*</span></label>
                                         <input type="text" placeholder="C. Costo" class="form-control" id="ipt-insert-labor-ccosto">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="ipt-insert-labor-tipo" class="control-label">Tipo</label>
-                                        <input type="text" placeholder="Tipo" class="form-control" id="ipt-insert-labor-tipo">
                                     </div>
                                     <div class="col-md-2">
                                         <label for="ipt-insert-labor-veta" class="control-label">Veta</label>

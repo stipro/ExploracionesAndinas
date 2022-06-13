@@ -26,11 +26,10 @@ class Labores extends Conexion
     }
     public function insertPrincipal($items){
         try {
-            $query = "INSERT INTO labores (lab_ccostos, lab_tipo, lab_veta, lab_nivel, lab_metodoExplotacion, lab_seccion, lab_tipoEq, lab_tipoRoca, id_labNombre, id_zona, unidadMedica_id) 
-                            VALUES (:item1, :item2, :item3, :item4, :item5, :item6, :item7, :item8, :item9, :item10, :item11)";
+            $query = "INSERT INTO labores (lab_ccostos, lab_veta, lab_nivel, lab_metodoExplotacion, lab_seccion, lab_tipoEq, lab_tipoRoca, id_labNombre, id_zona, unidadMinera_id) 
+                            VALUES (:item1, :item3, :item4, :item5, :item6, :item7, :item8, :item9, :item10, :item11)";
             $insertValue = $this->db->prepare($query);
             $insertValue->bindParam(':item1', $items['ccosto_labor'], PDO::PARAM_STR);
-            $insertValue->bindParam(':item2', $items['tipo_labor'], PDO::PARAM_STR);
             $insertValue->bindParam(':item3', $items['veta_labor'], PDO::PARAM_STR);
             $insertValue->bindParam(':item4', $items['nivel_labor'], PDO::PARAM_STR);
             $insertValue->bindParam(':item5', $items['mexplotacion_labor'], PDO::PARAM_STR);

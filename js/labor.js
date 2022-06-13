@@ -97,9 +97,6 @@ document.addEventListener('DOMContentLoaded', e => {
                 data: "labZona_letra",
             },
             {
-                data: "lab_tipo",
-            },
-            {
                 data: "lab_veta",
             },
             {
@@ -383,7 +380,6 @@ document.addEventListener('DOMContentLoaded', e => {
         let arrayError = [];
         let val_labor_ccostoLabor = insert_labor_ccosto.value;
         val_labor_ccostoLabor ? val_labor_ccostoLabor = val_labor_ccostoLabor : arrayError.push("Centro de Costo");
-        const val_labor_tipo = insert_labor_tipo.value;
         const val_labor_veta = insert_labor_veta.value;
         const val_labor_nivel = insert_labor_nivel.value;
         const val_labor_mexplotacion = insert_labor_mexplotacion.value;
@@ -405,7 +401,6 @@ document.addEventListener('DOMContentLoaded', e => {
         else{
             const data = {
                 "ccosto_labor": val_labor_ccostoLabor,
-                "tipo_labor": val_labor_tipo,
                 "veta_labor": val_labor_veta,
                 "nivel_labor": val_labor_nivel,
                 "mexplotacion_labor": val_labor_mexplotacion,
