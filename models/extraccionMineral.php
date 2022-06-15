@@ -102,7 +102,10 @@ class extraccionMineral extends Conexion
             ayudante_id, 
             zona_id,
             turno_extraccionMineral,
-            turno_id)
+            turno_id,
+            guardia_id,
+            cantidad_extraccionMineral,
+            observaciones_extraccionMineral)
             VALUES (
             :item1,
             :item2,
@@ -115,7 +118,10 @@ class extraccionMineral extends Conexion
             :item9,
             :item10, 
             :item11,
-            :item12)";
+            :item12,
+            :item13,
+            :item14, 
+            :item15)";
             $insertValue = $this->db->prepare($query);
             foreach ($formRequest as $clave) {
                 $insertValue->bindParam(':item1', $clave['fech_extraccion'], PDO::PARAM_STR);
@@ -130,6 +136,9 @@ class extraccionMineral extends Conexion
                 $insertValue->bindParam(':item10', $clave['id_zona'], PDO::PARAM_STR);
                 $insertValue->bindParam(':item11', $clave['turno'], PDO::PARAM_STR);
                 $insertValue->bindParam(':item12', $clave['turno_id'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item13', $clave['guardia_id'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item14', $clave['cantidad_extraccionMineral'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item15', $clave['observacion_extraccionMineral'], PDO::PARAM_STR);
                 $sqlrpt = $insertValue->execute();
                 $lastcolIdsql = $this->db->lastInsertId();
             }

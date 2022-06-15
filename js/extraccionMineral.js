@@ -13,7 +13,13 @@ const iptinsertNivel = document.getElementById("insert-extrMineral-nivel");
 const iptinsertTolva = document.getElementById("insert-extrMineral-tolva");
 const iptinsertAyudante = document.getElementById("insert-extrMineral-ayudante");
 
-const iptInsert_extraccionMineral_guardia = document.getElementById("insert-extrMineral-guardia-normal");
+const iptInsert_extraccionMineral_turno = document.getElementById("insert-extrMineral-turno");
+
+const iptInsert_extraccionMineral_guardia = document.getElementById("insert-extrMineral-guardia");
+
+const iptInsert_extraccionMineral_observacion = document.getElementById("insert-extrMineral-observacion");
+
+
 const iptInsert_extraccionMineral_hrs = document.getElementById("insert-extrMineral-hrs-extractor");
 
 
@@ -103,9 +109,12 @@ btnInsertar.addEventListener("click", (e) => {
             'veta': f[i][15],
             'fech_extraccion': f[i][16],
             'hora': f[i][17],
-            'turno': f[i][18],
-            'turno_id': f[i][19],
-            'cant_carros': f[i][20],
+            'turno_id': f[i][18],
+            'turno': f[i][19],
+            'guardia_id': f[i][20],
+            'guardia': f[i][21],            
+            'cant_carros': f[i][22],
+            'observaciones': f[i][23],
         });
     }
     listInsert = {
@@ -356,6 +365,8 @@ $(document).ready(function() {
             null,
             null,
             null,
+            null,
+            null,
         ],
         dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
         buttons: [{
@@ -375,6 +386,8 @@ $(document).ready(function() {
     tbl_detalleExtraccion.columns(4).visible(false);
     tbl_detalleExtraccion.columns(9).visible(false);
     tbl_detalleExtraccion.columns(12).visible(false);
+    tbl_detalleExtraccion.columns(18).visible(false);
+    tbl_detalleExtraccion.columns(20).visible(false);
     // Remover fila
     $('#detalleExtraccion').on('click', '.removeRow', function() {
         tbl_detalleExtraccion.row($(this).parents('tr')).remove().draw();
@@ -404,10 +417,10 @@ $("#insert-extrMineral-codigo").change(function() {
 btnAdd_DetalleExtraccion.addEventListener("click", () => {
     let arrayError = [];
     console.log('Agregando');
-    valFechaExtraccion = iptinsertFechaExtraccion.value;
-    valLocomotora = iptinsertLocomotora.value;
-    valTolva = iptinsertTolva.value;
-    valUniEmpresa = iptinsertUniEmpresa.value;
+    const valFechaExtraccion = iptinsertFechaExtraccion.value;
+    const valLocomotora = iptinsertLocomotora.value;
+    const valTolva = iptinsertTolva.value;
+    const valUniEmpresa = iptinsertUniEmpresa.value;
     valUniEmpresa ? val_idMinera = document.querySelector('#datalist-insert-extrMineral-unidMineral option[value="' + valUniEmpresa + '"]').dataset.idUnidadMinera : arrayError.push("Unidad Minera");
     valMotorista = iptinsertMotorista.value;
     valMotorista ? val_idMotorista = document.querySelector('#datalist-insert-extrMineral-motorista option[value="' + valMotorista + '"]').dataset.idColaboradorMotorista : arrayError.push("Motorista");
@@ -418,8 +431,11 @@ btnAdd_DetalleExtraccion.addEventListener("click", () => {
     valNivel = iptinsertNivel.value;
     valDigitacion = iptinsertDigitacion.value;
     valHrs = iptInsert_extraccionMineral_hrs.value;
-    valTurno = iptInsert_extraccionMineral_guardia.value;
-    valTurno ? valId_turno = document.querySelector('#datalist-insert-extrMineral-guardia option[value="' + valTurno + '"]').dataset.idTurno : arrayError.push("Turno");
+    valTurno = iptInsert_extraccionMineral_turno.value;
+    valObservacion = iptInsert_extraccionMineral_observacion.value;
+    valTurno ? valId_turno = document.querySelector('#datalist-insert-extrMineral-turno option[value="' + valTurno + '"]').dataset.idTurno : arrayError.push("Turno");
+    valGuardia = iptInsert_extraccionMineral_guardia.value;
+    valGuardia ? valId_guardia = document.querySelector('#datalist-insert-extrMineral-guardia option[value="' + valGuardia + '"]').dataset.idGuardia : arrayError.push("Guardia");
     valCodigo = selectInsert_codigo.options[selectInsert_codigo.selectedIndex].text;
     valcCosto = iptInsert_extraccionMineral_cCosto.value;
     valcCosto ? val_idLabor = document.querySelector('#datalist-insert-extrMineral-cCostos option[value="' + valcCosto + '"]').dataset.idCosto : arrayError.push("Centro de Costo");
@@ -448,9 +464,12 @@ btnAdd_DetalleExtraccion.addEventListener("click", () => {
             null,
             valDigitacion,
             valHrs,
-            valTurno,
             valId_turno,
+            valTurno,
+            valId_guardia,
+            valGuardia,
             valCantidad,
+            valObservacion,
             '<button class="btn btn-danger removeRow"><i class="fa fa-trash-o" aria-hidden="true"></i></button>'
         ]).draw(false);
     }

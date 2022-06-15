@@ -519,11 +519,11 @@ if (!isset($_SESSION["username"])) {
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="insert-extrMineral-guardia-normal" class="col-md-4 form-label">Turno</label>
+                                    <label for="insert-extrMineral-turno" class="col-md-4 form-label">Turno</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" list="datalist-insert-extrMineral-guardia" id="insert-extrMineral-guardia-normal" placeholder="Ingrese Turno...">
+                                        <input class="form-control" list="datalist-insert-extrMineral-turno" id="insert-extrMineral-turno" placeholder="Ingrese Turno...">
                                     </div>
-                                    <datalist id="datalist-insert-extrMineral-guardia">
+                                    <datalist id="datalist-insert-extrMineral-turno">
                                         <option data-id-turno="1" value="Dia">
                                         <option data-id-turno="2" value="Noche">
                                     </datalist>
@@ -562,9 +562,9 @@ if (!isset($_SESSION["username"])) {
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="insert-extrMineral-guardia-normal" class="col-md-4 form-label">Guardia</label>
+                                    <label for="insert-extrMineral-guardia" class="col-md-4 form-label">Guardia</label>
                                     <div class="col-md-8">
-                                        <input class="form-control" list="datalist-insert-extrMineral-guardia" id="insert-extrMineral-guardia-normal" placeholder="Ingrese Guardia...">
+                                        <input class="form-control" list="datalist-insert-extrMineral-guardia" id="insert-extrMineral-guardia" placeholder="Ingrese Guardia...">
                                     </div>
                                     <datalist id="datalist-insert-extrMineral-guardia">
                                         <option data-id-guardia="1" value="A">A</option>
@@ -688,10 +688,14 @@ if (!isset($_SESSION["username"])) {
                                                 <th scope="col">Zona</th>
                                                 <th scope="col">Nivel</th>
                                                 <th scope="col">Veta</th>
-                                                <th scope="col">Fec. Extracción</th>
+                                                <th scope="col">Fecha. Extracción</th>
                                                 <th scope="col">Hora</th>
+                                                <th scope="col">id_turno</th>
                                                 <th scope="col">Turno</th>
+                                                <th scope="col">id_guardia</th>
+                                                <th scope="col">Guardia</th>
                                                 <th scope="col">Cant. Carros</th>
+                                                <th scope="col">Observaciónes</th>
                                                 <th scope="col">Acciónes</th>
                                             </tr>
                                         </thead>
