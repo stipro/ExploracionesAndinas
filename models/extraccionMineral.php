@@ -137,7 +137,7 @@ class extraccionMineral extends Conexion
                 $insertValue->bindParam(':item11', $clave['turno'], PDO::PARAM_STR);
                 $insertValue->bindParam(':item12', $clave['turno_id'], PDO::PARAM_STR);
                 $insertValue->bindParam(':item13', $clave['guardia_id'], PDO::PARAM_STR);
-                $insertValue->bindParam(':item14', $clave['cantidad_extraccionMineral'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item14', $clave['cant_carros'], PDO::PARAM_STR);
                 $insertValue->bindParam(':item15', $clave['observacion_extraccionMineral'], PDO::PARAM_STR);
                 $sqlrpt = $insertValue->execute();
                 $lastcolIdsql = $this->db->lastInsertId();
