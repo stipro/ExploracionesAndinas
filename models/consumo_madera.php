@@ -194,6 +194,9 @@ class ConsumoMadera extends Conexion
             elseif($e->getCode() == 42000){
                 $messageUser = "La sintaxis esta mal";
             }
+            elseif($e->getCode() == '42S22'){
+                $messageUser = "Columna desconocido";
+            }
             else{
                 $messageUser = "";
             }

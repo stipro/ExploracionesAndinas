@@ -64,7 +64,7 @@ const fetchTM_extraccionMineral = async (request) => {
     // Se agrega formulario en el FORMDATA
     body.append("data", JSON.stringify(request));
     //Se envia formulario al controllador y su previa configuracion
-    const returned = await fetch("./../../../controllers/controllerExtraccionMinera_list.php", {
+    const returned = await fetch("./../../../controllers/controllerExtraccionMineralList.php", {
         method: "POST",
         body
     });
@@ -210,7 +210,7 @@ $(document).ready(function() {
                 data: 'locomotora_extraccionMineral',
             },
             {
-                data: 'fullName_motorista',
+                data: 'nombres_mot',
             },
             {
                 data: 'nivel_extraccionMineral',
@@ -222,11 +222,29 @@ $(document).ready(function() {
                 data: 'tolva_extraccionMineral',
             },
             {
-                data: 'fullName_ayudante',
+                data: 'nombres_ayu',
+            },
+            {
+                data: 'nombre_guardia',
             },
             {
                 data: 'horasExtraccion_extraccionMineral',
             },
+            {
+                data: 'observaciones_extraccionMineral',
+            },
+            {
+                data: 'codigo_extraccionMineral',
+            },
+            {
+                data: 'ccosto_extraccionMineral',
+            },
+            {
+                data: 'laborNombre_extraccionMineral',
+            },
+            {
+                data: 'cantidad_extraccionMineral',
+            },            
             {
                 defaultContent: '<button type="button" class="btn-view btn btn-success btn-tbM-consumoMadera-detalle"><i class="fa fa-eye"></i> <span class="hidden-xs hidden-sm">Detalle<span></button> <button type="button" class="name btn btn-primary btn-tbM-consumoMadera-edit"><i class="fa fa-edit"></i> <span class="hidden-xs hidden-sm">Editar</span></button> <button type="button" class="position btn btn-danger btn-tbM-consumoMadera-delet"><i class="fa fa-trash-o"></i> <span class="hidden-xs hidden-sm">Eliminar<span></button>'
             }
@@ -349,26 +367,6 @@ $(document).ready(function() {
         // boton de cantidad a visualizar //
         lengthChange: false,
         filter: false,
-        column: [{
-                visible: true
-            },
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-        ],
         dom: '<"row"<"col-sm-12 col-md-3"l><"col-sm-12 col-md-6"<"dt-buttons btn-group flex-wrap"B>><"col-sm-12 col-md-3"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
         buttons: [{
             extend: 'excel',
@@ -532,7 +530,7 @@ iptinsertAyudante.addEventListener('keyup', function(e) {
 const fetch_colaboradores = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
-    const res = await fetch("./../../../controllers/controllerExtraccionMinera_list.php", {
+    const res = await fetch("./../../../controllers/controllerExtraccionMineralList.php", {
         method: "POST",
         body
     });
@@ -571,7 +569,7 @@ const pintarAyudante = (data) => {
 const fetch_unidadMinera = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
-    const res = await fetch("./../../../controllers/controllerExtraccionMinera_list.php", {
+    const res = await fetch("./../../../controllers/controllerExtraccionMineralList.php", {
         method: "POST",
         body
     });
@@ -596,7 +594,7 @@ const pintar_unidadMinera = (data) => {
 const fetch_zona = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
-    const res = await fetch("./../../../controllers/controllerExtraccionMinera_list.php", {
+    const res = await fetch("./../../../controllers/controllerExtraccionMineralList.php", {
         method: "POST",
         body
     });
@@ -620,7 +618,7 @@ const pintar_Zona = (data) => {
 const fetch_cCosto = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
-    const res = await fetch("./../../../controllers/controllerExtraccionMinera_list.php", {
+    const res = await fetch("./../../../controllers/controllerExtraccionMineralList.php", {
         method: "POST",
         body
     });
@@ -659,7 +657,7 @@ iptInsert_extraccionMineral_cCosto.addEventListener('input', (e) => {
 const get_nameLabor = async (request) => {
     const body = new FormData();
     body.append("data", JSON.stringify(request));
-    const res = await fetch("./../../../controllers/controllerExtraccionMinera_list.php", {
+    const res = await fetch("./../../../controllers/controllerExtraccionMineralList.php", {
         method: "POST",
         body
     });

@@ -43,15 +43,7 @@ class extraccionMineral extends Conexion
     }
     public function tabla_master()
     {
-        $query = "SELECT em.id_extraccionMineral, em.fechaExtraccion_extraccionMineral, em.unidadMineral_id, ud_mn.nombre_unidadMinera,
-        lb_zn.id_zona, lb_zn.labZona_nombre, em.fechaDigitacion_extraccionMineral, em.locomotora_extraccionMineral, 
-        em.motorista_id, CONCAT(clb.col_apePaterno,' ', clb.col_apeMaterno, ' ',clb.col_nombres) AS fullName_motorista, em.nivel_extraccionMineral, em.turno_extraccionMineral, em.tolva_extraccionMineral,
-        em.ayudante_id, CONCAT(clb_ay.col_apePaterno, ' ',clb_ay.col_apeMaterno, ' ',clb_ay.col_nombres) AS fullName_ayudante, em.horasExtraccion_extraccionMineral
-        FROM extraccion_mineral AS em
-        LEFT JOIN unidad_mineras AS ud_mn ON em.unidadMineral_id = ud_mn.id_unidadMinera
-        LEFT JOIN lab_zonas AS lb_zn ON em.zona_id = lb_zn.id_zona
-        LEFT JOIN colaboradores AS clb ON em.motorista_id = clb.id_colaborador
-        LEFT JOIN colaboradores AS clb_ay ON em.ayudante_id = clb_ay.id_colaborador;";
+        $query = "SELECT * FROM view_extraccionmineral_dev";
         return $this->ConsultaSimple($query);
     }
     public function getSelect_unidadMinera(): array
@@ -92,7 +84,7 @@ class extraccionMineral extends Conexion
             $lastcolIdsql = '';
             $query = "INSERT INTO extraccion_mineral (
             fechaExtraccion_extraccionMineral,
-            unidadMineral_id,
+            unidadMinera_id,
             zona_id,
             fechaDigitacion_extraccionMineral,
             locomotora_extraccionMineral,
@@ -109,7 +101,7 @@ class extraccionMineral extends Conexion
             labor_id,
             ccosto_extraccionMineral,
             laborNombre_extraccionMineral,
-            cantidad_extraccionMineral,
+            cantidad_extraccionMineral
             )
             VALUES (
             :item1,
@@ -172,7 +164,7 @@ class extraccionMineral extends Conexion
             }
             else{
                 echo "\nPDO::errorInfo():\n";
-                print_r($insertValue->errorInfo());
+                //print_r($insertValue->errorInfo());
             }
             return $rptSql;
         }
@@ -183,6 +175,9 @@ class extraccionMineral extends Conexion
             
             if($e->getCode() == 23000){
                 $messageUser = "Se duplico n° de Vale";
+            }
+            elseif($e->getCode() == 42000){
+                $messageUser = "La sintaxis esta mal";
             }
             else{
                 $messageUser = "";
