@@ -91,31 +91,31 @@ btnInsertar.addEventListener("click", (e) => {
     for (var i = 0; f.length > i; i++) {
         var n = f[i].length;
         listDetalles.push({
-            'id_unidadMinera': f[i][0],
-            'ud_Minera': f[i][1],
-            'id_motorista': f[i][2],
-            'motorista': f[i][3],
-            'id_ayudante': f[i][4],
-            'ayudante': f[i][5],
-            'Locomotora': f[i][6],
-            'tolva': f[i][7],
-            'tipo_mat': f[i][8],
-            'id_labor': f[i][9],
-            'ccostos': f[i][10],
-            'labor': f[i][11],
-            'id_zona': f[i][12],
-            'zona': f[i][13],
-            'nivel': f[i][14],
-            'veta': f[i][15],
-            'fech_Digitacion': f[i][16],
+            'fech_extraccion': f[i][0],
+            'id_unidadMinera': f[i][1],
+            'unidadMinera': f[i][2],
+            'id_zona': f[i][3],
+            'zona': f[i][4],
+            'fech_Digitacion': f[i][5],
+            'locomotora': f[i][6],
+            'id_motorista': f[i][7],
+            'motorista': f[i][8],
+            'nivel': f[i][9],
+            'turno_id': f[i][10],
+            'turno': f[i][11],
+            'tolva': f[i][12],
+            'id_ayudante': f[i][13],
+            'ayudante': f[i][14],
+            'guardia_id': f[i][15],
+            'guardia': f[i][16], 
             'hora': f[i][17],
-            'turno_id': f[i][18],
-            'turno': f[i][19],
-            'guardia_id': f[i][20],
-            'guardia': f[i][21],            
-            'cant_carros': f[i][22],
-            'observaciones': f[i][23],
-            'fech_extraccion': f[i][24],
+            'observaciones': f[i][18],
+            'codigo': f[i][19],
+            'id_labor': f[i][20],
+            'ccostos': f[i][21],
+            'nombreLabor': f[i][22],           
+            'cant_carros': f[i][23],
+            
         });
     }
     listInsert = {
@@ -382,13 +382,14 @@ $(document).ready(function() {
         }]
 
     });
-    tbl_detalleExtraccion.columns(0).visible(false);
-    tbl_detalleExtraccion.columns(2).visible(false);
-    tbl_detalleExtraccion.columns(4).visible(false);
-    tbl_detalleExtraccion.columns(9).visible(false);
-    tbl_detalleExtraccion.columns(12).visible(false);
-    tbl_detalleExtraccion.columns(18).visible(false);
+    tbl_detalleExtraccion.columns(1).visible(false);
+    tbl_detalleExtraccion.columns(3).visible(false);
+    tbl_detalleExtraccion.columns(7).visible(false);
+    tbl_detalleExtraccion.columns(10).visible(false);
+    tbl_detalleExtraccion.columns(13).visible(false);
+    tbl_detalleExtraccion.columns(15).visible(false);
     tbl_detalleExtraccion.columns(20).visible(false);
+
     // Remover fila
     $('#detalleExtraccion').on('click', '.removeRow', function() {
         tbl_detalleExtraccion.row($(this).parents('tr')).remove().draw();
@@ -417,29 +418,30 @@ $("#insert-extrMineral-codigo").change(function() {
 });
 btnAdd_DetalleExtraccion.addEventListener("click", () => {
     let arrayError = [];
-    console.log('Agregando');
-    const valFechaExtraccion = iptinsertFechaExtraccion.value;
-    const valLocomotora = iptinsertLocomotora.value;
-    const valTolva = iptinsertTolva.value;
+    const val_fechExtraccion = iptinsertFechaExtraccion.value;
     const valUniEmpresa = iptinsertUniEmpresa.value;
-    valUniEmpresa ? val_idMinera = document.querySelector('#datalist-insert-extrMineral-unidMineral option[value="' + valUniEmpresa + '"]').dataset.idUnidadMinera : arrayError.push("Unidad Minera");
-    valMotorista = iptinsertMotorista.value;
-    valMotorista ? val_idMotorista = document.querySelector('#datalist-insert-extrMineral-motorista option[value="' + valMotorista + '"]').dataset.idColaboradorMotorista : arrayError.push("Motorista");
-    valAyudante = iptinsertAyudante.value;
-    valAyudante ? val_idAyudante = document.querySelector('#datalist-insert-extrMineral-ayudante option[value="' + valAyudante + '"]').dataset.idColaboradorAyudante : arrayError.push("Ayudante");
-    valZona = iptinsertZona.value;
-    valZona ? val_idZona = document.querySelector('#datalist-insert-extrMineral-zona option[value="' + valZona + '"]').dataset.idZona : arrayError.push("Zona");
-    valNivel = iptinsertNivel.value;
-    valDigitacion = iptinsertDigitacion.value;
-    valHrs = iptInsert_extraccionMineral_hrs.value;
-    valTurno = iptInsert_extraccionMineral_turno.value;
-    valObservacion = iptInsert_extraccionMineral_observacion.value;
+    valUniEmpresa ? valId_Minera = document.querySelector('#datalist-insert-extrMineral-unidMineral option[value="' + valUniEmpresa + '"]').dataset.idUnidadMinera : arrayError.push("Unidad Minera");
+    const valZona = iptinsertZona.value;
+    valZona ? valId_Zona = document.querySelector('#datalist-insert-extrMineral-zona option[value="' + valZona + '"]').dataset.idZona : arrayError.push("Zona");
+    const val_fechDigitacion = iptinsertDigitacion.value;
+    const valLocomotora = iptinsertLocomotora.value;
+    const valMotorista = iptinsertMotorista.value;
+    valMotorista ? valId_Motorista = document.querySelector('#datalist-insert-extrMineral-motorista option[value="' + valMotorista + '"]').dataset.idColaboradorMotorista : arrayError.push("Motorista");
+    const valNivel = iptinsertNivel.value;
+    const valTurno = iptInsert_extraccionMineral_turno.value;
     valTurno ? valId_turno = document.querySelector('#datalist-insert-extrMineral-turno option[value="' + valTurno + '"]').dataset.idTurno : arrayError.push("Turno");
+    const valTolva = iptinsertTolva.value;
+    valAyudante = iptinsertAyudante.value;
+    valAyudante ? valId_Ayudante = document.querySelector('#datalist-insert-extrMineral-ayudante option[value="' + valAyudante + '"]').dataset.idColaboradorAyudante : arrayError.push("Ayudante");
     valGuardia = iptInsert_extraccionMineral_guardia.value;
     valGuardia ? valId_guardia = document.querySelector('#datalist-insert-extrMineral-guardia option[value="' + valGuardia + '"]').dataset.idGuardia : arrayError.push("Guardia");
+    valHrs = iptInsert_extraccionMineral_hrs.value;
+    valObservacion = iptInsert_extraccionMineral_observacion.value;
+    
+    
     valCodigo = selectInsert_codigo.options[selectInsert_codigo.selectedIndex].text;
     valcCosto = iptInsert_extraccionMineral_cCosto.value;
-    valcCosto ? val_idLabor = document.querySelector('#datalist-insert-extrMineral-cCostos option[value="' + valcCosto + '"]').dataset.idCosto : arrayError.push("Centro de Costo");
+    valcCosto ? valId_Labor = document.querySelector('#datalist-insert-extrMineral-cCostos option[value="' + valcCosto + '"]').dataset.idCosto : arrayError.push("Centro de Costo");
     valLabor = iptInsert_extraccionMinera_laborNombre.value;
     valCantidad = iptInsert_extraccionMinera_cantidad.value;
     if(arrayError.length > 0){
@@ -447,31 +449,30 @@ btnAdd_DetalleExtraccion.addEventListener("click", () => {
     }
     else{   
         tbl_detalleExtraccion.row.add([
-            val_idMinera,
+            val_fechExtraccion,
+            valId_Minera,
             valUniEmpresa,
-            val_idMotorista,
-            valMotorista,
-            val_idAyudante,
-            valAyudante,
-            valLocomotora,
-            valTolva,
-            valCodigo,
-            val_idLabor,
-            valcCosto,
-            valLabor,
-            val_idZona,
+            valId_Zona,
             valZona,
+            val_fechDigitacion,
+            valLocomotora,
+            valId_Motorista,
+            valMotorista,
             valNivel,
-            null,
-            valDigitacion,
-            valHrs,
             valId_turno,
             valTurno,
+            valTolva,
+            valId_Ayudante,
+            valAyudante,
             valId_guardia,
             valGuardia,
-            valCantidad,
+            valHrs,
             valObservacion,
-            valFechaExtraccion,
+            valCodigo,
+            valId_Labor,
+            valcCosto,
+            valLabor,
+            valCantidad,
             '<button class="btn btn-danger removeRow"><i class="fa fa-trash-o" aria-hidden="true"></i></button>'
         ]).draw(false);
     }

@@ -183,17 +183,23 @@ if (!isset($_SESSION["username"])) {
                                                 <thead>
                                                     <tr>
                                                         <th>id_extraccionMineral</th>
-                                                        <th>fechaExtraccion</th>
+                                                        <th>F. Extracción</th>
                                                         <th>Unidad Minera</th>
                                                         <th>Zona</th>
-                                                        <th>F. Extracción</th>
+                                                        <th>F. Digitación</th>
                                                         <th>Locomotora</th>
                                                         <th>Motorista</th>
                                                         <th>Nivel</th>
                                                         <th>Turno</th>
                                                         <th>Tolva</th>
                                                         <th>Ayudante</th>
+                                                        <th>Guardia</th>
                                                         <th>Horas</th>
+                                                        <th>Observaciónes</th>
+                                                        <th>Codigo</th>
+                                                        <th>ccostos</th>
+                                                        <th>Nombre Labor</th>
+                                                        <th>Cantidad</th>
                                                         <th>Operaciónes</th>
                                                     </tr>
                                                 </thead>
@@ -672,31 +678,30 @@ if (!isset($_SESSION["username"])) {
                                     <table class="table display nowrap table-striped table-bordered dt-responsive" style="width:100%" id="detalleExtraccion">
                                         <thead>
                                             <tr>
+                                                <th scope="col">Fecha Extracción</th>
                                                 <th scope="col">id_unidadMinera</th>
-                                                <th scope="col">ud. Minera</th>
-                                                <th scope="col">id_motorista</th>
-                                                <th scope="col">Motorista</th>
-                                                <th scope="col">id_ayudante</th>
-                                                <th scope="col">Ayudante</th>
-                                                <th scope="col">Locomotora</th>
-                                                <th scope="col">Tolva</th>
-                                                <th scope="col">Tipo Mat</th>
-                                                <th scope="col">id_labor</th>
-                                                <th scope="col">C. Costo</th>
-                                                <th scope="col">Labor</th>
+                                                <th scope="col">Unidad Minera</th>
                                                 <th scope="col">id_zona</th>
                                                 <th scope="col">Zona</th>
-                                                <th scope="col">Nivel</th>
-                                                <th scope="col">Veta</th>
                                                 <th scope="col">Fecha Digitación</th>
-                                                <th scope="col">Hora</th>
+                                                <th scope="col">Locomotora</th>
+                                                <th scope="col">id_motorista</th>
+                                                <th scope="col">Motorista</th>
+                                                <th scope="col">Nivel</th>
                                                 <th scope="col">id_turno</th>
                                                 <th scope="col">Turno</th>
+                                                <th scope="col">Tolva</th>
+                                                <th scope="col">id_ayudante</th>
+                                                <th scope="col">Ayudante</th>
                                                 <th scope="col">id_guardia</th>
                                                 <th scope="col">Guardia</th>
-                                                <th scope="col">Cant. Carros</th>
+                                                <th scope="col">Hora</th>
                                                 <th scope="col">Observaciónes</th>
-                                                <th scope="col">Fecha Extracción</th>
+                                                <th scope="col">Codigó</th>
+                                                <th scope="col">id_labor</th>
+                                                <th scope="col">C. Costo</th>                                                
+                                                <th scope="col">Labor</th>
+                                                <th scope="col">Cant. Carros</th>
                                                 <th scope="col">Acciónes</th>
                                             </tr>
                                         </thead>

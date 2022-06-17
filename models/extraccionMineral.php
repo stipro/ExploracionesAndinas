@@ -91,21 +91,26 @@ class extraccionMineral extends Conexion
             $rptSql = '';
             $lastcolIdsql = '';
             $query = "INSERT INTO extraccion_mineral (
-            fechaDigitacion_extraccionMineral,
             fechaExtraccion_extraccionMineral,
-            horasExtraccion_extraccionMineral,
-            locomotora_extraccionMineral,
-            tolva_extraccionMineral, 
-            nivel_extraccionMineral,
-            unidadMineral_id, 
-            motorista_id, 
-            ayudante_id, 
+            unidadMineral_id,
             zona_id,
-            turno_extraccionMineral,
+            fechaDigitacion_extraccionMineral,
+            locomotora_extraccionMineral,
+            motorista_id,
+            nivel_extraccionMineral,
             turno_id,
+            turno_extraccionMineral,            
+            tolva_extraccionMineral,
+            ayudante_id,
             guardia_id,
+            horasExtraccion_extraccionMineral,
+            observaciones_extraccionMineral,
+            codigo_extraccionMineral,
+            labor_id,
+            ccosto_extraccionMineral,
+            laborNombre_extraccionMineral,
             cantidad_extraccionMineral,
-            observaciones_extraccionMineral)
+            )
             VALUES (
             :item1,
             :item2,
@@ -121,24 +126,32 @@ class extraccionMineral extends Conexion
             :item12,
             :item13,
             :item14, 
-            :item15)";
+            :item15,
+            :item16,
+            :item17,
+            :item18,
+            :item19)";
             $insertValue = $this->db->prepare($query);
             foreach ($formRequest as $clave) {
-                $insertValue->bindParam(':item1', $clave['fech_Digitacion'], PDO::PARAM_STR);
-                $insertValue->bindParam(':item2', $clave['fech_extraccion'], PDO::PARAM_STR);
-                $insertValue->bindParam(':item3', $clave['hora'], PDO::PARAM_STR);
-                $insertValue->bindParam(':item4', $clave['Locomotora'], PDO::PARAM_STR);
-                $insertValue->bindParam(':item5', $clave['tolva'], PDO::PARAM_STR);
-                $insertValue->bindParam(':item6', $clave['nivel'], PDO::PARAM_STR);
-                $insertValue->bindParam(':item7', $clave['id_unidadMinera'], PDO::PARAM_STR);
-                $insertValue->bindParam(':item8', $clave['id_motorista'], PDO::PARAM_STR);
-                $insertValue->bindParam(':item9', $clave['id_ayudante'], PDO::PARAM_STR);
-                $insertValue->bindParam(':item10', $clave['id_zona'], PDO::PARAM_STR);
-                $insertValue->bindParam(':item11', $clave['turno'], PDO::PARAM_STR);
-                $insertValue->bindParam(':item12', $clave['turno_id'], PDO::PARAM_STR);
-                $insertValue->bindParam(':item13', $clave['guardia_id'], PDO::PARAM_STR);
-                $insertValue->bindParam(':item14', $clave['cant_carros'], PDO::PARAM_STR);
-                $insertValue->bindParam(':item15', $clave['observacion_extraccionMineral'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item1', $clave['fech_extraccion'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item2', $clave['id_unidadMinera'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item3', $clave['id_zona'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item4', $clave['fech_Digitacion'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item5', $clave['locomotora'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item6', $clave['id_motorista'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item7', $clave['nivel'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item8', $clave['turno_id'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item9', $clave['turno'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item10', $clave['tolva'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item11', $clave['id_ayudante'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item12', $clave['guardia_id'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item13', $clave['hora'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item14', $clave['observaciones'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item15', $clave['codigo'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item16', $clave['id_labor'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item17', $clave['ccostos'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item18', $clave['nombreLabor'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item19', $clave['cant_carros'], PDO::PARAM_STR);
                 $sqlrpt = $insertValue->execute();
                 $lastcolIdsql = $this->db->lastInsertId();
             }
