@@ -688,7 +688,7 @@ if (!isset($_SESSION["username"])) {
                                                 <th scope="col">Zona</th>
                                                 <th scope="col">Nivel</th>
                                                 <th scope="col">Veta</th>
-                                                <th scope="col">Fecha. Extracción</th>
+                                                <th scope="col">Fecha Digitación</th>
                                                 <th scope="col">Hora</th>
                                                 <th scope="col">id_turno</th>
                                                 <th scope="col">Turno</th>
@@ -696,6 +696,7 @@ if (!isset($_SESSION["username"])) {
                                                 <th scope="col">Guardia</th>
                                                 <th scope="col">Cant. Carros</th>
                                                 <th scope="col">Observaciónes</th>
+                                                <th scope="col">Fecha Extracción</th>
                                                 <th scope="col">Acciónes</th>
                                             </tr>
                                         </thead>

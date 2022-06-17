@@ -124,7 +124,7 @@ class extraccionMineral extends Conexion
             :item15)";
             $insertValue = $this->db->prepare($query);
             foreach ($formRequest as $clave) {
-                $insertValue->bindParam(':item1', $clave['fech_extraccion'], PDO::PARAM_STR);
+                $insertValue->bindParam(':item1', $clave['fech_Digitacion'], PDO::PARAM_STR);
                 $insertValue->bindParam(':item2', $clave['fech_extraccion'], PDO::PARAM_STR);
                 $insertValue->bindParam(':item3', $clave['hora'], PDO::PARAM_STR);
                 $insertValue->bindParam(':item4', $clave['Locomotora'], PDO::PARAM_STR);

@@ -107,7 +107,7 @@ btnInsertar.addEventListener("click", (e) => {
             'zona': f[i][13],
             'nivel': f[i][14],
             'veta': f[i][15],
-            'fech_extraccion': f[i][16],
+            'fech_Digitacion': f[i][16],
             'hora': f[i][17],
             'turno_id': f[i][18],
             'turno': f[i][19],
@@ -115,6 +115,7 @@ btnInsertar.addEventListener("click", (e) => {
             'guardia': f[i][21],            
             'cant_carros': f[i][22],
             'observaciones': f[i][23],
+            'fech_extraccion': f[i][24],
         });
     }
     listInsert = {
@@ -470,6 +471,7 @@ btnAdd_DetalleExtraccion.addEventListener("click", () => {
             valGuardia,
             valCantidad,
             valObservacion,
+            valFechaExtraccion,
             '<button class="btn btn-danger removeRow"><i class="fa fa-trash-o" aria-hidden="true"></i></button>'
         ]).draw(false);
     }
