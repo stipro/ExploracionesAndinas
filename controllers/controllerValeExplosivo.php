@@ -131,21 +131,22 @@ if($_POST){
                             $id = $rptSql['id'];
                             $detail = $formRequest['detail'];
                             if(sizeof($detail) > 0){
-                                foreach ($detail as &$valor) {
-                                    $valor['id'] = 1 ? $datoemulMil = $valor['cantidad'] : $datoemulMil = 0;
-                                    $valor['id'] = 2 ? $datoemulTresmil = $valor['cantidad'] : $datoemulTresmil = 0;
-                                    $valor['id'] = 3 ? $datoDinaPulv = $valor['cantidad'] : $datoDinaPulv = 0;
-                                    $valor['id'] = 4 ? $datCarmexsiete = $valor['cantidad'] : $datCarmexsiete = 0;
-                                    $valor['id'] = 5 ? $datCarmexocho = $valor['cantidad'] : $datCarmexocho = 0;
-                                    $valor['id'] = 6 ? $datomechaRapida = $valor['cantidad'] : $datomechaRapida = 0;
-                                    $valor['id'] = 7 ? $datomechaLenta = $valor['cantidad'] : $datomechaLenta = 0;
-                                    $valor['id'] = 8 ? $datofulmOcho = $valor['cantidad'] : $datofulmOcho = 0;
-                                    $valor['id'] = 9 ? $datoconecMecha = $valor['cantidad'] : $datoconecMecha = 0;
-                                    $valor['id'] = 10 ? $datoBlockSegacion = $valor['cantidad'] : $datoBlockSegacion = 0;
-                                    $valor['id'] = 11 ? $datoCarCortrece = $valor['cantidad'] : $datoCarCortrece = 0;
-                                    $valor['id'] = 12 ? $datoDinaSemi = $valor['cantidad'] : $datoDinaSemi = 0;
-                                }
                                 $rptSql2 = $table->createDetalle($id, $detail);
+                                /* foreach ($detail as &$valor) {
+                                    $datoemulMil ? $datoemulMil = $valor['cantidad'] : $datoemulMil = 0;
+                                    $datoemulTresmil ? $datoemulTresmil = $valor['cantidad'] : $datoemulTresmil = 0;
+                                    $datoDinaPulv ? $datoDinaPulv = $valor['cantidad'] : $datoDinaPulv = 0;
+                                    $datCarmexsiete ? $datCarmexsiete = $valor['cantidad'] : $datCarmexsiete = 0;
+                                    $datCarmexocho ? $datCarmexocho = $valor['cantidad'] : $datCarmexocho = 0;
+                                    $datomechaRapida ? $datomechaRapida = $valor['cantidad'] : $datomechaRapida = 0;
+                                    $datomechaLenta ? $datomechaLenta = $valor['cantidad'] : $datomechaLenta = 0;
+                                    $datofulmOcho ? $datofulmOcho = $valor['cantidad'] : $datofulmOcho = 0;
+                                    $datoconecMecha ? $datoconecMecha = $valor['cantidad'] : $datoconecMecha = 0;
+                                    $datoBlockSegacion ? $datoBlockSegacion = $valor['cantidad'] : $datoBlockSegacion = 0;
+                                    $datoCarCortrece ? $datoCarCortrece = $valor['cantidad'] : $datoCarCortrece = 0;
+                                    $datoDinaSemi ? $datoDinaSemi = $valor['cantidad'] : $datoDinaSemi = 0;
+                                } */
+                                
                             }else{
                                 $rptSql2 = [
                                     "estado" => 0,
