@@ -6,7 +6,7 @@ if($_POST){
     $nametable = 'tvalexplosivos';
     $rptSql= '';
     $rptController = 'Se recibio datos';
-    $datoemulMil = 0;
+    /* $datoemulMil = 0;
     $datoemulTresmil = 0;
     $datoDinaPulv = 0;
     $datCarmexsiete = 0;
@@ -17,7 +17,7 @@ if($_POST){
     $datoconecMecha = 0;
     $datoBlockSegacion = 0;
     $datoCarCortrece = 0;
-    $datoDinaSemi = 0;
+    $datoDinaSemi = 0; */
     try{
         // Requiero Modelo ()
         require_once '../models/'.$nametable.'.php';
@@ -84,6 +84,24 @@ if($_POST){
                 
                 if (!empty($idDigitador) && !empty($datoRegistro) && !empty($idZona) && !empty($datonVale) && !empty($idLabor)) 
                     {
+                        $detail = $formRequest['detail'];
+                        foreach ($detail as &$valor) {
+                            $datoemulMil = $valor['id'] = 1 ? $valor['cantidad'] : 0;
+                            echo $datoemulMil;
+                            $datoemulTresmil = $valor['id'] = 2 ? $valor['cantidad'] : 0;
+                            $datoDinaPulv = $valor['id'] = 3 ? $valor['cantidad'] : 0;
+                            $datCarmexsiete = $valor['id'] = 4 ? $valor['cantidad'] : 0;
+                            $datCarmexocho = $valor['id'] = 5 ? $valor['cantidad'] : 0;
+                            $datomechaRapida = $valor['id'] = 6 ? $valor['cantidad'] : 0;
+                            $datomechaLenta = $valor['id'] = 7 ? $valor['cantidad'] : 0;
+                            $datofulmOcho = $valor['id'] = 8 ? $valor['cantidad'] : 0;
+                            $datoconecMecha = $valor['id'] = 9 ? $valor['cantidad'] : 0;
+                            $datoBlockSegacion = $valor['id'] = 10 ? $valor['cantidad'] : 0;
+                            $datoCarCortrece = $valor['id'] = 11 ? $valor['cantidad'] : 0;
+                            $datoDinaSemi = $valor['id'] = 12 ? $valor['cantidad'] : 0;
+                        }
+                        echo 'Afuera';
+                        echo $datoemulMil;
                         $rptSql = $table->insert(
                             $id_unidadMinera,
                             $idDigitador, 
@@ -132,20 +150,7 @@ if($_POST){
                             $detail = $formRequest['detail'];
                             if(sizeof($detail) > 0){
                                 $rptSql2 = $table->createDetalle($id, $detail);
-                                /* foreach ($detail as &$valor) {
-                                    $datoemulMil ? $datoemulMil = $valor['cantidad'] : $datoemulMil = 0;
-                                    $datoemulTresmil ? $datoemulTresmil = $valor['cantidad'] : $datoemulTresmil = 0;
-                                    $datoDinaPulv ? $datoDinaPulv = $valor['cantidad'] : $datoDinaPulv = 0;
-                                    $datCarmexsiete ? $datCarmexsiete = $valor['cantidad'] : $datCarmexsiete = 0;
-                                    $datCarmexocho ? $datCarmexocho = $valor['cantidad'] : $datCarmexocho = 0;
-                                    $datomechaRapida ? $datomechaRapida = $valor['cantidad'] : $datomechaRapida = 0;
-                                    $datomechaLenta ? $datomechaLenta = $valor['cantidad'] : $datomechaLenta = 0;
-                                    $datofulmOcho ? $datofulmOcho = $valor['cantidad'] : $datofulmOcho = 0;
-                                    $datoconecMecha ? $datoconecMecha = $valor['cantidad'] : $datoconecMecha = 0;
-                                    $datoBlockSegacion ? $datoBlockSegacion = $valor['cantidad'] : $datoBlockSegacion = 0;
-                                    $datoCarCortrece ? $datoCarCortrece = $valor['cantidad'] : $datoCarCortrece = 0;
-                                    $datoDinaSemi ? $datoDinaSemi = $valor['cantidad'] : $datoDinaSemi = 0;
-                                } */
+                                
                                 
                             }else{
                                 $rptSql2 = [
